@@ -15,5 +15,3 @@ SOURCES += \
 HEADERS += \
     ../../../app/perfelfmap.h \
     ../../../app/perfaddresscache.h
-
-OTHER_FILES += addresscache.qbs

@@ -651,13 +651,11 @@ public:
     EnvironmentKitAspect environmentKitAspect;
 
     DesktopQmakeRunConfigurationFactory qmakeRunConfigFactory;
-    QbsRunConfigurationFactory qbsRunConfigFactory;
 
     RunWorkerFactory desktopRunWorkerFactory{
         RunWorkerFactory::make<SimpleTargetRunner>(),
         {ProjectExplorer::Constants::NORMAL_RUN_MODE},
-        {qmakeRunConfigFactory.runConfigurationId(),
-         qbsRunConfigFactory.runConfigurationId()}
+        {qmakeRunConfigFactory.runConfigurationId()}
     };
 
 };

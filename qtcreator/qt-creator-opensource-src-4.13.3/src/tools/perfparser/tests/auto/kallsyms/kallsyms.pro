@@ -13,5 +13,3 @@ SOURCES += \
 
 HEADERS += \
     ../../../app/perfkallsyms.h
-
-OTHER_FILES += kallsyms.qbs

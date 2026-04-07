@@ -12,5 +12,4 @@ QTC_PLUGIN_DEPENDS += \
 QTC_PLUGIN_RECOMMENDS += \
     cppeditor
 QTC_TEST_DEPENDS += \
-    qbsprojectmanager \
     qmakeprojectmanager

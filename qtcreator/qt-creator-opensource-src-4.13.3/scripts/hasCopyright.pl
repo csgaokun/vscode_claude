@@ -44,7 +44,6 @@ sub canIgnoreNoCopyright {
         $file =~ /\/Doxyfile$/ or
         $file =~ /\.qmlproject$/ or
         $file =~ /\.pr[oi]$/ or
-        $file =~ /\.qbs$/ or
         $file =~ /\.qrc$/ or
         $file =~ /\.txt$/i or
         $file =~ /\/README[^\/]*$/i or

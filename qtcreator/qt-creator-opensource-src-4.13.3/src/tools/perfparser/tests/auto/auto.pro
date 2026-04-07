@@ -5,5 +5,3 @@ SUBDIRS = \
     kallsyms \
     perfdata \
     perfstdin
-
-OTHER_FILES += auto.qbs

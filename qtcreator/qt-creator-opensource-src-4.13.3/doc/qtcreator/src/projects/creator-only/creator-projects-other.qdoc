@@ -32,23 +32,16 @@
 /*!
     \previouspage creator-os-supported-platforms.html
     \page creator-project-other.html
-    \nextpage creator-project-qbs.html
+    \nextpage creator-projects-autotools.html
 
     \title Using Other Build Systems
 
     Most \QC project wizards enable you to choose the build system to use for
-    building the project: qmake, Meson, or Qbs. qmake is installed and
+    building the project: qmake or Meson. qmake is installed and
     configured when you install Qt. To use one of the other supported build
     systems, you need to set it up, as described in the the following sections:
 
     \list
-
-        \li \l{Setting Up Qbs}
-
-            \l{Qbs Manual}{Qbs} is an all-in-one build
-            tool that generates a build graph from a high-level project
-            description (like qmake does) and executes the commands in
-            the low-level build graph (like make does).
 
         \li \l{Setting Up an Autotools Project}
 

@@ -112,7 +112,7 @@ ModelManagerInterface::ProjectInfo ModelManager::defaultProjectInfoForProject(
     projectInfo.qmlDumpEnvironment = Utils::Environment::systemEnvironment();
     Target *activeTarget = nullptr;
     if (project) {
-        const QSet<QString> qmlTypeNames = { Constants::QML_MIMETYPE ,Constants::QBS_MIMETYPE,
+        const QSet<QString> qmlTypeNames = { Constants::QML_MIMETYPE,
                                              Constants::QMLPROJECT_MIMETYPE,
                                              Constants::QMLTYPES_MIMETYPE,
                                              Constants::QMLUI_MIMETYPE };
@@ -186,9 +186,6 @@ QHash<QString,Dialect> ModelManager::initLanguageForSuffix() const
         MimeType qmlSourceTy = Utils::mimeTypeForName(Constants::QML_MIMETYPE);
         foreach (const QString &suffix, qmlSourceTy.suffixes())
             res[suffix] = Dialect::Qml;
-        MimeType qbsSourceTy = Utils::mimeTypeForName(Constants::QBS_MIMETYPE);
-        foreach (const QString &suffix, qbsSourceTy.suffixes())
-            res[suffix] = Dialect::QmlQbs;
         MimeType qmlProjectSourceTy = Utils::mimeTypeForName(Constants::QMLPROJECT_MIMETYPE);
         foreach (const QString &suffix, qmlProjectSourceTy.suffixes())
             res[suffix] = Dialect::QmlProject;
@@ -228,11 +225,6 @@ void ModelManager::delayedInitialization()
             this, &ModelManager::removeProjectInfo);
     connect(SessionManager::instance(), &SessionManager::startupProjectChanged,
             this, &ModelManager::updateDefaultProjectInfo);
-
-    ViewerContext qbsVContext;
-    qbsVContext.language = Dialect::QmlQbs;
-    qbsVContext.paths.append(ICore::resourcePath() + QLatin1String("/qbs"));
-    setDefaultVContext(qbsVContext);
 }
 
 void ModelManager::loadDefaultQmlTypeDescriptions()

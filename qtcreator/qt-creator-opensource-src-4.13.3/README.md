@@ -50,7 +50,6 @@ Prerequisites:
   so if later versions don't compile we don't support that version.)
 * CMake (for manual builds of LLVM/Clang, and Qt Creator itself)
 * Ninja (optional, recommended for building with CMake)
-* Qbs 1.7.x (optional, sources also contain Qbs itself)
 
 The installed toolchains have to match the one Qt was compiled with.
 
@@ -60,8 +59,6 @@ You can build Qt Creator with
     export LLVM_INSTALL_DIR=/path/to/llvm (or "set" on Windows)
     # Optional, disable Clang Refactoring
     export QTC_DISABLE_CLANG_REFACTORING=1
-    # Optional, needed to let the QbsProjectManager plugin use system Qbs:
-    export QBS_INSTALL_DIR=/path/to/qbs
     # Optional, needed for the Python enabled dumper on Windows
     set PYTHON_INSTALL_DIR=C:\path\to\python
     # Optional, needed to use system KSyntaxHighlighting:

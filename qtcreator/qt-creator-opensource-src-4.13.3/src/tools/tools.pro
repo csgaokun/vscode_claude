@@ -80,7 +80,6 @@ exists(perfparser/perfparser.pro) {
 }
 
 OTHER_FILES += \
-    tools.qbs \
     icons/exportapplicationicons.sh \
     icons/exportdocumenttypeicons.sh
 

@@ -68,7 +68,7 @@
     Typically, only a subset of the kit settings is relevant for a particular
     setup. Therefore, \QC plugins register sets of relevant settings that you
     can view and modify in \uicontrol Tools > \uicontrol Options >
-    \uicontrol Kits. For example, if you use Qbs to build all your projects,
+    \uicontrol Kits. For example, if you use CMake to build all your projects,
     you can hide qmake settings by default.
 
     To hide and show settings in the \uicontrol Kits tab for the
@@ -158,10 +158,6 @@
             configuration that should be used by qmake. If you leave this field
             empty, the default mkspec of the selected Qt version is used.
 
-        \li In the \uicontrol {Additional Qbs profile settings} field, select
-            \uicontrol Change to add settings to Qbs build profiles. For more
-            information, see \l {Editing Qbs Profiles}.
-
         \li In the \uicontrol {Meson tool} field, select the Meson tool to use
             for building the project. Select \uicontrol Manage to add installed
             Meson tools to the list. For more information, see
@@ -176,43 +172,5 @@
     \QC uses the \e {default kit} if it does not have enough information to
     choose the kit to use. To set the selected kit as the default kit,
     select \uicontrol {Make Default}.
-
-    \section1 Editing Qbs Profiles
-
-    To view the Qbs profile associated with the kit, select \uicontrol Tools >
-    \uicontrol Options > \uicontrol Qbs > \uicontrol Profiles.
-
-    \image creator-qbs-profiles.png "Qbs Profiles tab"
-
-    You can add keys and values to the profile or remove them from it, as well
-    as modify existing values. For a list of available keys and values, see
-    \l{http://doc.qt.io/qbs/list-of-modules.html}{List of Modules} in the Qbs
-    Manual.
-
-    To edit the Qbs profile associated with the kit:
-
-    \list 1
-
-        \li Select \uicontrol Change next to the
-            \uicontrol {Additional Qbs Profile Settings} field to open the
-            \uicontrol {Custom Properties} dialog.
-
-            \image qtcreator-qbs-profile-settings.png "Custom Properties dialog"
-
-        \li Double-click an empty cell in the \uicontrol Key column to specify
-            the key to add or modify as: \c <module_name>.<property_name>.
-
-        \li Double-click the cell on the same row in the \uicontrol Value column
-            to specify a value as a JSON literal.
-
-        \li Select \uicontrol Add to add the key-value pair.
-
-        \li Click \uicontrol OK.
-
-    \endlist
-
-    To modify an existing value, double-click it in the \uicontrol Value field.
-
-    To remove the selected property, select \uicontrol Remove.
 
 */

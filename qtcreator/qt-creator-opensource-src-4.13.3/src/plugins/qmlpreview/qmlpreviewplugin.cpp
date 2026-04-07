@@ -531,8 +531,6 @@ void QmlPreviewPluginPrivate::checkEditor()
 //      dialect = QmlJS::Dialect::QmlQtQuick1;
 //  else if (mimeType == ???)
 //      dialect = QmlJS::Dialect::QmlQtQuick2;
-    else if (mimeType == QmlJSTools::Constants::QBS_MIMETYPE)
-        dialect = QmlJS::Dialect::QmlQbs;
     else if (mimeType == QmlJSTools::Constants::QMLPROJECT_MIMETYPE)
         dialect = QmlJS::Dialect::QmlProject;
     else if (mimeType == QmlJSTools::Constants::QMLTYPES_MIMETYPE)

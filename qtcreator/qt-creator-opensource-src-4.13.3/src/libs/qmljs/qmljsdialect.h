@@ -42,7 +42,6 @@ public:
         Json = 2,
         Qml = 3,
         QmlQtQuick2 = 5,
-        QmlQbs = 6,
         QmlProject = 7,
         QmlTypeInfo = 8,
         QmlQtQuick2Ui = 9,

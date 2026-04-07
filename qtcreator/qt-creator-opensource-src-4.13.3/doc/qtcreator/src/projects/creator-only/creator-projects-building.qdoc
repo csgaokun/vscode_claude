@@ -96,7 +96,7 @@
     To quickly check the compile output for changes that you made in one file or
     subproject, you can use the \uicontrol Build menu commands to build a file or
     subproject. The available build menu commands depend on the build system
-    you selected for the project: qmake or Qbs.
+    you selected for the project: qmake.
 
     Select \uicontrol {Build for Run Configuration} to
     build the executable that corresponds to the selected run configuration.

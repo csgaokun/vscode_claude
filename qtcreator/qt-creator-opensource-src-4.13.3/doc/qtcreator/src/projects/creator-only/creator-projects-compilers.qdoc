@@ -152,8 +152,6 @@
 
         \li In the \uicontrol {Platform linker flags} field, check the flags passed to
             the linker that specify the architecture on the target platform.
-            The linker flags are used only when building with Qbs.
-
             The other settings to specify depend on the compiler.
 
         \li In the \uicontrol ABI field, provide an identification for the

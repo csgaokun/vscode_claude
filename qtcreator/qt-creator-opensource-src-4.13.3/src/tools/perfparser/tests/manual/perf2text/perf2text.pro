@@ -17,5 +17,3 @@ INSTALLS += target
 TARGET = perf2text
 
 SOURCES += perf2text.cpp
-
-OTHER_FILES += perf2text.qbs

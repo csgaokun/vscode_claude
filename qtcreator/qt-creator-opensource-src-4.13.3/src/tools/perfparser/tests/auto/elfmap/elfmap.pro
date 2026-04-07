@@ -13,5 +13,3 @@ SOURCES += \
 
 HEADERS += \
     ../../../app/perfelfmap.h
-
-OTHER_FILES += elfmap.qbs

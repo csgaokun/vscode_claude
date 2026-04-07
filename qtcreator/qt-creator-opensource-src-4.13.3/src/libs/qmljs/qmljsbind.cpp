@@ -190,13 +190,6 @@ bool Bind::visit(AST::Program *)
 
 void Bind::endVisit(UiProgram *)
 {
-    if (_doc->language() == Dialect::QmlQbs) {
-        static const QString qbsBaseImport = QStringLiteral("qbs");
-        static auto isQbsBaseImport = [] (const ImportInfo &ii) {
-            return ii.name() == qbsBaseImport; };
-        if (!Utils::anyOf(_imports, isQbsBaseImport))
-            _imports += ImportInfo::moduleImport(qbsBaseImport, ComponentVersion(), QString());
-    }
 }
 
 bool Bind::visit(UiImport *ast)

@@ -150,7 +150,7 @@
     \section1 Build Steps
 
     In \uicontrol{Build Steps} you can change the settings for the build system
-    selected for building the project: qmake, Meson, or Qbs. You can use
+    selected for building the project: qmake or Meson. You can use
     Incredibuild to accelerate the build process when using qmake.
 
     \section2 qmake Build Steps
@@ -170,7 +170,6 @@
     \uicontrol {Override MAKEFLAGS} check box to override existing MAKEFLAGS
     variables.
 
-    \include creator-projects-settings-build-qbs.qdocinc qbs build steps
     \include creator-projects-meson-building.qdocinc meson build steps
     \include creator-projects-incredibuild-building.qdocinc incredibuild build steps
 
@@ -216,7 +215,6 @@
             (\uicontrol {Move Down}).
     \endlist
 
-    \include creator-projects-settings-build-qbs.qdocinc qbs clean steps
     \include creator-projects-meson-building.qdocinc meson clean steps
     \include creator-projects-incredibuild-building.qdocinc incredibuild clean steps
 

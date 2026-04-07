@@ -154,7 +154,6 @@ static QHash<QString, Dialect> defaultLanguageMapping()
         {QLatin1String("qmltypes"), Dialect::QmlTypeInfo},
         {QLatin1String("qmlproject"), Dialect::QmlProject},
         {QLatin1String("json"), Dialect::Json},
-        {QLatin1String("qbs"), Dialect::QmlQbs},
         {QLatin1String(qtQuickUISuffix), Dialect::QmlQtQuick2Ui}
     };
     return res;
@@ -1490,7 +1489,6 @@ ViewerContext ModelManagerInterface::getVContext(const ViewerContext &vCtx,
         case Dialect::JavaScript:
         case Dialect::QmlTypeInfo:
         case Dialect::Json:
-        case Dialect::QmlQbs:
         case Dialect::QmlProject:
             break;
         }

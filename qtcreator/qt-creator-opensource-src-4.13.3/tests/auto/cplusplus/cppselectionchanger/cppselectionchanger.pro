@@ -5,5 +5,4 @@ DEFINES += SRCDIR=\\\"$$PWD\\\"
 
 SOURCES += tst_cppselectionchangertest.cpp
 
-DISTFILES += testCppFile.cpp \
-    cppselectionchanger.qbs
+DISTFILES += testCppFile.cpp

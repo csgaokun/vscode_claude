@@ -46,5 +46,3 @@ HEADERS += \
     perfelfmap.h \
     perfkallsyms.h \
     perftracingdata.h
-
-OTHER_FILES += app.qbs

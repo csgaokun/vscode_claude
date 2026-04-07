@@ -90,7 +90,7 @@
 
     \if defined(qtcreator)
     Some build systems support adding and removing files to a project in \QC
-    (currently qmake and Qbs). The faithful display of the project structure
+    (currently qmake). The faithful display of the project structure
     allows to specify exactly where a new file should be placed in the build
     system.
     \endif

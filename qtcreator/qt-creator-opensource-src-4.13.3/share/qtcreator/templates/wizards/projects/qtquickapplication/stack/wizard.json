@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "supportedProjectTypes": [ "Qbs.QbsProject", "Qt4ProjectManager.Qt4Project" ],
+    "supportedProjectTypes": [ "Qt4ProjectManager.Qt4Project" ],
     "id": "V.QtQuickApplicationStack",
     "category": "E.ApplicationQtQuick",
     "trDescription": "Creates a Qt Quick Controls application with a StackView to display content, and a Drawer and ToolBar for navigation.",
@@ -8,13 +8,12 @@
     "trDisplayCategory": "Application (Qt Quick)",
     "icon": "icon.png",
     "featuresRequired": [ "QtSupport.Wizards.FeatureQt.5.7" ],
-    "enabled": "%{JS: value('Plugins').indexOf('QmakeProjectManager') >= 0 || value('Plugins').indexOf('QbsProjectManager') >= 0}",
+    "enabled": "%{JS: value('Plugins').indexOf('QmakeProjectManager') >= 0}",
 
     "options":
     [
-        { "key": "ProjectFile", "value": "%{JS: value('BuildSystem') === 'qmake' ? value('ProFile') : value('QbsFile')}" },
+        { "key": "ProjectFile", "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/' + value('ProjectName'), 'pro')}" },
         { "key": "ProFile", "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/' + value('ProjectName'), 'pro')}" },
-        { "key": "QbsFile", "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/' + value('ProjectName'), 'qbs')}" },
         { "key": "MainCppFileName", "value": "%{JS: 'main.' + Util.preferredSuffix('text/x-c++src')}" },
         { "key": "QtQuickVersion", "value": "%{JS: value('QtVersion').QtQuickVersion}" },
         { "key": "QtQuickControlsVersion", "value": "%{JS: value('QtVersion').QtQuickControlsVersion}" },
@@ -55,11 +54,6 @@
                                 "trKey": "qmake",
                                 "value": "qmake",
                                 "condition": "%{JS: value('Plugins').indexOf('QmakeProjectManager') >= 0}"
-                            },
-                            {
-                                "trKey": "Qbs",
-                                "value": "qbs",
-                                "condition": "%{JS: value('Plugins').indexOf('QbsProjectManager') >= 0}"
                             }
                         ]
                     }
@@ -286,12 +280,6 @@
                     "target": "%{ProFile}",
                     "openAsProject": true,
                     "condition": "%{JS: value('BuildSystem') === 'qmake'}"
-                },
-                {
-                    "source": "../app.qbs",
-                    "target": "%{QbsFile}",
-                    "openAsProject": true,
-                    "condition": "%{JS: value('BuildSystem') === 'qbs'}"
                 },
                 {
                     "source": "../main.cpp",

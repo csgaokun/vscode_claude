@@ -107,11 +107,6 @@ isEmpty(QTC_DO_NOT_BUILD_QMLDESIGNER):qtHaveModule(quick-private) {
 }
 
 
-isEmpty(QBS_INSTALL_DIR): QBS_INSTALL_DIR = $$(QBS_INSTALL_DIR)
-exists(../shared/qbs/qbs.pro)|!isEmpty(QBS_INSTALL_DIR): \
-    SUBDIRS += \
-        qbsprojectmanager
-
 SUBDIRS += \
     clangcodemodel
 

@@ -126,8 +126,8 @@
             the \uicontrol {Define Build System} dialog.
 
         \li In the \uicontrol {Build system} field, select the build system to
-            use for building and running the project: \l qmake,
-            \l {Setting Up CMake}{CMake}, or \l {Setting Up Qbs}{Qbs}.
+            use for building and running the project: \l qmake or
+            \l {Setting Up CMake}{CMake}.
 
         \li Select \uicontrol Next to open the
             \uicontrol {Define Project Details} dialog.

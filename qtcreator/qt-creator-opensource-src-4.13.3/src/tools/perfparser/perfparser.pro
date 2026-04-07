@@ -59,6 +59,4 @@ exists($$ELFUTILS_INCLUDE_DIR/libdwfl.h)|exists($$ELFUTILS_INCLUDE_DIR/elfutils/
     warning("PerfParser is disabled. Set ELFUTILS_INSTALL_DIR to enable it.");
 }
 
-OTHER_FILES += perfparser.qbs
-
 QMAKE_EXTRA_TARGETS += deployqt docs install_docs

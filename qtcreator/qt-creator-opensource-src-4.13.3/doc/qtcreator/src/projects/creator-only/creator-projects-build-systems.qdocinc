@@ -35,7 +35,7 @@
     \section1 Selecting the Build System
 
     Most \QC project wizards enable you to choose the build system to use for
-    building the project: qmake, CMake, or Qbs. If you are not presented with a
+    building the project: qmake, CMake, or Meson. If you are not presented with a
     choice, the project is set up to use qmake.
 
     \l{qmake Manual}{qmake} is a cross-platform system for build automation
@@ -56,18 +56,12 @@
     second spent waiting for the build system to actually start compiling code.
     For more information, see \l {Setting Up Meson}.
 
-    \l{Qbs Manual}{Qbs} is an all-in-one build tool that generates a build graph
-    from a high-level project description (like qmake or CMake do) and executes
-    the commands in the low-level build graph (like make does). For more
-    information, see \l{Setting Up Qbs}.
-
     To change the location of the project directory, and to specify settings
     for building and running projects, select \uicontrol Tools >
     \uicontrol Options > \uicontrol {Build & Run} > \uicontrol General. The
     \uicontrol CMake tab contains additional settings for CMake. You can find
     more settings for CMake in \uicontrol Tools > \uicontrol Options >
-    \uicontrol Kits > \uicontrol CMake and for Qbs in \uicontrol Tools >
-    \uicontrol Options > \uicontrol Qbs.
+    \uicontrol Kits > \uicontrol CMake.
 
     To specify build and run settings for different target platforms,
     select \uicontrol Projects. For more information on the options you have,

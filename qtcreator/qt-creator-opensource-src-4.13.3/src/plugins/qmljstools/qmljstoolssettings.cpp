@@ -131,7 +131,6 @@ QmlJSToolsSettings::QmlJSToolsSettings()
     // mimetypes to be handled
     TextEditorSettings::registerMimeTypeForLanguageId(Constants::QML_MIMETYPE, Constants::QML_JS_SETTINGS_ID);
     TextEditorSettings::registerMimeTypeForLanguageId(Constants::QMLUI_MIMETYPE, Constants::QML_JS_SETTINGS_ID);
-    TextEditorSettings::registerMimeTypeForLanguageId(Constants::QBS_MIMETYPE, Constants::QML_JS_SETTINGS_ID);
     TextEditorSettings::registerMimeTypeForLanguageId(Constants::QMLPROJECT_MIMETYPE, Constants::QML_JS_SETTINGS_ID);
     TextEditorSettings::registerMimeTypeForLanguageId(Constants::QMLTYPES_MIMETYPE, Constants::QML_JS_SETTINGS_ID);
     TextEditorSettings::registerMimeTypeForLanguageId(Constants::JS_MIMETYPE, Constants::QML_JS_SETTINGS_ID);
