@@ -142,3 +142,8 @@ compile_commands.json
 
 *_qmlcache.qrc
 
+# Build scripts output directories
+build/
+install/
+deploy/
+logs/
