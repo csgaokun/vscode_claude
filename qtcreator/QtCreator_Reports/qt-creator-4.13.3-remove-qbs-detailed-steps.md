@@ -130,7 +130,7 @@ rm -rf src/plugins/qbsprojectmanager/
 
 **文件**：`qtcreator.pro`
 
-**共 4 处改动**：
+**共 3 处改动**：
 
 #### 改动 4.1.1 — 删除 DISTFILES 中的 qbs 引用（第 21-22 行）
 
@@ -156,80 +156,41 @@ DISTFILES += \
 
 #### 改动 4.1.2 — 删除整个 Qbs 配置块（第 27-70 行）
 
-第 27-70 行原内容：
+第 27-87 行原内容（完整的 `exists(...)` 块）：
 ```qmake
 exists(src/shared/qbs/qbs.pro) {
     # Make sure the qbs dll ends up alongside the Creator executable.
     QBS_DLLDESTDIR = $${IDE_BUILD_TREE}/bin
     cache(QBS_DLLDESTDIR)
-    QBS_DESTDIR = $${IDE_LIBRARY_PATH}
-    cache(QBS_DESTDIR)
-    QBSLIBDIR = $${IDE_LIBRARY_PATH}
-    cache(QBSLIBDIR)
-    QBS_INSTALL_PREFIX = $${QTC_PREFIX}
-    cache(QBS_INSTALL_PREFIX)
-    QBS_LIB_INSTALL_DIR = $$INSTALL_LIBRARY_PATH
-    cache(QBS_LIB_INSTALL_DIR)
-    QBS_RESOURCES_BUILD_DIR = $${IDE_DATA_PATH}/qbs
-    cache(QBS_RESOURCES_BUILD_DIR)
-    QBS_RESOURCES_INSTALL_DIR = $$INSTALL_DATA_PATH/qbs
-    cache(QBS_RESOURCES_INSTALL_DIR)
-    macos {
-        QBS_PLUGINS_BUILD_DIR = $${IDE_PLUGIN_PATH}
-        QBS_APPS_RPATH_DIR = @loader_path/../Frameworks
-    } else {
-        QBS_PLUGINS_BUILD_DIR = $$IDE_PLUGIN_PATH
-        QBS_APPS_RPATH_DIR = \$\$ORIGIN/../$$IDE_LIBRARY_BASENAME/qtcreator
-    }
-    cache(QBS_PLUGINS_BUILD_DIR)
-    cache(QBS_APPS_RPATH_DIR)
-    QBS_PLUGINS_INSTALL_DIR = $$INSTALL_PLUGIN_PATH
-    cache(QBS_PLUGINS_INSTALL_DIR)
-    QBS_LIBRARY_DIRNAME = $${IDE_LIBRARY_BASENAME}
-    cache(QBS_LIBRARY_DIRNAME)
-    QBS_APPS_DESTDIR = $${IDE_BIN_PATH}
-    cache(QBS_APPS_DESTDIR)
-    QBS_APPS_INSTALL_DIR = $$INSTALL_BIN_PATH
-    cache(QBS_APPS_INSTALL_DIR)
-    QBS_LIBEXEC_DESTDIR = $${IDE_LIBEXEC_PATH}
-    cache(QBS_LIBEXEC_DESTDIR)
-    QBS_LIBEXEC_INSTALL_DIR = $$INSTALL_LIBEXEC_PATH
-    cache(QBS_LIBEXEC_INSTALL_DIR)
-    QBS_RELATIVE_LIBEXEC_PATH = $$relative_path($$QBS_LIBEXEC_DESTDIR, $$QBS_APPS_DESTDIR)
-    isEmpty(QBS_RELATIVE_LIBEXEC_PATH):QBS_RELATIVE_LIBEXEC_PATH = .
-    cache(QBS_RELATIVE_LIBEXEC_PATH)
-    QBS_RELATIVE_PLUGINS_PATH = $$relative_path($$QBS_PLUGINS_BUILD_DIR, $$QBS_APPS_DESTDIR$$)
-    cache(QBS_RELATIVE_PLUGINS_PATH)
-    QBS_RELATIVE_SEARCH_PATH = $$relative_path($$QBS_RESOURCES_BUILD_DIR, $$QBS_APPS_DESTDIR)
-    cache(QBS_RELATIVE_SEARCH_PATH)
+    ...（中间约 40 行 QBS 路径缓存变量配置，此处省略）...
     !qbs_no_dev_install {
         QBS_CONFIG_ADDITION = qbs_no_dev_install qbs_enable_project_file_updates
         cache(CONFIG, add, QBS_CONFIG_ADDITION)
     }
-```
 
-**操作**：从第 27 行 `exists(src/shared/qbs/qbs.pro) {` 开始，到第 74 行对应的 `}` 结束，整个 `exists(...)` 块全部删除。
-
-#### 改动 4.1.3 — 删除 Qbs 文档目标（第 76-83 行）
-
-第 75-84 行原内容：
-```qmake
     # Create qbs documentation targets.
-    DOC_FILES += src/shared/qbs/doc/qbs.qdoc
+    DOC_FILES =
     DOC_TARGET_PREFIX = qbs_
     include(src/shared/qbs/doc/doc_shared.pri)
     include(src/shared/qbs/doc/doc_targets.pri)
     docs.depends += qbs_docs
-    !isEmpty(INSTALL_DOC_PATH) {
+    !build_online_docs {
         install_docs.depends += install_qbs_docs
     }
+    unset(DOC_FILES)
+    unset(DOC_TARGET_PREFIX)
+}
 ```
 
-**操作**：删除这整个 Qbs 文档目标块（从 `# Create qbs documentation targets.` 到 `}` 的闭合大括号）。
+**操作**：从第 27 行 `exists(src/shared/qbs/qbs.pro) {` 开始，到第 87 行的闭合 `}` 结束（含第 76-86 行的 Qbs 文档目标部分），整个 `exists(...)` 块全部删除。
 
-> **注意**：改动 4.1.2 和 4.1.3 实际上处于同一个 `exists(src/shared/qbs/qbs.pro) { ... }` 代码块内，所以只要整个删除该 `exists(...)` 块即可一并完成这两处改动。
+这个块包含两部分内容：
+1. **第 27-74 行**：Qbs 的 DLL 输出路径、安装路径、资源路径等缓存变量配置
+2. **第 76-86 行**：Qbs 文档编译目标（`qbs_docs`、`install_qbs_docs`）
 
-#### 改动 4.1.4 — 删除 `qtcreator.pri` 中的 qbs 分发文件逻辑（位于 `qtcreator.pri`）
+两部分都在同一个 `exists(src/shared/qbs/qbs.pro) { ... }` 块内，一次性删除第 27-87 行即可。
+
+#### 改动 4.1.3 — 删除 `qtcreator.pri` 中的 qbs 分发文件逻辑（位于 `qtcreator.pri`）
 
 **文件**：`qtcreator.pri`
 
