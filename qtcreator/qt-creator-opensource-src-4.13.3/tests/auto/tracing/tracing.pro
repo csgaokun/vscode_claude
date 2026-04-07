@@ -17,5 +17,4 @@ SUBDIRS = \
     timelineselectionrenderpass \
     timelinezoomcontrol
 
-OTHER_FILES += \
-    tracingautotest.qbs
+OTHER_FILES +=

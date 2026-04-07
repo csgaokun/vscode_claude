@@ -13,5 +13,3 @@ SOURCES += \
 
 HEADERS += \
     ../../../app/perfstdin.h
-
-OTHER_FILES += perfstdin.qbs
