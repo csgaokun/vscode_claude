@@ -438,10 +438,6 @@ Import LinkPrivate::importNonFile(const Document::Ptr &doc, const ImportInfo &im
         import.object->setPrototype(m_valueOwner->cppQmlTypes().objectByCppName(moduleApi.cppName));
     }
 
-    // TODO: at the moment there is not any types information on Qbs imports.
-    if (doc->language() == Dialect::QmlQbs)
-        importFound = true;
-
     if (!importFound && importInfo.ast()) {
         import.valid = false;
         error(doc, locationFromRange(importInfo.ast()->firstSourceLocation(),
@@ -451,8 +447,6 @@ Import LinkPrivate::importNonFile(const Document::Ptr &doc, const ImportInfo &im
                   "Import paths:\n"
                   "%2\n\n"
                   "For qmake projects, use the QML_IMPORT_PATH variable to add import paths.\n"
-                  "For Qbs projects, declare and set a qmlImportPaths property in your product "
-                  "to add import paths.\n"
                   "For qmlproject projects, use the importPaths property to add import paths.\n"
                   "For CMake projects, make sure QML_IMPORT_PATH variable is in CMakeCache.txt.\n")
               .arg(importInfo.name(), m_importPaths.join(QLatin1Char('\n'))));
@@ -501,8 +495,6 @@ bool LinkPrivate::importLibrary(const Document::Ptr &doc,
                       "Import paths:\n"
                       "%3\n\n"
                       "For qmake projects, use the QML_IMPORT_PATH variable to add import paths.\n"
-                      "For Qbs projects, declare and set a qmlImportPaths property in your product "
-                      "to add import paths.\n"
                       "For qmlproject projects, use the importPaths property to add import paths.\n"
                       "For CMake projects, make sure QML_IMPORT_PATH variable is in CMakeCache.txt.\n")
                   .arg(importName, importInfo.name(), m_importPaths.join(QLatin1Char('\n'))));

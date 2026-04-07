@@ -37,11 +37,5 @@ public:
     DesktopQmakeRunConfigurationFactory();
 };
 
-class QbsRunConfigurationFactory final : public RunConfigurationFactory
-{
-public:
-    QbsRunConfigurationFactory();
-};
-
 } // namespace Internal
 } // namespace ProjectExplorer

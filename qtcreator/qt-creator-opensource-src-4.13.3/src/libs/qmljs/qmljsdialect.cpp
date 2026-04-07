@@ -36,7 +36,6 @@ bool Dialect::isQmlLikeLanguage() const
     case Dialect::Qml:
     case Dialect::QmlQtQuick2:
     case Dialect::QmlQtQuick2Ui:
-    case Dialect::QmlQbs:
     case Dialect::QmlProject:
     case Dialect::QmlTypeInfo:
     case Dialect::AnyLanguage:
@@ -57,7 +56,6 @@ bool Dialect::isFullySupportedLanguage() const
         return true;
     case Dialect::NoLanguage:
     case Dialect::AnyLanguage:
-    case Dialect::QmlQbs:
     case Dialect::QmlProject:
     case Dialect::QmlTypeInfo:
         break;
@@ -71,7 +69,6 @@ bool Dialect::isQmlLikeOrJsLanguage() const
     case Dialect::Qml:
     case Dialect::QmlQtQuick2:
     case Dialect::QmlQtQuick2Ui:
-    case Dialect::QmlQbs:
     case Dialect::QmlProject:
     case Dialect::QmlTypeInfo:
     case Dialect::JavaScript:
@@ -99,8 +96,6 @@ QString Dialect::toString() const
         return QLatin1String("NoLanguage");
     case Dialect::AnyLanguage:
         return QLatin1String("AnyLanguage");
-    case Dialect::QmlQbs:
-        return QLatin1String("QmlQbs");
     case Dialect::QmlProject:
         return QLatin1String("QmlProject");
     case Dialect::QmlTypeInfo:
@@ -196,9 +191,6 @@ QList<Dialect> Dialect::companionLanguages() const
     case Dialect::QmlProject:
     case Dialect::QmlTypeInfo:
         break;
-    case Dialect::QmlQbs:
-        langs << Dialect::JavaScript;
-        break;
     case Dialect::Qml:
         langs << Dialect::QmlQtQuick2 << Dialect::QmlQtQuick2Ui << Dialect::JavaScript;
         break;
@@ -209,7 +201,7 @@ QList<Dialect> Dialect::companionLanguages() const
               << Dialect::JavaScript;
         break;
     case Dialect::AnyLanguage:
-        langs << Dialect::JavaScript << Dialect::Json << Dialect::QmlProject << Dialect:: QmlQbs
+        langs << Dialect::JavaScript << Dialect::Json << Dialect::QmlProject
               << Dialect::QmlTypeInfo << Dialect::QmlQtQuick2
               << Dialect::QmlQtQuick2Ui << Dialect::Qml;
         break;

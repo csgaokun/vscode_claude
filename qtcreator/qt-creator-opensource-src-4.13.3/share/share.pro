@@ -15,6 +15,3 @@ defineTest(hasLupdate) {
 }
 
 hasLupdate(): SUBDIRS += qtcreator/translations
-
-DISTFILES += share.qbs \
-    ../src/share/share.qbs

@@ -51,7 +51,6 @@ static bool languageIsCompatible(Dialect contextLanguage, Dialect importLanguage
     case Dialect::JavaScript:
     case Dialect::Json:
     case Dialect::QmlProject:
-    case Dialect::QmlQbs:
     case Dialect::QmlTypeInfo:
         return contextLanguage == importLanguage;
     case Dialect::Qml:

@@ -198,8 +198,7 @@ void TestCodeParser::onCppDocumentUpdated(const CPlusPlus::Document::Ptr &docume
 void TestCodeParser::onQmlDocumentUpdated(const QmlJS::Document::Ptr &document)
 {
     const QString fileName = document->fileName();
-    if (!fileName.endsWith(".qbs"))
-        onDocumentUpdated(fileName, true);
+    onDocumentUpdated(fileName, true);
 }
 
 void TestCodeParser::onStartupProjectChanged(Project *project)

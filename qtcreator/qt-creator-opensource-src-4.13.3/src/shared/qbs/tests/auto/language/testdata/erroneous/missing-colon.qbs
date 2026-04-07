@@ -1,3 +1,0 @@
-CppApplication {
-    cpp.dynamicLibraries { }
-}

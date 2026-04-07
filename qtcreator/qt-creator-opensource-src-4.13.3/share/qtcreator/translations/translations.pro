@@ -56,7 +56,6 @@ shared_sources = $$files($$IDE_SOURCE_TREE/src/shared/*)
 shared_sources ~= s,^$$re_escape($$IDE_SOURCE_TREE/),,g$$i_flag
 shared_sources -= \
     src/CMakeLists.txt \
-    src/shared/qbs \
     src/shared/shared.pro
 sources = src/app src/libs $$plugin_sources $$shared_sources share/qtcreator/qmldesigner
 

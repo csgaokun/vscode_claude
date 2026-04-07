@@ -162,7 +162,6 @@ void QmlJSEditorWidget::finalizeInitialization()
 bool QmlJSEditorWidget::restoreState(const QByteArray &state)
 {
     QStringList qmlTypes { QmlJSTools::Constants::QML_MIMETYPE,
-                QmlJSTools::Constants::QBS_MIMETYPE,
                 QmlJSTools::Constants::QMLTYPES_MIMETYPE,
                 QmlJSTools::Constants::QMLUI_MIMETYPE };
 
@@ -1082,7 +1081,6 @@ QmlJSEditorFactory::QmlJSEditorFactory(Utils::Id _id)
 
     addMimeType(QmlJSTools::Constants::QML_MIMETYPE);
     addMimeType(QmlJSTools::Constants::QMLPROJECT_MIMETYPE);
-    addMimeType(QmlJSTools::Constants::QBS_MIMETYPE);
     addMimeType(QmlJSTools::Constants::QMLTYPES_MIMETYPE);
     addMimeType(QmlJSTools::Constants::JS_MIMETYPE);
 
