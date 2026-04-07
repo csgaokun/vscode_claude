@@ -1,0 +1,129 @@
+{
+  "name": "vscode-claude",
+  "displayName": "VSCode Claude",
+  "description": "Claude AI assistant for VS Code, inspired by Qt Creator's AI integration",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-claude.askClaude",
+        "title": "Ask Claude",
+        "category": "Claude"
+      },
+      {
+        "command": "vscode-claude.explainCode",
+        "title": "Explain Selected Code",
+        "category": "Claude"
+      },
+      {
+        "command": "vscode-claude.generateCode",
+        "title": "Generate Code from Description",
+        "category": "Claude"
+      },
+      {
+        "command": "vscode-claude.reviewCode",
+        "title": "Review Selected Code",
+        "category": "Claude"
+      },
+      {
+        "command": "vscode-claude.openChat",
+        "title": "Open Claude Chat Panel",
+        "category": "Claude"
+      }
+    ],
+    "configuration": {
+      "title": "Claude AI",
+      "properties": {
+        "vscode-claude.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API key for Claude. You can also set the ANTHROPIC_API_KEY environment variable.",
+          "markdownDescription": "Anthropic API key for Claude. Get yours at [console.anthropic.com](https://console.anthropic.com). You can also set the `ANTHROPIC_API_KEY` environment variable."
+        },
+        "vscode-claude.model": {
+          "type": "string",
+          "default": "claude-3-5-sonnet-20241022",
+          "enum": [
+            "claude-3-5-sonnet-20241022",
+            "claude-3-5-haiku-20241022",
+            "claude-3-opus-20240229",
+            "claude-3-sonnet-20240229",
+            "claude-3-haiku-20240307"
+          ],
+          "description": "Claude model to use"
+        },
+        "vscode-claude.maxTokens": {
+          "type": "number",
+          "default": 4096,
+          "description": "Maximum number of tokens in Claude's response"
+        },
+        "vscode-claude.temperature": {
+          "type": "number",
+          "default": 0.1,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Temperature for Claude responses (0 = deterministic, 1 = creative)"
+        },
+        "vscode-claude.enableInlineCompletion": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable inline code completion suggestions from Claude (may increase API usage)"
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vscode-claude.explainCode",
+          "when": "editorHasSelection",
+          "group": "claude@1"
+        },
+        {
+          "command": "vscode-claude.reviewCode",
+          "when": "editorHasSelection",
+          "group": "claude@2"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "vscode-claude.askClaude",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a"
+      },
+      {
+        "command": "vscode-claude.openChat",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.0",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.4"
+  }
+}
