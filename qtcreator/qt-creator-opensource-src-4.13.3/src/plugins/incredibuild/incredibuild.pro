@@ -13,7 +13,6 @@ SOURCES += incredibuildplugin.cpp \
     buildconsolestepconfigwidget.cpp \
     commandbuilder.cpp \
     makecommandbuilder.cpp \
-    cmakecommandbuilder.cpp \
     ibconsolebuildstep.cpp \
     ibconsolestepconfigwidget.cpp \
     ibconsolestepfactory.cpp
@@ -21,7 +20,6 @@ SOURCES += incredibuildplugin.cpp \
 HEADERS += incredibuildplugin.h \
     buildconsolestepconfigwidget.h \
     buildconsolestepfactory.h \
-    cmakecommandbuilder.h \
     commandbuilder.h \
     ibconsolestepconfigwidget.h \
     incredibuild_global.h \

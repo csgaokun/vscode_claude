@@ -25,7 +25,6 @@ SUBDIRS   = \
     qmakeprojectmanager \
     debugger \
     cpaster \
-    cmakeprojectmanager \
     mesonprojectmanager \
     autotoolsprojectmanager \
     fakevim \

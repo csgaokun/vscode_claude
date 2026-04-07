@@ -11,7 +11,6 @@ win32: LIBS += -luser32 -lshell32
 SOURCES += \
     main.cpp \
     addabiflavor.cpp \
-    addcmakeoperation.cpp \
     adddebuggeroperation.cpp \
     adddeviceoperation.cpp \
     addkeysoperation.cpp \
@@ -23,7 +22,6 @@ SOURCES += \
     findvalueoperation.cpp \
     getoperation.cpp \
     operation.cpp \
-    rmcmakeoperation.cpp \
     rmdebuggeroperation.cpp \
     rmdeviceoperation.cpp \
     rmkeysoperation.cpp \
@@ -44,7 +42,6 @@ SOURCES += \
 
 HEADERS += \
     addabiflavor.h \
-    addcmakeoperation.h \
     adddebuggeroperation.h \
     adddeviceoperation.h \
     addkeysoperation.h \
@@ -56,7 +53,6 @@ HEADERS += \
     findvalueoperation.h \
     getoperation.h \
     operation.h \
-    rmcmakeoperation.h \
     rmdebuggeroperation.h \
     rmdeviceoperation.h \
     rmkeysoperation.h \

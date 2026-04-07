@@ -33,8 +33,8 @@
 #include <projectexplorer/project.h>
 #include <projectexplorer/runcontrol.h>
 #include <projectexplorer/target.h>
-#include <cmakeprojectmanager/cmakekitinformation.h>
-#include <cmakeprojectmanager/cmaketool.h>
+
+#include <QStandardPaths>
 
 using namespace ProjectExplorer;
 using namespace Utils;
@@ -44,9 +44,9 @@ namespace Internal {
 
 static FilePath cmakeFilePath(const Target *target)
 {
-    const CMakeProjectManager::CMakeTool *tool =
-            CMakeProjectManager::CMakeKitAspect::cmakeTool(target->kit());
-    return tool->filePath();
+    Q_UNUSED(target)
+    const QString cmakePath = QStandardPaths::findExecutable("cmake");
+    return FilePath::fromString(cmakePath);
 }
 
 static QStringList flashAndRunArgs(const Target *target)
@@ -68,7 +68,7 @@ public:
         : RunConfiguration(target, id)
     {
         auto flashAndRunParameters = addAspect<BaseStringAspect>();
-        flashAndRunParameters->setLabelText(tr("Flash and run CMake parameters:"));
+        flashAndRunParameters->setLabelText(tr("Flash and run parameters:"));
         flashAndRunParameters->setDisplayStyle(BaseStringAspect::TextEditDisplay);
         flashAndRunParameters->setSettingsKey("FlashAndRunConfiguration.Parameters");
 

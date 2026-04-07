@@ -25,7 +25,6 @@
 
 #include "addkitoperation.h"
 
-#include "addcmakeoperation.h"
 #include "addkeysoperation.h"
 #include "addtoolchainoperation.h"
 #include "addqtoperation.h"
@@ -607,10 +606,8 @@ QVariantMap AddKitOperation::addKit(const QVariantMap &map, const QVariantMap &t
     if (!qtId.isNull() && qtId.isEmpty())
         qtId = "-1";
 
-    if (!cmakeId.isEmpty() && !AddCMakeOperation::exists(cmakeMap, cmakeId)) {
-        std::cerr << "Error: CMake tool " << qPrintable(cmakeId) << " does not exist." << std::endl;
-        return QVariantMap();
-    }
+    // CMake tool existence check removed (CMakeProjectManager removed)
+    Q_UNUSED(cmakeMap)
 
     // Find position to insert:
     bool ok;
