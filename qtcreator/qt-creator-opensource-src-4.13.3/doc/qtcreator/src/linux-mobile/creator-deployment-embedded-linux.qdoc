@@ -146,6 +146,5 @@
     > \uicontrol {Change Default Application}.
 
     \if defined(qtcreator)
-    \include creator-projects-cmake-deploying.qdocinc cmake deploying embedded
     \endif
 */
