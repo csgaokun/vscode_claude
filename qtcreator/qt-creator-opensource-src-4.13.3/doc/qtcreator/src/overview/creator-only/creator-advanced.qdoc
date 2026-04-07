@@ -60,7 +60,7 @@
         \li \l{Using Other Build Systems}
 
             \QC is integrated with cross-platform systems for build automation:
-            qmake, Qbs, CMake, and Autotools. In addition, you can import
+            qmake, CMake, and Autotools. In addition, you can import
             generic projects that do not use those systems, and specify that \QC
             ignores your build system.
 

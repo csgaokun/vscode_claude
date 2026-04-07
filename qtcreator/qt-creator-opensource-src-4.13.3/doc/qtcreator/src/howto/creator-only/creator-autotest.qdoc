@@ -79,8 +79,7 @@
                     up the test.
 
                 \li In the \uicontrol {Build system} field, select the build
-                    system to use for building the project: qmake, CMake, or
-                    Qbs.
+                    system to use for building the project: qmake or CMake.
 
             \endlist
 
@@ -125,8 +124,7 @@
                     see \l{Setting Up the Google C++ Testing Framework}.
 
                 \li In the \uicontrol {Build system} field, select the build
-                    system to use for building the project: qmake, CMake, or
-                    Qbs.
+                    system to use for building the project: qmake or CMake.
 
             \endlist
 
@@ -167,8 +165,7 @@
                     by Boost.Test, such as \e version.hpp and a subfolder called
                     \e test that contains the test header files.
                 \li In the \uicontrol {Build system} field, select the build
-                    system to use for building the project: qmake, CMake, or
-                    Qbs.
+                    system to use for building the project: qmake or CMake.
             \endlist
     \endlist
 
@@ -208,8 +205,7 @@
                     you may enter a path to the directory that contains the
                     Catch2 header files.
                 \li In the \uicontrol {Build system} field, select the build
-                    system to use for building the project: qmake, CMake, or
-                    Qbs.
+                    system to use for building the project: qmake or CMake.
             \endlist
     \endlist
 

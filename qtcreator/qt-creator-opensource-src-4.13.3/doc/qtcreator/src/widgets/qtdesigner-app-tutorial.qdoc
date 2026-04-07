@@ -68,8 +68,8 @@
             \image qtcreator-new-project-build-system-qt-gui.png "Define Build System dialog"
 
         \li In the \uicontrol {Build system} field, select the build system to
-            use for building and running the project: \l qmake,
-            \l {Setting Up CMake}{CMake}, or \l {Setting Up Qbs}{Qbs}.
+            use for building and running the project: \l qmake or
+            \l {Setting Up CMake}{CMake}.
 
             The \uicontrol{Class Information} dialog opens.
 

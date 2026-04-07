@@ -138,12 +138,6 @@ void AutoTestUnitTests::testCodeParser_data()
     QTest::newRow("mixedAutoTestAndQuickTests")
             << QString(m_tmpDir->path() + "/mixed_atp/mixed_atp.pro")
             << 4 << 10 << 5 << 10;
-    QTest::newRow("plainAutoTestQbs")
-            << QString(m_tmpDir->path() + "/plain/plain.qbs")
-            << 1 << 0 << 0 << 0;
-    QTest::newRow("mixedAutoTestAndQuickTestsQbs")
-            << QString(m_tmpDir->path() + "/mixed_atp/mixed_atp.qbs")
-            << 4 << 10 << 5 << 10;
 }
 
 void AutoTestUnitTests::testCodeParserSwitchStartup()
@@ -184,14 +178,12 @@ void AutoTestUnitTests::testCodeParserSwitchStartup_data()
     QTest::addColumn<QList<int> >("expectedDataTagsCount");
 
     QStringList projects = QStringList({m_tmpDir->path() + "/plain/plain.pro",
-            m_tmpDir->path() + "/mixed_atp/mixed_atp.pro",
-            m_tmpDir->path() + "/plain/plain.qbs",
-            m_tmpDir->path() + "/mixed_atp/mixed_atp.qbs"});
+            m_tmpDir->path() + "/mixed_atp/mixed_atp.pro"});
 
-    QList<int> expectedAutoTests = QList<int>()         << 1 << 4 << 1 << 4;
-    QList<int> expectedNamedQuickTests = QList<int>()   << 0 << 10 << 0 << 10;
-    QList<int> expectedUnnamedQuickTests = QList<int>() << 0 << 5 << 0 << 5;
-    QList<int> expectedDataTagsCount = QList<int>()     << 0 << 10 << 0 << 10;
+    QList<int> expectedAutoTests = QList<int>()         << 1 << 4;
+    QList<int> expectedNamedQuickTests = QList<int>()   << 0 << 10;
+    QList<int> expectedUnnamedQuickTests = QList<int>() << 0 << 5;
+    QList<int> expectedDataTagsCount = QList<int>()     << 0 << 10;
 
     QTest::newRow("loadMultipleProjects")
             << projects << expectedAutoTests << expectedNamedQuickTests
@@ -242,8 +234,6 @@ void AutoTestUnitTests::testCodeParserGTest_data()
     QTest::addColumn<QString>("projectFilePath");
     QTest::newRow("simpleGoogletest")
         << QString(m_tmpDir->path() + "/simple_gt/simple_gt.pro");
-    QTest::newRow("simpleGoogletestQbs")
-        << QString(m_tmpDir->path() + "/simple_gt/simple_gt.qbs");
 }
 
 void AutoTestUnitTests::testCodeParserBoostTest()
@@ -299,8 +289,6 @@ void AutoTestUnitTests::testCodeParserBoostTest_data()
     QTest::addColumn<QString>("extension");
     QTest::newRow("simpleBoostTest")
         << QString(m_tmpDir->path() + "/simple_boost/simple_boost.pro") << QString(".pro");
-    QTest::newRow("simpleBoostTestQbs")
-        << QString(m_tmpDir->path() + "/simple_boost/simple_boost.qbs") << QString(".qbs");
 }
 
 } // namespace Internal

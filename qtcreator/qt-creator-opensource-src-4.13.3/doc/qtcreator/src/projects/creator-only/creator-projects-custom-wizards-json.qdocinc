@@ -146,7 +146,7 @@
                         or \c UNKNOWN_PROJECT if the build system is not
                         specified: \c AutotoolsProjectManager.AutotoolsProject,
                         \c GenericProjectManager.GenericProject,
-                        \c PythonProject, \c Qbs.QbsProject,
+                        \c PythonProject,
                         \c Qt4ProjectManager.Qt4Project (qmake project),
                         \c QmlProjectManager.QmlProject
 
@@ -716,7 +716,6 @@
         "data":
         {
             "items": [
-                { "trKey": "Qbs", "value": "qbs", "icon": "qbs_icon.png", "trToolTip": "Building with Qbs." },
                 { "trKey": "QMake", "value": "qmake", "icon": "qmake_icon.png", "trToolTip": "Building with QMake." }
             ]
         }

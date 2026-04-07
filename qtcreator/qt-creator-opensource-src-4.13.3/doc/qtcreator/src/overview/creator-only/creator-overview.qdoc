@@ -91,7 +91,7 @@
             \li \b {\l{Building and Running}}
 
                 \QC is integrated with cross-platform systems for build
-                automation: qmake, Qbs, CMake, and Autotools. In addition, you
+                automation: qmake, CMake, and Autotools. In addition, you
                 can import
                 projects as \e {generic projects} and fully control the steps
                 and commands used to build the project.

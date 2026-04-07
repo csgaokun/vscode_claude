@@ -163,19 +163,6 @@ if [ ! -d "$app_path/Contents/Frameworks/QtCore.framework" ]; then
         qml2puppetArgument="-executable=$qml2puppetapp"
     fi
 
-    qbsapp="$app_path/Contents/MacOS/qbs"
-    if [ -f "$qbsapp" ]; then
-        qbsArguments=("-executable=$qbsapp" \
-        "-executable=$qbsapp-config" \
-        "-executable=$qbsapp-config-ui" \
-        "-executable=$qbsapp-qmltypes" \
-        "-executable=$qbsapp-setup-android" \
-        "-executable=$qbsapp-setup-qt" \
-        "-executable=$qbsapp-setup-toolchains" \
-        "-executable=$qbsapp-create-project" \
-        "-executable=$libexec_path/qbs_processlauncher")
-    fi
-
     echo "- Running macdeployqt ($bin_src/macdeployqt)"
 
     "$bin_src/macdeployqt" "$app_path" \
@@ -185,7 +172,6 @@ if [ ! -d "$app_path/Contents/Frameworks/QtCore.framework" ]; then
         "-executable=$libexec_path/ios/iostool" \
         "-executable=$libexec_path/buildoutputparser" \
         "-executable=$libexec_path/cpaster" \
-        "${qbsArguments[@]}" \
         "$qml2puppetArgument" \
         "$clangbackendArgument" "$clangpchmanagerArgument" "$clangrefactoringArgument" || exit 1
 

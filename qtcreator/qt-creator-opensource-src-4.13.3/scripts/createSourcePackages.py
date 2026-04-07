@@ -99,8 +99,7 @@ def main():
     args = parse_arguments()
     base_repo_name = args.name if args.name else "qtcreator"
     if not args.name and not args.modules: # default Qt Creator repository
-        submodules = [os.path.join('src', 'shared', 'qbs'),
-                      os.path.join('src', 'tools', 'perfparser')]
+        submodules = [os.path.join('src', 'tools', 'perfparser')]
         args.modules = [path for path in submodules if os.path.exists(os.path.join(args.repo, path, '.git'))]
     repos = [(base_repo_name, args.repo, '')]
     for module in args.modules:

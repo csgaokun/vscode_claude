@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "supportedProjectTypes": [ "Qbs.QbsProject", "Qt4ProjectManager.Qt4Project" ],
+    "supportedProjectTypes": [ "Qt4ProjectManager.Qt4Project" ],
     "id": "R.AutoTest",
     "category": "H.Project",
     "trDescription": "Creates a new unit test project. Unit tests allow you to verify that the code is fit for use and that there are no regressions.",
@@ -13,14 +13,10 @@
     "options":
     [
         { "key": "ProjectFilePath",
-          "value": "%{JS: value('BuildSystem') == 'qmake' ? value('ProFileName') : value('QbsFileName') }"
+          "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/' + value('ProjectName'), 'pro')}"
         },
         { "key": "ProFileName",
           "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/' + value('ProjectName'), 'pro')}"
-        },
-        {
-          "key": "QbsFileName",
-          "value": "%{JS: Util.fileName(value('ProjectDirectory') + '/' + value('ProjectName'), 'qbs')}"
         },
         { "key": "IsTopLevelProject",
            "value": "%{JS: !'%{Exists:ProjectExplorer.Profile.Ids}' }"
@@ -200,11 +196,6 @@
                                 "trKey": "qmake",
                                 "value": "qmake",
                                 "condition": "%{JS: value('Plugins').indexOf('QmakeProjectManager') >= 0}"
-                            },
-                            {
-                                "trKey": "Qbs",
-                                "value": "qbs",
-                                "condition": "%{JS: value('Plugins').indexOf('QbsProjectManager') >= 0}"
                             }
                         ]
                     }
@@ -240,22 +231,9 @@
                     "openInEditor": false
                 },
                 {
-                    "source": "files/googlecommon.js",
-                    "target": "googlecommon.js",
-                    "condition": "%{JS: value('TestFrameWork') == 'GTest' && value('BuildSystem') == 'qbs'}",
-                    "openInEditor": false
-                },
-                {
                     "source": "files/tst.pro",
                     "target": "%{ProjectFilePath}",
                     "condition": "%{JS: value('BuildSystem') == 'qmake'}",
-                    "openInEditor": false,
-                    "openAsProject": true
-                },
-                {
-                    "source": "files/tst.qbs",
-                    "target": "%{ProjectFilePath}",
-                    "condition": "%{JS: value('BuildSystem') == 'qbs'}",
                     "openInEditor": false,
                     "openAsProject": true
                 },

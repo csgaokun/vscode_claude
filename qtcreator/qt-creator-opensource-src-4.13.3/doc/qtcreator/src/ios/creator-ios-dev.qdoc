@@ -138,8 +138,8 @@
     you must take care when you manually set your own target version. If you set
     it to a value higher than what Qt requires and supply your own \c Info.plist
     file, you must add an \c LSMinimumSystemVersion entry to the \c Info.plist
-    that matches the value of \c QMAKE_IOS_DEPLOYMENT_TARGET (when using qmake)
-    or \c cpp.minimumIosVersion (when using Qbs), because iOS (and the
+    that matches the value of \c QMAKE_IOS_DEPLOYMENT_TARGET (when using qmake),
+    because iOS (and the
     App Store) will use the \c LSMinimumSystemVersion value as the authoritative
     one.
 
