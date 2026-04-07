@@ -234,8 +234,9 @@ REM 尝试从MSVC redist目录复制
 for /d %%V in ("C:\Program Files (x86)\Microsoft Visual Studio\2017\*") do (
     for /r "%%V\VC\Redist\MSVC" %%F in (vcruntime140.dll) do (
         if exist "%%F" (
-            echo %%F | findstr /i "x64\\Microsoft" >nul 2>&1
-            if !ERRORLEVEL! EQU 0 (
+            set "FINDSTR_RESULT=1"
+            echo %%F | findstr /i "x64\\Microsoft" >nul 2>&1 && set "FINDSTR_RESULT=0"
+            if "!FINDSTR_RESULT!"=="0" (
                 for %%P in ("%%~dpF") do (
                     copy /Y "%%~dpF\vcruntime140.dll" "%DEPLOY_DIR%\bin\" >nul 2>&1
                     copy /Y "%%~dpF\msvcp140.dll" "%DEPLOY_DIR%\bin\" >nul 2>&1

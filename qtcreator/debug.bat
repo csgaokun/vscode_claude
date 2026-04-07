@@ -217,7 +217,8 @@ if "%USE_CDB%"=="1" (
     echo ====================================================================
     echo.
     
-    cdb -g -G -lines "%EXE_PATH%" 2>&1 | tee "%RUN_LOG%"
+    REM 使用PowerShell Tee-Object同时输出到控制台和日志
+    powershell -NoProfile -Command "& { cmd /c 'cdb -g -G -lines \"%EXE_PATH%\" 2>&1' | Tee-Object -FilePath '%RUN_LOG%' }"
     
 ) else (
     echo [INFO] 直接启动 Qt Creator...
@@ -228,16 +229,8 @@ if "%USE_CDB%"=="1" (
     echo  Qt Creator 运行输出:
     echo ====================================================================
     
-    REM 启动程序，stderr和stdout都输出到控制台和日志文件
-    "%EXE_PATH%" 2>&1 | tee "%RUN_LOG%"
-    
-    REM 如果tee不可用（Windows通常没有tee），使用备用方案
-    if %ERRORLEVEL% NEQ 0 (
-        REM 备用：直接运行，同时输出到日志
-        echo.
-        echo [INFO] 备用启动方式（日志仅保存到文件）...
-        "%EXE_PATH%" > "%RUN_LOG%" 2>&1
-    )
+    REM 使用PowerShell Tee-Object同时输出到控制台和日志文件
+    powershell -NoProfile -Command "& { cmd /c '\"%EXE_PATH%\" 2>&1' | Tee-Object -FilePath '%RUN_LOG%' }"
 )
 
 set "EXIT_CODE=%ERRORLEVEL%"
