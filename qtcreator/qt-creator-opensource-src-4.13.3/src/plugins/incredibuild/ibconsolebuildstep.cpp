@@ -25,7 +25,6 @@
 
 #include "ibconsolebuildstep.h"
 
-#include "cmakecommandbuilder.h"
 #include "ibconsolestepconfigwidget.h"
 #include "incredibuildconstants.h"
 #include "incredibuildconstants.h"
@@ -162,7 +161,6 @@ void IBConsoleBuildStep::initCommandBuilders()
     if (m_commandBuildersList.empty()) {
         m_commandBuildersList.push_back(new CommandBuilder(this)); // "Custom Command"- needs to be first in the list.
         m_commandBuildersList.push_back(new MakeCommandBuilder(this));
-        m_commandBuildersList.push_back(new CMakeCommandBuilder(this));
     }
 
     // Default to "Custom Command".

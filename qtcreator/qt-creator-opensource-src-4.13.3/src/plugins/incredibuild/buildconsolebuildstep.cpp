@@ -26,7 +26,6 @@
 #include "buildconsolebuildstep.h"
 
 #include "buildconsolestepconfigwidget.h"
-#include "cmakecommandbuilder.h"
 #include "incredibuildconstants.h"
 #include "makecommandbuilder.h"
 #include "ui_buildconsolebuildstep.h"
@@ -282,7 +281,6 @@ void BuildConsoleBuildStep::initCommandBuilders()
         // "Custom Command"- needs to be first in the list.
         m_commandBuildersList.push_back(new CommandBuilder(this));
         m_commandBuildersList.push_back(new MakeCommandBuilder(this));
-        m_commandBuildersList.push_back(new CMakeCommandBuilder(this));
     }
 
     // Default to "Custom Command".

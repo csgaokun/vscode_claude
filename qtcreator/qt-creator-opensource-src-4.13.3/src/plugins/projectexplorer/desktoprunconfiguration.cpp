@@ -31,7 +31,6 @@
 #include "runconfigurationaspects.h"
 #include "target.h"
 
-#include <cmakeprojectmanager/cmakeprojectconstants.h>
 #include <qbsprojectmanager/qbsprojectmanagerconstants.h>
 #include <qmakeprojectmanager/qmakeprojectmanagerconstants.h>
 
@@ -52,7 +51,7 @@ class DesktopRunConfiguration : public RunConfiguration
     Q_DECLARE_TR_FUNCTIONS(ProjectExplorer::Internal::DesktopRunConfiguration)
 
 protected:
-    enum Kind { Qmake, Qbs, CMake }; // FIXME: Remove
+    enum Kind { Qmake, Qbs }; // FIXME: Remove
 
     DesktopRunConfiguration(Target *target, Utils::Id id, Kind kind);
 
@@ -138,12 +137,6 @@ void DesktopRunConfiguration::updateTargetInformation()
                 aspect<WorkingDirectoryAspect>()->setDefaultWorkingDirectory(defaultWorkingDir);
         }
 
-    } else if (m_kind == CMake) {
-
-        aspect<ExecutableAspect>()->setExecutable(bti.targetFilePath);
-        aspect<WorkingDirectoryAspect>()->setDefaultWorkingDirectory(bti.workingDirectory);
-        aspect<LocalEnvironmentAspect>()->environmentChanged();
-
     }
 }
 
@@ -181,24 +174,8 @@ public:
     {}
 };
 
-class CMakeRunConfiguration final : public DesktopRunConfiguration
-{
-public:
-    CMakeRunConfiguration(Target *target, Utils::Id id)
-        : DesktopRunConfiguration(target, id, CMake)
-    {}
-};
-
 const char QMAKE_RUNCONFIG_ID[] = "Qt4ProjectManager.Qt4RunConfiguration:";
 const char QBS_RUNCONFIG_ID[]   = "Qbs.RunConfiguration:";
-const char CMAKE_RUNCONFIG_ID[] = "CMakeProjectManager.CMakeRunConfiguration.";
-
-CMakeRunConfigurationFactory::CMakeRunConfigurationFactory()
-{
-    registerRunConfiguration<CMakeRunConfiguration>(CMAKE_RUNCONFIG_ID);
-    addSupportedProjectType(CMakeProjectManager::Constants::CMAKE_PROJECT_ID);
-    addSupportedTargetDeviceType(ProjectExplorer::Constants::DESKTOP_DEVICE_TYPE);
-}
 
 QbsRunConfigurationFactory::QbsRunConfigurationFactory()
 {

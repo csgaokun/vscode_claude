@@ -32,8 +32,6 @@
 #include <coreplugin/basefilewizard.h>
 #include <coreplugin/icore.h>
 
-#include <cmakeprojectmanager/cmakeprojectconstants.h>
-#include <projectexplorer/projectexplorerconstants.h>
 #include <projectexplorer/customwizard/customwizard.h>
 #include <projectexplorer/selectablefilesmodel.h>
 #include <qmakeprojectmanager/qmakeprojectmanagerconstants.h>
@@ -109,7 +107,7 @@ FilesSelectionWizardPage::FilesSelectionWizardPage(SimpleProjectWizardDialog *si
         connect(comboBox, &QComboBox::currentTextChanged, this, [this](const QString &bs){
             m_buildSystem = bs;
         });
-        comboBox->addItems(QStringList() << "qmake" << "cmake");
+        comboBox->addItems(QStringList() << "qmake");
         comboBox->setEditable(false);
         comboBox->setCurrentText("qmake");
         hlayout->addWidget(comboBox);
@@ -167,12 +165,11 @@ void FilesSelectionWizardPage::initializePage()
 
 SimpleProjectWizard::SimpleProjectWizard()
 {
-    setSupportedProjectTypes({QmakeProjectManager::Constants::QMAKEPROJECT_ID,
-                              CMakeProjectManager::Constants::CMAKE_PROJECT_ID});
+    setSupportedProjectTypes({QmakeProjectManager::Constants::QMAKEPROJECT_ID});
     setIcon(QIcon(QLatin1String(":/projectexplorer/images/importasproject.png")));
-    setDisplayName(tr("Import as qmake or cmake Project (Limited Functionality)"));
+    setDisplayName(tr("Import as qmake Project (Limited Functionality)"));
     setId("Z.DummyProFile");
-    setDescription(tr("Imports existing projects that do not use qmake, CMake or Autotools.<p>"
+    setDescription(tr("Imports existing projects that do not use qmake or Autotools.<p>"
                       "This creates a project file that allows you to use %1 as a code editor "
                       "and as a launcher for debugging and analyzing tools. "
                       "If you want to build the project, you might need to edit the generated project file.")
@@ -252,86 +249,6 @@ GeneratedFiles generateQmakeFiles(const SimpleProjectWizardDialog *wizard,
     return GeneratedFiles{generatedProFile};
 }
 
-GeneratedFiles generateCmakeFiles(const SimpleProjectWizardDialog *wizard,
-                                  QString *errorMessage)
-{
-    Q_UNUSED(errorMessage)
-    const QString projectPath = wizard->path();
-    const QDir dir(projectPath);
-    const QString projectName = wizard->projectName();
-    const QString projectFileName = QFileInfo(dir, "CMakeLists.txt").absoluteFilePath();
-    const QStringList paths = Utils::transform(wizard->selectedPaths(), &FilePath::toString);
-
-    MimeType headerType = Utils::mimeTypeForName("text/x-chdr");
-
-    QStringList nameFilters = headerType.globPatterns();
-
-    QString includes = "include_directories(\n";
-    bool haveIncludes = false;
-    for (const QString &path : paths) {
-        QFileInfo fileInfo(path);
-        QDir thisDir(fileInfo.absoluteFilePath());
-        if (!thisDir.entryList(nameFilters, QDir::Files).isEmpty()) {
-            QString relative = dir.relativeFilePath(path);
-            if (!relative.isEmpty()) {
-                includes.append("    " + relative + "\n");
-                haveIncludes = true;
-            }
-        }
-    }
-    if (haveIncludes)
-        includes += ")";
-    else
-        includes.clear();
-
-    QString srcs = "set (SRCS\n";
-    for (const FilePath &fileName : wizard->selectedFiles())
-        srcs += "    " + dir.relativeFilePath(fileName.toString()) + "\n";
-    srcs += ")\n";
-
-    QString components = "find_package(Qt5 COMPONENTS";
-    QString libs = "target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE";
-    bool haveQtModules = false;
-    for (QString c : wizard->qtModules().split(' ')) {
-        if (c.isEmpty())
-            continue;
-        c[0] = c[0].toUpper();
-        libs += " Qt5::" + c;
-        components += " " + c;
-        haveQtModules = true;
-    }
-    if (haveQtModules) {
-        libs += ")\n";
-        components += " REQUIRED)";
-    } else {
-        libs.clear();
-        components.clear();
-    }
-
-
-    GeneratedFile generatedProFile(projectFileName);
-    generatedProFile.setAttributes(Core::GeneratedFile::OpenProjectAttribute);
-    generatedProFile.setContents(
-        "# Created by and for " + QLatin1String(Core::Constants::IDE_DISPLAY_NAME)
-        + " This file was created for editing the project sources only.\n"
-          "# You may attempt to use it for building too, by modifying this file here.\n\n"
-          "cmake_minimum_required(VERSION 3.5)\n"
-          "project("+ projectName +")\n\n"
-          "set(CMAKE_INCLUDE_CURRENT_DIR ON)\n"
-          "set(CMAKE_AUTOUIC ON)\n"
-          "set(CMAKE_AUTOMOC ON)\n"
-          "set(CMAKE_AUTORCC ON)\n"
-          "set(CMAKE_CXX_STANDARD 11)\n"
-          "set(CMAKE_CXX_STANDARD_REQUIRED ON)\n"
-          + components + "\n\n"
-          + includes + "\n\n"
-          + srcs + "\n\n"
-          "add_executable(${CMAKE_PROJECT_NAME} ${SRCS})\n\n"
-          + libs
-        );
-    return GeneratedFiles{generatedProFile};
-}
-
 GeneratedFiles SimpleProjectWizard::generateFiles(const QWizard *w,
                                                   QString *errorMessage) const
 {
@@ -340,8 +257,6 @@ GeneratedFiles SimpleProjectWizard::generateFiles(const QWizard *w,
     auto wizard = qobject_cast<const SimpleProjectWizardDialog *>(w);
     if (wizard->buildSystem() == "qmake")
         return generateQmakeFiles(wizard, errorMessage);
-    else if (wizard->buildSystem() == "cmake")
-        return generateCmakeFiles(wizard, errorMessage);
 
     if (errorMessage)
         *errorMessage = tr("Unknown build system \"%1\"").arg(wizard->buildSystem());

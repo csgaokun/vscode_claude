@@ -43,11 +43,5 @@ public:
     QbsRunConfigurationFactory();
 };
 
-class CMakeRunConfigurationFactory final : public RunConfigurationFactory
-{
-public:
-    CMakeRunConfigurationFactory();
-};
-
 } // namespace Internal
 } // namespace ProjectExplorer

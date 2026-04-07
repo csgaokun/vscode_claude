@@ -6,5 +6,4 @@ QTC_PLUGIN_DEPENDS += \
     projectexplorer
 
 QTC_PLUGIN_RECOMMENDS += \
-        qmakeprojectmanager \
-        cmakeprojectmanager
+        qmakeprojectmanager

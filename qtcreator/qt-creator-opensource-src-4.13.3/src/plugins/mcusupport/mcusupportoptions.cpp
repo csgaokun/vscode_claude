@@ -27,10 +27,8 @@
 #include "mcusupportoptions.h"
 #include "mcusupportsdk.h"
 
-#include <cmakeprojectmanager/cmaketoolmanager.h>
 #include <coreplugin/icore.h>
 #include <coreplugin/helpmanager.h>
-#include <cmakeprojectmanager/cmakekitinformation.h>
 #include <debugger/debuggeritem.h>
 #include <debugger/debuggeritemmanager.h>
 #include <debugger/debuggerkitinformation.h>
@@ -446,8 +444,7 @@ void McuSupportOptions::registerQchFiles()
         return;
 
     const QStringList qchFiles = {
-        docsDir + "/quickultralite.qch",
-        docsDir + "/quickultralitecmake.qch"
+        docsDir + "/quickultralite.qch"
     };
     Core::HelpManager::registerDocumentation(
                 Utils::filtered(qchFiles,
@@ -531,8 +528,6 @@ static void setKitProperties(const QString &kitName, ProjectExplorer::Kit *k,
         SysRootKitAspect::id(),
         QtSupport::QtKitAspect::id()
     };
-    if (jomExecutablePath().exists()) // TODO: add id() getter to CMakeGeneratorKitAspect
-        irrelevant.insert("CMake.GeneratorKitInformation");
     k->setIrrelevantAspects(irrelevant);
 }
 
@@ -578,10 +573,7 @@ static void setKitEnvironment(ProjectExplorer::Kit *k, const McuTarget* mcuTarge
     QStringList pathAdditions;
 
     // The Desktop version depends on the Qt shared libs in Qul_DIR/bin.
-    // If CMake's fileApi is avaialble, we can rely on the "Add library search path to PATH"
-    // feature of the run configuration. Otherwise, we just prepend the path, here.
-    if (mcuTarget->toolChainPackage()->isDesktopToolchain()
-            && !CMakeProjectManager::CMakeToolManager::defaultCMakeTool()->hasFileApi())
+    if (mcuTarget->toolChainPackage()->isDesktopToolchain())
         pathAdditions.append(QDir::toNativeSeparators(qtForMCUsSdkPackage->path() + "/bin"));
 
     auto processPackage = [&pathAdditions, &changes](const McuPackage *package) {
@@ -605,36 +597,10 @@ static void setKitEnvironment(ProjectExplorer::Kit *k, const McuTarget* mcuTarge
 static void setKitCMakeOptions(ProjectExplorer::Kit *k, const McuTarget* mcuTarget,
                                const QString &qulDir)
 {
-    using namespace CMakeProjectManager;
-
-    CMakeConfig config = CMakeConfigurationKitAspect::configuration(k);
-    // CMake ToolChain file for ghs handles CMAKE_*_COMPILER autonomously
-    if (mcuTarget->toolChainPackage()->type() != McuToolChainPackage::TypeGHS) {
-        config.append(CMakeConfigItem("CMAKE_CXX_COMPILER", "%{Compiler:Executable:Cxx}"));
-        config.append(CMakeConfigItem("CMAKE_C_COMPILER", "%{Compiler:Executable:C}"));
-    }
-    if (!mcuTarget->toolChainPackage()->isDesktopToolchain())
-        config.append(CMakeConfigItem(
-                          "CMAKE_TOOLCHAIN_FILE",
-                          (qulDir + "/lib/cmake/Qul/toolchain/"
-                           + mcuTarget->toolChainPackage()->cmakeToolChainFileName()).toUtf8()));
-    config.append(CMakeConfigItem("QUL_GENERATORS",
-                                  (qulDir + "/lib/cmake/Qul/QulGenerators.cmake").toUtf8()));
-    config.append(CMakeConfigItem("QUL_PLATFORM",
-                                  mcuTarget->platform().name.toUtf8()));
-
-    if (mcuTarget->qulVersion() <= QVersionNumber{1,3} // OS variable was removed in Qul 1.4
-        && mcuTarget->os() == McuTarget::OS::FreeRTOS)
-        config.append(CMakeConfigItem("OS", "FreeRTOS"));
-    if (mcuTarget->colorDepth() >= 0)
-        config.append(CMakeConfigItem("QUL_COLOR_DEPTH",
-                                      QString::number(mcuTarget->colorDepth()).toLatin1()));
-    const Utils::FilePath jom = jomExecutablePath();
-    if (jom.exists()) {
-        config.append(CMakeConfigItem("CMAKE_MAKE_PROGRAM", jom.toString().toLatin1()));
-        CMakeGeneratorKitAspect::setGenerator(k, "NMake Makefiles JOM");
-    }
-    CMakeConfigurationKitAspect::setConfiguration(k, config);
+    Q_UNUSED(k)
+    Q_UNUSED(mcuTarget)
+    Q_UNUSED(qulDir)
+    // CMakeProjectManager has been removed, CMake Kit configuration is no longer set
 }
 
 static void setKitQtVersionOptions(ProjectExplorer::Kit *k)

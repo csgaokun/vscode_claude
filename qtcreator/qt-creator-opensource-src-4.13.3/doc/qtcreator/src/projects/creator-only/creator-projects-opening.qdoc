@@ -81,8 +81,8 @@
 
         \li Select \uicontrol File > \uicontrol {Open File or Project}
             (\key Ctrl+O or \key Cmd+O on \macos) and select the project file
-            for the project to open: \e {.pro} (qmake), \e {CMakeLists.txt}
-            (CMake), \e {.qbs} (Qbs), \e {meson.build} (Meson), \e {pyproject} (Python), or
+            for the project to open: \e {.pro} (qmake),
+            \e {.qbs} (Qbs), \e {meson.build} (Meson), \e {pyproject} (Python), or
             \e {Makefile.am} (Autotools, experimental).
 
         \li In the \uicontrol {Configure Project} tab, select kits for building

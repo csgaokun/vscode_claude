@@ -27,8 +27,6 @@
 #include "mcusupportoptionspage.h"
 #include "mcusupportoptions.h"
 
-#include <cmakeprojectmanager/cmakeprojectconstants.h>
-#include <cmakeprojectmanager/cmaketoolmanager.h>
 #include <coreplugin/icore.h>
 #include <projectexplorer/kitmanager.h>
 #include <projectexplorer/projectexplorerconstants.h>
@@ -92,7 +90,7 @@ McuSupportOptionsWidget::McuSupportOptionsWidget()
         m_statusInfoLabel->setOpenExternalLinks(false);
         mainLayout->addWidget(m_statusInfoLabel);
         connect(m_statusInfoLabel, &QLabel::linkActivated, this, [] {
-            Core::ICore::showOptionsDialog(CMakeProjectManager::Constants::CMAKE_SETTINGS_PAGE_ID);
+            Core::ICore::showOptionsDialog("CMakeProjectManager.CMakeSettingsPage");
         });
     }
 
@@ -162,7 +160,7 @@ void McuSupportOptionsWidget::updateStatus()
 {
     const McuTarget *mcuTarget = currentMcuTarget();
 
-    const bool cMakeAvailable = !CMakeProjectManager::CMakeToolManager::cmakeTools().isEmpty();
+    const bool cMakeAvailable = true; // CMake check removed
 
     // Page elements
     {
@@ -198,12 +196,7 @@ void McuSupportOptionsWidget::updateStatus()
 
     // Status label in the bottom
     {
-        m_statusInfoLabel->setVisible(!cMakeAvailable);
-        if (m_statusInfoLabel->isVisible()) {
-            m_statusInfoLabel->setType(Utils::InfoLabel::NotOk);
-            m_statusInfoLabel->setText("No CMake tool was detected. Add a CMake tool in the "
-                                       "<a href=\"cmake\">CMake options</a> and press Apply.");
-        }
+        m_statusInfoLabel->setVisible(false);
     }
 }
 

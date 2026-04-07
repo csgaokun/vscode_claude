@@ -148,12 +148,6 @@
     distribution to the Google Play store, create an AAB by selecting
     the \uicontrol {Build .aab (Android App Bundle)} check box.
 
-    When building with CMake, you can view the selected ABIs in the
-    \uicontrol {Initial CMake parameters} field in the \uicontrol CMake section.
-    You can set additional ABIs as values of the ANDROID_ABI key:
-
-    \image qtcreator-android-cmake-settings.png "CMake settings for building AABs"
-
     When building with qmake, you can select the ABIs in the \uicontrol ABIs
     field in the \uicontrol {Build Steps}:
 

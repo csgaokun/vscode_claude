@@ -57,14 +57,14 @@
     standardize the way subprojects and classes are added to a project.
 
     Most \QC project wizards enable you to choose the build system to use for
-    building the project: qmake, CMake, or Qbs. If you are not presented with a
+    building the project: qmake or Qbs. If you are not presented with a
     choice, the project is set up to use qmake.
 
     You can use wizards also to create plain C or C++ projects that use
-    qmake, Qbs, or CMake, but do not use the Qt library.
+    qmake or Qbs, but do not use the Qt library.
 
     In addition, you can import projects as \e {generic projects} that do not
-    use qmake, Qbs, or CMake. This enables you to use \QC as a code editor and
+    use qmake or Qbs. This enables you to use \QC as a code editor and
     to fully control the steps and commands used to build the project.
 
     You can install tools for \l{glossary-device}{devices} as part of Qt distributions.
@@ -221,7 +221,7 @@
 
             \li Plain C or C++ Application
 
-                Plain C or C++ application that uses qmake, Qbs, or CMake but does
+                Plain C or C++ application that uses qmake or Qbs but does
                 not use the Qt library
 
             \li Nim or Nimble Applications (experimental)
@@ -246,7 +246,7 @@
         \li Import as qmake Project
 
             Import an existing project that does not use any of the supported
-            build systems: qmake, Qbs, CMake, or Autotools. The wizard creates
+            build systems: qmake, Qbs, or Autotools. The wizard creates
             a qmake .pro file, which enables you to use \QC as a code editor and
             as a launcher for debugging and analysis tools. However, if you want
             to build the project, you might need to edit the generated .pro
@@ -255,7 +255,7 @@
         \li Import Existing Project
 
             Import an existing project that does not use any of the supported
-            build systems: qmake, Qbs, CMake, or Autotools. This enables you to
+            build systems: qmake, Qbs, or Autotools. This enables you to
             use \QC as a code editor
 
         \endlist

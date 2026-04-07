@@ -44,14 +44,7 @@
     configuration for testing and the release configuration for creating
     the final installation file.
 
-    If you selected CMake as the build system for the project, you can
-    use a \e {minimum size release} build configuration to create the
-    final  installation file. It is a release build that makes the size
-    of the binary package as small as possible, even if this makes the
-    application slower.
-
-    A profile build (which is called \e {release with debug information}
-    when using CMake) is an optimized release build that is delivered
+    A profile build is an optimized release build that is delivered
     with separate debug information. It is best suited for analyzing
     applications.
 
@@ -122,7 +115,6 @@
     > \uicontrol Options > \uicontrol {Build & Run} >
     \uicontrol {Default Build Properties}.
 
-    \include creator-projects-cmake-building.qdocinc cmake build configuration
     \include creator-projects-meson-building.qdocinc meson build configuration
 
     \section1 Starting External Processes
@@ -141,7 +133,7 @@
 
     You can specify command-line arguments in the arguments fields:
     \uicontrol Arguments, \uicontrol {Additional arguments},
-    \uicontrol {CMake arguments}, \uicontrol {Command arguments},
+    \uicontrol {Command arguments},
     \uicontrol {Default arguments}, \uicontrol {Extra arguments},
     \uicontrol {Make arguments}, or \uicontrol {Tool arguments}.
     You can create shell command lines
@@ -158,8 +150,8 @@
     \section1 Build Steps
 
     In \uicontrol{Build Steps} you can change the settings for the build system
-    selected for building the project: qmake, CMake, Meson, or Qbs. You can use
-    Incredibuild to accelerate the build process when using qmake or CMake.
+    selected for building the project: qmake, Meson, or Qbs. You can use
+    Incredibuild to accelerate the build process when using qmake.
 
     \section2 qmake Build Steps
 
@@ -178,7 +170,6 @@
     \uicontrol {Override MAKEFLAGS} check box to override existing MAKEFLAGS
     variables.
 
-    \include creator-projects-cmake-building.qdocinc cmake build steps
     \include creator-projects-settings-build-qbs.qdocinc qbs build steps
     \include creator-projects-meson-building.qdocinc meson build steps
     \include creator-projects-incredibuild-building.qdocinc incredibuild build steps
@@ -225,7 +216,6 @@
             (\uicontrol {Move Down}).
     \endlist
 
-    \include creator-projects-cmake-building.qdocinc cmake clean steps
     \include creator-projects-settings-build-qbs.qdocinc qbs clean steps
     \include creator-projects-meson-building.qdocinc meson clean steps
     \include creator-projects-incredibuild-building.qdocinc incredibuild clean steps
