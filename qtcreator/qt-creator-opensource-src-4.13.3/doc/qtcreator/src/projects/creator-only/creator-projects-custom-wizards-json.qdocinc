@@ -145,7 +145,6 @@
                         Possible values are the build systems supported by \QC
                         or \c UNKNOWN_PROJECT if the build system is not
                         specified: \c AutotoolsProjectManager.AutotoolsProject,
-                        \c CMakeProjectManager.CMakeProject,
                         \c GenericProjectManager.GenericProject,
                         \c PythonProject, \c Qbs.QbsProject,
                         \c Qt4ProjectManager.Qt4Project (qmake project),

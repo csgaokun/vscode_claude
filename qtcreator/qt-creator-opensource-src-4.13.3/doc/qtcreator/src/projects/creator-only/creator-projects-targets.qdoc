@@ -68,8 +68,8 @@
     Typically, only a subset of the kit settings is relevant for a particular
     setup. Therefore, \QC plugins register sets of relevant settings that you
     can view and modify in \uicontrol Tools > \uicontrol Options >
-    \uicontrol Kits. For example, if you use CMake to build all your projects,
-    you can hide Qbs and qmake settings by default.
+    \uicontrol Kits. For example, if you use Qbs to build all your projects,
+    you can hide qmake settings by default.
 
     To hide and show settings in the \uicontrol Kits tab for the
     current kit, select \uicontrol {Settings Filter}. To view and
@@ -162,22 +162,6 @@
             \uicontrol Change to add settings to Qbs build profiles. For more
             information, see \l {Editing Qbs Profiles}.
 
-        \li In the \uicontrol {CMake Tool} field, select the CMake executable
-            to use for building the project. Select \uicontrol Manage to add
-            installed CMake executables to the list. For more information, see
-            \l{Adding CMake Tools}.
-
-        \li In the \uicontrol {CMake generator} field, select \uicontrol Change
-            to edit the CMake
-            Generator to use for producing project files. Only the generators
-            with names beginning with the string \uicontrol CodeBlocks produce
-            all the necessary data for the \QC code model. \QC displays a
-            warning if you select a generator that is not supported.
-
-        \li In the \uicontrol {CMake configuration} field, select
-            \uicontrol Change to edit the parameters of the CMake configuration
-            for the kit.
-
         \li In the \uicontrol {Meson tool} field, select the Meson tool to use
             for building the project. Select \uicontrol Manage to add installed
             Meson tools to the list. For more information, see
@@ -192,8 +176,6 @@
     \QC uses the \e {default kit} if it does not have enough information to
     choose the kit to use. To set the selected kit as the default kit,
     select \uicontrol {Make Default}.
-
-    \include creator-projects-cmake-building.qdocinc cmake ninja
 
     \section1 Editing Qbs Profiles
 
