@@ -143,3 +143,10 @@ compile_commands.json
 *_qmlcache.qrc
 
 _build
+
+
+# Build scripts output directories
+build/
+install/
+deploy/
+logs/
