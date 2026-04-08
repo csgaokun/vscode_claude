@@ -61,7 +61,6 @@ SUBDIRS   = \
     cppcheck \
     compilationdatabaseprojectmanager \
     qmlpreview \
-    studiowelcome \
     webassembly \
     mcusupport \
     marketplace \
