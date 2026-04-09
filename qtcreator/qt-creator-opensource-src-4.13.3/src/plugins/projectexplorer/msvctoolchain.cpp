@@ -1893,12 +1893,10 @@ QList<ToolChain *> MsvcToolChainFactory::autoDetect(const QList<ToolChain *> &al
     }
 
     // 2) Installed MSVCs
-    // Auto-detect only mainstream desktop targets. Cross ARM/IA64 variants stay
-    // manually configurable, but probing them eagerly causes noisy vcvarsall timeouts.
+    // Auto-detect only native desktop targets. Cross targets stay manually
+    // configurable, but probing them eagerly causes noisy vcvarsall timeouts.
     const MsvcToolChain::Platform platforms[] = {MsvcToolChain::x86,
-                                                 MsvcToolChain::amd64_x86,
-                                                 MsvcToolChain::amd64,
-                                                 MsvcToolChain::x86_amd64};
+                                                 MsvcToolChain::amd64};
 
     foreach (const VisualStudioInstallation &i, detectVisualStudio()) {
         QSet<QString> detectedAbis;
