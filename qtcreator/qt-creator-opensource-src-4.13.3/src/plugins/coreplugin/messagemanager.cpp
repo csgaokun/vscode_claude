@@ -101,10 +101,14 @@ void MessageManager::writeMessages(const QStringList &messages, PrintToOutputPan
 
 void MessageManager::write(const QString &text, PrintToOutputPaneFlags flags)
 {
-    if (QThread::currentThread() == instance()->thread())
+    MessageManager *manager = instance();
+    if (!manager)
+        return;
+
+    if (QThread::currentThread() == manager->thread())
         doWrite(text, flags);
     else
-        QTimer::singleShot(0, instance(), [text, flags] { doWrite(text, flags); });
+        QTimer::singleShot(0, manager, [text, flags] { doWrite(text, flags); });
 }
 
 void MessageManager::writeWithTime(const QString &text, PrintToOutputPaneFlags flags)

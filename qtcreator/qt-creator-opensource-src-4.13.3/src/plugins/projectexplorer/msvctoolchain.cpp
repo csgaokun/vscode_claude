@@ -52,6 +52,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QProcess>
+#include <QSet>
 #include <QRegularExpression>
 #include <QSettings>
 #include <QVector>
@@ -945,11 +946,6 @@ bool MsvcToolChain::fromMap(const QVariantMap &data)
     m_environmentModifications = Utils::EnvironmentItem::itemsFromVariantList(
         data.value(QLatin1String(environModsKeyC)).toList());
     rescanForCompiler();
-
-    initEnvModWatcher(Utils::runAsync(envModThreadPool(),
-                                      &MsvcToolChain::environmentModifications,
-                                      m_vcvarsBat,
-                                      m_varsBatArg));
 
     const bool valid = !m_vcvarsBat.isEmpty() && m_abi.isValid();
     if (!valid)
@@ -1897,29 +1893,30 @@ QList<ToolChain *> MsvcToolChainFactory::autoDetect(const QList<ToolChain *> &al
     }
 
     // 2) Installed MSVCs
-    // prioritized list.
-    // x86_arm was put before amd64_arm as a workaround for auto detected windows phone
-    // toolchains. As soon as windows phone builds support x64 cross builds, this change
-    // can be reverted.
+    // Auto-detect only mainstream desktop targets. Cross ARM/IA64 variants stay
+    // manually configurable, but probing them eagerly causes noisy vcvarsall timeouts.
     const MsvcToolChain::Platform platforms[] = {MsvcToolChain::x86,
                                                  MsvcToolChain::amd64_x86,
                                                  MsvcToolChain::amd64,
-                                                 MsvcToolChain::x86_amd64,
-                                                 MsvcToolChain::arm,
-                                                 MsvcToolChain::x86_arm,
-                                                 MsvcToolChain::amd64_arm,
-                                                 MsvcToolChain::ia64,
-                                                 MsvcToolChain::x86_ia64};
+                                                 MsvcToolChain::x86_amd64};
 
     foreach (const VisualStudioInstallation &i, detectVisualStudio()) {
+        QSet<QString> detectedAbis;
         for (MsvcToolChain::Platform platform : platforms) {
             const bool toolchainInstalled
                 = QFileInfo(vcVarsBatFor(i.vcVarsPath, platform, i.version)).isFile();
             if (hostSupportsPlatform(platform) && toolchainInstalled) {
+                const Abi abi = findAbiOfMsvc(MsvcToolChain::VS, platform, i.vsName);
+                if (!abi.isValid())
+                    continue;
+                const QString abiKey = abi.toString();
+                if (detectedAbis.contains(abiKey))
+                    continue;
+                detectedAbis.insert(abiKey);
                 results.append(
                     findOrCreateToolChain(alreadyKnown,
                                           generateDisplayName(i.vsName, MsvcToolChain::VS, platform),
-                                          findAbiOfMsvc(MsvcToolChain::VS, platform, i.vsName),
+                                          abi,
                                           i.vcVarsAll,
                                           platformName(platform)));
             }

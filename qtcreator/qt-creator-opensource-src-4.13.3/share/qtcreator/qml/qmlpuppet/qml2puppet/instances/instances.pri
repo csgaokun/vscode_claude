@@ -7,7 +7,6 @@ versionAtLeast(QT_VERSION, 5.15.0):qtHaveModule(quick3d) {
 
 HEADERS += $$PWD/qt5nodeinstanceserver.h \
     $$PWD/capturenodeinstanceserverdispatcher.h \
-    $$PWD/capturescenecreatedcommand.h \
     $$PWD/nodeinstanceserverdispatcher.h \
     $$PWD/qt5capturepreviewnodeinstanceserver.h \
     $$PWD/qt5testnodeinstanceserver.h \

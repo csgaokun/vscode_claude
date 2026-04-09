@@ -7,11 +7,6 @@ include(source/clangrefactoringbackend-source.pri)
 
 requires(!isEmpty(LIBTOOLING_LIBS))
 
-win32 {
-    LLVM_BUILDMODE = $$system($$llvm_config --build-mode, lines)
-    CONFIG(debug, debug|release):requires(equals(LLVM_BUILDMODE, "Debug"))
-}
-
 QT += core network
 QT -= gui
 

@@ -1,0 +1,25 @@
+﻿Event[0]:
+  Log Name: Application
+  Source: Application Error
+  Date: 2026-04-08T09:37:46.1810000Z
+  Event ID: 1000
+  Task: 应用程序崩溃事件
+  Level: 错误
+  Opcode: 信息
+  Keyword: 经典
+  User: N/A
+  User Name: N/A
+  Computer: INS1
+  Description: 
+错误应用程序名称: qtcreator.exe，版本: 4.13.3.0，时间戳: 0x69d4ea59
+错误模块名称: ProjectExplorer4.dll，版本: 4.13.3.0，时间戳: 0x69d4eb91
+异常代码: 0xc0000005
+错误偏移量: 0x00000000000430e3
+错误进程 ID: 0x9210
+错误应用程序启动时间: 0x01dcc6f84cdb1ce9
+错误应用程序路径: C:\Qt\QtAi_pro\github\vscode_claude\qtcreator\qt-creator-opensource-src-4.13.3\_build\msvc2017_64_qt5.12.12\build\bin\qtcreator.exe
+错误模块路径: C:\Qt\QtAi_pro\github\vscode_claude\qtcreator\qt-creator-opensource-src-4.13.3\_build\msvc2017_64_qt5.12.12\build\lib\qtcreator\plugins\ProjectExplorer4.dll
+报告 ID: dd8b4e5a-8634-452f-9776-b846681b1e58
+错误程序包全名: 
+错误程序包相对应用程序 ID: 
+

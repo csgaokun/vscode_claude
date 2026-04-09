@@ -1,6 +1,7 @@
 include(../../qtcreator.pri)
 
 TEMPLATE = subdirs
+CONFIG += ordered
 
 SUBDIRS = qtpromaker \
      ../plugins/cpaster/frontend \

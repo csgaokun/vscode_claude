@@ -59,8 +59,6 @@ private:
 
 class ThemeChooser : public QWidget
 {
-    Q_OBJECT
-
 public:
     ThemeChooser(QWidget *parent = nullptr);
     ~ThemeChooser() override;

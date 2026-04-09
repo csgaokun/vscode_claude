@@ -37,7 +37,9 @@
 #include <QAbstractListModel>
 #include <QComboBox>
 #include <QCoreApplication>
+#include <QDateTime>
 #include <QDebug>
+#include <QFile>
 #include <QDir>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -48,6 +50,25 @@
 using namespace Utils;
 
 static const char themeNameKey[] = "ThemeName";
+
+static void appendThemeTrace(const char *message, const void *pointer = nullptr)
+{
+    if (!qEnvironmentVariableIsSet("QTC_THEMECHOOSER_TRACE"))
+        return;
+
+    QFile file(QDir::temp().filePath(QLatin1String("qtcreator-themechooser-trace.log")));
+    if (!file.open(QIODevice::Append | QIODevice::Text))
+        return;
+
+    file.write(QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs).toUtf8());
+    file.write(" themechooser ");
+    file.write(message);
+    if (pointer) {
+        file.write(" ptr=");
+        file.write(QByteArray::number(quintptr(pointer), 16));
+    }
+    file.write("\n");
+}
 
 namespace Core {
 namespace Internal {
@@ -163,12 +184,16 @@ ThemeChooserPrivate::~ThemeChooserPrivate()
 ThemeChooser::ThemeChooser(QWidget *parent) :
     QWidget(parent)
 {
+    appendThemeTrace("ThemeChooser ctor begin", this);
     d = new ThemeChooserPrivate(this);
+    appendThemeTrace("ThemeChooser ctor end", this);
 }
 
 ThemeChooser::~ThemeChooser()
 {
+    appendThemeTrace("ThemeChooser dtor begin", this);
     delete d;
+    appendThemeTrace("ThemeChooser dtor end", this);
 }
 
 void ThemeChooser::apply()

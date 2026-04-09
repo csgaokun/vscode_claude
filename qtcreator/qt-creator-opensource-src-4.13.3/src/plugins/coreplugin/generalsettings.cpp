@@ -37,7 +37,9 @@
 #include <utils/stylehelper.h>
 
 #include <QCoreApplication>
+#include <QDateTime>
 #include <QDir>
+#include <QFile>
 #include <QLibraryInfo>
 #include <QMessageBox>
 #include <QSettings>
@@ -47,6 +49,25 @@ using namespace Utils;
 
 namespace Core {
 namespace Internal {
+
+static void appendThemeTrace(const char *message, const void *pointer = nullptr)
+{
+    if (!qEnvironmentVariableIsSet("QTC_THEMECHOOSER_TRACE"))
+        return;
+
+    QFile file(QDir::temp().filePath(QLatin1String("qtcreator-themechooser-trace.log")));
+    if (!file.open(QIODevice::Append | QIODevice::Text))
+        return;
+
+    file.write(QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs).toUtf8());
+    file.write(" generalsettings ");
+    file.write(message);
+    if (pointer) {
+        file.write(" ptr=");
+        file.write(QByteArray::number(quintptr(pointer), 16));
+    }
+    file.write("\n");
+}
 
 const char settingsKeyDPI[] = "Core/EnableHighDpiScaling";
 const char settingsKeyShortcutsInContextMenu[] = "General/ShowShortcutsInContextMenu";
@@ -76,7 +97,9 @@ public:
 GeneralSettingsWidget::GeneralSettingsWidget(GeneralSettings *q)
     : q(q)
 {
+    appendThemeTrace("GeneralSettingsWidget ctor begin", this);
     m_ui.setupUi(this);
+    appendThemeTrace("GeneralSettingsWidget setupUi done", this);
 
     fillLanguageBox();
 
@@ -108,6 +131,7 @@ GeneralSettingsWidget::GeneralSettingsWidget(GeneralSettings *q)
             this, &GeneralSettingsWidget::resetInterfaceColor);
     connect(m_ui.resetWarningsButton, &QAbstractButton::clicked,
             this, &GeneralSettingsWidget::resetWarnings);
+        appendThemeTrace("GeneralSettingsWidget ctor end", this);
 }
 
 static bool hasQmFilesForLocale(const QString &locale, const QString &creatorTrPath)

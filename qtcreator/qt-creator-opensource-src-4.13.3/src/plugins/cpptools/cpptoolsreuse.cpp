@@ -323,9 +323,7 @@ bool fileSizeExceedsLimit(const QFileInfo &fileInfo, int sizeLimitInMb)
                     "C++ Indexer: Skipping file \"%1\" because it is too big.")
                         .arg(absoluteFilePath);
 
-        QMetaObject::invokeMethod(Core::MessageManager::instance(), [msg]() {
-            Core::MessageManager::write(msg, Core::MessageManager::Silent);
-        });
+        Core::MessageManager::write(msg, Core::MessageManager::Silent);
 
         return true;
     }

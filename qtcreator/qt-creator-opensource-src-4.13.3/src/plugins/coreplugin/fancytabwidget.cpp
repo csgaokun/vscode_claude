@@ -487,7 +487,10 @@ FancyTabWidget::FancyTabWidget(QWidget *parent)
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
     auto fancyButton = new FancyColorButton(this);
-    connect(fancyButton, &FancyColorButton::clicked, this, &FancyTabWidget::topAreaClicked);
+    connect(fancyButton, &FancyColorButton::clicked, this,
+            [this](Qt::MouseButton button, Qt::KeyboardModifiers modifiers) {
+        emit topAreaClicked(button, modifiers);
+    });
     layout->addWidget(fancyButton);
     selectionLayout->addWidget(bar);
 
@@ -528,9 +531,13 @@ FancyTabWidget::FancyTabWidget(QWidget *parent)
     mainLayout->addLayout(vlayout);
     setLayout(mainLayout);
 
-    connect(m_tabBar, &FancyTabBar::currentAboutToChange, this, &FancyTabWidget::currentAboutToShow);
+    connect(m_tabBar, &FancyTabBar::currentAboutToChange, this, [this](int index) {
+        emit currentAboutToShow(index);
+    });
     connect(m_tabBar, &FancyTabBar::currentChanged, this, &FancyTabWidget::showWidget);
-    connect(m_tabBar, &FancyTabBar::menuTriggered, this, &FancyTabWidget::menuTriggered);
+    connect(m_tabBar, &FancyTabBar::menuTriggered, this, [this](int index, QMouseEvent *event) {
+        emit menuTriggered(index, event);
+    });
 }
 
 void FancyTabWidget::setSelectionWidgetVisible(bool visible)

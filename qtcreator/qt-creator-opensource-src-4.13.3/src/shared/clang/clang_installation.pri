@@ -141,11 +141,16 @@ win32: BIN_EXTENSION = .exe
 
 isEmpty(LLVM_INSTALL_DIR) {
     unix {
-      llvm_config = $$system(which llvm-config-8)
+            llvm_config = $$system("which llvm-config-8 2>/dev/null")
     }
 
+        win32 {
+            llvm_config = $$system("where llvm-config-8 2>NUL")
+        }
+
     isEmpty(llvm_config) {
-        llvm_config = llvm-config
+                unix:llvm_config = $$system("which llvm-config 2>/dev/null")
+                win32:llvm_config = $$system("where llvm-config 2>NUL")
     }
 } else {
     exists($$LLVM_INSTALL_DIR/bin/llvm-config-8$$BIN_EXTENSION) {
@@ -156,13 +161,17 @@ isEmpty(LLVM_INSTALL_DIR) {
     }
 }
 
-output = $$system($$llvm_config --version, lines)
-LLVM_VERSION = $$extractVersion($$output)
+!isEmpty(llvm_config) {
+    output = $$system($$llvm_config --version, lines)
+    LLVM_VERSION = $$extractVersion($$output)
+}
 
 isEmpty(LLVM_VERSION) {
-    $$llvmWarningOrError(\
-        "Cannot determine clang version. Set LLVM_INSTALL_DIR to build the Clang Code Model",\
-        "LLVM_INSTALL_DIR does not contain a valid llvm-config, candidate: $$llvm_config")
+    !isEmpty(LLVM_INSTALL_DIR) {
+        $$llvmWarningOrError(\
+            "Cannot determine clang version. Set LLVM_INSTALL_DIR to build the Clang Code Model",\
+            "LLVM_INSTALL_DIR does not contain a valid llvm-config, candidate: $$llvm_config")
+    }
 } else:!versionIsAtLeast($$LLVM_VERSION, 8, 0, 0): {
     # CLANG-UPGRADE-CHECK: Adapt minimum version numbers.
     $$llvmWarningOrError(\

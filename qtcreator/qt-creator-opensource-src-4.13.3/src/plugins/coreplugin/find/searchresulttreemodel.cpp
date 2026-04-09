@@ -366,21 +366,6 @@ void SearchResultTreeModel::addResultsToCurrentParent(const QList<SearchResultIt
     emit dataChanged(m_currentIndex, m_currentIndex); // Make sure that the number after the file name gets updated
 }
 
-static bool lessThanByPath(const SearchResultItem &a, const SearchResultItem &b)
-{
-    if (a.path.size() < b.path.size())
-        return true;
-    if (a.path.size() > b.path.size())
-        return false;
-    for (int i = 0; i < a.path.size(); ++i) {
-        if (a.path.at(i) < b.path.at(i))
-            return true;
-        if (a.path.at(i) > b.path.at(i))
-            return false;
-    }
-    return false;
-}
-
 /**
  * Adds the search result to the list of results, creating nodes for the path when
  * necessary.
@@ -388,10 +373,9 @@ static bool lessThanByPath(const SearchResultItem &a, const SearchResultItem &b)
 QList<QModelIndex> SearchResultTreeModel::addResults(const QList<SearchResultItem> &items, SearchResult::AddMode mode)
 {
     QSet<SearchResultTreeItem *> pathNodes;
-    QList<SearchResultItem> sortedItems = items;
-    std::stable_sort(sortedItems.begin(), sortedItems.end(), lessThanByPath);
     QList<SearchResultItem> itemSet;
-    foreach (const SearchResultItem &item, sortedItems) {
+    // Global path sorting is only an optimization; processing producer order avoids MSVC sort crashes.
+    for (const SearchResultItem &item : items) {
         m_editorFontIsUsed |= item.useTextEditorFont;
         if (!m_currentParent || (m_currentPath != item.path)) {
             // first add all the items from before
