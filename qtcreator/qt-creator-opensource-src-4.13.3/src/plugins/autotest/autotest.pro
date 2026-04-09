@@ -150,8 +150,12 @@ HEADERS += \
     boost/boosttestsettingspage.h \
     boost/boosttestsettings.h
 
+AUTOTEST_RESOURCE_ROOT = $$PWD
+win32-msvc*:AUTOTEST_RESOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/autotest)
+!exists($$AUTOTEST_RESOURCE_ROOT/autotest.qrc): AUTOTEST_RESOURCE_ROOT = $$PWD
+
 RESOURCES += \
-    autotest.qrc
+    $$AUTOTEST_RESOURCE_ROOT/autotest.qrc
 
 FORMS += \
     testsettingspage.ui \
@@ -163,5 +167,5 @@ FORMS += \
 equals(TEST, 1) {
     HEADERS += autotestunittests.h
     SOURCES += autotestunittests.cpp
-    RESOURCES += autotestunittests.qrc
+    RESOURCES += $$AUTOTEST_RESOURCE_ROOT/autotestunittests.qrc
 }

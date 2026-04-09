@@ -3,6 +3,8 @@ TEMPLATE = aux
 include(../../qtcreator.pri)
 
 STATIC_BASE = $$PWD
+win32-msvc*: STATIC_BASE = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/share/qtcreator)
+!exists($$STATIC_BASE/static.pro): STATIC_BASE = $$PWD
 STATIC_OUTPUT_BASE = $$IDE_DATA_PATH
 STATIC_INSTALL_BASE = $$INSTALL_DATA_PATH
 
@@ -28,7 +30,7 @@ DATA_DIRS = \
 macx: DATA_DIRS += scripts
 
 for(data_dir, DATA_DIRS) {
-    files = $$files($$PWD/$$data_dir/*, true)
+    files = $$files($$STATIC_BASE/$$data_dir/*, true)
     # Info.plist.in are handled below
     for(file, files):!contains(file, ".*/Info\\.plist\\.in$"):!exists($$file/*): \
         STATIC_FILES += $$file

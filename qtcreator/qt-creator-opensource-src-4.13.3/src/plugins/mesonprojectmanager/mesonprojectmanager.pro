@@ -1,8 +1,12 @@
 include(../../qtcreatorplugin.pri)
 
-INCLUDEPATH += $$PWD
+MESONPROJECTMANAGER_SOURCE_ROOT = $$PWD
+win32-msvc*:MESONPROJECTMANAGER_SOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/mesonprojectmanager)
+!exists($$MESONPROJECTMANAGER_SOURCE_ROOT/mesonprojectplugin.cpp):MESONPROJECTMANAGER_SOURCE_ROOT = $$PWD
 
-HEADERS = \
+INCLUDEPATH += $$MESONPROJECTMANAGER_SOURCE_ROOT
+
+MESONPROJECTMANAGER_HEADER_FILES = \
       exewrappers/mesontools.h \
       exewrappers/mesonwrapper.h \
       exewrappers/ninjawrapper.h \
@@ -52,9 +56,11 @@ HEADERS = \
       mesonpluginconstants.h \
       mesonprojectplugin.h \
       versionhelper.h
+for(fileName, MESONPROJECTMANAGER_HEADER_FILES) {
+    HEADERS += $$MESONPROJECTMANAGER_SOURCE_ROOT/$$fileName
+}
 
-
-SOURCES = \
+MESONPROJECTMANAGER_SOURCE_FILES = \
     exewrappers/mesonwrapper.cpp  \
     exewrappers/toolwrapper.cpp  \
     exewrappers/mesontools.cpp \
@@ -90,13 +96,39 @@ SOURCES = \
     settings/tools/toolssettingswidget.cpp  \
     settings/tools/tooltreeitem.cpp  \
     mesonprojectplugin.cpp
+for(fileName, MESONPROJECTMANAGER_SOURCE_FILES) {
+    SOURCES += $$MESONPROJECTMANAGER_SOURCE_ROOT/$$fileName
+}
 
 RESOURCES += resources.qrc
 
-FORMS += \
-   project/buildoptions/mesonbuildsettingswidget.ui \
-   project/buildoptions/mesonbuildstepconfigwidget.ui \
-   settings/general/generalsettingswidget.ui \
-   settings/tools/toolitemsettings.ui \
-   settings/tools/toolssettingswidget.ui
+MESONPROJECTMANAGER_FORMS = \
+    $$MESONPROJECTMANAGER_SOURCE_ROOT/project/buildoptions/mesonbuildsettingswidget.ui \
+    $$MESONPROJECTMANAGER_SOURCE_ROOT/project/buildoptions/mesonbuildstepconfigwidget.ui \
+    $$MESONPROJECTMANAGER_SOURCE_ROOT/settings/general/generalsettingswidget.ui \
+    $$MESONPROJECTMANAGER_SOURCE_ROOT/settings/tools/toolitemsettings.ui \
+    $$MESONPROJECTMANAGER_SOURCE_ROOT/settings/tools/toolssettingswidget.ui
+
+mesonprojectmanager_uic.input = MESONPROJECTMANAGER_FORMS
+mesonprojectmanager_uic.output = $$OUT_PWD/ui_${QMAKE_FILE_BASE}.h
+isEmpty(vcproj):mesonprojectmanager_uic.variable_out = PRE_TARGETDEPS
+win32:mesonprojectmanager_uic.commands = $$shell_path($$[QT_INSTALL_BINS]/uic.exe) "${QMAKE_FILE_IN}" -o "${QMAKE_FILE_OUT}"
+unix:mesonprojectmanager_uic.commands = $$shell_path($$[QT_INSTALL_BINS]/uic) ${QMAKE_FILE_IN} -o ${QMAKE_FILE_OUT}
+mesonprojectmanager_uic.name = UIC ${QMAKE_FILE_IN}
+mesonprojectmanager_uic.CONFIG += no_link
+QMAKE_EXTRA_COMPILERS += mesonprojectmanager_uic
+
+HEADERS += \
+    $$OUT_PWD/ui_mesonbuildsettingswidget.h \
+    $$OUT_PWD/ui_mesonbuildstepconfigwidget.h \
+    $$OUT_PWD/ui_generalsettingswidget.h \
+    $$OUT_PWD/ui_toolitemsettings.h \
+    $$OUT_PWD/ui_toolssettingswidget.h
+
+QMAKE_DISTCLEAN += \
+    $$OUT_PWD/ui_mesonbuildsettingswidget.h \
+    $$OUT_PWD/ui_mesonbuildstepconfigwidget.h \
+    $$OUT_PWD/ui_generalsettingswidget.h \
+    $$OUT_PWD/ui_toolitemsettings.h \
+    $$OUT_PWD/ui_toolssettingswidget.h
 

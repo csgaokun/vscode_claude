@@ -4,6 +4,10 @@ VPATH += $$PWD
 
 INCLUDEPATH += $$PWD
 
+TIMELINEEDITOR_RESOURCE_ROOT = $$PWD
+win32-msvc*:TIMELINEEDITOR_RESOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/qmldesigner/components/timelineeditor)
+!exists($$TIMELINEEDITOR_RESOURCE_ROOT/timeline.qrc):TIMELINEEDITOR_RESOURCE_ROOT = $$PWD
+
 DEFINES += TIMELINE_QML_PATH=\\\"$$PWD/qml/\\\"
 
 SOURCES += \
@@ -76,7 +80,7 @@ HEADERS += \
     animationcurvedialog.h
 
 RESOURCES += \
-    timeline.qrc
+    $$TIMELINEEDITOR_RESOURCE_ROOT/timeline.qrc
 
 FORMS += \
     setframevaluedialog.ui \

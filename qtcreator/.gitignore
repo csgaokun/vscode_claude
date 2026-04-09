@@ -144,6 +144,7 @@ compile_commands.json
 
 _build
 _tmp
+qtcsrc/
 
 # Build scripts output directories
 build/
