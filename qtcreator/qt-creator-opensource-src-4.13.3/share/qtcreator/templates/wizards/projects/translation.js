@@ -1,0 +1,9 @@
+"use strict";
+version;
+"1.0";
+encoding = "utf-8" ?  >
+    TS >
+    version : ;
+"2.1";
+language = "%{TsLanguage}" > /TS>;
+//# sourceMappingURL=translation.js.map
