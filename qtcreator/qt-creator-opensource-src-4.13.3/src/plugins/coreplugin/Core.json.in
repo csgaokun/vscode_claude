@@ -1,10 +1,10 @@
 {
     \"Name\" : \"Core\",
-    \"Version\" : \"$$QTCREATOR_VERSION\",
-    \"CompatVersion\" : \"$$QTCREATOR_COMPAT_VERSION\",
+    \"Version\" : \"$$QTHLDPLUGIN_VERSION\",
+    \"CompatVersion\" : \"$$QTHLDPLUGIN_COMPAT_VERSION\",
     \"Required\" : true,
     \"Vendor\" : \"The Qt Company Ltd\",
-    \"Copyright\" : \"(C) $$QTCREATOR_COPYRIGHT_YEAR The Qt Company Ltd\",
+    \"Copyright\" : \"(C) $$QTHLDPLUGIN_COPYRIGHT_YEAR The Qt Company Ltd\",
     \"License\" : [ \"Commercial Usage\",
                   \"\",
                   \"Licensees holding valid Qt Commercial licenses may use this plugin in accordance with the Qt Commercial License Agreement provided with the Software or, alternatively, in accordance with the terms contained in a written agreement between you and The Qt Company.\",
@@ -25,7 +25,7 @@
         {
             \"Name\" : \"-theme\",
             \"Parameter\" : \"default|dark\",
-            \"Description\" : \"Choose a built-in theme or pass a .creatortheme file\"
+            \"Description\" : \"Choose a built-in theme or pass a .hldplugintheme file\"
         },
         {
             \"Name\" : \"-presentationMode\",

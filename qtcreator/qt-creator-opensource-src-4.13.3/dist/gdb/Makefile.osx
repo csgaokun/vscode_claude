@@ -6,13 +6,13 @@ pyversion=2.7
 expatversion=2.1.1
 arch=`uname -sm | sed 's/ /-/g' | tr A-Z a-z`
 version=7.12
-targetdir=${broot}/qtcreator-gdb-${version}
-packagename=qtcreator-gdb-${version}-${arch}.tar.gz
+targetdir=${broot}/qthldplugin-gdb-${version}
+packagename=qthldplugin-gdb-${version}-${arch}.tar.gz
 
 all:package
 
 clean:
-	rm -rf  ${broot}/qtcreator-gdb-* ${staging}/gdb-* qtcreator-gdb-*.tar.gz
+	rm -rf  ${broot}/qthldplugin-gdb-* ${staging}/gdb-* qthldplugin-gdb-*.tar.gz
 
 makesourcedir:
 	@test -e ${source} || mkdir ${source}
@@ -79,5 +79,5 @@ ${targetdir}/gdb: ${staging}/gdb-${version}/configure ${staging}/lib/libpython${
 package: ${targetdir}/gdb ${targetdir}/python/include/python${pyversion}/pyconfig.h
 	mv ${targetdir} ${targetdir}-${arch}
 	echo "Packing..."
-	tar czf ${packagename} qtcreator-gdb-${version}-${arch}
+	tar czf ${packagename} qthldplugin-gdb-${version}-${arch}
 	mv ${targetdir}-${arch} ${targetdir}

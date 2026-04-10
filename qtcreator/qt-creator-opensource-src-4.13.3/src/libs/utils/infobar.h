@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,7 +45,7 @@ class InfoBar;
 class InfoBarDisplay;
 class Theme;
 
-class QTCREATOR_UTILS_EXPORT InfoBarEntry
+class QTHLDPLUGIN_UTILS_EXPORT InfoBarEntry
 {
 public:
     enum class GlobalSuppression
@@ -64,8 +64,8 @@ public:
     void setComboInfo(const QStringList &list, ComboCallBack callBack);
     void removeCancelButton();
 
-    using DetailsWidgetCreator = std::function<QWidget*()>;
-    void setDetailsWidgetCreator(const DetailsWidgetCreator &creator);
+    using DetailsWidgetHldplugin = std::function<QWidget*()>;
+    void setDetailsWidgetHldplugin(const DetailsWidgetHldplugin &hldplugin);
 
 private:
     Id m_id;
@@ -75,7 +75,7 @@ private:
     QString m_cancelButtonText;
     CallBack m_cancelButtonCallBack;
     GlobalSuppression m_globalSuppression;
-    DetailsWidgetCreator m_detailsWidgetCreator;
+    DetailsWidgetHldplugin m_detailsWidgetHldplugin;
     bool m_useCancelButton = true;
     ComboCallBack m_comboCallBack;
     QStringList m_comboInfo;
@@ -83,7 +83,7 @@ private:
     friend class InfoBarDisplay;
 };
 
-class QTCREATOR_UTILS_EXPORT InfoBar : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT InfoBar : public QObject
 {
     Q_OBJECT
 
@@ -119,7 +119,7 @@ private:
     friend class InfoBarDisplay;
 };
 
-class QTCREATOR_UTILS_EXPORT InfoBarDisplay : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT InfoBarDisplay : public QObject
 {
     Q_OBJECT
 

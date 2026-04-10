@@ -15,7 +15,7 @@ LIBS += -framework CoreFoundation -framework CoreServices -framework IOKit -fram
 
 TEMPLATE = app
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 
 # put into a subdir, so we can deploy a separate qt.conf for it
 DESTDIR = $$IDE_LIBEXEC_PATH/ios

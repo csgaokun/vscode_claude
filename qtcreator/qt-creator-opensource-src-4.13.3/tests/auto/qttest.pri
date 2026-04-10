@@ -1,4 +1,4 @@
-include(../../qtcreator.pri)
+include(../../qthldplugin.pri)
 include(qttestrpath.pri)
 
 isEmpty(TEMPLATE):TEMPLATE=app

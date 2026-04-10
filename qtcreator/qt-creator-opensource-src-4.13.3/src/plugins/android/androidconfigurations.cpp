@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BogDan Vatra <bog_dan_ro@yahoo.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -155,7 +155,7 @@ namespace {
                 QString executable = env.searchInPath(QLatin1String("file")).toString();
                 QString shell = env.value(QLatin1String("SHELL"));
                 if (executable.isEmpty() || shell.isEmpty())
-                    return true; // we can't detect, but creator is 32bit so assume 32bit
+                    return true; // we can't detect, but hldplugin is 32bit so assume 32bit
 
                 SynchronousProcess proc;
                 proc.setProcessChannelMode(QProcess::MergedChannels);

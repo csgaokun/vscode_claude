@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -63,7 +63,7 @@ protected:
         bool isQnx = false; // eeks...
     };
 
-    void setQtVersionCreator(const std::function<BaseQtVersion *()> &creator);
+    void setQtVersionHldplugin(const std::function<BaseQtVersion *()> &hldplugin);
     void setRestrictionChecker(const std::function<bool(const SetupData &)> &checker);
     void setSupportedType(const QString &type);
     void setPriority(int priority);
@@ -72,7 +72,7 @@ private:
     friend class BaseQtVersion;
     BaseQtVersion *create() const;
 
-    std::function<BaseQtVersion *()> m_creator;
+    std::function<BaseQtVersion *()> m_hldplugin;
     std::function<bool(const SetupData &)> m_restrictionChecker;
     QString m_supportedType;
     int m_priority = 0;

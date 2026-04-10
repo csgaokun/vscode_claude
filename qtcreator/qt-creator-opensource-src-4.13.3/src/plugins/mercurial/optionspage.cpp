@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Brian McGillion
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -91,7 +91,7 @@ OptionsPage::OptionsPage(const std::function<void()> &onApply, MercurialSettings
     setId(VcsBase::Constants::VCS_ID_MERCURIAL);
     setDisplayName(OptionsPageWidget::tr("Mercurial"));
     setCategory(VcsBase::Constants::VCS_SETTINGS_CATEGORY);
-    setWidgetCreator([onApply, settings] { return new OptionsPageWidget(onApply, settings); });
+    setWidgetHldplugin([onApply, settings] { return new OptionsPageWidget(onApply, settings); });
 }
 
 } // namespace Internal

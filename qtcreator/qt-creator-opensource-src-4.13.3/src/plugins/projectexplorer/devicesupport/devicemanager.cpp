@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -143,7 +143,7 @@ void DeviceManager::load()
     // Only create writer now: We do not want to save before the settings were read!
     d->writer = new Utils::PersistentSettingsWriter(
                 settingsFilePath(QLatin1String("/devices.xml")),
-                QLatin1String("QtCreatorDevices"));
+                QLatin1String("QtHldpluginDevices"));
 
     Utils::PersistentSettingsReader reader;
     // read devices file from global settings path

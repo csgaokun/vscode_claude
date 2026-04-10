@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@ class QrcParserPrivate;
 class QrcCachePrivate;
 }
 
-class QTCREATOR_UTILS_EXPORT QrcParser
+class QTHLDPLUGIN_UTILS_EXPORT QrcParser
 {
 public:
     typedef QSharedPointer<QrcParser> Ptr;
@@ -69,7 +69,7 @@ private:
     Internal::QrcParserPrivate *d;
 };
 
-class QTCREATOR_UTILS_EXPORT QrcCache
+class QTHLDPLUGIN_UTILS_EXPORT QrcCache
 {
 public:
     QrcCache();

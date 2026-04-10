@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -349,7 +349,7 @@ bool GitEditorWidget::supportChangeLinks() const
 
 QString GitEditorWidget::fileNameForLine(int line) const
 {
-    // 7971b6e7 share/qtcreator/dumper/dumper.py   (hjk
+    // 7971b6e7 share/qthldplugin/dumper/dumper.py   (hjk
     QTextBlock block = document()->findBlockByLineNumber(line - 1);
     QTC_ASSERT(block.isValid(), return source());
     static QRegExp renameExp("^" CHANGE_PATTERN "\\s+([^(]+)");

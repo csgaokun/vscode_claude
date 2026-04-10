@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Orgad Shaneh <orgads@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,7 +30,7 @@
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT CompletingLineEdit : public QLineEdit
+class QTHLDPLUGIN_UTILS_EXPORT CompletingLineEdit : public QLineEdit
 {
     Q_OBJECT
 

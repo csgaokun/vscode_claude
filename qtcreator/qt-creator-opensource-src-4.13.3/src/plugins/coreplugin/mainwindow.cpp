@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -128,7 +128,7 @@ MainWindow::MainWindow()
 
     setWindowTitle(Constants::IDE_DISPLAY_NAME);
     if (HostOsInfo::isLinuxHost())
-        QApplication::setWindowIcon(Icons::QTCREATORLOGO_BIG.icon());
+        QApplication::setWindowIcon(Icons::QTHLDPLUGINLOGO_BIG.icon());
     QString baseName = QApplication::style()->objectName();
     // Sometimes we get the standard windows 95 style as a fallback
     if (HostOsInfo::isAnyUnixHost() && !HostOsInfo::isMacHost()
@@ -139,7 +139,7 @@ MainWindow::MainWindow()
     // if the user has specified as base style in the theme settings,
     // prefer that
     const QStringList available = QStyleFactory::keys();
-    foreach (const QString &s, Utils::creatorTheme()->preferredStyles()) {
+    foreach (const QString &s, Utils::hldpluginTheme()->preferredStyles()) {
         if (available.contains(s, Qt::CaseInsensitive)) {
             baseName = s;
             break;
@@ -757,10 +757,10 @@ void MainWindow::registerDefaultActions()
     else
         tmpaction = new QAction(icon, tr("About &%1...").arg(Constants::IDE_DISPLAY_NAME), this);
     tmpaction->setMenuRole(QAction::AboutRole);
-    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_QTCREATOR);
+    cmd = ActionManager::registerAction(tmpaction, Constants::ABOUT_QTHLDPLUGIN);
     mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
     tmpaction->setEnabled(true);
-    connect(tmpaction, &QAction::triggered, this, &MainWindow::aboutQtCreator);
+    connect(tmpaction, &QAction::triggered, this, &MainWindow::aboutQtHldplugin);
 
     //About Plugins Action
     tmpaction = new QAction(tr("About &Plugins..."), this);
@@ -779,7 +779,7 @@ void MainWindow::registerDefaultActions()
     if (!HostOsInfo::isMacHost()) { // doesn't have the "About" actions in the Help menu
         tmpaction = new QAction(this);
         tmpaction->setSeparator(true);
-        cmd = ActionManager::registerAction(tmpaction, "QtCreator.Help.Sep.About");
+        cmd = ActionManager::registerAction(tmpaction, "QtHldplugin.Help.Sep.About");
         mhelp->addAction(cmd, Constants::G_HELP_ABOUT);
     }
 }
@@ -1023,7 +1023,7 @@ void MainWindow::readSettings()
         ModeManager::Style modeStyle =
                 ModeManager::Style(settings->value(modeSelectorLayoutKey, int(ModeManager::Style::IconsAndText)).toInt());
 
-        // Migrate legacy setting from Qt Creator 4.6 and earlier
+        // Migrate legacy setting from Qt Hldplugin 4.6 and earlier
         static const char modeSelectorVisibleKey[] = "ModeSelectorVisible";
         if (!settings->contains(modeSelectorLayoutKey) && settings->contains(modeSelectorVisibleKey)) {
             bool visible = settings->value(modeSelectorVisibleKey, true).toBool();
@@ -1169,7 +1169,7 @@ void MainWindow::aboutToShowRecentFiles()
     }
 }
 
-void MainWindow::aboutQtCreator()
+void MainWindow::aboutQtHldplugin()
 {
     if (!m_versionDialog) {
         m_versionDialog = new VersionDialog(this);

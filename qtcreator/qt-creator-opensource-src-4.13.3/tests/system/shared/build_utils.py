@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -24,8 +24,8 @@
 ############################################################################
 
 def getBuildIssues():
-    ensureChecked(":Qt Creator_Issues_Core::Internal::OutputPaneToggleButton")
-    model = waitForObject(":Qt Creator.Issues_QListView").model()
+    ensureChecked(":Qt Hldplugin_Issues_Core::Internal::OutputPaneToggleButton")
+    model = waitForObject(":Qt Hldplugin.Issues_QListView").model()
     return dumpBuildIssues(model)
 
 # this method checks the last build (if there's one) and logs the number of errors, warnings and
@@ -52,8 +52,8 @@ def checkLastBuild(expectedToFail=False, createTasksFileOnError=True):
 
 # helper function to check the compilation when build wasn't successful
 def checkCompile():
-    ensureChecked(":Qt Creator_CompileOutput_Core::Internal::OutputPaneToggleButton")
-    output = waitForObject(":Qt Creator.Compile Output_Core::OutputWindow")
+    ensureChecked(":Qt Hldplugin_CompileOutput_Core::Internal::OutputPaneToggleButton")
+    output = waitForObject(":Qt Hldplugin.Compile Output_Core::OutputWindow")
     waitFor("len(str(output.plainText))>0",5000)
     if compileSucceeded(output.plainText):
         if os.getenv("SYSTEST_DEBUG") == "1":
@@ -70,8 +70,8 @@ def compileSucceeded(compileOutput):
 
 def waitForCompile(timeout=60000):
     progressBarWait(10000) # avoids switching to Issues pane after checking Compile Output
-    ensureChecked(":Qt Creator_CompileOutput_Core::Internal::OutputPaneToggleButton")
-    output = waitForObject(":Qt Creator.Compile Output_Core::OutputWindow")
+    ensureChecked(":Qt Hldplugin_CompileOutput_Core::Internal::OutputPaneToggleButton")
+    output = waitForObject(":Qt Hldplugin.Compile Output_Core::OutputWindow")
     if not waitFor("re.match('.*Elapsed time: (\d:)?\d{2}:\d\d\.$', str(output.plainText), re.S)", timeout):
         test.warning("Waiting for compile timed out after %d s." % (timeout / 1000))
 
@@ -167,9 +167,9 @@ def verifyBuildConfig(currentTarget, configName, shouldBeDebug=False, enableShad
     selectBuildConfig(currentTarget, configName, None)
     ensureChecked(waitForObject(":scrollArea.Details_Utils::DetailsButton"))
     ensureChecked("{leftWidget={text='Shadow build:' type='QLabel' unnamed='1' visible='1' "
-                               "window=':Qt Creator_Core::Internal::MainWindow'} "
+                               "window=':Qt Hldplugin_Core::Internal::MainWindow'} "
                   "type='QCheckBox' unnamed='1' visible='1' "
-                  "window=':Qt Creator_Core::Internal::MainWindow'}", enableShadowBuild)
+                  "window=':Qt Hldplugin_Core::Internal::MainWindow'}", enableShadowBuild)
     buildCfCombo = waitForObject("{leftWidget=':scrollArea.Edit build configuration:_QLabel' "
                                  "type='QComboBox' unnamed='1' visible='1'}")
     if shouldBeDebug:
@@ -185,12 +185,12 @@ def verifyBuildConfig(currentTarget, configName, shouldBeDebug=False, enableShad
         # Since waitForObject waits for the object to be enabled,
         # it will wait here until compilation of the debug libraries has finished.
         if currentTarget not in (Targets.DESKTOP_4_8_7_DEFAULT, Targets.EMBEDDED_LINUX):
-            qmlDebuggingCombo = findObject(':Qt Creator.QML debugging and profiling:_QComboBox')
+            qmlDebuggingCombo = findObject(':Qt Hldplugin.QML debugging and profiling:_QComboBox')
             if selectFromCombo(qmlDebuggingCombo, 'Enable'):
                 # Don't rebuild now
                 clickButton(waitForObject(":QML Debugging.No_QPushButton", 5000))
         try:
-            problemFound = waitForObject("{window=':Qt Creator_Core::Internal::MainWindow' "
+            problemFound = waitForObject("{window=':Qt Hldplugin_Core::Internal::MainWindow' "
                                          "type='QLabel' name='problemLabel' visible='1'}", 1000)
             if problemFound:
                 test.warning('%s' % problemFound.text)
@@ -198,7 +198,7 @@ def verifyBuildConfig(currentTarget, configName, shouldBeDebug=False, enableShad
             pass
     else:
         if currentTarget not in (Targets.DESKTOP_4_8_7_DEFAULT, Targets.EMBEDDED_LINUX):
-            qmlDebuggingCombo = findObject(':Qt Creator.QML debugging and profiling:_QComboBox')
+            qmlDebuggingCombo = findObject(':Qt Hldplugin.QML debugging and profiling:_QComboBox')
             if selectFromCombo(qmlDebuggingCombo, "Disable"):
                 test.log("Qml debugging libraries are available - unchecked qml debugging.")
                 # Don't rebuild now
@@ -232,4 +232,4 @@ def runVerify():
             checkCompile()
             continue
         verifyBuildAndRun()
-        mouseClick(waitForObject(":*Qt Creator.Clear_QToolButton"))
+        mouseClick(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))

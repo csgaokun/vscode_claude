@@ -49,7 +49,7 @@ def default_python3():
                   existing_path(os.path.join(path, 'python' + postfix))))
 
 def get_arguments():
-    parser = argparse.ArgumentParser(description='Build Qt Creator for packaging')
+    parser = argparse.ArgumentParser(description='Build Qt Hldplugin for packaging')
     parser.add_argument('--src', help='path to sources', required=True)
     parser.add_argument('--build', help='path that should be used for building', required=True)
     parser.add_argument('--qt-path', help='Path to Qt', required=True)
@@ -73,8 +73,8 @@ def get_arguments():
                         help='Path to python libraries for use by cdbextension (Windows)')
 
     parser.add_argument('--app-target', help='File name of the executable / app bundle',
-                        default=('Qt Creator.app' if common.is_mac_platform()
-                                 else 'qtcreator'))
+                        default=('Qt Hldplugin.app' if common.is_mac_platform()
+                                 else 'qthldplugin'))
     parser.add_argument('--python3', help='File path to python3 executable for generating translations',
                         default=default_python3())
 
@@ -100,7 +100,7 @@ def get_arguments():
                         default='')
     return parser.parse_args()
 
-def build_qtcreator(args, paths):
+def build_qthldplugin(args, paths):
     if not os.path.exists(paths.build):
         os.makedirs(paths.build)
     prefix_paths = [paths.qt]
@@ -135,7 +135,7 @@ def build_qtcreator(args, paths):
                            '-DCMAKE_CXX_COMPILER=cl']
         cmake_args += ['-DBUILD_EXECUTABLE_WIN32INTERRUPT=OFF',
                        '-DBUILD_EXECUTABLE_WIN64INTERRUPT=OFF',
-                       '-DBUILD_LIBRARY_QTCREATORCDBEXT=OFF']
+                       '-DBUILD_LIBRARY_QTHLDPLUGINCDBEXT=OFF']
         if args.python_path:
             python_library = glob.glob(os.path.join(args.python_path, 'libs', 'python??.lib'))
             if python_library:
@@ -149,7 +149,7 @@ def build_qtcreator(args, paths):
     if ide_revision:
         cmake_args += ['-DIDE_REVISION=ON',
                        '-DIDE_REVISION_STR=' + ide_revision,
-                       '-DIDE_REVISION_URL=https://code.qt.io/cgit/qt-creator/qt-creator.git/log/?id=' + ide_revision]
+                       '-DIDE_REVISION_URL=https://code.qt.io/cgit/qt-hldplugin/qt-hldplugin.git/log/?id=' + ide_revision]
 
     cmake_args += args.config_args
 
@@ -177,27 +177,27 @@ def build_qtcreator(args, paths):
 def build_wininterrupt(args, paths):
     if not common.is_windows_platform():
         return
-    # assumes existing Qt Creator build
+    # assumes existing Qt Hldplugin build
     cmake_args = ['-DBUILD_EXECUTABLE_WIN32INTERRUPT=ON',
                   '-DBUILD_EXECUTABLE_WIN64INTERRUPT=ON',
-                  '-DBUILD_LIBRARY_QTCREATORCDBEXT=OFF']
+                  '-DBUILD_LIBRARY_QTHLDPLUGINCDBEXT=OFF']
     common.check_print_call(['cmake'] + cmake_args + [paths.src], paths.build)
     common.check_print_call(['cmake', '--build', '.'], paths.build)
     common.check_print_call(['cmake', '--install', '.', '--prefix', paths.wininterrupt_install,
                              '--component', 'wininterrupt'],
                             paths.build)
 
-def build_qtcreatorcdbext(args, paths):
+def build_qthldplugincdbext(args, paths):
     if args.no_cdb:
         return
-    # assumes existing Qt Creator build
+    # assumes existing Qt Hldplugin build
     cmake_args = ['-DBUILD_EXECUTABLE_WIN32INTERRUPT=OFF',
                   '-DBUILD_EXECUTABLE_WIN64INTERRUPT=OFF',
-                  '-DBUILD_LIBRARY_QTCREATORCDBEXT=ON']
+                  '-DBUILD_LIBRARY_QTHLDPLUGINCDBEXT=ON']
     common.check_print_call(['cmake'] + cmake_args + [paths.src], paths.build)
     common.check_print_call(['cmake', '--build', '.'], paths.build)
-    common.check_print_call(['cmake', '--install', '.', '--prefix', paths.qtcreatorcdbext_install,
-                             '--component', 'qtcreatorcdbext'],
+    common.check_print_call(['cmake', '--install', '.', '--prefix', paths.qthldplugincdbext_install,
+                             '--component', 'qthldplugincdbext'],
                             paths.build)
 
 def deploy_qt(args, paths):
@@ -228,14 +228,14 @@ def deploy_qt(args, paths):
         common.check_print_call(cmd_args + [exe, os.path.join(paths.qt, 'bin', 'qmake')],
                                 paths.build)
 
-def package_qtcreator(args, paths):
+def package_qthldplugin(args, paths):
     if not args.no_zip:
         common.check_print_call(['7z', 'a', '-mmt2',
-                                 os.path.join(paths.result, 'qtcreator' + args.zip_infix + '.7z'),
+                                 os.path.join(paths.result, 'qthldplugin' + args.zip_infix + '.7z'),
                                  '*'],
                                 paths.install)
         common.check_print_call(['7z', 'a', '-mmt2',
-                                 os.path.join(paths.result, 'qtcreator' + args.zip_infix + '_dev.7z'),
+                                 os.path.join(paths.result, 'qthldplugin' + args.zip_infix + '_dev.7z'),
                                  '*'],
                                 paths.dev_install)
         if common.is_windows_platform():
@@ -245,9 +245,9 @@ def package_qtcreator(args, paths):
                                     paths.wininterrupt_install)
             if not args.no_cdb:
                 common.check_print_call(['7z', 'a', '-mmt2',
-                                         os.path.join(paths.result, 'qtcreatorcdbext' + args.zip_infix + '.7z'),
+                                         os.path.join(paths.result, 'qthldplugincdbext' + args.zip_infix + '.7z'),
                                          '*'],
-                                        paths.qtcreatorcdbext_install)
+                                        paths.qthldplugincdbext_install)
 
     if common.is_mac_platform():
         if args.keychain_unlock_script:
@@ -255,8 +255,8 @@ def package_qtcreator(args, paths):
         if not args.no_dmg:
             common.check_print_call(['python', '-u',
                                      os.path.join(paths.src, 'scripts', 'makedmg.py'),
-                                     'qt-creator' + args.zip_infix + '.dmg',
-                                     'Qt Creator',
+                                     'qt-hldplugin' + args.zip_infix + '.dmg',
+                                     'Qt Hldplugin',
                                      paths.src,
                                      paths.install],
                                     paths.result)
@@ -265,17 +265,17 @@ def get_paths(args):
     Paths = collections.namedtuple('Paths',
                                    ['qt', 'src', 'build',
                                     'install', 'dev_install', 'wininterrupt_install',
-                                    'qtcreatorcdbext_install', 'result',
+                                    'qthldplugincdbext_install', 'result',
                                     'elfutils', 'llvm'])
     build_path = os.path.abspath(args.build)
     install_path = os.path.join(build_path, 'install')
     return Paths(qt=os.path.abspath(args.qt_path),
                  src=os.path.abspath(args.src),
                  build=os.path.join(build_path, 'build'),
-                 install=os.path.join(install_path, 'qt-creator'),
-                 dev_install=os.path.join(install_path, 'qt-creator-dev'),
+                 install=os.path.join(install_path, 'qt-hldplugin'),
+                 dev_install=os.path.join(install_path, 'qt-hldplugin-dev'),
                  wininterrupt_install=os.path.join(install_path, 'wininterrupt'),
-                 qtcreatorcdbext_install=os.path.join(install_path, 'qtcreatorcdbext'),
+                 qthldplugincdbext_install=os.path.join(install_path, 'qthldplugincdbext'),
                  result=build_path,
                  elfutils=os.path.abspath(args.elfutils_path) if args.elfutils_path else None,
                  llvm=os.path.abspath(args.llvm_path) if args.llvm_path else None)
@@ -284,11 +284,11 @@ def main():
     args = get_arguments()
     paths = get_paths(args)
 
-    build_qtcreator(args, paths)
+    build_qthldplugin(args, paths)
     build_wininterrupt(args, paths)
-    build_qtcreatorcdbext(args, paths)
+    build_qthldplugincdbext(args, paths)
     deploy_qt(args, paths)
-    package_qtcreator(args, paths)
+    package_qthldplugin(args, paths)
 
 if __name__ == '__main__':
     main()

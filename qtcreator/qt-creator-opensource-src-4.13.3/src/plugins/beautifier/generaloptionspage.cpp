@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Lorenz Haas
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -74,7 +74,7 @@ GeneralOptionsPage::GeneralOptionsPage(const QStringList &toolIds)
     setDisplayName(GeneralOptionsPageWidget::tr("General"));
     setCategory(Constants::OPTION_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("Beautifier", "Beautifier"));
-    setWidgetCreator([toolIds] { return new GeneralOptionsPageWidget(toolIds); });
+    setWidgetHldplugin([toolIds] { return new GeneralOptionsPageWidget(toolIds); });
     setCategoryIconPath(":/beautifier/images/settingscategory_beautifier.png");
 }
 

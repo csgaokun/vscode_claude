@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -94,10 +94,10 @@ public:
         addMimeType(CppTools::Constants::QDOC_MIMETYPE);
         addMimeType(CppTools::Constants::MOC_MIMETYPE);
 
-        setDocumentCreator([]() { return new CppEditorDocument; });
-        setEditorWidgetCreator([]() { return new CppEditorWidget; });
-        setEditorCreator([]() { return new CppEditor; });
-        setAutoCompleterCreator([]() { return new CppAutoCompleter; });
+        setDocumentHldplugin([]() { return new CppEditorDocument; });
+        setEditorWidgetHldplugin([]() { return new CppEditorWidget; });
+        setEditorHldplugin([]() { return new CppEditor; });
+        setAutoCompleterHldplugin([]() { return new CppAutoCompleter; });
         setCommentDefinition(CommentDefinition::CppStyle);
         setCodeFoldingSupported(true);
         setParenthesesMatchingEnabled(true);
@@ -288,13 +288,13 @@ void CppEditorPlugin::extensionsInitialized()
 
     if (!HostOsInfo::isMacHost() && !HostOsInfo::isWindowsHost()) {
         FileIconProvider::registerIconOverlayForMimeType(
-            creatorTheme()->imageFile(Theme::IconOverlayCppSource, ":/cppeditor/images/qt_cpp.png"),
+            hldpluginTheme()->imageFile(Theme::IconOverlayCppSource, ":/cppeditor/images/qt_cpp.png"),
             CppTools::Constants::CPP_SOURCE_MIMETYPE);
         FileIconProvider::registerIconOverlayForMimeType(
-            creatorTheme()->imageFile(Theme::IconOverlayCSource, ":/cppeditor/images/qt_c.png"),
+            hldpluginTheme()->imageFile(Theme::IconOverlayCSource, ":/cppeditor/images/qt_c.png"),
             CppTools::Constants::C_SOURCE_MIMETYPE);
         FileIconProvider::registerIconOverlayForMimeType(
-            creatorTheme()->imageFile(Theme::IconOverlayCppHeader, ":/cppeditor/images/qt_h.png"),
+            hldpluginTheme()->imageFile(Theme::IconOverlayCppHeader, ":/cppeditor/images/qt_h.png"),
             CppTools::Constants::CPP_HEADER_MIMETYPE);
     }
 }

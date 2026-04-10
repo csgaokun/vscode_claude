@@ -1,17 +1,17 @@
-Qt Creator version 3.4 contains bug fixes and new features.
+Qt Hldplugin version 3.4 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://code.qt.io/qt-creator/qt-creator.git
+git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline origin/3.3..origin/3.4
 
 General
-   * Added option to change environment for running external tools (QTCREATORBUG-4995)
+   * Added option to change environment for running external tools (QTHLDPLUGINBUG-4995)
    * Improved performance of output panes
-   * Fixed that wizard windows were missing in Window menu (QTCREATORBUG-13766)
-   * Fixed that editing external tools was removing their shortcut (QTCREATORBUG-8108)
+   * Fixed that wizard windows were missing in Window menu (QTHLDPLUGINBUG-13766)
+   * Fixed that editing external tools was removing their shortcut (QTHLDPLUGINBUG-8108)
 
 Editing
    * Switched to a QMimeDatabase based MIME database implementation
@@ -19,8 +19,8 @@ Editing
    * Added "Copy Path and Line Number" to context menu of document selector
    * Added parenthesis highlighting to generic highlighter
    * Fixed that files with same file name but different path were not distinguishable
-     in document selector and open documents pane (QTCREATORBUG-10185)
-   * Fixed that symlinks and their target could be opened at the same time (QTCREATORBUG-5941)
+     in document selector and open documents pane (QTHLDPLUGINBUG-10185)
+   * Fixed that symlinks and their target could be opened at the same time (QTHLDPLUGINBUG-5941)
    * Fixed that wrong highlight definition was downloaded when sorting the list in the settings
 
 Help
@@ -28,8 +28,8 @@ Help
 
 QMake Projects
     * Added handling of QMAKE_CXXFLAGS_(APP|SHLIB|PLUGIN) variables
-    * Added option to put debug information in separate file (QTCREATORBUG-14009)
-    * Fixed ANSI color support for application output (QTCREATORBUG-13764)
+    * Added option to put debug information in separate file (QTHLDPLUGINBUG-14009)
+    * Fixed ANSI color support for application output (QTHLDPLUGINBUG-13764)
     * Fixed handling of DEFINES with escaped characters
 
 CMake Projects
@@ -43,13 +43,13 @@ QML-Only Projects (.qmlproject)
    * Disabled plugin by default
 
 Debugging
-   * Fixed general tooltip behavior (QTCREATORBUG-13957, QTCREATORBUG-13774 et al)
+   * Fixed general tooltip behavior (QTHLDPLUGINBUG-13957, QTHLDPLUGINBUG-13774 et al)
    * Improved display of register contents
    * Added various display options for QByteArray, QString, std::string and char[]
    * Added dumpers for QPolygon{,F} and QGraphicsPolygonItem
    * Updated QV4::Value and std::unordered_* dumpers
-   * Fixed display of location marker in mixed master engine (QTCREATORBUG-13695)
-   * Allowed evaluation of children of evaluated expressions (QTCREATORBUG-5920)
+   * Fixed display of location marker in mixed master engine (QTHLDPLUGINBUG-13695)
+   * Allowed evaluation of children of evaluated expressions (QTHLDPLUGINBUG-5920)
    * Added %{Debugger:Name,Type,Version,...} expandable macros for use in kits
    * Fixed reloading of dumpers within a running debugger session
    * Fixed "Show Address" stack window context menu action
@@ -68,17 +68,17 @@ Debugging
        * Improved optional import of GDB's own pretty printers
        * Added experimental code for native combined QML and C++ debugging
    * LLDB:
-       * Fixed debugging of console applications (QTCREATORBUG-13803)
+       * Fixed debugging of console applications (QTHLDPLUGINBUG-13803)
        * Avoided unwanted disassembler display on certain application start ups
-       * Fixed ramp down of LLDB process on exit (QTCREATORBUG-14083)
+       * Fixed ramp down of LLDB process on exit (QTHLDPLUGINBUG-14083)
        * Fixed array access with long indices
        * Improved handling of user-defined dumpers
        * Inverted LLDB/Python startup order to ensure use of suitable Python version
    * CDB:
        * Limited string size in QByteArray dumper
-       * Fixed QDateTime dumper (QTCREATORBUG-13263)
+       * Fixed QDateTime dumper (QTHLDPLUGINBUG-13263)
        * Fixed handling of added evaluated expressions
-       * Fixed expression returned for watchers (QTCREATORBUG-12801)
+       * Fixed expression returned for watchers (QTHLDPLUGINBUG-12801)
        * Improved detection of used Qt version
        * Added support for Qt builds with namespaces and libinfix
    * PDB:
@@ -90,54 +90,54 @@ Analyzer
    * Added Valgrind Memory Analyzer with GDB
 
 QML Profiler
-   * Made it possible to search through event notes (QTCREATORBUG-13417)
-   * Made it possible to horizontally resize details windows (QTCREATORBUG-14054)
+   * Made it possible to search through event notes (QTHLDPLUGINBUG-13417)
+   * Made it possible to horizontally resize details windows (QTHLDPLUGINBUG-14054)
 
 C++ Support
    * Added support for binary literals (n3472)
-   * Added locator filter for all included files (QTCREATORBUG-280)
+   * Added locator filter for all included files (QTHLDPLUGINBUG-280)
    * Added refactoring action that moves all function definitions out of a class declaration
    * Added support for signal and slot completion in Qt 5 style connects
    * Improved support for non-Qt projects that use Qt keywords
-   * Made auto-completion delay configurable (QTCREATORBUG-13393)
-   * Fixed auto-indentation for break in switch statement (QTCREATORBUG-13155)
-   * Fixed issues with case-insensitive file systems (QTCREATORBUG-12390)
-   * Fixed completion for enums inside member functions (QTCREATORBUG-13757)
-   * Fixed crash on closing one of multiple outline views (QTCREATORBUG-13614)
+   * Made auto-completion delay configurable (QTHLDPLUGINBUG-13393)
+   * Fixed auto-indentation for break in switch statement (QTHLDPLUGINBUG-13155)
+   * Fixed issues with case-insensitive file systems (QTHLDPLUGINBUG-12390)
+   * Fixed completion for enums inside member functions (QTHLDPLUGINBUG-13757)
+   * Fixed crash on closing one of multiple outline views (QTHLDPLUGINBUG-13614)
    * Fixed that Move Definition to Class refactoring action was not available when using "override"
-     (QTCREATORBUG-13564)
+     (QTHLDPLUGINBUG-13564)
    * Fixed that Assign to Local Variable refactoring action was not working with chained
-     function calls (QTCREATORBUG-10355)
-   * Fixed several issues with completion and iterators (QTCREATORBUG-13799)
-   * Fixed resolution of nested types in member functions (QTCREATORBUG-13978)
-   * Fixed parsing of function-like macros with comments (QTCREATORBUG-9535)
+     function calls (QTHLDPLUGINBUG-10355)
+   * Fixed several issues with completion and iterators (QTHLDPLUGINBUG-13799)
+   * Fixed resolution of nested types in member functions (QTHLDPLUGINBUG-13978)
+   * Fixed parsing of function-like macros with comments (QTHLDPLUGINBUG-9535)
 
 QML Support
-   * Fixed crash on closing one of multiple outline views (QTCREATORBUG-13614)
-   * Fixed crash in PathsAndLanguages::compact (QTCREATORBUG-13786)
+   * Fixed crash on closing one of multiple outline views (QTHLDPLUGINBUG-13614)
+   * Fixed crash in PathsAndLanguages::compact (QTHLDPLUGINBUG-13786)
 
 Version Control Systems
    * Git
-      * Added support for "git stash --keep-index" (QTCREATORBUG-13587)
+      * Added support for "git stash --keep-index" (QTHLDPLUGINBUG-13587)
    * Gerrit
-      * Fixed that it was not possible to abort query and fetch (QTCREATORBUG-9743)
-      * Fixed that not all remotes where shown in Push to Gerrit dialog (QTCREATORBUG-13718)
+      * Fixed that it was not possible to abort query and fetch (QTHLDPLUGINBUG-9743)
+      * Fixed that not all remotes where shown in Push to Gerrit dialog (QTHLDPLUGINBUG-13718)
    * Subversion
       * Added option to show verbose log
       * Changed to use the new unified diff viewer
       * Fixed that committing failed when using non-Latin1 characters in commit message
-        (QTCREATORBUG-13979)
+        (QTHLDPLUGINBUG-13979)
    * Perforce
-      * Improved repository log (QTCREATORBUG-13526)
+      * Improved repository log (QTHLDPLUGINBUG-13526)
    * Bazaar
-      * Fixed committing (QTCREATORBUG-13878)
+      * Fixed committing (QTHLDPLUGINBUG-13878)
 
 FakeVim
    * Fixed target column for various commands
    * Fixed behavior of D in visual block mode
    * Fixed cursor shape after failing search
    * Fixed cursor shape when selecting using the mouse
-   * Fixed issues with pasting in presence of splits (QTCREATORBUG-13481)
+   * Fixed issues with pasting in presence of splits (QTHLDPLUGINBUG-13481)
    * Fixed black hole and yank register
    * Fixed cursor shape after failed searches
    * Fixed some off-by-one cursor positioning error at document end
@@ -147,34 +147,34 @@ FakeVim
    * Improved handling of upper case registers
    * Implemented C-u in insert mode
    * Implemented operations on paragraph objects
-   * Changed default key sequence for mode activation on OS X (QTCREATORBUG-14082)
+   * Changed default key sequence for mode activation on OS X (QTHLDPLUGINBUG-14082)
 
 Platform Specific
 
 Windows
 
 OS X
-   * Fixed that importing builds of qmake projects was duplicating kits (QTCREATORBUG-13947)
+   * Fixed that importing builds of qmake projects was duplicating kits (QTHLDPLUGINBUG-13947)
 
 Linux
    * Added support to retrieve application output from journald.
 
      Journald support needs to be explicitly enabled by passing CONFIG+=journald to
-     qmake when configuring Qt Creator.
+     qmake when configuring Qt Hldplugin.
 
 Android
    * Added support for 64bit tool chains
    * Fixed that active run configuration setting was ignored for deploying application
-     (QTCREATORBUG-13732)
+     (QTHLDPLUGINBUG-13732)
 
 Remote Linux
-   * Added optional host key checking (QTCREATORBUG-13339)
+   * Added optional host key checking (QTHLDPLUGINBUG-13339)
    * Added automatic closing of SSH connections after a period of inactivity
    * Added support for SHA-256 HMAC for SSH
-   * Fixed that it was not possible to quote run arguments (QTCREATORBUG-14002)
+   * Fixed that it was not possible to quote run arguments (QTHLDPLUGINBUG-14002)
 
 BareMetal
-   * Added GDB server configuration management (QTCREATORBUG-13686)
+   * Added GDB server configuration management (QTHLDPLUGINBUG-13686)
    * Added support for remote channel without port
    * Added support for generic projects
 

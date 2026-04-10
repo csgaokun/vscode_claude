@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -334,7 +334,7 @@ F2TestCase::F2TestCase(CppEditorAction action,
             const QString curTestName = QLatin1String(QTest::currentTestFunction());
             if (curTestName == "test_FollowSymbolUnderCursor_QObject_connect"
                     || curTestName == "test_FollowSymbolUnderCursor_virtualFunctionCall"
-                    || curTestName == "test_FollowSymbolUnderCursor_QTCREATORBUG7903") {
+                    || curTestName == "test_FollowSymbolUnderCursor_QTHLDPLUGINBUG7903") {
                 QSKIP((curTestName + " is not supported by Clang FollowSymbol").toLatin1());
             }
 
@@ -977,7 +977,7 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor_data()
         "void Foo::foo(const int&) {}\n"
     );
 
-    QTest::newRow("infiniteLoopLocalTypedef_QTCREATORBUG-11999") << _(
+    QTest::newRow("infiniteLoopLocalTypedef_QTHLDPLUGINBUG-11999") << _(
         "template<class MyTree>\n"
         "class TreeConstIterator\n"
         "{\n"
@@ -1018,10 +1018,10 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor()
     F2TestCase(F2TestCase::FollowSymbolUnderCursorAction, singleDocument(source));
 }
 
-void CppEditorPlugin::test_FollowSymbolUnderCursor_QTCREATORBUG7903_data()
+void CppEditorPlugin::test_FollowSymbolUnderCursor_QTHLDPLUGINBUG7903_data()
 {
     QTest::addColumn<QByteArray>("source");
-    QTest::newRow("using_QTCREATORBUG7903_globalNamespace") << _(
+    QTest::newRow("using_QTHLDPLUGINBUG7903_globalNamespace") << _(
         "namespace NS {\n"
         "class Foo {};\n"
         "}\n"
@@ -1032,7 +1032,7 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor_QTCREATORBUG7903_data()
         "}\n"
     );
 
-    QTest::newRow("using_QTCREATORBUG7903_namespace") << _(
+    QTest::newRow("using_QTHLDPLUGINBUG7903_namespace") << _(
         "namespace NS {\n"
         "class Foo {};\n"
         "}\n"
@@ -1045,7 +1045,7 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor_QTCREATORBUG7903_data()
         "}\n"
     );
 
-    QTest::newRow("using_QTCREATORBUG7903_insideFunction") << _(
+    QTest::newRow("using_QTHLDPLUGINBUG7903_insideFunction") << _(
         "namespace NS {\n"
         "class Foo {};\n"
         "}\n"
@@ -1057,7 +1057,7 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor_QTCREATORBUG7903_data()
     );
 }
 
-void CppEditorPlugin::test_FollowSymbolUnderCursor_QTCREATORBUG7903()
+void CppEditorPlugin::test_FollowSymbolUnderCursor_QTHLDPLUGINBUG7903()
 {
     QFETCH(QByteArray, source);
     F2TestCase(F2TestCase::FollowSymbolUnderCursorAction, singleDocument(source));
@@ -1302,7 +1302,7 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor_QObject_connect()
         source.replace(" &foo, ", QByteArray());
 
     if (start >= '7' && !secondQObjectParam) {
-        qWarning("SLOT jump triggers QTCREATORBUG-10265. Skipping.");
+        qWarning("SLOT jump triggers QTHLDPLUGINBUG-10265. Skipping.");
         return;
     }
 
@@ -1618,7 +1618,7 @@ void CppEditorPlugin::test_FollowSymbolUnderCursor_virtualFunctionCall_data()
             << OverrideItem(QLatin1String("Base::virt"), 1)
             << OverrideItem(QLatin1String("Derived::virt"), 2));
 
-    QTest::newRow("QTCREATORBUG-10294_cursorIsAtTheEndOfVirtualFunctionName") << _(
+    QTest::newRow("QTHLDPLUGINBUG-10294_cursorIsAtTheEndOfVirtualFunctionName") << _(
             "struct Base { virtual void virt() {} };\n"
             "struct Derived : Base { void virt() {} };\n"
             "void client(Base *b) { b->virt$@(); }\n")

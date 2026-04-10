@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -101,7 +101,7 @@ bool PythonPlugin::initialize(const QStringList &arguments, QString *errorMessag
 void PythonPlugin::extensionsInitialized()
 {
     // Add MIME overlay icons (these icons displayed at Project dock panel)
-    QString imageFile = Utils::creatorTheme()->imageFile(Utils::Theme::IconOverlayPro,
+    QString imageFile = Utils::hldpluginTheme()->imageFile(Utils::Theme::IconOverlayPro,
                                                          Constants::FILEOVERLAY_PY);
     Core::FileIconProvider::registerIconOverlayForSuffix(imageFile, "py");
 

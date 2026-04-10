@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 isEmpty(ANDROID_ENABLE):ANDROID_EXPERIMENTAL_STR="true"
 else:ANDROID_EXPERIMENTAL_STR="false"

@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -28,10 +28,10 @@
 """
 A simple program that parses untranslated.ts files
 
-current directory *must* be the top level qtcreator source directory
+current directory *must* be the top level qthldplugin source directory
 
 Usage:
-    scripts/uichanges.py old_untranslated.ts qtcreator_untranslated.ts
+    scripts/uichanges.py old_untranslated.ts qthldplugin_untranslated.ts
 
     IN TOP LEVEL QTC SOURCE DIRECTORY!
 """
@@ -42,7 +42,7 @@ import subprocess
 from xml.sax import saxutils, handler, make_parser
 
 baseDir = os.getcwd()
-transDir = os.path.join(baseDir, 'share/qtcreator/translations')
+transDir = os.path.join(baseDir, 'share/qthldplugin/translations')
 unchangedContexts = 0
 
 # --- The ContentHandler

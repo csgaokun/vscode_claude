@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ Usage: krazy2tasks.pl outputfile
 
 Runs KDE's Krazy2 code scanning tool on .cpp/.h files it finds below the
 the working directory, filters and converts the output into a .tasks file
-that can be loaded into Qt Creator's build issues pane via 'Open'.
+that can be loaded into Qt Hldplugin's build issues pane via 'Open'.
 EOF
    print $usage;
    exit(0);

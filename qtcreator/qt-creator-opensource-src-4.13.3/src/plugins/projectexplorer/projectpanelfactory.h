@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -57,7 +57,7 @@ public:
     // interface for users of ProjectPanelFactory
     bool supports(Project *project);
 
-    using WidgetCreator = std::function<QWidget *(Project *)>;
+    using WidgetHldplugin = std::function<QWidget *(Project *)>;
 
     // interface for "implementations" of ProjectPanelFactory
     // by default all projects are supported, only set a custom supports function
@@ -75,7 +75,7 @@ public:
     QString icon() const;
     void setIcon(const QString &icon);
 
-    void setCreateWidgetFunction(const WidgetCreator &createWidgetFunction);
+    void setCreateWidgetFunction(const WidgetHldplugin &createWidgetFunction);
     QWidget *createWidget(Project *project) const;
 
 private:
@@ -86,7 +86,7 @@ private:
     int m_priority = 0;
     QString m_displayName;
     SupportsFunction m_supportsFunction;
-    WidgetCreator m_widgetCreator;
+    WidgetHldplugin m_widgetHldplugin;
     QString m_icon;
 };
 

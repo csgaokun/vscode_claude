@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -144,9 +144,9 @@ private:
 class PROJECTEXPLORER_EXPORT RunWorkerFactory final
 {
 public:
-    using WorkerCreator = std::function<RunWorker *(RunControl *)>;
+    using WorkerHldplugin = std::function<RunWorker *(RunControl *)>;
 
-    RunWorkerFactory(const WorkerCreator &producer,
+    RunWorkerFactory(const WorkerHldplugin &producer,
                      const QList<Utils::Id> &runModes,
                      const QList<Utils::Id> &runConfigs = {},
                      const QList<Utils::Id> &deviceTypes = {});
@@ -154,10 +154,10 @@ public:
     ~RunWorkerFactory();
 
     bool canRun(Utils::Id runMode, Utils::Id deviceType, const QString &runConfigId) const;
-    WorkerCreator producer() const { return m_producer; }
+    WorkerHldplugin producer() const { return m_producer; }
 
     template <typename Worker>
-    static WorkerCreator make()
+    static WorkerHldplugin make()
     {
         return [](RunControl *runControl) { return new Worker(runControl); };
     }
@@ -166,7 +166,7 @@ public:
     static void dumpAll();
 
 private:
-    WorkerCreator m_producer;
+    WorkerHldplugin m_producer;
     QList<Utils::Id> m_supportedRunModes;
     QList<Utils::Id> m_supportedRunConfigurations;
     QList<Utils::Id> m_supportedDeviceTypes;
@@ -313,11 +313,11 @@ public:
     static QList<Utils::OutputLineParser *> createFormatters(Target *target);
 
 protected:
-    using FormatterCreator = std::function<QList<Utils::OutputLineParser *>(Target *)>;
-    void setFormatterCreator(const FormatterCreator &creator);
+    using FormatterHldplugin = std::function<QList<Utils::OutputLineParser *>(Target *)>;
+    void setFormatterHldplugin(const FormatterHldplugin &hldplugin);
 
 private:
-    FormatterCreator m_creator;
+    FormatterHldplugin m_hldplugin;
 };
 
 } // namespace ProjectExplorer

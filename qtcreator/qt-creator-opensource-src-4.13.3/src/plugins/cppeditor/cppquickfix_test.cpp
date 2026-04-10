@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -526,7 +526,7 @@ void CppEditorPlugin::test_quickfix_data()
     );
 
     // Checks: Find the correct enum type despite there being a declaration with the same name.
-    QTest::newRow("CompleteSwitchCaseStatement_QTCREATORBUG10366_1")
+    QTest::newRow("CompleteSwitchCaseStatement_QTHLDPLUGINBUG10366_1")
         << CppQuickFixFactoryPtr(new CompleteSwitchCaseStatement) << _(
         "enum test { TEST_1, TEST_2 };\n"
         "\n"
@@ -550,7 +550,7 @@ void CppEditorPlugin::test_quickfix_data()
     );
 
     // Checks: Find the correct enum type despite there being a declaration with the same name.
-    QTest::newRow("CompleteSwitchCaseStatement_QTCREATORBUG10366_2")
+    QTest::newRow("CompleteSwitchCaseStatement_QTHLDPLUGINBUG10366_2")
         << CppQuickFixFactoryPtr(new CompleteSwitchCaseStatement) << _(
         "enum test1 { Wrong11, Wrong12 };\n"
         "enum test { Right1, Right2 };\n"
@@ -1289,7 +1289,7 @@ void CppEditorPlugin::test_quickfix_data()
         "}\n"
     );
 
-    // Check: Add local variable for a member function, cursor in the middle (QTCREATORBUG-10355)
+    // Check: Add local variable for a member function, cursor in the middle (QTHLDPLUGINBUG-10355)
     QTest::newRow("AssignToLocalVariable_memberFunction2ndGrade1")
         << CppQuickFixFactoryPtr(new AssignToLocalVariable) << _(
         "struct Foo {int* func();};\n"
@@ -1307,7 +1307,7 @@ void CppEditorPlugin::test_quickfix_data()
         "}"
     );
 
-    // Check: Add local variable for a member function, cursor on function call (QTCREATORBUG-10355)
+    // Check: Add local variable for a member function, cursor on function call (QTHLDPLUGINBUG-10355)
     QTest::newRow("AssignToLocalVariable_memberFunction2ndGrade2")
         << CppQuickFixFactoryPtr(new AssignToLocalVariable) << _(
         "struct Foo {int* func();};\n"
@@ -1398,7 +1398,7 @@ void CppEditorPlugin::test_quickfix_data()
         "void baz() {foo(@bar() + bar());}"
         ) << _();
 
-    // Check: No trigger for functions in functions. (QTCREATORBUG-9510)
+    // Check: No trigger for functions in functions. (QTHLDPLUGINBUG-9510)
     QTest::newRow("AssignToLocalVariable_noFunctionInFunction")
         << CppQuickFixFactoryPtr(new AssignToLocalVariable) << _(
         "int foo(int a, int b) {return a + b;}\n"
@@ -1417,7 +1417,7 @@ void CppEditorPlugin::test_quickfix_data()
         "}"
         ) << _();
 
-    // Check: No trigger for functions in return statements (classes). (QTCREATORBUG-9525)
+    // Check: No trigger for functions in return statements (classes). (QTHLDPLUGINBUG-9525)
     QTest::newRow("AssignToLocalVariable_noReturnClass2")
         << CppQuickFixFactoryPtr(new AssignToLocalVariable) << _(
         "class Foo {public: int fooFunc();}\n"
@@ -1435,7 +1435,7 @@ void CppEditorPlugin::test_quickfix_data()
         "}"
         ) << _();
 
-    // Check: No trigger for functions in return statements (functions). (QTCREATORBUG-9525)
+    // Check: No trigger for functions in return statements (functions). (QTHLDPLUGINBUG-9525)
     QTest::newRow("AssignToLocalVariable_noReturnFunc2")
         << CppQuickFixFactoryPtr(new AssignToLocalVariable) << _(
         "int bar() {\n"
@@ -1918,32 +1918,32 @@ void CppEditorPlugin::test_quickfix_data()
                              "    %2\n"
                              "}\n";
 
-    QTest::newRow("ConvertToStack1_QTCREATORBUG23181")
+    QTest::newRow("ConvertToStack1_QTHLDPLUGINBUG23181")
         << CppQuickFixFactoryPtr(new ConvertFromAndToPointer)
         << _(testObjAndFunc.arg("int").arg("Object *@obj = new Object(0);").toUtf8())
         << _(testObjAndFunc.arg("int").arg("Object obj(0);").toUtf8());
 
-    QTest::newRow("ConvertToStack2_QTCREATORBUG23181")
+    QTest::newRow("ConvertToStack2_QTHLDPLUGINBUG23181")
         << CppQuickFixFactoryPtr(new ConvertFromAndToPointer)
         << _(testObjAndFunc.arg("int").arg("Object *@obj = new Object{0};").toUtf8())
         << _(testObjAndFunc.arg("int").arg("Object obj{0};").toUtf8());
 
-    QTest::newRow("ConvertToPointer1_QTCREATORBUG23181")
+    QTest::newRow("ConvertToPointer1_QTHLDPLUGINBUG23181")
         << CppQuickFixFactoryPtr(new ConvertFromAndToPointer)
         << _(testObjAndFunc.arg("").arg("Object @obj;").toUtf8())
         << _(testObjAndFunc.arg("").arg("Object *obj = new Object;").toUtf8());
 
-    QTest::newRow("ConvertToPointer2_QTCREATORBUG23181")
+    QTest::newRow("ConvertToPointer2_QTHLDPLUGINBUG23181")
         << CppQuickFixFactoryPtr(new ConvertFromAndToPointer)
         << _(testObjAndFunc.arg("").arg("Object @obj();").toUtf8())
         << _(testObjAndFunc.arg("").arg("Object *obj = new Object();").toUtf8());
 
-    QTest::newRow("ConvertToPointer3_QTCREATORBUG23181")
+    QTest::newRow("ConvertToPointer3_QTHLDPLUGINBUG23181")
         << CppQuickFixFactoryPtr(new ConvertFromAndToPointer)
         << _(testObjAndFunc.arg("").arg("Object @obj{};").toUtf8())
         << _(testObjAndFunc.arg("").arg("Object *obj = new Object{};").toUtf8());
 
-    QTest::newRow("ConvertToPointer4_QTCREATORBUG23181")
+    QTest::newRow("ConvertToPointer4_QTHLDPLUGINBUG23181")
         << CppQuickFixFactoryPtr(new ConvertFromAndToPointer)
         << _(testObjAndFunc.arg("int").arg("Object @obj(0);").toUtf8())
         << _(testObjAndFunc.arg("int").arg("Object *obj = new Object(0);").toUtf8());
@@ -2812,7 +2812,7 @@ void CppEditorPlugin::test_quickfix_InsertDefFromDecl_rvalueReference()
     QuickFixOperationTest(testDocuments, &factory);
 }
 
-/// Find right implementation file. (QTCREATORBUG-10728)
+/// Find right implementation file. (QTHLDPLUGINBUG-10728)
 void CppEditorPlugin::test_quickfix_InsertDefFromDecl_findImplementationFile()
 {
     QList<QuickFixTestDocument::Ptr> testDocuments;
@@ -4381,7 +4381,7 @@ void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_FreeFuncToCppNS()
     QuickFixOperationTest(testDocuments, &factory);
 }
 
-/// Check: Move Ctor with member initialization list (QTCREATORBUG-9157).
+/// Check: Move Ctor with member initialization list (QTHLDPLUGINBUG-9157).
 void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_CtorWithInitialization1()
 {
     QList<QuickFixTestDocument::Ptr> testDocuments;
@@ -4420,7 +4420,7 @@ void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_CtorWithInitialization1()
     QuickFixOperationTest(testDocuments, &factory);
 }
 
-/// Check: Move Ctor with member initialization list (QTCREATORBUG-9462).
+/// Check: Move Ctor with member initialization list (QTHLDPLUGINBUG-9462).
 void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_CtorWithInitialization2()
 {
     QList<QuickFixTestDocument::Ptr> testDocuments;
@@ -4569,7 +4569,7 @@ void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_macroUses()
         "};\n"
         "\n"
         "\n"
-        // const volatile become lowercase: QTCREATORBUG-12620
+        // const volatile become lowercase: QTHLDPLUGINBUG-12620
         "int Foo::func(int a, int b) const volatile\n"
         "{\n"
         "    return 42;\n"
@@ -4578,7 +4578,7 @@ void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_macroUses()
 
     MoveFuncDefOutside factory;
     QuickFixOperationTest(singleDocument(original, expected), &factory,
-                          ProjectExplorer::HeaderPaths(), 0, "QTCREATORBUG-12314");
+                          ProjectExplorer::HeaderPaths(), 0, "QTHLDPLUGINBUG-12314");
 }
 
 void CppEditorPlugin::test_quickfix_MoveFuncDefOutside_template()
@@ -4875,7 +4875,7 @@ void CppEditorPlugin::test_quickfix_MoveFuncDefToDecl_CtorWithInitialization()
     QuickFixOperationTest(testDocuments, &factory);
 }
 
-/// Check: Definition should not be placed behind the variable. QTCREATORBUG-10303
+/// Check: Definition should not be placed behind the variable. QTHLDPLUGINBUG-10303
 void CppEditorPlugin::test_quickfix_MoveFuncDefToDecl_structWithAssignedVariable()
 {
     QByteArray original =
@@ -4929,7 +4929,7 @@ void CppEditorPlugin::test_quickfix_MoveFuncDefToDecl_macroUses()
 
     MoveFuncDefToDecl factory;
     QuickFixOperationTest(singleDocument(original, expected), &factory,
-                          ProjectExplorer::HeaderPaths(), 0, "QTCREATORBUG-12314");
+                          ProjectExplorer::HeaderPaths(), 0, "QTHLDPLUGINBUG-12314");
 }
 
 void CppEditorPlugin::test_quickfix_MoveFuncDefToDecl_override()
@@ -5126,7 +5126,7 @@ void CppEditorPlugin::test_quickfix_MoveAllFuncDefOutside_classWithBaseClass()
     QuickFixOperationTest(singleDocument(original, expected), &factory);
 }
 
-/// Check: Do not take macro expanded code into account (QTCREATORBUG-13900)
+/// Check: Do not take macro expanded code into account (QTHLDPLUGINBUG-13900)
 void CppEditorPlugin::test_quickfix_MoveAllFuncDefOutside_ignoreMacroCode()
 {
     QByteArray original =

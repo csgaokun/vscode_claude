@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ DeviceSettingsPage::DeviceSettingsPage()
     setCategory(Constants::DEVICE_SETTINGS_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("ProjectExplorer", "Devices"));
     setCategoryIconPath(":/projectexplorer/images/settingscategory_devices.png");
-    setWidgetCreator([] { return new DeviceSettingsWidget; });
+    setWidgetHldplugin([] { return new DeviceSettingsWidget; });
 }
 
 } // namespace Internal

@@ -1,6 +1,6 @@
 QTC_PLUGIN_DEPENDS += coreplugin
 QTC_LIB_DEPENDS += utils
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 
 SOURCES += \
     main.cpp\

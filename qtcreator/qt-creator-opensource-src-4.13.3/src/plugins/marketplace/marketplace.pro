@@ -2,7 +2,7 @@ TARGET = Marketplace
 TEMPLATE = lib
 QT += network
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 DEFINES += MARKETPLACE_LIBRARY
 

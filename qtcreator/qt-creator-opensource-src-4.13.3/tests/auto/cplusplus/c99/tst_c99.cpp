@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -128,7 +128,7 @@ void tst_c99::parse_data()
 
     QTest::newRow("designatedInitializer.1") << "designatedInitializer.1.c" << "";
     QTest::newRow("designatedInitializer.2") << "designatedInitializer.2.c" << "";
-    QTest::newRow("limits-caselabels (QTCREATORBUG-12673)") << "limits-caselabels.c" << "";
+    QTest::newRow("limits-caselabels (QTHLDPLUGINBUG-12673)") << "limits-caselabels.c" << "";
 }
 
 void tst_c99::parse()

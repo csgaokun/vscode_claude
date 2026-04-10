@@ -14,7 +14,7 @@ SOURCES += formeditoritem.cpp \
     rubberbandselectionmanipulator.cpp \
     movetool.cpp \
     selectionindicator.cpp \
-    snappinglinecreator.cpp \
+    snappinglinehldplugin.cpp \
     snapper.cpp \
     onedimensionalcluster.cpp \
     singleselectionmanipulator.cpp \
@@ -54,7 +54,7 @@ HEADERS += formeditorscene.h \
     rubberbandselectionmanipulator.h \
     movetool.h \
     selectionindicator.h \
-    snappinglinecreator.h \
+    snappinglinehldplugin.h \
     snapper.h \
     onedimensionalcluster.h \
     singleselectionmanipulator.h \

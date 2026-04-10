@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@ class PchManagerClient;
 class CLANGPCHMANAGER_EXPORT ClangPchManagerPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "ClangPchManager.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "ClangPchManager.json")
 
 public:
     ClangPchManagerPlugin();

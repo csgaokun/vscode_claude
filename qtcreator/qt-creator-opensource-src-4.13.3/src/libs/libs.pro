@@ -1,4 +1,4 @@
-include(../../qtcreator.pri)
+include(../../qthldplugin.pri)
 
 TEMPLATE  = subdirs
 
@@ -66,7 +66,7 @@ isEmpty(KSYNTAXHIGHLIGHTING_LIB_DIR) {
 win32:SUBDIRS += utils/process_ctrlc_stub.pro
 
 msvc: isEmpty(QTC_SKIP_CDBEXT) {
-    SUBDIRS += qtcreatorcdbext
+    SUBDIRS += qthldplugincdbext
 }
 
 QMAKE_EXTRA_TARGETS += deployqt # dummy

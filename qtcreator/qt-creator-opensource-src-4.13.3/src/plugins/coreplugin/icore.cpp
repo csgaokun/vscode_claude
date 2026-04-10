@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@
 
 /*!
     \namespace Core
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \brief The Core namespace contains all classes that make up the Core plugin
     which constitute the basic functionality of \QC.
 */
@@ -89,7 +89,7 @@
 /*!
     \class Core::ICore
     \inheaderfile coreplugin/icore.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The ICore class allows access to the different parts that make up
@@ -414,7 +414,7 @@ QString ICore::resourcePath()
 
 QString ICore::userResourcePath()
 {
-    // Create qtcreator dir if it doesn't yet exist
+    // Create qthldplugin dir if it doesn't yet exist
     const QString configDir = QFileInfo(settings(QSettings::UserScope)->fileName()).path();
     const QString urp = configDir + '/' + QLatin1String(Constants::IDE_ID);
 

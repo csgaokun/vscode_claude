@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -135,7 +135,7 @@ using namespace Utils;
 
 /*!
     \class Core::EditorManagerPlaceHolder
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
@@ -174,7 +174,7 @@ void EditorManagerPlaceHolder::showEvent(QShowEvent *)
 /*!
     \class Core::EditorManager
     \inheaderfile coreplugin/editormanager/editormanager.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The EditorManager class manages the editors created for files
     according to their MIME type.
@@ -187,7 +187,7 @@ void EditorManagerPlaceHolder::showEvent(QShowEvent *)
     Users can split the editor view or open the editor in a new window when
     to work on and view multiple files on the same screen or on multiple
     screens. For more information, see
-    \l{https://doc.qt.io/qtcreator/creator-coding-navigating.html#splitting-the-editor-view}
+    \l{https://doc.qt.io/qthldplugin/hldplugin-coding-navigating.html#splitting-the-editor-view}
     {Splitting the Editor View}.
 */
 
@@ -362,7 +362,7 @@ void EditorManagerPrivate::init()
             m_instance, &EditorManager::slotCloseCurrentEditorOrDocument);
 
     if (HostOsInfo::isWindowsHost()) {
-        // workaround for QTCREATORBUG-72
+        // workaround for QTHLDPLUGINBUG-72
         QAction *action = new QAction(tr("Alternative Close"), this);
         cmd = ActionManager::registerAction(action, Constants::CLOSE_ALTERNATIVE, editManagerContext);
         cmd->setDefaultKeySequence(QKeySequence(tr("Ctrl+F4")));
@@ -2122,7 +2122,7 @@ void EditorManagerPrivate::editorAreaDestroyed(QObject *area)
     // we need to set a new current editor or view
     if (!newActiveArea) {
         // some window managers behave weird and don't activate another window
-        // or there might be a Qt Creator toplevel activated that doesn't have editor windows
+        // or there might be a Qt Hldplugin toplevel activated that doesn't have editor windows
         newActiveArea = d->m_editorAreas.first();
     }
 
@@ -3393,7 +3393,7 @@ bool EditorManager::restoreState(const QByteArray &state)
     stream >> splitterstates;
     d->m_editorAreas.first()->restoreState(splitterstates); // TODO
 
-    if (!stream.atEnd()) { // safety for settings from Qt Creator 4.5 and earlier
+    if (!stream.atEnd()) { // safety for settings from Qt Hldplugin 4.5 and earlier
         // restore windows
         QVector<QVariantHash> windowStates;
         stream >> windowStates;

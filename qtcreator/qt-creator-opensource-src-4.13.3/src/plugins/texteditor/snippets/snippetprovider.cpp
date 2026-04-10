@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -51,7 +51,7 @@ const QList<SnippetProvider> &SnippetProvider::snippetProviders()
     \list
         \li Register the group with TextEditor::SnippetProvider::registerGroup
         \li Create an XML configuration file and place it in the
-        /share/qtcreator/snippets directory. As an example of the file format
+        /share/qthldplugin/snippets directory. As an example of the file format
         please take a look at the already available ones. The meaning and consistency rules
         of the fields are described below:
         \list
@@ -69,7 +69,7 @@ const QList<SnippetProvider> &SnippetProvider::snippetProviders()
     \endlist
 
     All XML configuration files found in the directory mentioned above are parsed by
-    Qt Creator. However, only the ones which are associated with known groups (specified
+    Qt Hldplugin. However, only the ones which are associated with known groups (specified
     by a provider) are taken into consideration.
 */
 

@@ -3,7 +3,7 @@
 ** Copyright (C) Filippo Cucchetto <filippocucchetto@gmail.com>
 ** Contact: http://www.qt.io/licensing
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,14 +45,14 @@ public:
 
     ProjectExplorer::Tasks projectIssues(const ProjectExplorer::Kit *k) const final;
 
-    // Keep for compatibility with Qt Creator 4.10
+    // Keep for compatibility with Qt Hldplugin 4.10
     QVariantMap toMap() const final;
 
     QStringList excludedFiles() const;
     void setExcludedFiles(const QStringList &excludedFiles);
 
 protected:
-    // Keep for compatibility with Qt Creator 4.10
+    // Keep for compatibility with Qt Hldplugin 4.10
     RestoreResult fromMap(const QVariantMap &map, QString *errorMessage) final;
 
     QStringList m_excludedFiles;

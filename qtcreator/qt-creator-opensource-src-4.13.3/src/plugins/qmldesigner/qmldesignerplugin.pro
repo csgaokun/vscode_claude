@@ -6,7 +6,7 @@ INCLUDEPATH += $$PWD/components
 
 unix:!openbsd:!osx: LIBS += -lrt # posix shared memory
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 include(qmldesignerplugin.pri)
 include(designercore/designercore-lib.pri)
@@ -36,8 +36,8 @@ include(components/richtexteditor/richtexteditor.pri)
 include(components/transitioneditor/transitioneditor.pri)
 include(components/listmodeleditor/listmodeleditor.pri)
 
-BUILD_PUPPET_IN_CREATOR_BINPATH = $$(BUILD_PUPPET_IN_CREATOR_BINPATH)
-!isEmpty(BUILD_PUPPET_IN_CREATOR_BINPATH) {
-    DEFINES += SEARCH_PUPPET_IN_CREATOR_BINPATH
-    message("Search puppet in qtcreator bin path!")
+BUILD_PUPPET_IN_HLDPLUGIN_BINPATH = $$(BUILD_PUPPET_IN_HLDPLUGIN_BINPATH)
+!isEmpty(BUILD_PUPPET_IN_HLDPLUGIN_BINPATH) {
+    DEFINES += SEARCH_PUPPET_IN_HLDPLUGIN_BINPATH
+    message("Search puppet in qthldplugin bin path!")
 }

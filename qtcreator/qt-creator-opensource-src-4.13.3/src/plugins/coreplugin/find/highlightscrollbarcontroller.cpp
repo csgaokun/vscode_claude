@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,13 +39,13 @@ namespace Core {
 
 /*!
     \class Core::Highlight
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \class Core::HighlightScrollBarController
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
@@ -214,7 +214,7 @@ void HighlightScrollBarOverlay::drawHighlights(QPainter *painter,
     for (const QMap<Utils::Theme::Color, QMap<int, int>> &colors : qAsConst(m_highlightCache)) {
         const auto itColorEnd = colors.constEnd();
         for (auto itColor = colors.constBegin(); itColor != itColorEnd; ++itColor) {
-            const QColor &color = creatorTheme()->color(itColor.key());
+            const QColor &color = hldpluginTheme()->color(itColor.key());
             const QMap<int, int> &positions = itColor.value();
             const auto itPosEnd = positions.constEnd();
             const auto firstPos = int(docStart / lineHeight);

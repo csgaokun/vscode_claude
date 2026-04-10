@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
-'''A simple wrapper around ninja that enables Qt Creator to parse compile errors
+'''A simple wrapper around ninja that enables Qt Hldplugin to parse compile errors
 
-   This wrapper splits up ninja output in such a way that Qt Creator will be able
+   This wrapper splits up ninja output in such a way that Qt Hldplugin will be able
    to extract compile errors from the output of this script.
 
    Make sure that ninja is found in PATH and then override the make build step in
-   Qt Creator with this script to use it.
+   Qt Hldplugin with this script to use it.
 '''
 
 import os, subprocess, sys

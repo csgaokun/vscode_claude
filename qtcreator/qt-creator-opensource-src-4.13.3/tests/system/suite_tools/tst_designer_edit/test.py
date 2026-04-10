@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def performEditMenu():
     test.log("Editing menu")
@@ -35,7 +35,7 @@ def performEditMenu():
     type(passiveLineEdit, "<Return>")
     # this "special" QDesignerMenu will be hidden and unusable on OSX
     menuStr = ("{name='menuSquishTestFile' title='SquishTestFile' type='QDesignerMenu' "
-               "window=':Qt Creator_Core::Internal::MainWindow'}")
+               "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     try:
         menu = waitForObject(menuStr, 5000)
     except:
@@ -81,12 +81,12 @@ def performEditMenu():
                100, 100, 0, Qt.LeftButton)
     # verify Action Editor and Object Inspector
     actionTV = waitForObject("{container={name='ActionEditorDockWidget' type='QDockWidget' "
-                             "visible='1' window=':Qt Creator_Core::Internal::MainWindow'} "
+                             "visible='1' window=':Qt Hldplugin_Core::Internal::MainWindow'} "
                              "type='qdesigner_internal::ActionTreeView' unnamed='1' visible='1'}")
     test.compare(dumpItems(actionTV.model()), ["actionOpen", "actionShutdown"],
                  "Verify whether respective actions have been added to Action Editor.")
     objInspTV = waitForObject("{container={name='ObjectInspectorDockWidget' type='QDockWidget' "
-                              "visible='1' window=':Qt Creator_Core::Internal::MainWindow'} "
+                              "visible='1' window=':Qt Hldplugin_Core::Internal::MainWindow'} "
                               "type='QTreeView' unnamed='1' visible='1'}")
     tree = __iterateChildren__(objInspTV.model(), None)
     expectedMenuSequence = [["menuSquishTestFile", 2], ["actionOpen", 3], ["separator", 3],
@@ -191,7 +191,7 @@ def main():
         return
     createProject_Qt_GUI(tempDir(), "DesignerTestApp", False)
     selectFromLocator("mainwindow.ui")
-    replaceEditorContent(waitForObject("{container=':*Qt Creator.Widget Box_QDockWidget' "
+    replaceEditorContent(waitForObject("{container=':*Qt Hldplugin.Widget Box_QDockWidget' "
                                        "type='QLineEdit' visible='1'}"), "combo")
     categoryView = ("{container=':Widget Box_qdesigner_internal::WidgetBoxTreeWidget' "
                     "type='qdesigner_internal::WidgetBoxCategoryListView' unnamed='1' visible='1'}")

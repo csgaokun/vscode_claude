@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -345,7 +345,7 @@ public:
     \brief The VcsBasePluginState class provides relevant state information
     about the VCS plugins.
 
-    Qt Creator's state relevant to VCS plugins is a tuple of
+    Qt Hldplugin's state relevant to VCS plugins is a tuple of
 
     \list
     \li Current file and it's version system control/top level
@@ -493,7 +493,7 @@ VCSBASE_EXPORT QDebug operator<<(QDebug in, const VcsBasePluginState &state)
     plugins.
 
     The plugin connects to the
-    relevant change signals in Qt Creator and calls the virtual
+    relevant change signals in Qt Hldplugin and calls the virtual
     updateActions() for the plugins to update their menu actions
     according to the new state. This is done centrally to avoid
     single plugins repeatedly invoking searches/QFileInfo on files,
@@ -729,7 +729,7 @@ bool isSshPromptConfigured()
     return !sshPrompt().isEmpty();
 }
 
-static const char SOURCE_PROPERTY[] = "qtcreator_source";
+static const char SOURCE_PROPERTY[] = "qthldplugin_source";
 
 void setSource(IDocument *document, const QString &source)
 {

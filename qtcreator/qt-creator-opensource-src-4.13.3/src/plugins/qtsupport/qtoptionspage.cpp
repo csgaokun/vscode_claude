@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -836,9 +836,9 @@ static bool canLinkWithQt(QString *toolTip)
         tip << QtOptionsPageWidget::tr("%1's resource directory is not writable.")
                    .arg(Core::Constants::IDE_DISPLAY_NAME);
     }
-    // guard against redirecting Qt Creator that is part of a Qt installations
+    // guard against redirecting Qt Hldplugin that is part of a Qt installations
     // TODO this fails for pre-releases in the online installer
-    // TODO this will fail when make Qt Creator non-required in the Qt installers
+    // TODO this will fail when make Qt Hldplugin non-required in the Qt installers
     if (installSettingsExist && !installSettingsValue) {
         canLink = false;
         tip << QtOptionsPageWidget::tr("%1 is part of a Qt installation.")
@@ -900,10 +900,10 @@ void QtOptionsPageWidget::apply()
 // TODO whenever we move the output of sdktool to a different location in the installer,
 // this needs to be adapted accordingly
 const QStringList kSubdirsToCheck = {"",
-                                     "Qt Creator.app/Contents/Resources",
+                                     "Qt Hldplugin.app/Contents/Resources",
                                      "Contents/Resources",
-                                     "Tools/QtCreator/share/qtcreator",
-                                     "share/qtcreator"};
+                                     "Tools/QtHldplugin/share/qthldplugin",
+                                     "share/qthldplugin"};
 
 static QStringList settingsFilesToCheck()
 {
@@ -1028,7 +1028,7 @@ QtOptionsPage::QtOptionsPage()
     setId(Constants::QTVERSION_SETTINGS_PAGE_ID);
     setDisplayName(QCoreApplication::translate("QtSupport", "Qt Versions"));
     setCategory(ProjectExplorer::Constants::KITS_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new QtOptionsPageWidget; });
+    setWidgetHldplugin([] { return new QtOptionsPageWidget; });
 }
 
 bool QtOptionsPage::canLinkWithQt()

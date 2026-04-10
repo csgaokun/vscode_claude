@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -88,10 +88,10 @@ SearchResultWidget::SearchResultWidget(QWidget *parent) :
 
     QFrame *topWidget = new QFrame;
     QPalette pal;
-    pal.setColor(QPalette::Window,     creatorTheme()->color(Theme::InfoBarBackground));
-    pal.setColor(QPalette::WindowText, creatorTheme()->color(Theme::InfoBarText));
+    pal.setColor(QPalette::Window,     hldpluginTheme()->color(Theme::InfoBarBackground));
+    pal.setColor(QPalette::WindowText, hldpluginTheme()->color(Theme::InfoBarText));
     topWidget->setPalette(pal);
-    if (creatorTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
+    if (hldpluginTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
         topWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
         topWidget->setLineWidth(1);
     }
@@ -115,9 +115,9 @@ SearchResultWidget::SearchResultWidget(QWidget *parent) :
     topLayout->addWidget(m_topReplaceWidget);
 
     m_messageWidget = new QFrame;
-    pal.setColor(QPalette::WindowText, creatorTheme()->color(Theme::CanceledSearchTextColor));
+    pal.setColor(QPalette::WindowText, hldpluginTheme()->color(Theme::CanceledSearchTextColor));
     m_messageWidget->setPalette(pal);
-    if (creatorTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
+    if (hldpluginTheme()->flag(Theme::DrawSearchResultWidgetFrame)) {
         m_messageWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
         m_messageWidget->setLineWidth(1);
     }

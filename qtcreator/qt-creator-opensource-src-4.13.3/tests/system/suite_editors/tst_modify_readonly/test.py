@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,12 +23,12 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     global testFolder
-    cppEditorStr = ":Qt Creator_CppEditor::Internal::CPPEditorWidget"
-    proEditorStr = ":Qt Creator_TextEditor::TextEditorWidget"
+    cppEditorStr = ":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"
+    proEditorStr = ":Qt Hldplugin_TextEditor::TextEditorWidget"
     testFolder = prepareTemplate(os.path.abspath(os.path.join(os.getcwd(), "..", "shared",
                                                           "simplePlainCPP")))
     if testFolder == None:
@@ -55,11 +55,11 @@ def main():
 
 def testModifyFile(fileName, editor, line, expectWarning):
     readOnlyWarningStr = ("{text='<b>Warning:</b> You are changing a read-only file.' type='QLabel'"
-                      " unnamed='1' window=':Qt Creator_Core::Internal::MainWindow'}")
+                      " unnamed='1' window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     simpleFName = simpleFileName(fileName)
     test.log("Opening file '%s'" % simpleFName)
     openDocument(fileName)
-    fileNameCombo = waitForObject(":Qt Creator_FilenameQComboBox")
+    fileNameCombo = waitForObject(":Qt Hldplugin_FilenameQComboBox")
     test.compare(str(fileNameCombo.currentText), simpleFName,
                  "Verifying content of file name combo box.")
     checkOpenDocumentsContains(simpleFName)
@@ -111,14 +111,14 @@ def testSaveChangesAndMakeWritable(modifiedFiles, readOnlyFiles):
     try:
         mBoxStr = "{type='QMessageBox' unnamed='1' visible='1' text?='*Could not save the files.'}"
         msgBox = waitForObject(mBoxStr, 3000)
-        test.fatal("Creator failed to set permissions.", str(msgBox.text))
+        test.fatal("Hldplugin failed to set permissions.", str(msgBox.text))
         exitCanceled = True
         clickButton(waitForObject("{text='OK' type='QPushButton' unnamed='1' visible='1' "
                                   "window=%s}" % mBoxStr))
     except:
         for current in readOnlyFiles:
             test.verify(isWritable(current),
-                        "Checking whether Creator made '%s' writable again." % current)
+                        "Checking whether Hldplugin made '%s' writable again." % current)
     if exitCanceled:
         invokeMenuItem("File", "Exit")
         test.log("Exiting without saving.")
@@ -127,7 +127,7 @@ def testSaveChangesAndMakeWritable(modifiedFiles, readOnlyFiles):
                                   "visible='1' window=%s}" % saveDlgStr))
 
 def checkOpenDocumentsContains(itemName):
-    selectFromCombo(":Qt Creator_Core::Internal::NavComboBox", "Open Documents")
+    selectFromCombo(":Qt Hldplugin_Core::Internal::NavComboBox", "Open Documents")
     openDocsTreeViewModel = waitForObject(":OpenDocuments_Widget").model()
     result = None
     found = False

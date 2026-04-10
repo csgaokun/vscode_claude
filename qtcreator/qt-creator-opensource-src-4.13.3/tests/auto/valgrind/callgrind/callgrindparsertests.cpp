@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -118,7 +118,7 @@ void CallgrindParserTests::testHeaderData()
     QScopedPointer<const ParseData> data(parseDataFile(dataFile("simpleFunction.out")));
 
     QCOMPARE(data->command(), QLatin1String("ls"));
-    QCOMPARE(data->creator(), QLatin1String("callgrind-3.6.0.SVN-Debian"));
+    QCOMPARE(data->hldplugin(), QLatin1String("callgrind-3.6.0.SVN-Debian"));
     QCOMPARE(data->pid(), quint64(2992));
     QCOMPARE(data->version(), 1);
     QCOMPARE(data->part(), 1u);

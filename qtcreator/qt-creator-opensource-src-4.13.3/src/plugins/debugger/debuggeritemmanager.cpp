@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -73,7 +73,7 @@ const char DEBUGGER_COUNT_KEY[] = "DebuggerItem.Count";
 const char DEBUGGER_DATA_KEY[] = "DebuggerItem.";
 const char DEBUGGER_FILE_VERSION_KEY[] = "Version";
 const char DEBUGGER_FILENAME[] = "/debuggers.xml";
-const char debuggingToolsWikiLinkC[] = "http://wiki.qt.io/Qt_Creator_Windows_Debugging";
+const char debuggingToolsWikiLinkC[] = "http://wiki.qt.io/Qt_Hldplugin_Windows_Debugging";
 
 class DebuggerItemModel;
 
@@ -601,7 +601,7 @@ public:
         setId(ProjectExplorer::Constants::DEBUGGER_SETTINGS_PAGE_ID);
         setDisplayName(tr("Debuggers"));
         setCategory(ProjectExplorer::Constants::KITS_SETTINGS_CATEGORY);
-        setWidgetCreator([] { return new DebuggerConfigWidget; });
+        setWidgetHldplugin([] { return new DebuggerConfigWidget; });
     }
 };
 
@@ -836,7 +836,7 @@ static FilePath userSettingsFileName()
 }
 
 DebuggerItemManagerPrivate::DebuggerItemManagerPrivate()
-    : m_writer(userSettingsFileName(), "QtCreatorDebuggers")
+    : m_writer(userSettingsFileName(), "QtHldpluginDebuggers")
 {
     d = this;
     m_model = new DebuggerItemModel;

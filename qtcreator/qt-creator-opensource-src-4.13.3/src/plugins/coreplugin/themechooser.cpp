@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Thorben Kroeger <thorbenkroeger@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -56,7 +56,7 @@ static void appendThemeTrace(const char *message, const void *pointer = nullptr)
     if (!qEnvironmentVariableIsSet("QTC_THEMECHOOSER_TRACE"))
         return;
 
-    QFile file(QDir::temp().filePath(QLatin1String("qtcreator-themechooser-trace.log")));
+    QFile file(QDir::temp().filePath(QLatin1String("qthldplugin-themechooser-trace.log")));
     if (!file.open(QIODevice::Append | QIODevice::Text))
         return;
 
@@ -162,7 +162,7 @@ ThemeChooserPrivate::ThemeChooserPrivate(QWidget *widget)
     layout->addWidget(m_themeComboBox);
     auto overriddenLabel = new QLabel;
     overriddenLabel->setText(ThemeChooser::tr("Current theme: %1")
-                             .arg(creatorTheme()->displayName()));
+                             .arg(hldpluginTheme()->displayName()));
     layout->addWidget(overriddenLabel);
     layout->setContentsMargins(0, 0, 0, 0);
     auto horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -215,7 +215,7 @@ void ThemeChooser::apply()
 
 static void addThemesFromPath(const QString &path, QList<ThemeEntry> *themes)
 {
-    static const QLatin1String extension("*.creatortheme");
+    static const QLatin1String extension("*.hldplugintheme");
     QDir themeDir(path);
     themeDir.setNameFilters({extension});
     themeDir.setFilter(QDir::Files);

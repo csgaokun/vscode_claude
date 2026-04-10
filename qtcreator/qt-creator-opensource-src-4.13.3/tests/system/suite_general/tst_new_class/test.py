@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     newClassName = "MyNewClass"
@@ -38,10 +38,10 @@ def main():
                      expectedSourceName=sourceFileName,
                      expectedHeaderName=headerFileName)
 
-    mainWindow = waitForObject(":Qt Creator_Core::Internal::MainWindow")
+    mainWindow = waitForObject(":Qt Hldplugin_Core::Internal::MainWindow")
     if test.verify(waitFor("str(mainWindow.windowTitle).startswith(sourceFileName + ' ')", 1000),
                    "Source file was opened on time?"):
-        editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+        editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
         editorText = str(editor.plainText)
         mouseClick(editor)  # enable menu items for file
         test.verify('#include "%s"' % headerFileName in editorText,
@@ -51,10 +51,10 @@ def main():
         type(editor, notOverwrittenComment)
         type(editor, "<Return>")
         invokeMenuItem("File", "Save All")
-        clickButton(waitForObject(":Qt Creator.CloseDoc_QToolButton"))
+        clickButton(waitForObject(":Qt Hldplugin.CloseDoc_QToolButton"))
     if test.verify(waitFor("str(mainWindow.windowTitle).startswith(headerFileName + ' ')", 2000),
                    "Header file was shown after closing source?"):
-        editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+        editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
         editorText = str(editor.plainText)
         includeGuard = newClassName.upper().replace(".", "_")
         test.verify("#ifndef " + includeGuard in editorText,
@@ -65,9 +65,9 @@ def main():
                     "Class definition in header file?")
         test.verify(" " + newClassName + "();" in editorText,
                     "Ctor declaration in header file?")
-        test.verify("signals" not in editorText,  # QTCREATORBUG-14949
+        test.verify("signals" not in editorText,  # QTHLDPLUGINBUG-14949
                     "No signals in non-Qt header file?")
-        test.verify("slots" not in editorText,  # QTCREATORBUG-14949
+        test.verify("slots" not in editorText,  # QTHLDPLUGINBUG-14949
                     "No slots in non-Qt header file?")
         type(editor, notOverwrittenComment)
         type(editor, "<Return>")

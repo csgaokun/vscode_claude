@@ -2,7 +2,7 @@ TARGET = qml2puppet
 
 TEMPLATE = app
 
-include(../../../../qtcreator.pri)
+include(../../../../qthldplugin.pri)
 
 osx:  DESTDIR = $$IDE_LIBEXEC_PATH/qmldesigner
 else: DESTDIR = $$IDE_LIBEXEC_PATH
@@ -10,8 +10,8 @@ else: DESTDIR = $$IDE_LIBEXEC_PATH
 RPATH_BASE = $$DESTDIR
 include(../../../rpath.pri)
 
-include(../../../../share/qtcreator/qml/qmlpuppet/qml2puppet/qml2puppet.pri)
+include(../../../../share/qthldplugin/qml/qmlpuppet/qml2puppet/qml2puppet.pri)
 
-isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$PWD/../../../shared/qtcreator_pch.h
+isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$PWD/../../../shared/qthldplugin_pch.h
 
 

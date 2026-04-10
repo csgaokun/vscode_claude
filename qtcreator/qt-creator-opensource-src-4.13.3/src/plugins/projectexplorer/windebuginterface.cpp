@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -66,7 +66,7 @@ WinDebugInterface::WinDebugInterface(QObject *parent) :
     QThread(parent)
 {
     m_instance = this;
-    m_creatorPid = QCoreApplication::applicationPid();
+    m_hldpluginPid = QCoreApplication::applicationPid();
     setObjectName(QLatin1String("WinDebugInterfaceThread"));
     connect(this, &WinDebugInterface::_q_debugOutputReady,
             this, &WinDebugInterface::dispatchDebugOutput, Qt::QueuedConnection);
@@ -142,7 +142,7 @@ bool WinDebugInterface::runLoop()
             break;
         }
         if (ret - WAIT_OBJECT_0 == DataReadyEventHandle) {
-            if (*processId != m_creatorPid) {
+            if (*processId != m_hldpluginPid) {
                 std::lock_guard<std::mutex> guard(m_outputMutex);
                 m_debugOutput[*processId].push_back(QString::fromLocal8Bit(message));
                 emitReadySignal();

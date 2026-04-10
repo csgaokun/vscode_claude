@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -84,8 +84,8 @@ public:
     virtual bool operator==(const IDebugServerProvider &other) const;
 
     IDebugServerProviderConfigWidget *configurationWidget() const;
-    void setConfigurationWidgetCreator
-        (const std::function<IDebugServerProviderConfigWidget *()> &configurationWidgetCreator);
+    void setConfigurationWidgetHldplugin
+        (const std::function<IDebugServerProviderConfigWidget *()> &configurationWidgetHldplugin);
 
     virtual QVariantMap toMap() const;
     virtual bool fromMap(const QVariantMap &data);
@@ -116,7 +116,7 @@ protected:
     QUrl m_channel;
     Debugger::DebuggerEngineType m_engineType = Debugger::NoEngineType;
     QSet<BareMetalDevice *> m_devices;
-    std::function<IDebugServerProviderConfigWidget *()> m_configurationWidgetCreator;
+    std::function<IDebugServerProviderConfigWidget *()> m_configurationWidgetHldplugin;
 
     friend class DebugServerProvidersSettingsWidget;
     friend class IDebugServerProviderConfigWidget;
@@ -143,7 +143,7 @@ protected:
     IDebugServerProviderFactory();
     void setId(const QString &id);
     void setDisplayName(const QString &name);
-    void setCreator(const std::function<IDebugServerProvider *()> &creator);
+    void setHldplugin(const std::function<IDebugServerProvider *()> &hldplugin);
 
 private:
     IDebugServerProviderFactory(const IDebugServerProviderFactory &) = delete;
@@ -151,7 +151,7 @@ private:
 
     QString m_displayName;
     QString m_id;
-    std::function<IDebugServerProvider *()> m_creator;
+    std::function<IDebugServerProvider *()> m_hldplugin;
 };
 
 // IDebugServerProviderConfigWidget

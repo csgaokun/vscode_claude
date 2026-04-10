@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,9 +23,9 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
-def startQtCreatorWithNewAppAtQMLEditor(projectDir, projectName, line = None):
+def startQtHldpluginWithNewAppAtQMLEditor(projectDir, projectName, line = None):
     startQC()
     if not startedWithoutPluginError():
         return None
@@ -38,7 +38,7 @@ def startQtCreatorWithNewAppAtQMLEditor(projectDir, projectName, line = None):
         invokeMenuItem("File", "Exit")
         return None
     # get editor
-    editorArea = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editorArea = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     # place to line if needed
     if line:
         # place cursor to component

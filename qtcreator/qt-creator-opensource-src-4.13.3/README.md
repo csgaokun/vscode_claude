@@ -1,16 +1,16 @@
-# Qt Creator
+# Qt Hldplugin
 
-Qt Creator is a cross-platform, integrated development environment (IDE) for
+Qt Hldplugin is a cross-platform, integrated development environment (IDE) for
 application developers to create applications for multiple desktop, embedded,
 and mobile device platforms.
 
-The Qt Creator Manual is available at:
+The Qt Hldplugin Manual is available at:
 
-https://doc.qt.io/qtcreator/index.html
+https://doc.qt.io/qthldplugin/index.html
 
-For an overview of the Qt Creator IDE, see:
+For an overview of the Qt Hldplugin IDE, see:
 
-https://doc.qt.io/qtcreator/creator-overview.html
+https://doc.qt.io/qthldplugin/hldplugin-overview.html
 
 ## Supported Platforms
 
@@ -22,16 +22,16 @@ The standalone binary packages support the following platforms:
 
 ## Contributing
 
-For instructions on how to set up the Qt Creator repository to contribute
-patches back to Qt Creator, please check:
+For instructions on how to set up the Qt Hldplugin repository to contribute
+patches back to Qt Hldplugin, please check:
 
 https://wiki.qt.io/Setting_up_Gerrit
 
 See the following page for information about our coding standard:
 
-https://doc.qt.io/qtcreator-extending/coding-style.html
+https://doc.qt.io/qthldplugin-extending/coding-style.html
 
-## Compiling Qt Creator
+## Compiling Qt Hldplugin
 
 Prerequisites:
 
@@ -48,12 +48,12 @@ Prerequisites:
   Clang PCH Manager and Clang Refactoring plugins, see the section
   "Get LLVM/Clang for the Clang Code Model". The LLVM C++ API provides no compatibility garantee,
   so if later versions don't compile we don't support that version.)
-* CMake (for manual builds of LLVM/Clang, and Qt Creator itself)
+* CMake (for manual builds of LLVM/Clang, and Qt Hldplugin itself)
 * Ninja (optional, recommended for building with CMake)
 
 The installed toolchains have to match the one Qt was compiled with.
 
-You can build Qt Creator with
+You can build Qt Hldplugin with
 
     # Optional, needed for the Clang Code Model if llvm-config is not in PATH:
     export LLVM_INSTALL_DIR=/path/to/llvm (or "set" on Windows)
@@ -74,17 +74,17 @@ Installation ("make install") is not needed. It is however possible, using
 
     make install INSTALL_ROOT=$INSTALL_DIRECTORY
 
-## Compiling Qt and Qt Creator on Windows
+## Compiling Qt and Qt Hldplugin on Windows
 
 This section provides step by step instructions for compiling the latest
-versions of Qt and Qt Creator on Windows. Alternatively, to avoid having to
+versions of Qt and Qt Hldplugin on Windows. Alternatively, to avoid having to
 compile Qt yourself, you can use one of the versions of Qt shipped with the Qt
 SDK (release builds of Qt using MinGW and Visual C++ 2017 or later).
 For detailed information on the supported compilers, see
 <https://wiki.qt.io/Building_Qt_5_from_Git> .
 
    1.  Decide which compiler to use: MinGW or Microsoft Visual Studio. If you
-       plan to contribute to Qt Creator, you should compile your changes with
+       plan to contribute to Qt Hldplugin, you should compile your changes with
        both compilers.
 
    2.  Install Git for Windows from <https://git-for-windows.github.io/>. If you plan to
@@ -92,7 +92,7 @@ For detailed information on the supported compilers, see
        default path of Windows command prompts. For more information, see
        step 9.
 
-   3.  Create a working directory under which to check out Qt and Qt Creator,
+   3.  Create a working directory under which to check out Qt and Qt Hldplugin,
        for example, `c:\work`. If you plan to use MinGW and Microsoft Visual
        Studio simultaneously or mix different Qt versions, we recommend
        creating a directory structure which reflects that. For example:
@@ -106,9 +106,9 @@ For detailed information on the supported compilers, see
    5.  In the working directory, check out the respective branch of Qt from
        <https://code.qt.io/cgit/qt/qt5.git> (we recommend the highest released version).
 
-   6.  Check out Qt Creator (master branch or latest version, see
-       <https://code.qt.io/cgit/qt-creator/qt-creator.git>).
-       You should now have the directories qt and creator under your working
+   6.  Check out Qt Hldplugin (master branch or latest version, see
+       <https://code.qt.io/cgit/qt-hldplugin/qt-hldplugin.git>).
+       You should now have the directories qt and hldplugin under your working
        directory.
 
    7.  Install a compiler:
@@ -130,7 +130,7 @@ For detailed information on the supported compilers, see
        variable settings.
        A `.bat`-file for MinGW looks like:
 
-         set PATH=<path_to_qt>\[qtbase\]bin;<path_to_mingw>\bin;<working_directory>\creator\bin;%PATH%
+         set PATH=<path_to_qt>\[qtbase\]bin;<path_to_mingw>\bin;<working_directory>\hldplugin\bin;%PATH%
          set QMAKESPEC=win32-g++
 
        For the Visual C++ compilers, call the `.bat` file that sets up the
@@ -138,7 +138,7 @@ For detailed information on the supported compilers, see
        compiler):
 
          CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
-         set PATH=<path_to_qt>\[qtbase\]bin;<working_directory>\creator\bin;%PATH%
+         set PATH=<path_to_qt>\[qtbase\]bin;<working_directory>\hldplugin\bin;%PATH%
          set QMAKESPEC=win32-msvc2013
 
        You can create desktop links to the `.bat` files using the working
@@ -160,29 +160,29 @@ For detailed information on the supported compilers, see
          Code Model".
        * Set the environment variable LLVM_INSTALL_DIR to the LLVM/Clang
          installation directory if llvm-config is not in PATH.
-       * Before you launch Qt Creator you may prepend the PATH with
+       * Before you launch Qt Hldplugin you may prepend the PATH with
          the location of libclang.dll/.so that you want to be used.
          See more info in the section "Prebuilt LLVM/Clang packages".
 
-   11. You are now ready to configure and build Qt and Qt Creator.
+   11. You are now ready to configure and build Qt and Qt Hldplugin.
        Please see <https://wiki.qt.io/Building_Qt_5_from_Git> for
        recommended configure-options for Qt 5.
        To use MinGW, open the the shell prompt and enter:
 
          cd <path_to_qt>
          configure <configure_options> && mingw32-make -s
-         cd ..\creator
+         cd ..\hldplugin
          qmake && mingw32-make -s
 
        To use the Visual C++ compilers, enter:
 
          cd <path_to_qt>
          configure <configure_options> && jom
-         cd ..\creator
+         cd ..\hldplugin
          qmake && jom
 
-   12. To launch Qt Creator, enter:
-       qtcreator
+   12. To launch Qt Hldplugin, enter:
+       qthldplugin
 
    13. To test the Clang-based code model, verify that backend process
          bin\clangbackend.exe
@@ -192,21 +192,21 @@ For detailed information on the supported compilers, see
        Clang cannot be found in the path.
 
    14. When using  Visual C++ with the "Debugging Tools for Windows" installed,
-       the extension library `qtcreatorcdbext.dll` to be loaded into the
+       the extension library `qthldplugincdbext.dll` to be loaded into the
        Windows console debugger (`cdb.exe`) should have been built under
-       `lib\qtcreatorcdbext32` or `lib\qtcreatorcdbext64`.
-       When using a 32 bit-build of Qt Creator with the 64 bit version of the
+       `lib\qthldplugincdbext32` or `lib\qthldplugincdbext64`.
+       When using a 32 bit-build of Qt Hldplugin with the 64 bit version of the
        "Debugging Tools for Windows" the library should also be built with
-       a 64 bit compiler (rebuild `src\libs\qtcreatorcdbext` using a 64 bit
+       a 64 bit compiler (rebuild `src\libs\qthldplugincdbext` using a 64 bit
        compiler).
 
        If you are building 32 bit and running on a 64 bit
        Windows, you can obtain the 64 bit versions of the extension library
        and the binary `win64interrupt.exe`, which is required for
        debugging from the repository
-       <https://code.qt.io/cgit/qt-creator/binary-artifacts.git/tree> .
+       <https://code.qt.io/cgit/qt-hldplugin/binary-artifacts.git/tree> .
 
-   15. Qt Creator can be registered as a post-mortem debugger. This
+   15. Qt Hldplugin can be registered as a post-mortem debugger. This
        can be done in the options page or by running the tool qtcdebugger
        with administrative privileges passing the command line options
        -register/unregister, respectively. Alternatively,
@@ -217,18 +217,18 @@ For detailed information on the supported compilers, see
 
        can be modified using the registry editor regedt32 to contain
 
-        <path>\qt-creator\bin\qtcdebugger %ld %ld
+        <path>\qt-hldplugin\bin\qtcdebugger %ld %ld
 
-       When using a self-built version of Qt Creator as post-mortem debugger, it needs to be
+       When using a self-built version of Qt Hldplugin as post-mortem debugger, it needs to be
        able to find all dependent Qt-libraries and plugins when being launched by the
        system. The easiest way to provide them for Qt 5 is to run the tool windeployqt:
 
-        windeployqt -quick -qmldir share\qtcreator\welcomescreen -qmldir src\plugins\qmlprofiler bin\qtcreator.exe lib\qtcreator lib\qtcreator\plugins
+        windeployqt -quick -qmldir share\qthldplugin\welcomescreen -qmldir src\plugins\qmlprofiler bin\qthldplugin.exe lib\qthldplugin lib\qthldplugin\plugins
 
 Note that unlike on Unix, you cannot overwrite executables that are running.
-Thus, if you want to work on Qt Creator using Qt Creator, you need a
+Thus, if you want to work on Qt Hldplugin using Qt Hldplugin, you need a
 separate build of it. We recommend using a separate, release-built version
-of Qt and Qt Creator to work on a debug-built version of Qt and Qt Creator
+of Qt and Qt Hldplugin to work on a debug-built version of Qt and Qt Hldplugin
 or using shadow builds.
 
 ## Get LLVM/Clang for the Clang Code Model
@@ -243,16 +243,16 @@ Prebuilt packages of LLVM/Clang can be downloaded from
     https://download.qt.io/development_releases/prebuilt/libclang/
 
 This should be your preferred option because you will use the version that is
-shipped together with Qt Creator (with backported/additional patches). In
+shipped together with Qt Hldplugin (with backported/additional patches). In
 addition, MinGW packages for Windows are faster due to profile-guided
 optimization. If the prebuilt packages do not match your configuration, you
 need to build LLVM/Clang manually.
 
-If you use the MSVC compiler to build Qt Creator the suggested way is:
+If you use the MSVC compiler to build Qt Hldplugin the suggested way is:
     1. Download both MSVC and MinGW packages of libclang.
-    2. Use the MSVC version of libclang during the Qt Creator build.
+    2. Use the MSVC version of libclang during the Qt Hldplugin build.
     3. Prepend PATH variable used for the run time with the location of MinGW version of libclang.dll.
-    4. Launch Qt Creator.
+    4. Launch Qt Hldplugin.
 
 ### Building LLVM/Clang manually
 
@@ -301,12 +301,12 @@ While the plugin builds without it, it will be disabled on start with an error m
 
 Note that the plugin is disabled by default.
 
-### Building Qt Creator with CMake
+### Building Qt Hldplugin with CMake
 
-Qt Creator can also be built with CMake. The main Qt Creator dependencies, Qt and LLVM/Clang, both
-offer CMake find packages, which reduce the steps of configuring Qt Creator to a minimum.
+Qt Hldplugin can also be built with CMake. The main Qt Hldplugin dependencies, Qt and LLVM/Clang, both
+offer CMake find packages, which reduce the steps of configuring Qt Hldplugin to a minimum.
 
-   Configure and build Qt Creator:
+   Configure and build Qt Hldplugin:
 
       mkdir build
       cd build
@@ -317,7 +317,7 @@ offer CMake find packages, which reduce the steps of configuring Qt Creator to a
         -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_PREFIX_PATH=~/Qt/5.12.5/gcc_64;~/llvm \
-        ../qt-creator
+        ../qt-hldplugin
       cmake --build .
 
     For Windows:
@@ -326,19 +326,19 @@ offer CMake find packages, which reduce the steps of configuring Qt Creator to a
         -G Ninja ^
         -D CMAKE_BUILD_TYPE=Release ^
         -D CMAKE_PREFIX_PATH=c:\Qt\5.12.5\msvc2017_64;c:\llvm ^
-        ..\qt-creator
+        ..\qt-hldplugin
       cmake --build .
 
 ## Third-party Components
 
-Qt Creator includes the following third-party components,
+Qt Hldplugin includes the following third-party components,
 we thank the authors who made this possible:
 
 ### YAML Parser yaml-cpp (MIT License)
 
   https://github.com/jbeder/yaml-cpp
 
-  QtCreator/src/libs/3rdparty/yaml-cpp
+  QtHldplugin/src/libs/3rdparty/yaml-cpp
 
   Copyright (c) 2008-2015 Jesse Beder.
 
@@ -395,8 +395,8 @@ we thank the authors who made this possible:
 
   The source code of KSyntaxHighlighting can be found here:
       https://cgit.kde.org/syntax-highlighting.git
-      QtCreator/src/libs/3rdparty/syntax-highlighting
-      https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/src/libs/3rdparty/syntax-highlighting
+      QtHldplugin/src/libs/3rdparty/syntax-highlighting
+      https://code.qt.io/cgit/qt-hldplugin/qt-hldplugin.git/tree/src/libs/3rdparty/syntax-highlighting
 
 ### Clazy
 
@@ -424,7 +424,7 @@ we thank the authors who made this possible:
 
   https://github.com/akrzemi1/Optional
 
-  QtCreator/src/libs/3rdparty/optional
+  QtHldplugin/src/libs/3rdparty/optional
 
   Copyright (C) 2011-2012 Andrzej Krzemienski
 
@@ -439,7 +439,7 @@ we thank the authors who made this possible:
 
   https://github.com/mpark/variant
 
-  QtCreator/src/libs/3rdparty/variant
+  QtHldplugin/src/libs/3rdparty/variant
 
   Copyright Michael Park, 2015-2017
 
@@ -450,18 +450,18 @@ we thank the authors who made this possible:
 
   https://github.com/tcbrindle/span
 
-  QtCreator/src/libs/3rdparty/span
+  QtHldplugin/src/libs/3rdparty/span
 
   Copyright Tristan Brindle, 2018
 
   Distributed under the Boost Software License, Version 1.0.
   (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
 
-### Open Source front-end for C++ (license MIT), enhanced for use in Qt Creator
+### Open Source front-end for C++ (license MIT), enhanced for use in Qt Hldplugin
 
   Roberto Raggi <roberto.raggi@gmail.com>
 
-  QtCreator/src/shared/cplusplus
+  QtHldplugin/src/shared/cplusplus
 
   Copyright 2005 Roberto Raggi <roberto@kdevelop.org>
 
@@ -485,7 +485,7 @@ we thank the authors who made this possible:
 
   Roberto Raggi <roberto.raggi@gmail.com>
 
-  QtCreator/src/tools/3rdparty/cplusplus-keywordgen
+  QtHldplugin/src/tools/3rdparty/cplusplus-keywordgen
 
   Copyright (c) 2007 Roberto Raggi <roberto.raggi@gmail.com>
 
@@ -519,7 +519,7 @@ SQLite (https://www.sqlite.org) is in the Public Domain.
 
   Contact: http://www.qt.io
 
-  This file is part of Qt Creator.
+  This file is part of Qt Hldplugin.
 
   You may use this file under the terms of the BSD license as follows:
 
@@ -558,7 +558,7 @@ SQLite (https://www.sqlite.org) is in the Public Domain.
 
   This Font Software is licensed under the SIL Open Font License, Version 1.1.
 
-  The font and license files can be found in QtCreator/src/libs/3rdparty/fonts.
+  The font and license files can be found in QtHldplugin/src/libs/3rdparty/fonts.
 
 ### JSON Library by Niels Lohmann
 
@@ -566,7 +566,7 @@ SQLite (https://www.sqlite.org) is in the Public Domain.
   because of QJson's current hard limit of 128 Mb object size and
   trace files often being much larger.
 
-  The sources can be found in `QtCreator/src/libs/3rdparty/json`.
+  The sources can be found in `QtHldplugin/src/libs/3rdparty/json`.
 
   The class is licensed under the MIT License:
 
@@ -604,7 +604,7 @@ SQLite (https://www.sqlite.org) is in the Public Domain.
   to display help files.
 
   The sources can be found in:
-    * QtCreator/src/plugins/help/qlitehtml
+    * QtHldplugin/src/plugins/help/qlitehtml
     * https://github.com/litehtml
 
   Copyright (c) 2013, Yuri Kobets (tordex)
@@ -667,7 +667,7 @@ SQLite (https://www.sqlite.org) is in the Public Domain.
 
 ### SourceCodePro fonts
 
-  Qt Creator ships with the following fonts licensed under OFL-1.1:
+  Qt Hldplugin ships with the following fonts licensed under OFL-1.1:
 
    * SourceCodePro-Regular.ttf
    * SourceCodePro-It.ttf

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -68,7 +68,7 @@ inline bool operator!=(const Settings &s1, const Settings &s2) { return !s1.equa
  * Those must contain (apart from server connection settings) the working directory
  * with the "-d" option. This is because the p4 command line client detects its path
  * from the PWD environment variable which breaks relative paths since that is set by
- * the shell running Creator and is not necessarily that of the working directory
+ * the shell running Hldplugin and is not necessarily that of the working directory
  * (see p4 documentation).
  * An additional complication is that the repository might be a symbolic link on Unix,
  * say "$HOME/dev" linked to "/depot". If the p4 client specification contains

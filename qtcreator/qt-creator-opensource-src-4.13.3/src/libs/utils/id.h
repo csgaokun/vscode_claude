@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -38,7 +38,7 @@ QT_END_NAMESPACE
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT Id
+class QTHLDPLUGIN_UTILS_EXPORT Id
 {
 public:
     Id() = default;
@@ -87,7 +87,7 @@ Q_DECLARE_METATYPE(Utils::Id)
 Q_DECLARE_METATYPE(QList<Utils::Id>)
 
 QT_BEGIN_NAMESPACE
-QTCREATOR_UTILS_EXPORT QDataStream &operator<<(QDataStream &ds, Utils::Id id);
-QTCREATOR_UTILS_EXPORT QDataStream &operator>>(QDataStream &ds, Utils::Id &id);
-QTCREATOR_UTILS_EXPORT QDebug operator<<(QDebug dbg, const Utils::Id &id);
+QTHLDPLUGIN_UTILS_EXPORT QDataStream &operator<<(QDataStream &ds, Utils::Id id);
+QTHLDPLUGIN_UTILS_EXPORT QDataStream &operator>>(QDataStream &ds, Utils::Id &id);
+QTHLDPLUGIN_UTILS_EXPORT QDebug operator<<(QDebug dbg, const Utils::Id &id);
 QT_END_NAMESPACE

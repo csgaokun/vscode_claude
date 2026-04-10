@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -134,7 +134,7 @@ StLinkUvscServerProvider::StLinkUvscServerProvider()
     : UvscServerProvider(Constants::UVSC_STLINK_PROVIDER_ID)
 {
     setTypeDisplayName(UvscServerProvider::tr("uVision St-Link"));
-    setConfigurationWidgetCreator([this] { return new StLinkUvscServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new StLinkUvscServerProviderConfigWidget(this); });
     setSupportedDrivers({"STLink\\ST-LINKIII-KEIL_SWO.dll"});
 }
 
@@ -183,7 +183,7 @@ StLinkUvscServerProviderFactory::StLinkUvscServerProviderFactory()
 {
     setId(Constants::UVSC_STLINK_PROVIDER_ID);
     setDisplayName(UvscServerProvider::tr("uVision St-Link"));
-    setCreator([] { return new StLinkUvscServerProvider; });
+    setHldplugin([] { return new StLinkUvscServerProvider; });
 }
 
 // StLinkUvscServerProviderConfigWidget

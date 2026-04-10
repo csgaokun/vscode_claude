@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -64,7 +64,7 @@ EditorWindow::EditorWindow(QWidget *parent) :
     splitter->addWidget(locatorWidget);
     splitter->addWidget(new QWidget);
     setAttribute(Qt::WA_DeleteOnClose);
-    setAttribute(Qt::WA_QuitOnClose, false); // don't prevent Qt Creator from closing
+    setAttribute(Qt::WA_QuitOnClose, false); // don't prevent Qt Hldplugin from closing
     resize(QSize(800, 600));
 
     static int windowId = 0;

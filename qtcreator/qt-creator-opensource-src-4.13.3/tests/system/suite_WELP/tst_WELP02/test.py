@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,18 +23,18 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def checkTypeAndProperties(typePropertiesDetails):
     for (qType, props, detail) in typePropertiesDetails:
         if qType == "QPushButton":
             wsButtonFrame, wsButtonLabel = getWelcomeScreenSideBarButton(props)
             test.verify(all((wsButtonFrame, wsButtonLabel)),
-                        "Verifying: Qt Creator displays Welcome Page with %s." % detail)
+                        "Verifying: Qt Hldplugin displays Welcome Page with %s." % detail)
         elif qType == 'QTreeView':
             treeView = getWelcomeTreeView(props)
             test.verify(treeView is not None,
-                        "Verifying: Qt Creator displays Welcome Page with %s." % detail)
+                        "Verifying: Qt Hldplugin displays Welcome Page with %s." % detail)
         elif qType == 'SessionModelIndex':
             # for SessionModelIndex props must be a tuple with 2 elements, the first is just
             # as for others (additional properties) while the second is either True or False and
@@ -52,14 +52,14 @@ def checkTypeAndProperties(typePropertiesDetails):
                     if not props[1] or isDefaultAndCurrent:
                         found = True
                         break
-            test.verify(found, "Verifying: Qt Creator displays Welcome Page with %s." % detail)
+            test.verify(found, "Verifying: Qt Hldplugin displays Welcome Page with %s." % detail)
         elif qType == 'ProjectModelIndex':
             treeView = getWelcomeTreeView("Recent Projects")
             if not treeView:
                 test.fatal("Failed to find Projects tree view, cannot check for %s." % detail)
                 continue
             test.verify(props in dumpItems(treeView.model()),
-                        "Verifying: Qt Creator displays Welcome Page with %s." % detail)
+                        "Verifying: Qt Hldplugin displays Welcome Page with %s." % detail)
         else:
             test.fatal("Unhandled qType '%s' found..." % qType)
 
@@ -69,7 +69,7 @@ def main():
                                  "quick", "animation")
     if not neededFilePresent(sourceExample):
         return
-    # open Qt Creator
+    # open Qt Hldplugin
     startQC()
     if not startedWithoutPluginError():
         return
@@ -84,7 +84,7 @@ def main():
 
     # select "Create Project" and try to create a new project
     createNewQtQuickApplication(tempDir(), "SampleApp", fromWelcome = True)
-    test.verify(checkIfObjectExists("{column='0' container=':Qt Creator_Utils::NavigationTreeView'"
+    test.verify(checkIfObjectExists("{column='0' container=':Qt Hldplugin_Utils::NavigationTreeView'"
                                     " text~='SampleApp( \(.*\))?' type='QModelIndex'}"),
                 "Verifying: The project is opened in 'Edit' mode after configuring.")
     # go to "Welcome page" again and verify updated information
@@ -100,7 +100,7 @@ def main():
     examplePath = os.path.join(prepareTemplate(sourceExample), "animation.pro")
     openQmakeProject(examplePath, fromWelcome = True)
     waitForProjectParsing()
-    test.verify(checkIfObjectExists("{column='0' container=':Qt Creator_Utils::NavigationTreeView'"
+    test.verify(checkIfObjectExists("{column='0' container=':Qt Hldplugin_Utils::NavigationTreeView'"
                                     " text~='animation( \(.*\))?' type='QModelIndex'}"),
                 "Verifying: The project is opened in 'Edit' mode after configuring.")
     # go to "Welcome page" again and check if there is an information about recent projects
@@ -112,5 +112,5 @@ def main():
         typePropDet = (("ProjectModelIndex", "animation", "one project"),
                        ("ProjectModelIndex", "SampleApp", "other project"))
         checkTypeAndProperties(typePropDet)
-    # exit Qt Creator
+    # exit Qt Hldplugin
     invokeMenuItem("File", "Exit")

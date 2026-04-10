@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -100,7 +100,7 @@ void SelectionIndicator::setItems(const QList<FormEditorItem*> &itemList)
 {
     clear();
 
-    static QColor selectionColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_FormEditorSelectionColor);
+    static QColor selectionColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_FormEditorSelectionColor);
 
     foreach (FormEditorItem *item, itemList) {
         if (!item->qmlItemNode().isValid())
@@ -141,7 +141,7 @@ void SelectionIndicator::setItems(const QList<FormEditorItem*> &itemList)
             m_annotationItem = nullptr;
         }
 
-        static QColor textColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_FormEditorForegroundColor);
+        static QColor textColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_FormEditorForegroundColor);
 
         textItem->setDefaultTextColor(textColor);
         QPolygonF labelPolygon = boundingRectInLayerItemSpaceForItem(selectedItem, m_layerItem.data());

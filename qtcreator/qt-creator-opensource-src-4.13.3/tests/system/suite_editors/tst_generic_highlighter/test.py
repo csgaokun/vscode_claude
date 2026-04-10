@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def __highlighterDefinitionsDirectory__():
     if platform.system() in ('Microsoft', 'Windows'):
@@ -92,7 +92,7 @@ def getOrModifyFilePatternsFor(mimeType, filter='', toBePresent=None):
                                    "for another MIME type.",
                                    "Conflicting patterns: %s" % str(conflictingSet))
                     if conflictingSet.difference(toBeAddedSet):
-                        test.fail("MIME type handling failed. (QTCREATORBUG-12149?)",
+                        test.fail("MIME type handling failed. (QTHLDPLUGINBUG-12149?)",
                                   "Conflicting patterns: %s" % str(conflictingSet))
                         # re-check the patterns
                         result = getOrModifyFilePatternsFor(mimeType)
@@ -178,7 +178,7 @@ def main():
         mssg = "Verifying whether hint for missing highlight definition is present. (expected: %s)"
         try:
             waitForObject("{text='%s' type='QLabel' unnamed='1' visible='1' "
-                          "window=':Qt Creator_Core::Internal::MainWindow'}" % miss, 2000)
+                          "window=':Qt Hldplugin_Core::Internal::MainWindow'}" % miss, 2000)
             test.verify(expectHint, mssg % str(expectHint))
         except:
             test.verify(not expectHint, mssg % str(expectHint))
@@ -205,7 +205,7 @@ def main():
                                                       addedHaskell, addedLiterateHaskell)
         try:
             waitForObject("{text='%s' type='QLabel' unnamed='1' visible='1' "
-                          "window=':Qt Creator_Core::Internal::MainWindow'}" % miss, 2000)
+                          "window=':Qt Hldplugin_Core::Internal::MainWindow'}" % miss, 2000)
             test.verify(display, "Hint for missing highlight definition was present "
                         "- current file: %s" % current)
         except:

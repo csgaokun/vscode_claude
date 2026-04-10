@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -97,7 +97,7 @@ QColor StyleHelper::notTooBrightHighlightColor()
 QPalette StyleHelper::sidebarFontPalette(const QPalette &original)
 {
     QPalette palette = original;
-    const QColor textColor = creatorTheme()->color(Theme::ProgressBarTitleColor);
+    const QColor textColor = hldpluginTheme()->color(Theme::ProgressBarTitleColor);
     palette.setColor(QPalette::WindowText, textColor);
     palette.setColor(QPalette::Text, textColor);
     return palette;
@@ -118,7 +118,7 @@ QColor StyleHelper::m_requestedBaseColor;
 QColor StyleHelper::baseColor(bool lightColored)
 {
     static const QColor windowColor = QApplication::palette().color(QPalette::Window);
-    static const bool windowColorAsBase = creatorTheme()->flag(Theme::WindowColorAsBase);
+    static const bool windowColorAsBase = hldpluginTheme()->flag(Theme::WindowColorAsBase);
 
     return (lightColored || windowColorAsBase) ? windowColor : m_baseColor;
 }
@@ -170,7 +170,7 @@ void StyleHelper::setBaseColor(const QColor &newcolor)
 {
     m_requestedBaseColor = newcolor;
 
-    const QColor themeBaseColor = creatorTheme()->color(Theme::PanelStatusBarBackgroundColor);
+    const QColor themeBaseColor = hldpluginTheme()->color(Theme::PanelStatusBarBackgroundColor);
     const QColor defaultBaseColor = QColor(DEFAULT_BASE_COLOR);
     QColor color;
 
@@ -335,11 +335,11 @@ void StyleHelper::drawArrow(QStyle::PrimitiveElement element, QPainter *painter,
         };
 
         if (!enabled) {
-            drawCommonStyleArrow(image.rect(), creatorTheme()->color(Theme::IconsDisabledColor));
+            drawCommonStyleArrow(image.rect(), hldpluginTheme()->color(Theme::IconsDisabledColor));
         } else {
-            if (creatorTheme()->flag(Theme::ToolBarIconShadow))
+            if (hldpluginTheme()->flag(Theme::ToolBarIconShadow))
                 drawCommonStyleArrow(image.rect().translated(0, devicePixelRatio), toolBarDropShadowColor());
-            drawCommonStyleArrow(image.rect(), creatorTheme()->color(Theme::IconsBaseColor));
+            drawCommonStyleArrow(image.rect(), hldpluginTheme()->color(Theme::IconsBaseColor));
         }
         painter.end();
         pixmap = QPixmap::fromImage(image);
@@ -417,7 +417,7 @@ void StyleHelper::drawIconWithShadow(const QIcon &icon, const QRect &rect,
                     icon.availableSizes().count() == icon.availableSizes(QIcon::Disabled).count();
             if (!hasDisabledState)
                 px = disabledSideBarIcon(icon.pixmap(window, rect.size()));
-        } else if (creatorTheme()->flag(Theme::ToolBarIconShadow)) {
+        } else if (hldpluginTheme()->flag(Theme::ToolBarIconShadow)) {
             // Draw shadow
             QImage tmp(px.size() + QSize(radius * 2, radius * 2 + 1), QImage::Format_ARGB32_Premultiplied);
             tmp.fill(Qt::transparent);

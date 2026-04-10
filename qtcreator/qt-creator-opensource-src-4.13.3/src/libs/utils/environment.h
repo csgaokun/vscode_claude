@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ QT_FORWARD_DECLARE_CLASS(QProcessEnvironment)
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT Environment final : public NameValueDictionary
+class QTHLDPLUGIN_UTILS_EXPORT Environment final : public NameValueDictionary
 {
 public:
     using NameValueDictionary::NameValueDictionary;
@@ -88,7 +88,7 @@ private:
                                QSet<FilePath> &alreadyChecked) const;
 };
 
-class QTCREATOR_UTILS_EXPORT EnvironmentProvider
+class QTHLDPLUGIN_UTILS_EXPORT EnvironmentProvider
 {
 public:
     QByteArray id;

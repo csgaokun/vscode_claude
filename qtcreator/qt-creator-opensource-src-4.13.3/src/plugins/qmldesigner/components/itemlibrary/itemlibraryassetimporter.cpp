@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -28,7 +28,7 @@
 
 #include "rewriterview.h"
 #include "model.h"
-#include "puppetcreator.h"
+#include "puppethldplugin.h"
 
 #include <QtCore/qdir.h>
 #include <QtCore/qdiriterator.h>
@@ -495,11 +495,11 @@ bool ItemLibraryAssetImporter::generateComponentIcon(int size, const QString &ic
     Model *model = doc ? doc->currentModel() : nullptr;
 
     if (model) {
-        PuppetCreator puppetCreator(doc->currentTarget(), model);
-        puppetCreator.createQml2PuppetExecutableIfMissing();
+        PuppetHldplugin puppetHldplugin(doc->currentTarget(), model);
+        puppetHldplugin.createQml2PuppetExecutableIfMissing();
         QStringList puppetArgs;
         puppetArgs << "--rendericon" << QString::number(size) << iconFile << iconSource;
-        QProcessUniquePointer process = puppetCreator.createPuppetProcess(
+        QProcessUniquePointer process = puppetHldplugin.createPuppetProcess(
             "custom",
             {},
             this,

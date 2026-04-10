@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -376,7 +376,7 @@ void QmlProfilerTool::finalizeRunControl(QmlProfilerRunner *runWorker)
                 break;
             case QMessageBox::Help:
                 HelpManager::showHelpUrl(
-                            "qthelp://org.qt-project.qtcreator/doc/creator-debugging-qml.html");
+                            "qthelp://org.qt-project.qthldplugin/doc/hldplugin-debugging-qml.html");
                 Q_FALLTHROUGH();
             case QMessageBox::Cancel:
                 // The actual error message has already been logged.

@@ -6,7 +6,7 @@ HEADERS += testplugin.h testplugin_global.h
 DISTFILES += testplugin.json
 
 QTC_LIB_DEPENDS += extensionsystem
-include(../../../../../qtcreator.pri)
+include(../../../../../qthldplugin.pri)
 include(../../../qttestrpath.pri)
 
 TARGET = $$qtLibraryTargetName(test)

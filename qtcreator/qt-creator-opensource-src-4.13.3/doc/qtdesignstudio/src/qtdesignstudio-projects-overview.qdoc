@@ -63,7 +63,7 @@
         \li \l {Converting UI Projects to Applications}
 
             \QDS projects are useful for creating UIs. To use them
-            for application development in Qt Creator, you have to convert them
+            for application development in Qt Hldplugin, you have to convert them
             to Qt Quick Application projects that contain .pro, .cpp, and .qrc
             files.
 

@@ -1644,7 +1644,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        clip-path="url(#clipPath4101)"
-       id="qtcreator_icon_16x16"
+       id="qthldplugin_icon_16x16"
        transform="translate(0,-5200)">
       <use
          x="0"
@@ -1664,7 +1664,7 @@
       <use
          x="0"
          y="0"
-         xlink:href="#qtcreator-logo-leaf"
+         xlink:href="#qthldplugin-logo-leaf"
          id="use4579"
          transform="matrix(0.06897093,-0.01079806,0.01079806,0.06897093,-23.03335,-156.337)"
          width="1"
@@ -1674,7 +1674,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        clip-path="url(#clipPath4156)"
-       id="qtcreator_icon_24x24"
+       id="qthldplugin_icon_24x24"
        transform="translate(0,-5200)">
       <use
          x="0"
@@ -1694,7 +1694,7 @@
       <use
          x="0"
          y="0"
-         xlink:href="#qtcreator-logo-leaf"
+         xlink:href="#qthldplugin-logo-leaf"
          id="use4579-5"
          transform="matrix(0.0796062,0,0,0.0796062,-1.4464667,-170.31739)"
          width="1"
@@ -1704,7 +1704,7 @@
        clip-path="url(#clipPath4448)"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       id="qtcreator_icon_32x32"
+       id="qthldplugin_icon_32x32"
        transform="translate(0,-5200)">
       <use
          x="0"
@@ -1724,7 +1724,7 @@
       <use
          x="0"
          y="0"
-         xlink:href="#qtcreator-logo-leaf"
+         xlink:href="#qthldplugin-logo-leaf"
          id="use4579-7"
          transform="matrix(0.11384673,-0.0042732,0.0042732,0.11384673,3.9071909,-189.9819)"
          width="1"
@@ -1736,8 +1736,8 @@
        height="1080"
        width="1920"
        transform="matrix(2,0,0,2,24,5320)"
-       id="qtcreator_icon_48x48"
-       xlink:href="#qtcreator_icon_24x24"
+       id="qthldplugin_icon_48x48"
+       xlink:href="#qthldplugin_icon_24x24"
        y="0"
        x="0" />
     <use
@@ -1746,15 +1746,15 @@
        transform="matrix(0.5,0,0,0.5,36,-2660)"
        height="1080"
        width="1920"
-       id="qtcreator_icon_64x64"
-       xlink:href="#qtcreator_icon_128x128"
+       id="qthldplugin_icon_64x64"
+       xlink:href="#qthldplugin_icon_128x128"
        y="0"
        x="0" />
     <g
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
        clip-path="url(#clipPath4086)"
-       id="qtcreator_icon_128x128"
+       id="qthldplugin_icon_128x128"
        transform="translate(0,-5200)">
       <use
          x="0"
@@ -1774,7 +1774,7 @@
       <use
          x="0"
          y="0"
-         xlink:href="#qtcreator-logo-leaf"
+         xlink:href="#qthldplugin-logo-leaf"
          id="use4579-6"
          transform="matrix(0.41034847,0,0,0.41034847,32.518174,-380.76856)"
          width="1"
@@ -1784,8 +1784,8 @@
        height="1080"
        width="1920"
        transform="matrix(2,0,0,2,-72,5320)"
-       id="qtcreator_icon_256x256"
-       xlink:href="#qtcreator_icon_128x128"
+       id="qthldplugin_icon_256x256"
+       xlink:href="#qthldplugin_icon_128x128"
        y="0"
        x="0"
        inkscape:export-xdpi="90"
@@ -1796,16 +1796,16 @@
        transform="matrix(4,0,0,4,-216,15960)"
        height="1080"
        width="1920"
-       id="qtcreator_icon_512x512"
-       xlink:href="#qtcreator_icon_128x128"
+       id="qthldplugin_icon_512x512"
+       xlink:href="#qthldplugin_icon_128x128"
        y="0"
        x="0" />
     <use
        height="1080"
        width="1920"
        transform="matrix(8,0,0,8,-504,37240)"
-       id="qtcreator_icon_1024x1024"
-       xlink:href="#qtcreator_icon_128x128"
+       id="qthldplugin_icon_1024x1024"
+       xlink:href="#qthldplugin_icon_128x128"
        y="0"
        x="0"
        inkscape:export-xdpi="90"
@@ -2083,7 +2083,7 @@
     <g
        transform="matrix(15.741449,2.8647469,-2.8647469,15.741449,1914.5274,-8898.7459)"
        style="display:inline"
-       id="qtcreator-logo-leaf">
+       id="qthldplugin-logo-leaf">
       <path
          style="fill:#b4b4b4;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 24.360144,599.91797 c 0,0 -1.180704,-2.9808 0.17111,-4.35547 1.351814,-1.37467 4.480985,-1.78019 7.03125,-4.875 -1.33283,3.62826 -1.079399,5.25815 -2.546875,7.39063 -1.467476,2.13247 -4.655485,1.83984 -4.655485,1.83984 z"

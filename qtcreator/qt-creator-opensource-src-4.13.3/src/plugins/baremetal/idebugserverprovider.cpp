@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -160,8 +160,8 @@ bool IDebugServerProvider::operator==(const IDebugServerProvider &other) const
 
 IDebugServerProviderConfigWidget *IDebugServerProvider::configurationWidget() const
 {
-    QTC_ASSERT(m_configurationWidgetCreator, return nullptr);
-    return m_configurationWidgetCreator();
+    QTC_ASSERT(m_configurationWidgetHldplugin, return nullptr);
+    return m_configurationWidgetHldplugin();
 }
 
 QVariantMap IDebugServerProvider::toMap() const
@@ -206,9 +206,9 @@ bool IDebugServerProvider::fromMap(const QVariantMap &data)
     return true;
 }
 
-void IDebugServerProvider::setConfigurationWidgetCreator(const std::function<IDebugServerProviderConfigWidget *()> &configurationWidgetCreator)
+void IDebugServerProvider::setConfigurationWidgetHldplugin(const std::function<IDebugServerProviderConfigWidget *()> &configurationWidgetHldplugin)
 {
-    m_configurationWidgetCreator = configurationWidgetCreator;
+    m_configurationWidgetHldplugin = configurationWidgetHldplugin;
 }
 
 // IDebugServerProviderFactory
@@ -232,12 +232,12 @@ QString IDebugServerProviderFactory::displayName() const
 
 IDebugServerProvider *IDebugServerProviderFactory::create() const
 {
-    return m_creator();
+    return m_hldplugin();
 }
 
 IDebugServerProvider *IDebugServerProviderFactory::restore(const QVariantMap &data) const
 {
-    IDebugServerProvider *p = m_creator();
+    IDebugServerProvider *p = m_hldplugin();
     const auto updated = data;
 
     if (p->fromMap(updated))
@@ -257,9 +257,9 @@ void IDebugServerProviderFactory::setDisplayName(const QString &name)
     m_displayName = name;
 }
 
-void IDebugServerProviderFactory::setCreator(const std::function<IDebugServerProvider *()> &creator)
+void IDebugServerProviderFactory::setHldplugin(const std::function<IDebugServerProvider *()> &hldplugin)
 {
-    m_creator = creator;
+    m_hldplugin = hldplugin;
 }
 
 QString IDebugServerProviderFactory::idFromMap(const QVariantMap &data)

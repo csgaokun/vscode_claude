@@ -8,10 +8,10 @@ INCLUDEPATH += $$PWD \
     $$PWD/include
 
 include (instances/instances-lib.pri)
-include (../../../../share/qtcreator/qml/qmlpuppet/interfaces/interfaces.pri)
-include (../../../../share/qtcreator/qml/qmlpuppet/commands/commands.pri)
-include (../../../../share/qtcreator/qml/qmlpuppet/container/container.pri)
-include (../../../../share/qtcreator/qml/qmlpuppet/types/types.pri)
+include (../../../../share/qthldplugin/qml/qmlpuppet/interfaces/interfaces.pri)
+include (../../../../share/qthldplugin/qml/qmlpuppet/commands/commands.pri)
+include (../../../../share/qthldplugin/qml/qmlpuppet/container/container.pri)
+include (../../../../share/qthldplugin/qml/qmlpuppet/types/types.pri)
 
 SOURCES += $$PWD/model/abstractview.cpp \
     $$PWD/model/rewriterview.cpp \

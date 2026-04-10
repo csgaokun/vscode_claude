@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -33,20 +33,20 @@ Rectangle {
         id: image1
         x: 20
         y: 18
-        source: "images/qtcreator.png"
+        source: "images/qthldplugin.png"
     }
 
     Image {
         id: image2
         x: 327
         y: 18
-        source: "images/qtcreator.jpg"
+        source: "images/qthldplugin.jpg"
     }
 
     Image {
         id: image3
         x: 20
         y: 288
-        source: "images/qtcreator.ico"
+        source: "images/qthldplugin.ico"
     }
 }

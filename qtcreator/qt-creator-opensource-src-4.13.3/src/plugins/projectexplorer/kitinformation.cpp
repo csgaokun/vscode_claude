@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -532,7 +532,7 @@ void ToolChainKitAspect::addToMacroExpander(Kit *kit, Utils::MacroExpander *expa
 {
     QTC_ASSERT(kit, return);
 
-    // Compatibility with Qt Creator < 4.2:
+    // Compatibility with Qt Hldplugin < 4.2:
     expander->registerVariable("Compiler:Name", tr("Compiler"),
                                [kit] {
                                    const ToolChain *tc = cxxToolChain(kit);

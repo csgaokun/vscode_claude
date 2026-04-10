@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -544,7 +544,7 @@ void TokenInfo::punctuationOrOperatorKind()
         case CXCursor_FunctionDecl:
         case CXCursor_CXXMethod:
         case CXCursor_DeclRefExpr:
-            // TODO(QTCREATORBUG-19948): Mark calls to overloaded new and delete.
+            // TODO(QTHLDPLUGINBUG-19948): Mark calls to overloaded new and delete.
             // Today we can't because libclang sets these cursors' spelling to "".
             // case CXCursor_CXXNewExpr:
             // case CXCursor_CXXDeleteExpr:

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -316,7 +316,7 @@ void BindingLoopMaterialShader::updateState(const RenderState &state, QSGMateria
         program()->setUniformValue(m_z_range_id, GLfloat(1.0));
         program()->setUniformValue(
                     m_color_id,
-                    Utils::creatorTheme()->color(Utils::Theme::Timeline_HighlightColor));
+                    Utils::hldpluginTheme()->color(Utils::Theme::Timeline_HighlightColor));
     }
 }
 

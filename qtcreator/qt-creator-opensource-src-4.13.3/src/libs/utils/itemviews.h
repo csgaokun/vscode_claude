@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -85,7 +85,7 @@ public:
 
 };
 
-class QTCREATOR_UTILS_EXPORT TreeView : public View<QTreeView>
+class QTHLDPLUGIN_UTILS_EXPORT TreeView : public View<QTreeView>
 {
     Q_OBJECT
 public:
@@ -94,7 +94,7 @@ public:
     {}
 };
 
-class QTCREATOR_UTILS_EXPORT TreeWidget : public View<QTreeWidget>
+class QTHLDPLUGIN_UTILS_EXPORT TreeWidget : public View<QTreeWidget>
 {
     Q_OBJECT
 public:
@@ -103,7 +103,7 @@ public:
     {}
 };
 
-class QTCREATOR_UTILS_EXPORT ListView : public View<QListView>
+class QTHLDPLUGIN_UTILS_EXPORT ListView : public View<QListView>
 {
     Q_OBJECT
 public:
@@ -112,7 +112,7 @@ public:
     {}
 };
 
-class QTCREATOR_UTILS_EXPORT ListWidget : public View<QListWidget>
+class QTHLDPLUGIN_UTILS_EXPORT ListWidget : public View<QListWidget>
 {
     Q_OBJECT
 public:

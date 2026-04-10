@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(callgrind/callgrind.pri)
 include(xmlprotocol/xmlprotocol.pri)
 QT *= network

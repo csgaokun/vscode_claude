@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -250,7 +250,7 @@ CommonOptionsPage::CommonOptionsPage()
     setCategory(DEBUGGER_SETTINGS_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("Debugger", "Debugger"));
     setCategoryIconPath(":/debugger/images/settingscategory_debugger.png");
-    setWidgetCreator([] { return new CommonOptionsPageWidget; });
+    setWidgetHldplugin([] { return new CommonOptionsPageWidget; });
 }
 
 QString CommonOptionsPage::msgSetBreakpointAtFunction(const char *function)
@@ -398,7 +398,7 @@ LocalsAndExpressionsOptionsPage::LocalsAndExpressionsOptionsPage()
     //: '&&' will appear as one (one is marking keyboard shortcut)
     setDisplayName(QCoreApplication::translate("Debugger", "Locals && Expressions"));
     setCategory(DEBUGGER_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new LocalsAndExpressionsOptionsPageWidget; });
+    setWidgetHldplugin([] { return new LocalsAndExpressionsOptionsPageWidget; });
 }
 
 } // namespace Internal

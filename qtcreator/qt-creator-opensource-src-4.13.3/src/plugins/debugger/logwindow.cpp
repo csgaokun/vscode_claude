@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -122,7 +122,7 @@ private:
     {
         using Utils::Theme;
         QTextCharFormat format;
-        Theme *theme = Utils::creatorTheme();
+        Theme *theme = Utils::hldpluginTheme();
         switch (channelForChar(text.isEmpty() ? QChar() : text.at(0))) {
             case LogInput:
                 format.setForeground(theme->color(Theme::Debugger_LogWindow_LogInput));
@@ -174,7 +174,7 @@ private:
     void highlightBlock(const QString &text) override
     {
         using Utils::Theme;
-        Theme *theme = Utils::creatorTheme();
+        Theme *theme = Utils::hldpluginTheme();
         if (text.size() > 3 && text.at(2) == ':') {
             QTextCharFormat format;
             format.setForeground(theme->color(Theme::Debugger_LogWindow_LogTime));

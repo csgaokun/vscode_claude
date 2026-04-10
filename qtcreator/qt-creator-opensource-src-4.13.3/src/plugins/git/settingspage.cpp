@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -131,7 +131,7 @@ GitSettingsPage::GitSettingsPage(GitSettings *settings, const std::function<void
     setId(VcsBase::Constants::VCS_ID_GIT);
     setDisplayName(GitSettingsPageWidget::tr("Git"));
     setCategory(VcsBase::Constants::VCS_SETTINGS_CATEGORY);
-    setWidgetCreator([settings, onChange] { return new GitSettingsPageWidget(settings, onChange); });
+    setWidgetHldplugin([settings, onChange] { return new GitSettingsPageWidget(settings, onChange); });
 }
 
 } // namespace Internal

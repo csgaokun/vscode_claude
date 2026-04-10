@@ -1,10 +1,10 @@
-Qt Creator version 3.2 contains bug fixes and new features.
+Qt Hldplugin version 3.2 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline origin/3.1..origin/3.2
 
 General
@@ -17,78 +17,78 @@ General
      (where variables can be used)
    * Enabled resizing of the locator field
    * Improved look and feel on HiDPI by adding more hi-resolution icons
-   * Made New dialog non-modal (QTCREATORBUG-6102)
+   * Made New dialog non-modal (QTHLDPLUGINBUG-6102)
    * Made keyboard and mouse activation of navigation panes and other trees more consistent
    * Removed unhelpful Generic Highlighter loading progress bar
-   * Fixed case-sensitivity of file system locator filter (QTCREATORBUG-10843)
+   * Fixed case-sensitivity of file system locator filter (QTHLDPLUGINBUG-10843)
    * Fixed that Window > Minimize, Zoom and Full Screen were always affecting the main window
      instead of the active window
 
 Editing
-   * Added support for manually editing bookmark line number (QTCREATORBUG-9721)
-   * Made Ctrl+Up and Ctrl+Down shortcuts configurable (QTCREATORBUG-4994)
-   * Made editor popup (Ctrl+Tab) adapt its size to contents (QTCREATORBUG-10618)
-   * Improved block editing (QTCREATORBUG-7773)
+   * Added support for manually editing bookmark line number (QTHLDPLUGINBUG-9721)
+   * Made Ctrl+Up and Ctrl+Down shortcuts configurable (QTHLDPLUGINBUG-4994)
+   * Made editor popup (Ctrl+Tab) adapt its size to contents (QTHLDPLUGINBUG-10618)
+   * Improved block editing (QTHLDPLUGINBUG-7773)
    * Fixed support for mixed languages in the generic highlighter
-   * Fixed title when printing (QTCREATORBUG-12161)
+   * Fixed title when printing (QTHLDPLUGINBUG-12161)
    * Fixed that line number background color setting was ignored
-     (QTCREATORBUG-12170)
+     (QTHLDPLUGINBUG-12170)
    * Fixed that tooltips were shown when hovering over empty area
-     (QTCREATORBUG-9437)
+     (QTHLDPLUGINBUG-9437)
    * Fixed that tooltips were shown after triggering shortcut with
-     Alt key (QTCREATORBUG-12382)
+     Alt key (QTHLDPLUGINBUG-12382)
    * Fixed scroll behavior when editing same file in multiple splits
-     (QTCREATORBUG-11486)
+     (QTHLDPLUGINBUG-11486)
    * Fixed Open With when file is open in multiple splits
    * Fixed that search highlights were removed when switching editors
-     (QTCREATORBUG-9949)
+     (QTHLDPLUGINBUG-9949)
    * Fixed dropping files in the presence of splits or external windows
-     (QTCREATORBUG-9023)
+     (QTHLDPLUGINBUG-9023)
 
 Help
    * Added page up and page down shortcuts to topic chooser
    * Added button for regenerating documentation index to Search pane
-     (QTCREATORBUG-11484)
+     (QTHLDPLUGINBUG-11484)
    * Changed documentation of examples to open in an external window
    * Fixed that opening help in external window was not possible without
      disabling help mode
    * Fixed issue with F1 in help viewer showing 'No document' instead of opening
      Help mode
    * Fixed that context help was not showing latest Qt 5 documentation
-     (QTCREATORBUG-10331)
+     (QTHLDPLUGINBUG-10331)
    * Fixed reverted check state of Show Sidebar menu item
-   * Fixed selection behavior in documentation settings (QTCREATORBUG-12135)
+   * Fixed selection behavior in documentation settings (QTHLDPLUGINBUG-12135)
 
 Managing and Building Projects
 
 QMake Projects
    * Added context menu item for copying resource path from entries in QRC
-     files in project tree (QTCREATORBUG-11776)
+     files in project tree (QTHLDPLUGINBUG-11776)
    * Added deployment support to plain C and C++ application wizards
    * Added support for restricting automatic creation of run configurations
-     (QTCREATORBUG-10953)
+     (QTHLDPLUGINBUG-10953)
    * Added Show in Explorer context menu item for qrc nodes and their subnodes
-     in project tree (QTCREATORBUG-12374)
+     in project tree (QTHLDPLUGINBUG-12374)
    * Improved dropdown menu for selecting the project file when using wizard
-     to add files (QTCREATORBUG-12002)
+     to add files (QTHLDPLUGINBUG-12002)
    * Removed warning about build directory below source directory for kits
-     with Qt 5.2 and later where this is supported (QTCREATORBUG-10024)
+     with Qt 5.2 and later where this is supported (QTHLDPLUGINBUG-10024)
    * Fixed that adding files to .pri file was missing $$PWD
 
 CMake Projects
-   * Fixed that .cmake files were opened as projects (QTCREATORBUG-12461)
+   * Fixed that .cmake files were opened as projects (QTHLDPLUGINBUG-12461)
 
 Qbs Projects
    * Added support for adding and removing files from projects
    * Fixed that run configurations were created for products that are not runnable
-     (QTCREATORBUG-12152)
+     (QTHLDPLUGINBUG-12152)
    * Fixed that run configurations were created for disabled products (QBS-560)
    * Fixed that default build directory was ignored
 
 Generic Projects
 
 Debugging
-   * Fixed tooltip expansion behavior (QTCREATORBUG-11404)
+   * Fixed tooltip expansion behavior (QTHLDPLUGINBUG-11404)
    * Changed default of "Load system GDB pretty printer" option back to "off"
    * Added option to disable automatic centering on currently debugged
      line in editor
@@ -102,12 +102,12 @@ Debugging
    * Fixed display of fixed-size wchar_t arrays
    * Added personaltypes.py as default location for user created dumpers
    * Added file setting to point to user created file of dumpers
-     (QTCREATORBUG-12492)
+     (QTHLDPLUGINBUG-12492)
    * Added button to restart current debugging session
      without quitting the debugger process
    * Made our dumpers also accessible from command line GDB
    * Made LLDB engine honor the max stack depth setting
-     (QTCREATORBUG-12416)
+     (QTHLDPLUGINBUG-12416)
    * Added dumpers for QStringData, QHashedString and QQmlRefCount
    * Fixed CDB engine to reset Locals and Expressions when
      switching frames
@@ -125,70 +125,70 @@ Debugging
    * Added raw opcode bytes to Disassembler view
    * Changed Disassembler view to order lines by increasing address
    * Made more dumpers work in release builds
-   * Fixed debugging applications that are run in a terminal on Linux (QTCREATORBUG-3509)
+   * Fixed debugging applications that are run in a terminal on Linux (QTHLDPLUGINBUG-3509)
 
 QML Profiler
-   * Improved performance (QTCREATORBUG-12341)
+   * Improved performance (QTHLDPLUGINBUG-12341)
    * Fixed drawing issues (QTBUG-38222)
    * Fixed that clicking visible event was sometimes moving timeline
-     (QTCREATORBUG-11945)
-   * Fixed navigation through events (QTCREATORBUG-12634)
+     (QTHLDPLUGINBUG-11945)
+   * Fixed navigation through events (QTHLDPLUGINBUG-12634)
 
 Analyzer
-   * Added support for Run in Terminal (QTCREATORBUG-7311)
+   * Added support for Run in Terminal (QTHLDPLUGINBUG-7311)
    * Fixed passing of multiple arguments to application
 
 C++ Support
-   * Added support for C99 designated initializers (QTCREATORBUG-1902)
-   * Added support for UTF-8 in the lexer (QTCREATORBUG-7356)
+   * Added support for C99 designated initializers (QTHLDPLUGINBUG-1902)
+   * Added support for UTF-8 in the lexer (QTHLDPLUGINBUG-7356)
    * Fixed finding usages of members of typedef'ed anonymous structs
-     (QTCREATORBUG-11859, QTCREATORBUG-11860)
+     (QTHLDPLUGINBUG-11859, QTHLDPLUGINBUG-11860)
    * Fixed indentation of concatenated strings
-   * Fixed pointer typedef resolving (QTCREATORBUG-10021)
+   * Fixed pointer typedef resolving (QTHLDPLUGINBUG-10021)
    * Fixed scroll wheel behavior in editor's symbols dropdown
    * Fixed that some wizards were ignoring configured file extensions
-     (QTCREATORBUG-12309)
+     (QTHLDPLUGINBUG-12309)
    * Fixed parsing of trailing type-specifier
    * Fixed parsing of expressions like vector<int>{1}
    * Fixed the Create Getter and Setter Member Functions refactoring action
-     for variables with "m" and "m_" prefixes (QTCREATORBUG-12244)
-   * Fixed that "using Ns::Class" did not highlight class in including files (QTCREATORBUG-12357)
-   * Fixed include paths handling (QTCREATORBUG-11599)
+     for variables with "m" and "m_" prefixes (QTHLDPLUGINBUG-12244)
+   * Fixed that "using Ns::Class" did not highlight class in including files (QTHLDPLUGINBUG-12357)
+   * Fixed include paths handling (QTHLDPLUGINBUG-11599)
    * Fixed parsing of expressions like vector<int>{1}
    * Fixed completion for template with default argument
-     (QTCREATORBUG-12606, QTCREATORBUG-12605)
+     (QTHLDPLUGINBUG-12606, QTHLDPLUGINBUG-12605)
    * Improved lambda support
      * Fixed local uses, completion and find usages for parameters
-     * Fixed "duplicate data type in declaration" warning (QTCREATORBUG-12521)
+     * Fixed "duplicate data type in declaration" warning (QTHLDPLUGINBUG-12521)
    * Improved infrastructure for Clang integration
       * Reworked indexing data structure
       * Started to clean up C++ editor
 
 QML Support
-   * Fixed handling of properties that start with underscore (QTCREATORBUG-12214)
+   * Fixed handling of properties that start with underscore (QTHLDPLUGINBUG-12214)
 
 Qt Quick Designer
    * Changed puppet helper executable to be compiled on demand
    * Added support for reloading states editor
    * Improved gradient editor
-   * Fixed minimum and maximum sizes for Window component (QTCREATORBUG-12209)
+   * Fixed minimum and maximum sizes for Window component (QTHLDPLUGINBUG-12209)
    * Fixed wrong password mode property on text fields
    * Fixed that it was not possible to anchor to all possible targets
-     (QTCREATORBUG-12077)
+     (QTHLDPLUGINBUG-12077)
    * Fixed possible values for preferred highlight properties
-     (QTCREATORBUG-12216)
-   * Fixed setting empty text on Label and Text items (QTCREATORBUG-12119)
-   * Fixed property sections for TextEdit (QTCREATORBUG-12452)
+     (QTHLDPLUGINBUG-12216)
+   * Fixed setting empty text on Label and Text items (QTHLDPLUGINBUG-12119)
+   * Fixed property sections for TextEdit (QTHLDPLUGINBUG-12452)
 
 Diff Viewer
    * Reworked unified diff mode
 
 Version Control Systems
    * Git
-      * Fixed replies to prompts (QTCREATORBUG-12335)
+      * Fixed replies to prompts (QTHLDPLUGINBUG-12335)
       * Fixed that original author was not preserved during Cherry-Pick
-      * Reintroduced the expanded branch list in Show (QTCREATORBUG-11293)
-      * Fixed that switching to the commit editor was unresponsive (QTCREATORBUG-12449)
+      * Reintroduced the expanded branch list in Show (QTHLDPLUGINBUG-11293)
+      * Fixed that switching to the commit editor was unresponsive (QTHLDPLUGINBUG-12449)
       * Fixed showing commits by clicking their hashes in the interactive rebase editor
       * Improved display in the Gerrit dialog to visualize dependencies
       * Added support for choosing reviewer in Push to Gerrit dialog
@@ -196,9 +196,9 @@ Version Control Systems
 
 FakeVim
    * Added support for unicode input with 'C-v' in insert mode
-   * Fixed issues with long command output (QTCREATORBUG-11598)
-   * Fixed 'gv' after yanking text in visual mode (QTCREATORBUG-12112)
-   * Fixed 'v', 'V' and 'C-v' while in visual mode (QTCREATORBUG-12113)
+   * Fixed issues with long command output (QTHLDPLUGINBUG-11598)
+   * Fixed 'gv' after yanking text in visual mode (QTHLDPLUGINBUG-12112)
+   * Fixed 'v', 'V' and 'C-v' while in visual mode (QTHLDPLUGINBUG-12113)
    * Improved sharing of navigation data between editors of the
      same document
 
@@ -211,19 +211,19 @@ Beautifier
 Platform Specific
 
 Windows
-   * Fixed issue with environment variables starting with '=' (QTCREATORBUG-8716)
-   * Fixed detection of MSVC tool chains (QTCREATORBUG-10998)
+   * Fixed issue with environment variables starting with '=' (QTHLDPLUGINBUG-8716)
+   * Fixed detection of MSVC tool chains (QTHLDPLUGINBUG-10998)
 
 OS X
    * Removed support for OS X 10.6
    * Fixed activation of items with Enter in Bookmarks pane
 
 Android
-   * Removed upper limit of version code in manifest editor (QTCREATORBUG-12668)
-   * Fixed that UI was unresponsive while creating AVD (QTCREATORBUG-10601)
+   * Removed upper limit of version code in manifest editor (QTHLDPLUGINBUG-12668)
+   * Fixed that UI was unresponsive while creating AVD (QTHLDPLUGINBUG-10601)
 
 Remote Linux
-   * Added custom remote executable run configuration type (QTCREATORBUG-12168)
+   * Added custom remote executable run configuration type (QTHLDPLUGINBUG-12168)
    * Fixed issue with environment variables that contain spaces
 
 QNX

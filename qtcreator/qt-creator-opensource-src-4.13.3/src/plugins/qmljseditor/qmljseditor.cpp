@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1084,10 +1084,10 @@ QmlJSEditorFactory::QmlJSEditorFactory(Utils::Id _id)
     addMimeType(QmlJSTools::Constants::QMLTYPES_MIMETYPE);
     addMimeType(QmlJSTools::Constants::JS_MIMETYPE);
 
-    setDocumentCreator([this]() { return new QmlJSEditorDocument(id()); });
-    setEditorWidgetCreator([]() { return new QmlJSEditorWidget; });
-    setEditorCreator([]() { return new QmlJSEditor; });
-    setAutoCompleterCreator([]() { return new AutoCompleter; });
+    setDocumentHldplugin([this]() { return new QmlJSEditorDocument(id()); });
+    setEditorWidgetHldplugin([]() { return new QmlJSEditorWidget; });
+    setEditorHldplugin([]() { return new QmlJSEditor; });
+    setAutoCompleterHldplugin([]() { return new AutoCompleter; });
     setCommentDefinition(Utils::CommentDefinition::CppStyle);
     setParenthesesMatchingEnabled(true);
     setCodeFoldingSupported(true);

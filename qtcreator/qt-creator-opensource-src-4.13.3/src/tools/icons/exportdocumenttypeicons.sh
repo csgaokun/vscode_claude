@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@ fi
 cd `dirname $0`
 
 # Adding the icons for the OSX document type icon for .ui files
-for documentTypeName in "uifile" "qtcreator-project";\
+for documentTypeName in "uifile" "qthldplugin-project";\
 do
     inconsetName=${documentTypeName}.iconset
     rm -rf $inconsetName

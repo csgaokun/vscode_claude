@@ -65,7 +65,7 @@ namespace Internal {
 
 class MimeMagicRulePrivate;
 
-class QTCREATOR_UTILS_EXPORT MimeMagicRule
+class QTHLDPLUGIN_UTILS_EXPORT MimeMagicRule
 {
 public:
     enum Type { Invalid = 0, String, RegExp, Host16, Host32, Big16, Big32, Little16, Little32, Byte };

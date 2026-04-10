@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -188,7 +188,7 @@ public:
     bool m_needsBuildConfigurations = true;
     bool m_needsDeployConfigurations = true;
 
-    std::function<BuildSystem *(Target *)> m_buildSystemCreator;
+    std::function<BuildSystem *(Target *)> m_buildSystemHldplugin;
 
     std::unique_ptr<Core::IDocument> m_document;
     std::vector<std::unique_ptr<Core::IDocument>> m_extraProjectDocuments;
@@ -258,7 +258,7 @@ bool Project::canBuildProducts() const
 
 BuildSystem *Project::createBuildSystem(Target *target) const
 {
-    return d->m_buildSystemCreator ? d->m_buildSystemCreator(target) : nullptr;
+    return d->m_buildSystemHldplugin ? d->m_buildSystemHldplugin(target) : nullptr;
 }
 
 Utils::FilePath Project::projectFilePath() const
@@ -887,9 +887,9 @@ Task Project::createProjectTask(Task::TaskType type, const QString &description)
     return Task(type, description, Utils::FilePath(), -1, Utils::Id());
 }
 
-void Project::setBuildSystemCreator(const std::function<BuildSystem *(Target *)> &creator)
+void Project::setBuildSystemHldplugin(const std::function<BuildSystem *(Target *)> &hldplugin)
 {
-    d->m_buildSystemCreator = creator;
+    d->m_buildSystemHldplugin = hldplugin;
 }
 
 Core::Context Project::projectContext() const
@@ -1083,7 +1083,7 @@ public:
     {
         setId(TEST_PROJECT_ID);
         setDisplayName(TEST_PROJECT_DISPLAYNAME);
-        setBuildSystemCreator([](Target *t) { return new TestBuildSystem(t); });
+        setBuildSystemHldplugin([](Target *t) { return new TestBuildSystem(t); });
         setNeedsBuildConfigurations(false);
         setNeedsDeployConfigurations(false);
 

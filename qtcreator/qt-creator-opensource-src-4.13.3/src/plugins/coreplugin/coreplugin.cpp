@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -95,7 +95,7 @@ CorePlugin::~CorePlugin()
     DesignMode::destroyModeIfRequired();
 
     delete m_mainWindow;
-    setCreatorTheme(nullptr);
+    setHldpluginTheme(nullptr);
 }
 
 CorePlugin *CorePlugin::instance()
@@ -148,9 +148,9 @@ bool CorePlugin::initialize(const QStringList &arguments, QString *errorMessage)
     const CoreArguments args = parseArguments(arguments);
     Theme::initialPalette(); // Initialize palette before setting it
     Theme *themeFromArg = ThemeEntry::createTheme(args.themeId);
-    setCreatorTheme(themeFromArg ? themeFromArg
+    setHldpluginTheme(themeFromArg ? themeFromArg
                                  : ThemeEntry::createTheme(ThemeEntry::themeSetting()));
-    InfoBar::initialize(ICore::settings(), creatorTheme());
+    InfoBar::initialize(ICore::settings(), hldpluginTheme());
     new ActionManager(this);
     ActionManager::setPresentationModeEnabled(args.presentationMode);
     m_mainWindow = new MainWindow;

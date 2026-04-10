@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BogDan Vatra <bog_dan_ro@yahoo.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -162,7 +162,7 @@ void AndroidPackageInstallationStep::doRun()
     }
     AbstractProcessStep::doRun();
 
-    // NOTE: This is a workaround for QTCREATORBUG-24155
+    // NOTE: This is a workaround for QTHLDPLUGINBUG-24155
     // Needed for Qt 5.15.0 and Qt 5.14.x versions
     if (buildType() == BuildConfiguration::BuildType::Debug) {
         QtSupport::BaseQtVersion *version = QtSupport::QtKitAspect::qtVersion(target()->kit());

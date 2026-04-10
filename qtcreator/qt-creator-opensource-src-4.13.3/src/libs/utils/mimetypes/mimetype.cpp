@@ -94,7 +94,7 @@ void MimeTypePrivate::addGlobPattern(const QString &pattern)
 
 /*!
     \class MimeType
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup shared
     \brief The MimeType class describes types of file or data, represented by a MIME type string.
 

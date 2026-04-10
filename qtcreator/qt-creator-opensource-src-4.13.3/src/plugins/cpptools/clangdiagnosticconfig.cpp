@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -152,8 +152,8 @@ bool ClangDiagnosticConfig::isClazyEnabled() const
 
 static QString convertToNewClazyChecksFormat(const QString &checks)
 {
-    // Before Qt Creator 4.9 valid values for checks were: "", "levelN".
-    // Starting with Qt Creator 4.9, checks are a comma-separated string of checks: "x,y,z".
+    // Before Qt Hldplugin 4.9 valid values for checks were: "", "levelN".
+    // Starting with Qt Hldplugin 4.9, checks are a comma-separated string of checks: "x,y,z".
 
     if (checks.isEmpty())
         return {};
@@ -204,7 +204,7 @@ ClangDiagnosticConfigs diagnosticConfigsFromSettings(QSettings *s)
         config.setClangOptions(s->value(diagnosticConfigWarningsKey).toStringList());
         config.setUseBuildSystemWarnings(s->value(useBuildSystemFlagsKey, false).toBool());
         const int tidyModeValue = s->value(diagnosticConfigsTidyModeKey).toInt();
-        if (tidyModeValue == 0) { // Convert from settings of <= Qt Creator 4.10
+        if (tidyModeValue == 0) { // Convert from settings of <= Qt Hldplugin 4.10
             config.setClangTidyMode(ClangDiagnosticConfig::TidyMode::UseCustomChecks);
             config.setClangTidyChecks("-*");
         } else {

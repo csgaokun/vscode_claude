@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 Orgad Shaneh <orgads@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -248,7 +248,7 @@ int GerritServer::testConnection()
                 Core::ShellCommand::NoOutput);
     if (resp.result == SynchronousProcessResponse::Finished) {
         QString output = resp.stdOut();
-        // Gerrit returns an empty response for /p/qt-creator/a/accounts/self
+        // Gerrit returns an empty response for /p/qt-hldplugin/a/accounts/self
         // so consider this as 404.
         if (output.isEmpty())
             return PageNotFound;

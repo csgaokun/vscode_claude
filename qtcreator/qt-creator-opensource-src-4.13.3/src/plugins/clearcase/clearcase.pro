@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS += activityselector.h \
     annotationhighlighter.h \

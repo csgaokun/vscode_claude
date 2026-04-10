@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -201,7 +201,7 @@ void PerforceSettings::setTopLevel(const QString &t)
         return;
     clearTopLevel();
     if (!t.isEmpty()) {
-        // Check/expand symlinks as creator always has expanded file paths
+        // Check/expand symlinks as hldplugin always has expanded file paths
         QFileInfo fi(t);
         if (fi.isSymLink()) {
             m_topLevel = t;

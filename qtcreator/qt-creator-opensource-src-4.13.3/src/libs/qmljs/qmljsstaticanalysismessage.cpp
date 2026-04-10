@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -71,7 +71,7 @@ static inline QString msgInvalidConstructor(const char *what)
 StaticAnalysisMessages::StaticAnalysisMessages()
 {
     // When changing a message or severity, update the documentation, currently
-    // in creator-editors.qdoc, accordingly.
+    // in hldplugin-editors.qdoc, accordingly.
     newMsg(ErrInvalidEnumValue, Error,
            tr("Invalid value for enum."));
     newMsg(ErrEnumValueMustBeStringOrNumber, Error,

@@ -6,7 +6,7 @@
 ** Copyright (C) 2016 Giuliano Schneider
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,12 +42,12 @@ using namespace Utils;
 
 /*!
     \class Core::IOptionsPageProvider
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 /*!
     \class Core::IOptionsPageWidget
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
@@ -55,12 +55,12 @@ using namespace Utils;
     \class Core::IOptionsPage
     \inheaderfile coreplugin/dialogs/ioptionspage.h
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The IOptionsPage class is an interface for providing pages for the
     \uicontrol Options dialog (called \uicontrol Preferences on \macos).
 
-    \image qtcreator-options-dialog.png
+    \image qthldplugin-options-dialog.png
 */
 
 /*!
@@ -100,12 +100,12 @@ QIcon Core::IOptionsPage::categoryIcon() const
 }
 
 /*!
-    Sets the \a widgetCreator callback to create page widgets on demand. The
+    Sets the \a widgetHldplugin callback to create page widgets on demand. The
     widget will be destroyed on finish().
  */
-void Core::IOptionsPage::setWidgetCreator(const WidgetCreator &widgetCreator)
+void Core::IOptionsPage::setWidgetHldplugin(const WidgetHldplugin &widgetHldplugin)
 {
-    m_widgetCreator = widgetCreator;
+    m_widgetHldplugin = widgetHldplugin;
 }
 
 /*!
@@ -113,17 +113,17 @@ void Core::IOptionsPage::setWidgetCreator(const WidgetCreator &widgetCreator)
     and delete it again in the finish() method. This method can be called multiple times, so you
     should only create a new widget if the old one was deleted.
 
-    Alternatively, use setWidgetCreator() to set a callback function that is used to
+    Alternatively, use setWidgetHldplugin() to set a callback function that is used to
     lazily create a widget in time.
 
-    Either override this function in a derived class, or set a widget creator.
+    Either override this function in a derived class, or set a widget hldplugin.
 */
 
 QWidget *Core::IOptionsPage::widget()
 {
-    QTC_ASSERT(m_widgetCreator, return nullptr);
+    QTC_ASSERT(m_widgetHldplugin, return nullptr);
     if (!m_widget)
-        m_widget = m_widgetCreator();
+        m_widget = m_widgetHldplugin();
     return m_widget;
 }
 
@@ -131,14 +131,14 @@ QWidget *Core::IOptionsPage::widget()
     Called when selecting the \uicontrol Apply button on the options page dialog.
     Should detect whether any changes were made and store those.
 
-    Either override this function in a derived class, or set a widget creator.
+    Either override this function in a derived class, or set a widget hldplugin.
 
-    \sa setWidgetCreator()
+    \sa setWidgetHldplugin()
 */
 
 void Core::IOptionsPage::apply()
 {
-    QTC_ASSERT(m_widgetCreator, return);
+    QTC_ASSERT(m_widgetHldplugin, return);
     if (m_widget)
         m_widget->apply();
 }
@@ -147,14 +147,14 @@ void Core::IOptionsPage::apply()
     Called directly before the \uicontrol Options dialog closes. Here you should
     delete the widget that was created in widget() to free resources.
 
-    Either override this function in a derived class, or set a widget creator.
+    Either override this function in a derived class, or set a widget hldplugin.
 
-    \sa setWidgetCreator()
+    \sa setWidgetHldplugin()
 */
 
 void Core::IOptionsPage::finish()
 {
-    QTC_ASSERT(m_widgetCreator, return);
+    QTC_ASSERT(m_widgetHldplugin, return);
     if (m_widget) {
         m_widget->finish();
         delete m_widget;

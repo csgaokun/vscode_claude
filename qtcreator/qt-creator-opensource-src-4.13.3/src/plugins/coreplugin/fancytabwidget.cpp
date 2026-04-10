@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -109,7 +109,7 @@ QSize FancyTabBar::tabSizeHint(bool minimum) const
 void FancyTabBar::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
-    if (creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
         // draw background of upper part of left tab widget
         // (Welcome, ... Help)
         p.fillRect(event->rect(), StyleHelper::baseColor());
@@ -289,15 +289,15 @@ static void paintIcon(QPainter *painter, const QRect &rect,
     QRect iconRect(0, 0, Core::Constants::MODEBAR_ICON_SIZE, Core::Constants::MODEBAR_ICON_SIZE);
     iconRect.moveCenter(rect.center());
     iconRect = iconRect.intersected(rect);
-    if (!enabled && !creatorTheme()->flag(Theme::FlatToolBars))
+    if (!enabled && !hldpluginTheme()->flag(Theme::FlatToolBars))
         painter->setOpacity(0.7);
     StyleHelper::drawIconWithShadow(icon, iconRect, painter, iconMode);
 
-    if (selected && creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (selected && hldpluginTheme()->flag(Theme::FlatToolBars)) {
         painter->setOpacity(1.0);
         QRect accentRect = rect;
         accentRect.setWidth(2);
-        painter->fillRect(accentRect, creatorTheme()->color(Theme::IconsBaseColor));
+        painter->fillRect(accentRect, hldpluginTheme()->color(Theme::IconsBaseColor));
     }
 }
 
@@ -320,25 +320,25 @@ static void paintIconAndText(QPainter *painter, const QRect &rect,
         QRect iconRect(0, 0, Core::Constants::MODEBAR_ICON_SIZE, Core::Constants::MODEBAR_ICON_SIZE);
         iconRect.moveCenter(tabIconRect.center());
         iconRect = iconRect.intersected(tabIconRect);
-        if (!enabled && !creatorTheme()->flag(Theme::FlatToolBars))
+        if (!enabled && !hldpluginTheme()->flag(Theme::FlatToolBars))
             painter->setOpacity(0.7);
         StyleHelper::drawIconWithShadow(icon, iconRect, painter, iconMode);
     }
 
     painter->setOpacity(1.0); //FIXME: was 0.7 before?
-    if (selected && creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (selected && hldpluginTheme()->flag(Theme::FlatToolBars)) {
         QRect accentRect = rect;
         accentRect.setWidth(2);
-        painter->fillRect(accentRect, creatorTheme()->color(Theme::IconsBaseColor));
+        painter->fillRect(accentRect, hldpluginTheme()->color(Theme::IconsBaseColor));
     }
     if (enabled) {
         painter->setPen(
-            selected ? creatorTheme()->color(Theme::FancyTabWidgetEnabledSelectedTextColor)
-                     : creatorTheme()->color(Theme::FancyTabWidgetEnabledUnselectedTextColor));
+            selected ? hldpluginTheme()->color(Theme::FancyTabWidgetEnabledSelectedTextColor)
+                     : hldpluginTheme()->color(Theme::FancyTabWidgetEnabledUnselectedTextColor));
     } else {
         painter->setPen(
-            selected ? creatorTheme()->color(Theme::FancyTabWidgetDisabledSelectedTextColor)
-                     : creatorTheme()->color(Theme::FancyTabWidgetDisabledUnselectedTextColor));
+            selected ? hldpluginTheme()->color(Theme::FancyTabWidgetDisabledSelectedTextColor)
+                     : hldpluginTheme()->color(Theme::FancyTabWidgetDisabledUnselectedTextColor));
     }
 
     painter->translate(0, -1);
@@ -363,9 +363,9 @@ void FancyTabBar::paintTab(QPainter *painter, int tabIndex) const
     const bool enabled = isTabEnabled(tabIndex);
 
     if (selected) {
-        if (creatorTheme()->flag(Theme::FlatToolBars)) {
+        if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
             // background color of a fancy tab that is active
-            painter->fillRect(rect, creatorTheme()->color(Theme::FancyTabBarSelectedBackgroundColor));
+            painter->fillRect(rect, hldpluginTheme()->color(Theme::FancyTabBarSelectedBackgroundColor));
         } else {
             paintSelectedTabBackground(painter, rect);
         }
@@ -375,8 +375,8 @@ void FancyTabBar::paintTab(QPainter *painter, int tabIndex) const
     if (fader > 0 && !HostOsInfo::isMacHost() && !selected && enabled) {
         painter->save();
         painter->setOpacity(fader);
-        if (creatorTheme()->flag(Theme::FlatToolBars))
-            painter->fillRect(rect, creatorTheme()->color(Theme::FancyToolButtonHoverColor));
+        if (hldpluginTheme()->flag(Theme::FlatToolBars))
+            painter->fillRect(rect, hldpluginTheme()->color(Theme::FancyToolButtonHoverColor));
         else
             FancyToolButton::hoverOverlay(painter, rect);
         painter->restore();
@@ -454,8 +454,8 @@ public:
 
         // Some Themes do not want highlights, shadows and borders in the toolbars.
         // But we definitely want a separator between FancyColorButton and FancyTabBar
-        if (!creatorTheme()->flag(Theme::DrawToolBarHighlights)
-            && !creatorTheme()->flag(Theme::DrawToolBarBorders)) {
+        if (!hldpluginTheme()->flag(Theme::DrawToolBarHighlights)
+            && !hldpluginTheme()->flag(Theme::DrawToolBarBorders)) {
             QPainter p(this);
             p.setPen(StyleHelper::toolBarBorderColor());
             const QRectF innerRect = QRectF(rect()).adjusted(0.5, 0.5, -0.5, -0.5);
@@ -580,7 +580,7 @@ void FancyTabWidget::paintEvent(QPaintEvent *event)
         rect = style()->visualRect(layoutDirection(), geometry(), rect);
         const QRectF boderRect = QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5);
 
-        if (creatorTheme()->flag(Theme::FlatToolBars)) {
+        if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
             painter.fillRect(rect, StyleHelper::baseColor());
             painter.setPen(StyleHelper::toolBarBorderColor());
             painter.drawLine(boderRect.topRight(), boderRect.bottomRight());

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@
 namespace Utils {
 
 // Documentation inside.
-class QTCREATOR_UTILS_EXPORT TextFieldCheckBox : public QCheckBox {
+class QTHLDPLUGIN_UTILS_EXPORT TextFieldCheckBox : public QCheckBox {
     Q_PROPERTY(QString compareText READ text WRITE setText)
     Q_PROPERTY(QString trueText READ trueText WRITE setTrueText)
     Q_PROPERTY(QString falseText READ falseText WRITE setFalseText)

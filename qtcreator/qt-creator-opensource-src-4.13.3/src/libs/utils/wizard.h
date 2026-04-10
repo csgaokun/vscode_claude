@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ class WizardPrivate;
 
 const char SHORT_TITLE_PROPERTY[] = "shortTitle";
 
-class QTCREATOR_UTILS_EXPORT Wizard : public QWizard
+class QTHLDPLUGIN_UTILS_EXPORT Wizard : public QWizard
 {
     Q_OBJECT
     Q_PROPERTY(bool automaticProgressCreationEnabled READ isAutomaticProgressCreationEnabled WRITE setAutomaticProgressCreationEnabled)
@@ -89,7 +89,7 @@ private:
 class WizardProgressItem;
 class WizardProgressPrivate;
 
-class QTCREATOR_UTILS_EXPORT WizardProgress : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT WizardProgress : public QObject
 {
     Q_OBJECT
 
@@ -140,7 +140,7 @@ private:
 
 class WizardProgressItemPrivate;
 
-class QTCREATOR_UTILS_EXPORT WizardProgressItem // managed by WizardProgress
+class QTHLDPLUGIN_UTILS_EXPORT WizardProgressItem // managed by WizardProgress
 {
 
 public:

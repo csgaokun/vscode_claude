@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,7 +31,7 @@
 
 namespace ProjectExplorer {
 
-// Possibly used by "QtCreatorTerminalPlugin"
+// Possibly used by "QtHldpluginTerminalPlugin"
 PROJECTEXPLORER_EXPORT Utils::FilePaths findFileInSession(const Utils::FilePath &filePath);
 
 } // namespace ProjectExplorer

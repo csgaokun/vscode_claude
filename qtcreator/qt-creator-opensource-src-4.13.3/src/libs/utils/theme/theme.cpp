@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Thorben Kroeger <thorbenkroeger@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@
 
 namespace Utils {
 
-static Theme *m_creatorTheme = nullptr;
+static Theme *m_hldpluginTheme = nullptr;
 
 ThemePrivate::ThemePrivate()
 {
@@ -50,32 +50,32 @@ ThemePrivate::ThemePrivate()
     flags.resize         (m.enumerator(m.indexOfEnumerator("Flag")).keyCount());
 }
 
-Theme *creatorTheme()
+Theme *hldpluginTheme()
 {
-    return m_creatorTheme;
+    return m_hldpluginTheme;
 }
 
 Theme *proxyTheme()
 {
-    return new Theme(m_creatorTheme);
+    return new Theme(m_hldpluginTheme);
 }
 
 void setThemeApplicationPalette()
 {
-    if (m_creatorTheme && m_creatorTheme->flag(Theme::ApplyThemePaletteGlobally))
-        QApplication::setPalette(m_creatorTheme->palette());
+    if (m_hldpluginTheme && m_hldpluginTheme->flag(Theme::ApplyThemePaletteGlobally))
+        QApplication::setPalette(m_hldpluginTheme->palette());
 }
 
-void setCreatorTheme(Theme *theme)
+void setHldpluginTheme(Theme *theme)
 {
-    if (m_creatorTheme == theme)
+    if (m_hldpluginTheme == theme)
         return;
-    delete m_creatorTheme;
-    m_creatorTheme = theme;
+    delete m_hldpluginTheme;
+    m_hldpluginTheme = theme;
 
 #ifdef Q_OS_MACOS
-    // Match the native UI theme and palette with the creator
-    // theme by forcing light aqua for light creator themes.
+    // Match the native UI theme and palette with the hldplugin
+    // theme by forcing light aqua for light hldplugin themes.
     if (theme && !theme->flag(Theme::DarkUserInterface))
         Internal::forceMacOSLightAquaApperance();
 #endif

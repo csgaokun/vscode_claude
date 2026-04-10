@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -696,9 +696,9 @@ BuildConfiguration *BuildConfigurationFactory::create(Target *parent, const Buil
 {
     if (!canHandle(parent))
         return nullptr;
-    QTC_ASSERT(m_creator, return nullptr);
+    QTC_ASSERT(m_hldplugin, return nullptr);
 
-    BuildConfiguration *bc = m_creator(parent);
+    BuildConfiguration *bc = m_hldplugin(parent);
     if (bc)
         bc->doInitialize(info);
 
@@ -709,12 +709,12 @@ BuildConfiguration *BuildConfigurationFactory::restore(Target *parent, const QVa
 {
     const Utils::Id id = idFromMap(map);
     for (BuildConfigurationFactory *factory : g_buildConfigurationFactories) {
-        QTC_ASSERT(factory->m_creator, return nullptr);
+        QTC_ASSERT(factory->m_hldplugin, return nullptr);
         if (!factory->canHandle(parent))
             continue;
         if (!id.name().startsWith(factory->m_buildConfigId.name()))
             continue;
-        BuildConfiguration *bc = factory->m_creator(parent);
+        BuildConfiguration *bc = factory->m_hldplugin(parent);
         bc->acquaintAspects();
         QTC_ASSERT(bc, return nullptr);
         if (!bc->fromMap(map)) {

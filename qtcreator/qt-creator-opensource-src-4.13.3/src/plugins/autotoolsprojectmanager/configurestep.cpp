@@ -5,7 +5,7 @@
 ** Author: Patricia Santana Cruz (patriciasantanacruz@gmail.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -65,7 +65,7 @@ static QString projectDirRelativeToBuildDir(BuildConfiguration *bc)
 // * @brief Implementation of the ProjectExplorer::AbstractProcessStep interface.
 // *
 // * A configure step can be configured by selecting the "Projects" button of Qt
-// * Creator (in the left hand side menu) and under "Build Settings".
+// * Hldplugin (in the left hand side menu) and under "Build Settings".
 // *
 // * It is possible for the user to specify custom arguments. The corresponding
 // * configuration widget is created by MakeStep::createConfigWidget and is

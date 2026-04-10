@@ -4,7 +4,7 @@
 ** Author: Milian Wolff, KDAB (milian.wolff@kdab.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -305,7 +305,7 @@ ValgrindGlobalSettings::ValgrindGlobalSettings()
 {
     theGlobalSettings = this;
 
-    setConfigWidgetCreator([this] { return ValgrindOptionsPage::createSettingsWidget(this); });
+    setConfigWidgetHldplugin([this] { return ValgrindOptionsPage::createSettingsWidget(this); });
     readSettings();
 }
 
@@ -494,7 +494,7 @@ void ValgrindGlobalSettings::setShortenTemplates(bool on)
 
 ValgrindProjectSettings::ValgrindProjectSettings()
 {
-    setConfigWidgetCreator([this] { return ValgrindOptionsPage::createSettingsWidget(this); });
+    setConfigWidgetHldplugin([this] { return ValgrindOptionsPage::createSettingsWidget(this); });
 }
 
 void ValgrindProjectSettings::fromMap(const QVariantMap &map)

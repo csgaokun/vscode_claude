@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Brian McGillion and Hugues Delorme
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@ namespace Utils {
 class CommandLine;
 namespace Internal { class ShellCommandPrivate; }
 
-class QTCREATOR_UTILS_EXPORT ProgressParser
+class QTHLDPLUGIN_UTILS_EXPORT ProgressParser
 {
 public:
     ProgressParser();
@@ -69,7 +69,7 @@ private:
 
 // Users of this class can either be in the GUI thread or in other threads.
 // Use Qt::AutoConnection to always append in the GUI thread (directly or queued)
-class QTCREATOR_UTILS_EXPORT OutputProxy : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT OutputProxy : public QObject
 {
     Q_OBJECT
 
@@ -83,7 +83,7 @@ signals:
     void appendMessage(const QString &text);
 };
 
-class QTCREATOR_UTILS_EXPORT ShellCommand : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT ShellCommand : public QObject
 {
     Q_OBJECT
 

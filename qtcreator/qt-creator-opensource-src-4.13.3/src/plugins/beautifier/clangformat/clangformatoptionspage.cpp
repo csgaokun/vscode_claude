@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Lorenz Haas
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -106,7 +106,7 @@ ClangFormatOptionsPage::ClangFormatOptionsPage(ClangFormatSettings *settings)
     setId("ClangFormat");
     setDisplayName(ClangFormatOptionsPageWidget::tr("Clang Format"));
     setCategory(Constants::OPTION_CATEGORY);
-    setWidgetCreator([settings] { return new ClangFormatOptionsPageWidget(settings); });
+    setWidgetHldplugin([settings] { return new ClangFormatOptionsPageWidget(settings); });
 }
 
 } // namespace Internal

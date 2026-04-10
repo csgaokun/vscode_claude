@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(clangpchmanager-source.pri)
 include(../../shared/clang/clang_installation.pri)
 include(../../shared/clang/clang_defines.pri)
@@ -9,13 +9,13 @@ HEADERS += \
     $$PWD/clangpchmanagerplugin.h \
     clangindexingprojectsettingswidget.h \
     preprocessormacrowidget.h \
-    qtcreatorprojectupdater.h
+    qthldpluginprojectupdater.h
 
 SOURCES += \
     $$PWD/clangpchmanagerplugin.cpp \
     clangindexingprojectsettingswidget.cpp \
     preprocessormacrowidget.cpp \
-    qtcreatorprojectupdater.cpp
+    qthldpluginprojectupdater.cpp
 
 FORMS += \
     clangindexingprojectsettingswidget.ui

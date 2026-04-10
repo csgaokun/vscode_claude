@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -63,9 +63,9 @@ const BuildStepList *DeployConfiguration::stepList() const
 
 QWidget *DeployConfiguration::createConfigWidget()
 {
-    if (!m_configWidgetCreator)
+    if (!m_configWidgetHldplugin)
         return nullptr;
-    return m_configWidgetCreator(this);
+    return m_configWidgetHldplugin(this);
 }
 
 QVariantMap DeployConfiguration::toMap() const
@@ -162,14 +162,14 @@ bool DeployConfigurationFactory::canHandle(Target *target) const
     return true;
 }
 
-void DeployConfigurationFactory::setConfigWidgetCreator(const DeployConfiguration::WidgetCreator &configWidgetCreator)
+void DeployConfigurationFactory::setConfigWidgetHldplugin(const DeployConfiguration::WidgetHldplugin &configWidgetHldplugin)
 {
-    m_configWidgetCreator = configWidgetCreator;
+    m_configWidgetHldplugin = configWidgetHldplugin;
 }
 
 void DeployConfigurationFactory::setUseDeploymentDataView()
 {
-    m_configWidgetCreator = [](DeployConfiguration *dc) {
+    m_configWidgetHldplugin = [](DeployConfiguration *dc) {
         return new Internal::DeploymentDataView(dc);
     };
 }
@@ -183,7 +183,7 @@ DeployConfiguration *DeployConfigurationFactory::createDeployConfiguration(Targe
 {
     auto dc = new DeployConfiguration(t, m_deployConfigBaseId);
     dc->setDefaultDisplayName(m_defaultDisplayName);
-    dc->m_configWidgetCreator = m_configWidgetCreator;
+    dc->m_configWidgetHldplugin = m_configWidgetHldplugin;
     return dc;
 }
 

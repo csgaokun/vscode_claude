@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,7 +42,7 @@ using IconMaskAndColor = QPair<QString, Theme::Color>;
 
 // Returns a recolored icon with shadow and custom disabled state for a
 // series of grayscalemask|Theme::Color mask pairs
-class QTCREATOR_UTILS_EXPORT Icon : public QVector<IconMaskAndColor>
+class QTHLDPLUGIN_UTILS_EXPORT Icon : public QVector<IconMaskAndColor>
 {
 public:
     enum IconStyleOption {
@@ -66,7 +66,7 @@ public:
     // Same as icon() but without disabled state.
     QPixmap pixmap(QIcon::Mode iconMode = QIcon::Normal) const;
 
-    // Try to avoid it. it is just there for special API cases in Qt Creator
+    // Try to avoid it. it is just there for special API cases in Qt Hldplugin
     // where icons are still defined as filename.
     QString imageFileName() const;
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ QT_END_NAMESPACE
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT Diff
+class QTHLDPLUGIN_UTILS_EXPORT Diff
 {
 public:
     enum Command {
@@ -54,7 +54,7 @@ public:
     static QString commandString(Command com);
 };
 
-class QTCREATOR_UTILS_EXPORT Differ
+class QTHLDPLUGIN_UTILS_EXPORT Differ
 {
 public:
     enum DiffMode

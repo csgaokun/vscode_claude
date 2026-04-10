@@ -2,7 +2,7 @@
 # DEFINES += QT_USE_FAST_CONCATENATION
 # CONFIG += single
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 DEFINES += DEBUGGER_LIBRARY
 

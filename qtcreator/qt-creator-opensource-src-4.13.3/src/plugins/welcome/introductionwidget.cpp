@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@ namespace Internal {
 
 void IntroductionWidget::askUserAboutIntroduction(QWidget *parent, QSettings *settings)
 {
-    // CheckableMessageBox for compatibility with Qt Creator < 4.11
+    // CheckableMessageBox for compatibility with Qt Hldplugin < 4.11
     if (!CheckableMessageBox::shouldAskAgain(settings, kTakeTourSetting)
         || !Core::ICore::infoBar()->canInfoBeAdded(kTakeTourSetting))
         return;
@@ -162,7 +162,7 @@ IntroductionWidget::IntroductionWidget(QWidget *parent)
          tr("The End"),
          tr("You have now completed the UI tour. To learn more about the highlighted "
             "controls, see <a style=\"color: #41CD52\" "
-            "href=\"qthelp://org.qt-project.qtcreator/doc/creator-quick-tour.html\">User "
+            "href=\"qthelp://org.qt-project.qthldplugin/doc/hldplugin-quick-tour.html\">User "
             "Interface</a>."),
          {}}};
     setStep(0);

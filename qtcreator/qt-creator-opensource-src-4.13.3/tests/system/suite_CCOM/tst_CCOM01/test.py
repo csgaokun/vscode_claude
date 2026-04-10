@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # entry of test
 def main():
@@ -55,8 +55,8 @@ def main():
         invokeMenuItem("Build", "Build All Projects")
         waitForCompile()
         # verify build successful
-        ensureChecked(waitForObject(":Qt Creator_CompileOutput_Core::Internal::OutputPaneToggleButton"))
-        compileOutput = waitForObject(":Qt Creator.Compile Output_Core::OutputWindow")
+        ensureChecked(waitForObject(":Qt Hldplugin_CompileOutput_Core::Internal::OutputPaneToggleButton"))
+        compileOutput = waitForObject(":Qt Hldplugin.Compile Output_Core::OutputWindow")
         if not test.verify(compileSucceeded(compileOutput.plainText),
                            "Verifying building of existing complex qt application."):
             test.log(str(compileOutput.plainText))

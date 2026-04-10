@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -48,7 +48,7 @@ ResourceEditorFactory::ResourceEditorFactory(ResourceEditorPlugin *plugin)
     Core::FileIconProvider::registerIconOverlayForSuffix(
                 ProjectExplorer::Constants::FILEOVERLAY_QRC, "qrc");
 
-    setEditorCreator([plugin] {
+    setEditorHldplugin([plugin] {
         return new ResourceEditorW(Core::Context(C_RESOURCEEDITOR), plugin);
     });
 }

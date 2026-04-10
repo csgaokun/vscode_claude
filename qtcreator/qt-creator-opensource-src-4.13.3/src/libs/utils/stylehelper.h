@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ QT_END_NAMESPACE
 // Helper class holding all custom color values
 
 namespace Utils {
-class QTCREATOR_UTILS_EXPORT StyleHelper
+class QTHLDPLUGIN_UTILS_EXPORT StyleHelper
 {
 public:
     static const unsigned int DEFAULT_BASE_COLOR = 0x666666;

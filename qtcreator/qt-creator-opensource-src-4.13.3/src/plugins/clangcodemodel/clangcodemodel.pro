@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(../../shared/clang/clang_installation.pri)
 
 include(../../shared/clang/clang_defines.pri)
@@ -85,7 +85,7 @@ FORMS += clangprojectsettingswidget.ui
 
 DISTFILES += \
     README \
-    $${IDE_SOURCE_TREE}/doc/src/editors/creator-only/creator-clang-codemodel.qdoc
+    $${IDE_SOURCE_TREE}/doc/src/editors/hldplugin-only/hldplugin-clang-codemodel.qdoc
 
 equals(TEST, 1) {
     HEADERS += \

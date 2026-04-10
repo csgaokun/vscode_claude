@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -97,7 +97,7 @@ public:
     QString filePath() const { return m_filePath; }
 
 public:
-    using HeaderErrorDiagnosticWidgetCreator = std::function<QWidget*()>;
+    using HeaderErrorDiagnosticWidgetHldplugin = std::function<QWidget*()>;
 
 signals:
     // Signal interface to implement
@@ -105,7 +105,7 @@ signals:
 
     void codeWarningsUpdated(unsigned revision,
                              const QList<QTextEdit::ExtraSelection> &selections,
-                             const HeaderErrorDiagnosticWidgetCreator &creator,
+                             const HeaderErrorDiagnosticWidgetHldplugin &hldplugin,
                              const TextEditor::RefactorMarkers &refactorMarkers);
 
     void ifdefedOutBlocksUpdated(unsigned revision,

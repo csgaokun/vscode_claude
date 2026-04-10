@@ -1,10 +1,10 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/themes">
-    <file alias="dark.creatortheme">../../../share/qtcreator/themes/dark.creatortheme</file>
-    <file alias="default.creatortheme">../../../share/qtcreator/themes/default.creatortheme</file>
-    <file alias="flat-dark.creatortheme">../../../share/qtcreator/themes/flat-dark.creatortheme</file>
-    <file alias="flat-light.creatortheme">../../../share/qtcreator/themes/flat-light.creatortheme</file>
-    <file alias="flat.creatortheme">../../../share/qtcreator/themes/flat.creatortheme</file>
-    <file alias="design.creatortheme">../../../share/qtcreator/themes/design.creatortheme</file>
+    <file alias="dark.hldplugintheme">../../../share/qthldplugin/themes/dark.hldplugintheme</file>
+    <file alias="default.hldplugintheme">../../../share/qthldplugin/themes/default.hldplugintheme</file>
+    <file alias="flat-dark.hldplugintheme">../../../share/qthldplugin/themes/flat-dark.hldplugintheme</file>
+    <file alias="flat-light.hldplugintheme">../../../share/qthldplugin/themes/flat-light.hldplugintheme</file>
+    <file alias="flat.hldplugintheme">../../../share/qthldplugin/themes/flat.hldplugintheme</file>
+    <file alias="design.hldplugintheme">../../../share/qthldplugin/themes/design.hldplugintheme</file>
 </qresource>
 </RCC>

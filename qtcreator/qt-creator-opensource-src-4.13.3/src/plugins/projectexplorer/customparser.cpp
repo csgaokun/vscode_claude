@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Andre Hartmann.
 ** Contact: aha_1980@gmx.de
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -353,7 +353,7 @@ CustomParsersAspect::CustomParsersAspect(Target *target)
     setId("CustomOutputParsers");
     setSettingsKey("CustomOutputParsers");
     setDisplayName(tr("Custom Output Parsers"));
-    setConfigWidgetCreator([this] {
+    setConfigWidgetHldplugin([this] {
         const auto widget = new CustomParsersSelectionWidget;
         widget->setSelectedParsers(m_parsers);
         connect(widget, &CustomParsersSelectionWidget::selectionChanged,

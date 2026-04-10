@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Petar Perisin <petar.perisin@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,7 +76,7 @@ static bool isLocal(RunConfiguration *runConfiguration)
     application path.
 
     After selecting start, dialog will check if selected application is started every
-    10 miliseconds. As soon as application is started, QtCreator will attach to it.
+    10 miliseconds. As soon as application is started, QtHldplugin will attach to it.
 
     After user attaches, it is possible to keep dialog active and as soon as debugging
     session ends, it will start watching again. This is because sometimes automated test

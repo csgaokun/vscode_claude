@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -81,7 +81,7 @@ public:
     ~DesignerActionManager();
 
     void addDesignerAction(ActionInterface *newAction);
-    void addCreatorCommand(Core::Command *command, const QByteArray &category, int priority,
+    void addHldpluginCommand(Core::Command *command, const QByteArray &category, int priority,
                            const QIcon &overrideIcon = QIcon());
     QList<ActionInterface* > designerActions() const;
 

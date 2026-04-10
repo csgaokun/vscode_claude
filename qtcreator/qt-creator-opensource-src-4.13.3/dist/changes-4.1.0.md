@@ -1,10 +1,10 @@
-Qt Creator version 4.1 contains bug fixes and new features.
+Qt Hldplugin version 4.1 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/4.0..v4.1.0
 
 General
@@ -16,50 +16,50 @@ General
 Editing
 
 * Added automatic release of resources for unmodified documents that have
-  not been visible recently (QTCREATORBUG-10016)
+  not been visible recently (QTHLDPLUGINBUG-10016)
 * Added separate options for automatically inserted characters
 * Added highlighting of automatically inserted characters
 * Added option for skipping automatically inserted character, and changed
   it to be done only if the cursor stays before the character
-* Added `Modnokai Night Shift v2`, `Qt Creator Dark`,
+* Added `Modnokai Night Shift v2`, `Qt Hldplugin Dark`,
   `Solarized Dark` and `Solarized Light` editor schemes
-* Fixed that replacing could change selection (QTCREATORBUG-15623)
-* Fixed opening bookmarks in external editor window (QTCREATORBUG-16524)
+* Fixed that replacing could change selection (QTHLDPLUGINBUG-15623)
+* Fixed opening bookmarks in external editor window (QTHLDPLUGINBUG-16524)
 
 Help
 
 * Fixed default fallback font on Linux
-* Fixed crash when removing multiple documentation sets (QTCREATORBUG-16747)
+* Fixed crash when removing multiple documentation sets (QTHLDPLUGINBUG-16747)
 
 All Projects
 
 * Improved feedback when building results in errors, because of issues with
-  kits (QTCREATORBUG-16079)
+  kits (QTHLDPLUGINBUG-16079)
 * Fixed issue with building in paths with non-ASCII characters
-  (QTCREATORBUG-15855)
+  (QTHLDPLUGINBUG-15855)
 * Fixed that `%{buildDir}` and `%{sourceDir}` stopped working in
-  run configurations (QTCREATORBUG-16338)
+  run configurations (QTHLDPLUGINBUG-16338)
 * Fixed that `CurrentProject:` variables were sometimes not resolved from the
-  appropriate project (QTCREATORBUG-16724)
+  appropriate project (QTHLDPLUGINBUG-16724)
 
 QMake Projects
 
-* Added `Duplicate File` to context menu in project tree (QTCREATORBUG-15952)
+* Added `Duplicate File` to context menu in project tree (QTHLDPLUGINBUG-15952)
 * Added `QtWebEngine` to modules list
 * Changed `Run Qmake` from `qmake -r` to `qmake && make qmake_all` for Qt 5
-* Fixed renaming files used in QRC files (QTCREATORBUG-15786)
+* Fixed renaming files used in QRC files (QTHLDPLUGINBUG-15786)
 
 CMake Projects
 
 * Improved parsing of errors
 * Added workaround for CMake issue that include paths are in random order
-  (QTCREATORBUG-16432)
+  (QTHLDPLUGINBUG-16432)
 * Added option for disabling automatic running of CMake to `Build & Run` >
-  `CMake` (QTCREATORBUG-15934)
-* Fixed that CMake was automatically run even if Qt Creator application
-  is not in foreground (QTCREATORBUG-16354)
+  `CMake` (QTHLDPLUGINBUG-15934)
+* Fixed that CMake was automatically run even if Qt Hldplugin application
+  is not in foreground (QTHLDPLUGINBUG-16354)
 * QML_IMPORT_PATH can now be set in CMakeLists.txt files. This information
-  will be passed on to QmlJS code model (QTCREATORBUG-11328)
+  will be passed on to QmlJS code model (QTHLDPLUGINBUG-11328)
   Example CMakeLists.txt code:  
   `set(QML_IMPORT_PATH ${CMAKE_SOURCE_DIR}/qml ${CMAKE_BINARY_DIR}/imports CACHE string "" FORCE)`
 * Fixed crash when re-opening project
@@ -73,10 +73,10 @@ Qbs Projects
 C++ Support
 
 * Added separate highlighting for function declarations and usages
-  (QTCREATORBUG-15564)
+  (QTHLDPLUGINBUG-15564)
 * Added highlighting option for global variables
 * Added coding style option for preferring getters with `get`
-* Fixed parsing of `-std=gnu++XX` option (QTCREATORBUG-16290)
+* Fixed parsing of `-std=gnu++XX` option (QTHLDPLUGINBUG-16290)
 * Fixed refactoring of methods with ref-qualifier
 
 QML Support
@@ -86,13 +86,13 @@ QML Support
 Debugging
 
 * Added support for copying selected values from `Locals and Expressions`
-  (QTCREATORBUG-14956)
-* Fixed jumping to address in binary editor (QTCREATORBUG-11064)
+  (QTHLDPLUGINBUG-14956)
+* Fixed jumping to address in binary editor (QTHLDPLUGINBUG-11064)
 * Fixed environment for `Start and Debug External Application`
-  (QTCREATORBUG-16746)
+  (QTHLDPLUGINBUG-16746)
 * GDB
     * Fixed that `qint8` values where shown as unsigned values
-      (QTCREATORBUG-16353)
+      (QTHLDPLUGINBUG-16353)
 
 QML Profiler
 
@@ -108,22 +108,22 @@ Qt Quick Designer
 * Added support for Qt Quick Controls 2 styles
 * Added `Move to Component` action
 * Added `Add New Signal Handler` action
-* Added support of Qt Creator themes in the Designer UI
+* Added support of Qt Hldplugin themes in the Designer UI
 * Improved performance
-* Improved error dialog (QTCREATORBUG-15772)
+* Improved error dialog (QTHLDPLUGINBUG-15772)
 * Fixed crumble bar for component navigation
 * Fixed that `Connections` was not allowed in `.ui.qml` files
-* Fixed crashes with spaces in properties (QTCREATORBUG-16059)
-* Fixed that child items of `State` were rendered (QTCREATORBUG-13003)
+* Fixed crashes with spaces in properties (QTHLDPLUGINBUG-16059)
+* Fixed that child items of `State` were rendered (QTHLDPLUGINBUG-13003)
 
 Version Control Systems
 
 * Git
     * Added date and time information to branch dialog
     * Added support for running `git blame` only on selected lines
-      (QTCREATORBUG-16055)
+      (QTHLDPLUGINBUG-16055)
     * Fixed that branch dialog suggested existing branch name for new branch
-      (QTCREATORBUG-16264)
+      (QTHLDPLUGINBUG-16264)
 * SVN
     * Added conflicted files to file list in submit editor
 
@@ -135,7 +135,7 @@ Test Integration
 
 FakeVim
 
-* Added expansion of `~` in file names (QTCREATORBUG-11160)
+* Added expansion of `~` in file names (QTHLDPLUGINBUG-11160)
 
 Model Editor
 
@@ -145,7 +145,7 @@ Beautifier
 
 * Added option to automatically format files on save
 * Uncrustify
-    * Fixed issues with non-C++ files (QTCREATORBUG-15575)
+    * Fixed issues with non-C++ files (QTHLDPLUGINBUG-15575)
 
 Platform Specific
 
@@ -155,7 +155,7 @@ Windows
 
 macOS
 
-* Fixed include search order with frameworks (QTCREATORBUG-11599)
+* Fixed include search order with frameworks (QTHLDPLUGINBUG-11599)
 
 Remote Linux
 
@@ -163,9 +163,9 @@ Remote Linux
 
 iOS
 
-* Added human readable error messages (QTCREATORBUG-16328)
+* Added human readable error messages (QTHLDPLUGINBUG-16328)
 * Fixed that deployment could fail if device and host are in same WiFi network
-  (QTCREATORBUG-16061)
+  (QTHLDPLUGINBUG-16061)
 
 Credits for these changes go to:  
 Albert Astals Cid  

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1248,7 +1248,7 @@ bool QMakeEvaluator::loadSpec()
     if (qmakespec.isEmpty())
         qmakespec = propertyValue(ProKey(m_hostBuild ? "QMAKE_SPEC" : "QMAKE_XSPEC")).toQString();
 #ifndef QT_BUILD_QMAKE
-    // Legacy support for Qt4 qmake in Qt Creator, etc.
+    // Legacy support for Qt4 qmake in Qt Hldplugin, etc.
     if (qmakespec.isEmpty())
         qmakespec = m_hostBuild ? QLatin1String("default-host") : QLatin1String("default");
 #endif

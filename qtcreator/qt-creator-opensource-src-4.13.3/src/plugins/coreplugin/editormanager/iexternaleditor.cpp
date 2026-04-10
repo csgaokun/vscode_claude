@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@ namespace Core {
 /*!
     \class Core::IExternalEditor
     \inheaderfile coreplugin/editormanager/iexternaleditor.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The IExternalEditor class enables registering an external

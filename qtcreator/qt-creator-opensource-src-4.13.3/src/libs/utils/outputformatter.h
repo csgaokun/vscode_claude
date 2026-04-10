@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,7 +45,7 @@ namespace Utils {
 class FileInProjectFinder;
 class FormattedText;
 
-class QTCREATOR_UTILS_EXPORT OutputLineParser : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT OutputLineParser : public QObject
 {
     Q_OBJECT
 public:
@@ -122,7 +122,7 @@ private:
     Private * const d;
 };
 
-class QTCREATOR_UTILS_EXPORT OutputFormatter : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT OutputFormatter : public QObject
 {
     Q_OBJECT
 public:

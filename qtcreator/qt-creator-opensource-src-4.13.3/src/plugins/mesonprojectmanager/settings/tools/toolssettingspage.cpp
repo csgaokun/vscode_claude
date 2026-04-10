@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 Alexis Jeandet.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@ ToolsSettingsPage::ToolsSettingsPage()
     setId(Constants::SettingsPage::TOOLS_ID);
     setDisplayName(tr("Tools"));
     setCategory(Constants::SettingsPage::CATEGORY);
-    setWidgetCreator([]() { return new ToolsSettingsWidget; });
+    setWidgetHldplugin([]() { return new ToolsSettingsWidget; });
 }
 
 } // namespace Internal

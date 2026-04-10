@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 WhatsThisRole = 5 # Qt::WhatsThisRole
 
@@ -44,14 +44,14 @@ def __verifyLineUnderCursor__(cppwindow, record):
 def main():
     for useClang in [False, True]:
         with TestSection(getCodeModelString(useClang)):
-            if not startCreatorVerifyingClang(useClang):
+            if not startHldpluginVerifyingClang(useClang):
                 continue
             createProject_Qt_Console(tempDir(), "SquishProject")
             # by default Qt4 is selected, use a Qt5 kit instead
             selectBuildConfig(Targets.DESKTOP_5_10_1_DEFAULT, "Debug")
             checkCodeModelSettings(useClang)
             selectFromLocator("main.cpp")
-            cppwindow = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            cppwindow = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
 
             for record in testData.dataset("usages.tsv"):
                 include = testData.field(record, "include")

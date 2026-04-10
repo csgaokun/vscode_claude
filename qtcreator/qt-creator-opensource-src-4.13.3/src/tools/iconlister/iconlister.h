@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -46,7 +46,7 @@ public:
         ThemeKindLight
     };
 
-    static void setCreatorTheme(ThemeKind themeKind);
+    static void setHldpluginTheme(ThemeKind themeKind);
     static void generateJson();
     static void generateIcons(ThemeKind theme, int dpr);
 

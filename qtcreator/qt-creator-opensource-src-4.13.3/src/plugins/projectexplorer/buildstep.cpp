@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -469,13 +469,13 @@ BuildStep *BuildStepFactory::create(BuildStepList *parent, Utils::Id id)
 {
     BuildStep *bs = nullptr;
     if (id == m_info.id)
-        bs = m_info.creator(parent);
+        bs = m_info.hldplugin(parent);
     return bs;
 }
 
 BuildStep *BuildStepFactory::restore(BuildStepList *parent, const QVariantMap &map)
 {
-    BuildStep *bs = m_info.creator(parent);
+    BuildStep *bs = m_info.hldplugin(parent);
     if (!bs)
         return nullptr;
     if (!bs->fromMap(map)) {

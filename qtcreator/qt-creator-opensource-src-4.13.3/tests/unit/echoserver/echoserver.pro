@@ -14,7 +14,7 @@ IDE_LIBEXEC_PATH=$$PWD
 IDE_BIN_PATH=$$PWD
 include($$PWD/../../../src/libs/utils/utils-lib.pri)
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 include(../../../src/libs/clangsupport/clangsupport-lib.pri)
 include(../../../src/libs/sqlite/sqlite-lib.pri)
 

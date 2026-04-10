@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -174,7 +174,7 @@ void WindowList::addWindow(QWidget *window)
 #endif
 
     m_windows.append(window);
-    Id id = Id("QtCreator.Window.").withSuffix(m_windows.size());
+    Id id = Id("QtHldplugin.Window.").withSuffix(m_windows.size());
     m_windowActionIds.append(id);
     auto action = new QAction(window->windowTitle());
     m_windowActions.append(action);

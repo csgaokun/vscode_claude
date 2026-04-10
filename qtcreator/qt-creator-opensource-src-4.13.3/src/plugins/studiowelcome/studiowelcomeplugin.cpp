@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -102,7 +102,7 @@ public:
 
     Q_INVOKABLE void showHelp()
     {
-        QDesktopServices::openUrl(QUrl("qthelp://org.qt-project.qtcreator/doc/index.html"));
+        QDesktopServices::openUrl(QUrl("qthelp://org.qt-project.qthldplugin/doc/index.html"));
     }
 
     Q_INVOKABLE void openExample(const QString &example, const QString &formFile)
@@ -279,7 +279,7 @@ WelcomeMode::WelcomeMode()
 
     setPriority(Core::Constants::P_MODE_WELCOME);
     setId(Core::Constants::MODE_WELCOME);
-    setContextHelp("Qt Creator Manual");
+    setContextHelp("Qt Hldplugin Manual");
     setContext(Core::Context(Core::Constants::C_WELCOME_MODE));
 
     m_modeWidget = new QQuickWidget;

@@ -1,6 +1,6 @@
 include(../../auto/qttest.pri)
 DEFINES += FAKEVIM_STANDALONE \
-    QTCREATOR_UTILS_STATIC_LIB
+    QTHLDPLUGIN_UTILS_STATIC_LIB
 
 FAKEVIMDIR = $$IDE_SOURCE_TREE/src/plugins/fakevim
 UTILSDIR = $$IDE_SOURCE_TREE/src/libs/utils

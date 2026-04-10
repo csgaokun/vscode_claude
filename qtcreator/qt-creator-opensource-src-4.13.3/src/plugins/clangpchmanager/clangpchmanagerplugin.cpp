@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,7 +30,7 @@
 #include "pchmanagerclient.h"
 #include "pchmanagerconnectionclient.h"
 #include "progressmanager.h"
-#include "qtcreatorprojectupdater.h"
+#include "qthldpluginprojectupdater.h"
 
 #include <filepathcaching.h>
 #include <projectpartsstorage.h>
@@ -63,7 +63,7 @@ QString backendProcessPath()
 }
 
 void addIndexingProjectPaneWidget(ClangIndexingSettingsManager &settingsManager,
-                                  QtCreatorProjectUpdater<PchManagerProjectUpdater> &projectUpdater)
+                                  QtHldpluginProjectUpdater<PchManagerProjectUpdater> &projectUpdater)
 {
     auto factory = new ProjectExplorer::ProjectPanelFactory;
     factory->setPriority(120);
@@ -111,7 +111,7 @@ public:
     PchManagerClient pchManagerClient{pchCreationProgressManager, dependencyCreationProgressManager};
     PchManagerConnectionClient connectionClient{&pchManagerClient};
     ClangIndexingSettingsManager settingsManager;
-    QtCreatorProjectUpdater<PchManagerProjectUpdater> projectUpdater{connectionClient.serverProxy(),
+    QtHldpluginProjectUpdater<PchManagerProjectUpdater> projectUpdater{connectionClient.serverProxy(),
                                                                      pchManagerClient,
                                                                      filePathCache,
                                                                      projectPartsStorage,

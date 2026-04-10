@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -372,7 +372,7 @@ CompileOutputSettingsPage::CompileOutputSettingsPage()
     setId(OPTIONS_PAGE_ID);
     setDisplayName(CompileOutputSettingsWidget::tr("Compile Output"));
     setCategory(Constants::BUILD_AND_RUN_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new CompileOutputSettingsWidget; });
+    setWidgetHldplugin([] { return new CompileOutputSettingsWidget; });
 }
 
 } // Internal

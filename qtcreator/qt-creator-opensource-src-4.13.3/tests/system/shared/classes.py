@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -78,7 +78,7 @@ class ProjectSettings:
     BUILD = 1
     RUN = 2
 
-# this class defines some constants for the views of the creator's MainWindow
+# this class defines some constants for the views of the hldplugin's MainWindow
 class ViewConstants:
     WELCOME, EDIT, DESIGN, DEBUG, PROJECTS, HELP = range(6)
     FIRST_AVAILABLE = 0

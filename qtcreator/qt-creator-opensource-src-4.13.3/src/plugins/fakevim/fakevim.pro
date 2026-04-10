@@ -1,5 +1,5 @@
 # CONFIG += single
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 QT += gui
 SOURCES += fakevimactions.cpp \

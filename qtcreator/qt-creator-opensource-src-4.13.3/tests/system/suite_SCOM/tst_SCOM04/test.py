@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 source("../../shared/suites_qtta.py")
 
 # entry of test
@@ -42,7 +42,7 @@ def main():
     createNewQtQuickApplication(tempDir(), "SampleApp")
     # create syntax error in cpp file
     openDocument("SampleApp.Sources.main\\.cpp")
-    if not appendToLine(waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget"), "QQmlApplicationEngine engine;", "SyntaxError"):
+    if not appendToLine(waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"), "QQmlApplicationEngine engine;", "SyntaxError"):
         invokeMenuItem("File", "Exit")
         return
     # save all
@@ -55,14 +55,14 @@ def main():
         selectBuildConfig(kit, config)
         # try to compile
         test.log("Testing build configuration: " + config)
-        clickButton(waitForObject(":*Qt Creator.Build Project_Core::Internal::FancyToolButton"))
+        clickButton(waitForObject(":*Qt Hldplugin.Build Project_Core::Internal::FancyToolButton"))
         # wait until build finished
         waitForCompile()
         # open issues list view
-        ensureChecked(waitForObject(":Qt Creator_Issues_Core::Internal::OutputPaneToggleButton"))
-        issuesView = waitForObject(":Qt Creator.Issues_QListView")
+        ensureChecked(waitForObject(":Qt Hldplugin_Issues_Core::Internal::OutputPaneToggleButton"))
+        issuesView = waitForObject(":Qt Hldplugin.Issues_QListView")
         # verify that error is properly reported
         test.verify(checkSyntaxError(issuesView, expectedErrorAlternatives, False),
                     "Verifying cpp syntax error while building simple qt quick application.")
-    # exit qt creator
+    # exit qt hldplugin
     invokeMenuItem("File", "Exit")

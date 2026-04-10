@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,12 +49,12 @@ ClangPchManager::PchManagerConnectionClient::PchManagerConnectionClient(
                        + currentProcessId()),
       m_serverProxy(client, ioDevice())
 {
-    m_processCreator.setTemporaryDirectoryPattern("clangpchmanagerbackend-XXXXXX");
+    m_processHldplugin.setTemporaryDirectoryPattern("clangpchmanagerbackend-XXXXXX");
 
     QDir pchsDirectory(Core::ICore::cacheResourcePath());
     pchsDirectory.mkdir("pchs");
     pchsDirectory.cd("pchs");
-    m_processCreator.setArguments({connectionName(),
+    m_processHldplugin.setArguments({connectionName(),
                                    Core::ICore::cacheResourcePath() + "/symbol-experimental-v1.db",
                                    pchsDirectory.absolutePath(),
                                    Core::ICore::resourcePath()});

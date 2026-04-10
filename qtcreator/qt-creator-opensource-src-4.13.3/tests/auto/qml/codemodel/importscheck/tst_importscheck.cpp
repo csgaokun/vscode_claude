@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -94,12 +94,12 @@ tst_ImportCheck::tst_ImportCheck()
 #ifdef Q_OS_MAC
 #  define SHARE_PATH "/Resources"
 #else
-#  define SHARE_PATH "/share/qtcreator"
+#  define SHARE_PATH "/share/qthldplugin"
 #endif
 
 QString resourcePath()
 {
-    return QDir::cleanPath(QTCREATORDIR + QLatin1String(SHARE_PATH));
+    return QDir::cleanPath(QTHLDPLUGINDIR + QLatin1String(SHARE_PATH));
 }
 
 void tst_ImportCheck::initTestCase()

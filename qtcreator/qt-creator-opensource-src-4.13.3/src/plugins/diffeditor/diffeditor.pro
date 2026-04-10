@@ -1,5 +1,5 @@
 DEFINES += DIFFEDITOR_LIBRARY
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS += \
         descriptionwidgetwatcher.h \

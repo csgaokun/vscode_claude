@@ -1,7 +1,7 @@
 QT += qml quick
 DEFINES += TRACING_LIBRARY
 
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 
 SOURCES += \
     $$PWD/flamegraph.cpp \

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 source("../../shared/suites_qtta.py")
 
 # entry of test
@@ -35,16 +35,16 @@ def main():
     createNewQtQuickApplication(tempDir(), "SampleApp")
     # create syntax error in qml file
     openDocument("SampleApp.Resources.qml\.qrc./.main\\.qml")
-    if not appendToLine(waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget"), "Window {", "SyntaxError"):
+    if not appendToLine(waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget"), "Window {", "SyntaxError"):
         invokeMenuItem("File", "Exit")
         return
     # save all to invoke qml parsing
     invokeMenuItem("File", "Save All")
     # open issues list view
-    ensureChecked(waitForObject(":Qt Creator_Issues_Core::Internal::OutputPaneToggleButton"))
-    issuesView = waitForObject(":Qt Creator.Issues_QListView")
+    ensureChecked(waitForObject(":Qt Hldplugin_Issues_Core::Internal::OutputPaneToggleButton"))
+    issuesView = waitForObject(":Qt Hldplugin.Issues_QListView")
     # verify that error is properly reported
     test.verify(checkSyntaxError(issuesView, ["Unexpected token"], True),
                 "Verifying QML syntax error while parsing simple qt quick application.")
-    # exit qt creator
+    # exit qt hldplugin
     invokeMenuItem("File", "Exit")

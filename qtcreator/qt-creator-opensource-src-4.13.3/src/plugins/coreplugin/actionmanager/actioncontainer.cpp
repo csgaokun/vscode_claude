@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -46,7 +46,7 @@ namespace Core {
     \class Core::ActionContainer
     \inheaderfile coreplugin/actionmanager/actioncontainer.h
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The ActionContainer class represents a menu or menu bar in \QC.
 
@@ -616,7 +616,7 @@ bool MenuBarActionContainer::canBeAddedToContainer(ActionContainerPrivate *) con
 
 // ---------- TouchBarActionContainer ------------
 
-const char ID_PREFIX[] = "io.qt.qtcreator.";
+const char ID_PREFIX[] = "io.qt.qthldplugin.";
 
 TouchBarActionContainer::TouchBarActionContainer(Id id, const QIcon &icon, const QString &text)
     : ActionContainerPrivate(id),

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -62,7 +62,7 @@ bool startProcess(wchar_t pCommandLine[], bool lowerPriority);
 int main(int argc, char **)
 {
     if (argc < 2) {
-        fprintf(stderr, "This is an internal helper of Qt Creator. Do not run it manually.\n");
+        fprintf(stderr, "This is an internal helper of Qt Hldplugin. Do not run it manually.\n");
         return 1;
     }
 
@@ -190,14 +190,14 @@ bool startProcess(wchar_t *pCommandLine, bool lowerPriority)
     DWORD dwCreationFlags = lowerPriority ? BELOW_NORMAL_PRIORITY_CLASS : 0;
     BOOL bSuccess = CreateProcess(NULL, pCommandLine, &sa, &sa, TRUE, dwCreationFlags, NULL, NULL, &si, &pi);
     if (!bSuccess) {
-        fwprintf(stderr, L"qtcreator_ctrlc_stub: Command line failed: %s\n", pCommandLine);
+        fwprintf(stderr, L"qthldplugin_ctrlc_stub: Command line failed: %s\n", pCommandLine);
         return false;
     }
     CloseHandle(pi.hThread);
 
     HANDLE hThread = CreateThread(NULL, 0, processWatcherThread, reinterpret_cast<void*>(pi.hProcess), 0, NULL);
     if (!hThread) {
-        fwprintf(stderr, L"qtcreator_ctrlc_stub: The watch dog thread cannot be started.\n");
+        fwprintf(stderr, L"qthldplugin_ctrlc_stub: The watch dog thread cannot be started.\n");
         return false;
     }
     CloseHandle(hThread);

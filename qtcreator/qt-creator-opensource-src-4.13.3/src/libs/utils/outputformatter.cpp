@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -451,7 +451,7 @@ void OutputFormatter::append(const QString &text, const QTextCharFormat &format)
 QTextCharFormat OutputFormatter::linkFormat(const QTextCharFormat &inputFormat, const QString &href)
 {
     QTextCharFormat result = inputFormat;
-    result.setForeground(creatorTheme()->color(Theme::TextColorLink));
+    result.setForeground(hldpluginTheme()->color(Theme::TextColorLink));
     result.setUnderlineStyle(QTextCharFormat::SingleUnderline);
     result.setAnchor(true);
     result.setAnchorHref(href);
@@ -486,7 +486,7 @@ void OutputFormatter::initFormats()
     if (!plainTextEdit())
         return;
 
-    Theme *theme = creatorTheme();
+    Theme *theme = hldpluginTheme();
     d->formats[NormalMessageFormat].setForeground(theme->color(Theme::OutputPanes_NormalMessageTextColor));
     d->formats[ErrorMessageFormat].setForeground(theme->color(Theme::OutputPanes_ErrorMessageTextColor));
     d->formats[LogMessageFormat].setForeground(theme->color(Theme::OutputPanes_WarningMessageTextColor));

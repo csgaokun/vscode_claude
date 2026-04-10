@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Andre Hartmann <aha_1980@gmx.de>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -211,7 +211,7 @@ void tst_AnsiEscapeCodeHandler::testSimpleFormat_data()
                 << FormattedText("bold", boldFormat)
                 << FormattedText(" text", defaultFormat));
 
-    QTest::newRow("Alternative reset pattern (QTCREATORBUG-10132)")
+    QTest::newRow("Alternative reset pattern (QTHLDPLUGINBUG-10132)")
             << QString("A line of " + bold + "bold" + normal1 + " text") << QTextCharFormat()
             << (FormattedTextList()
                 << FormattedText("A line of ", defaultFormat)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -55,11 +55,11 @@ static int aGlobalInt = 3;
 // Macros
 // -------------------------------------------------------------------------------------------------
 
-#define QTCREATOR_UTILS_EXPORT
+#define QTHLDPLUGIN_UTILS_EXPORT
 
 // qtcassert.h:
 namespace Utils {
-QTCREATOR_UTILS_EXPORT void writeAssertLocation(const char *msg);
+QTHLDPLUGIN_UTILS_EXPORT void writeAssertLocation(const char *msg);
 }
 
 #define QTC_ASSERT_STRINGIFY_HELPER(x) #x

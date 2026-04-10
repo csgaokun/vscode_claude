@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -144,11 +144,11 @@ QPixmap DetailsWidget::createBackground(const QSize &size, int topHeight, QWidge
     if (HostOsInfo::isMacHost())
         p.fillRect(fullRect, QApplication::palette().window().color());
     else
-        p.fillRect(fullRect, creatorTheme()->color(Theme::DetailsWidgetBackgroundColor));
+        p.fillRect(fullRect, hldpluginTheme()->color(Theme::DetailsWidgetBackgroundColor));
 
-    if (!creatorTheme()->flag(Theme::FlatProjectsMode)) {
+    if (!hldpluginTheme()->flag(Theme::FlatProjectsMode)) {
         QLinearGradient lg(topRect.topLeft(), topRect.bottomLeft());
-        lg.setStops(creatorTheme()->gradient(Theme::DetailsWidgetHeaderGradient));
+        lg.setStops(hldpluginTheme()->gradient(Theme::DetailsWidgetHeaderGradient));
         p.fillRect(topRect, lg);
         p.setRenderHint(QPainter::Antialiasing, true);
         p.translate(0.5, 0.5);

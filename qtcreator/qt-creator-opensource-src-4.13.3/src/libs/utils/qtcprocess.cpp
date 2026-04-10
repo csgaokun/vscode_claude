@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -683,8 +683,8 @@ QtcProcess::QtcProcess(QObject *parent)
 void QtcProcess::setUseCtrlCStub(bool enabled)
 {
     // Do not use the stub in debug mode. Activating the stub will shut down
-    // Qt Creator otherwise, because they share the same Windows console.
-    // See QTCREATORBUG-11995 for details.
+    // Qt Hldplugin otherwise, because they share the same Windows console.
+    // See QTHLDPLUGINBUG-11995 for details.
 #ifndef QT_DEBUG
     m_useCtrlCStub = enabled;
 #else
@@ -720,7 +720,7 @@ void QtcProcess::start()
                 addArg(&args, "-nice");
             addArg(&args, QDir::toNativeSeparators(command));
             command = QCoreApplication::applicationDirPath()
-                    + QLatin1String("/qtcreator_ctrlc_stub.exe");
+                    + QLatin1String("/qthldplugin_ctrlc_stub.exe");
         } else if (m_lowPriority) {
 #ifdef Q_OS_WIN
             setCreateProcessArgumentsModifier([](CreateProcessArguments *args) {

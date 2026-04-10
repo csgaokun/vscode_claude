@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -222,7 +222,7 @@ bool QmlDirParser::parse(const QString &source)
                             QStringLiteral("typeinfo requires 1 argument, but %1 were provided").arg(sectionCount - 1));
                 continue;
             }
-#ifdef QT_CREATOR
+#ifdef QT_HLDPLUGIN
             TypeInfo typeInfo(sections[1]);
             _typeInfos.append(typeInfo);
 #endif

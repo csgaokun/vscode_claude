@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@ const char GIT_BRANCH_VIEW_ID[] = "Git Branches";
 const char GIT_CONTEXT[] = "Git Context";
 const char GITSUBMITEDITOR_ID[] = "Git Submit Editor";
 const char GITSUBMITEDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Git Submit Editor");
-const char SUBMIT_MIMETYPE[] = "text/vnd.qtcreator.git.submit";
+const char SUBMIT_MIMETYPE[] = "text/vnd.qthldplugin.git.submit";
 const char C_GITEDITORID[]  = "Git Editor";
 
 const int OBSOLETE_COMMIT_AGE_IN_DAYS = 90;

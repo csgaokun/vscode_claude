@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,10 +23,10 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
-    projectDir = os.path.join(srcPath, "creator", "tests", "manual", "cplusplus-tools")
+    projectDir = os.path.join(srcPath, "hldplugin", "tests", "manual", "cplusplus-tools")
     proFileName = "cplusplus-tools.pro"
     if not neededFilePresent(os.path.join(projectDir, proFileName)):
         return
@@ -53,52 +53,52 @@ def main():
 #    t3 = t2.file()
 #    t4 = t3.fileName
 #    test.compare(editorManager.currentEditor().file().fileName, "base.cpp")
-    cppwindow = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    cppwindow = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
 
 #    - Move the cursor to the usage of a variable.
 #    - Press F2 or select from the menu: Tools / C++ / Follow Symbol under Cursor
-#    Creator will show you the declaration of the variable.
+#    Hldplugin will show you the declaration of the variable.
 
     type(cppwindow, "<Ctrl+f>")
-    type(waitForObject(":*Qt Creator.findEdit_Utils::FilterLineEdit"), "    xi")
-    type(waitForObject(":*Qt Creator.findEdit_Utils::FilterLineEdit"), "<Return>")
+    type(waitForObject(":*Qt Hldplugin.findEdit_Utils::FilterLineEdit"), "    xi")
+    type(waitForObject(":*Qt Hldplugin.findEdit_Utils::FilterLineEdit"), "<Return>")
     __typeAndWaitForAction__(cppwindow, "<F2>")
-    test.compare(lineUnderCursor(waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")), "extern int xi;")
+    test.compare(lineUnderCursor(waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")), "extern int xi;")
 
 #    - Move the cursor to a function call.
 #    - Press F2 or select from the menu: Tools / C++ / Follow Symbol under Cursor
-#    Creator will show you the definition of the function.
+#    Hldplugin will show you the definition of the function.
     type(cppwindow, "<Ctrl+f>")
-    clickButton(waitForObject(":*Qt Creator_Utils::IconButton"))
-    type(waitForObject(":*Qt Creator.findEdit_Utils::FilterLineEdit"), "freefunc2")
-    type(waitForObject(":*Qt Creator.findEdit_Utils::FilterLineEdit"), "<Return>")
+    clickButton(waitForObject(":*Qt Hldplugin_Utils::IconButton"))
+    type(waitForObject(":*Qt Hldplugin.findEdit_Utils::FilterLineEdit"), "freefunc2")
+    type(waitForObject(":*Qt Hldplugin.findEdit_Utils::FilterLineEdit"), "<Return>")
     __typeAndWaitForAction__(cppwindow, "<F2>")
-    test.compare(lineUnderCursor(waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")), "int freefunc2(double)")
+    test.compare(lineUnderCursor(waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")), "int freefunc2(double)")
 
 #    - Move the cursor to a function declaration
 #    - Press Shift+F2 or select from menu: Tools / C++ / Switch Between Method Declaration/Definition
-#    Creator should show the definition of this function
+#    Hldplugin should show the definition of this function
 #    - Press Shift+F2 or select from menu: Tools / C++ / Switch Between Method Declaration/Definition again
-#    Creator should show the declaration of the function again.
+#    Hldplugin should show the declaration of the function again.
     selectFromLocator("dummy.cpp")
-    mainWin = findObject(":Qt Creator_Core::Internal::MainWindow")
+    mainWin = findObject(":Qt Hldplugin_Core::Internal::MainWindow")
     if not waitFor("str(mainWin.windowTitle).startswith('dummy.cpp ') and ' @ cplusplus-tools ' in str(mainWin.windowTitle)", 5000):
         test.warning("Opening dummy.cpp seems to have failed")
     # Reset cursor to the start of the document
     jumpToFirstLine(cppwindow)
 
     type(cppwindow, "<Ctrl+f>")
-    clickButton(waitForObject(":*Qt Creator_Utils::IconButton"))
-    type(waitForObject(":*Qt Creator.findEdit_Utils::FilterLineEdit"), "Dummy::Dummy")
+    clickButton(waitForObject(":*Qt Hldplugin_Utils::IconButton"))
+    type(waitForObject(":*Qt Hldplugin.findEdit_Utils::FilterLineEdit"), "Dummy::Dummy")
     # Take us to the second instance
-    type(waitForObject(":*Qt Creator.findEdit_Utils::FilterLineEdit"), "<Return>")
-    cppwindow = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    type(waitForObject(":*Qt Hldplugin.findEdit_Utils::FilterLineEdit"), "<Return>")
+    cppwindow = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     __typeAndWaitForAction__(cppwindow, "<Shift+F2>")
-    test.compare(lineUnderCursor(findObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")), "    Dummy(int a);")
-    cppwindow = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    test.compare(lineUnderCursor(findObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")), "    Dummy(int a);")
+    cppwindow = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     snooze(2)
     __typeAndWaitForAction__(cppwindow, "<Shift+F2>")
-    test.compare(lineUnderCursor(findObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")), "Dummy::Dummy(int)")
+    test.compare(lineUnderCursor(findObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")), "Dummy::Dummy(int)")
     invokeMenuItem("File", "Exit")
 
 def __typeAndWaitForAction__(editor, keyCombination):
@@ -110,7 +110,7 @@ def __typeAndWaitForAction__(editor, keyCombination):
 
 def cppEditorPositionChanged(origPos):
     try:
-        editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget", 500)
+        editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget", 500)
         return editor.textCursor().position() != origPos
     except:
         return False

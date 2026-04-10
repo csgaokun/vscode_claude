@@ -79,7 +79,7 @@ public:
     virtual void loadIcon(MimeTypePrivate &) {}
     virtual void loadGenericIcon(MimeTypePrivate &) {}
 
-    // Qt Creator additions
+    // Qt Hldplugin additions
     virtual QMap<int, QList<MimeMagicRule> > magicRulesForMimeType(const MimeType &mimeType) = 0;
     virtual void setGlobPatternsForMimeType(const MimeType &mimeType, const QStringList &patterns) = 0;
     virtual void setMagicRulesForMimeType(const MimeType &mimeType, const QMap<int, QList<MimeMagicRule> > &rules) = 0;
@@ -159,7 +159,7 @@ public:
     void addAlias(const QString &alias, const QString &name);
     void addMagicMatcher(const MimeMagicRuleMatcher &matcher);
 
-    // Qt Creator additions
+    // Qt Hldplugin additions
     void addData(const QString &id, const QByteArray &data);
     QMap<int, QList<MimeMagicRule> > magicRulesForMimeType(const MimeType &mimeType) override;
     void setGlobPatternsForMimeType(const MimeType &mimeType, const QStringList &patterns) override;
@@ -183,7 +183,7 @@ private:
 
     QList<MimeMagicRuleMatcher> m_magicMatchers;
 
-    // Qt Creator additions
+    // Qt Hldplugin additions
     QHash<QString, QByteArray> m_additionalData; // id -> data
 };
 

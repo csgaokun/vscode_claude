@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1955,13 +1955,13 @@ QList<ToolChain *> ClangClToolChainFactory::autoDetect(const QList<ToolChain *> 
     QList<ToolChain *> results;
     QList<ToolChain *> known = alreadyKnown;
 
-    QString qtCreatorsClang = Core::ICore::clangExecutable(CLANG_BINDIR);
-    if (!qtCreatorsClang.isEmpty()) {
-        qtCreatorsClang = Utils::FilePath::fromString(qtCreatorsClang)
+    QString qtHldpluginsClang = Core::ICore::clangExecutable(CLANG_BINDIR);
+    if (!qtHldpluginsClang.isEmpty()) {
+        qtHldpluginsClang = Utils::FilePath::fromString(qtHldpluginsClang)
                               .parentDir()
                               .pathAppended("clang-cl.exe")
                               .toString();
-        results.append(detectClangClToolChainInPath(qtCreatorsClang, alreadyKnown, "", true));
+        results.append(detectClangClToolChainInPath(qtHldpluginsClang, alreadyKnown, "", true));
         known.append(results);
     }
 
@@ -2032,7 +2032,7 @@ Utils::optional<QString> MsvcToolChain::generateEnvironmentSettings(const Utils:
 
     // As of WinSDK 7.1, there is logic preventing the path from being set
     // correctly if "ORIGINALPATH" is already set. That can cause problems
-    // if Creator is launched within a session set up by setenv.cmd.
+    // if Hldplugin is launched within a session set up by setenv.cmd.
     Utils::Environment runEnv = env;
     runEnv.unset(QLatin1String("ORIGINALPATH"));
     run.setEnvironment(runEnv.toStringList());

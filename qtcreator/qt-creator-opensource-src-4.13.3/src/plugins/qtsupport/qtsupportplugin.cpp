@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -120,7 +120,7 @@ const char kLinkWithQtInstallationSetting[] = "LinkWithQtInstallation";
 
 static void askAboutQtInstallation()
 {
-    // if the install settings exist, the Qt Creator installation is (probably) already linked to
+    // if the install settings exist, the Qt Hldplugin installation is (probably) already linked to
     // a Qt installation, so don't ask
     if (!QtOptionsPage::canLinkWithQt() || QtOptionsPage::isLinkedWithQt()
         || !ICore::infoBar()->canInfoBeAdded(kLinkWithQtInstallationSetting))

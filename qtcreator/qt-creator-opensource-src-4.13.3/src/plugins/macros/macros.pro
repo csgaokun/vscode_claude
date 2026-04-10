@@ -1,6 +1,6 @@
 DEFINES += MACROS_LIBRARY
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS += macrosplugin.h \
     macrosconstants.h \

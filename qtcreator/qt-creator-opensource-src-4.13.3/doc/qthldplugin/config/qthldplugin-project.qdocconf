@@ -1,0 +1,102 @@
+project     = qthldplugin
+description = "$IDE_DISPLAY_NAME Manual"
+url         = http://doc.qt.io/$IDE_ID
+
+#Words to ignore for auto-linking
+ignorewords += \
+    macOS \
+    WebChannel \
+    WebSocket \
+    WebSockets \
+    OpenGL \
+    MinGW
+
+headerdirs =
+sourcedirs = ../src \
+             ../../qtdesignstudio/src/qtquick3d-editor
+
+imagedirs = ../images \
+            ../../qtdesignstudio/images \
+            ../../../src/libs/qmleditorwidgets/images \
+            ../../../src/libs/utils/images \
+            ../../../src/plugins/android/images \
+            ../../../src/plugins/autotest/images \
+            ../../../src/plugins/classview/images \
+            ../../../src/plugins/coreplugin/images \
+            ../../../src/plugins/debugger/images \
+            ../../../src/plugins/diffeditor/images \
+            ../../../src/plugins/help/images \
+            ../../../src/plugins/projectexplorer/images \
+            ../../../src/plugins/qmldesigner/components/componentcore/images \
+            ../../../src/plugins/qmldesigner/components/edit3d/images \
+            ../../../src/plugins/qmldesigner/components/formeditor \
+            ../../../src/plugins/qmldesigner/components/navigator \
+            ../../../src/plugins/qmldesigner/components/timelineeditor/images \
+            ../../../src/plugins/qmldesigner/qmlpreviewplugin/images \
+            ../../../src/plugins/qmldesigner/qtquickplugin/images \
+            ../../../src/plugins/scxmleditor/common/images \
+            ../../../src/plugins/texteditor/images \
+            ../../../src/plugins/valgrind/images \
+            ../../../src/plugins/welcome/images
+
+exampledirs = ../examples
+examples.fileextensions += *.qml *.svg
+
+HTML.extraimages         = ../../config/images/commercial.png
+qhp.QtHldplugin.extraFiles = ../../config/images/commercial.png
+
+depends +=    qtandroidextras\
+              qtwidgets \
+              qtcmake \
+              qtcore \
+              qtqml \
+              qtqmlmodels \
+              qtquick \
+              qmake \
+              qtdesigner \
+              qtdoc \
+              qtgraphicaleffects \
+              qtgui \
+              qthelp \
+              qtquick3d \
+              qtquickcontrols \
+              qtquickextras \
+              qtquicktimeline \
+              qtlinguist \
+              qtscxml \
+              qtsensors \
+              qttestlib \
+              qtuitools \
+              qtxml \
+              qtlocation
+
+include(../../config/macros.qdocconf)
+include(../../config/qt-cpp-ignore.qdocconf)
+include(../../config/qt-defines.qdocconf)
+
+defines += qthldplugin
+
+sources.fileextensions         = "*.qdoc"
+
+qhp.projects            = QtHldplugin
+qhp.QtHldplugin.file             = qthldplugin.qhp
+qhp.QtHldplugin.namespace        = org.qt-project.qthldplugin.$QTC_VERSION_TAG
+qhp.QtHldplugin.virtualFolder    = doc
+qhp.QtHldplugin.indexTitle       = $IDE_DISPLAY_NAME Manual $QTC_VERSION
+qhp.QtHldplugin.filterAttributes = $IDE_ID $QTC_VERSION
+qhp.QtHldplugin.customFilters.QtHldplugin.name = $IDE_DISPLAY_NAME $QTC_VERSION
+qhp.QtHldplugin.customFilters.QtHldplugin.filterAttributes = $IDE_ID $QTC_VERSION
+qhp.QtHldplugin.indexRoot        =
+
+qhp.QtHldplugin.subprojects = manual
+qhp.QtHldplugin.subprojects.manual.title = $IDE_DISPLAY_NAME Manual
+qhp.QtHldplugin.subprojects.manual.indexTitle = All Topics
+qhp.QtHldplugin.subprojects.manual.type = manual
+
+# Doxygen compatibility commands
+
+macro.see                       = "\\sa"
+macro.function                  = "\\fn"
+
+navigation.landingpage = "$IDE_DISPLAY_NAME Manual"
+buildversion = "$IDE_DISPLAY_NAME Manual $QTC_VERSION"

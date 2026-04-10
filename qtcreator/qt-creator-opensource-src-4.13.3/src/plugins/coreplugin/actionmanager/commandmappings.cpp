@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -132,7 +132,7 @@ public:
 
 /*!
     \class Core::CommandMappings
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 

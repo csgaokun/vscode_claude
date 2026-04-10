@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,7 +30,7 @@
 
 /*!
     \namespace Aggregation
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \brief The Aggregation namespace contains support for bundling related components,
            so that each component exposes the properties and behavior of the
            other components to the outside.
@@ -43,7 +43,7 @@
 /*!
     \class Aggregation::Aggregate
     \inheaderfile aggregation/aggregate.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
     \threadsafe
 

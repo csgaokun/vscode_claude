@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -78,7 +78,7 @@ Edit3DWidget::Edit3DWidget(Edit3DView *view) :
                     m_toolBox->addRightSideAction(action->action());
                 previousWasSeparator = false;
 
-                // Register action as creator command to make it configurable
+                // Register action as hldplugin command to make it configurable
                 Core::Command *command = Core::ActionManager::registerAction(
                             action->action(), action->menuId().data(), context);
                 command->setDefaultKeySequence(action->action()->shortcut());
@@ -111,7 +111,7 @@ Edit3DWidget::Edit3DWidget(Edit3DView *view) :
                " <a href=\"#add_import\"><span style=\"text-decoration:none;color:%1\">here</span></a> "
                "here to add it immediately.<br><br>"
                "To import 3D assets from another tool, click on the \"Add New Assets...\" button in the Assets tab of the Library view.");
-    m_onboardingLabel->setText(labelText.arg(Utils::creatorTheme()->color(Utils::Theme::TextColorLink).name()));
+    m_onboardingLabel->setText(labelText.arg(Utils::hldpluginTheme()->color(Utils::Theme::TextColorLink).name()));
     m_onboardingLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
     connect(m_onboardingLabel, &QLabel::linkActivated, this, &Edit3DWidget::linkActivated);
     fillLayout->addWidget(m_onboardingLabel.data());

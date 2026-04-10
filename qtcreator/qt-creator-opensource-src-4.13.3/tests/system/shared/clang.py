@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -25,10 +25,10 @@
 
 firstStart = True
 
-def startCreatorVerifyingClang(useClang):
+def startHldpluginVerifyingClang(useClang):
     global firstStart
     try:
-        # start Qt Creator with / without enabled ClangCodeModel plugin (without modifying settings)
+        # start Qt Hldplugin with / without enabled ClangCodeModel plugin (without modifying settings)
         loadOrNoLoad = '-load' if useClang else '-noload'
         startQC([loadOrNoLoad, 'ClangCodeModel'], closeLinkToQt=firstStart, cancelTour=firstStart)
         firstStart = False
@@ -36,13 +36,13 @@ def startCreatorVerifyingClang(useClang):
         t, v = sys.exc_info()[:2]
         strv = str(v)
         if strv == "startApplication() failed":
-            test.fatal("%s. Creator built without ClangCodeModel?" % strv)
+            test.fatal("%s. Hldplugin built without ClangCodeModel?" % strv)
         else:
             test.fatal("Exception caught", "%s(%s)" % (str(t), strv))
         return False
     if platform.system() not in ('Microsoft', 'Windows'): # only Win uses dialogs for this
         return startedWithoutPluginError()
-    errorMsg = "{type='QMessageBox' unnamed='1' visible='1' windowTitle='Qt Creator'}"
+    errorMsg = "{type='QMessageBox' unnamed='1' visible='1' windowTitle='Qt Hldplugin'}"
     errorOK = "{text='OK' type='QPushButton' unnamed='1' visible='1' window=%s}" % errorMsg
     if not waitFor("object.exists(errorOK)", 5000):
         return startedWithoutPluginError()

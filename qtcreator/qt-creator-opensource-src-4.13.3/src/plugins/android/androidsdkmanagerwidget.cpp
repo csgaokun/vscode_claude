@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -168,7 +168,7 @@ void AndroidSdkManagerWidget::installEssentials()
     if (!m_sdkModel->missingEssentials().isEmpty()) {
         QMessageBox::warning(this,
                              tr("Android SDK Changes"),
-                             tr("Qt Creator couldn't find the following essential packages: \"%1\".\n"
+                             tr("Qt Hldplugin couldn't find the following essential packages: \"%1\".\n"
                                 "Install them manually after the current operation is done.\n")
                                  .arg(m_sdkModel->missingEssentials().join("\", \"")));
     }

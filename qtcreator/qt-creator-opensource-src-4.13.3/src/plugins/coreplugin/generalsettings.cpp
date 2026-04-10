@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -55,7 +55,7 @@ static void appendThemeTrace(const char *message, const void *pointer = nullptr)
     if (!qEnvironmentVariableIsSet("QTC_THEMECHOOSER_TRACE"))
         return;
 
-    QFile file(QDir::temp().filePath(QLatin1String("qtcreator-themechooser-trace.log")));
+    QFile file(QDir::temp().filePath(QLatin1String("qthldplugin-themechooser-trace.log")));
     if (!file.open(QIODevice::Append | QIODevice::Text))
         return;
 
@@ -134,12 +134,12 @@ GeneralSettingsWidget::GeneralSettingsWidget(GeneralSettings *q)
         appendThemeTrace("GeneralSettingsWidget ctor end", this);
 }
 
-static bool hasQmFilesForLocale(const QString &locale, const QString &creatorTrPath)
+static bool hasQmFilesForLocale(const QString &locale, const QString &hldpluginTrPath)
 {
     static const QString qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
 
     const QString trFile = QLatin1String("/qt_") + locale + QLatin1String(".qm");
-    return QFile::exists(qtTrPath + trFile) || QFile::exists(creatorTrPath + trFile);
+    return QFile::exists(qtTrPath + trFile) || QFile::exists(hldpluginTrPath + trFile);
 }
 
 void GeneralSettingsWidget::fillLanguageBox() const
@@ -152,15 +152,15 @@ void GeneralSettingsWidget::fillLanguageBox() const
     if (currentLocale == QLatin1String("C"))
         m_ui.languageBox->setCurrentIndex(m_ui.languageBox->count() - 1);
 
-    const QString creatorTrPath = ICore::resourcePath() + QLatin1String("/translations");
-    const QStringList languageFiles = QDir(creatorTrPath).entryList(QStringList(QLatin1String("qtcreator*.qm")));
+    const QString hldpluginTrPath = ICore::resourcePath() + QLatin1String("/translations");
+    const QStringList languageFiles = QDir(hldpluginTrPath).entryList(QStringList(QLatin1String("qthldplugin*.qm")));
 
     for (const QString &languageFile : languageFiles) {
         int start = languageFile.indexOf('_') + 1;
         int end = languageFile.lastIndexOf('.');
         const QString locale = languageFile.mid(start, end-start);
-        // no need to show a language that creator will not load anyway
-        if (hasQmFilesForLocale(locale, creatorTrPath)) {
+        // no need to show a language that hldplugin will not load anyway
+        if (hasQmFilesForLocale(locale, hldpluginTrPath)) {
             QLocale tmpLocale(locale);
             QString languageItem = QLocale::languageToString(tmpLocale.language()) + QLatin1String(" (")
                                    + QLocale::countryToString(tmpLocale.country()) + QLatin1Char(')');
@@ -252,7 +252,7 @@ GeneralSettings::GeneralSettings()
     setCategory(Constants::SETTINGS_CATEGORY_CORE);
     setDisplayCategory(QCoreApplication::translate("Core", "Environment"));
     setCategoryIconPath(":/core/images/settingscategory_core.png");
-    setWidgetCreator([this] { return new GeneralSettingsWidget(this); });
+    setWidgetHldplugin([this] { return new GeneralSettingsWidget(this); });
 
     m_defaultShowShortcutsInContextMenu = QGuiApplication::styleHints()
                                               ->showShortcutsInContextMenus();

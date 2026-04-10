@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -72,7 +72,7 @@ void MiniSplitterHandle::resizeEvent(QResizeEvent *event)
 void MiniSplitterHandle::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    const QColor color = Utils::creatorTheme()->color(
+    const QColor color = Utils::hldpluginTheme()->color(
                 m_lightColored ? Utils::Theme::FancyToolBarSeparatorColor
                                : Utils::Theme::SplitterColor);
     painter.fillRect(event->rect(), color);
@@ -81,7 +81,7 @@ void MiniSplitterHandle::paintEvent(QPaintEvent *event)
 /*!
     \class Core::MiniSplitter
     \inheaderfile coreplugin/minisplitter.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The MiniSplitter class is a simple helper-class to obtain
     \macos style 1-pixel wide splitters.
@@ -121,7 +121,7 @@ MiniSplitter::MiniSplitter(Qt::Orientation orientation, QWidget *parent, Splitte
 /*!
     \class Core::NonResizingSplitter
     \inheaderfile coreplugin/minisplitter.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The NonResizingSplitter class is a MiniSplitter that keeps its
     first widget's size fixed when it is resized.

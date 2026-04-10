@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Thorben Kroeger <thorbenkroeger@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ namespace Utils {
 
 class ThemePrivate;
 
-class QTCREATOR_UTILS_EXPORT Theme : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT Theme : public QObject
 {
     Q_OBJECT
 
@@ -403,12 +403,12 @@ protected:
     ThemePrivate *d;
 
 private:
-    friend QTCREATOR_UTILS_EXPORT Theme *creatorTheme();
-    friend QTCREATOR_UTILS_EXPORT Theme *proxyTheme();
+    friend QTHLDPLUGIN_UTILS_EXPORT Theme *hldpluginTheme();
+    friend QTHLDPLUGIN_UTILS_EXPORT Theme *proxyTheme();
     QPair<QColor, QString> readNamedColor(const QString &color) const;
 };
 
-QTCREATOR_UTILS_EXPORT Theme *creatorTheme();
-QTCREATOR_UTILS_EXPORT Theme *proxyTheme();
+QTHLDPLUGIN_UTILS_EXPORT Theme *hldpluginTheme();
+QTHLDPLUGIN_UTILS_EXPORT Theme *proxyTheme();
 
 } // namespace Utils

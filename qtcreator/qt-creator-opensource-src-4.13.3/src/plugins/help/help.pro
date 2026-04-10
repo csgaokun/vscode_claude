@@ -2,7 +2,7 @@ QT += help network printsupport sql
 
 INCLUDEPATH += $$PWD
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 minQtVersion(5, 15, 0) {
 DEFINES += HELP_NEW_FILTER_ENGINE

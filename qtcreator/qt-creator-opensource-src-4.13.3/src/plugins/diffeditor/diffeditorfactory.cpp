@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -69,7 +69,7 @@ DiffEditorFactory::DiffEditorFactory() :
     setId(Constants::DIFF_EDITOR_ID);
     setDisplayName(QCoreApplication::translate("DiffEditorFactory", Constants::DIFF_EDITOR_DISPLAY_NAME));
     addMimeType(Constants::DIFF_EDITOR_MIMETYPE);
-    setEditorCreator([] { return new DiffEditor(new DiffEditorDocument); });
+    setEditorHldplugin([] { return new DiffEditor(new DiffEditorDocument); });
 }
 
 } // namespace Internal

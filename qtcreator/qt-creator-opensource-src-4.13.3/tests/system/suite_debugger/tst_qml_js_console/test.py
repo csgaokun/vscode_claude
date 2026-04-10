@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def typeToDebuggerConsole(expression):
     editableIndex = getQModelIndexStr("text=''",
@@ -37,7 +37,7 @@ def useDebuggerConsole(expression, expectedOutput, check=None, checkOutp=None):
 
     if expectedOutput == None:
         result = getQmlJSConsoleOutput()[-1]
-        clickButton(":*Qt Creator.Clear_QToolButton")
+        clickButton(":*Qt Hldplugin.Clear_QToolButton")
         return result
 
     expected = getQModelIndexStr("text='%s'" % expectedOutput,
@@ -48,7 +48,7 @@ def useDebuggerConsole(expression, expectedOutput, check=None, checkOutp=None):
     except:
         test.fail("Expected output (%s) missing - got '%s'."
                   % (expectedOutput, getQmlJSConsoleOutput()[-1]))
-    clickButton(":*Qt Creator.Clear_QToolButton")
+    clickButton(":*Qt Hldplugin.Clear_QToolButton")
     if check:
         if checkOutp == None:
             checkOutp = expectedOutput
@@ -56,15 +56,15 @@ def useDebuggerConsole(expression, expectedOutput, check=None, checkOutp=None):
 
 def debuggerHasStopped():
     debuggerPresetCombo = waitForObject("{type='QComboBox' unnamed='1' visible='1' "
-                                        "window=':Qt Creator_Core::Internal::MainWindow'}")
+                                        "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     waitFor('dumpItems(debuggerPresetCombo.model()) == ["Debugger Preset"]', 5000)
     if not test.compare(dumpItems(debuggerPresetCombo.model()), ["Debugger Preset"],
                         "Verifying whether all debugger engines have quit."):
         return False
-    fancyDebugButton = waitForObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton")
+    fancyDebugButton = waitForObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton")
     result = test.verify(fancyDebugButton.enabled,
                          "Verifying whether main debugger button is in correct state.")
-    ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+    ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
     output = waitForObject("{type='Core::OutputWindow' visible='1' "
                            "windowTitle='Application Output Window'}")
     result &= test.verify(waitFor("'Debugging has finished' in str(output.plainText)", 2000),
@@ -102,7 +102,7 @@ def testLoggingFeatures():
         typeToDebuggerConsole(expression)
         output = getQmlJSConsoleOutput()[1:]
         test.compare(output, expect, "Verifying expected output.")
-        filterButton = waitForObject("{container=':Qt Creator.DebugModeWidget_QSplitter' "
+        filterButton = waitForObject("{container=':Qt Hldplugin.DebugModeWidget_QSplitter' "
                                      "toolTip='%s' type='QToolButton' unnamed='1' visible='1'}"
                                      % tooltip)
         ensureChecked(filterButton, False)
@@ -111,7 +111,7 @@ def testLoggingFeatures():
         ensureChecked(filterButton, True)
         output = getQmlJSConsoleOutput()[1:]
         test.compare(output, expect, "Verifying unfiltered output is displayed again.")
-        clickButton(":*Qt Creator.Clear_QToolButton")
+        clickButton(":*Qt Hldplugin.Clear_QToolButton")
 
 def main():
     test.xfail("Skipping test. This will not work correctly with Qt <= 5.15 (QTBUG-82150).")
@@ -125,18 +125,18 @@ def main():
         test.fatal("Could not prepare test files - leaving test")
         return
     qmlProjFile = os.path.join(qmlProjDir, projName)
-    # start Creator by passing a .qmlproject file
+    # start Hldplugin by passing a .qmlproject file
     startQC(['"%s"' % qmlProjFile])
     if not startedWithoutPluginError():
         return
 
     # if Debug is enabled - 1 valid kit is assigned - real check for this is done in tst_qml_locals
-    fancyDebugButton = waitForObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton")
+    fancyDebugButton = waitForObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton")
     if test.verify(waitFor('fancyDebugButton.enabled', 5000), "Start Debugging is enabled."):
         # make sure QML Debugging is enabled
         switchViewTo(ViewConstants.PROJECTS)
         switchToBuildOrRunSettingsFor(Targets.getDefaultKit(), ProjectSettings.RUN)
-        ensureChecked("{container=':Qt Creator.scrollArea_QScrollArea' text='Enable QML' "
+        ensureChecked("{container=':Qt Hldplugin.scrollArea_QScrollArea' text='Enable QML' "
                       "type='QCheckBox' unnamed='1' visible='1'}")
         switchViewTo(ViewConstants.EDIT)
         # start debugging

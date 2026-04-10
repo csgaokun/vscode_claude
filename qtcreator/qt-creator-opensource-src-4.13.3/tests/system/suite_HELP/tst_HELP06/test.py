@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # test bookmark functionality
 def renameBookmarkFolder(view, item, newName):
@@ -40,7 +40,7 @@ def invokeContextMenuItemOnBookmarkFolder(view, item, menuItem):
                                "window=':Add Bookmark_BookmarkDialog'}" % aboveWidget), menuItem)
 
 def textForQtVersion(text):
-    suffix = "Qt Creator Manual"
+    suffix = "Qt Hldplugin Manual"
     if text != suffix:
         text += " | " + suffix
     return text
@@ -51,8 +51,8 @@ def main():
         return
     # goto help mode and click on topic
     switchViewTo(ViewConstants.HELP)
-    manualQModelIndex = getQModelIndexStr("text?='Qt Creator Manual *'",
-                                          ":Qt Creator_QHelpContentWidget")
+    manualQModelIndex = getQModelIndexStr("text?='Qt Hldplugin Manual *'",
+                                          ":Qt Hldplugin_QHelpContentWidget")
     manualQMIObj = waitForObject(manualQModelIndex)
     doubleClick(manualQMIObj, 5, 5, 0, Qt.LeftButton)
     if not waitFor("not manualQMIObj.collapsed", 2000):
@@ -61,14 +61,14 @@ def main():
     doubleClick(gettingStartedQModelIndex, 5, 5, 0, Qt.LeftButton)
     mouseClick(waitForObject(getQModelIndexStr("text='Building and Running an Example'",
                                                gettingStartedQModelIndex)))
-    helpSelector = waitForObject(":Qt Creator_HelpSelector_QComboBox")
+    helpSelector = waitForObject(":Qt Hldplugin_HelpSelector_QComboBox")
     pageOpened = "str(helpSelector.currentText).startswith('Building and Running an Example')"
     if not waitFor(pageOpened, 10000):
         test.fatal("Help page is not opened after ten seconds. Giving up.")
         invokeMenuItem("File", "Exit")
         return
     # open bookmarks window
-    clickButton(waitForObject(":Qt Creator.Add Bookmark_QToolButton"))
+    clickButton(waitForObject(":Qt Hldplugin.Add Bookmark_QToolButton"))
     clickButton(waitForObject(":Add Bookmark.ExpandBookmarksList_QToolButton"))
     # create root bookmark directory
     clickButton(waitForObject(":Add Bookmark.New Folder_QPushButton"))
@@ -82,23 +82,23 @@ def main():
     renameBookmarkFolder(bookmarkView, "Sample.Folder 1.New Folder*", "Folder 2")
     clickButton(waitForObject(":Add Bookmark.OK_QPushButton"))
     mouseClick(manualQModelIndex)
-    type(waitForObject(":Qt Creator_QHelpContentWidget"), "<Down>")
-    clickButton(waitForObject(":Qt Creator.Add Bookmark_QToolButton"))
+    type(waitForObject(":Qt Hldplugin_QHelpContentWidget"), "<Down>")
+    clickButton(waitForObject(":Qt Hldplugin.Add Bookmark_QToolButton"))
     clickButton(waitForObject(":Add Bookmark.ExpandBookmarksList_QToolButton"))
     # click on "Sample" and create new directory under it
     mouseClick(waitForObject(getQModelIndexStr("text='Sample'", ":Add Bookmark.treeView_QTreeView")))
     clickButton(waitForObject(":Add Bookmark.New Folder_QPushButton"))
     clickButton(waitForObject(":Add Bookmark.OK_QPushButton"))
     # choose bookmarks
-    mouseClick(waitForObjectItem(":Qt Creator_Core::Internal::CommandComboBox", "Bookmarks"))
+    mouseClick(waitForObjectItem(":Qt Hldplugin_Core::Internal::CommandComboBox", "Bookmarks"))
     # verify if all folders are created and bookmarks present
-    sampleQModelIndex = getQModelIndexStr("text='Sample'", ":Qt Creator_Bookmarks_TreeView")
+    sampleQModelIndex = getQModelIndexStr("text='Sample'", ":Qt Hldplugin_Bookmarks_TreeView")
     folder1QModelIndex = getQModelIndexStr("text='Folder 1'", sampleQModelIndex)
     folder2QModelIndex = getQModelIndexStr("text='Folder 2'", folder1QModelIndex)
     bldRunQModelIndex = getQModelIndexStr("text?='%s'" % textForQtVersion("Building and Running an Example*"),
                                           folder2QModelIndex)
     newFolderQModelIndex = getQModelIndexStr("text='New Folder'", sampleQModelIndex)
-    manualQModelIndex = getQModelIndexStr("text='%s'" % textForQtVersion("Qt Creator Manual"),
+    manualQModelIndex = getQModelIndexStr("text='%s'" % textForQtVersion("Qt Hldplugin Manual"),
                                              newFolderQModelIndex)
     test.verify(checkIfObjectExists(sampleQModelIndex, verboseOnFail = True) and
                 checkIfObjectExists(folder1QModelIndex, verboseOnFail = True) and
@@ -106,21 +106,21 @@ def main():
                 checkIfObjectExists(bldRunQModelIndex, verboseOnFail = True) and
                 checkIfObjectExists(manualQModelIndex, verboseOnFail = True),
                 "Verifying if all folders and bookmarks are present")
-    mouseClick(waitForObject(":Qt Creator_Bookmarks_TreeView"), 5, 5, 0, Qt.LeftButton)
+    mouseClick(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), 5, 5, 0, Qt.LeftButton)
     for _ in range(6):
-        type(waitForObject(":Qt Creator_Bookmarks_TreeView"), "<Right>")
-    type(waitForObject(":Qt Creator_Bookmarks_TreeView"), "<Return>")
+        type(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), "<Right>")
+    type(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), "<Return>")
     test.verify(textForQtVersion("Building and Running an Example") in getHelpTitle(),
                 "Verifying if first bookmark is opened")
     mouseClick(waitForObject(bldRunQModelIndex))
-    type(waitForObject(":Qt Creator_Bookmarks_TreeView"), "<Down>")
-    type(waitForObject(":Qt Creator_Bookmarks_TreeView"), "<Right>")
-    type(waitForObject(":Qt Creator_Bookmarks_TreeView"), "<Down>")
-    type(waitForObject(":Qt Creator_Bookmarks_TreeView"), "<Return>")
-    test.verify(textForQtVersion("Qt Creator Manual") in getHelpTitle(),
+    type(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), "<Down>")
+    type(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), "<Right>")
+    type(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), "<Down>")
+    type(waitForObject(":Qt Hldplugin_Bookmarks_TreeView"), "<Return>")
+    test.verify(textForQtVersion("Qt Hldplugin Manual") in getHelpTitle(),
                 "Verifying if second bookmark is opened")
     # delete previously created directory
-    clickButton(waitForObject(":Qt Creator.Add Bookmark_QToolButton"))
+    clickButton(waitForObject(":Qt Hldplugin.Add Bookmark_QToolButton"))
     clickButton(waitForObject(":Add Bookmark.ExpandBookmarksList_QToolButton"))
     invokeContextMenuItemOnBookmarkFolder(":Add Bookmark.treeView_QTreeView", "Sample.Folder 1",
                                           "Delete Folder")
@@ -129,8 +129,8 @@ def main():
     # close bookmarks
     clickButton(waitForObject(":Add Bookmark.OK_QPushButton"))
     # choose bookmarks from command combobox
-    mouseClick(waitForObject(":Qt Creator_Core::Internal::CommandComboBox"))
-    mouseClick(waitForObjectItem(":Qt Creator_Core::Internal::CommandComboBox", "Bookmarks"))
+    mouseClick(waitForObject(":Qt Hldplugin_Core::Internal::CommandComboBox"))
+    mouseClick(waitForObjectItem(":Qt Hldplugin_Core::Internal::CommandComboBox", "Bookmarks"))
     # verify if folders and bookmark deleted
     test.verify(checkIfObjectExists(sampleQModelIndex, verboseOnFail = True) and
                 checkIfObjectExists(folder1QModelIndex, shouldExist = False, verboseOnFail = True) and

@@ -1,6 +1,6 @@
 QT += network xml
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 SOURCES += qnxplugin.cpp \
     qnxbaseqtconfigwidget.cpp \

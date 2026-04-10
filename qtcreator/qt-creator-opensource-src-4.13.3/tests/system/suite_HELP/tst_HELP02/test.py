@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,13 +23,13 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
-# test Qt Creator version information from file and dialog
-def getQtCreatorVersionFromDialog():
-    chk = re.search("(?<=Qt Creator)\s\d+.\d+.\d+[-\w]*",
-                    str(waitForObject("{text?='*Qt Creator*' type='QLabel' unnamed='1' visible='1' "
-                                      "window=':About Qt Creator_Core::Internal::VersionDialog'}").text))
+# test Qt Hldplugin version information from file and dialog
+def getQtHldpluginVersionFromDialog():
+    chk = re.search("(?<=Qt Hldplugin)\s\d+.\d+.\d+[-\w]*",
+                    str(waitForObject("{text?='*Qt Hldplugin*' type='QLabel' unnamed='1' visible='1' "
+                                      "window=':About Qt Hldplugin_Core::Internal::VersionDialog'}").text))
     try:
         ver = chk.group(0).strip()
         return ver
@@ -37,11 +37,11 @@ def getQtCreatorVersionFromDialog():
         test.fail("Failed to get the exact version from Dialog")
         return ""
 
-def getQtCreatorVersionFromFile():
-    qtCreatorPriFileName = "../../../../qtcreator_ide_branding.pri"
-    # open file <qtCreatorPriFileName> and read version
-    fileText = readFile(qtCreatorPriFileName)
-    chk = re.search("(?<=QTCREATOR_DISPLAY_VERSION =)\s\d+.\d+.\d+\S*", fileText)
+def getQtHldpluginVersionFromFile():
+    qtHldpluginPriFileName = "../../../../qthldplugin_ide_branding.pri"
+    # open file <qtHldpluginPriFileName> and read version
+    fileText = readFile(qtHldpluginPriFileName)
+    chk = re.search("(?<=QTHLDPLUGIN_DISPLAY_VERSION =)\s\d+.\d+.\d+\S*", fileText)
     try:
         ver = chk.group(0).strip()
         return ver
@@ -49,22 +49,22 @@ def getQtCreatorVersionFromFile():
         test.fail("Failed to get the exact version from File")
         return ""
 
-def checkQtCreatorHelpVersion(expectedVersion):
+def checkQtHldpluginHelpVersion(expectedVersion):
     def rightStart(x):
-        return x.startswith('Qt Creator Manual')
+        return x.startswith('Qt Hldplugin Manual')
 
     switchViewTo(ViewConstants.HELP)
     try:
-        helpContentWidget = waitForObject(':Qt Creator_QHelpContentWidget', 5000)
+        helpContentWidget = waitForObject(':Qt Hldplugin_QHelpContentWidget', 5000)
         waitFor("any(map(rightStart, dumpItems(helpContentWidget.model())))", 10000)
         items = dumpItems(helpContentWidget.model())
         test.compare(filter(rightStart, items)[0],
-                     'Qt Creator Manual %s' % expectedVersion,
+                     'Qt Hldplugin Manual %s' % expectedVersion,
                      'Verifying whether manual uses expected version.')
     except:
         t, v = sys.exc_info()[:2]
         test.log("Exception caught", "%s(%s)" % (str(t), str(v)))
-        test.fail("Missing Qt Creator Manual.")
+        test.fail("Missing Qt Hldplugin Manual.")
 
 def setKeyboardShortcutForAboutQtC():
     invokeMenuItem("Tools", "Options...")
@@ -75,8 +75,8 @@ def setKeyboardShortcutForAboutQtC():
                            "placeholderText='Filter'}")
     replaceEditorContent(filter, "about")
     treewidget = waitForObject("{type='QTreeWidget' unnamed='1' visible='1'}")
-    modelIndex = waitForObject("{column='0' text='AboutQtCreator' type='QModelIndex' "
-                               "container={column='0' text='QtCreator' type='QModelIndex' "
+    modelIndex = waitForObject("{column='0' text='AboutQtHldplugin' type='QModelIndex' "
+                               "container={column='0' text='QtHldplugin' type='QModelIndex' "
                                "container=%s}}" % objectMap.realName(treewidget))
     treewidget.scrollTo(modelIndex)
     mouseClick(modelIndex)
@@ -102,7 +102,7 @@ def setKeyboardShortcutForAboutQtC():
     clickButton(waitForObject(":Options.OK_QPushButton"))
 
 def main():
-    expectedVersion = getQtCreatorVersionFromFile()
+    expectedVersion = getQtHldpluginVersionFromFile()
     if not expectedVersion:
         test.fatal("Can't find version from file.")
         return
@@ -112,33 +112,33 @@ def main():
     setKeyboardShortcutForAboutQtC()
     if platform.system() == 'Darwin':
         try:
-            waitForObject(":Qt Creator.QtCreator.MenuBar_QMenuBar", 2000)
+            waitForObject(":Qt Hldplugin.QtHldplugin.MenuBar_QMenuBar", 2000)
         except:
-            nativeMouseClick(waitForObject(":Qt Creator_Core::Internal::MainWindow", 1000), 20, 20, 0, Qt.LeftButton)
+            nativeMouseClick(waitForObject(":Qt Hldplugin_Core::Internal::MainWindow", 1000), 20, 20, 0, Qt.LeftButton)
     nativeType("<Ctrl+Alt+a>")
-    # verify qt creator version
+    # verify qt hldplugin version
     try:
-        waitForObject(":About Qt Creator_Core::Internal::VersionDialog", 5000)
+        waitForObject(":About Qt Hldplugin_Core::Internal::VersionDialog", 5000)
     except:
         test.warning("Using workaround of invoking menu entry "
                      "(known issue when running on Win inside Jenkins)")
         if platform.system() == "Darwin":
-            invokeMenuItem("Help", "About Qt Creator")
+            invokeMenuItem("Help", "About Qt Hldplugin")
         else:
-            invokeMenuItem("Help", "About Qt Creator...")
-        waitForObject(":About Qt Creator_Core::Internal::VersionDialog", 5000)
-    actualVersion = getQtCreatorVersionFromDialog()
+            invokeMenuItem("Help", "About Qt Hldplugin...")
+        waitForObject(":About Qt Hldplugin_Core::Internal::VersionDialog", 5000)
+    actualVersion = getQtHldpluginVersionFromDialog()
     test.compare(actualVersion, expectedVersion,
                  "Verifying version. Current version is '%s', expected version is '%s'"
                  % (actualVersion, expectedVersion))
     # close and verify about dialog closed
     clickButton(waitForObject("{text='Close' type='QPushButton' unnamed='1' visible='1' "
-                              "window=':About Qt Creator_Core::Internal::VersionDialog'}"))
-    test.verify(checkIfObjectExists(":About Qt Creator_Core::Internal::VersionDialog", False),
+                              "window=':About Qt Hldplugin_Core::Internal::VersionDialog'}"))
+    test.verify(checkIfObjectExists(":About Qt Hldplugin_Core::Internal::VersionDialog", False),
                 "Verifying if About dialog closed.")
-    checkQtCreatorHelpVersion(expectedVersion)
-    # exit qt creator
+    checkQtHldpluginHelpVersion(expectedVersion)
+    # exit qt hldplugin
     invokeMenuItem("File", "Exit")
-    # verify if qt creator closed properly
-    test.verify(checkIfObjectExists(":Qt Creator_Core::Internal::MainWindow", False),
-                "Verifying if Qt Creator closed.")
+    # verify if qt hldplugin closed properly
+    test.verify(checkIfObjectExists(":Qt Hldplugin_Core::Internal::MainWindow", False),
+                "Verifying if Qt Hldplugin closed.")

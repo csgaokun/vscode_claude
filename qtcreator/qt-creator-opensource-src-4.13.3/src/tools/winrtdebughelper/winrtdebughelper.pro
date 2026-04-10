@@ -1,7 +1,7 @@
 CONFIG          += warn_on
 CONFIG          -= qt
 
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 
 SOURCES = winrtdebughelper.cpp
 

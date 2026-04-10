@@ -27,7 +27,7 @@ function Write-Summary {
     $Line | Tee-Object -FilePath $summaryLog -Append
 }
 
-Write-Summary "=== Qt Creator Full Pipeline ==="
+Write-Summary "=== Qt Hldplugin Full Pipeline ==="
 Write-Summary "RunId: $runId"
 Write-Summary "QtRoot: $QtRoot"
 Write-Summary "BuildRoot: $BuildRoot"
@@ -40,7 +40,7 @@ Write-Summary ""
 try {
     if (-not $SkipBuild) {
         Write-Summary "[1/3] Build start"
-        & (Join-Path $PSScriptRoot 'build-qtcreator-msvc2017.ps1') `
+        & (Join-Path $PSScriptRoot 'build-qthldplugin-msvc2017.ps1') `
             -QtRoot $QtRoot `
             -SourceDir $SourceDir `
             -BuildRoot $BuildRoot `
@@ -55,7 +55,7 @@ try {
 
     if (-not $SkipPublish) {
         Write-Summary "[2/3] Publish start"
-        & (Join-Path $PSScriptRoot 'publish-qtcreator.ps1') `
+        & (Join-Path $PSScriptRoot 'publish-qthldplugin.ps1') `
             -QtRoot $QtRoot `
             -SourceDir $SourceDir `
             -BuildRoot $BuildRoot `
@@ -79,7 +79,7 @@ try {
             $debugArgs.EnableVerboseQtLogs = $true
         }
 
-        & (Join-Path $PSScriptRoot 'debug-run-qtcreator.ps1') @debugArgs
+        & (Join-Path $PSScriptRoot 'debug-run-qthldplugin.ps1') @debugArgs
         if ($LASTEXITCODE -ne 0) {
             throw "Smoke test step failed."
         }
@@ -88,7 +88,7 @@ try {
         Write-Summary "[3/3] Smoke test skipped"
     }
 
-    $artifactZip = Join-Path $BuildRoot ('artifacts\qtcreator-msvc2017-qt5.12.12-' + $BuildType.ToLowerInvariant() + '.zip')
+    $artifactZip = Join-Path $BuildRoot ('artifacts\qthldplugin-msvc2017-qt5.12.12-' + $BuildType.ToLowerInvariant() + '.zip')
     if (Test-Path -LiteralPath $artifactZip) {
         Write-Summary "Artifact: $artifactZip"
     } else {

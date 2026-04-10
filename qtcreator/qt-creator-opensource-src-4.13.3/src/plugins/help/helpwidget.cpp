@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -239,7 +239,7 @@ HelpWidget::HelpWidget(const Core::Context &context, WidgetStyle style, QWidget 
         static int windowId = 0;
         Core::ICore::registerWindow(this,
                                     Core::Context(Utils::Id("Help.Window.").withSuffix(++windowId)));
-        setAttribute(Qt::WA_QuitOnClose, false); // don't prevent Qt Creator from closing
+        setAttribute(Qt::WA_QuitOnClose, false); // don't prevent Qt Hldplugin from closing
     }
     if (style != SideBarWidget) {
         m_toggleSideBarAction = new QAction(Utils::Icons::TOGGLE_LEFT_SIDEBAR_TOOLBAR.icon(),

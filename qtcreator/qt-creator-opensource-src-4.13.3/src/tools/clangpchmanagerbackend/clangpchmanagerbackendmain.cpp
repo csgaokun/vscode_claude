@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@
 #include <filesystem.h>
 #include <generatedfiles.h>
 #include <modifiedtimechecker.h>
-#include <pchcreator.h>
+#include <pchhldplugin.h>
 #include <pchmanagerclientproxy.h>
 #include <pchmanagerserver.h>
 #include <pchtaskgenerator.h>
@@ -68,7 +68,7 @@ using ClangBackEnd::ConnectionServer;
 using ClangBackEnd::FilePathCache;
 using ClangBackEnd::FilePathView;
 using ClangBackEnd::GeneratedFiles;
-using ClangBackEnd::PchCreator;
+using ClangBackEnd::PchHldplugin;
 using ClangBackEnd::PchManagerClientProxy;
 using ClangBackEnd::PchManagerServer;
 using ClangBackEnd::PrecompiledHeaderStorage;
@@ -117,7 +117,7 @@ private:
 QStringList processArguments(QCoreApplication &application)
 {
     QCommandLineParser parser;
-    parser.setApplicationDescription(QStringLiteral("Qt Creator Clang PchManager Backend"));
+    parser.setApplicationDescription(QStringLiteral("Qt Hldplugin Clang PchManager Backend"));
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addPositionalArgument(QStringLiteral("connection"), QStringLiteral("Connection"));
@@ -133,11 +133,11 @@ QStringList processArguments(QCoreApplication &application)
     return parser.positionalArguments();
 }
 
-class PchCreatorManager final : public ClangBackEnd::ProcessorManager<ClangBackEnd::PchCreator>
+class PchHldpluginManager final : public ClangBackEnd::ProcessorManager<ClangBackEnd::PchHldplugin>
 {
 public:
-    using Processor = ClangBackEnd::PchCreator;
-    PchCreatorManager(const ClangBackEnd::GeneratedFiles &generatedFiles,
+    using Processor = ClangBackEnd::PchHldplugin;
+    PchHldpluginManager(const ClangBackEnd::GeneratedFiles &generatedFiles,
                       ClangBackEnd::Environment &environment,
                       ClangBackEnd::FilePathCaching &filePathCache,
                       PchManagerServer &pchManagerServer,
@@ -152,9 +152,9 @@ public:
     {}
 
 protected:
-    std::unique_ptr<ClangBackEnd::PchCreator> createProcessor() const override
+    std::unique_ptr<ClangBackEnd::PchHldplugin> createProcessor() const override
     {
-        return std::make_unique<PchCreator>(m_environment,
+        return std::make_unique<PchHldplugin>(m_environment,
                                             m_filePathCache,
                                             *m_pchManagerServer.client(),
                                             m_pathWatcher,
@@ -171,7 +171,7 @@ private:
 
 struct Data // because we have a cycle dependency
 {
-    using TaskScheduler = ClangBackEnd::TaskScheduler<PchCreatorManager, ClangBackEnd::PchTaskQueue::Task>;
+    using TaskScheduler = ClangBackEnd::TaskScheduler<PchHldpluginManager, ClangBackEnd::PchTaskQueue::Task>;
 
     Data(const QString &databasePath, const QString &pchsPath, const QString &preIncludeSearchPath)
         : database{Utils::PathString{databasePath}, 100000ms}
@@ -192,7 +192,7 @@ struct Data // because we have a cycle dependency
                                      filePathCache,
                                      includeWatcher,
                                      generatedFiles};
-    PchCreatorManager pchCreatorManager{generatedFiles,
+    PchHldpluginManager pchHldpluginManager{generatedFiles,
                                         environment,
                                         filePathCache,
                                         clangPchManagerServer,
@@ -236,12 +236,12 @@ struct Data // because we have a cycle dependency
                                            generatedFiles,
                                            buildDependencyStorage,
                                            filePathCache};
-    TaskScheduler systemTaskScheduler{pchCreatorManager,
+    TaskScheduler systemTaskScheduler{pchHldpluginManager,
                                       pchTaskQueue,
                                       pchCreationProgressCounter,
                                       std::thread::hardware_concurrency(),
                                       ClangBackEnd::CallDoInMainThreadAfterFinished::No};
-    TaskScheduler projectTaskScheduler{pchCreatorManager,
+    TaskScheduler projectTaskScheduler{pchHldpluginManager,
                                        pchTaskQueue,
                                        pchCreationProgressCounter,
                                        std::thread::hardware_concurrency(),

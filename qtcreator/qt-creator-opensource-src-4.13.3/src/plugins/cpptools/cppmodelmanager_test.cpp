@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -90,10 +90,10 @@ QStringList toAbsolutePaths(const QStringList &relativePathList,
 }
 
 // TODO: When possible, use this helper class in all tests
-class ProjectCreator
+class ProjectHldplugin
 {
 public:
-    explicit ProjectCreator(ModelManagerTestHelper *modelManagerTestHelper)
+    explicit ProjectHldplugin(ModelManagerTestHelper *modelManagerTestHelper)
         : modelManagerTestHelper(modelManagerTestHelper)
     {}
 
@@ -244,7 +244,7 @@ void CppToolsPlugin::test_modelmanager_framework_headers()
     }
 }
 
-/// QTCREATORBUG-9056
+/// QTHLDPLUGINBUG-9056
 /// Check: If the project configuration changes, all project files and their
 ///        includes have to be reparsed.
 void CppToolsPlugin::test_modelmanager_refresh_also_includes_of_project_files()
@@ -300,7 +300,7 @@ void CppToolsPlugin::test_modelmanager_refresh_also_includes_of_project_files()
     QVERIFY(macrosInHeaderAfter.at(1).name() == "TEST_DEFINE_DEFINED");
 }
 
-/// QTCREATORBUG-9205
+/// QTHLDPLUGINBUG-9205
 /// Check: When reparsing the same files again, no errors occur
 ///        (The CppSourceProcessor's already seen files are properly cleared!).
 void CppToolsPlugin::test_modelmanager_refresh_several_times()
@@ -367,7 +367,7 @@ void CppToolsPlugin::test_modelmanager_refresh_several_times()
     }
 }
 
-/// QTCREATORBUG-9581
+/// QTHLDPLUGINBUG-9581
 /// Check: If nothing has changes, nothing should be reindexed.
 void CppToolsPlugin::test_modelmanager_refresh_test_for_changes()
 {
@@ -558,8 +558,8 @@ void CppToolsPlugin::test_modelmanager_snapshot_after_two_projects()
 {
     QSet<QString> refreshedFiles;
     ModelManagerTestHelper helper;
-    ProjectCreator project1(&helper);
-    ProjectCreator project2(&helper);
+    ProjectHldplugin project1(&helper);
+    ProjectHldplugin project2(&helper);
     CppModelManager *mm = CppModelManager::instance();
 
     // Project 1
@@ -642,7 +642,7 @@ void CppToolsPlugin::test_modelmanager_extraeditorsupport_uiFiles()
     QCOMPARE(Utils::FilePath::fromString(includedFiles.at(1)).fileName(), _("ui_mainwindow.h"));
 }
 
-/// QTCREATORBUG-9828: Locator shows symbols of closed files
+/// QTHLDPLUGINBUG-9828: Locator shows symbols of closed files
 /// Check: The garbage collector should be run if the last CppEditor is closed.
 void CppToolsPlugin::test_modelmanager_gc_if_last_cppeditor_closed()
 {

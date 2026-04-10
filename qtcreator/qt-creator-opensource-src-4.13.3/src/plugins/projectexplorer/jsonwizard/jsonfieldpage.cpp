@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1213,7 +1213,7 @@ JsonFieldPage::JsonFieldPage(MacroExpander *expander, QWidget *parent) :
     vLayout->addLayout(m_formLayout);
     m_errorLabel->setVisible(false);
     QPalette palette = m_errorLabel->palette();
-    palette.setColor(QPalette::WindowText, creatorTheme()->color(Theme::TextColorError));
+    palette.setColor(QPalette::WindowText, hldpluginTheme()->color(Theme::TextColorError));
     m_errorLabel->setPalette(palette);
     vLayout->addItem(new QSpacerItem(0, 0, QSizePolicy::Ignored, QSizePolicy::MinimumExpanding));
     vLayout->addWidget(m_errorLabel);

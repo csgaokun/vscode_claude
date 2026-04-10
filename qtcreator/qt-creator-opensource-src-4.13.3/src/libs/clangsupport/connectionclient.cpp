@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ namespace ClangBackEnd {
 ConnectionClient::ConnectionClient(const QString &connectionName)
     : m_connectionName(connectionName)
 {
-    m_processCreator.setObserver(this);
+    m_processHldplugin.setObserver(this);
 
     listenForConnections();
 
@@ -65,7 +65,7 @@ void ConnectionClient::startProcessAndConnectToServerAsynchronously()
 {
     m_processIsStarting = true;
 
-    m_processFuture = m_processCreator.createProcess();
+    m_processFuture = m_processHldplugin.createProcess();
 }
 
 void ConnectionClient::disconnectFromServer()
@@ -105,7 +105,7 @@ void ConnectionClient::setProcessAliveTimerInterval(int processTimerInterval)
 
 const QTemporaryDir &ConnectionClient::temporaryDirectory() const
 {
-    return m_processCreator.temporaryDirectory();
+    return m_processHldplugin.temporaryDirectory();
 }
 
 LinePrefixer &ConnectionClient::stdErrPrefixer()
@@ -210,7 +210,7 @@ void ConnectionClient::printStandardError()
 
 void ConnectionClient::resetTemporaryDirectory()
 {
-    m_processCreator.resetTemporaryDirectory();
+    m_processHldplugin.resetTemporaryDirectory();
 }
 
 void ConnectionClient::initializeProcess(QProcess *process)
@@ -390,7 +390,7 @@ void ConnectionClient::listenForConnections()
 
 void ConnectionClient::setProcessPath(const QString &processPath)
 {
-    m_processCreator.setProcessPath(processPath);
+    m_processHldplugin.setProcessPath(processPath);
 }
 
 } // namespace ClangBackEnd

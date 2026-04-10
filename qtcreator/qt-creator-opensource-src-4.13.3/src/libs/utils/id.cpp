@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ namespace Utils {
 /*!
     \class Utils::Id
     \inheaderfile utils/id.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The Id class encapsulates an identifier that is unique
     within a specific running \QC process.
@@ -312,7 +312,7 @@ bool Id::operator==(const char *name) const
 }
 
 // For debugging purposes
-QTCREATOR_UTILS_EXPORT const char *nameForId(quintptr id)
+QTHLDPLUGIN_UTILS_EXPORT const char *nameForId(quintptr id)
 {
     return stringFromId.value(id).str;
 }

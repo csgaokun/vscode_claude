@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -165,20 +165,20 @@ void QtSupportPlugin::testQtOutputParser_data()
                                                        Utils::FilePath::fromUserInput(QLatin1String("/home/qtwebkithelpviewer.h")), -1))
             << QString();
     QTest::newRow("ninja with moc")
-            << QString::fromLatin1("E:/sandbox/creator/loaden/src/libs/utils/iwelcomepage.h(54): Error: Undefined interface")
+            << QString::fromLatin1("E:/sandbox/hldplugin/loaden/src/libs/utils/iwelcomepage.h(54): Error: Undefined interface")
             << OutputParserTester::STDERR
             << QString() << QString()
             << (Tasks() << CompileTask(Task::Error,
                                                        QLatin1String("Undefined interface"),
-                                                       Utils::FilePath::fromUserInput(QLatin1String("E:/sandbox/creator/loaden/src/libs/utils/iwelcomepage.h")), 54))
+                                                       Utils::FilePath::fromUserInput(QLatin1String("E:/sandbox/hldplugin/loaden/src/libs/utils/iwelcomepage.h")), 54))
             << QString();
     QTest::newRow("translation")
-            << QString::fromLatin1("Warning: dropping duplicate messages in '/some/place/qtcreator_fr.qm'")
+            << QString::fromLatin1("Warning: dropping duplicate messages in '/some/place/qthldplugin_fr.qm'")
             << OutputParserTester::STDERR
             << QString() << QString()
             << (Tasks() << CompileTask(Task::Warning,
                                                        QLatin1String("dropping duplicate messages"),
-                                                       Utils::FilePath::fromUserInput(QLatin1String("/some/place/qtcreator_fr.qm")), -1))
+                                                       Utils::FilePath::fromUserInput(QLatin1String("/some/place/qthldplugin_fr.qm")), -1))
             << QString();
 }
 

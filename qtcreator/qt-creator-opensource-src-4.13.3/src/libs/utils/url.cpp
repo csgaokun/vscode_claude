@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -47,7 +47,7 @@ QUrl urlFromLocalSocket()
 {
     QUrl serverUrl;
     serverUrl.setScheme(urlSocketScheme());
-    TemporaryFile file("qtcreator-freesocket");
+    TemporaryFile file("qthldplugin-freesocket");
     if (file.open())
         serverUrl.setPath(file.fileName());
     return serverUrl;

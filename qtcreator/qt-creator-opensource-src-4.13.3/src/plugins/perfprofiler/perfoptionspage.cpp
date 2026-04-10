@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@ PerfOptionsPage::PerfOptionsPage(PerfSettings *settings)
     setCategory("T.Analyzer");
     setDisplayCategory(QCoreApplication::translate("Analyzer", "Analyzer"));
     setCategoryIconPath(Analyzer::Icons::SETTINGSCATEGORY_ANALYZER);
-    setWidgetCreator([settings] { return new PerfConfigWidget(settings); });
+    setWidgetHldplugin([settings] { return new PerfConfigWidget(settings); });
 }
 
 } // namespace Internal

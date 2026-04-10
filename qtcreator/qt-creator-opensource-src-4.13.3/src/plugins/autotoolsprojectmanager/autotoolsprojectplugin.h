@@ -5,7 +5,7 @@
 ** Author: Patricia Santana Cruz (patriciasantanacruz@gmail.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@ namespace Internal {
  * The plugin creates the following components:
  *
  * - AutotoolsManager: Will manage the new autotools project and
- *   tell QtCreator for which MIME types the autotools project should
+ *   tell QtHldplugin for which MIME types the autotools project should
  *   be instantiated.
  *
  * - MakeStepFactory: This factory is used to create make steps.
@@ -65,7 +65,7 @@ namespace Internal {
 class AutotoolsProjectPlugin final : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "AutotoolsProjectManager.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "AutotoolsProjectManager.json")
 
     ~AutotoolsProjectPlugin() final;
 
@@ -78,7 +78,7 @@ class AutotoolsProjectPlugin final : public ExtensionSystem::IPlugin
 /**
  * @brief Implementation of the ProjectExplorer::Project interface.
  *
- * Loads the autotools project and embeds it into the QtCreator project tree.
+ * Loads the autotools project and embeds it into the QtHldplugin project tree.
  * The class AutotoolsProject is the core of the autotools project plugin.
  * It is responsible to parse the Makefile.am files and do trigger project
  * updates if a Makefile.am file or a configure.ac file has been changed.

@@ -1,7 +1,7 @@
 QTC_LIB_DEPENDS += \
     clangsupport
 
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 include(../../shared/clang/clang_installation.pri)
 include(source/clangrefactoringbackend-source.pri)
 

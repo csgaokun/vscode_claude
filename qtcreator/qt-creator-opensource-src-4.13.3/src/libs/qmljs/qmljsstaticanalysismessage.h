@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,7 +43,7 @@ enum Type
 {
     // Changing the numbers can break user code.
     // When adding a new check, also add it to the documentation, currently
-    // in creator-code-syntax.qdoc.
+    // in hldplugin-code-syntax.qdoc.
     UnknownType = 0,
     ErrInvalidEnumValue = 1,
     ErrEnumValueMustBeStringOrNumber = 2,

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@ class FakeVimHandler;
 class FakeVimPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "FakeVim.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "FakeVim.json")
 
 public:
     FakeVimPlugin();
@@ -159,7 +159,7 @@ private slots:
 
     void test_macros();
 
-    void test_vim_qtcreator();
+    void test_vim_qthldplugin();
 
     // special tests
     void test_i_cw_i();

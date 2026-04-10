@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BlackBerry Limited. All rights reserved.
 ** Contact: BlackBerry (qt@blackberry.com)
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -249,7 +249,7 @@ QnxSettingsPage::QnxSettingsPage()
     setId(Constants::QNX_SETTINGS_ID);
     setDisplayName(QnxSettingsWidget::tr("QNX"));
     setCategory(ProjectExplorer::Constants::DEVICE_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new QnxSettingsWidget; });
+    setWidgetHldplugin([] { return new QnxSettingsWidget; });
 }
 
 } // namespace Internal

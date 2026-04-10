@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -142,33 +142,33 @@ QColor TestResult::colorForType(const ResultType type)
     if (type >= ResultType::INTERNAL_MESSAGES_BEGIN && type <= ResultType::INTERNAL_MESSAGES_END)
         return QColor("transparent");
 
-    Utils::Theme *creatorTheme = Utils::creatorTheme();
+    Utils::Theme *hldpluginTheme = Utils::hldpluginTheme();
     switch (type) {
     case ResultType::Pass:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestPassTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestPassTextColor);
     case ResultType::Fail:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestFailTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestFailTextColor);
     case ResultType::ExpectedFail:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestXFailTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestXFailTextColor);
     case ResultType::UnexpectedPass:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestXPassTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestXPassTextColor);
     case ResultType::Skip:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestSkipTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestSkipTextColor);
     case ResultType::MessageDebug:
     case ResultType::MessageInfo:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestDebugTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestDebugTextColor);
     case ResultType::MessageWarn:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestWarnTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestWarnTextColor);
     case ResultType::MessageFatal:
     case ResultType::MessageSystem:
     case ResultType::MessageError:
-        return creatorTheme->color(Utils::Theme::OutputPanes_TestFatalTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_TestFatalTextColor);
     case ResultType::BlacklistedPass:
     case ResultType::BlacklistedFail:
     case ResultType::BlacklistedXPass:
     case ResultType::BlacklistedXFail:
     default:
-        return creatorTheme->color(Utils::Theme::OutputPanes_StdOutTextColor);
+        return hldpluginTheme->color(Utils::Theme::OutputPanes_StdOutTextColor);
     }
 }
 

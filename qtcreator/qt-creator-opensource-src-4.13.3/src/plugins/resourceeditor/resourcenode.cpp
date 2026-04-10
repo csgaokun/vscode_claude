@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -529,7 +529,7 @@ RemovedFilesFromProject ResourceFolderNode::removeFiles(const QStringList &fileP
     return RemovedFilesFromProject::Ok;
 }
 
-// QTCREATORBUG-15280
+// QTHLDPLUGINBUG-15280
 bool ResourceFolderNode::canRenameFile(const QString &filePath, const QString &newFilePath)
 {
     Q_UNUSED(newFilePath)

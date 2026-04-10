@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -47,10 +47,10 @@ class VCSBASE_EXPORT VcsSubmitEditorFactory : public Core::IEditorFactory
     Q_DECLARE_TR_FUNCTIONS(VcsBase::VcsSubmitEditorFactory)
 
 public:
-    typedef std::function<VcsBaseSubmitEditor *()> EditorCreator;
+    typedef std::function<VcsBaseSubmitEditor *()> EditorHldplugin;
 
     VcsSubmitEditorFactory(const VcsBaseSubmitEditorParameters &parameters,
-                           const EditorCreator &editorCreator,
+                           const EditorHldplugin &editorHldplugin,
                            VcsBasePluginPrivate *plugin);
 
 private:

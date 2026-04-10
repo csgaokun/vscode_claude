@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -140,7 +140,7 @@ public:
     void view3DAction(const View3DActionCommand &command);
     void edit3DViewResized(const QSize &size) const;
 
-    void handlePuppetToCreatorCommand(const PuppetToCreatorCommand &command) override;
+    void handlePuppetToHldpluginCommand(const PuppetToHldpluginCommand &command) override;
 
 protected:
     void timerEvent(QTimerEvent *event) override;
@@ -197,7 +197,7 @@ private: // functions
     void startPuppetTransaction();
     void endPuppetTransaction();
 
-    // puppet to creator command handlers
+    // puppet to hldplugin command handlers
     void handlePuppetKeyPress(int key, Qt::KeyboardModifiers modifiers);
 
 private:

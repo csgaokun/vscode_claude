@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -101,7 +101,7 @@ ClangTidyRunner::ClangTidyRunner(const ClangDiagnosticConfig &config, QObject *p
     setName(tr("Clang-Tidy"));
     setOutputFileFormat(OutputFileFormat::Yaml);
     setExecutable(clangTidyExecutable());
-    setArgsCreator([this, config](const QStringList &baseOptions) {
+    setArgsHldplugin([this, config](const QStringList &baseOptions) {
         return QStringList()
             << tidyChecksArguments(config)
             << mainToolArguments(fileToAnalyze(), outputFilePath())
@@ -116,7 +116,7 @@ ClazyStandaloneRunner::ClazyStandaloneRunner(const ClangDiagnosticConfig &config
     setName(tr("Clazy"));
     setOutputFileFormat(OutputFileFormat::Yaml);
     setExecutable(clazyStandaloneExecutable());
-    setArgsCreator([this, config](const QStringList &baseOptions) {
+    setArgsHldplugin([this, config](const QStringList &baseOptions) {
         return QStringList()
             << clazyChecksArguments(config)
             << mainToolArguments(fileToAnalyze(), outputFilePath())

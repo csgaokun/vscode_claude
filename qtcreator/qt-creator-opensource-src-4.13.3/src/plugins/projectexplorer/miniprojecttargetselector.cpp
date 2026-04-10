@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -440,7 +440,7 @@ void TargetSelectorDelegate::paint(QPainter *painter,
     painter->save();
     painter->setClipping(false);
 
-    QColor textColor = creatorTheme()->color(Theme::MiniProjectTargetSelectorTextColor);
+    QColor textColor = hldpluginTheme()->color(Theme::MiniProjectTargetSelectorTextColor);
     if (option.state & QStyle::State_Selected) {
         QColor color;
         if (m_view->hasFocus()) {
@@ -450,7 +450,7 @@ void TargetSelectorDelegate::paint(QPainter *painter,
             color = option.palette.dark().color();
         }
 
-        if (creatorTheme()->flag(Theme::FlatToolBars)) {
+        if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
             painter->fillRect(option.rect, color);
         } else {
             painter->fillRect(option.rect, color.darker(140));
@@ -501,8 +501,8 @@ SelectorView::SelectorView(QWidget *parent) : TreeView(parent)
     setSelectionBehavior(SelectRows);
     setAttribute(Qt::WA_MacShowFocusRect, false);
     setHeaderHidden(true);
-    const QColor bgColor = creatorTheme()->color(Theme::MiniProjectTargetSelectorBackgroundColor);
-    const QString bgColorName = creatorTheme()->flag(Theme::FlatToolBars)
+    const QColor bgColor = hldpluginTheme()->color(Theme::MiniProjectTargetSelectorBackgroundColor);
+    const QString bgColorName = hldpluginTheme()->flag(Theme::FlatToolBars)
             ? bgColor.lighter(120).name() : bgColor.name();
     setStyleSheet(QString::fromLatin1("QAbstractItemView { background: %1; border-style: none; }").arg(bgColorName));
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
@@ -670,7 +670,7 @@ MiniProjectTargetSelector::MiniProjectTargetSelector(QAction *targetSelectorActi
     setContentsMargins(QMargins(0, 1, 1, 8));
     setWindowFlags(Qt::Popup);
 
-    targetSelectorAction->setIcon(creatorTheme()->flag(Theme::FlatSideBarIcons)
+    targetSelectorAction->setIcon(hldpluginTheme()->flag(Theme::FlatSideBarIcons)
                                   ? Icons::DESKTOP_DEVICE.icon()
                                   : style()->standardIcon(QStyle::SP_ComputerIcon));
     targetSelectorAction->setProperty("titledAction", true);
@@ -1457,7 +1457,7 @@ void MiniProjectTargetSelector::updateActionAndSummary()
     QString buildConfig;
     QString deployConfig;
     QString runConfig;
-    QIcon targetIcon = creatorTheme()->flag(Theme::FlatSideBarIcons)
+    QIcon targetIcon = hldpluginTheme()->flag(Theme::FlatSideBarIcons)
             ? Icons::DESKTOP_DEVICE.icon()
             : style()->standardIcon(QStyle::SP_ComputerIcon);
 
@@ -1555,12 +1555,12 @@ void MiniProjectTargetSelector::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.fillRect(rect(), Utils::StyleHelper().baseColor());
-    painter.setPen(creatorTheme()->color(Theme::MiniProjectTargetSelectorBorderColor));
+    painter.setPen(hldpluginTheme()->color(Theme::MiniProjectTargetSelectorBorderColor));
     // draw border on top and right
     QRectF borderRect = QRectF(rect()).adjusted(0.5, 0.5, -0.5, -0.5);
     painter.drawLine(borderRect.topLeft(), borderRect.topRight());
     painter.drawLine(borderRect.topRight(), borderRect.bottomRight());
-    if (creatorTheme()->flag(Theme::DrawTargetSelectorBottom)) {
+    if (hldpluginTheme()->flag(Theme::DrawTargetSelectorBottom)) {
         // draw thicker border on the bottom
         QRect bottomRect(0, rect().height() - 8, rect().width(), 8);
         static const QImage image(":/projectexplorer/images/targetpanel_bottom.png");

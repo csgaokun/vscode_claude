@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -86,13 +86,13 @@ QColor Theme::evaluateColorAtThemeInstance(const QString &themeColorName)
 Theme *Theme::instance()
 {
     static QPointer<Theme> qmldesignerTheme =
-        new Theme(Utils::creatorTheme(), QmlDesigner::QmlDesignerPlugin::instance());
+        new Theme(Utils::hldpluginTheme(), QmlDesigner::QmlDesignerPlugin::instance());
     return qmldesignerTheme;
 }
 
 QString Theme::replaceCssColors(const QString &input)
 {
-    QRegExp rx("creatorTheme\\.(\\w+)");
+    QRegExp rx("hldpluginTheme\\.(\\w+)");
 
     int pos = 0;
     QString output = input;
@@ -101,12 +101,12 @@ QString Theme::replaceCssColors(const QString &input)
         const QString themeColorName = rx.cap(1);
 
         if (themeColorName == "smallFontPixelSize") {
-            output.replace("creatorTheme." + themeColorName, QString::number(instance()->smallFontPixelSize()) + "px");
+            output.replace("hldpluginTheme." + themeColorName, QString::number(instance()->smallFontPixelSize()) + "px");
         } else if (themeColorName == "captionFontPixelSize") {
-            output.replace("creatorTheme." + themeColorName, QString::number(instance()->captionFontPixelSize()) + "px");
+            output.replace("hldpluginTheme." + themeColorName, QString::number(instance()->captionFontPixelSize()) + "px");
         } else {
             const QColor color = instance()->evaluateColorAtThemeInstance(themeColorName);
-            output.replace("creatorTheme." + rx.cap(1), color.name());
+            output.replace("hldpluginTheme." + rx.cap(1), color.name());
         }
         pos += rx.matchedLength();
     }
@@ -118,7 +118,7 @@ void Theme::setupTheme(QQmlEngine *engine)
 {
     static const int typeIndex = qmlRegisterSingletonType<Utils::Theme>("QtQuickDesignerTheme", 1, 0,
         "Theme", [](QQmlEngine *, QJSEngine *) {
-            return qobject_cast<QObject*>(new Theme(Utils::creatorTheme(), nullptr));
+            return qobject_cast<QObject*>(new Theme(Utils::hldpluginTheme(), nullptr));
     });
     Q_UNUSED(typeIndex)
 

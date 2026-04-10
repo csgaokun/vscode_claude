@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -94,7 +94,7 @@ CvsSettingsPage::CvsSettingsPage(const std::function<void()> &onApply, CvsSettin
     setId(VcsBase::Constants::VCS_ID_CVS);
     setDisplayName(CvsSettingsPageWidget::tr("CVS"));
     setCategory(VcsBase::Constants::VCS_SETTINGS_CATEGORY);
-    setWidgetCreator([onApply, settings] { return new CvsSettingsPageWidget(onApply, settings); });
+    setWidgetHldplugin([onApply, settings] { return new CvsSettingsPageWidget(onApply, settings); });
 }
 
 } // Internal

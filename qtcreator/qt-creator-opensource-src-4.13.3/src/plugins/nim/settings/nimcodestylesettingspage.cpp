@@ -3,7 +3,7 @@
 ** Copyright (C) Filippo Cucchetto <filippocucchetto@gmail.com>
 ** Contact: http://www.qt.io/licensing
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,7 +76,7 @@ NimCodeStyleSettingsPage::NimCodeStyleSettingsPage()
     setCategory(Nim::Constants::C_NIMCODESTYLESETTINGSPAGE_CATEGORY);
     setDisplayCategory(NimCodeStyleSettingsWidget::tr("Nim"));
     setCategoryIconPath(":/nim/images/settingscategory_nim.png");
-    setWidgetCreator([] { return new NimCodeStyleSettingsWidget; });
+    setWidgetHldplugin([] { return new NimCodeStyleSettingsWidget; });
 }
 
 } // Nim

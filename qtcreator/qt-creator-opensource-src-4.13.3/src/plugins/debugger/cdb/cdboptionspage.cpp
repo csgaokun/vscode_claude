@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -250,7 +250,7 @@ CdbOptionsPage::CdbOptionsPage()
     setId("F.Debugger.Cda");
     setDisplayName(CdbOptionsPageWidget::tr("CDB"));
     setCategory(Debugger::Constants::DEBUGGER_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new CdbOptionsPageWidget; });
+    setWidgetHldplugin([] { return new CdbOptionsPageWidget; });
 }
 
 
@@ -297,7 +297,7 @@ CdbPathsPage::CdbPathsPage()
     setId("F.Debugger.Cdb");
     setDisplayName(CdbPathsPageWidget::tr("CDB Paths"));
     setCategory(Debugger::Constants::DEBUGGER_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new CdbPathsPageWidget; });
+    setWidgetHldplugin([] { return new CdbPathsPageWidget; });
 }
 
 } // namespace Internal

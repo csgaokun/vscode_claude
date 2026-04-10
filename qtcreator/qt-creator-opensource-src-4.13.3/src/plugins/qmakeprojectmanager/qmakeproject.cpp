@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -195,7 +195,7 @@ Project::RestoreResult QmakeProject::fromMap(const QVariantMap &map, QString *er
         return result;
 
     // Prune targets without buildconfigurations:
-    // This can happen esp. when updating from a old version of Qt Creator
+    // This can happen esp. when updating from a old version of Qt Hldplugin
     QList<Target *>ts = targets();
     foreach (Target *t, ts) {
         if (t->buildConfigurations().isEmpty()) {
@@ -209,7 +209,7 @@ Project::RestoreResult QmakeProject::fromMap(const QVariantMap &map, QString *er
 
 DeploymentKnowledge QmakeProject::deploymentKnowledge() const
 {
-    return DeploymentKnowledge::Approximative; // E.g. QTCREATORBUG-21855
+    return DeploymentKnowledge::Approximative; // E.g. QTHLDPLUGINBUG-21855
 }
 
 //
@@ -812,7 +812,7 @@ QtSupport::ProFileReader *QmakeBuildSystem::createProFileReader(const QmakeProFi
         // macx-xcode correctly evaluates the variables and generates the xcodeproject
         // that is actually used to build the application.
         //
-        // It is important to override the spec file only for the creator evaluator,
+        // It is important to override the spec file only for the hldplugin evaluator,
         // and not the qmake buildstep used to build the app (as we use the makefiles).
         const char IOSQT[] = "Qt4ProjectManager.QtVersion.Ios"; // from Ios::Constants
         if (qtVersion && qtVersion->type() == QLatin1String(IOSQT))

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -53,34 +53,34 @@ struct Replacement
 };
 using Replacements = std::vector<Replacement>;
 
-QTCREATOR_UTILS_EXPORT void applyReplacements(QTextDocument *doc, const Replacements &replacements);
+QTHLDPLUGIN_UTILS_EXPORT void applyReplacements(QTextDocument *doc, const Replacements &replacements);
 
 // line is 1-based, column is 1-based
-QTCREATOR_UTILS_EXPORT bool convertPosition(const QTextDocument *document,
+QTHLDPLUGIN_UTILS_EXPORT bool convertPosition(const QTextDocument *document,
                                             int pos,
                                             int *line, int *column);
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 OptionalLineColumn convertPosition(const QTextDocument *document, int pos);
 
 // line and column are 1-based
-QTCREATOR_UTILS_EXPORT int positionInText(const QTextDocument *textDocument, int line, int column);
+QTHLDPLUGIN_UTILS_EXPORT int positionInText(const QTextDocument *textDocument, int line, int column);
 
-QTCREATOR_UTILS_EXPORT QString textAt(QTextCursor tc, int pos, int length);
+QTHLDPLUGIN_UTILS_EXPORT QString textAt(QTextCursor tc, int pos, int length);
 
-QTCREATOR_UTILS_EXPORT QTextCursor selectAt(QTextCursor textCursor, int line, int column, uint length);
+QTHLDPLUGIN_UTILS_EXPORT QTextCursor selectAt(QTextCursor textCursor, int line, int column, uint length);
 
-QTCREATOR_UTILS_EXPORT QTextCursor flippedCursor(const QTextCursor &cursor);
+QTHLDPLUGIN_UTILS_EXPORT QTextCursor flippedCursor(const QTextCursor &cursor);
 
-QTCREATOR_UTILS_EXPORT QTextCursor wordStartCursor(const QTextCursor &cursor);
-QTCREATOR_UTILS_EXPORT QString wordUnderCursor(const QTextCursor &cursor);
+QTHLDPLUGIN_UTILS_EXPORT QTextCursor wordStartCursor(const QTextCursor &cursor);
+QTHLDPLUGIN_UTILS_EXPORT QString wordUnderCursor(const QTextCursor &cursor);
 
-QTCREATOR_UTILS_EXPORT bool utf8AdvanceCodePoint(const char *&current);
-QTCREATOR_UTILS_EXPORT int utf8NthLineOffset(const QTextDocument *textDocument,
+QTHLDPLUGIN_UTILS_EXPORT bool utf8AdvanceCodePoint(const char *&current);
+QTHLDPLUGIN_UTILS_EXPORT int utf8NthLineOffset(const QTextDocument *textDocument,
                                              const QByteArray &buffer,
                                              int line);
 
-QTCREATOR_UTILS_EXPORT LineColumn utf16LineColumn(const QByteArray &utf8Buffer, int utf8Offset);
-QTCREATOR_UTILS_EXPORT QString utf16LineTextInUtf8Buffer(const QByteArray &utf8Buffer,
+QTHLDPLUGIN_UTILS_EXPORT LineColumn utf16LineColumn(const QByteArray &utf8Buffer, int utf8Offset);
+QTHLDPLUGIN_UTILS_EXPORT QString utf16LineTextInUtf8Buffer(const QByteArray &utf8Buffer,
                                                          int currentUtf8Offset);
 
 } // Text

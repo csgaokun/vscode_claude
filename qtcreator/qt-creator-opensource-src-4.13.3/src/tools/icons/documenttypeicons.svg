@@ -115,7 +115,7 @@
        inkscape:export-ydpi="90"
        transform="translate(0,-1036)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16.png"
          xlink:href="GenericDocumentIcon.iconset\icon_16x16.png"
          y="-5336"
          x="16"
@@ -229,7 +229,7 @@
        inkscape:export-ydpi="90"
        transform="translate(0,-1036)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32.png"
          xlink:href="GenericDocumentIcon.iconset\icon_32x32.png"
          y="-5352"
          x="32"
@@ -250,7 +250,7 @@
            sodipodi:role="line"
            style="font-weight:bold;-inkscape-font-specification:'Sans Bold'">UI</tspan></text>
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_16x16.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_16x16.png"
          xlink:href="designer_icon_16x16.png"
          width="16"
          height="16"
@@ -266,7 +266,7 @@
        inkscape:export-ydpi="90"
        transform="translate(0,-1036)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128.png"
          xlink:href="GenericDocumentIcon.iconset\icon_128x128.png"
          y="-5448"
          x="200"
@@ -287,7 +287,7 @@
            height="1080" />
       </g>
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_64x64.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_64x64.png"
          xlink:href="designer_icon_64x64.png"
          width="64"
          height="64"
@@ -303,7 +303,7 @@
        inkscape:export-ydpi="90"
        transform="translate(0,-1036)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256.png"
          xlink:href="GenericDocumentIcon.iconset\icon_256x256.png"
          y="-5576"
          x="328"
@@ -319,7 +319,7 @@
          y="0"
          x="0" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_128x128.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_128x128.png"
          xlink:href="designer_icon_128x128.png"
          y="-5512"
          x="392"
@@ -335,7 +335,7 @@
        inkscape:export-ydpi="90"
        transform="translate(0,-1036)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512.png"
          xlink:href="GenericDocumentIcon.iconset\icon_512x512.png"
          y="-5832"
          x="584"
@@ -351,7 +351,7 @@
          y="0"
          x="0" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_256x256.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_256x256.png"
          xlink:href="designer_icon_256x256.png"
          width="256"
          height="256"
@@ -367,7 +367,7 @@
        inkscape:export-xdpi="90"
        id="uifile_icon_16x16@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_16x16@2x.png"
          width="32"
          height="32"
@@ -388,7 +388,7 @@
            y="-5606.9463"
            id="tspan4084">UI</tspan></text>
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_16x16.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_16x16.png"
          xlink:href="designer_icon_16x16.png"
          width="16"
          height="16"
@@ -401,7 +401,7 @@
     <g
        id="uifile_icon_32x32@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_32x32@2x.png"
          y="-6944"
          x="64"
@@ -417,7 +417,7 @@
          x="0"
          transform="matrix(0.5,0,0,0.5,-35.699029,-4220.9125)" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_32x32.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_32x32.png"
          xlink:href="designer_icon_32x32.png"
          width="32"
          height="32"
@@ -433,7 +433,7 @@
        inkscape:export-xdpi="90"
        id="uifile_icon_128x128@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_128x128@2x.png"
          width="256"
          height="256"
@@ -449,7 +449,7 @@
          width="1920"
          height="1080" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_128x128.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_128x128.png"
          xlink:href="designer_icon_128x128.png"
          y="-5512"
          x="392"
@@ -465,7 +465,7 @@
        inkscape:export-xdpi="90"
        id="uifile_icon_256x256@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_256x256@2x.png"
          width="512"
          height="512"
@@ -481,7 +481,7 @@
          width="1920"
          height="1080" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_256x256.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_256x256.png"
          xlink:href="designer_icon_256x256.png"
          width="256"
          height="256"
@@ -496,7 +496,7 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_512x512@2x.png"
          y="-7905"
          x="1096"
@@ -512,7 +512,7 @@
          y="0"
          x="0" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\designer_icon_512x512.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\designer_icon_512x512.png"
          xlink:href="designer_icon_512x512.png"
          width="512"
          height="512"
@@ -523,12 +523,12 @@
          y="-7649" />
     </g>
     <g
-       id="qtcreator-project_icon_16x16"
+       id="qthldplugin-project_icon_16x16"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        transform="translate(0,-2600)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16.png"
          xlink:href="GenericDocumentIcon.iconset\icon_16x16.png"
          width="16"
          height="16"
@@ -545,12 +545,12 @@
          height="100%" />
     </g>
     <g
-       id="qtcreator-project_icon_32x32"
+       id="qthldplugin-project_icon_32x32"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        transform="translate(0,-2600)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32.png"
          xlink:href="GenericDocumentIcon.iconset\icon_32x32.png"
          width="32"
          height="32"
@@ -558,8 +558,8 @@
          x="32"
          y="-5352" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_16x16.png"
-         xlink:href="qtcreator_icon_16x16.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_16x16.png"
+         xlink:href="qthldplugin_icon_16x16.png"
          width="16"
          height="16"
          preserveAspectRatio="none"
@@ -582,12 +582,12 @@
            style="font-weight:bold;-inkscape-font-specification:'Sans Bold'">PRO</tspan></text>
     </g>
     <g
-       id="qtcreator-project_icon_128x128"
+       id="qthldplugin-project_icon_128x128"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        transform="translate(0,-2600)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128.png"
          xlink:href="GenericDocumentIcon.iconset\icon_128x128.png"
          width="128"
          height="128"
@@ -595,8 +595,8 @@
          x="200"
          y="-5448" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_64x64.png"
-         xlink:href="qtcreator_icon_64x64.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_64x64.png"
+         xlink:href="qthldplugin_icon_64x64.png"
          width="64"
          height="64"
          preserveAspectRatio="none"
@@ -619,12 +619,12 @@
            style="font-weight:bold;-inkscape-font-specification:'Sans Bold';text-align:center;text-anchor:middle">PRO</tspan></text>
     </g>
     <g
-       id="qtcreator-project_icon_256x256"
+       id="qthldplugin-project_icon_256x256"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        transform="translate(0,-2600)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256.png"
          xlink:href="GenericDocumentIcon.iconset\icon_256x256.png"
          width="256"
          height="256"
@@ -632,8 +632,8 @@
          x="328"
          y="-5576" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_128x128.png"
-         xlink:href="qtcreator_icon_128x128.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_128x128.png"
+         xlink:href="qthldplugin_icon_128x128.png"
          width="128"
          height="128"
          preserveAspectRatio="none"
@@ -656,12 +656,12 @@
            style="font-weight:bold;-inkscape-font-specification:'Sans Bold';text-align:center;text-anchor:middle">PRO</tspan></text>
     </g>
     <g
-       id="qtcreator-project_icon_512x512"
+       id="qthldplugin-project_icon_512x512"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
        transform="translate(0,-2600)">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512.png"
          xlink:href="GenericDocumentIcon.iconset\icon_512x512.png"
          width="512"
          height="512"
@@ -669,8 +669,8 @@
          x="584"
          y="-5832" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_256x256.png"
-         xlink:href="qtcreator_icon_256x256.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_256x256.png"
+         xlink:href="qthldplugin_icon_256x256.png"
          width="256"
          height="256"
          preserveAspectRatio="none"
@@ -696,9 +696,9 @@
        transform="translate(0,-3124)"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       id="qtcreator-project_icon_16x16@2x">
+       id="qthldplugin-project_icon_16x16@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_16x16@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_16x16@2x.png"
          y="-5352"
          x="32"
@@ -706,8 +706,8 @@
          height="32"
          width="32" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_16x16.png"
-         xlink:href="qtcreator_icon_16x16.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_16x16.png"
+         xlink:href="qthldplugin_icon_16x16.png"
          y="-5344"
          x="40"
          id="image4827"
@@ -726,9 +726,9 @@
     </g>
     <g
        transform="translate(0,-1564)"
-       id="qtcreator-project_icon_32x32@2x">
+       id="qthldplugin-project_icon_32x32@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_32x32@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_32x32@2x.png"
          width="64"
          height="64"
@@ -736,8 +736,8 @@
          x="64"
          y="-6944" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_32x32.png"
-         xlink:href="qtcreator_icon_32x32.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_32x32.png"
+         xlink:href="qthldplugin_icon_32x32.png"
          width="32"
          height="32"
          preserveAspectRatio="none"
@@ -763,9 +763,9 @@
        transform="translate(0,-3124)"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       id="qtcreator-project_icon_128x128@2x">
+       id="qthldplugin-project_icon_128x128@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_128x128@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_128x128@2x.png"
          y="-5576"
          x="328"
@@ -773,8 +773,8 @@
          height="256"
          width="256" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_128x128.png"
-         xlink:href="qtcreator_icon_128x128.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_128x128.png"
+         xlink:href="qthldplugin_icon_128x128.png"
          width="128"
          height="128"
          preserveAspectRatio="none"
@@ -800,9 +800,9 @@
        transform="translate(0,-3124)"
        inkscape:export-ydpi="90"
        inkscape:export-xdpi="90"
-       id="qtcreator-project_icon_256x256@2x">
+       id="qthldplugin-project_icon_256x256@2x">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_256x256@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_256x256@2x.png"
          y="-5832"
          x="584"
@@ -810,8 +810,8 @@
          height="512"
          width="512" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_256x256.png"
-         xlink:href="qtcreator_icon_256x256.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_256x256.png"
+         xlink:href="qthldplugin_icon_256x256.png"
          width="256"
          height="256"
          preserveAspectRatio="none"
@@ -835,11 +835,11 @@
     </g>
     <g
        transform="translate(0,-1564)"
-       id="qtcreator-project_icon_512x512@2x"
+       id="qthldplugin-project_icon_512x512@2x"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90">
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512@2x.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\GenericDocumentIcon.iconset\icon_512x512@2x.png"
          xlink:href="GenericDocumentIcon.iconset\icon_512x512@2x.png"
          width="1024"
          height="1024"
@@ -847,8 +847,8 @@
          x="1096"
          y="-7905" />
       <image
-         sodipodi:absref="C:\Users\aportale\dev\qtcreator-super\qtcreator\src\tools\icons\qtcreator_icon_512x512.png"
-         xlink:href="qtcreator_icon_512x512.png"
+         sodipodi:absref="C:\Users\aportale\dev\qthldplugin-super\qthldplugin\src\tools\icons\qthldplugin_icon_512x512.png"
+         xlink:href="qthldplugin_icon_512x512.png"
          width="512"
          height="512"
          preserveAspectRatio="none"

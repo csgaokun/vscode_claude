@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -27,7 +27,7 @@
 
 =head1 NAME
 
-msanalyzer2tasks.pl - Convert MSVC/Static analyzer warnings and errors into Qt Creator task files.
+msanalyzer2tasks.pl - Convert MSVC/Static analyzer warnings and errors into Qt Hldplugin task files.
 
 =head1 SYNOPSIS
 

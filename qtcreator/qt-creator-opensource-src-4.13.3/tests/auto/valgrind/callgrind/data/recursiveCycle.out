@@ -1,5 +1,5 @@
 version: 1
-creator: callgrind-3.6.0.SVN-Debian
+hldplugin: callgrind-3.6.0.SVN-Debian
 pid: 19824
 cmd:  ./a.out
 part: 1

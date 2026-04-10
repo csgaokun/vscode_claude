@@ -6,26 +6,26 @@
 	<array>
 		<dict>
 			<key>UTTypeIconFile</key>
-			<string>qtcreator-project.icns</string>
+			<string>qthldplugin-project.icns</string>
 			<key>UTTypeDescription</key>
-			<string>Qt Creator Makefile Based Project File</string>
+			<string>Qt Hldplugin Makefile Based Project File</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.plain-text</string>
 			</array>
 			<key>UTTypeIdentifier</key>
-			<string>org.qt-project.qtcreator-genericproject</string>
+			<string>org.qt-project.qthldplugin-genericproject</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>creator</string>
+					<string>hldplugin</string>
 				</array>
 			</dict>
 		</dict>
 		<dict>
 			<key>UTTypeIconFile</key>
-			<string>qtcreator-project.icns</string>
+			<string>qthldplugin-project.icns</string>
 			<key>UTTypeDescription</key>
 			<string>Quick Project File</string>
 			<key>UTTypeConformsTo</key>
@@ -34,7 +34,7 @@
 				<string>org.qt-project.qml</string>
 			</array>
 			<key>UTTypeIdentifier</key>
-			<string>org.qt-project.qtcreator-qmlproject</string>
+			<string>org.qt-project.qthldplugin-qmlproject</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -48,7 +48,7 @@
 	<array>
 		<dict>
 			<key>UTTypeIconFile</key>
-			<string>qtcreator-project.icns</string>
+			<string>qthldplugin-project.icns</string>
 			<key>UTTypeDescription</key>
 			<string>Qt Project File</string>
 			<key>UTTypeConformsTo</key>
@@ -67,7 +67,7 @@
 		</dict>
 		<dict>
 			<key>UTTypeIconFile</key>
-			<string>qtcreator-project.icns</string>
+			<string>qthldplugin-project.icns</string>
 			<key>UTTypeDescription</key>
 			<string>Qt Project Include File</string>
 			<key>UTTypeConformsTo</key>
@@ -87,7 +87,7 @@
 		</dict>
 		<dict>
 			<key>UTTypeIconFile</key>
-			<string>qtcreator-project.icns</string>
+			<string>qthldplugin-project.icns</string>
 			<key>UTTypeDescription</key>
 			<string>Qbs Project File</string>
 			<key>UTTypeConformsTo</key>
@@ -213,8 +213,8 @@
 				<string>org.qt-project.qml</string>
 				<string>org.qt-project.qdoc</string>
 				<string>org.qt-project.qdocconf</string>
-				<string>org.qt-project.qtcreator-genericproject</string>
-				<string>org.qt-project.qtcreator-qmlproject</string>
+				<string>org.qt-project.qthldplugin-genericproject</string>
+				<string>org.qt-project.qthldplugin-qmlproject</string>
 			</array>
 		</dict>
 		<dict>
@@ -239,7 +239,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>(C) ${IDE_COPYRIGHT_YEAR} The Qt Company Ltd</string>
 	<key>CFBundleIconFile</key>
-	<string>qtcreator</string>
+	<string>qthldplugin</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>

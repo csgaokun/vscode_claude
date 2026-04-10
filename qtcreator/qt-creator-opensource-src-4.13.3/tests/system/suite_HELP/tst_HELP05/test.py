@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,12 +23,12 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # test context sensitive help in edit mode
 # place cursor to <lineText> keyword, in <editorArea>, and verify help to contain <helpText>
 def verifyInteractiveQMLHelp(lineText, helpText):
-    editorArea = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editorArea = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     # go to the specified word
     placeCursorToLine(editorArea, lineText)
     homeKey = "<Home>"
@@ -53,7 +53,7 @@ def main():
     setFixedHelpViewer(HelpViewer.SIDEBYSIDE)
     # create qt quick application
     createNewQtQuickApplication(tempDir(), "SampleApp")
-    editorArea = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editorArea = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     # add basic MouseArea item to check it afterwards
     codelines = ['MouseArea {', 'anchors.fill: parent', 'onClicked: Qt.quit()']
     if not addTestableCodeAfterLine(editorArea, 'title: qsTr("Hello World")', codelines):

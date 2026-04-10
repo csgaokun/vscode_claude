@@ -1,9 +1,9 @@
 {
     \"Name\" : \"CVS\",
-    \"Version\" : \"$$QTCREATOR_VERSION\",
-    \"CompatVersion\" : \"$$QTCREATOR_COMPAT_VERSION\",
+    \"Version\" : \"$$QTHLDPLUGIN_VERSION\",
+    \"CompatVersion\" : \"$$QTHLDPLUGIN_COMPAT_VERSION\",
     \"Vendor\" : \"The Qt Company Ltd\",
-    \"Copyright\" : \"(C) $$QTCREATOR_COPYRIGHT_YEAR The Qt Company Ltd\",
+    \"Copyright\" : \"(C) $$QTHLDPLUGIN_COPYRIGHT_YEAR The Qt Company Ltd\",
     \"License\" : [ \"Commercial Usage\",
                   \"\",
                   \"Licensees holding valid Qt Commercial licenses may use this plugin in accordance with the Qt Commercial License Agreement provided with the Software or, alternatively, in accordance with the terms contained in a written agreement between you and The Qt Company.\",
@@ -20,7 +20,7 @@
     \"Mimetypes\" : [
         \"<?xml version=\'1.0\'?>\",
         \"<mime-info xmlns=\'http://www.freedesktop.org/standards/shared-mime-info\'>\",
-        \"    <mime-type type=\'text/vnd.qtcreator.cvs.submit\'>\",
+        \"    <mime-type type=\'text/vnd.qthldplugin.cvs.submit\'>\",
         \"        <comment>CVS submit template</comment>\",
         \"        <sub-class-of type=\'text/plain\'/>\",
         \"    </mime-type>\",

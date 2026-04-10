@@ -2,7 +2,7 @@ DEFINES += STUDIOWELCOME_LIBRARY
 
 QT += quick quickwidgets
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 ## magic fix for unix builds
 RCC_DIR = .

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -84,7 +84,7 @@ BaseTextFindPrivate::BaseTextFindPrivate(QPlainTextEdit *editor)
 /*!
     \class Core::BaseTextFind
     \inheaderfile coreplugin/find/basetextfind.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The BaseTextFind class implements a find filter for QPlainTextEdit
     and QTextEdit based widgets.

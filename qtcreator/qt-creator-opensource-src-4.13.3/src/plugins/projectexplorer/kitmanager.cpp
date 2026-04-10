@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -412,7 +412,7 @@ void KitManager::restoreKits()
     std::swap(resultList, d->m_kitList);
     setDefaultKit(k);
 
-    d->m_writer = std::make_unique<PersistentSettingsWriter>(settingsFileName(), "QtCreatorProfiles");
+    d->m_writer = std::make_unique<PersistentSettingsWriter>(settingsFileName(), "QtHldpluginProfiles");
     d->m_initialized = true;
     emit m_instance->kitsLoaded();
     emit m_instance->kitsChanged();

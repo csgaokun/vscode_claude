@@ -9,7 +9,7 @@ QT += \
 isEmpty(QTC_SHOW_BUILD_DATE): QTC_SHOW_BUILD_DATE = $$(QTC_SHOW_BUILD_DATE)
 !isEmpty(QTC_SHOW_BUILD_DATE): DEFINES += QTC_SHOW_BUILD_DATE
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 msvc: QMAKE_CXXFLAGS += -wd4251 -wd4290 -wd4250
 SOURCES += corejsextensions.cpp \
     mainwindow.cpp \
@@ -266,7 +266,7 @@ else:unix {
     IMAGE_SIZE_LIST = 16 24 32 48 64 128 256 512
 
     for(imagesize, IMAGE_SIZE_LIST) {
-        eval(image$${imagesize}.files = images/logo/$${imagesize}/QtProject-qtcreator.png)
+        eval(image$${imagesize}.files = images/logo/$${imagesize}/QtProject-qthldplugin.png)
         eval(image$${imagesize}.path = $$QTC_PREFIX/share/icons/hicolor/$${imagesize}x$${imagesize}/apps)
         INSTALLS += image$${imagesize}
     }

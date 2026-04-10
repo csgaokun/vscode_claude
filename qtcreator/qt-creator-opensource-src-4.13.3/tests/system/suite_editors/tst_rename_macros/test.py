@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,9 +23,9 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
-cppEditorStr = ":Qt Creator_CppEditor::Internal::CPPEditorWidget"
+cppEditorStr = ":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"
 
 def main():
     global cppEditorStr
@@ -127,10 +127,10 @@ def performMacroRenaming(newMacroName):
                                     "unnamed='1' visible='1'} "
                                     "type='Core::Internal::WideEnoughLineEdit' unnamed='1' "
                                     "visible='1' "
-                                    "window=':Qt Creator_Core::Internal::MainWindow'}")
+                                    "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     replaceEditorContent(replaceLineEdit, newMacroName)
     clickButton(waitForObject("{text='Replace' type='QToolButton' unnamed='1' visible='1' "
-                              "window=':Qt Creator_Core::Internal::MainWindow'}"))
+                              "window=':Qt Hldplugin_Core::Internal::MainWindow'}"))
 
 def verifyChangedContent(origTexts, replacedSymbol, replacement):
     global cppEditorStr

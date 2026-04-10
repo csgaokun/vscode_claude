@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(qrceditor/qrceditor.pri)
 
 HEADERS += resourceeditorfactory.h \

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,20 +35,20 @@ const char IDE_DISPLAY_NAME[] = \"$${IDE_DISPLAY_NAME}\";
 const char IDE_ID[] = \"$${IDE_ID}\";
 const char IDE_CASED_ID[] = \"$${IDE_CASED_ID}\";
 
-#define IDE_VERSION $${QTCREATOR_VERSION}
+#define IDE_VERSION $${QTHLDPLUGIN_VERSION}
 #define IDE_VERSION_STR STRINGIFY(IDE_VERSION)
-#define IDE_VERSION_DISPLAY_DEF $${QTCREATOR_DISPLAY_VERSION}
-#define IDE_VERSION_COMPAT_DEF $${QTCREATOR_COMPAT_VERSION}
+#define IDE_VERSION_DISPLAY_DEF $${QTHLDPLUGIN_DISPLAY_VERSION}
+#define IDE_VERSION_COMPAT_DEF $${QTHLDPLUGIN_COMPAT_VERSION}
 
-#define IDE_VERSION_MAJOR $$replace(QTCREATOR_VERSION, "^(\\d+)\\.\\d+\\.\\d+(-.*)?$", \\1)
-#define IDE_VERSION_MINOR $$replace(QTCREATOR_VERSION, "^\\d+\\.(\\d+)\\.\\d+(-.*)?$", \\1)
-#define IDE_VERSION_RELEASE $$replace(QTCREATOR_VERSION, "^\\d+\\.\\d+\\.(\\d+)(-.*)?$", \\1)
+#define IDE_VERSION_MAJOR $$replace(QTHLDPLUGIN_VERSION, "^(\\d+)\\.\\d+\\.\\d+(-.*)?$", \\1)
+#define IDE_VERSION_MINOR $$replace(QTHLDPLUGIN_VERSION, "^\\d+\\.(\\d+)\\.\\d+(-.*)?$", \\1)
+#define IDE_VERSION_RELEASE $$replace(QTHLDPLUGIN_VERSION, "^\\d+\\.\\d+\\.(\\d+)(-.*)?$", \\1)
 
 const char IDE_VERSION_LONG[]      = IDE_VERSION_STR;
 const char IDE_VERSION_DISPLAY[]   = STRINGIFY(IDE_VERSION_DISPLAY_DEF);
 const char IDE_VERSION_COMPAT[]    = STRINGIFY(IDE_VERSION_COMPAT_DEF);
 const char IDE_AUTHOR[]            = \"The Qt Company Ltd\";
-const char IDE_YEAR[]              = \"$${QTCREATOR_COPYRIGHT_YEAR}\";
+const char IDE_YEAR[]              = \"$${QTHLDPLUGIN_COPYRIGHT_YEAR}\";
 
 #ifdef IDE_REVISION
 const char IDE_REVISION_STR[]      = STRINGIFY(IDE_REVISION);

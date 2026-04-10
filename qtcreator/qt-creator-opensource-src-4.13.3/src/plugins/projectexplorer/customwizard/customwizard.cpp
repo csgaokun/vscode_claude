@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -114,7 +114,7 @@ using namespace ProjectExplorer::Internal;
 
     \brief The CustomWizard class is a base class for custom wizards based on
     file templates and an XML
-    configuration file (\c share/qtcreator/templates/wizards).
+    configuration file (\c share/qthldplugin/templates/wizards).
 
     Presents CustomWizardDialog (fields page containing path control) for wizards
     of type "class" or "file". Serves as base class for project wizards.
@@ -370,7 +370,7 @@ CustomWizard *CustomWizard::createWizard(const CustomProjectWizard::CustomWizard
 }
 
 /*!
-    Reads \c share/qtcreator/templates/wizards and creates all custom wizards.
+    Reads \c share/qthldplugin/templates/wizards and creates all custom wizards.
 
     As other plugins might register factories for derived
     classes, call it in extensionsInitialized().

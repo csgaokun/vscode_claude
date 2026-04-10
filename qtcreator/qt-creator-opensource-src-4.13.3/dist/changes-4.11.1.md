@@ -1,60 +1,60 @@
-Qt Creator 4.11.1
+Qt Hldplugin 4.11.1
 =================
 
-Qt Creator version 4.11.1 contains bug fixes.
+Qt Hldplugin version 4.11.1 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/v4.11.0..v4.11.1
 
 Editing
 -------
 
 * Fixed `Visualize Whitespace` for editors without specialized highlighter definition
-  (QTCREATORBUG-23040)
+  (QTHLDPLUGINBUG-23040)
 
 ### Language Client
 
-* Fixed failure when restarting server (QTCREATORBUG-23497)
+* Fixed failure when restarting server (QTHLDPLUGINBUG-23497)
 
 ### C++
 
-* Fixed wrong warnings about C++98 incompatibility with MSVC (QTCREATORBUG-23118)
-* Fixed accidentally added internal include paths from GCC (QTCREATORBUG-23330)
-* Fixed `Convert to Stack Variable` and `Convert to Pointer` (QTCREATORBUG-23181)
+* Fixed wrong warnings about C++98 incompatibility with MSVC (QTHLDPLUGINBUG-23118)
+* Fixed accidentally added internal include paths from GCC (QTHLDPLUGINBUG-23330)
+* Fixed `Convert to Stack Variable` and `Convert to Pointer` (QTHLDPLUGINBUG-23181)
 
 ### FakeVim
 
-* Fixed goto next and previous split (QTCREATORBUG-22397)
-* Fixed indentation of continuation lines (QTCREATORBUG-20876)
+* Fixed goto next and previous split (QTHLDPLUGINBUG-22397)
+* Fixed indentation of continuation lines (QTHLDPLUGINBUG-20876)
 
 Projects
 --------
 
 * Fixed crash when closing application output
-* Fixed crash when compiler detection fails (QTCREATORBUG-23442)
+* Fixed crash when compiler detection fails (QTHLDPLUGINBUG-23442)
 
 ### CMake
 
-* Fixed subdirectory structure in project tree (QTCREATORBUG-23372)
+* Fixed subdirectory structure in project tree (QTHLDPLUGINBUG-23372)
 
 ### Qbs
 
-* Fixed building Android projects (QTCREATORBUG-23489)
+* Fixed building Android projects (QTHLDPLUGINBUG-23489)
 
 ### Generic
 
-* Fixed crash when updating deployment data (QTCREATORBUG-23501)
+* Fixed crash when updating deployment data (QTHLDPLUGINBUG-23501)
 
 Debugging
 ---------
 
 * Fixed crash with `Switch to previous mode on debugger exit` when debugging fails
-  (QTCREATORBUG-23415)
-* Fixed high CPU usage with LLDB (QTCREATORBUG-23311)
+  (QTHLDPLUGINBUG-23415)
+* Fixed high CPU usage with LLDB (QTHLDPLUGINBUG-23311)
 
 Qt Quick Designer
 -----------------
@@ -64,7 +64,7 @@ Qt Quick Designer
 Test Integration
 ----------------
 
-* Fixed stopping tests when debugging (QTCREATORBUG-23298)
+* Fixed stopping tests when debugging (QTHLDPLUGINBUG-23298)
 
 Platforms
 ---------
@@ -75,15 +75,15 @@ Platforms
 
 ### Remote Linux
 
-* Fixed that terminal setting was ignored (QTCREATORBUG-23470)
+* Fixed that terminal setting was ignored (QTHLDPLUGINBUG-23470)
 
 ### WebAssembly
 
-* Fixed missing device in kit (QTCREATORBUG-23360)
+* Fixed missing device in kit (QTHLDPLUGINBUG-23360)
 
 ### QNX
 
-* Fixed deployment of Qt examples (QTCREATORBUG-22592)
+* Fixed deployment of Qt examples (QTHLDPLUGINBUG-22592)
 
 Credits for these changes go to:
 --------------------------------

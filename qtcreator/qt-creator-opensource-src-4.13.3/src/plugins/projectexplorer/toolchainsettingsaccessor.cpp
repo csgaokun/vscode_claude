@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -180,7 +180,7 @@ static ToolChainOperations mergeToolChainLists(const QList<ToolChain *> &systemF
 // --------------------------------------------------------------------
 
 ToolChainSettingsAccessor::ToolChainSettingsAccessor() :
-    UpgradingSettingsAccessor("QtCreatorToolChains",
+    UpgradingSettingsAccessor("QtHldpluginToolChains",
                               QCoreApplication::translate("ProjectExplorer::ToolChainManager", "Tool Chains"),
                               Core::Constants::IDE_DISPLAY_NAME)
 {

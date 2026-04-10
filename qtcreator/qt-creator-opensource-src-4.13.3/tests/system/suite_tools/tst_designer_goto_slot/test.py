@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     startQC()
@@ -50,7 +50,7 @@ def main():
         signalName = con[1] + "." + con[2]
         mouseClick(waitForObjectItem(signalWidgetObject, signalName), 5, 5, 0, Qt.LeftButton)
         clickButton(waitForObject(":Go to slot.OK_QPushButton"))
-        editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+        editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
         type(editor, "<Up>")
         type(editor, "<Up>")
         test.verify(waitFor('str(lineUnderCursor(editor)).strip() == con[3]', 1000),

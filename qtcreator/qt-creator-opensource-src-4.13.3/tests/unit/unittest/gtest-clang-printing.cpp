@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 **
 ****************************************************************************/
 
-#include "gtest-creator-printing.h"
+#include "gtest-hldplugin-printing.h"
 #include "gtest-std-printing.h"
 
 #ifdef CLANG_UNIT_TESTS

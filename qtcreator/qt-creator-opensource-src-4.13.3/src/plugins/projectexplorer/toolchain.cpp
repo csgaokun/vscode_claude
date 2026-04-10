@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,8 +40,8 @@
 static const char ID_KEY[] = "ProjectExplorer.ToolChain.Id";
 static const char DISPLAY_NAME_KEY[] = "ProjectExplorer.ToolChain.DisplayName";
 static const char AUTODETECT_KEY[] = "ProjectExplorer.ToolChain.Autodetect";
-static const char LANGUAGE_KEY_V1[] = "ProjectExplorer.ToolChain.Language"; // For QtCreator <= 4.2
-static const char LANGUAGE_KEY_V2[] = "ProjectExplorer.ToolChain.LanguageV2"; // For QtCreator > 4.2
+static const char LANGUAGE_KEY_V1[] = "ProjectExplorer.ToolChain.Language"; // For QtHldplugin <= 4.2
+static const char LANGUAGE_KEY_V2[] = "ProjectExplorer.ToolChain.LanguageV2"; // For QtHldplugin > 4.2
 
 namespace ProjectExplorer {
 namespace Internal {
@@ -80,7 +80,7 @@ public:
 };
 
 
-// Deprecated used from QtCreator <= 4.2
+// Deprecated used from QtHldplugin <= 4.2
 
 Utils::Id fromLanguageV1(int language)
 {

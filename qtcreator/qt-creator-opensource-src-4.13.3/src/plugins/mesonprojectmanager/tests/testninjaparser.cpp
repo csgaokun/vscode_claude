@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 Alexis Jeandet.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -44,11 +44,11 @@ Q_DECLARE_METATYPE(TestData);
 
 static const TestData sample1{
     R"([1/2] Compiling C object 'SimpleCProject@exe/main.c.o'
-../../qt-creator/src/plugins/mesonprojectmanager/tests/resources/SimpleCproject/main.c: In function ‘main’:
-../../qt-creator/src/plugins/mesonprojectmanager/tests/resources/SimpleCproject/main.c:1:14: warning: unused parameter ‘argc’ [-Wunused-parameter]
+../../qt-hldplugin/src/plugins/mesonprojectmanager/tests/resources/SimpleCproject/main.c: In function ‘main’:
+../../qt-hldplugin/src/plugins/mesonprojectmanager/tests/resources/SimpleCproject/main.c:1:14: warning: unused parameter ‘argc’ [-Wunused-parameter]
     1 | int main(int argc, char** argv)
       |          ~~~~^~~~
-../../qt-creator/src/plugins/mesonprojectmanager/tests/resources/SimpleCproject/main.c:1:27: warning: unused parameter ‘argv’ [-Wunused-parameter]
+../../qt-hldplugin/src/plugins/mesonprojectmanager/tests/resources/SimpleCproject/main.c:1:27: warning: unused parameter ‘argv’ [-Wunused-parameter]
     1 | int main(int argc, char** argv)
       |                    ~~~~~~~^~~~
 [2/2] Linking target SimpleCProject)",

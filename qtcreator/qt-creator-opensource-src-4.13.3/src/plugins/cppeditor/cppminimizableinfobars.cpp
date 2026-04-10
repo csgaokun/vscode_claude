@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -55,10 +55,10 @@ MinimizableInfoBars::MinimizableInfoBars(InfoBar &infoBar, QObject *parent)
 }
 
 MinimizableInfoBars::Actions MinimizableInfoBars::createShowInfoBarActions(
-        const ActionCreator &actionCreator)
+        const ActionHldplugin &actionHldplugin)
 {
     Actions result;
-    QTC_ASSERT(actionCreator, return result);
+    QTC_ASSERT(actionHldplugin, return result);
 
     // No project configuration available
     auto *button = new QToolButton();
@@ -67,7 +67,7 @@ MinimizableInfoBars::Actions MinimizableInfoBars::createShowInfoBarActions(
     connect(button, &QAbstractButton::clicked, []() {
         settings()->setShowNoProjectInfoBar(true);
     });
-    QAction *action = actionCreator(button);
+    QAction *action = actionHldplugin(button);
     action->setVisible(!settings()->showNoProjectInfoBar());
     result.insert(Constants::NO_PROJECT_CONFIGURATION, action);
 
@@ -78,7 +78,7 @@ MinimizableInfoBars::Actions MinimizableInfoBars::createShowInfoBarActions(
     connect(button, &QAbstractButton::clicked, []() {
         settings()->setShowHeaderErrorInfoBar(true);
     });
-    action = actionCreator(button);
+    action = actionHldplugin(button);
     action->setVisible(!settings()->showHeaderErrorInfoBar());
     result.insert(Constants::ERRORS_IN_HEADER_FILES, action);
 
@@ -86,9 +86,9 @@ MinimizableInfoBars::Actions MinimizableInfoBars::createShowInfoBarActions(
 }
 
 void MinimizableInfoBars::processHeaderDiagnostics(
-        const DiagnosticWidgetCreator &diagnosticWidgetCreator)
+        const DiagnosticWidgetHldplugin &diagnosticWidgetHldplugin)
 {
-    m_diagnosticWidgetCreator = diagnosticWidgetCreator;
+    m_diagnosticWidgetHldplugin = diagnosticWidgetHldplugin;
     updateHeaderErrors();
 }
 
@@ -105,9 +105,9 @@ void MinimizableInfoBars::updateHeaderErrors()
 
     bool show = false;
     // Show the info entry only if there is a project configuration.
-    if (m_hasProjectPart && m_diagnosticWidgetCreator) {
+    if (m_hasProjectPart && m_diagnosticWidgetHldplugin) {
         if (settings()->showHeaderErrorInfoBar())
-            addHeaderErrorEntry(id, m_diagnosticWidgetCreator);
+            addHeaderErrorEntry(id, m_diagnosticWidgetHldplugin);
         else
             show = true;
     }
@@ -162,7 +162,7 @@ void MinimizableInfoBars::addNoProjectConfigurationEntry(const Id &id)
 }
 
 void MinimizableInfoBars::addHeaderErrorEntry(const Id &id,
-        const DiagnosticWidgetCreator &diagnosticWidgetCreator)
+        const DiagnosticWidgetHldplugin &diagnosticWidgetHldplugin)
 {
     const QString text = tr("<b>Warning</b>: The code model could not parse an included file, "
                             "which might lead to incorrect code completion and "
@@ -171,7 +171,7 @@ void MinimizableInfoBars::addHeaderErrorEntry(const Id &id,
     InfoBarEntry info = createMinimizableInfo(id, text, []() {
         settings()->setShowHeaderErrorInfoBar(false);
     });
-    info.setDetailsWidgetCreator(diagnosticWidgetCreator);
+    info.setDetailsWidgetHldplugin(diagnosticWidgetHldplugin);
 
     m_infoBar.addInfo(info);
 }

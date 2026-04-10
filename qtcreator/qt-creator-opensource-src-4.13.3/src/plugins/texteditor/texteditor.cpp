@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -951,7 +951,7 @@ QString TextEditorWidget::convertToPlainText(const QString &txt)
     return ret;
 }
 
-static const char kTextBlockMimeType[] = "application/vnd.qtcreator.blocktext";
+static const char kTextBlockMimeType[] = "application/vnd.qthldplugin.blocktext";
 
 Id TextEditorWidget::SnippetPlaceholderSelection("TextEdit.SnippetPlaceHolderSelection");
 Id TextEditorWidget::CurrentLineSelection("TextEdit.CurrentLineSelection");
@@ -2905,7 +2905,7 @@ bool TextEditorWidget::event(QEvent *e)
             e->accept();
         } else {
             // hack copied from QInputControl::isCommonTextEditShortcut
-            // Fixes: QTCREATORBUG-22854
+            // Fixes: QTHLDPLUGINBUG-22854
             e->setAccepted((ke->modifiers() == Qt::NoModifier || ke->modifiers() == Qt::ShiftModifier
                             || ke->modifiers() == Qt::KeypadModifier)
                            && (ke->key() < Qt::Key_Escape));
@@ -7660,7 +7660,7 @@ QMimeData *TextEditorWidget::createMimeDataFromSelection() const
 
         /*
           Try to figure out whether we are copying an entire block, and store the complete block
-          including indentation in the qtcreator.blocktext mimetype.
+          including indentation in the qthldplugin.blocktext mimetype.
         */
         QTextCursor selstart = cursor;
         selstart.setPosition(cursor.selectionStart());
@@ -8614,7 +8614,7 @@ class TextEditorFactoryPrivate
 public:
     TextEditorFactoryPrivate(TextEditorFactory *parent)
         : q(parent)
-        , m_widgetCreator([]() { return new TextEditorWidget; })
+        , m_widgetHldplugin([]() { return new TextEditorWidget; })
     {}
 
     BaseTextEditor *duplicateTextEditor(BaseTextEditor *other)
@@ -8627,12 +8627,12 @@ public:
     BaseTextEditor *createEditorHelper(const TextDocumentPtr &doc);
 
     TextEditorFactory *q;
-    TextEditorFactory::DocumentCreator m_documentCreator;
-    TextEditorFactory::EditorWidgetCreator m_widgetCreator;
-    TextEditorFactory::EditorCreator m_editorCreator;
-    TextEditorFactory::AutoCompleterCreator m_autoCompleterCreator;
-    TextEditorFactory::IndenterCreator m_indenterCreator;
-    TextEditorFactory::SyntaxHighLighterCreator m_syntaxHighlighterCreator;
+    TextEditorFactory::DocumentHldplugin m_documentHldplugin;
+    TextEditorFactory::EditorWidgetHldplugin m_widgetHldplugin;
+    TextEditorFactory::EditorHldplugin m_editorHldplugin;
+    TextEditorFactory::AutoCompleterHldplugin m_autoCompleterHldplugin;
+    TextEditorFactory::IndenterHldplugin m_indenterHldplugin;
+    TextEditorFactory::SyntaxHighLighterHldplugin m_syntaxHighlighterHldplugin;
     CommentDefinition m_commentDefinition;
     QList<BaseHoverHandler *> m_hoverHandlers; // owned
     CompletionAssistProvider * m_completionAssistProvider = nullptr; // owned
@@ -8649,7 +8649,7 @@ public:
 TextEditorFactory::TextEditorFactory()
     : d(new TextEditorFactoryPrivate(this))
 {
-    setEditorCreator([]() { return new BaseTextEditor; });
+    setEditorHldplugin([]() { return new BaseTextEditor; });
 }
 
 TextEditorFactory::~TextEditorFactory()
@@ -8659,28 +8659,28 @@ TextEditorFactory::~TextEditorFactory()
     delete d;
 }
 
-void TextEditorFactory::setDocumentCreator(const DocumentCreator &creator)
+void TextEditorFactory::setDocumentHldplugin(const DocumentHldplugin &hldplugin)
 {
-    d->m_documentCreator = creator;
+    d->m_documentHldplugin = hldplugin;
 }
 
-void TextEditorFactory::setEditorWidgetCreator(const EditorWidgetCreator &creator)
+void TextEditorFactory::setEditorWidgetHldplugin(const EditorWidgetHldplugin &hldplugin)
 {
-    d->m_widgetCreator = creator;
+    d->m_widgetHldplugin = hldplugin;
 }
 
-void TextEditorFactory::setEditorCreator(const EditorCreator &creator)
+void TextEditorFactory::setEditorHldplugin(const EditorHldplugin &hldplugin)
 {
-    d->m_editorCreator = creator;
-    IEditorFactory::setEditorCreator([this] {
+    d->m_editorHldplugin = hldplugin;
+    IEditorFactory::setEditorHldplugin([this] {
         static DocumentContentCompletionProvider basicSnippetProvider;
-        TextDocumentPtr doc(d->m_documentCreator());
+        TextDocumentPtr doc(d->m_documentHldplugin());
 
-        if (d->m_indenterCreator)
-            doc->setIndenter(d->m_indenterCreator(doc->document()));
+        if (d->m_indenterHldplugin)
+            doc->setIndenter(d->m_indenterHldplugin(doc->document()));
 
-        if (d->m_syntaxHighlighterCreator)
-            doc->setSyntaxHighlighter(d->m_syntaxHighlighterCreator());
+        if (d->m_syntaxHighlighterHldplugin)
+            doc->setSyntaxHighlighter(d->m_syntaxHighlighterHldplugin());
 
         doc->setCompletionAssistProvider(d->m_completionAssistProvider ? d->m_completionAssistProvider
                                                                        : &basicSnippetProvider);
@@ -8689,14 +8689,14 @@ void TextEditorFactory::setEditorCreator(const EditorCreator &creator)
     });
 }
 
-void TextEditorFactory::setIndenterCreator(const IndenterCreator &creator)
+void TextEditorFactory::setIndenterHldplugin(const IndenterHldplugin &hldplugin)
 {
-    d->m_indenterCreator = creator;
+    d->m_indenterHldplugin = hldplugin;
 }
 
-void TextEditorFactory::setSyntaxHighlighterCreator(const SyntaxHighLighterCreator &creator)
+void TextEditorFactory::setSyntaxHighlighterHldplugin(const SyntaxHighLighterHldplugin &hldplugin)
 {
-    d->m_syntaxHighlighterCreator = creator;
+    d->m_syntaxHighlighterHldplugin = hldplugin;
 }
 
 void TextEditorFactory::setUseGenericHighlighter(bool enabled)
@@ -8704,9 +8704,9 @@ void TextEditorFactory::setUseGenericHighlighter(bool enabled)
     d->m_useGenericHighlighter = enabled;
 }
 
-void TextEditorFactory::setAutoCompleterCreator(const AutoCompleterCreator &creator)
+void TextEditorFactory::setAutoCompleterHldplugin(const AutoCompleterHldplugin &hldplugin)
 {
-    d->m_autoCompleterCreator = creator;
+    d->m_autoCompleterHldplugin = hldplugin;
 }
 
 void TextEditorFactory::setEditorActionHandlers(uint optionalActions)
@@ -8751,7 +8751,7 @@ void TextEditorFactory::setParenthesesMatchingEnabled(bool on)
 
 BaseTextEditor *TextEditorFactoryPrivate::createEditorHelper(const TextDocumentPtr &document)
 {
-    QWidget *widget = m_widgetCreator();
+    QWidget *widget = m_widgetHldplugin();
     TextEditorWidget *textEditorWidget = Aggregation::query<TextEditorWidget>(widget);
     QTC_ASSERT(textEditorWidget, return nullptr);
     textEditorWidget->setMarksVisible(m_marksVisible);
@@ -8760,7 +8760,7 @@ BaseTextEditor *TextEditorFactoryPrivate::createEditorHelper(const TextDocumentP
     if (m_textEditorActionHandler)
         textEditorWidget->setOptionalActions(m_textEditorActionHandler->optionalActions());
 
-    BaseTextEditor *editor = m_editorCreator();
+    BaseTextEditor *editor = m_editorHldplugin();
     editor->setDuplicateSupported(m_duplicatedSupported);
     editor->addContext(q->id());
     editor->d->m_origin = this;
@@ -8768,8 +8768,8 @@ BaseTextEditor *TextEditorFactoryPrivate::createEditorHelper(const TextDocumentP
     editor->m_widget = widget;
 
     // Needs to go before setTextDocument as this copies the current settings.
-    if (m_autoCompleterCreator)
-        textEditorWidget->setAutoCompleter(m_autoCompleterCreator());
+    if (m_autoCompleterHldplugin)
+        textEditorWidget->setAutoCompleter(m_autoCompleterHldplugin());
 
     textEditorWidget->setTextDocument(document);
     textEditorWidget->autoCompleter()->setTabSettings(document->tabSettings());

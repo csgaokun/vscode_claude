@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@
 namespace Utils {
 class AbstractMacroExpander;
 
-class QTCREATOR_UTILS_EXPORT QtcProcess : public QProcess
+class QTHLDPLUGIN_UTILS_EXPORT QtcProcess : public QProcess
 {
     Q_OBJECT
 
@@ -47,7 +47,7 @@ public:
     void interrupt();
     void setLowPriority() { m_lowPriority = true; }
 
-    class QTCREATOR_UTILS_EXPORT Arguments
+    class QTHLDPLUGIN_UTILS_EXPORT Arguments
     {
     public:
         static Arguments createWindowsArgs(const QString &args);
@@ -104,7 +104,7 @@ public:
      *  Assumes that the name of the actual command is *not* part of the line.
      *  Terminates after the first command if the command line is complex.
      */
-    class QTCREATOR_UTILS_EXPORT ArgIterator {
+    class QTHLDPLUGIN_UTILS_EXPORT ArgIterator {
     public:
         ArgIterator(QString *str, OsType osType = HostOsInfo::hostOs())
             : m_str(str), m_osType(osType)
@@ -128,7 +128,7 @@ public:
         OsType m_osType;
     };
 
-    class QTCREATOR_UTILS_EXPORT ConstArgIterator {
+    class QTHLDPLUGIN_UTILS_EXPORT ConstArgIterator {
     public:
         ConstArgIterator(const QString &str, OsType osType = HostOsInfo::hostOs())
             : m_str(str), m_ait(&m_str, osType)

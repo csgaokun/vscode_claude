@@ -47,7 +47,7 @@ msvc {
 }
 
 DEBUGGERDIR = $$IDE_SOURCE_TREE/src/plugins/debugger
-DUMPERDIR   = $$IDE_SOURCE_TREE/share/qtcreator/debugger
+DUMPERDIR   = $$IDE_SOURCE_TREE/share/qthldplugin/debugger
 
 SOURCES += \
     $$DEBUGGERDIR/debuggerprotocol.cpp \

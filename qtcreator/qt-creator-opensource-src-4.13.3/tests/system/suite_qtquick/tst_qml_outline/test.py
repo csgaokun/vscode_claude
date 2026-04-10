@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,10 +23,10 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
-qmlEditor = ":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget"
-outline = ":Qt Creator_QmlJSEditor::Internal::QmlJSOutlineTreeView"
+qmlEditor = ":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget"
+outline = ":Qt Hldplugin_QmlJSEditor::Internal::QmlJSOutlineTreeView"
 treebase = "keyinteraction.Resources.keyinteraction\\.qrc./keyinteraction.focus."
 
 def main():
@@ -51,7 +51,7 @@ def checkOutlineFor(qmlFiles):
         if not openDocument(qmlFile):
             test.fatal("Failed to open file '%s'" % simpleFileName(qmlFile))
             continue
-        selectFromCombo(":Qt Creator_Core::Internal::NavComboBox", "Outline")
+        selectFromCombo(":Qt Hldplugin_Core::Internal::NavComboBox", "Outline")
         pseudoTree = buildTreeFromOutline()
         # __writeOutlineFile__(pseudoTree, simpleFileName(qmlFile)+"_outline.tsv")
         verifyOutline(pseudoTree, simpleFileName(qmlFile) + "_outline.tsv")
@@ -83,7 +83,7 @@ def testModify():
     test.log("Modification: adding a QML element")
     typeLines(qmlEditor, ['', '', 'Text {', 'id: addedText', 'text: "Squish QML outline test"',
                           'color: "darkcyan"', 'font.bold: true', 'anchors.centerIn: parent'])
-    selectFromCombo(":Qt Creator_Core::Internal::NavComboBox", "Outline")
+    selectFromCombo(":Qt Hldplugin_Core::Internal::NavComboBox", "Outline")
     snooze(1) # no way to wait for a private signal
     pseudoTree = buildTreeFromOutline()
     # __writeOutlineFile__(pseudoTree, "focus.qml_mod1_outline.tsv")

@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -178,7 +178,7 @@ JLinkUvscServerProvider::JLinkUvscServerProvider()
     : UvscServerProvider(Constants::UVSC_JLINK_PROVIDER_ID)
 {
     setTypeDisplayName(UvscServerProvider::tr("uVision JLink"));
-    setConfigurationWidgetCreator([this] { return new JLinkUvscServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new JLinkUvscServerProviderConfigWidget(this); });
     setSupportedDrivers({"Segger\\JL2CM3.dll"});
 }
 
@@ -227,7 +227,7 @@ JLinkUvscServerProviderFactory::JLinkUvscServerProviderFactory()
 {
     setId(Constants::UVSC_JLINK_PROVIDER_ID);
     setDisplayName(UvscServerProvider::tr("uVision JLink"));
-    setCreator([] { return new JLinkUvscServerProvider; });
+    setHldplugin([] { return new JLinkUvscServerProvider; });
 }
 
 // JLinkUvscServerProviderConfigWidget

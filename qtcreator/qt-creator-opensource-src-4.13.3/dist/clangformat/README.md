@@ -1,7 +1,7 @@
-# .clang-format for Qt Creator
+# .clang-format for Qt Hldplugin
 
-In you Qt Creator root there is an EXPERIMENTAL .clang-format configuration file
-for the Qt Creator code base.
+In you Qt Hldplugin root there is an EXPERIMENTAL .clang-format configuration file
+for the Qt Hldplugin code base.
 
 The current configuration is useful, but not fully in accordance with the
 coding rules. There is also other undesired formatting. Running clang-format
@@ -24,9 +24,9 @@ For more information about clang-format, see
 
  * clang-format >= 5.0
 
-## Set up Qt Creator for use with clang-format
+## Set up Qt Hldplugin for use with clang-format
 
-### Configure Qt Creator
+### Configure Qt Hldplugin
 
   0. Enable experimental ClangFormat plugin to get C++ indentation based on it.
 
@@ -52,7 +52,7 @@ use.
 ## Coding rules enforced by clang-format
 
 This is a copy-pasted list of coding rules from
-<https://doc-snapshots.qt.io/qtcreator-extending/coding-style.html> that can be
+<https://doc-snapshots.qt.io/qthldplugin-extending/coding-style.html> that can be
 enforced with the current configuration:
 
 * Formatting

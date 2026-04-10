@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,11 +76,11 @@ protected:
     virtual std::unique_ptr<Processor> createProcessor() const = 0;
 
 private:
-    Processor &initializedCollector(Processor &creator)
+    Processor &initializedCollector(Processor &hldplugin)
     {
-        creator.setIsUsed(true);
-        creator.setUnsavedFiles(m_generatedFiles.fileContainers());
-        return creator;
+        hldplugin.setIsUsed(true);
+        hldplugin.setUnsavedFiles(m_generatedFiles.fileContainers());
+        return hldplugin;
     }
 
 

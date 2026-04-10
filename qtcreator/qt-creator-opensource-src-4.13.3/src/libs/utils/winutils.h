@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,21 +31,21 @@ namespace Utils {
 
 // Helper to format a Windows error message, taking the
 // code as returned by the GetLastError()-API.
-QTCREATOR_UTILS_EXPORT QString winErrorMessage(unsigned long error);
+QTHLDPLUGIN_UTILS_EXPORT QString winErrorMessage(unsigned long error);
 
 // Determine a DLL version
 enum WinDLLVersionType { WinDLLFileVersion, WinDLLProductVersion };
-QTCREATOR_UTILS_EXPORT QString winGetDLLVersion(WinDLLVersionType t,
+QTHLDPLUGIN_UTILS_EXPORT QString winGetDLLVersion(WinDLLVersionType t,
                                                 const QString &name,
                                                 QString *errorMessage);
 
-QTCREATOR_UTILS_EXPORT bool is64BitWindowsSystem();
+QTHLDPLUGIN_UTILS_EXPORT bool is64BitWindowsSystem();
 
 // Check for a 64bit binary.
-QTCREATOR_UTILS_EXPORT bool is64BitWindowsBinary(const QString &binary);
+QTHLDPLUGIN_UTILS_EXPORT bool is64BitWindowsBinary(const QString &binary);
 
 // Get the path to the executable for a given PID.
-QTCREATOR_UTILS_EXPORT QString imageName(quint32 processId);
+QTHLDPLUGIN_UTILS_EXPORT QString imageName(quint32 processId);
 
 //
 // RAII class to temporarily prevent windows crash messages from popping up using the
@@ -53,7 +53,7 @@ QTCREATOR_UTILS_EXPORT QString imageName(quint32 processId);
 //
 // Useful primarily for QProcess launching, since the setting will be inherited.
 //
-class QTCREATOR_UTILS_EXPORT WindowsCrashDialogBlocker {
+class QTHLDPLUGIN_UTILS_EXPORT WindowsCrashDialogBlocker {
 public:
     WindowsCrashDialogBlocker();
     ~WindowsCrashDialogBlocker();

@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -119,8 +119,8 @@ public:
         setLayout(layout);
 
         QPalette pal;
-        pal.setColor(QPalette::Window, Utils::creatorTheme()->color(Utils::Theme::InfoBarBackground));
-        pal.setColor(QPalette::WindowText, Utils::creatorTheme()->color(Utils::Theme::InfoBarText));
+        pal.setColor(QPalette::Window, Utils::hldpluginTheme()->color(Utils::Theme::InfoBarBackground));
+        pal.setColor(QPalette::WindowText, Utils::hldpluginTheme()->color(Utils::Theme::InfoBarText));
         setPalette(pal);
 
         setAutoFillBackground(true);

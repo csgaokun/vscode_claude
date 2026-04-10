@@ -1,6 +1,6 @@
 QT = core gui
 QTC_LIB_DEPENDS += qmljs
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 macx:CONFIG -= app_bundle
 TARGET = qml-ast2dot
 

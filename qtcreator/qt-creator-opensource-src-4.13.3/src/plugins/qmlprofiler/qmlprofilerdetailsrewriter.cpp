@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -185,7 +185,7 @@ void QmlProfilerDetailsRewriter::documentReady(QmlJS::Document::Ptr doc)
     const QString &fileName = doc->fileName();
     auto first = m_pendingEvents.find(fileName);
 
-    // this could be triggered by an unrelated reload in Creator
+    // this could be triggered by an unrelated reload in Hldplugin
     if (first == m_pendingEvents.end())
         return;
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,32 +40,32 @@ namespace Utils {
 
 // Create a usable settings key from a category,
 // for example Editor|C++ -> Editor_C__
-QTCREATOR_UTILS_EXPORT QString settingsKey(const QString &category);
+QTHLDPLUGIN_UTILS_EXPORT QString settingsKey(const QString &category);
 
 // Return the common prefix part of a string list:
 // "C:\foo\bar1" "C:\foo\bar2"  -> "C:\foo\bar"
-QTCREATOR_UTILS_EXPORT QString commonPrefix(const QStringList &strings);
+QTHLDPLUGIN_UTILS_EXPORT QString commonPrefix(const QStringList &strings);
 
 // Return the common path of a list of files:
 // "C:\foo\bar1" "C:\foo\bar2"  -> "C:\foo"
-QTCREATOR_UTILS_EXPORT QString commonPath(const QStringList &files);
+QTHLDPLUGIN_UTILS_EXPORT QString commonPath(const QStringList &files);
 
 // On Linux/Mac replace user's home path with ~
 // Uses cleaned path and tries to use absolute path of "path" if possible
 // If path is not sub of home path, or when running on Windows, returns the input
-QTCREATOR_UTILS_EXPORT QString withTildeHomePath(const QString &path);
+QTHLDPLUGIN_UTILS_EXPORT QString withTildeHomePath(const QString &path);
 
 // Removes first unescaped ampersand in text
-QTCREATOR_UTILS_EXPORT QString stripAccelerator(const QString &text);
+QTHLDPLUGIN_UTILS_EXPORT QString stripAccelerator(const QString &text);
 // Quotes all ampersands
-QTCREATOR_UTILS_EXPORT QString quoteAmpersands(const QString &text);
+QTHLDPLUGIN_UTILS_EXPORT QString quoteAmpersands(const QString &text);
 
-QTCREATOR_UTILS_EXPORT bool readMultiLineString(const QJsonValue &value, QString *out);
+QTHLDPLUGIN_UTILS_EXPORT bool readMultiLineString(const QJsonValue &value, QString *out);
 
 // Compare case insensitive and use case sensitive comparison in case of that being equal.
-QTCREATOR_UTILS_EXPORT int caseFriendlyCompare(const QString &a, const QString &b);
+QTHLDPLUGIN_UTILS_EXPORT int caseFriendlyCompare(const QString &a, const QString &b);
 
-class QTCREATOR_UTILS_EXPORT AbstractMacroExpander
+class QTHLDPLUGIN_UTILS_EXPORT AbstractMacroExpander
 {
 public:
     virtual ~AbstractMacroExpander() {}
@@ -85,10 +85,10 @@ private:
     bool expandNestedMacros(const QString &str, int *pos, QString *ret);
 };
 
-QTCREATOR_UTILS_EXPORT void expandMacros(QString *str, AbstractMacroExpander *mx);
-QTCREATOR_UTILS_EXPORT QString expandMacros(const QString &str, AbstractMacroExpander *mx);
+QTHLDPLUGIN_UTILS_EXPORT void expandMacros(QString *str, AbstractMacroExpander *mx);
+QTHLDPLUGIN_UTILS_EXPORT QString expandMacros(const QString &str, AbstractMacroExpander *mx);
 
-QTCREATOR_UTILS_EXPORT int parseUsedPortFromNetstatOutput(const QByteArray &line);
+QTHLDPLUGIN_UTILS_EXPORT int parseUsedPortFromNetstatOutput(const QByteArray &line);
 
 template<typename T, typename Container>
 T makeUniquelyNumbered(const T &preferred, const Container &reserved)
@@ -102,6 +102,6 @@ T makeUniquelyNumbered(const T &preferred, const Container &reserved)
     return tryName;
 }
 
-QTCREATOR_UTILS_EXPORT QString formatElapsedTime(qint64 elapsed);
+QTHLDPLUGIN_UTILS_EXPORT QString formatElapsedTime(qint64 elapsed);
 
 } // namespace Utils

@@ -1,5 +1,5 @@
 DEFINES += CPPEDITOR_LIBRARY
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS += \
     cppautocompleter.h \

@@ -9,7 +9,7 @@
         <key>CFBundleExecutable</key>
         <string>iostool</string>
         <key>CFBundleIdentifier</key>
-        <string>org.qt-project.qt-creator.iosTool</string>
+        <string>org.qt-project.qt-hldplugin.iosTool</string>
         <key>LSUIElement</key>
         <string>1</string>
 </dict>

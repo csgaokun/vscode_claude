@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -137,7 +137,7 @@ CustomParsersSettingsPage::CustomParsersSettingsPage()
     setId(Constants::CUSTOM_PARSERS_SETTINGS_PAGE_ID);
     setDisplayName(CustomParsersSettingsWidget::tr("Custom Output Parsers"));
     setCategory(Constants::BUILD_AND_RUN_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new CustomParsersSettingsWidget; });
+    setWidgetHldplugin([] { return new CustomParsersSettingsWidget; });
 }
 
 } // namespace Internal

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     for lang in testData.dataset("languages.tsv"):
@@ -44,16 +44,16 @@ def main():
                     "Options dialog disappeared")
         invokeMenuItem("File", "Exit")
         waitForCleanShutdown()
-        snooze(4) # wait for complete unloading of Creator
+        snooze(4) # wait for complete unloading of Hldplugin
         startQC(closeLinkToQt=False, cancelTour=False)
         try:
             # Use Locator for menu items which wouldn't work on macOS
             exitCommand = testData.field(lang, "Exit")
             selectFromLocator("t %s" % exitCommand.rstrip("(X)"), exitCommand)
-            test.passes("Creator was running in %s translation." % languageName)
+            test.passes("Hldplugin was running in %s translation." % languageName)
         except:
-            test.fail("Creator seems to be missing %s translation" % languageName)
-            sendEvent("QCloseEvent", ":Qt Creator_Core::Internal::MainWindow")
+            test.fail("Hldplugin seems to be missing %s translation" % languageName)
+            sendEvent("QCloseEvent", ":Qt Hldplugin_Core::Internal::MainWindow")
         waitForCleanShutdown()
         __removeTestingDir__()
         copySettingsToTmpDir()

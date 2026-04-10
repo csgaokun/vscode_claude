@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -268,7 +268,7 @@ void PerfProfilerTraceFile::readFromDevice()
         } else {
             fail(tr("Invalid data format. The trace file's identification string is \"%1\"."
                     "An acceptable trace file should have \"%2\". You cannot read trace files "
-                    "generated with older versions of Qt Creator.")
+                    "generated with older versions of Qt Hldplugin.")
                      .arg(QString::fromLatin1(magic))
                      .arg(QString::fromLatin1(Constants::PerfZqfileMagic)));
             return;

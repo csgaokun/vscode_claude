@@ -1,6 +1,6 @@
 QT += qml
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(customwizard/customwizard.pri)
 include(jsonwizard/jsonwizard.pri)
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     ExtensionSystem::PluginManager manager;
     manager.setPluginIID(QLatin1String("plugin"));
-    setCreatorTheme(new Theme("default", &app));
+    setHldpluginTheme(new Theme("default", &app));
     QObject::connect(&app, &QCoreApplication::aboutToQuit,
                      &manager, &ExtensionSystem::PluginManager::shutdown);
     PluginDialog dialog;

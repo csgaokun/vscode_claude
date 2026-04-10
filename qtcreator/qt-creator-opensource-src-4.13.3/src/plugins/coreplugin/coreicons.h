@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@
 namespace Core {
 namespace Icons {
 
-CORE_EXPORT extern const Utils::Icon QTCREATORLOGO_BIG;
+CORE_EXPORT extern const Utils::Icon QTHLDPLUGINLOGO_BIG;
 CORE_EXPORT extern const Utils::Icon FIND_CASE_INSENSITIVELY;
 CORE_EXPORT extern const Utils::Icon FIND_WHOLE_WORD;
 CORE_EXPORT extern const Utils::Icon FIND_REGEXP;

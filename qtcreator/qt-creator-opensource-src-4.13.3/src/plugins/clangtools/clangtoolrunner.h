@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ namespace Utils { class Environment; }
 namespace ClangTools {
 namespace Internal {
 
-using ArgsCreator = std::function<QStringList(const QStringList &baseOptions)>;
+using ArgsHldplugin = std::function<QStringList(const QStringList &baseOptions)>;
 
 class ClangToolRunner : public QObject
 {
@@ -50,7 +50,7 @@ public:
     void init(const QString &outputDirPath, const Utils::Environment &environment);
     void setName(const QString &name) { m_name = name; }
     void setExecutable(const QString &executable) { m_executable = executable; }
-    void setArgsCreator(const ArgsCreator &argsCreator) { m_argsCreator = argsCreator; }
+    void setArgsHldplugin(const ArgsHldplugin &argsHldplugin) { m_argsHldplugin = argsHldplugin; }
     void setOutputFileFormat(const OutputFileFormat &format) { m_outputFileFormat = format; }
 
     QString name() const { return m_name; }
@@ -82,7 +82,7 @@ private:
 
     QString m_name;
     QString m_executable;
-    ArgsCreator m_argsCreator;
+    ArgsHldplugin m_argsHldplugin;
     OutputFileFormat m_outputFileFormat = OutputFileFormat::Yaml;
 
     QString m_fileToAnalyze;

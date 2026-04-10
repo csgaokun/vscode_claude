@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -28,7 +28,7 @@
 #include <environment.h>
 #include <filepathcaching.h>
 #include <filesystem.h>
-#include <pchcreatorinterface.h>
+#include <pchhldplugininterface.h>
 #include <precompiledheaderstorageinterface.h>
 #include <progresscounter.h>
 #include <sqlitetransaction.h>
@@ -178,13 +178,13 @@ std::vector<PchTaskQueue::Task> PchTaskQueue::createProjectTasks(PchTasks &&pchT
     tasks.reserve(pchTasks.size());
 
     auto convert = [this](auto &&pchTask) {
-        return [pchTask = std::move(pchTask), this](PchCreatorInterface &pchCreator) mutable {
+        return [pchTask = std::move(pchTask), this](PchHldpluginInterface &pchHldplugin) mutable {
             const auto projectPartId = pchTask.projectPartId();
                 pchTask.systemPchPath = m_precompiledHeaderStorage.fetchSystemPrecompiledHeaderPath(
                     projectPartId);
                 pchTask.preIncludeSearchPath = m_environment.preIncludeSearchPath();
-                pchCreator.generatePch(std::move(pchTask));
-                const auto &projectPartPch = pchCreator.projectPartPch();
+                pchHldplugin.generatePch(std::move(pchTask));
+                const auto &projectPartPch = pchHldplugin.projectPartPch();
                 if (projectPartPch.pchPath.empty()) {
                     m_precompiledHeaderStorage.deleteProjectPrecompiledHeader(projectPartId,
                                                                               projectPartPch.lastModified);
@@ -209,11 +209,11 @@ std::vector<PchTaskQueue::Task> PchTaskQueue::createSystemTasks(PchTasks &&pchTa
     tasks.reserve(pchTasks.size());
 
     auto convert = [this](auto &&pchTask) {
-        return [pchTask = std::move(pchTask), this](PchCreatorInterface &pchCreator) mutable {
+        return [pchTask = std::move(pchTask), this](PchHldpluginInterface &pchHldplugin) mutable {
             const auto projectPartIds = pchTask.projectPartIds;
                 pchTask.preIncludeSearchPath = m_environment.preIncludeSearchPath();
-                pchCreator.generatePch(std::move(pchTask));
-                const auto &projectPartPch = pchCreator.projectPartPch();
+                pchHldplugin.generatePch(std::move(pchTask));
+                const auto &projectPartPch = pchHldplugin.projectPartPch();
                 if (projectPartPch.pchPath.empty()) {
                     m_precompiledHeaderStorage.deleteSystemPrecompiledHeaders(projectPartIds);
                 } else {

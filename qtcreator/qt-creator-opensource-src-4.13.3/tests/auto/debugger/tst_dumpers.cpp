@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -103,7 +103,7 @@ static bool generateEnvironmentSettings(Utils::Environment &env,
     Utils::QtcProcess run;
     // As of WinSDK 7.1, there is logic preventing the path from being set
     // correctly if "ORIGINALPATH" is already set. That can cause problems
-    // if Creator is launched within a session set up by setenv.cmd.
+    // if Hldplugin is launched within a session set up by setenv.cmd.
     env.unset("ORIGINALPATH");
     run.setEnvironment(env);
     const Utils::FilePath cmdPath
@@ -1177,8 +1177,8 @@ void tst_Dumpers::initTestCase()
             env.set(envIt.key(), envIt.value());
         QByteArray cdbextPath = qgetenv("QTC_CDBEXT_PATH");
         if (cdbextPath.isEmpty())
-            cdbextPath = CDBEXT_PATH "\\qtcreatorcdbext64";
-        QVERIFY(QFile::exists(cdbextPath + "\\qtcreatorcdbext.dll"));
+            cdbextPath = CDBEXT_PATH "\\qthldplugincdbext64";
+        QVERIFY(QFile::exists(cdbextPath + "\\qthldplugincdbext.dll"));
         env.set("_NT_DEBUGGER_EXTENSION_PATH", cdbextPath);
         env.prependOrSetPath(QDir::toNativeSeparators(QFileInfo(m_qmakeBinary).absolutePath()));
         m_makeBinary = env.searchInPath("nmake.exe").toString();
@@ -1687,7 +1687,7 @@ void tst_Dumpers::dumper()
         cmds += "quit\n";
 
     } else if (m_debuggerEngine == CdbEngine) {
-        args << "-aqtcreatorcdbext.dll"
+        args << "-aqthldplugincdbext.dll"
              << "-G"
              << "-xn"
              << "0x4000001f"
@@ -1695,13 +1695,13 @@ void tst_Dumpers::dumper()
              << "bm doit!qtcDebugBreakFunction;g"
              << "doit.exe";
         cmds += ".symopt+0x8000\n"
-                "!qtcreatorcdbext.script sys.path.insert(1, '" + dumperDir + "')\n"
-                "!qtcreatorcdbext.script from cdbbridge import *\n"
-                "!qtcreatorcdbext.script theDumper = Dumper()\n"
-                "!qtcreatorcdbext.script theDumper.setupDumpers()\n"
+                "!qthldplugincdbext.script sys.path.insert(1, '" + dumperDir + "')\n"
+                "!qthldplugincdbext.script from cdbbridge import *\n"
+                "!qthldplugincdbext.script theDumper = Dumper()\n"
+                "!qthldplugincdbext.script theDumper.setupDumpers()\n"
                 ".frame 1\n"
-                "!qtcreatorcdbext.pid\n"
-                "!qtcreatorcdbext.script -t 42 theDumper.fetchVariables({" + dumperOptions +
+                "!qthldplugincdbext.pid\n"
+                "!qthldplugincdbext.script -t 42 theDumper.fetchVariables({" + dumperOptions +
                 "'token':2,'fancy':1,'forcens':1,"
                 "'autoderef':1,'dyntype':1,'passexceptions':0,"
                 "'testing':1,'qobjectnames':1,"
@@ -1795,7 +1795,7 @@ void tst_Dumpers::dumper()
         contents.replace("\\\"", "\"");
         actual.fromString(QString::fromLocal8Bit(contents));
     } else {
-        QByteArray localsAnswerStart("<qtcreatorcdbext>|R|42|");
+        QByteArray localsAnswerStart("<qthldplugincdbext>|R|42|");
         QByteArray locals("|script|");
         int localsBeginPos = output.indexOf(locals, output.indexOf(localsAnswerStart));
         if (localsBeginPos == -1)
@@ -6715,7 +6715,7 @@ void tst_Dumpers::dumper_data()
             + Check("vector.1", "[1]", FloatValue("2"), "double");
 
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-3611
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-3611
     QTest::newRow("Bug3611")
         << Data("",
 
@@ -6728,7 +6728,7 @@ void tst_Dumpers::dumper_data()
          + Check("f", "50", TypeDef("unsigned char", "byte"));
 
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-4904
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-4904
     QTest::newRow("Bug4904")
         << Data("#include <QMap>\n"
                 "struct CustomStruct {\n"
@@ -6758,7 +6758,7 @@ void tst_Dumpers::dumper_data()
 
 
 #if 0
-      // https://bugreports.qt.io/browse/QTCREATORBUG-5106
+      // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5106
       QTest::newRow("Bug5106")
           << Data("struct A5106 {\n"
                   "        A5106(int a, int b) : m_a(a), m_b(b) {}\n"
@@ -6780,11 +6780,11 @@ void tst_Dumpers::dumper_data()
 #endif
 
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5184
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5184
 
     // Note: The report there shows type field "QUrl &" instead of QUrl");
     // It's unclear how this can happen. It should never have been like
-    // that with a stock 7.2 and any version of Creator");
+    // that with a stock 7.2 and any version of Hldplugin");
     QTest::newRow("Bug5184")
         << Data("#include <QUrl>\n"
                 "#include <QNetworkRequest>\n"
@@ -6809,7 +6809,7 @@ void tst_Dumpers::dumper_data()
            + Check("url", "\"http://127.0.0.1/\"", "@QUrl") % CdbEngine;
 
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5799
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5799
     QTest::newRow("Bug5799")
         << Data("typedef struct { int m1; int m2; } S1;\n"
                 "struct S2 : S1 { };\n"
@@ -6838,7 +6838,7 @@ void tst_Dumpers::dumper_data()
              + CheckType("s4.@1.m2", "int");
 
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-6465
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-6465
     QTest::newRow("Bug6465")
         << Data("",
 
@@ -6852,7 +6852,7 @@ void tst_Dumpers::dumper_data()
 
 
 #ifndef Q_OS_WIN
-    // https://bugreports.qt.io/browse/QTCREATORBUG-6857
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-6857
     QTest::newRow("Bug6857")
         << Data("#include <QFile>\n"
                 "#include <QString>\n"
@@ -6946,7 +6946,7 @@ void tst_Dumpers::dumper_data()
 
 
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-17823
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-17823
     QTest::newRow("Bug17823")
             << Data("struct Base1\n"
                     "{\n"
@@ -7923,7 +7923,7 @@ void tst_Dumpers::dumper_data()
                     "QSqlQuery query;\n"
                     "query.exec(\"create table images (itemid int, file varchar(20))\");\n"
                     "query.exec(\"insert into images values(1, 'qt-logo.png')\");\n"
-                    "query.exec(\"insert into images values(2, 'qt-creator.png')\");\n"
+                    "query.exec(\"insert into images values(2, 'qt-hldplugin.png')\");\n"
                     "query.exec(\"insert into images values(3, 'qt-project.png')\");\n"
                     "query.exec(\"select * from images\");\n"
                     "query.next();\n"
@@ -7976,9 +7976,9 @@ void tst_Dumpers::dumper_data()
 
 #if 0
 #ifdef Q_OS_LINUX
-    // Hint: To open a failing test in Creator, do:
+    // Hint: To open a failing test in Hldplugin, do:
     //  touch qt_tst_dumpers_Nim_.../dummy.nimproject
-    //  qtcreator qt_tst_dumpers_Nim_*/dummy.nimproject
+    //  qthldplugin qt_tst_dumpers_Nim_*/dummy.nimproject
     Data nimData;
     nimData.configTest = {"which", {"nim"}};
     nimData.allProfile =

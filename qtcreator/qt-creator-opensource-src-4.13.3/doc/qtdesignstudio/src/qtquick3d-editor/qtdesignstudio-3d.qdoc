@@ -49,7 +49,7 @@
     The following topics contain information about working with Qt Quick 3D:
 
     \list
-        \if defined (qtcreator)
+        \if defined (qthldplugin)
         \li \l {Exporting 3D Assets}
 
             You can import files you created using 3D graphics applications and

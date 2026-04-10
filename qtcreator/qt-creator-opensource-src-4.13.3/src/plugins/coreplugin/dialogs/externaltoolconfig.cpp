@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -168,7 +168,7 @@ QMimeData *ExternalToolModel::mimeData(const QModelIndexList &indexes) const
     QByteArray ba;
     QDataStream stream(&ba, QIODevice::WriteOnly);
     stream << category << m_tools.value(category).indexOf(tool);
-    md->setData("application/qtcreator-externaltool-config", ba);
+    md->setData("application/qthldplugin-externaltool-config", ba);
     return md;
 }
 
@@ -184,7 +184,7 @@ bool ExternalToolModel::dropMimeData(const QMimeData *data,
     bool found;
     QString toCategory = categoryForIndex(parent, &found);
     QTC_ASSERT(found, return false);
-    QByteArray ba = data->data("application/qtcreator-externaltool-config");
+    QByteArray ba = data->data("application/qthldplugin-externaltool-config");
     if (ba.isEmpty())
         return false;
     QDataStream stream(&ba, QIODevice::ReadOnly);
@@ -207,7 +207,7 @@ bool ExternalToolModel::dropMimeData(const QMimeData *data,
 
 QStringList ExternalToolModel::mimeTypes() const
 {
-    return QStringList("application/qtcreator-externaltool-config");
+    return QStringList("application/qthldplugin-externaltool-config");
 }
 
 QModelIndex ExternalToolModel::index(int row, int column, const QModelIndex &parent) const
@@ -828,7 +828,7 @@ ToolSettings::ToolSettings()
     setId(Constants::SETTINGS_ID_TOOLS);
     setDisplayName(ExternalToolConfig::tr("External Tools"));
     setCategory(Constants::SETTINGS_CATEGORY_CORE);
-    setWidgetCreator([] { return new ExternalToolConfig; });
+    setWidgetHldplugin([] { return new ExternalToolConfig; });
 }
 
 } // Internal

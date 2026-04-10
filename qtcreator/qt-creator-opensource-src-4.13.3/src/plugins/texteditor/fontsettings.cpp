@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -96,8 +96,8 @@ void FontSettings::toSettings(QSettings *s) const
         s->setValue(QLatin1String(antialiasKey), m_antialias);
 
     auto schemeFileNames = s->value(QLatin1String(schemeFileNamesKey)).toMap();
-    if (m_schemeFileName != defaultSchemeFileName() || schemeFileNames.contains(Utils::creatorTheme()->id())) {
-        schemeFileNames.insert(Utils::creatorTheme()->id(), m_schemeFileName);
+    if (m_schemeFileName != defaultSchemeFileName() || schemeFileNames.contains(Utils::hldpluginTheme()->id())) {
+        schemeFileNames.insert(Utils::hldpluginTheme()->id(), m_schemeFileName);
         s->setValue(QLatin1String(schemeFileNamesKey), schemeFileNames);
     }
 
@@ -122,8 +122,8 @@ bool FontSettings::fromSettings(const FormatDescriptions &descriptions, const QS
     if (s->contains(group + QLatin1String(schemeFileNamesKey))) {
         // Load the selected color scheme for the current theme
         auto schemeFileNames = s->value(group + QLatin1String(schemeFileNamesKey)).toMap();
-        if (schemeFileNames.contains(Utils::creatorTheme()->id())) {
-            const QString scheme = schemeFileNames.value(Utils::creatorTheme()->id()).toString();
+        if (schemeFileNames.contains(Utils::hldpluginTheme()->id())) {
+            const QString scheme = schemeFileNames.value(Utils::hldpluginTheme()->id()).toString();
             loadColorScheme(scheme, descriptions);
         }
     }
@@ -508,7 +508,7 @@ QString FontSettings::defaultSchemeFileName(const QString &fileName)
     if (!fileName.isEmpty() && QFile::exists(defaultScheme + fileName)) {
         defaultScheme += fileName;
     } else {
-        const QString themeScheme = Utils::creatorTheme()->defaultTextEditorColorScheme();
+        const QString themeScheme = Utils::hldpluginTheme()->defaultTextEditorColorScheme();
         if (!themeScheme.isEmpty() && QFile::exists(defaultScheme + themeScheme))
             defaultScheme += themeScheme;
         else

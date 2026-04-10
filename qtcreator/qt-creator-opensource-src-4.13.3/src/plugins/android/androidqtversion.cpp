@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BogDan Vatra <bog_dan_ro@yahoo.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -202,7 +202,7 @@ QSet<Utils::Id> AndroidQtVersion::targetDeviceTypes() const
 
 AndroidQtVersionFactory::AndroidQtVersionFactory()
 {
-    setQtVersionCreator([] { return new AndroidQtVersion; });
+    setQtVersionHldplugin([] { return new AndroidQtVersion; });
     setSupportedType(Constants::ANDROIDQT);
     setPriority(90);
 

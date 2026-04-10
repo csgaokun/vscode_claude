@@ -2,5 +2,5 @@ TARGET = qtcrashhandler
 
 TEMPLATE = app
 
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 include(../../libs/qt-breakpad/qtcrashhandler.pri)

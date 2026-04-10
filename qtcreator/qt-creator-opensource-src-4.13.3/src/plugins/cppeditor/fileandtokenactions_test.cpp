@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -58,11 +58,11 @@
             e.g. "Trigger and perform all Quick Fixes"
 
     Purpose:
-        Detect corner cases for which Qt Creator crashes or outputs QTC_ASSERTS.
+        Detect corner cases for which Qt Hldplugin crashes or outputs QTC_ASSERTS.
         Correct behavior is *not* tested.
 
     Prerequisites:
-        These tests depend on the projects that are loaded on startup of Qt Creator.
+        These tests depend on the projects that are loaded on startup of Qt Hldplugin.
         Make sure to load the test projects via command line or the session manager.
         The test projects must be properly configured for a Kit.
  */
@@ -97,7 +97,7 @@ public:
                         const Actions &fileActions = Actions());
 
     /// Simulate pressing ESC, which will close popups, search results pane, etc...
-    /// This works only if the Qt Creator window is active.
+    /// This works only if the Qt Hldplugin window is active.
     static void escape();
 
     /// Undoing changes
@@ -427,7 +427,7 @@ void InvokeCompletionTokenAction::run(CppEditorWidget *editorWidget)
     QApplication::processEvents();
     editorWidget->abortAssist();
     // An alternative way to close the completion pop up is to give the editor widget the focus.
-    // This works only if the Qt Creator window is always the active window.
+    // This works only if the Qt Hldplugin window is always the active window.
     //    editorWidget->setFocus();
     QApplication::processEvents();
 

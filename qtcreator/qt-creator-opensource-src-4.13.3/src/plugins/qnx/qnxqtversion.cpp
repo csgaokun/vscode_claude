@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BlackBerry Limited. All rights reserved.
 ** Contact: KDAB (info@kdab.com)
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -190,7 +190,7 @@ Utils::EnvironmentItems QnxQtVersion::environment() const
 
 QnxQtVersionFactory::QnxQtVersionFactory()
 {
-    setQtVersionCreator([] { return new QnxQtVersion; });
+    setQtVersionHldplugin([] { return new QnxQtVersion; });
     setSupportedType(Constants::QNX_QNX_QT);
     setPriority(50);
     setRestrictionChecker([](const SetupData &setup) { return setup.isQnx; });

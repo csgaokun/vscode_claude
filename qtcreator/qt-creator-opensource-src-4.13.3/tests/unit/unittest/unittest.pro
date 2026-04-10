@@ -9,7 +9,7 @@ QTC_UNITTEST_BUILD_CPP_PARSER = $$(QTC_UNITTEST_BUILD_CPP_PARSER)
 
 include(gmock_dependency.pri)
 include(clang_dependency.pri)
-include(creator_dependency.pri)
+include(hldplugin_dependency.pri)
 include(benchmark_dependency.pri)
 
 requires(isEmpty(QTC_CLANG_BUILDMODE_MISMATCH))
@@ -23,13 +23,13 @@ DEFINES += \
     QT_USE_FAST_CONCATENATION \
     UNIT_TESTS \
     DONT_CHECK_MESSAGE_COUNTER \
-    QTC_RESOURCE_DIR=\"R\\\"xxx($$PWD/../../../share/qtcreator)xxx\\\"\" \
+    QTC_RESOURCE_DIR=\"R\\\"xxx($$PWD/../../../share/qthldplugin)xxx\\\"\" \
     TESTDATA_DIR=\"R\\\"xxx($$PWD/data)xxx\\\"\"
 msvc: QMAKE_CXXFLAGS_WARN_ON -= -w34100 # 'unreferenced formal parameter' in MATCHER_* functions
 win32:DEFINES += ECHOSERVER=\"R\\\"xxx($$OUT_PWD/../echo)xxx\\\"\"
 unix: DEFINES += ECHOSERVER=\"R\\\"xxx($$OUT_PWD/../echoserver/echo)xxx\\\"\"
 
-RELATIVE_DATA_PATH = ../../../share/qtcreator
+RELATIVE_DATA_PATH = ../../../share/qthldplugin
 DEFINES += $$shell_quote(RELATIVE_DATA_PATH=\"$$RELATIVE_DATA_PATH\")
 
 linux {
@@ -65,7 +65,7 @@ SOURCES += \
     fakeprocess.cpp \
     filepath-test.cpp \
     filepathview-test.cpp \
-    gtest-creator-printing.cpp \
+    gtest-hldplugin-printing.cpp \
     gtest-qt-printing.cpp \
     lastchangedrowid-test.cpp \
     lineprefixer-test.cpp \
@@ -102,7 +102,7 @@ SOURCES += \
     filepathcache-test.cpp \
     filepathstorage-test.cpp \
     filepathstoragesqlitestatementfactory-test.cpp \
-    processcreator-test.cpp \
+    processhldplugin-test.cpp \
     nativefilepath-test.cpp \
     nativefilepathview-test.cpp \
     mocktimer.cpp \
@@ -203,7 +203,7 @@ SOURCES += \
     clangqueryprojectfindfilter-test.cpp \
     clangquery-test.cpp \
     clangreferencescollector-test.cpp \
-    pchcreator-test.cpp \
+    pchhldplugin-test.cpp \
     refactoringclientserverinprocess-test.cpp \
     refactoringclient-test.cpp \
     refactoringcompilationdatabase-test.cpp \
@@ -237,7 +237,7 @@ HEADERS += \
     fakeprocess.h \
     filesystem-utilities.h \
     googletest.h \
-    gtest-creator-printing.h \
+    gtest-hldplugin-printing.h \
     gtest-llvm-printing.h \
     gtest-qt-printing.h \
     gtest-std-printing.h \
@@ -248,7 +248,7 @@ HEADERS += \
     mockclangpathwatchernotifier.h \
     mockfilesystem.h \
     mocklistmodeleditorview.h \
-    mockpchcreator.h \
+    mockpchhldplugin.h \
     mockpchmanagerclient.h \
     mockpchmanagernotifier.h \
     mockpchmanagerserver.h \

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -101,22 +101,22 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     Theme theme("");
-    QSettings settings(":/themes/flat.creatortheme", QSettings::IniFormat);
+    QSettings settings(":/themes/flat.hldplugintheme", QSettings::IniFormat);
     theme.readSettings(settings);
-    setCreatorTheme(&theme);
+    setHldpluginTheme(&theme);
     StyleHelper::setBaseColor(QColor(StyleHelper::DEFAULT_BASE_COLOR));
-    QApplication::setStyle(new ManhattanStyle(creatorTheme()->preferredStyles().value(0)));
+    QApplication::setStyle(new ManhattanStyle(hldpluginTheme()->preferredStyles().value(0)));
 
     auto *widget = new QWidget;
     auto *layout = new QVBoxLayout(widget);
-    for (auto creatorFunction : {crumblePathWithMenu,
+    for (auto hldpluginFunction : {crumblePathWithMenu,
                                  disabledCrumblePathWithMenu,
                                  growingCrumblePath,
                                  shrinkingCrumblePath}) {
         auto *cpToolBar = new Utils::StyledBar(widget);
         auto *cpLayout = new QHBoxLayout(cpToolBar);
         cpLayout->setContentsMargins(0, 0, 0, 0);
-        cpLayout->addWidget(creatorFunction());
+        cpLayout->addWidget(hldpluginFunction());
         layout->addWidget(cpToolBar);
     }
     layout->addStretch();

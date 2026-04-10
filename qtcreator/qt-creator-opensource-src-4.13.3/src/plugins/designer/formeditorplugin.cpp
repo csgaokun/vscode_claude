@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -85,7 +85,7 @@ bool FormEditorPlugin::initialize(const QStringList &arguments, QString *error)
     d = new FormEditorPluginPrivate;
 
 #ifdef CPP_ENABLED
-    IWizardFactory::registerFactoryCreator(
+    IWizardFactory::registerFactoryHldplugin(
                 []() -> QList<IWizardFactory *> {
                     IWizardFactory *wizard = new FormClassWizard;
                     wizard->setCategory(Core::Constants::WIZARD_CATEGORY_QT);
@@ -106,10 +106,10 @@ bool FormEditorPlugin::initialize(const QStringList &arguments, QString *error)
     const QString locale = ICore::userInterfaceLanguage();
     if (!locale.isEmpty()) {
         auto qtr = new QTranslator(this);
-        const QString &creatorTrPath = ICore::resourcePath() + "/translations";
+        const QString &hldpluginTrPath = ICore::resourcePath() + "/translations";
         const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
         const QString &trFile = "designer_" + locale;
-        if (qtr->load(trFile, qtTrPath) || qtr->load(trFile, creatorTrPath))
+        if (qtr->load(trFile, qtTrPath) || qtr->load(trFile, hldpluginTrPath))
             QCoreApplication::installTranslator(qtr);
     }
     error->clear();

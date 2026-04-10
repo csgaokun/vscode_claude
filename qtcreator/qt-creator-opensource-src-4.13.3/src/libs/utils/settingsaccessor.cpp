@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -628,7 +628,7 @@ SettingsAccessor::RestoreData MergingSettingsAccessor::readData(const FilePath &
                                              // of what might have changed in the meantime.b
     if (!secondaryData.hasIssue() && !secondaryData.data.isEmpty()
             && (secondaryVersion < firstSupportedVersion() || secondaryVersion > currentVersion())) {
-        // The shared file version is too old/too new for Creator... If we have valid user
+        // The shared file version is too old/too new for Hldplugin... If we have valid user
         // settings we prompt the user whether we could try an *unsupported* update.
         // This makes sense since the merging operation will only replace shared settings
         // that perfectly match corresponding user ones. If we don't have valid user
@@ -690,7 +690,7 @@ MergingSettingsAccessor::mergeSettings(const SettingsAccessor::RestoreData &main
     };
     const QVariantMap result = mergeQVariantMaps(main.data, secondary.data, mergeFunction).toMap();
 
-    // Update from the base version to Creator's version.
+    // Update from the base version to Hldplugin's version.
     return RestoreData(main.path, postprocessMerge(main.data, secondary.data, result));
 }
 

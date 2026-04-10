@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE QtCreatorProject>
+<!DOCTYPE QtHldpluginProject>
 <!-- Written by QtDesignStudio 1.5.9, 2020-07-02T17:34:24. -->
-<qtcreator>
+<qthldplugin>
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{595d361f-de69-4ff2-b1f6-d89b95edfd27}</value>
@@ -118,4 +118,4 @@
   <variable>Version</variable>
   <value type="int">22</value>
  </data>
-</qtcreator>
+</qthldplugin>

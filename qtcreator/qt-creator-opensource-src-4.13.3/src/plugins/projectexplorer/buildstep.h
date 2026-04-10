@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -97,7 +97,7 @@ public:
 
     enum class OutputFormat {
         Stdout, Stderr, // These are for forwarded output from external tools
-        NormalMessage, ErrorMessage // These are for messages from Creator itself
+        NormalMessage, ErrorMessage // These are for messages from Hldplugin itself
     };
 
     enum OutputNewlineSetting { DoAppendNewline, DontAppendNewline };
@@ -166,12 +166,12 @@ public:
         UniqueStep  = 1 << 8    // Can't be used twice in a BuildStepList
     };
 
-    using BuildStepCreator = std::function<BuildStep *(BuildStepList *)>;
+    using BuildStepHldplugin = std::function<BuildStep *(BuildStepList *)>;
 
     Utils::Id id;
     QString displayName;
     Flags flags = Flags();
-    BuildStepCreator creator;
+    BuildStepHldplugin hldplugin;
 };
 
 class PROJECTEXPLORER_EXPORT BuildStepFactory
@@ -192,14 +192,14 @@ public:
     bool canHandle(BuildStepList *bsl) const;
 
 protected:
-    using BuildStepCreator = std::function<BuildStep *(BuildStepList *)>;
+    using BuildStepHldplugin = std::function<BuildStep *(BuildStepList *)>;
 
     template <class BuildStepType>
     void registerStep(Utils::Id id)
     {
-        QTC_CHECK(!m_info.creator);
+        QTC_CHECK(!m_info.hldplugin);
         m_info.id = id;
-        m_info.creator = [id](BuildStepList *bsl) { return new BuildStepType(bsl, id); };
+        m_info.hldplugin = [id](BuildStepList *bsl) { return new BuildStepType(bsl, id); };
     }
 
     void setSupportedStepList(Utils::Id id);

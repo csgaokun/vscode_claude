@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -38,7 +38,7 @@ namespace Internal {
 class TouchBarPrivate;
 }
 
-class QTCREATOR_UTILS_EXPORT TouchBar
+class QTHLDPLUGIN_UTILS_EXPORT TouchBar
 {
 public:
     TouchBar(const QByteArray &id, const QIcon &icon, const QString &title);

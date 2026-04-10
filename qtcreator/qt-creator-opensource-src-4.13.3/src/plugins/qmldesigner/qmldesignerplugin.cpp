@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -99,7 +99,7 @@ QtQuickDesignerFactory::QtQuickDesignerFactory()
     setDisplayName(QCoreApplication::translate("OpenWith::Editors", "Qt Quick Designer"));
 
     addMimeType(QmlJSTools::Constants::QMLUI_MIMETYPE);
-    setDocumentCreator([this]() {
+    setDocumentHldplugin([this]() {
         auto document = new QmlJSEditor::QmlJSEditorDocument(id());
         document->setIsDesignModePreferred(
                     QmlDesigner::DesignerSettings::getValue(
@@ -228,7 +228,7 @@ bool QmlDesignerPlugin::delayedInitialize()
     const QString pluginPath = Utils::HostOsInfo::isMacHost()
             ? QString(QCoreApplication::applicationDirPath() + "/../PlugIns/QmlDesigner")
             : QString(QCoreApplication::applicationDirPath() + "/../"
-                      + QLatin1String(IDE_LIBRARY_BASENAME) + "/qtcreator/plugins/qmldesigner");
+                      + QLatin1String(IDE_LIBRARY_BASENAME) + "/qthldplugin/plugins/qmldesigner");
     MetaInfo::setPluginPaths(QStringList(pluginPath));
 
     d->settings.fromSettings(Core::ICore::settings());
@@ -259,7 +259,7 @@ void QmlDesignerPlugin::extensionsInitialized()
     Core::DesignMode::setDesignModeIsRequired();
     // delay after Core plugin's extensionsInitialized, so the DesignMode is availabe
     connect(Core::ICore::instance(), &Core::ICore::coreAboutToOpen, this, [this] {
-        integrateIntoQtCreator(&d->mainWidget);
+        integrateIntoQtHldplugin(&d->mainWidget);
     });
 }
 
@@ -289,7 +289,7 @@ static QString projectPath(const Utils::FilePath &fileName)
     return path;
 }
 
-void QmlDesignerPlugin::integrateIntoQtCreator(QWidget *modeWidget)
+void QmlDesignerPlugin::integrateIntoQtHldplugin(QWidget *modeWidget)
 {
     auto context = new Internal::DesignModeContext(modeWidget);
     Core::ICore::addContextObject(context);

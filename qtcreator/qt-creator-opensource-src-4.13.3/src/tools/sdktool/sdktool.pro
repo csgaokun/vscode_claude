@@ -1,8 +1,8 @@
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 
 QT -= concurrent gui widgets testlib
 
-isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$PWD/../../shared/qtcreator_pch.h
+isEmpty(PRECOMPILED_HEADER):PRECOMPILED_HEADER = $$PWD/../../shared/qthldplugin_pch.h
 
 UTILS = $$PWD/../../libs/utils
 DEFINES += UTILS_LIBRARY
@@ -89,8 +89,8 @@ INCLUDEPATH += $$OUT_PWD
 
 isEmpty(SDKTOOL_DATA_PATH) {
     macos:DEFINES += $$shell_quote(DATA_PATH=\".\")
-    else:win32:DEFINES += $$shell_quote(DATA_PATH=\"../share/qtcreator\")
-    else:DEFINES += $$shell_quote(DATA_PATH=\"../../share/qtcreator\")
+    else:win32:DEFINES += $$shell_quote(DATA_PATH=\"../share/qthldplugin\")
+    else:DEFINES += $$shell_quote(DATA_PATH=\"../../share/qthldplugin\")
 } else {
     DEFINES += $$shell_quote(DATA_PATH=\"$$SDKTOOL_DATA_PATH\")
 }

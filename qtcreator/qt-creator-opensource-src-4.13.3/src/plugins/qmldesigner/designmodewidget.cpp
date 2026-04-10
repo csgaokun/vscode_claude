@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -330,7 +330,7 @@ void DesignModeWidget::setup()
             // Apply stylesheet to QWidget
             QByteArray sheet = Utils::FileReader::fetchQrc(":/qmldesigner/stylesheet.css");
             sheet += Utils::FileReader::fetchQrc(":/qmldesigner/scrollbar.css");
-            sheet += "QLabel { background-color: creatorTheme.DSsectionHeadBackground; }";
+            sheet += "QLabel { background-color: hldpluginTheme.DSsectionHeadBackground; }";
             navigationView.widget->setStyleSheet(Theme::replaceCssColors(QString::fromUtf8(sheet)));
 
             // Create DockWidget

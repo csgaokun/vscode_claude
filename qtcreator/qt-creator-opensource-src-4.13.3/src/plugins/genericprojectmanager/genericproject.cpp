@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -194,7 +194,7 @@ GenericProject::GenericProject(const Utils::FilePath &fileName)
     setId(Constants::GENERICPROJECT_ID);
     setProjectLanguages(Context(ProjectExplorer::Constants::CXX_LANGUAGE_ID));
     setDisplayName(fileName.toFileInfo().completeBaseName());
-    setBuildSystemCreator([](Target *t) { return new GenericBuildSystem(t); });
+    setBuildSystemHldplugin([](Target *t) { return new GenericBuildSystem(t); });
 }
 
 GenericBuildSystem::GenericBuildSystem(Target *target)
@@ -571,7 +571,7 @@ void GenericBuildSystem::refreshCppCodeModel()
 
 void GenericBuildSystem::updateDeploymentData()
 {
-    static const QString fileName("QtCreatorDeployment.txt");
+    static const QString fileName("QtHldpluginDeployment.txt");
     Utils::FilePath deploymentFilePath;
     BuildConfiguration *bc = target()->activeBuildConfiguration();
     if (bc)

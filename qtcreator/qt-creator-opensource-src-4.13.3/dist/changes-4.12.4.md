@@ -1,38 +1,38 @@
-Qt Creator 4.12.4
+Qt Hldplugin 4.12.4
 =================
 
-Qt Creator version 4.12.4 contains bug fixes.
+Qt Hldplugin version 4.12.4 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/v4.12.3..v4.12.4
 
 Editing
 -------
 
-* Fixed crash when searching in binary files (QTCREATORBUG-21473, QTCREATORBUG-23978)
+* Fixed crash when searching in binary files (QTHLDPLUGINBUG-21473, QTHLDPLUGINBUG-23978)
 
 ### QML
 
-* Fixed completion of signals from singletons (QTCREATORBUG-24124)
-* Fixed import scanning after code model reset (QTCREATORBUG-24082)
+* Fixed completion of signals from singletons (QTHLDPLUGINBUG-24124)
+* Fixed import scanning after code model reset (QTHLDPLUGINBUG-24082)
 
 Projects
 --------
 
 ### CMake
 
-* Fixed search for `ninja` when it is installed with the online installer (QTCREATORBUG-24082)
+* Fixed search for `ninja` when it is installed with the online installer (QTHLDPLUGINBUG-24082)
 
 Platforms
 ---------
 
 ### iOS
 
-* Fixed C++ debugging on devices (QTCREATORBUG-23995)
+* Fixed C++ debugging on devices (QTHLDPLUGINBUG-23995)
 
 ### MCU
 

@@ -1,10 +1,10 @@
-The QtCreator 1.2 release contains bug fixes and new features.
+The QtHldplugin 1.2 release contains bug fixes and new features.
 
 Below is a list of relevant changes. You can find a complete list of changes
-within the logs of QtCreator's sources. Simply check it out from the public git
+within the logs of QtHldplugin's sources. Simply check it out from the public git
 repository e.g.,
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --pretty=oneline v1.1.0..v1.2.0
 
 This release introduces source and binary incompatible changes to the plugin
@@ -61,7 +61,7 @@ Version control plugins
 
 Documentation
    * Added a tutorial on how to create an application from scratch using Qt
-     Creator.
+     Hldplugin.
 
 I18N
    * Added infrastructure for translations.
@@ -70,7 +70,7 @@ I18N
 Platform Specific
 
 Windows
-  * Qt Creator now displays native path separators.
+  * Qt Hldplugin now displays native path separators.
   * Added experimental support for the Microsoft C++ compilers from Windows
     SDKs or VS 2005/2008 (x86 and AMD64).
 
@@ -79,7 +79,7 @@ Mac
 Linux
 
 Other Unixes
-   * Made Qt Creator less dependant on Linux specific defines.
+   * Made Qt Hldplugin less dependant on Linux specific defines.
 
 Additional credits go to:
    * axasia <axasia@gmail.com> (japanese translation, compile fixes)

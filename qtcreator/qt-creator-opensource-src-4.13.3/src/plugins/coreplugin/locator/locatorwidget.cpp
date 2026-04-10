@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -86,8 +86,8 @@ public:
 
     LocatorModel(QObject *parent = nullptr)
         : QAbstractListModel(parent)
-        , mBackgroundColor(Utils::creatorTheme()->color(Utils::Theme::TextColorHighlightBackground))
-        , mForegroundColor(Utils::creatorTheme()->color(Utils::Theme::TextColorNormal))
+        , mBackgroundColor(Utils::hldpluginTheme()->color(Utils::Theme::TextColorHighlightBackground))
+        , mForegroundColor(Utils::hldpluginTheme()->color(Utils::Theme::TextColorNormal))
     {}
 
     void clear();

@@ -3,7 +3,7 @@ TEMPLATE = lib
 
 QT += quick quickwidgets
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(ctfvisualizer_dependencies.pri)
 
 DEFINES += CTFVISUALIZER_LIBRARY

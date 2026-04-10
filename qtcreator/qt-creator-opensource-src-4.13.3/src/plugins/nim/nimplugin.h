@@ -3,7 +3,7 @@
 ** Copyright (C) Filippo Cucchetto <filippocucchetto@gmail.com>
 ** Contact: http://www.qt.io/licensing
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@ namespace Nim {
 class NimPlugin final : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Nim.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "Nim.json")
 
 public:
     NimPlugin() = default;

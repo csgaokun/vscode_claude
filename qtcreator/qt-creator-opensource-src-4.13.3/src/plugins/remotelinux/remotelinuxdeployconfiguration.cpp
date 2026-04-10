@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -67,7 +67,7 @@ RemoteLinuxDeployConfigurationFactory::RemoteLinuxDeployConfigurationFactory()
                 && prj->hasMakeInstallEquivalent();
     };
     setPostRestore([needsMakeInstall](DeployConfiguration *dc, const QVariantMap &map) {
-        // 4.9 -> 4.10. See QTCREATORBUG-22689.
+        // 4.9 -> 4.10. See QTHLDPLUGINBUG-22689.
         if (map.value("_checkMakeInstall").toBool() && needsMakeInstall(dc->target())) {
             auto step = new MakeInstallStep(dc->stepList(), MakeInstallStep::stepId());
             dc->stepList()->insertStep(0, step);

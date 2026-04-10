@@ -3,7 +3,7 @@
 # Copyright (C) 2017 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     startQC(["-customwizard-verbose"])
@@ -31,7 +31,7 @@ def main():
         return
 
     openGeneralMessages()
-    messages = waitForObject(":Qt Creator_Core::OutputWindow")
+    messages = waitForObject(":Qt Hldplugin_Core::OutputWindow")
     output = str(messages.plainText)
     test.log("General Messages Output:\n%s" % output)
     if not len(output.strip()):

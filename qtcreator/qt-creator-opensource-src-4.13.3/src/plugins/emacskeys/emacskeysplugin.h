@@ -2,7 +2,7 @@
 **
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@ class EmacsKeysState;
 class EmacsKeysPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "EmacsKeys.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "EmacsKeys.json")
 
 public:
     EmacsKeysPlugin();

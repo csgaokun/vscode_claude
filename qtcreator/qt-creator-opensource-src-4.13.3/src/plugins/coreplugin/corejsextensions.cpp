@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,7 +43,7 @@ QString UtilsJsExtension::qtVersion() const
     return QLatin1String(qVersion());
 }
 
-QString UtilsJsExtension::qtCreatorVersion() const
+QString UtilsJsExtension::qtHldpluginVersion() const
 {
     return QLatin1String(Constants::IDE_VERSION_DISPLAY);
 }

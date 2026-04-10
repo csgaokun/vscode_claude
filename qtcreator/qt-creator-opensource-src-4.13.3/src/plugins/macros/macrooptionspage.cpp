@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Nicolas Arnaud-Cormos
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@ MacroOptionsPage::MacroOptionsPage()
     setId(Constants::M_OPTIONS_PAGE);
     setDisplayName(MacroOptionsWidget::tr("Macros"));
     setCategory(TextEditor::Constants::TEXT_EDITOR_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new MacroOptionsWidget; });
+    setWidgetHldplugin([] { return new MacroOptionsWidget; });
 }
 
 } // Internal

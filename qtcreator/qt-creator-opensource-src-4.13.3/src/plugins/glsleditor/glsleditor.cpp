@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -195,7 +195,7 @@ void GlslEditorWidget::updateDocumentNow()
 
     int variant = languageVariant(textDocument()->mimeType());
     const QString contents = toPlainText(); // get the code from the editor
-    const QByteArray preprocessedCode = contents.toLatin1(); // ### use the QtCreator C++ preprocessor.
+    const QByteArray preprocessedCode = contents.toLatin1(); // ### use the QtHldplugin C++ preprocessor.
 
     Document::Ptr doc(new Document());
     doc->_engine = new Engine();
@@ -316,10 +316,10 @@ GlslEditorFactory::GlslEditorFactory()
     addMimeType(Constants::GLSL_MIMETYPE_VERT_ES);
     addMimeType(Constants::GLSL_MIMETYPE_FRAG_ES);
 
-    setDocumentCreator([]() { return new TextDocument(Constants::C_GLSLEDITOR_ID); });
-    setEditorWidgetCreator([]() { return new GlslEditorWidget; });
-    setIndenterCreator([](QTextDocument *doc) { return new GlslIndenter(doc); });
-    setSyntaxHighlighterCreator([]() { return new GlslHighlighter; });
+    setDocumentHldplugin([]() { return new TextDocument(Constants::C_GLSLEDITOR_ID); });
+    setEditorWidgetHldplugin([]() { return new GlslEditorWidget; });
+    setIndenterHldplugin([](QTextDocument *doc) { return new GlslIndenter(doc); });
+    setSyntaxHighlighterHldplugin([]() { return new GlslHighlighter; });
     setCommentDefinition(Utils::CommentDefinition::CppStyle);
     setCompletionAssistProvider(new GlslCompletionAssistProvider);
     setParenthesesMatchingEnabled(true);

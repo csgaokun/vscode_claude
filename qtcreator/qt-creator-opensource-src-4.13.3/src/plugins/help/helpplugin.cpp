@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -193,13 +193,13 @@ HelpPluginPrivate::HelpPluginPrivate()
     if (!locale.isEmpty()) {
         auto qtr = new QTranslator(this);
         auto qhelptr = new QTranslator(this);
-        const QString &creatorTrPath = ICore::resourcePath() + "/translations";
+        const QString &hldpluginTrPath = ICore::resourcePath() + "/translations";
         const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
         const QString &trFile = QLatin1String("assistant_") + locale;
         const QString &helpTrFile = QLatin1String("qt_help_") + locale;
-        if (qtr->load(trFile, qtTrPath) || qtr->load(trFile, creatorTrPath))
+        if (qtr->load(trFile, qtTrPath) || qtr->load(trFile, hldpluginTrPath))
             QCoreApplication::installTranslator(qtr);
-        if (qhelptr->load(helpTrFile, qtTrPath) || qhelptr->load(helpTrFile, creatorTrPath))
+        if (qhelptr->load(helpTrFile, qtTrPath) || qhelptr->load(helpTrFile, hldpluginTrPath))
             QCoreApplication::installTranslator(qhelptr);
     }
 
@@ -262,7 +262,7 @@ HelpPluginPrivate::HelpPluginPrivate()
     cmd = ActionManager::registerAction(action, "Help.TechSupport");
     ActionManager::actionContainer(Core::Constants::M_HELP)->addAction(cmd, Core::Constants::G_HELP_SUPPORT);
     connect(action, &QAction::triggered, this, [this] {
-        showHelpUrl(QUrl("qthelp://org.qt-project.qtcreator/doc/technical-support.html"),
+        showHelpUrl(QUrl("qthelp://org.qt-project.qthldplugin/doc/technical-support.html"),
                     Core::HelpManager::HelpModeAlways);
     });
 
@@ -291,9 +291,9 @@ HelpPluginPrivate::HelpPluginPrivate()
 void HelpPlugin::extensionsInitialized()
 {
     QStringList filesToRegister;
-    // we might need to register creators inbuild help
-    filesToRegister.append(Core::HelpManager::documentationPath() + "/qtcreator.qch");
-    filesToRegister.append(Core::HelpManager::documentationPath() + "/qtcreator-dev.qch");
+    // we might need to register hldplugins inbuild help
+    filesToRegister.append(Core::HelpManager::documentationPath() + "/qthldplugin.qch");
+    filesToRegister.append(Core::HelpManager::documentationPath() + "/qthldplugin-dev.qch");
     Core::HelpManager::registerDocumentation(filesToRegister);
 }
 
@@ -320,9 +320,9 @@ ExtensionSystem::IPlugin::ShutdownFlag HelpPlugin::aboutToShutdown()
 
 void HelpPluginPrivate::resetFilter()
 {
-    const QString &filterInternal = QString::fromLatin1("Qt Creator %1.%2.%3")
+    const QString &filterInternal = QString::fromLatin1("Qt Hldplugin %1.%2.%3")
         .arg(IDE_VERSION_MAJOR).arg(IDE_VERSION_MINOR).arg(IDE_VERSION_RELEASE);
-    QRegExp filterRegExp("Qt Creator \\d*\\.\\d*\\.\\d*");
+    QRegExp filterRegExp("Qt Hldplugin \\d*\\.\\d*\\.\\d*");
 
     QHelpEngineCore *engine = &LocalHelpManager::helpEngine();
     const QStringList &filters = engine->customFilters();
@@ -575,8 +575,8 @@ void HelpPluginPrivate::showContextHelp(const HelpItem &contextHelp)
                                     "<font color=\"%3\">%5</font>"
                                     "</center></body></html>")
                                 .arg(HelpPlugin::tr("No Documentation"))
-                                .arg(creatorTheme()->color(Theme::BackgroundColorNormal).name())
-                                .arg(creatorTheme()->color(Theme::TextColorNormal).name())
+                                .arg(hldpluginTheme()->color(Theme::BackgroundColorNormal).name())
+                                .arg(hldpluginTheme()->color(Theme::TextColorNormal).name())
                                 .arg(contextHelp.helpIds().join(", "))
                                 .arg(HelpPlugin::tr("No documentation available.")));
         }
@@ -610,11 +610,11 @@ void HelpPluginPrivate::activateContents()
 
 HelpViewer *HelpPluginPrivate::showHelpUrl(const QUrl &url, Core::HelpManager::HelpViewerLocation location)
 {
-    static const QString qtcreatorUnversionedID = "org.qt-project.qtcreator";
-    if (url.host() == qtcreatorUnversionedID) {
+    static const QString qthldpluginUnversionedID = "org.qt-project.qthldplugin";
+    if (url.host() == qthldpluginUnversionedID) {
         // QtHelp doesn't know about versions, add the version number and use that
         QUrl versioned = url;
-        versioned.setHost(qtcreatorUnversionedID + "."
+        versioned.setHost(qthldpluginUnversionedID + "."
                           + QString::fromLatin1(Core::Constants::IDE_VERSION_LONG).remove('.'));
 
         return showHelpUrl(versioned, location);

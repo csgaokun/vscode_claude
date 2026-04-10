@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@
 int main(int argc, char *argv[])
 {
     Sqlite::Database::activateLogging();
-    const QString temporayDirectoryPath = QDir::tempPath() +"/QtCreator-UnitTests-XXXXXX";
+    const QString temporayDirectoryPath = QDir::tempPath() +"/QtHldplugin-UnitTests-XXXXXX";
     Utils::TemporaryDirectory::setMasterTemporaryDirectory(temporayDirectoryPath);
     qputenv("TMPDIR", Utils::TemporaryDirectory::masterDirectoryPath().toUtf8());
     qputenv("TEMP", Utils::TemporaryDirectory::masterDirectoryPath().toUtf8());

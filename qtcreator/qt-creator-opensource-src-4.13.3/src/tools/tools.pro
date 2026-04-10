@@ -1,4 +1,4 @@
-include(../../qtcreator.pri)
+include(../../qthldplugin.pri)
 
 TEMPLATE = subdirs
 CONFIG += ordered
@@ -48,7 +48,7 @@ isEmpty(BUILD_CPLUSPLUS_TOOLS):BUILD_CPLUSPLUS_TOOLS=$$(BUILD_CPLUSPLUS_TOOLS)
     linux-* {
         # Build only in debug mode.
         debug_and_release|CONFIG(debug, debug|release) {
-            SUBDIRS += qtcreatorcrashhandler
+            SUBDIRS += qthldplugincrashhandler
         }
     }
 }
@@ -65,8 +65,8 @@ exists(perfparser/perfparser.pro) {
         # PERFPARSER_ELFUTILS_BACKENDS_INSTALLDIR = $$QTC_PREFIX/lib/elfutils
     } else {
         SUBDIRS += perfparser
-        PERFPARSER_APP_DESTDIR = $$IDE_BUILD_TREE/libexec/qtcreator
-        PERFPARSER_APP_INSTALLDIR = $$QTC_PREFIX/libexec/qtcreator
+        PERFPARSER_APP_DESTDIR = $$IDE_BUILD_TREE/libexec/qthldplugin
+        PERFPARSER_APP_INSTALLDIR = $$QTC_PREFIX/libexec/qthldplugin
 
         # On linux we have "$ORIGIN/../$LIB/elfutils" in eblopenbackend.c. Unfortunately $LIB
         # can be many different things, so we target the second try where it just loads the

@@ -17,7 +17,7 @@ QTC_PLUGIN_DEPENDS += \
     qmldesigner \
     diffeditor
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 
 RESOURCES += \
     $$IDE_SOURCE_TREE/tests/manual/widgets/crumblepath/tst_crumblepath.qrc \

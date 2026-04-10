@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,9 +30,9 @@
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT QUrl urlFromLocalHostAndFreePort();
-QTCREATOR_UTILS_EXPORT QUrl urlFromLocalSocket();
-QTCREATOR_UTILS_EXPORT QString urlSocketScheme();
-QTCREATOR_UTILS_EXPORT QString urlTcpScheme();
+QTHLDPLUGIN_UTILS_EXPORT QUrl urlFromLocalHostAndFreePort();
+QTHLDPLUGIN_UTILS_EXPORT QUrl urlFromLocalSocket();
+QTHLDPLUGIN_UTILS_EXPORT QString urlSocketScheme();
+QTHLDPLUGIN_UTILS_EXPORT QString urlTcpScheme();
 
 }

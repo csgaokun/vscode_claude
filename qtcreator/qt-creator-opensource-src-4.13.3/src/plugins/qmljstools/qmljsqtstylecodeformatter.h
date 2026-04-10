@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,11 +34,11 @@ namespace TextEditor { class TabSettings; }
 
 namespace QmlJSTools {
 
-class QMLJSTOOLS_EXPORT CreatorCodeFormatter : public QmlJS::QtStyleCodeFormatter
+class QMLJSTOOLS_EXPORT HldpluginCodeFormatter : public QmlJS::QtStyleCodeFormatter
 {
 public:
-    CreatorCodeFormatter();
-    explicit CreatorCodeFormatter(const TextEditor::TabSettings &tabSettings);
+    HldpluginCodeFormatter();
+    explicit HldpluginCodeFormatter(const TextEditor::TabSettings &tabSettings);
 
 protected:
     void saveBlockData(QTextBlock *block, const BlockData &data) const override;

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -358,7 +358,7 @@ bool AndroidAvdManager::waitForBooted(const QString &serialNumber,
  * Particularly, failing because of tag "hw.device.manufacturer", thus removing
  * it would make paring successful. However, it has to be returned afterwards,
  * otherwise, Android Studio would give an error during parsing also. So this fix
- * aim to keep support for Qt Creator and Android Studio.
+ * aim to keep support for Qt Hldplugin and Android Studio.
  */
 static const QString avdManufacturerError = "no longer exists as a device";
 static QStringList avdErrorPaths;

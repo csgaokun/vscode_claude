@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -59,7 +59,7 @@ static QByteArrayList populateLineage(const QmlDesigner::ModelNode &node)
 namespace QmlDesigner {
 using namespace Constants;
 
-std::vector<std::unique_ptr<Internal::NodeParserCreatorBase>> Component::m_readers;
+std::vector<std::unique_ptr<Internal::NodeParserHldpluginBase>> Component::m_readers;
 Component::Component(AssetExporter &exporter, const ModelNode &rootNode):
     m_exporter(exporter),
     m_rootNode(rootNode)
@@ -92,8 +92,8 @@ ModelNodeParser *Component::createNodeParser(const ModelNode &node) const
 {
     QByteArrayList lineage = populateLineage(node);
     std::unique_ptr<ModelNodeParser> reader;
-    for (auto &parserCreator: m_readers) {
-        std::unique_ptr<ModelNodeParser> r(parserCreator->instance(lineage, node));
+    for (auto &parserHldplugin: m_readers) {
+        std::unique_ptr<ModelNodeParser> r(parserHldplugin->instance(lineage, node));
         if (r->isExportable()) {
             if (reader) {
                 if (reader->priority() < r->priority())

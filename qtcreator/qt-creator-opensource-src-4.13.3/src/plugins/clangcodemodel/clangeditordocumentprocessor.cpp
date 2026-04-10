@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -199,11 +199,11 @@ void ClangEditorDocumentProcessor::updateCodeWarnings(
         m_diagnosticManager.processNewDiagnostics(diagnostics, m_isProjectFile);
         const auto codeWarnings = m_diagnosticManager.takeExtraSelections();
         const auto fixitAvailableMarkers = m_diagnosticManager.takeFixItAvailableMarkers();
-        const auto creator = creatorForHeaderErrorDiagnosticWidget(firstHeaderErrorDiagnostic);
+        const auto hldplugin = hldpluginForHeaderErrorDiagnosticWidget(firstHeaderErrorDiagnostic);
 
         emit codeWarningsUpdated(revision(),
                                  codeWarnings,
-                                 creator,
+                                 hldplugin,
                                  fixitAvailableMarkers);
     }
 }
@@ -601,12 +601,12 @@ void ClangEditorDocumentProcessor::requestAnnotationsFromBackend()
     m_communicator.requestAnnotations(fileContainer);
 }
 
-CppTools::BaseEditorDocumentProcessor::HeaderErrorDiagnosticWidgetCreator
-ClangEditorDocumentProcessor::creatorForHeaderErrorDiagnosticWidget(
+CppTools::BaseEditorDocumentProcessor::HeaderErrorDiagnosticWidgetHldplugin
+ClangEditorDocumentProcessor::hldpluginForHeaderErrorDiagnosticWidget(
         const ClangBackEnd::DiagnosticContainer &firstHeaderErrorDiagnostic)
 {
     if (firstHeaderErrorDiagnostic.text.isEmpty())
-        return CppTools::BaseEditorDocumentProcessor::HeaderErrorDiagnosticWidgetCreator();
+        return CppTools::BaseEditorDocumentProcessor::HeaderErrorDiagnosticWidgetHldplugin();
 
     return [firstHeaderErrorDiagnostic]() {
         auto vbox = new QVBoxLayout;

@@ -63,7 +63,7 @@ SOURCES += \
     $$PWD/sourcelocationcontainerv2.cpp \
     $$PWD/sourcelocationscontainer.cpp \
     $$PWD/sourcerangecontainer.cpp \
-    $$PWD/processcreator.cpp \
+    $$PWD/processhldplugin.cpp \
     $$PWD/processexception.cpp \
     $$PWD/processstartedevent.cpp \
     $$PWD/sourcerangecontainerv2.cpp \
@@ -171,7 +171,7 @@ HEADERS += \
     $$PWD/sourcelocationscontainer.h \
     $$PWD/sourcerangecontainer.h \
     $$PWD/filepath.h \
-    $$PWD/processcreator.h \
+    $$PWD/processhldplugin.h \
     $$PWD/processexception.h \
     $$PWD/processhandle.h \
     $$PWD/processstartedevent.h \

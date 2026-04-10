@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@ namespace Utils {
 class Wizard;
 namespace Internal {
 
-class QTCREATOR_UTILS_EXPORT ObjectToFieldWidgetConverter : public QWidget
+class QTHLDPLUGIN_UTILS_EXPORT ObjectToFieldWidgetConverter : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(QVariant value READ value NOTIFY valueChanged)
@@ -70,7 +70,7 @@ private:
 
 } // Internal
 
-class QTCREATOR_UTILS_EXPORT WizardPage : public QWizardPage
+class QTHLDPLUGIN_UTILS_EXPORT WizardPage : public QWizardPage
 {
     Q_OBJECT
 

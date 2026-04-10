@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -67,7 +67,7 @@ bool OutputCollector::listen()
         return m_server->isListening();
     m_server = new QLocalServer(this);
     connect(m_server, &QLocalServer::newConnection, this, &OutputCollector::newConnectionAvailable);
-    return m_server->listen(QString::fromLatin1("creator-%1-%2")
+    return m_server->listen(QString::fromLatin1("hldplugin-%1-%2")
                             .arg(QCoreApplication::applicationPid())
                             .arg(rand()));
 #else

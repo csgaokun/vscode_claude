@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -44,7 +44,7 @@ using namespace Utils;
 
 static QColor themeColor(Theme::Color role)
 {
-    return creatorTheme()->color(role);
+    return hldpluginTheme()->color(role);
 }
 
 static QFont sizedFont(int size, const QWidget *widget)

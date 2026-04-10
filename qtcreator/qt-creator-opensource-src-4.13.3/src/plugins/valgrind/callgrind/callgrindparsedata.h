@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -102,9 +102,9 @@ public:
     int version() const;
     void setVersion(int version);
 
-    /// @return creator of the data
-    QString creator() const;
-    void setCreator(const QString &creator);
+    /// @return hldplugin of the data
+    QString hldplugin() const;
+    void setHldplugin(const QString &hldplugin);
 
     /**
      * Internal name compression lookup table.

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -56,7 +56,7 @@ QSet<Utils::Id> WebAssemblyQtVersion::targetDeviceTypes() const
 
 WebAssemblyQtVersionFactory::WebAssemblyQtVersionFactory()
 {
-    setQtVersionCreator([] { return new WebAssemblyQtVersion; });
+    setQtVersionHldplugin([] { return new WebAssemblyQtVersion; });
     setSupportedType(Constants::WEBASSEMBLY_QT_VERSION);
     setPriority(1);
     setRestrictionChecker([](const SetupData &setup) {

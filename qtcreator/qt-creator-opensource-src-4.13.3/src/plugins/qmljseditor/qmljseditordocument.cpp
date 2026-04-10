@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -508,14 +508,14 @@ QmlJSEditorDocumentPrivate::~QmlJSEditorDocumentPrivate()
     m_semanticInfoUpdater->abort();
     m_semanticInfoUpdater->wait();
     // clean up all marks, otherwise a callback could try to access deleted members.
-    // see QTCREATORBUG-20199
+    // see QTHLDPLUGINBUG-20199
     cleanDiagnosticMarks();
     cleanSemanticMarks();
 }
 
 void QmlJSEditorDocumentPrivate::invalidateFormatterCache()
 {
-    CreatorCodeFormatter formatter(q->tabSettings());
+    HldpluginCodeFormatter formatter(q->tabSettings());
     formatter.invalidateCache(q->document());
 }
 

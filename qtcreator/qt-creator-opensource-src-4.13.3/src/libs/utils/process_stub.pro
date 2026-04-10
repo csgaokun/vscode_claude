@@ -1,10 +1,10 @@
 CONFIG          += warn_on console use_c_linker
 CONFIG          -= qt app_bundle
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 
 TEMPLATE        = app
-TARGET          = qtcreator_process_stub
+TARGET          = qthldplugin_process_stub
 DESTDIR         = $$IDE_LIBEXEC_PATH
 
 build_all:!build_pass {

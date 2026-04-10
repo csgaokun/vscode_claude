@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -58,7 +58,7 @@ QSet<Utils::Id> WinRtQtVersion::targetDeviceTypes() const
 
 WinRtQtVersionFactory::WinRtQtVersionFactory()
 {
-    setQtVersionCreator([] { return new WinRtQtVersion; });
+    setQtVersionHldplugin([] { return new WinRtQtVersion; });
     setSupportedType(Constants::WINRT_WINRTQT);
     setRestrictionChecker([](const SetupData &setup) { return setup.platforms.contains("winrt"); });
     setPriority(10);

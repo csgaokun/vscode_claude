@@ -1,6 +1,6 @@
 DEFINES += CPPTOOLS_LIBRARY
 msvc: DEFINES += _SCL_SECURE_NO_WARNINGS
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS += \
     abstracteditorsupport.h \
@@ -88,7 +88,7 @@ HEADERS += \
     senddocumenttracker.h \
     cpptoolsbridge.h \
     cpptoolsbridgeinterface.h \
-    cpptoolsbridgeqtcreatorimplementation.h \
+    cpptoolsbridgeqthldpluginimplementation.h \
     projectpart.h \
     projectinfo.h \
     cppprojectinfogenerator.h \
@@ -179,7 +179,7 @@ SOURCES += \
     typehierarchybuilder.cpp \
     senddocumenttracker.cpp \
     cpptoolsbridge.cpp \
-    cpptoolsbridgeqtcreatorimplementation.cpp \
+    cpptoolsbridgeqthldpluginimplementation.cpp \
     projectpart.cpp \
     projectinfo.cpp \
     cppprojectinfogenerator.cpp \

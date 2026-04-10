@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Brian McGillion and Hugues Delorme
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -225,9 +225,9 @@ protected:
 
     virtual QStringList revisionSpec(const QString &/*revision*/) const { return {}; }
 
-    typedef std::function<VcsBaseEditorConfig *(QToolBar *)> ConfigCreator;
-    void setDiffConfigCreator(ConfigCreator creator);
-    void setLogConfigCreator(ConfigCreator creator);
+    typedef std::function<VcsBaseEditorConfig *(QToolBar *)> ConfigHldplugin;
+    void setDiffConfigHldplugin(ConfigHldplugin hldplugin);
+    void setLogConfigHldplugin(ConfigHldplugin hldplugin);
 
     virtual StatusItem parseStatusLine(const QString &/*line*/) const { return {}; }
 
@@ -236,8 +236,8 @@ protected:
 private:
     void statusParser(const QString&);
 
-    VcsBaseClient::ConfigCreator m_diffConfigCreator;
-    VcsBaseClient::ConfigCreator m_logConfigCreator;
+    VcsBaseClient::ConfigHldplugin m_diffConfigHldplugin;
+    VcsBaseClient::ConfigHldplugin m_logConfigHldplugin;
 };
 
 } //namespace VcsBase

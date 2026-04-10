@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -114,11 +114,11 @@ void ShellCommandPage::slotFinished(bool ok, int exitCode, const QVariant &)
     if (success) {
         m_state = Succeeded;
         message = tr("Succeeded.");
-        palette.setColor(QPalette::WindowText, creatorTheme()->color(Theme::TextColorNormal).name());
+        palette.setColor(QPalette::WindowText, hldpluginTheme()->color(Theme::TextColorNormal).name());
     } else {
         m_state = Failed;
         message = tr("Failed.");
-        palette.setColor(QPalette::WindowText, creatorTheme()->color(Theme::TextColorError).name());
+        palette.setColor(QPalette::WindowText, hldpluginTheme()->color(Theme::TextColorError).name());
     }
 
     m_statusLabel->setText(message);

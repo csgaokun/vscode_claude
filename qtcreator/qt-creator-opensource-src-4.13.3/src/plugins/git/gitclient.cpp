@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1620,7 +1620,7 @@ bool GitClient::synchronousParentRevisions(const QString &workingDirectory,
 QString GitClient::synchronousShortDescription(const QString &workingDirectory, const QString &revision) const
 {
     // HACK: The hopefully rare "_-_" will be replaced by quotes in the output,
-    // leaving it in breaks command line quoting on Windows, see QTCREATORBUG-23208.
+    // leaving it in breaks command line quoting on Windows, see QTHLDPLUGINBUG-23208.
     const QString quoteReplacement = "_-_";
 
     // Short SHA1, author, subject
@@ -1817,7 +1817,7 @@ QString GitClient::synchronousShortDescription(const QString &workingDirectory, 
 }
 
 // Create a default message to be used for describing stashes
-static inline QString creatorStashMessage(const QString &keyword = QString())
+static inline QString hldpluginStashMessage(const QString &keyword = QString())
 {
     QString rc = QCoreApplication::applicationName() + ' ';
     if (!keyword.isEmpty())
@@ -1843,7 +1843,7 @@ QString GitClient::synchronousStash(const QString &workingDirectory, const QStri
     QString errorMessage;
     switch (gitStatus(workingDirectory, StatusMode(NoUntracked | NoSubmodules), nullptr, &errorMessage)) {
     case  StatusChanged: {
-        message = creatorStashMessage(messageKeyword);
+        message = hldpluginStashMessage(messageKeyword);
         do {
             if ((flags & StashPromptDescription)) {
                 if (!inputText(ICore::dialogParent(),
@@ -2947,7 +2947,7 @@ bool GitClient::addAndCommit(const QString &repositoryDirectory,
 }
 
 /* Revert: This function can be called with a file list (to revert single
- * files)  or a single directory (revert all). Qt Creator currently has only
+ * files)  or a single directory (revert all). Qt Hldplugin currently has only
  * 'revert single' in its VCS menus, but the code is prepared to deal with
  * reverting a directory pending a sophisticated selection dialog in the
  * VcsBase plugin. */
@@ -3265,7 +3265,7 @@ void GitClient::push(const QString &workingDirectory, const QStringList &pushArg
             case Unknown:
                 break;
             case NonFastForward: {
-                const QColor warnColor = Utils::creatorTheme()->color(Theme::TextColorError);
+                const QColor warnColor = Utils::hldpluginTheme()->color(Theme::TextColorError);
                 if (QMessageBox::question(
                             Core::ICore::dialogParent(), tr("Force Push"),
                             tr("Push failed. Would you like to force-push <span style=\"color:#%1\">"
@@ -3627,7 +3627,7 @@ void GitClient::StashInfo::stashPrompt(const QString &command, const QString &st
         m_stashResult = StashCanceled;
     } else if (msgBox.clickedButton() == stashButton) {
         const bool result = m_instance->executeSynchronousStash(
-                    m_workingDir, creatorStashMessage(command), false, errorMessage);
+                    m_workingDir, hldpluginStashMessage(command), false, errorMessage);
         m_stashResult = result ? StashUnchanged : StashFailed;
     } else if (msgBox.clickedButton() == stashAndPopButton) {
         executeStash(command, errorMessage);
@@ -3636,7 +3636,7 @@ void GitClient::StashInfo::stashPrompt(const QString &command, const QString &st
 
 void GitClient::StashInfo::executeStash(const QString &command, QString *errorMessage)
 {
-    m_message = creatorStashMessage(command);
+    m_message = hldpluginStashMessage(command);
     if (!m_instance->executeSynchronousStash(m_workingDir, m_message, false, errorMessage))
         m_stashResult = StashFailed;
     else

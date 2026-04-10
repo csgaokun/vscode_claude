@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 Andrey Sobol <andrey.sobol.nn@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -69,7 +69,7 @@ EBlinkGdbServerProvider::EBlinkGdbServerProvider()
     setChannel("127.0.0.1", 2331);
     setSettingsKeyBase("BareMetal.EBlinkGdbServerProvider");
     setTypeDisplayName(GdbServerProvider::tr("EBlink"));
-    setConfigurationWidgetCreator([this] { return new EBlinkGdbServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new EBlinkGdbServerProviderConfigWidget(this); });
 }
 
 QString EBlinkGdbServerProvider::defaultInitCommands()
@@ -234,7 +234,7 @@ EBlinkGdbServerProviderFactory::EBlinkGdbServerProviderFactory()
 {
     setId(Constants::GDBSERVER_EBLINK_PROVIDER_ID);
     setDisplayName(GdbServerProvider::tr("EBlink"));
-    setCreator([] { return new EBlinkGdbServerProvider; });
+    setHldplugin([] { return new EBlinkGdbServerProvider; });
 }
 
 // EBlinkGdbServerProviderConfigWidget

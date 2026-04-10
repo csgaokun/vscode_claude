@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,25 +43,25 @@ namespace Utils {
 // Helper:
 // -----------------------------------------------------------------------------
 
-QTCREATOR_UTILS_EXPORT int versionFromMap(const QVariantMap &data);
-QTCREATOR_UTILS_EXPORT int originalVersionFromMap(const QVariantMap &data);
-QTCREATOR_UTILS_EXPORT QByteArray settingsIdFromMap(const QVariantMap &data);
+QTHLDPLUGIN_UTILS_EXPORT int versionFromMap(const QVariantMap &data);
+QTHLDPLUGIN_UTILS_EXPORT int originalVersionFromMap(const QVariantMap &data);
+QTHLDPLUGIN_UTILS_EXPORT QByteArray settingsIdFromMap(const QVariantMap &data);
 
-QTCREATOR_UTILS_EXPORT void setVersionInMap(QVariantMap &data, int version);
-QTCREATOR_UTILS_EXPORT void setOriginalVersionInMap(QVariantMap &data, int version);
-QTCREATOR_UTILS_EXPORT void setSettingsIdInMap(QVariantMap &data, const QByteArray &id);
+QTHLDPLUGIN_UTILS_EXPORT void setVersionInMap(QVariantMap &data, int version);
+QTHLDPLUGIN_UTILS_EXPORT void setOriginalVersionInMap(QVariantMap &data, int version);
+QTHLDPLUGIN_UTILS_EXPORT void setSettingsIdInMap(QVariantMap &data, const QByteArray &id);
 
 // --------------------------------------------------------------------
 // Helpers:
 // --------------------------------------------------------------------
 
-QTCREATOR_UTILS_EXPORT int versionFromMap(const QVariantMap &data);
-QTCREATOR_UTILS_EXPORT int originalVersionFromMap(const QVariantMap &data);
-QTCREATOR_UTILS_EXPORT QByteArray settingsIdFromMap(const QVariantMap &data);
+QTHLDPLUGIN_UTILS_EXPORT int versionFromMap(const QVariantMap &data);
+QTHLDPLUGIN_UTILS_EXPORT int originalVersionFromMap(const QVariantMap &data);
+QTHLDPLUGIN_UTILS_EXPORT QByteArray settingsIdFromMap(const QVariantMap &data);
 
-QTCREATOR_UTILS_EXPORT void setVersionInMap(QVariantMap &data, int version);
-QTCREATOR_UTILS_EXPORT void setOriginalVersionInMap(QVariantMap &data, int version);
-QTCREATOR_UTILS_EXPORT void setSettingsIdInMap(QVariantMap &data, const QByteArray &id);
+QTHLDPLUGIN_UTILS_EXPORT void setVersionInMap(QVariantMap &data, int version);
+QTHLDPLUGIN_UTILS_EXPORT void setOriginalVersionInMap(QVariantMap &data, int version);
+QTHLDPLUGIN_UTILS_EXPORT void setSettingsIdInMap(QVariantMap &data, const QByteArray &id);
 
 using SettingsMergeResult = optional<QPair<QString, QVariant>>;
 
@@ -70,7 +70,7 @@ using SettingsMergeResult = optional<QPair<QString, QVariant>>;
 // --------------------------------------------------------------------
 
 // Read/write files incl. error handling suitable for the UI:
-class QTCREATOR_UTILS_EXPORT SettingsAccessor
+class QTHLDPLUGIN_UTILS_EXPORT SettingsAccessor
 {
 public:
     SettingsAccessor(const QString &docType, const QString &displayName,
@@ -149,7 +149,7 @@ private:
 // BackingUpSettingsAccessor:
 // --------------------------------------------------------------------
 
-class QTCREATOR_UTILS_EXPORT BackUpStrategy
+class QTHLDPLUGIN_UTILS_EXPORT BackUpStrategy
 {
 public:
     virtual ~BackUpStrategy() = default;
@@ -164,7 +164,7 @@ public:
     backupName(const QVariantMap &oldData, const FilePath &path, const QVariantMap &data) const;
 };
 
-class QTCREATOR_UTILS_EXPORT BackingUpSettingsAccessor : public SettingsAccessor
+class QTHLDPLUGIN_UTILS_EXPORT BackingUpSettingsAccessor : public SettingsAccessor
 {
 public:
     BackingUpSettingsAccessor(const QString &docType, const QString &displayName,
@@ -192,7 +192,7 @@ private:
 
 class UpgradingSettingsAccessor;
 
-class QTCREATOR_UTILS_EXPORT VersionedBackUpStrategy : public BackUpStrategy
+class QTHLDPLUGIN_UTILS_EXPORT VersionedBackUpStrategy : public BackUpStrategy
 {
 public:
     VersionedBackUpStrategy(const UpgradingSettingsAccessor *accessor);
@@ -212,7 +212,7 @@ protected:
 };
 
 // Handles updating a QVariantMap from version() to version() + 1
-class QTCREATOR_UTILS_EXPORT VersionUpgrader
+class QTHLDPLUGIN_UTILS_EXPORT VersionUpgrader
 {
 public:
     VersionUpgrader(const int version, const QString &extension);
@@ -234,7 +234,7 @@ private:
 
 class MergingSettingsAccessor;
 
-class QTCREATOR_UTILS_EXPORT UpgradingSettingsAccessor : public BackingUpSettingsAccessor
+class QTHLDPLUGIN_UTILS_EXPORT UpgradingSettingsAccessor : public BackingUpSettingsAccessor
 {
 public:
     UpgradingSettingsAccessor(const QString &docType,
@@ -271,7 +271,7 @@ private:
 // MergingSettingsAccessor:
 // --------------------------------------------------------------------
 
-class QTCREATOR_UTILS_EXPORT MergingSettingsAccessor : public UpgradingSettingsAccessor
+class QTHLDPLUGIN_UTILS_EXPORT MergingSettingsAccessor : public UpgradingSettingsAccessor
 {
 public:
     struct SettingsMergeData {
@@ -305,7 +305,7 @@ private:
 
 using SettingsMergeFunction = std::function<SettingsMergeResult(const MergingSettingsAccessor::SettingsMergeData &,
                                                                 const MergingSettingsAccessor::SettingsMergeData &)>;
-QTCREATOR_UTILS_EXPORT QVariant mergeQVariantMaps(const QVariantMap &mainTree, const QVariantMap &secondaryTree,
+QTHLDPLUGIN_UTILS_EXPORT QVariant mergeQVariantMaps(const QVariantMap &mainTree, const QVariantMap &secondaryTree,
                                                   const SettingsMergeFunction &merge);
 
 } // namespace Utils

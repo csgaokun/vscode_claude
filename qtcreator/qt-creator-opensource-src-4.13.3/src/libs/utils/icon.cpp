@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -65,7 +65,7 @@ static MasksAndColors masksAndColors(const Icon &icon, int dpr)
     MasksAndColors result;
     for (const IconMaskAndColor &i: icon) {
         const QString &fileName = i.first;
-        const QColor color = creatorTheme()->color(i.second);
+        const QColor color = hldpluginTheme()->color(i.second);
         const QString dprFileName = StyleHelper::availableImageResolutions(i.first).contains(dpr) ?
                     StyleHelper::imageFileWithResolution(fileName, dpr) : fileName;
         QPixmap pixmap;
@@ -136,7 +136,7 @@ static QPixmap masksToIcon(const MasksAndColors &masks, const QPixmap &combinedM
         p.drawPixmap(0, 0, maskToColorAndAlpha((*maskImage).first, (*maskImage).second));
     }
 
-    if (style & Icon::DropShadow && creatorTheme()->flag(Theme::ToolBarIconShadow)) {
+    if (style & Icon::DropShadow && hldpluginTheme()->flag(Theme::ToolBarIconShadow)) {
         const QPixmap shadowMask = maskToColorAndAlpha(combinedMask, Qt::black);
         p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
         p.setOpacity(0.08);
@@ -182,7 +182,7 @@ QIcon Icon::icon() const
             const QPixmap combinedMask = Utils::combinedMask(masks, m_style);
             result.addPixmap(masksToIcon(masks, combinedMask, m_style));
 
-            const QColor disabledColor = creatorTheme()->color(Theme::IconsDisabledColor);
+            const QColor disabledColor = hldpluginTheme()->color(Theme::IconsDisabledColor);
             result.addPixmap(maskToColorAndAlpha(combinedMask, disabledColor), QIcon::Disabled);
         }
         return result;
@@ -200,7 +200,7 @@ QPixmap Icon::pixmap(QIcon::Mode iconMode) const
                 masksAndColors(*this, qRound(qApp->devicePixelRatio()));
         const QPixmap combinedMask = Utils::combinedMask(masks, m_style);
         return iconMode == QIcon::Disabled
-                ? maskToColorAndAlpha(combinedMask, creatorTheme()->color(Theme::IconsDisabledColor))
+                ? maskToColorAndAlpha(combinedMask, hldpluginTheme()->color(Theme::IconsDisabledColor))
                 : masksToIcon(masks, combinedMask, m_style);
     }
 }
@@ -214,7 +214,7 @@ QString Icon::imageFileName() const
 QIcon Icon::sideBarIcon(const Icon &classic, const Icon &flat)
 {
     QIcon result;
-    if (creatorTheme()->flag(Theme::FlatSideBarIcons)) {
+    if (hldpluginTheme()->flag(Theme::FlatSideBarIcons)) {
         result = flat.icon();
     } else {
         const QPixmap pixmap = classic.pixmap();
@@ -231,7 +231,7 @@ QIcon Icon::sideBarIcon(const Icon &classic, const Icon &flat)
 QIcon Icon::modeIcon(const Icon &classic, const Icon &flat, const Icon &flatActive)
 {
     QIcon result = sideBarIcon(classic, flat);
-    if (creatorTheme()->flag(Theme::FlatSideBarIcons))
+    if (hldpluginTheme()->flag(Theme::FlatSideBarIcons))
         result.addPixmap(flatActive.pixmap(), QIcon::Active);
     return result;
 }

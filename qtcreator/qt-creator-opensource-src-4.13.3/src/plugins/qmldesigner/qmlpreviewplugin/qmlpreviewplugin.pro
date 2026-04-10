@@ -2,7 +2,7 @@ TARGET = qmlpreviewplugin
 TEMPLATE = lib
 CONFIG += plugin
 
-include(../../../../qtcreator.pri)\
+include(../../../../qthldplugin.pri)\
 
 include (../designercore/iwidgetplugin.pri)
 include (../qmldesigner_dependencies.pri)

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     startQC()
@@ -32,7 +32,7 @@ def main():
     # using a temporary directory won't mess up a potentially existing
     workingDir = tempDir()
     projectName = createNewQtQuickApplication(workingDir)[1]
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     if placeCursorToLine(editor, "}"):
         type(editor, '<Left>')
         type(editor, '<Return>')
@@ -68,14 +68,14 @@ def main():
                 if platform.system() in ('Microsoft' 'Windows'):
                     switchViewTo(ViewConstants.PROJECTS)
                     switchToBuildOrRunSettingsFor(kit, ProjectSettings.BUILD)
-                    buildDir = os.path.join(str(waitForObject(":Qt Creator_Utils::BuildDirectoryLineEdit").text),
+                    buildDir = os.path.join(str(waitForObject(":Qt Hldplugin_Utils::BuildDirectoryLineEdit").text),
                                             "debug")
                     switchViewTo(ViewConstants.EDIT)
                     allowAppThroughWinFW(buildDir, projectName, None)
                 if not doSimpleDebugging(kit, config,
                                          len(expectedBreakpointsOrder), expectedBreakpointsOrder):
                     try:
-                        stopB = findObject(':Qt Creator.Stop_QToolButton')
+                        stopB = findObject(':Qt Hldplugin.Stop_QToolButton')
                         if stopB.enabled:
                             clickButton(stopB)
                     except:
@@ -83,9 +83,9 @@ def main():
                 if platform.system() in ('Microsoft' 'Windows'):
                     deleteAppFromWinFW(buildDir, projectName, None)
                 # close application output window of current run to avoid mixing older output on the next run
-                ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+                ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
                 clickButton(waitForObject("{type='CloseButton' unnamed='1' visible='1' "
-                                          "window=':Qt Creator_Core::Internal::MainWindow'}"))
+                                          "window=':Qt Hldplugin_Core::Internal::MainWindow'}"))
                 try:
                     clickButton(waitForObject(":Close Debugging Session.Yes_QPushButton", 2000))
                 except:

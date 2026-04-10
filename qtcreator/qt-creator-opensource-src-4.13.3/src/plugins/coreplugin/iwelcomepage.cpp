@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -61,7 +61,7 @@ IWelcomePage::~IWelcomePage()
 static QPalette buttonPalette(bool isActive, bool isCursorInside, bool forText)
 {
     QPalette pal;
-    Theme *theme = Utils::creatorTheme();
+    Theme *theme = Utils::hldpluginTheme();
     if (isActive) {
         if (forText) {
             pal.setColor(QPalette::Window, theme->color(Theme::Welcome_ForegroundPrimaryColor));

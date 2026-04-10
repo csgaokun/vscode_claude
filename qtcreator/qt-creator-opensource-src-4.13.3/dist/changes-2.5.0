@@ -1,17 +1,17 @@
-Qt Creator version 2.5 contains bug fixes and new features.
+Qt Hldplugin version 2.5 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline v2.4.0...origin/2.5
 
 General
    * Add a keyboard shortcut (Alt) to the locator to display the full path to
-     a located file (QTCREATORBUG-3805)
-   * Add "Search Again" to recent searches (QTCREATORBUG-621)
-   * Allow multiple parallel searches (QTCREATORBUG-6101)
+     a located file (QTHLDPLUGINBUG-3805)
+   * Add "Search Again" to recent searches (QTHLDPLUGINBUG-621)
+   * Allow multiple parallel searches (QTHLDPLUGINBUG-6101)
    * Add Execute filter to the locator, for executing external commands [by
      Yuchen Deng]
 
@@ -23,23 +23,23 @@ Experimental Plugins
    Go to Help->About plugins to enable these!
 
 Editing
-   * Use the QML/JS editor for opening json files (QTCREATORBUG-4639)
+   * Use the QML/JS editor for opening json files (QTHLDPLUGINBUG-4639)
    * Add basic JSON validation according to the draft at
      tools.ietf.org/html/draft-zyp-json-schema-03. Still work in progress.
    * Add clipboad history that contains up to ten previous clips
-     (QTCREATORBUG-146)
+     (QTHLDPLUGINBUG-146)
    * Add a shortcut for toggling bookmarks by pressing Shift and clicking
-     the left margin at a line (QTCREATORBUG-2852)
+     the left margin at a line (QTHLDPLUGINBUG-2852)
    * Highlight search results of one character when whole words only is
-     specified (QTCREATORBUG-6372)
+     specified (QTHLDPLUGINBUG-6372)
    * Fix clean whitespace affecting lines that are already clean
-     (QTCREATORBUG-5712) [by Orgad Shaneh]
+     (QTHLDPLUGINBUG-5712) [by Orgad Shaneh]
    * Add a keyboard shortcut (Alt) to display context-sensitive help in a
-     popup if the corresponding option is enabled (QTCREATORBUG-6644)
-   * Fix layout update when folding/unfolding regions (QTCREATORBUG-6666)
+     popup if the corresponding option is enabled (QTHLDPLUGINBUG-6644)
+   * Fix layout update when folding/unfolding regions (QTHLDPLUGINBUG-6666)
    * Fix position of code-assist popup when cursor is outside viewport
-     (QTCREATORBUG-6843)
-   * Add "Open with" context menu in resource editor (QTCREATORBUG-4224)
+     (QTHLDPLUGINBUG-6843)
+   * Add "Open with" context menu in resource editor (QTHLDPLUGINBUG-4224)
    * Add task indicators in the left margin of a line
 
 Managing Projects
@@ -47,7 +47,7 @@ Managing Projects
      build and run settings at the same time
 
 Debugging
-   * Improve display of vtables and dynamic types (QTCREATORBUG-6933 et al)
+   * Improve display of vtables and dynamic types (QTHLDPLUGINBUG-6933 et al)
    * Adjust QDir and QFileInfo gdb pretty printer after Qt 4.8 changes
      and various others for Qt 5.0
    * Adjust std::map dumper for gcc 4.6
@@ -60,10 +60,10 @@ Debugging
    * Improve per-type and per-variable selection of display formats
    * Add display variants for map-like types (std::map, QMap, QHash etc)
    * Make "gdb startup script" directly editable
-   * Improve expansion behaviour of pinned tooltips (QTCREATORBUG-6554)
+   * Improve expansion behaviour of pinned tooltips (QTHLDPLUGINBUG-6554)
    * Prevent automatic loading of incompatible dumpers
-   * Make Shift-F5 exit when debugging a core file (QTCREATORBUG-6111)
-   * Make popping up the output pane optional (QTCREATORBUG-6764)
+   * Make Shift-F5 exit when debugging a core file (QTHLDPLUGINBUG-6111)
+   * Make popping up the output pane optional (QTHLDPLUGINBUG-6764)
    * Make entering commands in the log view more convenient
    * Re-enable debugging of Python scripts
    * Add pretty-printing for D arrays and strings
@@ -75,48 +75,48 @@ Debugging QML/JS
    * Spruce up the script console for evaluating QML/JS expressions
 
 Analyzing Code
-   * Fix message for "incompatible" builds (QTCREATORBUG-7011)
-   * Fix suppression dialog (QTCREATORBUG-6500)
+   * Fix message for "incompatible" builds (QTHLDPLUGINBUG-7011)
+   * Fix suppression dialog (QTHLDPLUGINBUG-6500)
 
 C++ Support
    * Fix completion and the dot-to-arrow conversion not triggering reliably
    * Add basic refactoring action to insert an #include for an undefined
      identifier
    * Fix completion for namespace aliases at global and namespace scope
-     (QTCREATORBUG-166)
+     (QTHLDPLUGINBUG-166)
    * Improve function signature synchronization by automatically renaming
      parameter name uses in the function body when changing the name in the
-     declaration (QTCREATORBUG-6132)
+     declaration (QTHLDPLUGINBUG-6132)
    * Improve preservation of non-cv specifiers when using function signature
-     synchronization (QTCREATORBUG-6620)
+     synchronization (QTHLDPLUGINBUG-6620)
    * Improve default argument handling with function signature synchronization
-     (QTCREATORBUG-5978)
+     (QTHLDPLUGINBUG-5978)
    * Add Doxygen/QDoc comment completion when typing /*@ or /*! before
-     declarations (QTCREATORBUG-2752)
-   * Add "extract function" refactoring action (QTCREATORBUG-5485)
+     declarations (QTHLDPLUGINBUG-2752)
+   * Add "extract function" refactoring action (QTHLDPLUGINBUG-5485)
    * Change behavior of "select all" during rename so that it selects
-     the symbol in question (QTCREATORBUG-5520) [by Bojan Pretrovic]
-   * Fix preprocess for multiline #if directives (QTCREATORBUG-5843)
-   * Fix encoding issues during refactoring operations (QTCREATORBUG-6147)
+     the symbol in question (QTHLDPLUGINBUG-5520) [by Bojan Pretrovic]
+   * Fix preprocess for multiline #if directives (QTHLDPLUGINBUG-5843)
+   * Fix encoding issues during refactoring operations (QTHLDPLUGINBUG-6147)
    * Fix "convert to decimal" refactoring for lower case letters
-     (QTCREATORBUG-6240)
+     (QTHLDPLUGINBUG-6240)
    * Fix "add definition" refactoring when the matching implementation file
-     has no other definition yet (QTCREATORBUG-6696)
+     has no other definition yet (QTHLDPLUGINBUG-6696)
    * Improve behavior of switch header/source when files with the same name
-     exist (QTCREATORBUG-6799) [by Nicolas Arnaud-Cormos]
+     exist (QTHLDPLUGINBUG-6799) [by Nicolas Arnaud-Cormos]
    * Improve behavior of follow symbol and add definition for projects with
-     equivalent symbol names (QTCREATORBUG-6697) (QTCREATORBUG-6792)
+     equivalent symbol names (QTHLDPLUGINBUG-6697) (QTHLDPLUGINBUG-6792)
    * Improve support for C++11 nullptr, constexpr, static_assert, noexcept,
      inline namespaces, and auto.
    * Fix missing result of find usages when there is a match on the first
      line (QTCREATERBUG-6176)
-   * Fix highlighting for spaces in comments and strings (QTCREATORBUG-5802)
+   * Fix highlighting for spaces in comments and strings (QTHLDPLUGINBUG-5802)
    * Add "rearrange parameter list" refactoring action [by Bojan Petrovic]
    * Add indent/unindent actions shortcut [by Adam Treat]
-   * Improve sorting of completion items (QTCREATORBUG-6404)
+   * Improve sorting of completion items (QTHLDPLUGINBUG-6404)
    * Improve C++11 lambda support, including formatting
-   * Fix "go to definition" of macros (QTCREATORBUG-2240, QTCREATORBUG-6175,
-     QTCREATORBUG-6848, QTCREATORBUG-7008, QTCREATORBUG-7009)
+   * Fix "go to definition" of macros (QTHLDPLUGINBUG-2240, QTHLDPLUGINBUG-6175,
+     QTHLDPLUGINBUG-6848, QTHLDPLUGINBUG-7008, QTHLDPLUGINBUG-7009)
    * Fix completion by not adding parentheses when completing dereferenced
      function
 
@@ -145,9 +145,9 @@ Help
 Platform Specific
 
 Mac
-   * Fix adding Qt version on Mac OS X Lion (QTCREATORBUG-6222)
+   * Fix adding Qt version on Mac OS X Lion (QTHLDPLUGINBUG-6222)
    * Pass architecture and bit width from the tool chain build setting
-     to qmake (QTCREATORBUG-6088)
+     to qmake (QTHLDPLUGINBUG-6088)
 
 Linux (GNOME and KDE)
 
@@ -165,8 +165,8 @@ FakeVim
    * Fix cursor column after up/down in replace mode
    * Fix case sensitivity of parsing of codes like "<Esc>" in mappings
    * Overhaul register handling
-   * Add old-style settings of for 'bs' (QTCREATORBUG-6640)
-   * Fix off-by-one error when creating a single line range (QTCREATORBUG-6630)
+   * Add old-style settings of for 'bs' (QTHLDPLUGINBUG-6640)
+   * Fix off-by-one error when creating a single line range (QTHLDPLUGINBUG-6630)
 
 Version control plugins
    * Rename the ScmGit plugin to Git

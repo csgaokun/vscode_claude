@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,13 +42,13 @@
 /*!
     \class Core::IWizardFactory
     \inheaderfile coreplugin/iwizardfactory.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The IWizardFactory class is the base class for all wizard factories.
 
     \note Instead of using this class, we recommend that you create JSON-based
-    wizards, as instructed in \l{https://doc.qt.io/qtcreator/creator-project-wizards.html}
+    wizards, as instructed in \l{https://doc.qt.io/qthldplugin/hldplugin-project-wizards.html}
     {Adding New Custom Wizards}.
 
     The wizard interface is a very thin abstraction for the wizards in
@@ -130,7 +130,7 @@ using namespace Utils;
 namespace {
 static QList<IFeatureProvider *> s_providerList;
 QList<IWizardFactory *> s_allFactories;
-QList<IWizardFactory::FactoryCreator> s_factoryCreators;
+QList<IWizardFactory::FactoryHldplugin> s_factoryHldplugins;
 QAction *s_inspectWizardAction = nullptr;
 bool s_areFactoriesLoaded = false;
 bool s_isWizardRunning = false;
@@ -193,7 +193,7 @@ QList<IWizardFactory*> IWizardFactory::allWizardFactories()
         s_areFactoriesLoaded = true;
 
         QHash<Id, IWizardFactory *> sanityCheck;
-        foreach (const FactoryCreator &fc, s_factoryCreators) {
+        foreach (const FactoryHldplugin &fc, s_factoryHldplugins) {
             QList<IWizardFactory *> tmp = fc();
             foreach (IWizardFactory *newFactory, tmp) {
                 QTC_ASSERT(newFactory, continue);
@@ -316,9 +316,9 @@ QSet<Id> IWizardFactory::supportedPlatforms() const
     return platformIds;
 }
 
-void IWizardFactory::registerFactoryCreator(const IWizardFactory::FactoryCreator &creator)
+void IWizardFactory::registerFactoryHldplugin(const IWizardFactory::FactoryHldplugin &hldplugin)
 {
-    s_factoryCreators << creator;
+    s_factoryHldplugins << hldplugin;
 }
 
 QSet<Id> IWizardFactory::allAvailablePlatforms()

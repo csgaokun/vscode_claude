@@ -1,14 +1,14 @@
-# .clang-format for Qt Creator
+# .clang-format for Qt Hldplugin
 #
 # This is for clang-format >= 5.0.
 #
-# The configuration below follows the Qt Creator Coding Rules [1] as closely as
+# The configuration below follows the Qt Hldplugin Coding Rules [1] as closely as
 # possible. For documentation of the options, see [2].
 #
 # Use ../../tests/manual/clang-format-for-qtc/test.cpp for documenting problems
 # or testing changes.
 #
-# [1] https://doc-snapshots.qt.io/qtcreator-extending/coding-style.html
+# [1] https://doc-snapshots.qt.io/qthldplugin-extending/coding-style.html
 # [2] https://clang.llvm.org/docs/ClangFormatStyleOptions.html
 #
 ---

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -104,10 +104,10 @@ void PublicKeyDeploymentDialog::handleDeploymentFinished(const QString &errorMsg
     QString textColor;
     if (errorMsg.isEmpty()) {
         buttonText = tr("Deployment finished successfully.");
-        textColor = Utils::creatorTheme()->color(Utils::Theme::TextColorNormal).name();
+        textColor = Utils::hldpluginTheme()->color(Utils::Theme::TextColorNormal).name();
     } else {
         buttonText = errorMsg;
-        textColor = Utils::creatorTheme()->color(Utils::Theme::TextColorError).name();
+        textColor = Utils::hldpluginTheme()->color(Utils::Theme::TextColorError).name();
     }
     setLabelText(QString::fromLatin1("<font color=\"%1\">%2</font>").arg(textColor, buttonText));
     setCancelButtonText(tr("Close"));

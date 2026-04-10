@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,7 +42,7 @@ static const char PASTEBIN_API[]="api/api_post.php";
 static const char PASTEBIN_RAW[]="raw/";
 static const char PASTEBIN_ARCHIVE[]="archive";
 
-static const char API_KEY[]="api_dev_key=516686fc461fb7f9341fd7cf2af6f829&"; // user: qtcreator_apikey
+static const char API_KEY[]="api_dev_key=516686fc461fb7f9341fd7cf2af6f829&"; // user: qthldplugin_apikey
 
 static const char PROTOCOL_NAME[] = "Pastebin.Com";
 

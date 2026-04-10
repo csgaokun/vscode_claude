@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -95,7 +95,7 @@ enum { debugModel = 0 };
 
 #define MODEL_DEBUG(s) do { if (debugModel) qDebug() << s; } while (0)
 
-static QMap<QString, int> theWatcherNames; // Keep order, QTCREATORBUG-12308.
+static QMap<QString, int> theWatcherNames; // Keep order, QTHLDPLUGINBUG-12308.
 static QSet<QString> theTemporaryWatchers; // Used for 'watched widgets'.
 static int theWatcherCount = 0;
 static QHash<QString, int> theTypeFormats;
@@ -910,7 +910,7 @@ static QColor valueColor(const WatchItem *item, int column)
                 color = Theme::Debugger_WatchItem_ValueChanged;
         }
     }
-    return creatorTheme()->color(color);
+    return hldpluginTheme()->color(color);
 }
 
 static DisplayFormats typeFormatList(const WatchItem *item)
@@ -1610,7 +1610,7 @@ void WatchModel::inputNewExpression()
     auto hint = new QLabel(QString("<html>%1</html>").arg(
                     tr("Note: Evaluators will be re-evaluated after each step. "
                        "For details, see the <a href=\""
-                       "qthelp://org.qt-project.qtcreator/doc/creator-debug-mode.html#locals-and-expressions"
+                       "qthelp://org.qt-project.qthldplugin/doc/hldplugin-debug-mode.html#locals-and-expressions"
                        "\">documentation</a>.")), &dlg);
 
     auto lineEdit = new FancyLineEdit(&dlg);

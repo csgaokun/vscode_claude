@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,7 +31,7 @@
 // The following defines can be used to steer the kind of tests that
 // can be done.
 
-// With USE_AUTORUN, creator will automatically "execute" the commands
+// With USE_AUTORUN, hldplugin will automatically "execute" the commands
 // in a comment following a BREAK_HERE line.
 // The following commands are supported:
 //   // Check <name> <value> <type>
@@ -5062,7 +5062,7 @@ namespace basic {
         dummyStatement(&foo);
     }
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5326
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5326
 
     void testChar()
     {
@@ -6382,7 +6382,7 @@ namespace bug842 {
 
     void test842()
     {
-        // https://bugreports.qt.io/browse/QTCREATORBUG-842
+        // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-842
         qWarning("Test");
         BREAK_HERE;
         // Continue.
@@ -6397,7 +6397,7 @@ namespace bug3611 {
 
     void test3611()
     {
-        // https://bugreports.qt.io/browse/QTCREATORBUG-3611
+        // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-3611
         typedef unsigned char byte;
         byte f = '2';
         int *x = (int*)&f;
@@ -6419,7 +6419,7 @@ namespace bug3611 {
 
 namespace bug4019 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-4019
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-4019
 
     class A4019
     {
@@ -6445,7 +6445,7 @@ namespace bug4019 {
 
 namespace bug4997 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-4997
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-4997
 
     void test4997()
     {
@@ -6459,7 +6459,7 @@ namespace bug4997 {
 
 namespace bug4904 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-4904
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-4904
 
     struct CustomStruct {
         int id;
@@ -6494,7 +6494,7 @@ namespace bug4904 {
 
 namespace bug5046 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5046
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5046
 
     struct Foo { int a, b, c; };
 
@@ -6523,7 +6523,7 @@ namespace bug5046 {
 
 namespace bug5106 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5106
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5106
 
     class A5106
     {
@@ -6555,11 +6555,11 @@ namespace bug5106 {
 
 namespace bug5184 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5184
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5184
 
     // Note: The report there shows type field "QUrl &" instead of QUrl.
     // It's unclear how this can happen. It should never have been like
-    // that with a stock 7.2 and any version of Creator.
+    // that with a stock 7.2 and any version of Hldplugin.
 
     void helper(const QUrl &url)
     {
@@ -6628,7 +6628,7 @@ namespace qc42170 {
 
 namespace bug5799 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-5799
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-5799
 
     typedef struct { int m1; int m2; } S1;
 
@@ -6668,7 +6668,7 @@ namespace bug5799 {
 
 namespace bug6813 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-6813
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-6813
     void test6813()
     {
       int foo = 0;
@@ -6746,7 +6746,7 @@ namespace cp42895 {
 
 namespace bug6465 {
 
-    // https://bugreports.qt.io/browse/QTCREATORBUG-6465
+    // https://bugreports.qt.io/browse/QTHLDPLUGINBUG-6465
 
     void test6465()
     {
@@ -7131,11 +7131,11 @@ int main(int argc, char *argv[])
     bool b = c.isPrint();
     qDebug() << c << b;
 
-    // Notify Creator about auto run intention.
+    // Notify Hldplugin about auto run intention.
     if (USE_AUTORUN)
-        qWarning("Creator: Switch on magic autorun.");
+        qWarning("Hldplugin: Switch on magic autorun.");
     else
-        qWarning("Creator: Switch off magic autorun.");
+        qWarning("Hldplugin: Switch off magic autorun.");
 
     // For a very quick check, step into this one.
     sanity::testSanity();

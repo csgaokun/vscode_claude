@@ -1,7 +1,7 @@
 DEFINES += QTSUPPORT_LIBRARY
 QT += network
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 DEFINES += QMAKE_LIBRARY
 include(../../shared/proparser/proparser.pri)

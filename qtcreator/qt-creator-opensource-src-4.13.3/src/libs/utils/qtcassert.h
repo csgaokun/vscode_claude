@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -27,7 +27,7 @@
 
 #include "utils_global.h"
 
-namespace Utils { QTCREATOR_UTILS_EXPORT void writeAssertLocation(const char *msg); }
+namespace Utils { QTHLDPLUGIN_UTILS_EXPORT void writeAssertLocation(const char *msg); }
 
 #define QTC_ASSERT_STRINGIFY_HELPER(x) #x
 #define QTC_ASSERT_STRINGIFY(x) QTC_ASSERT_STRINGIFY_HELPER(x)

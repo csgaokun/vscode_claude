@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1849,7 +1849,7 @@ QStringList QmakeProFile::includePaths(QtSupport::ProFileReader *reader, const F
     }
 
     // If sysrootifying a fixified path does not yield a valid path, try again with the
-    // unfixified value. This can be necessary for cross-building; see QTCREATORBUG-21164.
+    // unfixified value. This can be necessary for cross-building; see QTHLDPLUGINBUG-21164.
     if (tryUnfixified) {
         const QStringList rawValues = reader->values("INCLUDEPATH");
         for (const QString &p : rawValues) {

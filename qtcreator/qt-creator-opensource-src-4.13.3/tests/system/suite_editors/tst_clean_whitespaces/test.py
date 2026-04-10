@@ -3,7 +3,7 @@
 # Copyright (C) 2020 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,9 +23,9 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
-# This tests for QTCREATORBUG-24565
+# This tests for QTHLDPLUGINBUG-24565
 
 TabBlankTab = '\t \t'
 TripleTab = '\t\t\t'
@@ -64,7 +64,7 @@ def main():
                        "Skipping this file for now.")
             continue
 
-        fileCombo = waitForObject(":Qt Creator_FilenameQComboBox")
+        fileCombo = waitForObject(":Qt Hldplugin_FilenameQComboBox")
         invokeMenuItem("Edit", "Advanced", "Clean Whitespace")
         if emptyLine or (trailingWS and not isIgnored):
             waitFor("str(fileCombo.currentText).endswith('*')", 2500)

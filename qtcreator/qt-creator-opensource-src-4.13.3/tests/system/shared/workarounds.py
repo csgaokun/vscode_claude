@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -34,13 +34,13 @@ class JIRA:
 
     # Helper class
     class Bug:
-        CREATOR = 'QTCREATORBUG'
+        HLDPLUGIN = 'QTHLDPLUGINBUG'
         SDK = 'QTSDK'
         QT = 'QTBUG'
         QT_QUICKCOMPONENTS = 'QTCOMPONENTS'
 
     # constructor of JIRA
-    def __init__(self, number, bugType=Bug.CREATOR):
+    def __init__(self, number, bugType=Bug.HLDPLUGIN):
         if JIRA.__instance__ == None:
             JIRA.__instance__ = JIRA.__impl(number, bugType)
             JIRA.__dict__['_JIRA__instance__'] = JIRA.__instance__
@@ -61,7 +61,7 @@ class JIRA:
 
     # function to check if the given bug is open or not
     @staticmethod
-    def isBugStillOpen(number, bugType=Bug.CREATOR):
+    def isBugStillOpen(number, bugType=Bug.HLDPLUGIN):
         tmpJIRA = JIRA(number, bugType)
         return tmpJIRA.isOpen()
 

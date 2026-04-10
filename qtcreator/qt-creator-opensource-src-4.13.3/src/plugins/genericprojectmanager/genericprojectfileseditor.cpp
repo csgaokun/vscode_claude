@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,13 +45,13 @@ ProjectFilesFactory::ProjectFilesFactory()
 {
     setId(Constants::FILES_EDITOR_ID);
     setDisplayName(QCoreApplication::translate("OpenWith::Editors", ".files Editor"));
-    addMimeType("application/vnd.qtcreator.generic.files");
-    addMimeType("application/vnd.qtcreator.generic.includes");
-    addMimeType("application/vnd.qtcreator.generic.config");
-    addMimeType("application/vnd.qtcreator.generic.cxxflags");
-    addMimeType("application/vnd.qtcreator.generic.cflags");
+    addMimeType("application/vnd.qthldplugin.generic.files");
+    addMimeType("application/vnd.qthldplugin.generic.includes");
+    addMimeType("application/vnd.qthldplugin.generic.config");
+    addMimeType("application/vnd.qthldplugin.generic.cxxflags");
+    addMimeType("application/vnd.qthldplugin.generic.cflags");
 
-    setDocumentCreator([]() { return new TextDocument(Constants::FILES_EDITOR_ID); });
+    setDocumentHldplugin([]() { return new TextDocument(Constants::FILES_EDITOR_ID); });
     setEditorActionHandlers(TextEditorActionHandler::None);
 }
 

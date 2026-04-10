@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -242,7 +242,7 @@ void ManhattanStyle::unpolish(QApplication *app)
 
 QPalette panelPalette(const QPalette &oldPalette, bool lightColored = false)
 {
-    QColor color = creatorTheme()->color(lightColored ? Theme::PanelTextColorDark
+    QColor color = hldpluginTheme()->color(lightColored ? Theme::PanelTextColorDark
                                                       : Theme::PanelTextColorLight);
     QPalette pal = oldPalette;
     pal.setBrush(QPalette::All, QPalette::WindowText, color);
@@ -250,7 +250,7 @@ QPalette panelPalette(const QPalette &oldPalette, bool lightColored = false)
     if (lightColored)
         color.setAlpha(100);
     else
-        color = creatorTheme()->color(Theme::IconsDisabledColor);
+        color = hldpluginTheme()->color(Theme::IconsDisabledColor);
     pal.setBrush(QPalette::Disabled, QPalette::WindowText, color);
     pal.setBrush(QPalette::Disabled, QPalette::ButtonText, color);
     return pal;
@@ -288,7 +288,7 @@ void ManhattanStyle::polish(QWidget *widget)
             QPalette palette = panelPalette(widget->palette(), isLightColored);
             if (!isLightColored)
                 palette.setBrush(QPalette::All, QPalette::WindowText,
-                                 creatorTheme()->color(Theme::ComboBoxTextColor));
+                                 hldpluginTheme()->color(Theme::ComboBoxTextColor));
             widget->setPalette(palette);
             widget->setMaximumHeight(StyleHelper::navigationWidgetHeight() - 2);
             widget->setAttribute(Qt::WA_Hover);
@@ -345,7 +345,7 @@ QIcon ManhattanStyle::standardIcon(StandardPixmap standardIcon, const QStyleOpti
     }
 
     if (standardIcon == QStyle::SP_ComputerIcon) {
-        // Ubuntu has in some versions a 16x16 icon, see QTCREATORBUG-12832
+        // Ubuntu has in some versions a 16x16 icon, see QTHLDPLUGINBUG-12832
         const QList<QSize> &sizes = icon.availableSizes();
         if (Utils::allOf(sizes, [](const QSize &size) { return size.width() < 32;}))
             icon = QIcon(":/utils/images/Desktop.png");
@@ -450,7 +450,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
 
     switch (element) {
     case PE_IndicatorDockWidgetResizeHandle:
-        painter->fillRect(option->rect, creatorTheme()->color(Theme::DockWidgetResizeHandleColor));
+        painter->fillRect(option->rect, hldpluginTheme()->color(Theme::DockWidgetResizeHandleColor));
         break;
     case PE_FrameDockWidget:
         QCommonStyle::drawPrimitive(element, option, painter, widget);
@@ -462,7 +462,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
             // Fill the line edit background
             QRectF backgroundRect = option->rect;
             const bool enabled = option->state & State_Enabled;
-            if (Utils::creatorTheme()->flag(Theme::FlatToolBars)) {
+            if (Utils::hldpluginTheme()->flag(Theme::FlatToolBars)) {
                 painter->save();
                 if (!enabled)
                     painter->setOpacity(0.75);
@@ -504,16 +504,16 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
                 bool pressed = option->state & State_Sunken || option->state & State_On;
                 painter->setPen(StyleHelper::sidebarShadow());
                 if (pressed) {
-                    const QColor shade = creatorTheme()->color(Theme::FancyToolButtonSelectedColor);
+                    const QColor shade = hldpluginTheme()->color(Theme::FancyToolButtonSelectedColor);
                     painter->fillRect(rect, shade);
-                    if (!creatorTheme()->flag(Theme::FlatToolBars)) {
+                    if (!hldpluginTheme()->flag(Theme::FlatToolBars)) {
                         const QRectF borderRect = QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5);
                         painter->drawLine(borderRect.topLeft() + QPointF(1, 0), borderRect.topRight() - QPointF(1, 0));
                         painter->drawLine(borderRect.topLeft(), borderRect.bottomLeft());
                         painter->drawLine(borderRect.topRight(), borderRect.bottomRight());
                     }
                 } else if (option->state & State_Enabled && option->state & State_MouseOver) {
-                    painter->fillRect(rect, creatorTheme()->color(Theme::FancyToolButtonHoverColor));
+                    painter->fillRect(rect, hldpluginTheme()->color(Theme::FancyToolButtonHoverColor));
                 } else if (widget && widget->property("highlightWidget").toBool()) {
                     QColor shade(0, 0, 0, 128);
                     painter->fillRect(rect, shade);
@@ -536,7 +536,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
         {
             const QRectF borderRect = QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5);
             painter->save();
-            if (creatorTheme()->flag(Theme::FlatToolBars)) {
+            if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
                 painter->fillRect(rect, StyleHelper::baseColor());
             } else {
                 QLinearGradient grad = StyleHelper::statusBarGradient(rect);
@@ -547,7 +547,7 @@ void ManhattanStyle::drawPrimitive(PrimitiveElement element, const QStyleOption 
                 painter->setPen(StyleHelper::borderColor().darker(110)); //TODO: make themable
                 painter->drawLine(borderRect.topLeft(), borderRect.topRight());
             }
-            if (creatorTheme()->flag(Theme::DrawToolBarBorders)) {
+            if (hldpluginTheme()->flag(Theme::DrawToolBarBorders)) {
                 painter->setPen(StyleHelper::toolBarBorderColor());
                 painter->drawLine(borderRect.topLeft(), borderRect.topRight());
             }
@@ -636,7 +636,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
             const bool enabled = mbi->state & State_Enabled;
             QStyleOptionMenuItem item = *mbi;
             item.rect = mbi->rect;
-            const QColor color = creatorTheme()->color(enabled
+            const QColor color = hldpluginTheme()->color(enabled
                                                        ? Theme::MenuItemTextColorNormal
                                                        : Theme::MenuItemTextColorDisabled);
             if (color.isValid()) {
@@ -655,7 +655,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
             const bool act = mbi->state & (State_Sunken | State_Selected);
             const bool dis = !(mbi->state & State_Enabled);
 
-            if (creatorTheme()->flag(Theme::FlatMenuBar))
+            if (hldpluginTheme()->flag(Theme::FlatMenuBar))
                 painter->fillRect(option->rect, StyleHelper::baseColor());
             else
                 StyleHelper::menuGradient(painter, option->rect, option->rect);
@@ -664,22 +664,22 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
             item.rect = mbi->rect;
             QPalette pal = mbi->palette;
             pal.setBrush(QPalette::ButtonText, dis
-                ? creatorTheme()->color(Theme::MenuBarItemTextColorDisabled)
-                : creatorTheme()->color(Theme::MenuBarItemTextColorNormal));
+                ? hldpluginTheme()->color(Theme::MenuBarItemTextColorDisabled)
+                : hldpluginTheme()->color(Theme::MenuBarItemTextColorNormal));
             item.palette = pal;
             QCommonStyle::drawControl(element, &item, painter, widget);
 
             if (act) {
                 // Fill|
                 const QColor fillColor = StyleHelper::alphaBlendedColors(
-                            StyleHelper::baseColor(), creatorTheme()->color(Theme::FancyToolButtonHoverColor));
+                            StyleHelper::baseColor(), hldpluginTheme()->color(Theme::FancyToolButtonHoverColor));
                 painter->fillRect(option->rect, fillColor);
 
                 QPalette pal = mbi->palette;
                 uint alignment = Qt::AlignCenter | Qt::TextShowMnemonic | Qt::TextDontClip | Qt::TextSingleLine;
                 if (!styleHint(SH_UnderlineShortcut, mbi, widget))
                     alignment |= Qt::TextHideMnemonic;
-                pal.setBrush(QPalette::Text, creatorTheme()->color(dis
+                pal.setBrush(QPalette::Text, hldpluginTheme()->color(dis
                                                                    ? Theme::IconsDisabledColor
                                                                    : Theme::PanelTextColorLight));
                 drawItemText(painter, item.rect, alignment, pal, !dis, mbi->text, QPalette::Text);
@@ -732,7 +732,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
                 }
                 text.prepend(option->fontMetrics.elidedText(cb->currentText, Qt::ElideRight, elideWidth));
 
-                if (creatorTheme()->flag(Theme::ComboBoxDrawTextShadow)
+                if (hldpluginTheme()->flag(Theme::ComboBoxDrawTextShadow)
                     && (option->state & State_Enabled))
                 {
                     painter->setPen(StyleHelper::toolBarDropShadowColor());
@@ -740,7 +740,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
                 }
                 painter->setPen((option->state & State_Enabled)
                                   ? option->palette.color(QPalette::WindowText)
-                                  : creatorTheme()->color(Theme::IconsDisabledColor));
+                                  : hldpluginTheme()->color(Theme::IconsDisabledColor));
                 painter->drawText(editRect.adjusted(1, 0, -1, 0), Qt::AlignLeft | Qt::AlignVCenter, text);
 
                 painter->restore();
@@ -784,7 +784,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
         break;
 
     case CE_MenuBarEmptyArea: {
-            if (creatorTheme()->flag(Theme::FlatMenuBar))
+            if (hldpluginTheme()->flag(Theme::FlatMenuBar))
                 painter->fillRect(option->rect, StyleHelper::baseColor());
             else
                 StyleHelper::menuGradient(painter, option->rect, option->rect);
@@ -813,14 +813,14 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
 
             bool drawLightColored = lightColored(widget);
             // draws the background of the 'Type hierarchy', 'Projects' headers
-            if (creatorTheme()->flag(Theme::FlatToolBars))
+            if (hldpluginTheme()->flag(Theme::FlatToolBars))
                 painter->fillRect(rect, StyleHelper::baseColor(drawLightColored));
             else if (horizontal)
                 StyleHelper::horizontalGradient(painter, gradientSpan, rect, drawLightColored);
             else
                 StyleHelper::verticalGradient(painter, gradientSpan, rect, drawLightColored);
 
-            if (creatorTheme()->flag(Theme::DrawToolBarHighlights)) {
+            if (hldpluginTheme()->flag(Theme::DrawToolBarHighlights)) {
                 if (!drawLightColored)
                     painter->setPen(StyleHelper::toolBarBorderColor());
                 else
@@ -830,8 +830,8 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
                     // Note: This is a hack to determine if the
                     // toolbar should draw the top or bottom outline
                     // (needed for the find toolbar for instance)
-                    const QColor hightLight = creatorTheme()->flag(Theme::FlatToolBars)
-                            ? creatorTheme()->color(Theme::FancyToolBarSeparatorColor)
+                    const QColor hightLight = hldpluginTheme()->flag(Theme::FlatToolBars)
+                            ? hldpluginTheme()->color(Theme::FancyToolBarSeparatorColor)
                             : StyleHelper::sidebarHighlight();
                     const QColor borderColor = drawLightColored
                             ? QColor(255, 255, 255, 180) : hightLight;
@@ -849,7 +849,7 @@ void ManhattanStyle::drawControl(ControlElement element, const QStyleOption *opt
                     painter->drawLine(borderRect.topRight(), borderRect.bottomRight());
                 }
             }
-            if (creatorTheme()->flag(Theme::DrawToolBarBorders)) {
+            if (hldpluginTheme()->flag(Theme::DrawToolBarBorders)) {
                 painter->setPen(StyleHelper::toolBarBorderColor());
                 if (widget && widget->property("topBorder").toBool())
                     painter->drawLine(borderRect.topLeft(), borderRect.topRight());
@@ -916,7 +916,7 @@ void ManhattanStyle::drawComplexControl(ComplexControl control, const QStyleOpti
             label.palette = panelPalette(option->palette, lightColored(widget));
             if (widget && widget->property("highlightWidget").toBool()) {
                 label.palette.setColor(QPalette::ButtonText,
-                                       creatorTheme()->color(Theme::IconsWarningToolBarColor));
+                                       hldpluginTheme()->color(Theme::IconsWarningToolBarColor));
             }
             int fw = pixelMetric(PM_DefaultFrameWidth, option, widget);
             label.rect = button.adjusted(fw, fw, -fw, -fw);
@@ -1024,9 +1024,9 @@ void ManhattanStyle::drawComplexControl(ComplexControl control, const QStyleOpti
 void ManhattanStyle::drawButtonSeparator(QPainter *painter, const QRect &rect, bool reverse) const
 {
     const QRectF borderRect = QRectF(rect).adjusted(0.5, 0.5, -0.5, -0.5);
-    if (creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
         const int margin = 3;
-        painter->setPen(creatorTheme()->color(Theme::FancyToolBarSeparatorColor));
+        painter->setPen(hldpluginTheme()->color(Theme::FancyToolBarSeparatorColor));
         painter->drawLine(borderRect.topRight() + QPointF(0, margin),
                           borderRect.bottomRight() - QPointF(0, margin));
     } else {

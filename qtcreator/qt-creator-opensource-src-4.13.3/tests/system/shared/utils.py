@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ def tempDir():
     Result = os.path.abspath(os.getcwd()+"/../../testing")
     if not os.path.exists(Result):
         os.mkdir(Result)
-    return tempfile.mkdtemp(prefix="qtcreator_", dir=Result)
+    return tempfile.mkdtemp(prefix="qthldplugin_", dir=Result)
 
 def deleteDirIfExists(path):
     shutil.rmtree(path, True)
@@ -109,7 +109,7 @@ def selectFromLocator(filter, itemName = None):
     if itemName == None:
         itemName = filter
     itemName = itemName.replace(".", "\\.").replace("_", "\\_")
-    locator = waitForObject(":*Qt Creator_Utils::FilterLineEdit")
+    locator = waitForObject(":*Qt Hldplugin_Utils::FilterLineEdit")
     mouseClick(locator)
     replaceEditorContent(locator, filter)
     # clicking the wanted item
@@ -175,14 +175,14 @@ def cleanUpUserFiles(pathsToProFiles=None):
 def invokeMenuItem(menu, item, *subItems):
     if platform.system() == "Darwin":
         try:
-            waitForObject(":Qt Creator.QtCreator.MenuBar_QMenuBar", 2000)
+            waitForObject(":Qt Hldplugin.QtHldplugin.MenuBar_QMenuBar", 2000)
         except:
-            nativeMouseClick(waitForObject(":Qt Creator_Core::Internal::MainWindow", 1000), 20, 20, 0, Qt.LeftButton)
+            nativeMouseClick(waitForObject(":Qt Hldplugin_Core::Internal::MainWindow", 1000), 20, 20, 0, Qt.LeftButton)
     # Use Locator for menu items which wouldn't work on macOS
     if menu == "Tools" and item == "Options..." or menu == "File" and item == "Exit":
         selectFromLocator("t %s" % item, item)
         return
-    menuObject = waitForObjectItem(":Qt Creator.QtCreator.MenuBar_QMenuBar", menu)
+    menuObject = waitForObjectItem(":Qt Hldplugin.QtHldplugin.MenuBar_QMenuBar", menu)
     snooze(1)
     waitFor("menuObject.visible", 1000)
     activateItem(menuObject)
@@ -216,7 +216,7 @@ def invokeMenuItem(menu, item, *subItems):
 
 def logApplicationOutput():
     # make sure application output is shown
-    ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+    ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
     try:
         output = waitForObject("{type='Core::OutputWindow' visible='1' windowTitle='Application Output Window'}")
         test.log("Application Output:\n%s" % output.plainText)
@@ -276,7 +276,7 @@ def selectFromFileDialog(fileName, waitForFile=False, ignoreFinalSnooze=False):
             if not ignoreFinalSnooze:
                 snooze(3)
     if waitForFile:
-        fileCombo = waitForObject(":Qt Creator_FilenameQComboBox")
+        fileCombo = waitForObject(":Qt Hldplugin_FilenameQComboBox")
         if not waitFor("str(fileCombo.currentText) in fileName", 5000):
             test.fail("%s could not be opened in time." % fileName)
 
@@ -298,16 +298,16 @@ def addHelpDocumentation(which):
         selectFromFileDialog(qch)
     clickButton(waitForObject(":Options.OK_QPushButton"))
 
-def addCurrentCreatorDocumentation():
-    currentCreatorPath = currentApplicationContext().cwd
+def addCurrentHldpluginDocumentation():
+    currentHldpluginPath = currentApplicationContext().cwd
     if platform.system() == "Darwin":
-        docPath = os.path.abspath(os.path.join(currentCreatorPath, "Qt Creator.app", "Contents",
-                                               "Resources", "doc", "qtcreator.qch"))
+        docPath = os.path.abspath(os.path.join(currentHldpluginPath, "Qt Hldplugin.app", "Contents",
+                                               "Resources", "doc", "qthldplugin.qch"))
     else:
-        docPath = os.path.abspath(os.path.join(currentCreatorPath, "..", "share", "doc",
-                                               "qtcreator", "qtcreator.qch"))
+        docPath = os.path.abspath(os.path.join(currentHldpluginPath, "..", "share", "doc",
+                                               "qthldplugin", "qthldplugin.qch"))
     if not os.path.exists(docPath):
-        test.fatal("Missing current Qt Creator documentation (expected in %s)" % docPath)
+        test.fatal("Missing current Qt Hldplugin documentation (expected in %s)" % docPath)
         return
     invokeMenuItem("Tools", "Options...")
     mouseClick(waitForObjectItem(":Options_QListView", "Help"))
@@ -318,11 +318,11 @@ def addCurrentCreatorDocumentation():
     try:
         waitForObject("{type='QMessageBox' unnamed='1' visible='1' "
                       "text?='Unable to register documentation.*'}", 3000)
-        test.passes("Qt Creator's documentation found already registered.")
+        test.passes("Qt Hldplugin's documentation found already registered.")
         clickButton(waitForObject("{type='QPushButton' text='OK' unnamed='1' visible='1' "
                                   "container={name='groupBox' type='QGroupBox' visible='1'}}"))
     except:
-        test.fail("Added Qt Creator's documentation explicitly.")
+        test.fail("Added Qt Hldplugin's documentation explicitly.")
     clickButton(waitForObject(":Options.OK_QPushButton"))
 
 def verifyOutput(string, substring, outputFrom, outputIn):
@@ -534,7 +534,7 @@ def iterateKits(keepOptionsOpen=False, alreadyOnOptionsDialog=False,
     else:
         return result
 
-# set a help viewer that will always be used, regardless of Creator's width
+# set a help viewer that will always be used, regardless of Hldplugin's width
 
 class HelpViewer:
     HELPMODE, SIDEBYSIDE, EXTERNALWINDOW = range(3)
@@ -597,11 +597,11 @@ def checkIfObjectExists(name, shouldExist = True, timeout = 3000, verboseOnFail 
 
 # wait for progress bar(s) to appear and disappear
 def progressBarWait(timeout=60000, warn=True):
-    if not checkIfObjectExists(":Qt Creator_Core::Internal::ProgressBar", True, 6000):
+    if not checkIfObjectExists(":Qt Hldplugin_Core::Internal::ProgressBar", True, 6000):
         if warn:
             test.warning("progressBarWait() timed out when waiting for ProgressBar.",
                          "This may lead to unforeseen behavior. Consider increasing the timeout.")
-    checkIfObjectExists(":Qt Creator_Core::Internal::ProgressBar", False, timeout)
+    checkIfObjectExists(":Qt Hldplugin_Core::Internal::ProgressBar", False, timeout)
 
 def readFile(filename):
     with open(filename, "r") as f:
@@ -646,16 +646,16 @@ def verifyItemOrder(items, text):
 def openVcsLog():
     try:
         foundObj = waitForObject("{type='Core::OutputWindow' unnamed='1' visible='1' "
-                                 "window=':Qt Creator_Core::Internal::MainWindow'}", 2000)
+                                 "window=':Qt Hldplugin_Core::Internal::MainWindow'}", 2000)
         if className(foundObj) != 'Core::OutputWindow':
             raise Exception("Found derived class, but not a pure QPlainTextEdit.")
         waitForObject("{text='Version Control' type='QLabel' unnamed='1' visible='1' "
-                      "window=':Qt Creator_Core::Internal::MainWindow'}", 2000)
+                      "window=':Qt Hldplugin_Core::Internal::MainWindow'}", 2000)
     except:
         invokeMenuItem("View", "Output Panes", "Version Control")
 
 def openGeneralMessages():
-    if not object.exists(":Qt Creator_Core::OutputWindow"):
+    if not object.exists(":Qt Hldplugin_Core::OutputWindow"):
         invokeMenuItem("View", "Output Panes", "General Messages")
 
 # function that retrieves a specific child object by its class
@@ -671,7 +671,7 @@ def getChildByClass(parent, classToSearchFor, occurrence=1):
 
 def getHelpViewer():
     return waitForObject("{type='Help::Internal::TextBrowserHelpWidget' unnamed='1' "
-                         "visible='1' window=':Qt Creator_Core::Internal::MainWindow'}",
+                         "visible='1' window=':Qt Hldplugin_Core::Internal::MainWindow'}",
                          1000)
 
 def getHelpTitle():

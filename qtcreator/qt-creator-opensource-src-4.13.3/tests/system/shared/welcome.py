@@ -3,7 +3,7 @@
 # Copyright (C) 2017 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -42,17 +42,17 @@ def __getWelcomeScreenButtonHelper__(buttonLabel, widgetWithQFrames, isUrlButton
 
 def getWelcomeScreenSideBarButton(buttonLabel, isUrlButton = False):
     sideBar = waitForObject("{type='Welcome::Internal::SideBar' unnamed='1' "
-                            "window=':Qt Creator_Core::Internal::MainWindow'}")
+                            "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     return __getWelcomeScreenButtonHelper__(buttonLabel, sideBar, isUrlButton)
 
 def getWelcomeScreenMainButton(buttonLabel):
-    stackedWidget = waitForObject(":Qt Creator.WelcomeScreenStackedWidget")
+    stackedWidget = waitForObject(":Qt Hldplugin.WelcomeScreenStackedWidget")
     currentStackWidget = stackedWidget.currentWidget()
     return __getWelcomeScreenButtonHelper__(buttonLabel, currentStackWidget)
 
 def getWelcomeTreeView(treeViewLabel):
     try:
-        return waitForObjectExists("{container=':Qt Creator.WelcomeScreenStackedWidget' "
+        return waitForObjectExists("{container=':Qt Hldplugin.WelcomeScreenStackedWidget' "
                                    "name='%s' type='QTreeView' visible='1'}" % treeViewLabel)
     except:
         return None

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Brian McGillion
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -47,11 +47,11 @@ const char DIFFIDENTIFIER[] = "^(?:diff --git a/|[+-]{3} (?:/dev/null|[ab]/(.+$)
 // Base editor parameters
 const char FILELOG_ID[] = "Mercurial File Log Editor";
 const char FILELOG_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Mercurial File Log Editor");
-const char LOGAPP[] = "text/vnd.qtcreator.mercurial.log";
+const char LOGAPP[] = "text/vnd.qthldplugin.mercurial.log";
 
 const char ANNOTATELOG_ID[] = "Mercurial Annotation Editor";
 const char ANNOTATELOG_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Mercurial Annotation Editor");
-const char ANNOTATEAPP[] = "text/vnd.qtcreator.mercurial.annotation";
+const char ANNOTATEAPP[] = "text/vnd.qthldplugin.mercurial.annotation";
 
 const char DIFFLOG_ID[] = "Mercurial Diff Editor";
 const char DIFFLOG_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Mercurial Diff Editor");
@@ -60,7 +60,7 @@ const char DIFFAPP[] = "text/x-patch";
 // Submit editor parameters
 const char COMMIT_ID[] = "Mercurial Commit Log Editor";
 const char COMMIT_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Mercurial Commit Log Editor");
-const char COMMITMIMETYPE[] = "text/vnd.qtcreator.mercurial.commit";
+const char COMMITMIMETYPE[] = "text/vnd.qthldplugin.mercurial.commit";
 
 // File menu actions
 const char ADD[] = "Mercurial.AddSingleFile";

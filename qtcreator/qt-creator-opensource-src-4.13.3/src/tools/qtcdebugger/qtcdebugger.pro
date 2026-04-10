@@ -1,5 +1,5 @@
 include(../../shared/registryaccess/registryaccess.pri)
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 CONFIG -= console
 QT += widgets
 TARGET = qtcdebugger

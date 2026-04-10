@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,16 +23,16 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
-    # open Qt Creator
+    # open Qt Hldplugin
     startQC()
     if not startedWithoutPluginError():
         return
     wsButtonFrame, wsButtonLabel = getWelcomeScreenSideBarButton('Get Started Now')
     if not test.verify(all((wsButtonFrame, wsButtonLabel)),
-                       "Verifying: Qt Creator displays Welcome Page with Getting Started."):
+                       "Verifying: Qt Hldplugin displays Welcome Page with Getting Started."):
         test.fatal("Something's wrong - leaving test.")
         invokeMenuItem("File", "Exit")
         return
@@ -45,7 +45,7 @@ def main():
     mouseClick(searchTutorials)
     replaceEditorContent(searchTutorials, "qwerty")
     tableView = waitForObject("{type='QTableView' unnamed='1' visible='1' "
-                              "window=':Qt Creator_Core::Internal::MainWindow'}")
+                              "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     waitFor('findExampleOrTutorial(tableView, ".*") is None', 3000)
     tutorial = findExampleOrTutorial(tableView, ".*", True)
     test.verify(tutorial is None,
@@ -71,5 +71,5 @@ def main():
     tutorial = findExampleOrTutorial(tableView, "Online: Qt for Device Creation.*", True)
     test.verify(tutorial is not None,
                 "Verifying: Link to the expected demonstration video exists.")
-    # exit Qt Creator
+    # exit Qt Hldplugin
     invokeMenuItem("File", "Exit")

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -65,13 +65,13 @@ protected:
     void setDisplayName(const QString &displayName) { m_displayName = displayName; }
     void setMimeTypes(const QStringList &mimeTypes) { m_mimeTypes = mimeTypes; }
     void addMimeType(const QString &mimeType) { m_mimeTypes.append(mimeType); }
-    void setEditorCreator(const std::function<IEditor *()> &creator);
+    void setEditorHldplugin(const std::function<IEditor *()> &hldplugin);
 
 private:
     Utils::Id m_id;
     QString m_displayName;
     QStringList m_mimeTypes;
-    std::function<IEditor *()> m_creator;
+    std::function<IEditor *()> m_hldplugin;
 };
 
 } // namespace Core

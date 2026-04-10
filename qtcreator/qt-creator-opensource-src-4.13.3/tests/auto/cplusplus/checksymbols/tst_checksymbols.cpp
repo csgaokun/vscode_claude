@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -506,7 +506,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(9, 5, 3, Highlighting::TypeUse)
             << Use(9, 10, 3, Highlighting::FunctionUse));
 
-    QTest::newRow("QTCREATORBUG8890_danglingPointer")
+    QTest::newRow("QTHLDPLUGINBUG8890_danglingPointer")
         << _("template<class T> class QList {\n"
              "    public:\n"
              "        T operator[](int);\n"
@@ -578,11 +578,11 @@ void tst_CheckSymbols::test_checksymbols_data()
                 << Use(12 + i, 5, 9, Highlighting::TypeUse)
                 << Use(12 + i, 28, 8, Highlighting::FunctionUse);
     }
-    QTest::newRow("QTCREATORBUG8974_danglingPointer")
+    QTest::newRow("QTHLDPLUGINBUG8974_danglingPointer")
         << excessive
         << excessiveUses;
 
-    QTest::newRow("operatorAsteriskOfNestedClassOfTemplateClass_QTCREATORBUG9006")
+    QTest::newRow("operatorAsteriskOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9006")
         << _("struct Foo { int foo; };\n"
              "\n"
              "template<class T>\n"
@@ -653,7 +653,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(3, 7, 3, Highlighting::FieldUse)
             << Use(6, 6, 3, Highlighting::FunctionDeclarationUse));
 
-    QTest::newRow("QTCREATORBUG9098")
+    QTest::newRow("QTHLDPLUGINBUG9098")
         << _("template <typename T>\n"
              "class B\n"
              "{\n"
@@ -736,7 +736,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(5, 13, 4, Highlighting::FieldUse)
             << Use(6, 13, 4, Highlighting::FieldUse));
 
-    QTest::newRow("AnonymousClass_QTCREATORBUG8963")
+    QTest::newRow("AnonymousClass_QTHLDPLUGINBUG8963")
         << _("typedef enum {\n"
               "    FIRST\n"
               "} isNotInt;\n"
@@ -783,7 +783,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(7, 5, 1, Highlighting::LocalUse)
             << Use(7, 7, 1, Highlighting::FieldUse));
 
-    QTest::newRow("highlightingTypeWhenUsingNamespaceClass_QTCREATORBUG7903_globalNamespace")
+    QTest::newRow("highlightingTypeWhenUsingNamespaceClass_QTHLDPLUGINBUG7903_globalNamespace")
         << _("namespace NS {\n"
              "class Foo {};\n"
              "}\n"
@@ -801,7 +801,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(7, 5, 3, Highlighting::TypeUse)
             << Use(7, 9, 3, Highlighting::LocalUse));
 
-    QTest::newRow("highlightingTypeWhenUsingNamespaceClass_QTCREATORBUG7903_namespace")
+    QTest::newRow("highlightingTypeWhenUsingNamespaceClass_QTHLDPLUGINBUG7903_namespace")
         << _("namespace NS {\n"
               "class Foo {};\n"
               "}\n"
@@ -822,7 +822,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(8, 5, 3, Highlighting::TypeUse)
             << Use(8, 9, 3, Highlighting::LocalUse));
 
-    QTest::newRow("highlightingTypeWhenUsingNamespaceClass_QTCREATORBUG7903_insideFunction")
+    QTest::newRow("highlightingTypeWhenUsingNamespaceClass_QTHLDPLUGINBUG7903_insideFunction")
         << _("namespace NS {\n"
              "class Foo {};\n"
              "}\n"
@@ -840,7 +840,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(7, 5, 3, Highlighting::TypeUse)
             << Use(7, 9, 3, Highlighting::LocalUse));
 
-    QTest::newRow("crashWhenUsingNamespaceClass_QTCREATORBUG9323_globalNamespace")
+    QTest::newRow("crashWhenUsingNamespaceClass_QTHLDPLUGINBUG9323_globalNamespace")
         << _("namespace NS {\n"
              "class Foo {};\n"
              "}\n"
@@ -855,7 +855,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(5, 6, 3, Highlighting::FunctionDeclarationUse)
             << Use(7, 9, 3, Highlighting::LocalUse));
 
-    QTest::newRow("crashWhenUsingNamespaceClass_QTCREATORBUG9323_namespace")
+    QTest::newRow("crashWhenUsingNamespaceClass_QTHLDPLUGINBUG9323_namespace")
         << _("namespace NS {\n"
              "class Foo {};\n"
              "}\n"
@@ -873,7 +873,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(6, 6, 3, Highlighting::FunctionDeclarationUse)
             << Use(8, 9, 3, Highlighting::LocalUse));
 
-    QTest::newRow("crashWhenUsingNamespaceClass_QTCREATORBUG9323_insideFunction")
+    QTest::newRow("crashWhenUsingNamespaceClass_QTHLDPLUGINBUG9323_insideFunction")
         << _("namespace NS {\n"
              "class Foo {};\n"
              "}\n"
@@ -888,14 +888,14 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(4, 6, 3, Highlighting::FunctionDeclarationUse)
             << Use(7, 9, 3, Highlighting::LocalUse));
 
-    QTest::newRow("alias_decl_QTCREATORBUG9386")
+    QTest::newRow("alias_decl_QTHLDPLUGINBUG9386")
         << _("using wobble = int;\n"
              "wobble cobble = 1;\n")
         << (UseList()
             << Use(1, 7, 6, Highlighting::TypeUse)
             << Use(2, 1, 6, Highlighting::TypeUse));
 
-    QTest::newRow("enum_inside_block_inside_function_QTCREATORBUG5456")
+    QTest::newRow("enum_inside_block_inside_function_QTHLDPLUGINBUG5456")
         << _("void foo()\n"
              "{\n"
              "   {\n"
@@ -913,7 +913,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(5, 10, 1, Highlighting::LocalUse)
             << Use(5, 14, 2, Highlighting::EnumerationUse));
 
-    QTest::newRow("enum_inside_function_QTCREATORBUG5456")
+    QTest::newRow("enum_inside_function_QTHLDPLUGINBUG5456")
         << _("void foo()\n"
              "{\n"
              "   enum E { e1, e2, e3 };\n"
@@ -929,7 +929,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(4, 6, 1, Highlighting::LocalUse)
             << Use(4, 10, 2, Highlighting::EnumerationUse));
 
-    QTest::newRow("using_inside_different_namespace_QTCREATORBUG7978")
+    QTest::newRow("using_inside_different_namespace_QTHLDPLUGINBUG7978")
         << _("struct S {};\n"
              "namespace std\n"
              "{\n"
@@ -957,7 +957,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(12, 20, 1, Highlighting::TypeUse)
             << Use(12, 23, 1, Highlighting::LocalUse));
 
-    QTest::newRow("using_inside_different_block_of_scope_unnamed_namespace_QTCREATORBUG12357")
+    QTest::newRow("using_inside_different_block_of_scope_unnamed_namespace_QTHLDPLUGINBUG12357")
             << _("namespace \n"
                  "{\n"
                  "    namespace Ns { struct Foo {}; }\n"
@@ -977,7 +977,7 @@ void tst_CheckSymbols::test_checksymbols_data()
                 << Use(8, 9, 3, Highlighting::LocalUse)
                 );
 
-    QTest::newRow("using_inside_different_block_of_scope_named_namespace_QTCREATORBUG12357")
+    QTest::newRow("using_inside_different_block_of_scope_named_namespace_QTHLDPLUGINBUG12357")
             << _("namespace NS1\n"
                  "{\n"
                  "    namespace Ns { struct Foo {}; }\n"
@@ -1011,7 +1011,7 @@ void tst_CheckSymbols::test_checksymbols_data()
                 << Use(2, 17, 1, Highlighting::TypeUse)
                 );
 
-    QTest::newRow("using_inside_different_namespace_QTCREATORBUG7978")
+    QTest::newRow("using_inside_different_namespace_QTHLDPLUGINBUG7978")
         << _("class My" TEST_UNICODE_IDENTIFIER "Type { int " TEST_UNICODE_IDENTIFIER "Member; };\n"
              "void f(My" TEST_UNICODE_IDENTIFIER "Type var" TEST_UNICODE_IDENTIFIER ")\n"
              "{ var" TEST_UNICODE_IDENTIFIER "." TEST_UNICODE_IDENTIFIER "Member = 0; }\n")
@@ -1024,7 +1024,7 @@ void tst_CheckSymbols::test_checksymbols_data()
             << Use(3, 3, 7, Highlighting::LocalUse)
             << Use(3, 11, 10, Highlighting::FieldUse));
 
-    QTest::newRow("instantation_as_function_call_QTCREATORBUG15212")
+    QTest::newRow("instantation_as_function_call_QTHLDPLUGINBUG15212")
         << _("struct Foo {};\n"
              "template <typename Type> struct test {\n"
              "  test() {}\n"
@@ -1331,13 +1331,13 @@ void tst_CheckSymbols::findField()
     source[position] = ' ';
     BaseTestCase tc(source);
     Use use = tc.findUse(line, column);
-    QEXPECT_FAIL("pointer_indirect_specialization", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization_typedef", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("instantiation_of_pointer_typedef_in_block", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection_with_base", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("recursive_instantiation_of_template_type", "QTCREATORBUG-14237", Abort);
-    QEXPECT_FAIL("recursive_instantiation_of_template_type_2", "QTCREATORBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization_typedef", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("instantiation_of_pointer_typedef_in_block", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection_with_base", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("recursive_instantiation_of_template_type", "QTHLDPLUGINBUG-14237", Abort);
+    QEXPECT_FAIL("recursive_instantiation_of_template_type_2", "QTHLDPLUGINBUG-14141", Abort);
     QVERIFY(use.isValid());
     QVERIFY(use.kind == Highlighting::FieldUse);
 }

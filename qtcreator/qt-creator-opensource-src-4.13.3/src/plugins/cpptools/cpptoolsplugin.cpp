@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,7 +31,7 @@
 #include "cppprojectfile.h"
 #include "cppprojectupdater.h"
 #include "cpptoolsbridge.h"
-#include "cpptoolsbridgeqtcreatorimplementation.h"
+#include "cpptoolsbridgeqthldpluginimplementation.h"
 #include "cpptoolsconstants.h"
 #include "cpptoolsjsextension.h"
 #include "cpptoolsreuse.h"
@@ -104,7 +104,7 @@ public:
 CppToolsPlugin::CppToolsPlugin()
 {
     m_instance = this;
-    CppToolsBridge::setCppToolsBridgeImplementation(std::make_unique<CppToolsBridgeQtCreatorImplementation>());
+    CppToolsBridge::setCppToolsBridgeImplementation(std::make_unique<CppToolsBridgeQtHldpluginImplementation>());
 }
 
 CppToolsPlugin::~CppToolsPlugin()

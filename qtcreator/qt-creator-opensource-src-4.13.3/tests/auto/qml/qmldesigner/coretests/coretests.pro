@@ -31,16 +31,16 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 
 unix:!openbsd:!osx: LIBS += -lrt # posix shared memory
 
-DEFINES+=QTCREATORDIR=\\\"$$IDE_BUILD_TREE\\\"
+DEFINES+=QTHLDPLUGINDIR=\\\"$$IDE_BUILD_TREE\\\"
 DEFINES+=TESTSRCDIR=\\\"$$_PRO_FILE_PWD_\\\"
 
-DEFINES += QTCREATOR_TEST
+DEFINES += QTHLDPLUGIN_TEST
 DEFINES += QMLDESIGNER_TEST
 DEFINES += QT_RESTRICTED_CAST_FROM_ASCII
 
 INCLUDEPATH += $$IDE_SOURCE_TREE/src/plugins/qmldesigner/designercore/include
 INCLUDEPATH += $$IDE_SOURCE_TREE/src/plugins/qmldesigner/designercore
-INCLUDEPATH += $$IDE_SOURCE_TREE//share/qtcreator/qml/qmlpuppet
+INCLUDEPATH += $$IDE_SOURCE_TREE//share/qthldplugin/qml/qmlpuppet
 INCLUDEPATH += $$IDE_SOURCE_TREE/src/plugins/qmldesigner
 INCLUDEPATH += $$IDE_SOURCE_TREE/src/plugins/qmldesigner/components/integration
 INCLUDEPATH += $$IDE_SOURCE_TREE/src/plugins/qmldesigner/components/componentcore

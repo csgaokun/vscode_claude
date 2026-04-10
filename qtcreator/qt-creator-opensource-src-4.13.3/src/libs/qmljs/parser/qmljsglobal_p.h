@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -38,7 +38,7 @@
 
 #include <QtCore/qglobal.h>
 
-#ifdef QT_CREATOR
+#ifdef QT_HLDPLUGIN
 #  define QT_QML_BEGIN_NAMESPACE
 #  define QT_QML_END_NAMESPACE
 
@@ -50,7 +50,7 @@
 #    define QML_PARSER_EXPORT Q_DECL_IMPORT
 #  endif // QMLJS_LIBRARY
 
-#else // !QT_CREATOR
+#else // !QT_HLDPLUGIN
 #  define QT_QML_BEGIN_NAMESPACE QT_BEGIN_NAMESPACE
 #  define QT_QML_END_NAMESPACE QT_END_NAMESPACE
 #  if defined(QT_BUILD_QMLDEVTOOLS_LIB) || defined(QT_QMLDEVTOOLS_LIB)
@@ -61,5 +61,5 @@
 #  else
 #    define QML_PARSER_EXPORT Q_DECL_IMPORT
 #  endif
-#endif // QT_CREATOR
+#endif // QT_HLDPLUGIN
 

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,15 +23,15 @@
 #
 ############################################################################
 
-# this function switches the MainWindow of creator to the specified view
+# this function switches the MainWindow of hldplugin to the specified view
 def switchViewTo(view):
     # make sure that no tooltip is shown, so move the mouse away and wait until all disappear
-    mouseMove(waitForObject(':Qt Creator_Core::Internal::MainWindow'), -20, -20)
+    mouseMove(waitForObject(':Qt Hldplugin_Core::Internal::MainWindow'), -20, -20)
     waitFor("not QToolTip.isVisible()", 15000)
     if view < ViewConstants.FIRST_AVAILABLE or view > ViewConstants.LAST_AVAILABLE:
         return
     mouseClick(waitForObject("{name='ModeSelector' type='Core::Internal::FancyTabBar' visible='1' "
-                             "window=':Qt Creator_Core::Internal::MainWindow'}"), 20, 20 + 52 * view, 0, Qt.LeftButton)
+                             "window=':Qt Hldplugin_Core::Internal::MainWindow'}"), 20, 20 + 52 * view, 0, Qt.LeftButton)
 
 def __kitIsActivated__(kit):
     return not ("<h3>Click to activate</h3>" in str(kit.toolTip)
@@ -39,7 +39,7 @@ def __kitIsActivated__(kit):
 
 # returns a list of the IDs (see class Targets) of all kits
 #        which are currently configured for the active project
-# Creator must be in projects mode when calling
+# Hldplugin must be in projects mode when calling
 def iterateConfiguredKits():
     treeView = waitForObject(":Projects.ProjectNavigationTreeView")
     bAndRIndex = getQModelIndexStr("text='Build & Run'", ":Projects.ProjectNavigationTreeView")
@@ -90,7 +90,7 @@ def switchToBuildOrRunSettingsFor(wantedKit, projectSettings):
 def setRunInTerminal(wantedKit, runInTerminal=True):
     switchViewTo(ViewConstants.PROJECTS)
     switchToBuildOrRunSettingsFor(wantedKit, ProjectSettings.RUN)
-    ensureChecked("{window=':Qt Creator_Core::Internal::MainWindow' text='Run in terminal'\
+    ensureChecked("{window=':Qt Hldplugin_Core::Internal::MainWindow' text='Run in terminal'\
                     type='QCheckBox' unnamed='1' visible='1'}", runInTerminal)
     switchViewTo(ViewConstants.EDIT)
 
@@ -120,15 +120,15 @@ def getExecutableAndTargetFromToolTip(toolTip):
 
 def invokeContextMenuOnProject(projectName, menuItem):
     try:
-        projItem = waitForObjectItem(":Qt Creator_Utils::NavigationTreeView", projectName, 3000)
+        projItem = waitForObjectItem(":Qt Hldplugin_Utils::NavigationTreeView", projectName, 3000)
     except:
         try:
-            projItem = waitForObjectItem(":Qt Creator_Utils::NavigationTreeView",
+            projItem = waitForObjectItem(":Qt Hldplugin_Utils::NavigationTreeView",
                                          addBranchWildcardToRoot(projectName), 1000)
         except:
             test.fatal("Failed to find root node of the project '%s'." % projectName)
             return
-    openItemContextMenu(waitForObject(":Qt Creator_Utils::NavigationTreeView"),
+    openItemContextMenu(waitForObject(":Qt Hldplugin_Utils::NavigationTreeView"),
                         str(projItem.text).replace("_", "\\_").replace(".", "\\."), 5, 5, 0)
     activateItem(waitForObjectItem("{name='Project.Menu.Project' type='QMenu' visible='1'}", menuItem))
     return projItem

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ namespace Core {
 
 /*!
     \class Core::DirectoryFilter
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
@@ -87,7 +87,7 @@ void DirectoryFilter::restoreState(const QByteArray &state)
     in >> defaultFilter;
     in >> files;
     m_files = Utils::transform(files, &Utils::FilePath::fromString);
-    if (!in.atEnd()) // Qt Creator 4.3 and later
+    if (!in.atEnd()) // Qt Hldplugin 4.3 and later
         in >> m_exclusionFilters;
     else
         m_exclusionFilters.clear();

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -222,7 +222,7 @@ protected:
     static ProjectExplorer::Task createProjectTask(ProjectExplorer::Task::TaskType type,
                                                    const QString &description);
 
-    void setBuildSystemCreator(const std::function<BuildSystem *(Target *)> &creator);
+    void setBuildSystemHldplugin(const std::function<BuildSystem *(Target *)> &hldplugin);
 
 private:
     void addTarget(std::unique_ptr<Target> &&target);

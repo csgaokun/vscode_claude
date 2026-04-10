@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -381,7 +381,7 @@ CppFileSettingsPage::CppFileSettingsPage(CppFileSettings *settings)
     setId(Constants::CPP_FILE_SETTINGS_ID);
     setDisplayName(QCoreApplication::translate("CppTools", Constants::CPP_FILE_SETTINGS_NAME));
     setCategory(Constants::CPP_SETTINGS_CATEGORY);
-    setWidgetCreator([settings] { return new CppFileSettingsWidget(settings); });
+    setWidgetHldplugin([settings] { return new CppFileSettingsWidget(settings); });
 }
 
 } // namespace Internal

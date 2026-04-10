@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -184,7 +184,7 @@ static bool restoreQtVersions()
 {
     QTC_ASSERT(!m_writer, return false);
     m_writer = new PersistentSettingsWriter(settingsFileName(QTVERSION_FILENAME),
-                                            "QtCreatorQtVersions");
+                                            "QtHldpluginQtVersions");
 
     const QList<QtVersionFactory *> factories = QtVersionFactory::allQtVersionFactories();
 

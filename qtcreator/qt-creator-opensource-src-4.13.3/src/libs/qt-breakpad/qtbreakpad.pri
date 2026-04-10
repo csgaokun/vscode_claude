@@ -21,7 +21,7 @@ linux:SOURCES += \
     $$BREAKPAD_SOURCE_DIR/src/client/linux/log/log.cc \
     $$BREAKPAD_SOURCE_DIR/src/client/linux/handler/exception_handler.cc \
     $$BREAKPAD_SOURCE_DIR/src/client/linux/handler/minidump_descriptor.cc \
-    $$BREAKPAD_SOURCE_DIR/src/common/linux/guid_creator.cc \
+    $$BREAKPAD_SOURCE_DIR/src/common/linux/guid_hldplugin.cc \
     $$BREAKPAD_SOURCE_DIR/src/client/linux/dump_writer_common/thread_info.cc \
     $$BREAKPAD_SOURCE_DIR/src/client/linux/dump_writer_common/ucontext_reader.cc \
     $$BREAKPAD_SOURCE_DIR/src/client/linux/minidump_writer/linux_dumper.cc \

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -165,7 +165,7 @@ QString BuildableHelperLibrary::filterForQmakeFileDialog()
         filter += commands.at(i);
         if (HostOsInfo::isAnyUnixHost() && !HostOsInfo::isMacHost())
             // kde bug, we need at least one wildcard character
-            // see QTCREATORBUG-7771
+            // see QTHLDPLUGINBUG-7771
             filter += QLatin1Char('*');
     }
     filter += QLatin1Char(')');

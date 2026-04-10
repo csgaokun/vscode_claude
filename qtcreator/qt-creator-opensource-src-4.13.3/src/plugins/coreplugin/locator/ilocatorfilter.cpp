@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,7 +43,7 @@ using namespace Utils;
 /*!
     \class Core::ILocatorFilter
     \inheaderfile coreplugin/locator/ilocatorfilter.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The ILocatorFilter class adds a locator filter.
 
@@ -52,13 +52,13 @@ using namespace Utils;
 
 /*!
     \class Core::LocatorFilterEntry
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \class Core::LocatorFilterEntry::HighlightInfo
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 

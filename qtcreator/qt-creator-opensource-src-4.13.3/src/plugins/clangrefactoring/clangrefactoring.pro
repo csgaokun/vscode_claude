@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(clangrefactoring-source.pri)
 include(../../shared/clang/clang_installation.pri)
 
@@ -13,16 +13,16 @@ HEADERS += \
     clangqueryhoverhandler.h \
     clangqueryprojectsfindfilterwidget.h \
     clangquerytexteditorwidget.h \
-    qtcreatorclangqueryfindfilter.h \
-    qtcreatorsearch.h \
-    qtcreatorsearchhandle.h \
-    qtcreatorsymbolsfindfilter.h \
+    qthldpluginclangqueryfindfilter.h \
+    qthldpluginsearch.h \
+    qthldpluginsearchhandle.h \
+    qthldpluginsymbolsfindfilter.h \
     querysqlitestatementfactory.h \
     sourcelocations.h \
     symbolsfindfilterconfigwidget.h \
     symbolquery.h \
-    qtcreatoreditormanager.h \
-    qtcreatorrefactoringprojectupdater.h
+    qthldplugineditormanager.h \
+    qthldpluginrefactoringprojectupdater.h
 
 SOURCES += \
     clangrefactoringplugin.cpp \
@@ -31,13 +31,13 @@ SOURCES += \
     clangqueryhoverhandler.cpp \
     clangqueryprojectsfindfilterwidget.cpp \
     clangquerytexteditorwidget.cpp \
-    qtcreatorclangqueryfindfilter.cpp \
-    qtcreatorsearch.cpp \
-    qtcreatorsearchhandle.cpp \
-    qtcreatorsymbolsfindfilter.cpp \
+    qthldpluginclangqueryfindfilter.cpp \
+    qthldpluginsearch.cpp \
+    qthldpluginsearchhandle.cpp \
+    qthldpluginsymbolsfindfilter.cpp \
     symbolsfindfilterconfigwidget.cpp \
-    qtcreatoreditormanager.cpp \
-    qtcreatorrefactoringprojectupdater.cpp
+    qthldplugineditormanager.cpp \
+    qthldpluginrefactoringprojectupdater.cpp
 
 FORMS += \
     clangqueryprojectsfindfilter.ui

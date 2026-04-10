@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -517,7 +517,7 @@ QVariantMap Target::toMap() const
 
     {
         // FIXME: For compatibility within the 4.11 cycle, remove this block later.
-        // This is only read by older versions of Creator, but even there not actively used.
+        // This is only read by older versions of Hldplugin, but even there not actively used.
         const char CONFIGURATION_ID_KEY[] = "ProjectExplorer.ProjectConfiguration.Id";
         const char DEFAULT_DISPLAY_NAME_KEY[] = "ProjectExplorer.ProjectConfiguration.DefaultDisplayName";
         map.insert(QLatin1String(CONFIGURATION_ID_KEY), id().toSetting());
@@ -598,10 +598,10 @@ void Target::updateDefaultDeployConfigurations()
 void Target::updateDefaultRunConfigurations()
 {
     // Manual and Auto
-    const QList<RunConfigurationCreationInfo> creators
-            = RunConfigurationFactory::creatorsForTarget(this);
+    const QList<RunConfigurationCreationInfo> hldplugins
+            = RunConfigurationFactory::hldpluginsForTarget(this);
 
-    if (creators.isEmpty()) {
+    if (hldplugins.isEmpty()) {
         qWarning("No run configuration factory found for target id '%s'.", qPrintable(id().toString()));
         return;
     }
@@ -623,7 +623,7 @@ void Target::updateDefaultRunConfigurations()
     QList<RunConfigurationCreationInfo> existing;
     foreach (RunConfiguration *rc, existingConfigured) {
         bool present = false;
-        for (const RunConfigurationCreationInfo &item : creators) {
+        for (const RunConfigurationCreationInfo &item : hldplugins) {
             QString buildKey = rc->buildKey();
             if (item.factory->runConfigurationId() == rc->id() && item.buildKey == buildKey) {
                 existing.append(item);
@@ -638,7 +638,7 @@ void Target::updateDefaultRunConfigurations()
     bool removeExistingUnconfigured = false;
     if (ProjectExplorerPlugin::projectExplorerSettings().automaticallyCreateRunConfigurations) {
         // Create new "automatic" RCs and put them into newConfigured/newUnconfigured
-        foreach (const RunConfigurationCreationInfo &item, creators) {
+        foreach (const RunConfigurationCreationInfo &item, hldplugins) {
             if (item.creationMode == RunConfigurationCreationInfo::ManualCreationOnly)
                 continue;
             bool exists = false;

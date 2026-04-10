@@ -7,18 +7,18 @@ pydir=${broot}/python
 expatversion=2.1.1
 iconvversion=1.14
 version=7.12
-targetdir=${broot}/qtcreator-gdb-${version}
+targetdir=${broot}/qthldplugin-gdb-${version}
 packageparts=${targetdir}/lib ${targetdir}/data-directory ${targetdir}/libiconv-2.dll ${targetdir}/python27.dll ${targetdir}/libexpat-1.dll
 arch=`uname -sm | sed 's/ /-/g' | tr A-Z a-z`
-packagename=qtcreator-gdb-${version}-${arch}.tar.gz
+packagename=qthldplugin-gdb-${version}-${arch}.tar.gz
 
 all: package
 
 clean:
-	rm -rf  ${broot}/qtcreator-gdb-* ${staging}/gdb-*
+	rm -rf  ${broot}/qthldplugin-gdb-* ${staging}/gdb-*
 
 distclean:
-	rm -rf ${staging} ${source} ${broot}/qtcreator-gdb-*
+	rm -rf ${staging} ${source} ${broot}/qthldplugin-gdb-*
 
 makesourcedir:
 	@test -e ${source} || mkdir ${source}
@@ -113,5 +113,5 @@ package: ${targetdir}/gdb.exe ${broot}/python/python.exe
 	cp -r ${staging}/gdb-${version}-build/gdb/data-directory/{python,syscalls} ${targetdir}/data-directory && \
 	mv ${targetdir} ${targetdir}-${arch} && \
 	echo "Packing..." && \
-	tar czf ${packagename} qtcreator-gdb-${version}-${arch} && \
+	tar czf ${packagename} qthldplugin-gdb-${version}-${arch} && \
 	mv ${targetdir}-${arch} ${targetdir}

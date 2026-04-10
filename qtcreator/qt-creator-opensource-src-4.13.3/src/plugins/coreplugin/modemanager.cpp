@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -54,7 +54,7 @@ namespace Core {
     \class Core::ModeManager
     \inheaderfile coreplugin/modemanager.h
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The ModeManager class manages the activation of modes and the
     actions in the mode selector's tool bar.
@@ -235,7 +235,7 @@ void ModeManagerPrivate::appendMode(IMode *mode)
     m_modeStack->setTabEnabled(index, mode->isEnabled());
 
     // Register mode shortcut
-    const Id actionId = mode->id().withPrefix("QtCreator.Mode.");
+    const Id actionId = mode->id().withPrefix("QtHldplugin.Mode.");
     QAction *action = new QAction(ModeManager::tr("Switch to <b>%1</b> mode").arg(mode->displayName()), m_instance);
     Command *cmd = ActionManager::registerAction(action, actionId);
     cmd->setDefaultKeySequence(QKeySequence(useMacShortcuts ? QString("Meta+%1").arg(index + 1)

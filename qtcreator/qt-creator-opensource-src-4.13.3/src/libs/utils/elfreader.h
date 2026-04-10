@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -134,7 +134,7 @@ public:
     quint64 memsz;
 };
 
-class QTCREATOR_UTILS_EXPORT ElfData
+class QTHLDPLUGIN_UTILS_EXPORT ElfData
 {
 public:
     ElfData() = default;
@@ -153,7 +153,7 @@ public:
     QVector<ElfProgramHeader> programHeaders;
 };
 
-class QTCREATOR_UTILS_EXPORT ElfReader
+class QTHLDPLUGIN_UTILS_EXPORT ElfReader
 {
     Q_DECLARE_TR_FUNCTIONS(Utils::ElfReader)
 public:
@@ -174,7 +174,7 @@ private:
     ElfData m_elfData;
 };
 
-class QTCREATOR_UTILS_EXPORT ElfMapper
+class QTHLDPLUGIN_UTILS_EXPORT ElfMapper
 {
 public:
     ElfMapper(const ElfReader *reader);

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -360,7 +360,7 @@ bool AddKitOperation::test() const
                    KeyValuePairList({KeyValuePair("PE.Profile.Data/extraData", QVariant("extraValue"))}));
     if (empty.isEmpty())
         return false;
-    // QTCREATORBUG-11983, mach_o was not covered by the first attempt to fix this.
+    // QTHLDPLUGINBUG-11983, mach_o was not covered by the first attempt to fix this.
     tcs.insert("D", "x86-macos-generic-mach_o-64bit");
     empty = addKit(map, tcMap, qtMap, devMap,  QVariantMap(),
                    "testId", "Test Kit", "/tmp/icon.png", QString(), 1,

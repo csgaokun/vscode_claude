@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -268,7 +268,7 @@
                   +                    +                                  +
                   +                   +                                   +
         #Stop@InferiorUnrunnable#    +                                    +
-          #Creator Close Event#     +                                     +
+          #Hldplugin Close Event#     +                                     +
                        +           +                                      +
                 InferiorShutdownRequested                                 +
                             +                                             +
@@ -1432,7 +1432,7 @@ void DebuggerPluginPrivate::updatePresetState()
     if (startupRunConfigName.isEmpty() && startupProject)
         startupRunConfigName = startupProject->displayName();
 
-    // Restrict width, otherwise Creator gets too wide, see QTCREATORBUG-21885
+    // Restrict width, otherwise Hldplugin gets too wide, see QTHLDPLUGINBUG-21885
     const QString startToolTip =
             canRun ? tr("Start debugging of startup project") : whyNot;
 
@@ -2117,7 +2117,7 @@ Internal::GlobalDebuggerOptions *globalDebuggerOptions()
     \class Debugger::DebuggerPlugin
 
     This is the "external" interface of the debugger plugin that's visible
-    from Qt Creator core. The internal interface to global debugger
+    from Qt Hldplugin core. The internal interface to global debugger
     functionality that is used by debugger views and debugger engines
     is DebuggerCore, implemented in DebuggerPluginPrivate.
 */

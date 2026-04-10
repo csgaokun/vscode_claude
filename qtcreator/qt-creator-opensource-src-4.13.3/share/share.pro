@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
-SUBDIRS = qtcreator/static.pro
+SUBDIRS = qthldplugin/static.pro
 
 defineTest(hasLupdate) {
     cmd = $$eval(QT_TOOL.lupdate.binary)
@@ -14,4 +14,4 @@ defineTest(hasLupdate) {
     return(false)
 }
 
-hasLupdate(): SUBDIRS += qtcreator/translations
+hasLupdate(): SUBDIRS += qthldplugin/translations

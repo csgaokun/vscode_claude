@@ -2,7 +2,7 @@ QTC_LIB_DEPENDS += \
     sqlite \
     clangsupport
 
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 include(../../shared/clang/clang_installation.pri)
 include(source/clangbackendclangipc-source.pri)
 
@@ -16,5 +16,5 @@ INCLUDEPATH += $$LLVM_INCLUDEPATH
 
 SOURCES += clangbackendmain.cpp
 
-HEADERS += ../qtcreatorcrashhandler/crashhandlersetup.h
-SOURCES += ../qtcreatorcrashhandler/crashhandlersetup.cpp
+HEADERS += ../qthldplugincrashhandler/crashhandlersetup.h
+SOURCES += ../qthldplugincrashhandler/crashhandlersetup.cpp

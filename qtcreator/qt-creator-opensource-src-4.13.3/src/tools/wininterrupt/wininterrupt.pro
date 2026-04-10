@@ -1,7 +1,7 @@
 CONFIG          += warn_on use_c_linker static
 CONFIG          -= qt
 
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 
 # Switch to statically linked CRT. Note: There will be only one
 # global state of the CRT, reconsider if other DLLs are required!

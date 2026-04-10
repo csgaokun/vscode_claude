@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def verifyChangeProject(projectName):
     projItem = invokeContextMenuOnProject(projectName, 'Set "%s" as Active Project' % projectName)
@@ -47,17 +47,17 @@ def main():
     # change to project 2
     verifyChangeProject(projectName2)
     # build project 2
-    clickButton(waitForObject(":*Qt Creator.Build Project_Core::Internal::FancyToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Build Project_Core::Internal::FancyToolButton"))
     # wait for build to complete
     waitForCompile()
     # check output if build successful
-    ensureChecked(waitForObject(":Qt Creator_CompileOutput_Core::Internal::OutputPaneToggleButton"))
-    outputLog = str(waitForObject(":Qt Creator.Compile Output_Core::OutputWindow").plainText)
+    ensureChecked(waitForObject(":Qt Hldplugin_CompileOutput_Core::Internal::OutputPaneToggleButton"))
+    outputLog = str(waitForObject(":Qt Hldplugin.Compile Output_Core::OutputWindow").plainText)
     # verify that project was built successfully
     test.verify(compileSucceeded(outputLog),
                 "Verifying building of simple qt quick application while multiple projects are open.")
     # verify that proper project (project 2) was build
     test.verify(projectName2 in outputLog and projectName1 not in outputLog,
                 "Verifying that proper project " + projectName2 + " was built.")
-    # exit qt creator
+    # exit qt hldplugin
     invokeMenuItem("File", "Exit")

@@ -13,7 +13,7 @@ isEmpty(KSYNTAXHIGHLIGHTING_LIB_DIR) | isEmpty(KSYNTAXHIGHLIGHTING_INCLUDE_DIR) 
     }
 }
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 SOURCES += texteditorplugin.cpp \
     plaintexteditorfactory.cpp \

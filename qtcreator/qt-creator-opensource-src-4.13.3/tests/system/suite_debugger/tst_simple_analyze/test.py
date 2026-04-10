@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     startQC()
@@ -32,7 +32,7 @@ def main():
     # using a temporary directory won't mess up a potentially existing
     workingDir = tempDir()
     projectName = createNewQtQuickApplication(workingDir)[1]
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     if placeCursorToLine(editor, "}"):
         type(editor, '<Left>')
         type(editor, '<Return>')
@@ -83,7 +83,7 @@ def performTest(workingDir, projectName, availableConfigs):
             clickButton(recordButton)
         startButton = waitForObject(":Analyzer Toolbar.Start_QToolButton")
         clickButton(startButton)
-        stopButton = waitForObject(":Qt Creator.Stop_QToolButton")
+        stopButton = waitForObject(":Qt Hldplugin.Stop_QToolButton")
         elapsedLabel = waitForObject(":Analyzer Toolbar.Elapsed:_QLabel", 3000)
         waitFor('"Elapsed:    8" in str(elapsedLabel.text)', 20000)
         clickButton(stopButton)
@@ -108,7 +108,7 @@ def performTest(workingDir, projectName, availableConfigs):
             for i in [colTotal, colMean, colMedian, colLongest, colShortest]:
                 for item in dumpItems(model, column=i):
                     test.verify(not item.startswith('0.000 '),
-                                "Check for implausible durations (QTCREATORBUG-8996): %s" % item)
+                                "Check for implausible durations (QTHLDPLUGINBUG-8996): %s" % item)
             for row in range(model.rowCount()):
                 selfPercent = str(model.index(row, colSelfPercent).data())
                 totalPercent = str(model.index(row, colPercent).data())
@@ -140,7 +140,7 @@ def compareEventsTab(model, file):
                  "Checking number of rows in Events table")
     if not test.verify(containsOnce(expectedTable, foundTable),
                        "Verifying that Events table matches expected values"):
-        test.log("Events displayed by Creator: %s" % foundTable)
+        test.log("Events displayed by Hldplugin: %s" % foundTable)
 
 def containsOnce(tuple, items):
     for item in items:
@@ -149,8 +149,8 @@ def containsOnce(tuple, items):
     return True
 
 def safeClickTab(tab):
-    for bar in [":Qt Creator.Events_QTabBar",
-                ":Qt Creator.Timeline_QTabBar"]:
+    for bar in [":Qt Hldplugin.Events_QTabBar",
+                ":Qt Hldplugin.Timeline_QTabBar"]:
         try:
             clickOnTab(bar, tab, 1000)
             return True

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 currentSelectedTreeItem = None
 warningOrError = re.compile('<p><b>((Error|Warning).*?)</p>')
@@ -44,7 +44,7 @@ def main():
 def __createMinimumIni__(emptyParent):
     qtProjDir = os.path.join(emptyParent, "QtProject")
     os.mkdir(qtProjDir)
-    iniFile = open(os.path.join(qtProjDir, "QtCreator.ini"), "w")
+    iniFile = open(os.path.join(qtProjDir, "QtHldplugin.ini"), "w")
     iniFile.write("[%General]\n")
     iniFile.write("OverrideLanguage=C\n")
     iniFile.close()
@@ -137,7 +137,7 @@ def __qtFunc__(it, foundQt, qmakePath):
         qmakePath = qmakePath.lower()
     test.verify(os.path.isfile(qtPath) and os.access(qtPath, os.X_OK),
                 "Verifying found Qt (%s) is executable." % qtPath)
-    # Two Qt versions will be found when using qtchooser: QTCREATORBUG-14697
+    # Two Qt versions will be found when using qtchooser: QTHLDPLUGINBUG-14697
     # Only add qmake from "which" to list
     if qtPath == qmakePath:
         foundQt.append(it)
@@ -174,7 +174,7 @@ def __kitFunc__(it, foundQt, foundCompNames):
 def __extendExpectedCompilersWithInternalClang__(expected):
     global appContext
     # QC ships a clang itself
-    regex = '^(.*(qtcreator(.exe)?|Qt Creator))( .*)?$' # QC with optional arguments
+    regex = '^(.*(qthldplugin(.exe)?|Qt Hldplugin))( .*)?$' # QC with optional arguments
     qcPath = re.match(regex, appContext.commandLine)
     if qcPath is None:
         test.warning("Regular expression failed.")
@@ -185,7 +185,7 @@ def __extendExpectedCompilersWithInternalClang__(expected):
         elif platform.system() in ('Windows', 'Microsoft'):
             internalClang = os.path.join(qcPath, '..')
         else:
-            internalClang = os.path.join(qcPath, '..', '..', 'libexec', 'qtcreator')
+            internalClang = os.path.join(qcPath, '..', '..', 'libexec', 'qthldplugin')
         internalClang = os.path.join(internalClang, 'clang', 'bin', 'clang')
         if platform.system() in ('Microsoft', 'Windows'):
             internalClang += '-cl.exe'
@@ -361,9 +361,9 @@ def __checkCreatedSettings__(settingsFolder):
     waitForCleanShutdown()
     qtProj = os.path.join(settingsFolder, "QtProject")
     folders = []
-    files = [{os.path.join(qtProj, "QtCreator.db"):0},
-             {os.path.join(qtProj, "QtCreator.ini"):30}]
-    folders.append(os.path.join(qtProj, "qtcreator"))
+    files = [{os.path.join(qtProj, "QtHldplugin.db"):0},
+             {os.path.join(qtProj, "QtHldplugin.ini"):30}]
+    folders.append(os.path.join(qtProj, "qthldplugin"))
     files.extend([{os.path.join(folders[0], "debuggers.xml"):0},
                   {os.path.join(folders[0], "devices.xml"):0},
                   {os.path.join(folders[0], "helpcollection.qhc"):0},

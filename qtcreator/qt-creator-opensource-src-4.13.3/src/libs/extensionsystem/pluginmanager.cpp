@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,7 +76,7 @@ enum { debugLeaks = 0 };
 
 /*!
     \namespace ExtensionSystem
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \brief The ExtensionSystem namespace provides classes that belong to the
            core plugin system.
 
@@ -92,7 +92,7 @@ enum { debugLeaks = 0 };
 /*!
     \class ExtensionSystem::PluginManager
     \inheaderfile extensionsystem/pluginmanager.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The PluginManager class implements the core plugin system that
@@ -106,7 +106,7 @@ enum { debugLeaks = 0 };
 
     \section1 Plugins
     Plugins must derive from the IPlugin class and have the IID
-    \c "org.qt-project.Qt.QtCreatorPlugin".
+    \c "org.qt-project.Qt.QtHldpluginPlugin".
 
     The plugin manager is used to set a list of file system directories to search for
     plugins, retrieve information about the state of these plugins, and to load them.
@@ -1571,7 +1571,7 @@ void PluginManagerPrivate::readPluginPaths()
 
     for (const QString &pluginFile : pluginFiles(pluginPaths)) {
         PluginSpec *spec = PluginSpec::read(pluginFile);
-        if (!spec) // not a Qt Creator plugin
+        if (!spec) // not a Qt Hldplugin plugin
             continue;
 
         // defaultDisabledPlugins and defaultEnabledPlugins from install settings

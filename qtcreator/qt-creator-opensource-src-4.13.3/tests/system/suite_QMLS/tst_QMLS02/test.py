@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -27,7 +27,7 @@ source("../shared/qmls.py")
 source("../../shared/suites_qtta.py")
 
 def main():
-    editorArea = startQtCreatorWithNewAppAtQMLEditor(tempDir(), "SampleApp")
+    editorArea = startQtHldpluginWithNewAppAtQMLEditor(tempDir(), "SampleApp")
     if not editorArea:
         return
     # add basic TextEdit item to check it afterwards
@@ -42,8 +42,8 @@ def main():
     type(editorArea, testingCodeLine)
 
     invokeMenuItem("View", "Output Panes", "Issues")
-    issuesView = waitForObject(":Qt Creator.Issues_QListView")
-    clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+    issuesView = waitForObject(":Qt Hldplugin.Issues_QListView")
+    clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
 
     # invoke QML parsing
     invokeMenuItem("Tools", "QML/JS", "Run Checks")
@@ -59,7 +59,7 @@ def main():
     # invoke QML parsing
     invokeMenuItem("Tools", "QML/JS", "Run Checks")
     # verify that there is no error/errors cleared
-    issuesView = waitForObject(":Qt Creator.Issues_QListView")
+    issuesView = waitForObject(":Qt Hldplugin.Issues_QListView")
     issuesModel = issuesView.model()
     # wait for issues
     test.verify(waitFor("issuesModel.rowCount() == 0", 3000),

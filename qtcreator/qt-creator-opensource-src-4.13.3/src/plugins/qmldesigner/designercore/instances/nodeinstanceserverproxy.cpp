@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -26,7 +26,7 @@
 #include "nodeinstanceserverproxy.h"
 
 #include "connectionmanagerinterface.h"
-#include "puppetcreator.h"
+#include "puppethldplugin.h"
 
 #include <changeauxiliarycommand.h>
 #include <changebindingscommand.h>
@@ -49,7 +49,7 @@
 #include <informationchangedcommand.h>
 #include <inputeventcommand.h>
 #include <pixmapchangedcommand.h>
-#include <puppettocreatorcommand.h>
+#include <puppettohldplugincommand.h>
 #include <removeinstancescommand.h>
 #include <removepropertiescommand.h>
 #include <removesharedmemorycommand.h>
@@ -121,7 +121,7 @@ void NodeInstanceServerProxy::dispatchCommand(const QVariant &command)
     static const int tokenCommandType = QMetaType::type("TokenCommand");
     static const int debugOutputCommandType = QMetaType::type("DebugOutputCommand");
     static const int changeSelectionCommandType = QMetaType::type("ChangeSelectionCommand");
-    static const int puppetToCreatorCommandType = QMetaType::type("PuppetToCreatorCommand");
+    static const int puppetToHldpluginCommandType = QMetaType::type("PuppetToHldpluginCommand");
 
     qCInfo(instanceViewBenchmark) << "dispatching command" << command.userType() << command.typeName();
     if (command.userType() == informationChangedCommandType) {
@@ -144,8 +144,8 @@ void NodeInstanceServerProxy::dispatchCommand(const QVariant &command)
         nodeInstanceClient()->debugOutput(command.value<DebugOutputCommand>());
     } else if (command.userType() == changeSelectionCommandType) {
         nodeInstanceClient()->selectionChanged(command.value<ChangeSelectionCommand>());
-    } else if (command.userType() == puppetToCreatorCommandType) {
-        nodeInstanceClient()->handlePuppetToCreatorCommand(command.value<PuppetToCreatorCommand>());
+    } else if (command.userType() == puppetToHldpluginCommandType) {
+        nodeInstanceClient()->handlePuppetToHldpluginCommand(command.value<PuppetToHldpluginCommand>());
     } else {
         Q_ASSERT(false);
     }

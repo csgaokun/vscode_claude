@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -54,7 +54,7 @@ def __endTestSuggestions__(editorArea):
 
 def testSuggestionsAuto(lineText, textToType, expectedText, keyToUseSuggestion):
     # get editor
-    editorArea = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editorArea = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     # go to proper line, make backup, type needed text
     if not __beginTestSuggestions__(editorArea, lineText, textToType):
         return False
@@ -77,7 +77,7 @@ def testSuggestionsAuto(lineText, textToType, expectedText, keyToUseSuggestion):
 
 def testSuggestionsManual(lineText, textToType, expectedText):
     # get editor
-    editorArea = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editorArea = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     # go to proper line, make backup, type needed text
     if not __beginTestSuggestions__(editorArea, lineText, textToType):
         return False
@@ -109,12 +109,12 @@ def testSuggestionsManual(lineText, textToType, expectedText):
     return True
 
 def main():
-    if not startQtCreatorWithNewAppAtQMLEditor(tempDir(), "SampleApp"):
+    if not startQtHldpluginWithNewAppAtQMLEditor(tempDir(), "SampleApp"):
         return
     # add basic TextEdit item to check it afterwards
     codelines = ['TextEdit {', 'text: "Enter something"', 'anchors.top: parent.top',
                  'anchors.horizontalCenter: parent.horizontalCenter', 'anchors.topMargin: 20']
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     if not addTestableCodeAfterLine(editor, 'title: qsTr("Hello World")', codelines):
         saveAndExit()
         return
@@ -137,5 +137,5 @@ def main():
     changeAutocompleteToManual()
     # test manual suggestions
     testSuggestionsManual("TextEdit {", "col", "color:")
-    # exit qt creator
+    # exit qt hldplugin
     saveAndExit()

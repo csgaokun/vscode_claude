@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -464,7 +464,7 @@ void QMakeEvaluator::runProcess(QProcess *proc, const QString &command) const
         static const QString dummyVar = "__qtc_dummy";
         static const QString notSetValue = "not set";
         const QString oldValue = env.value(dummyVar, notSetValue); // Just in case.
-        env.insert(dummyVar, "QTCREATORBUG-23504"); // Force detach.
+        env.insert(dummyVar, "QTHLDPLUGINBUG-23504"); // Force detach.
         if (oldValue == notSetValue)
             env.remove(dummyVar);
         else

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def addFileToProject(projectPath, category, fileTemplate, fileName):
     __createProjectOrFileSelectType__(category, fileTemplate, isProject=False)
@@ -53,7 +53,7 @@ def main():
     projectName = createEmptyQtProject(workingDir, "EmptyQtProj", targets)
     waitForProjectParsing()
     addFileToProject(os.path.join(workingDir, projectName), "  C/C++", "C/C++ Source File", "main.cpp")
-    editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     typeLines(editor, ["int main() {"])
     invokeMenuItem("File", "Save All")
     performDebugging(projectName)
@@ -71,7 +71,7 @@ def main():
                 test.fail("Failed to create Sample%s%s" % (name, qtVersion),
                           "Target: %s, plainC: %s" % (Targets.getStringForTargt(singleTarget), isC))
                 continue
-            editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
             replaceEditorContent(editor, "")
             typeLines(editor, ["int main() {"])
             invokeMenuItem("File", "Save All")
@@ -81,7 +81,7 @@ def main():
     invokeMenuItem("File", "Exit")
 
 def __handleAppOutputWaitForDebuggerFinish__():
-    ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+    ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
     appOutput = waitForObject("{type='Core::OutputWindow' visible='1' "
                               "windowTitle='Application Output Window'}")
     if not test.verify(waitFor("str(appOutput.plainText).rstrip().endswith('Debugging has finished')", 20000),
@@ -94,21 +94,21 @@ def performDebugging(projectName):
     for kit, config in iterateBuildConfigs("Debug"):
         test.log("Selecting '%s' as build config" % config)
         verifyBuildConfig(kit, config, True, True)
-        waitForObject(":*Qt Creator.Build Project_Core::Internal::FancyToolButton")
+        waitForObject(":*Qt Hldplugin.Build Project_Core::Internal::FancyToolButton")
         invokeMenuItem("Build", "Rebuild All Projects")
         waitForCompile()
         isMsvc = isMsvcConfig(kit)
-        clickButton(waitForObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton"))
+        clickButton(waitForObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton"))
         handleDebuggerWarnings(config, isMsvc)
-        waitForObject(":Qt Creator.DebugModeWidget_QSplitter")
+        waitForObject(":Qt Hldplugin.DebugModeWidget_QSplitter")
         __handleAppOutputWaitForDebuggerFinish__()
-        clickButton(":*Qt Creator.Clear_QToolButton")
-        editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+        clickButton(":*Qt Hldplugin.Clear_QToolButton")
+        editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
         placeCursorToLine(editor, "int main.*", True)
         type(editor, "<Down>")
         invokeMenuItem("Debug", "Toggle Breakpoint")
-        clickButton(waitForObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton"))
+        clickButton(waitForObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton"))
         handleDebuggerWarnings(config, isMsvc)
-        clickButton(waitForObject(":*Qt Creator.Continue_Core::Internal::FancyToolButton"))
+        clickButton(waitForObject(":*Qt Hldplugin.Continue_Core::Internal::FancyToolButton"))
         __handleAppOutputWaitForDebuggerFinish__()
         removeOldBreakpoints()

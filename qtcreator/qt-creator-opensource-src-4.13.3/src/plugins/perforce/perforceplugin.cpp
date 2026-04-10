@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -77,7 +77,7 @@ using namespace std::placeholders;
 namespace Perforce {
 namespace Internal {
 
-const char SUBMIT_MIMETYPE[] = "text/vnd.qtcreator.p4.submit";
+const char SUBMIT_MIMETYPE[] = "text/vnd.qthldplugin.p4.submit";
 
 const char PERFORCE_CONTEXT[] = "Perforce Context";
 const char PERFORCE_SUBMIT_EDITOR_ID[] = "Perforce.SubmitEditor";
@@ -159,14 +159,14 @@ const VcsBaseEditorParameters logEditorParameters {
     LogOutput,
     PERFORCE_LOG_EDITOR_ID,
     PERFORCE_LOG_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.p4.log"
+    "text/vnd.qthldplugin.p4.log"
 };
 
 const VcsBaseEditorParameters annotateEditorParameters {
     AnnotateOutput,
     PERFORCE_ANNOTATION_EDITOR_ID,
     PERFORCE_ANNOTATION_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.p4.annotation"
+    "text/vnd.qthldplugin.p4.annotation"
 };
 
 const VcsBaseEditorParameters diffEditorParameters {

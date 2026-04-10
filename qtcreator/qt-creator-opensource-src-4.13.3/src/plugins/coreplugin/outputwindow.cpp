@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -261,7 +261,7 @@ void OutputWindow::wheelEvent(QWheelEvent *e)
         if (e->modifiers() & Qt::ControlModifier) {
             float delta = e->angleDelta().y() / 120.f;
 
-            // Workaround for QTCREATORBUG-22721, remove when properly fixed in Qt
+            // Workaround for QTHLDPLUGINBUG-22721, remove when properly fixed in Qt
             const float newSize = float(font().pointSizeF()) + delta;
             if (delta < 0.f && newSize < 4.f)
                 return;

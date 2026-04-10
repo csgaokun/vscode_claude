@@ -4,7 +4,7 @@
 ** Author: Nicolas Arnaud-Cormos, KDAB (nicolas.arnaud-cormos@kdab.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1398,7 +1398,7 @@ void HeobDialog::keyPressEvent(QKeyEvent *e)
         return QDialog::keyPressEvent(e);
 
     reject();
-    Core::HelpManager::showHelpUrl("qthelp://org.qt-project.qtcreator/doc/creator-heob.html");
+    Core::HelpManager::showHelpUrl("qthelp://org.qt-project.qthldplugin/doc/hldplugin-heob.html");
 }
 
 void HeobDialog::updateProfile()

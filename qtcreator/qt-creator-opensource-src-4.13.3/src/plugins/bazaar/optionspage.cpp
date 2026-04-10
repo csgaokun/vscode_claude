@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Hugues Delorme
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -87,7 +87,7 @@ OptionsPage::OptionsPage(const std::function<void(void)> &onApply, BazaarSetting
 {
     setId(VcsBase::Constants::VCS_ID_BAZAAR);
     setDisplayName(OptionsPageWidget::tr("Bazaar"));
-    setWidgetCreator([onApply, settings] { return new OptionsPageWidget(onApply, settings); });
+    setWidgetHldplugin([onApply, settings] { return new OptionsPageWidget(onApply, settings); });
     setCategory(Constants::VCS_SETTINGS_CATEGORY);
 }
 

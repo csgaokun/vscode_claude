@@ -1,8 +1,8 @@
-CREATORSOURCEDIR = ../../../
+HLDPLUGINSOURCEDIR = ../../../
 
 DEFINES += \
-    CREATORLESSTEST
-APPSOURCEDIR = $$CREATORSOURCEDIR/src/plugins/qmakeprojectmanager/wizards
+    HLDPLUGINLESSTEST
+APPSOURCEDIR = $$HLDPLUGINSOURCEDIR/src/plugins/qmakeprojectmanager/wizards
 HEADERS += \
     $$APPSOURCEDIR/qtquickapp.h \
     $$APPSOURCEDIR/html5app.h \
@@ -12,7 +12,7 @@ SOURCES += \
     $$APPSOURCEDIR/html5app.cpp \
     $$APPSOURCEDIR/abstractmobileapp.cpp \
     main.cpp \
-    $$CREATORSOURCEDIR/tests/manual/appwizards/helpers.cpp
+    $$HLDPLUGINSOURCEDIR/tests/manual/appwizards/helpers.cpp
 INCLUDEPATH += $$APPSOURCEDIR
 DISTFILES = qtquickapps.xml
 RESOURCES += \

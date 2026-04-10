@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Andre Hartmann.
 ** Contact: aha_1980@gmx.de
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -273,7 +273,7 @@ bool CustomParserConfigDialog::checkPattern(QLineEdit *pattern, const QString &o
 
     QPalette palette;
     palette.setColor(QPalette::Text,
-                     Utils::creatorTheme()->color(rx.isValid() ? Utils::Theme::TextColorNormal
+                     Utils::hldpluginTheme()->color(rx.isValid() ? Utils::Theme::TextColorNormal
                                                                : Utils::Theme::TextColorError));
     pattern->setPalette(palette);
     pattern->setToolTip(rx.isValid() ? QString() : rx.errorString());
@@ -282,7 +282,7 @@ bool CustomParserConfigDialog::checkPattern(QLineEdit *pattern, const QString &o
         *match = rx.match(outputText);
     if (rx.pattern().isEmpty() || !rx.isValid() || !match->hasMatch()) {
         *errorMessage = QString::fromLatin1("<font color=\"%1\">%2 ").arg(
-                    Utils::creatorTheme()->color(Utils::Theme::TextColorError).name(),
+                    Utils::hldpluginTheme()->color(Utils::Theme::TextColorError).name(),
                     tr("Not applicable:"));
         if (rx.pattern().isEmpty())
             *errorMessage += tr("Pattern is empty.");

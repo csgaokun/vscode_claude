@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ PerfRunConfigurationAspect::PerfRunConfigurationAspect(ProjectExplorer::Target *
                                                "Performance Analyzer Settings"));
     setUsingGlobalSettings(true);
     resetProjectToGlobalSettings();
-    setConfigWidgetCreator([this] { return new Debugger::AnalyzerRunConfigWidget(this); });
+    setConfigWidgetHldplugin([this] { return new Debugger::AnalyzerRunConfigWidget(this); });
 }
 
 } // namespace PerfProfiler

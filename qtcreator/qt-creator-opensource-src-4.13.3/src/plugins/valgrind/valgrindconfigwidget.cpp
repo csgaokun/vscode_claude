@@ -4,7 +4,7 @@
 ** Author: Milian Wolff, KDAB (milian.wolff@kdab.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -310,7 +310,7 @@ ValgrindOptionsPage::ValgrindOptionsPage()
     setCategory("T.Analyzer");
     setDisplayCategory(QCoreApplication::translate("Analyzer", "Analyzer"));
     setCategoryIconPath(Analyzer::Icons::SETTINGSCATEGORY_ANALYZER);
-    setWidgetCreator([] { return new ValgrindConfigWidget(ValgrindGlobalSettings::instance()); });
+    setWidgetHldplugin([] { return new ValgrindConfigWidget(ValgrindGlobalSettings::instance()); });
 }
 
 QWidget *ValgrindOptionsPage::createSettingsWidget(ValgrindBaseSettings *settings)
