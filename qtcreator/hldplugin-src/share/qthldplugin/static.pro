@@ -3,8 +3,6 @@ TEMPLATE = aux
 include(../../qthldplugin.pri)
 
 STATIC_BASE = $$PWD
-win32-msvc*: STATIC_BASE = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/share/qthldplugin)
-!exists($$STATIC_BASE/static.pro): STATIC_BASE = $$PWD
 STATIC_OUTPUT_BASE = $$IDE_DATA_PATH
 STATIC_INSTALL_BASE = $$INSTALL_DATA_PATH
 

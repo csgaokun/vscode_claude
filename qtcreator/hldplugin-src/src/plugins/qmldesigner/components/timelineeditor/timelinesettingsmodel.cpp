@@ -88,7 +88,7 @@ TimelineEditorDelegate::TimelineEditorDelegate(QWidget *parent)
     static QItemEditorFactory *factory = nullptr;
     if (factory == nullptr) {
         factory = new QItemEditorFactory;
-        QItemEditorHldpluginBase *hldplugin = new QItemEditorHldplugin<QComboBox>("currentText");
+        QItemEditorCreatorBase *hldplugin = new QItemEditorCreator<QComboBox>("currentText");
         factory->registerEditor(QVariant::String, hldplugin);
     }
 

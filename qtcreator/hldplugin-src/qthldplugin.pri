@@ -86,6 +86,11 @@ equals(TEST, 1) {
 }
 
 IDE_SOURCE_TREE = $$PWD
+
+# Force absolute paths in generated Makefiles to avoid NMAKE MAX_PATH (260 char)
+# limit with unresolved relative paths in shadow builds on Windows.
+win32-msvc*: QMAKE_PROJECT_DEPTH = 0
+
 isEmpty(IDE_BUILD_TREE) {
     sub_dir = $$_PRO_FILE_PWD_
     sub_dir ~= s,^$$re_escape($$PWD),,

@@ -1,8 +1,6 @@
 include(../../qthldpluginplugin.pri)
 
 MESONPROJECTMANAGER_SOURCE_ROOT = $$PWD
-win32-msvc*:MESONPROJECTMANAGER_SOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/mesonprojectmanager)
-!exists($$MESONPROJECTMANAGER_SOURCE_ROOT/mesonprojectplugin.cpp):MESONPROJECTMANAGER_SOURCE_ROOT = $$PWD
 
 INCLUDEPATH += $$MESONPROJECTMANAGER_SOURCE_ROOT
 

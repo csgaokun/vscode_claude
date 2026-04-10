@@ -151,8 +151,6 @@ HEADERS += \
     boost/boosttestsettings.h
 
 AUTOTEST_RESOURCE_ROOT = $$PWD
-win32-msvc*:AUTOTEST_RESOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/autotest)
-!exists($$AUTOTEST_RESOURCE_ROOT/autotest.qrc): AUTOTEST_RESOURCE_ROOT = $$PWD
 
 RESOURCES += \
     $$AUTOTEST_RESOURCE_ROOT/autotest.qrc

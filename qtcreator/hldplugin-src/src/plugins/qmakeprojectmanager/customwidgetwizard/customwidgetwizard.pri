@@ -1,6 +1,4 @@
 CUSTOMWIDGETWIZARD_SOURCE_ROOT = $$PWD
-win32-msvc*:CUSTOMWIDGETWIZARD_SOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/qmakeprojectmanager/customwidgetwizard)
-!exists($$CUSTOMWIDGETWIZARD_SOURCE_ROOT/classdefinition.cpp):CUSTOMWIDGETWIZARD_SOURCE_ROOT = $$PWD
 
 CUSTOMWIDGETWIZARD_SOURCE_FILES = \
  plugingenerator.cpp \

@@ -114,8 +114,8 @@ BindingDelegate::BindingDelegate(QWidget *parent) : ConnectionEditorDelegate(par
     static QItemEditorFactory *factory = nullptr;
     if (factory == nullptr) {
         factory = new QItemEditorFactory;
-        QItemEditorHldpluginBase *hldplugin
-                = new QItemEditorHldplugin<PropertiesComboBox>("text");
+        QItemEditorCreatorBase *hldplugin
+                = new QItemEditorCreator<PropertiesComboBox>("text");
         factory->registerEditor(QVariant::String, hldplugin);
     }
 
@@ -191,8 +191,8 @@ DynamicPropertiesDelegate::DynamicPropertiesDelegate(QWidget *parent) : Connecti
 //    static QItemEditorFactory *factory = 0;
 //        if (factory == 0) {
 //            factory = new QItemEditorFactory;
-//            QItemEditorHldpluginBase *hldplugin
-//                = new QItemEditorHldplugin<DynamicPropertiesComboBox>("text");
+//            QItemEditorCreatorBase *hldplugin
+//                = new QItemEditorCreator<DynamicPropertiesComboBox>("text");
 //            factory->registerEditor(QVariant::String, hldplugin);
 //        }
 
@@ -255,8 +255,8 @@ ConnectionDelegate::ConnectionDelegate(QWidget *parent) : ConnectionEditorDelega
     static QItemEditorFactory *factory = nullptr;
     if (factory == nullptr) {
         factory = new QItemEditorFactory;
-        QItemEditorHldpluginBase *hldplugin
-                = new QItemEditorHldplugin<ConnectionComboBox>("text");
+        QItemEditorCreatorBase *hldplugin
+                = new QItemEditorCreator<ConnectionComboBox>("text");
         factory->registerEditor(QVariant::String, hldplugin);
     }
 
