@@ -19,12 +19,18 @@ import {
 } from "./contextCollector";
 import { ChatPanel, buildQuestionWithContext } from "./chatPanel";
 import { InlineCompletionProvider } from "./inlineCompletion";
+import { initLogger, logCommand, logInfo, logError } from "./logger";
 
 // ---------------------------------------------------------------------------
 // Activation
 // ---------------------------------------------------------------------------
 
 export function activate(context: vscode.ExtensionContext): void {
+  // Initialise the centralised logger.
+  const logChannel = initLogger();
+  context.subscriptions.push(logChannel);
+  logInfo("local", "Extension activated – vscode-claude initialising");
+
   // Resolve the API key from settings or the environment variable, just as
   // Qt Creator reads its Anthropic key from the plugin settings or env.
   const getApiKey = (): string => {
@@ -68,6 +74,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // ---------------------------------------------------------------------------
   context.subscriptions.push(
     vscode.commands.registerCommand("vscode-claude.openChat", () => {
+      logCommand("local", "openChat", "Opening Claude chat panel");
       const client = createClient();
       if (!client) return;
       ChatPanel.createOrShow(client);
@@ -79,6 +86,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // ---------------------------------------------------------------------------
   context.subscriptions.push(
     vscode.commands.registerCommand("vscode-claude.askClaude", async () => {
+      logCommand("local", "askClaude", "Prompting user for a question");
       const client = createClient();
       if (!client) return;
 
@@ -86,8 +94,12 @@ export function activate(context: vscode.ExtensionContext): void {
         prompt: "Ask Claude anything",
         placeHolder: "e.g. How do I implement a binary search tree in TypeScript?",
       });
-      if (!question) return;
+      if (!question) {
+        logInfo("local", "askClaude cancelled – no question entered");
+        return;
+      }
 
+      logInfo("local", "askClaude submitting question", `question="${question.substring(0, 200)}"`);
       const panel = ChatPanel.createOrShow(client);
       await panel.ask(question);
     })
@@ -98,17 +110,20 @@ export function activate(context: vscode.ExtensionContext): void {
   // ---------------------------------------------------------------------------
   context.subscriptions.push(
     vscode.commands.registerCommand("vscode-claude.explainCode", async () => {
+      logCommand("local", "explainCode", "Explaining selected code");
       const client = createClient();
       if (!client) return;
 
       const ctx = collectEditorContext(vscode.window.activeTextEditor);
       if (!ctx?.selectedText) {
+        logInfo("local", "explainCode cancelled – no code selected");
         vscode.window.showWarningMessage(
           "Please select some code first, then run Explain Code."
         );
         return;
       }
 
+      logInfo("local", "explainCode submitting", `file="${ctx.filePath}", lang=${ctx.languageId}, selectionLength=${ctx.selectedText.length}`);
       const question = buildQuestionWithContext(
         "Please explain the following code in detail. Describe what it does, any important patterns used, and potential issues.",
         ctx
@@ -124,17 +139,20 @@ export function activate(context: vscode.ExtensionContext): void {
   // ---------------------------------------------------------------------------
   context.subscriptions.push(
     vscode.commands.registerCommand("vscode-claude.reviewCode", async () => {
+      logCommand("local", "reviewCode", "Reviewing selected code");
       const client = createClient();
       if (!client) return;
 
       const ctx = collectEditorContext(vscode.window.activeTextEditor);
       if (!ctx?.selectedText) {
+        logInfo("local", "reviewCode cancelled – no code selected");
         vscode.window.showWarningMessage(
           "Please select some code first, then run Review Code."
         );
         return;
       }
 
+      logInfo("local", "reviewCode submitting", `file="${ctx.filePath}", lang=${ctx.languageId}, selectionLength=${ctx.selectedText.length}`);
       const question = buildQuestionWithContext(
         "Please review the following code. Identify bugs, security issues, performance concerns, and style improvements. Be specific and concise.",
         ctx
@@ -150,6 +168,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // ---------------------------------------------------------------------------
   context.subscriptions.push(
     vscode.commands.registerCommand("vscode-claude.generateCode", async () => {
+      logCommand("local", "generateCode", "Generating code from description");
       const client = createClient();
       if (!client) return;
 
@@ -161,7 +180,12 @@ export function activate(context: vscode.ExtensionContext): void {
         placeHolder:
           "e.g. A function that debounces async calls with a configurable delay",
       });
-      if (!description) return;
+      if (!description) {
+        logInfo("local", "generateCode cancelled – no description entered");
+        return;
+      }
+
+      logInfo("local", "generateCode submitting", `lang=${languageId}, description="${description.substring(0, 200)}"`);
 
       const config = vscode.workspace.getConfiguration("vscode-claude");
       const model = config.get<string>("model", "claude-3-5-sonnet-20241022");
@@ -199,9 +223,12 @@ export function activate(context: vscode.ExtensionContext): void {
             }
           } catch (err) {
             const message = err instanceof Error ? err.message : String(err);
+            logError("local", "generateCode API error", message);
             vscode.window.showErrorMessage(`Claude error: ${message}`);
             return;
           }
+
+          logInfo("local", "generateCode response received", `generatedLength=${generated.length}`);
 
           // Strip markdown fences if present, then insert into editor.
           const codeMatch = generated.match(
@@ -271,5 +298,6 @@ export function activate(context: vscode.ExtensionContext): void {
 // ---------------------------------------------------------------------------
 
 export function deactivate(): void {
+  logInfo("local", "Extension deactivated – vscode-claude shutting down");
   // Nothing to clean up – VS Code disposes context.subscriptions automatically.
 }

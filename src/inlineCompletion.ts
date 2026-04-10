@@ -15,6 +15,7 @@
 import * as vscode from "vscode";
 import { ClaudeClient } from "./claudeClient";
 import { collectEditorContext } from "./contextCollector";
+import { logInfo, logError } from "./logger";
 
 /** Debounce delay in ms – avoids a request on every keystroke. */
 const DEBOUNCE_MS = 600;
@@ -28,6 +29,7 @@ export class InlineCompletionProvider
 
   constructor(client: ClaudeClient) {
     this.client = client;
+    this.client.setLogSource("local");
   }
 
   async provideInlineCompletionItems(
@@ -56,6 +58,8 @@ export class InlineCompletionProvider
     if (!ctx) {
       return null;
     }
+
+    logInfo("local", "Inline completion request", `file="${ctx.filePath}", lang=${ctx.languageId}, line=${ctx.cursorLine}`);
 
     const config = vscode.workspace.getConfiguration("vscode-claude");
     const model = config.get<string>("model", "claude-3-5-haiku-20241022");
@@ -87,13 +91,17 @@ export class InlineCompletionProvider
       }
     } catch {
       // Silently ignore inline completion errors to avoid distracting the user.
+      logError("local", "Inline completion failed (suppressed)");
       return null;
     }
 
     completion = completion.trim();
     if (!completion) {
+      logInfo("local", "Inline completion returned empty result");
       return null;
     }
+
+    logInfo("local", "Inline completion result", `completionLength=${completion.length}`);
 
     return {
       items: [
