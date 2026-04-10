@@ -14,7 +14,7 @@
 
 选择 Qt Creator 4.13.3 作为基础的原因：
 - **经过生产验证** — Qt Creator 是全球数百万开发者使用的 IDE，其插件系统经过多年打磨，健壮可靠
-- **架构清晰** — ExtensionSystem 库仅 27 个核心文件（约 5510 行），Aggregation 库 5 个文件（约 440 行），易于提取和理解
+- **架构清晰** — ExtensionSystem 库 29 个核心文件（约 5361 行），Aggregation 库 7 个文件（约 394 行），易于提取和理解
 - **扩展性强** — Object Pool + Extension Point 机制提供了良好的插件间通信基础
 - **Qt 原生** — 基于 Qt/C++，与目标平台（包括国产操作系统）高度兼容
 
@@ -132,8 +132,8 @@
 | 级别 | 位置 | 文件数 | 状态 | 说明 |
 |------|------|--------|------|------|
 | 官方源码 | `backup/qtcreator-src/` | 19,076 | 只读备份 | Qt Creator 4.13.3 官方原始源码 |
-| 一次裁剪备份 | `backup/qt-creator-prosrc-4.13.3.zip` | ~13,850 | 只读备份 | 已删除 CMake/QBS, 可正常编译 |
-| 工作源码 | `qtcreator/hldplugin-src/` | ~12,432 | 当前工作区 | creator→hldplugin 重命名完成 |
+| 一次裁剪备份 | `backup/qt-creator-prosrc-4.13.3.zip` | 12,611 | 只读备份 | 已删除 CMake/QBS, 可正常编译 |
+| 工作源码 | `qtcreator/hldplugin-src/` | 12,458 | 当前工作区 | creator→hldplugin 重命名完成 |
 
 ### 3.2 工作源码目录结构
 
@@ -146,7 +146,7 @@ qtcreator/hldplugin-src/
 │   │   ├── aggregation/      # 🔑 对象聚合模式
 │   │   ├── utils/            # 工具库（文件、进程、环境等）
 │   │   └── ...               # 其他共享库
-│   ├── plugins/            # 70+ 个功能插件
+│   ├── plugins/            # 74 个插件目录（73 个参与构建）
 │   │   ├── coreplugin/       # 🔑 核心插件（必须存在）
 │   │   └── ...               # 其他插件（可裁剪）
 │   ├── tools/              # 独立工具/后端进程
@@ -296,6 +296,16 @@ qtcreator/hldplugin-src/
 | 编译器 | MSVC2017 (x64) | Visual Studio 2017 |
 | 构建工具 | qmake + jom/nmake | 通过 .pro/.pri 文件描述 |
 | 系统 | Windows 10/11 64位 | 主要开发平台 |
+
+### 可编译 Qt 版本范围
+
+| 项目 | 版本 |
+|------|------|
+| 最低要求 | **Qt 5.6.0** |
+| 当前开发版本 | Qt 5.12.12 |
+| 理论上限 | Qt 5.x 系列均兼容 |
+
+> `qthldplugin.pro` 中通过 `!minQtVersion(5, 6, 0)` 进行版本检查。选择 Qt 5.6.0 作为下限，是为了覆盖部分国产操作系统预装的旧版 Qt 环境，确保最大兼容性。
 
 ### 目标部署环境
 
