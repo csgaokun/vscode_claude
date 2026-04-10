@@ -14,6 +14,7 @@
 
 import * as https from "https";
 import * as http from "http";
+import { logApiRequest, logApiResponse, logApiError, LogSource } from "./logger";
 
 /** A single turn in a conversation. */
 export interface Message {
@@ -56,6 +57,8 @@ const MESSAGES_PATH = "/v1/messages";
  */
 export class ClaudeClient {
   private readonly apiKey: string;
+  /** Where the request originates – used for log tagging. */
+  private logSource: LogSource = "local";
 
   constructor(apiKey: string) {
     if (!apiKey) {
@@ -64,6 +67,11 @@ export class ClaudeClient {
       );
     }
     this.apiKey = apiKey;
+  }
+
+  /** Set the log source so that API logs reflect the originator. */
+  setLogSource(source: LogSource): void {
+    this.logSource = source;
   }
 
   // ---------------------------------------------------------------------------
@@ -79,9 +87,30 @@ export class ClaudeClient {
     messages: Message[],
     options: ClaudeRequestOptions
   ): Promise<ClaudeResponse> {
+    logApiRequest(this.logSource, {
+      model: options.model,
+      maxTokens: options.maxTokens,
+      temperature: options.temperature,
+      messageCount: messages.length,
+      stream: false,
+    });
+    const startTime = Date.now();
     const body = this.buildRequestBody(messages, options, false);
-    const rawBody = await this.post(body);
-    return this.parseResponse(rawBody);
+    let rawBody: string;
+    try {
+      rawBody = await this.post(body);
+    } catch (err) {
+      logApiError(this.logSource, err);
+      throw err;
+    }
+    const response = this.parseResponse(rawBody);
+    logApiResponse(this.logSource, {
+      inputTokens: response.usage.inputTokens,
+      outputTokens: response.usage.outputTokens,
+      stopReason: response.stopReason,
+      durationMs: Date.now() - startTime,
+    });
+    return response;
   }
 
   /**
@@ -94,8 +123,34 @@ export class ClaudeClient {
     messages: Message[],
     options: ClaudeRequestOptions
   ): AsyncGenerator<ClaudeStreamChunk> {
+    logApiRequest(this.logSource, {
+      model: options.model,
+      maxTokens: options.maxTokens,
+      temperature: options.temperature,
+      messageCount: messages.length,
+      stream: true,
+    });
+    const startTime = Date.now();
     const body = this.buildRequestBody(messages, options, true);
-    yield* this.postStream(body);
+    try {
+      let lastUsage: ClaudeResponse["usage"] | undefined;
+      for await (const chunk of this.postStream(body)) {
+        if (chunk.type === "done") {
+          lastUsage = chunk.usage;
+        }
+        yield chunk;
+      }
+      if (lastUsage) {
+        logApiResponse(this.logSource, {
+          inputTokens: lastUsage.inputTokens,
+          outputTokens: lastUsage.outputTokens,
+          durationMs: Date.now() - startTime,
+        });
+      }
+    } catch (err) {
+      logApiError(this.logSource, err);
+      throw err;
+    }
   }
 
   // ---------------------------------------------------------------------------

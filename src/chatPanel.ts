@@ -13,6 +13,7 @@ import {
   buildSystemPrompt,
   formatCodeBlock,
 } from "./contextCollector";
+import { logInfo, logError, logWebviewMessage } from "./logger";
 
 export class ChatPanel {
   public static readonly viewType = "vscode-claude.chat";
@@ -22,6 +23,11 @@ export class ChatPanel {
   private readonly client: ClaudeClient;
   private conversationHistory: Message[] = [];
   private disposables: vscode.Disposable[] = [];
+  /**
+   * Tracks whether the current message was initiated from the webview UI
+   * or from a local VS Code command.  Set before calling sendUserMessage.
+   */
+  private messageSource: "local" | "webview" = "local";
 
   // ---------------------------------------------------------------------------
   // Factory
@@ -33,10 +39,12 @@ export class ChatPanel {
       : vscode.ViewColumn.One;
 
     if (ChatPanel.instance) {
+      logInfo("local", "ChatPanel: revealing existing panel");
       ChatPanel.instance.panel.reveal(column);
       return ChatPanel.instance;
     }
 
+    logInfo("local", "ChatPanel: creating new panel");
     const panel = vscode.window.createWebviewPanel(
       ChatPanel.viewType,
       "Claude Chat",
@@ -77,6 +85,7 @@ export class ChatPanel {
   /** Pre-fill the chat input with a question and submit it. */
   public async ask(question: string): Promise<void> {
     this.panel.reveal();
+    this.messageSource = "local";
     await this.sendUserMessage(question);
   }
 
@@ -87,13 +96,17 @@ export class ChatPanel {
   private async handleWebviewMessage(msg: WebviewMessage): Promise<void> {
     switch (msg.type) {
       case "send":
+        logWebviewMessage("send", `textLength=${msg.text.length}`);
+        this.messageSource = "webview";
         await this.sendUserMessage(msg.text);
         break;
       case "clear":
+        logWebviewMessage("clear", "Conversation history cleared");
         this.conversationHistory = [];
         this.postToWebview({ type: "cleared" });
         break;
       case "insertCode":
+        logWebviewMessage("insertCode", `codeLength=${msg.code.length}`);
         await this.insertCodeIntoEditor(msg.code);
         break;
     }
@@ -101,8 +114,16 @@ export class ChatPanel {
 
   private async sendUserMessage(text: string): Promise<void> {
     if (!text.trim()) {
+      logInfo("webview", "sendUserMessage skipped – empty text");
       return;
     }
+
+    // Determine the source: if the message was triggered from the webview
+    // directly, it is "webview"; commands that call ask() are "local".
+    // The client's logSource is already set appropriately by the caller.
+    const source = this.messageSource;
+    logInfo(source, "Sending user message to Claude", `historySize=${this.conversationHistory.length + 1}, textLength=${text.length}`);
+    this.client.setLogSource(source);
 
     this.conversationHistory.push({ role: "user", content: text });
     this.postToWebview({ type: "userMessage", text });
@@ -134,11 +155,14 @@ export class ChatPanel {
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
+      logError(source, "Chat request failed", message);
       this.postToWebview({ type: "error", message });
       // Remove the user message from history if the request failed
       this.conversationHistory.pop();
       return;
     }
+
+    logInfo(source, "Chat response complete", `responseLength=${fullResponse.length}`);
 
     this.conversationHistory.push({
       role: "assistant",
@@ -149,11 +173,13 @@ export class ChatPanel {
   private async insertCodeIntoEditor(code: string): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
+      logInfo("webview", "insertCode – no active editor");
       vscode.window.showWarningMessage(
         "No active editor to insert code into."
       );
       return;
     }
+    logInfo("webview", "Inserting code into editor", `codeLength=${code.length}, file=${editor.document.uri.fsPath}`);
     await editor.edit((eb) => {
       eb.replace(editor.selection, code);
     });
@@ -546,6 +572,7 @@ export class ChatPanel {
   // ---------------------------------------------------------------------------
 
   private dispose(): void {
+    logInfo("local", "ChatPanel disposed");
     ChatPanel.instance = undefined;
     this.panel.dispose();
     for (const d of this.disposables) {
