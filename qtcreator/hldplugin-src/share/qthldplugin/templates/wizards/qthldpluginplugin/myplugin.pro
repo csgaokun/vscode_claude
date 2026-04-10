@@ -10,9 +10,6 @@ HEADERS += \\
         %{GlobalHdrFileName} \\
         %{ConstantsHdrFileName}
 
-DISTFILES += \\
-        .github/workflows/build_qmake.yml \\
-        .github/workflows/README.md
 
 # Qt Hldplugin linking
 
