@@ -132,7 +132,7 @@
 | 级别 | 位置 | 文件数 | 状态 | 说明 |
 |------|------|--------|------|------|
 | 官方源码 | `backup/qtcreator-src/` | 19,076 | 只读备份 | Qt Creator 4.13.3 官方原始源码 |
-| 一次裁剪备份 | `backup/qt-creator-prosrc-4.13.3.zip` | ~13,850 | 只读备份 | 已删除 CMake/QBS，可正常编译 |
+| 一次裁剪备份 | `backup/qt-creator-prosrc-4.13.3.zip` | ~13,850 | 只读备份 | 已删除 CMake/QBS, 可正常编译 |
 | 工作源码 | `qtcreator/hldplugin-src/` | ~12,432 | 当前工作区 | creator→hldplugin 重命名完成 |
 
 ### 3.2 工作源码目录结构
