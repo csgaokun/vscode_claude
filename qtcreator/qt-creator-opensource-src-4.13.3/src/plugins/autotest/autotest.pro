@@ -1,7 +1,7 @@
 TARGET = AutoTest
 TEMPLATE = lib
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 DEFINES += AUTOTEST_LIBRARY
 

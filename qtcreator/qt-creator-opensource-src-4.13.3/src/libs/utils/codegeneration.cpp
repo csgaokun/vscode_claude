@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT QString fileNameToCppIdentifier(const QString &s)
+QTHLDPLUGIN_UTILS_EXPORT QString fileNameToCppIdentifier(const QString &s)
 {
     QString rc;
     const int len = s.size();
@@ -51,12 +51,12 @@ QTCREATOR_UTILS_EXPORT QString fileNameToCppIdentifier(const QString &s)
     return rc;
 }
 
-QTCREATOR_UTILS_EXPORT QString headerGuard(const QString &file)
+QTHLDPLUGIN_UTILS_EXPORT QString headerGuard(const QString &file)
 {
     return headerGuard(file, QStringList());
 }
 
-QTCREATOR_UTILS_EXPORT QString headerGuard(const QString &file, const QStringList &namespaceList)
+QTHLDPLUGIN_UTILS_EXPORT QString headerGuard(const QString &file, const QStringList &namespaceList)
 {
     const QChar underscore = QLatin1Char('_');
     QString rc;
@@ -68,7 +68,7 @@ QTCREATOR_UTILS_EXPORT QString headerGuard(const QString &file, const QStringLis
     return rc;
 }
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 void writeIncludeFileDirective(const QString &file, bool globalInclude,
                                QTextStream &str)
 {
@@ -77,7 +77,7 @@ void writeIncludeFileDirective(const QString &file, bool globalInclude,
     str << QLatin1String("#include ") << opening << file <<  closing << QLatin1Char('\n');
 }
 
-QTCREATOR_UTILS_EXPORT void writeBeginQtVersionCheck(QTextStream &str)
+QTHLDPLUGIN_UTILS_EXPORT void writeBeginQtVersionCheck(QTextStream &str)
 {
     str << QLatin1String("#if QT_VERSION >= 0x050000\n");
 }
@@ -92,7 +92,7 @@ static void qtSection(const QStringList &qtIncludes, QTextStream &str)
     }
 }
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 void writeQtIncludeSection(const QStringList &qt4,
                            const QStringList &qt5,
                            bool addQtVersionCheck,
@@ -141,7 +141,7 @@ void writeQtIncludeSection(const QStringList &qt4,
     }
 }
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 QString writeOpeningNameSpaces(const QStringList &l, const QString &indent,
                                QTextStream &str)
 {
@@ -157,7 +157,7 @@ QString writeOpeningNameSpaces(const QStringList &l, const QString &indent,
     return rc;
 }
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 void writeClosingNameSpaces(const QStringList &l, const QString &indent,
                             QTextStream &str)
 {

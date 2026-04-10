@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,7 +45,7 @@ enum class ProgressIndicatorSize
     Large
 };
 
-class QTCREATOR_UTILS_EXPORT ProgressIndicatorPainter
+class QTHLDPLUGIN_UTILS_EXPORT ProgressIndicatorPainter
 {
 public:
     using UpdateCallback = std::function<void()>;
@@ -77,7 +77,7 @@ private:
     UpdateCallback m_callback;
 };
 
-class QTCREATOR_UTILS_EXPORT ProgressIndicator : public OverlayWidget
+class QTHLDPLUGIN_UTILS_EXPORT ProgressIndicator : public OverlayWidget
 {
     Q_OBJECT
 public:

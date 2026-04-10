@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ namespace Internal {
 
 QmlProfilerSettings::QmlProfilerSettings()
 {
-    setConfigWidgetCreator([this] { return new QmlProfilerConfigWidget(this); });
+    setConfigWidgetHldplugin([this] { return new QmlProfilerConfigWidget(this); });
 
     QVariantMap defaults;
     defaults.insert(QLatin1String(Constants::FLUSH_INTERVAL), 1000);

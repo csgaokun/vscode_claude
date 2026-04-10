@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -52,7 +52,7 @@ class QTemporaryFile;
 class QTextStream;
 class QWidget;
 
-QTCREATOR_UTILS_EXPORT QDebug operator<<(QDebug dbg, const Utils::FilePath &c);
+QTHLDPLUGIN_UTILS_EXPORT QDebug operator<<(QDebug dbg, const Utils::FilePath &c);
 
 // for withNtfsPermissions
 #ifdef Q_OS_WIN
@@ -63,7 +63,7 @@ QT_END_NAMESPACE
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT FilePath
+class QTHLDPLUGIN_UTILS_EXPORT FilePath
 {
 public:
     FilePath();
@@ -130,11 +130,11 @@ private:
     QUrl m_url;
 };
 
-QTCREATOR_UTILS_EXPORT QTextStream &operator<<(QTextStream &s, const FilePath &fn);
+QTHLDPLUGIN_UTILS_EXPORT QTextStream &operator<<(QTextStream &s, const FilePath &fn);
 
 using FilePaths = QList<FilePath>;
 
-class QTCREATOR_UTILS_EXPORT CommandLine
+class QTHLDPLUGIN_UTILS_EXPORT CommandLine
 {
 public:
     enum RawType { Raw };
@@ -162,10 +162,10 @@ private:
     QString m_arguments;
 };
 
-class QTCREATOR_UTILS_EXPORT FileUtils {
+class QTHLDPLUGIN_UTILS_EXPORT FileUtils {
 public:
 #ifdef QT_GUI_LIB
-    class QTCREATOR_UTILS_EXPORT CopyAskingForOverwrite
+    class QTHLDPLUGIN_UTILS_EXPORT CopyAskingForOverwrite
     {
     public:
         CopyAskingForOverwrite(QWidget *dialogParent);
@@ -251,7 +251,7 @@ T withNtfsPermissions(const std::function<T()> &task)
 }
 
 template <>
-QTCREATOR_UTILS_EXPORT void withNtfsPermissions(const std::function<void()> &task);
+QTHLDPLUGIN_UTILS_EXPORT void withNtfsPermissions(const std::function<void()> &task);
 
 #else // Q_OS_WIN
 
@@ -263,7 +263,7 @@ T withNtfsPermissions(const std::function<T()> &task)
 
 #endif // Q_OS_WIN
 
-class QTCREATOR_UTILS_EXPORT FileReader
+class QTHLDPLUGIN_UTILS_EXPORT FileReader
 {
     Q_DECLARE_TR_FUNCTIONS(Utils::FileUtils) // sic!
 public:
@@ -284,7 +284,7 @@ private:
     QString m_errorString;
 };
 
-class QTCREATOR_UTILS_EXPORT FileSaverBase
+class QTHLDPLUGIN_UTILS_EXPORT FileSaverBase
 {
     Q_DECLARE_TR_FUNCTIONS(Utils::FileUtils) // sic!
 public:
@@ -319,7 +319,7 @@ private:
     Q_DISABLE_COPY(FileSaverBase)
 };
 
-class QTCREATOR_UTILS_EXPORT FileSaver : public FileSaverBase
+class QTHLDPLUGIN_UTILS_EXPORT FileSaver : public FileSaverBase
 {
     Q_DECLARE_TR_FUNCTIONS(Utils::FileUtils) // sic!
 public:
@@ -333,7 +333,7 @@ private:
     bool m_isSafe;
 };
 
-class QTCREATOR_UTILS_EXPORT TempFileSaver : public FileSaverBase
+class QTHLDPLUGIN_UTILS_EXPORT TempFileSaver : public FileSaverBase
 {
     Q_DECLARE_TR_FUNCTIONS(Utils::FileUtils) // sic!
 public:
@@ -351,7 +351,7 @@ inline uint qHash(const Utils::FilePath &a, uint seed = 0) { return a.hash(seed)
 } // namespace Utils
 
 namespace std {
-template<> struct QTCREATOR_UTILS_EXPORT hash<Utils::FilePath>
+template<> struct QTHLDPLUGIN_UTILS_EXPORT hash<Utils::FilePath>
 {
     using argument_type = Utils::FilePath;
     using result_type = size_t;

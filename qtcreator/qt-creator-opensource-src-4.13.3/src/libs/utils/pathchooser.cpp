@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,7 +42,7 @@
 
 /*!
     \class Utils::PathChooser
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The PathChooser class is a control that lets the user choose a path.
     The control consist of a QLineEdit and a "Browse" button, and is optionally
@@ -53,7 +53,7 @@
 
 /*!
     \enum Utils::PathChooser::Kind
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     The Kind enum describes the kind of path a PathChooser considers valid.
 
@@ -458,7 +458,7 @@ void PathChooser::slotBrowse()
         break;
     }
 
-    // work around QTBUG-61004 / QTCREATORBUG-22906
+    // work around QTBUG-61004 / QTHLDPLUGINBUG-22906
     window()->raise();
     window()->activateWindow();
 
@@ -632,7 +632,7 @@ QString PathChooser::homePath()
 {
     // Return 'users/<name>/Documents' on Windows, since Windows explorer
     // does not let people actually display the contents of their home
-    // directory. Alternatively, create a QtCreator-specific directory?
+    // directory. Alternatively, create a QtHldplugin-specific directory?
     if (HostOsInfo::isWindowsHost())
         return QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     return QDir::homePath();

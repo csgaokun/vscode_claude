@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -60,7 +60,7 @@ QSet<Utils::Id> WinRtPhoneQtVersion::availableFeatures() const
 
 WinRtPhoneQtVersionFactory::WinRtPhoneQtVersionFactory()
 {
-    setQtVersionCreator([] { return new WinRtPhoneQtVersion; });
+    setQtVersionHldplugin([] { return new WinRtPhoneQtVersion; });
     setSupportedType(Constants::WINRT_WINPHONEQT);
     setRestrictionChecker([](const SetupData &setup) { return setup.platforms.contains("winphone"); });
     setPriority(10);

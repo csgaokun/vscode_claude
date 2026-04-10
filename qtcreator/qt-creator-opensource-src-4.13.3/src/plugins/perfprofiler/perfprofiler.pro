@@ -3,7 +3,7 @@ TEMPLATE = lib
 
 QT += quick quickwidgets
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(perfprofiler_dependencies.pri)
 
 DEFINES += PERFPROFILER_LIBRARY

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -71,7 +71,7 @@ public:
 
 SubversionClient::SubversionClient(SubversionSettings *settings) : VcsBaseClient(settings)
 {
-    setLogConfigCreator([settings](QToolBar *toolBar) {
+    setLogConfigHldplugin([settings](QToolBar *toolBar) {
         return new SubversionLogConfig(*settings, toolBar);
     });
 }

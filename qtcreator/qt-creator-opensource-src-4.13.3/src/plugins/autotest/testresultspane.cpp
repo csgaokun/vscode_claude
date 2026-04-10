@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -99,9 +99,9 @@ TestResultsPane::TestResultsPane(QObject *parent) :
 
     QPalette pal;
     pal.setColor(QPalette::Window,
-                 Utils::creatorTheme()->color(Utils::Theme::InfoBarBackground));
+                 Utils::hldpluginTheme()->color(Utils::Theme::InfoBarBackground));
     pal.setColor(QPalette::WindowText,
-                 Utils::creatorTheme()->color(Utils::Theme::InfoBarText));
+                 Utils::hldpluginTheme()->color(Utils::Theme::InfoBarText));
     m_summaryWidget = new QFrame;
     m_summaryWidget->setPalette(pal);
     m_summaryWidget->setAutoFillBackground(true);
@@ -330,9 +330,9 @@ void TestResultsPane::clearContents()
     connect(m_treeView->verticalScrollBar(), &QScrollBar::rangeChanged,
             this, &TestResultsPane::onScrollBarRangeChanged, Qt::UniqueConnection);
     m_textOutput->clear();
-    m_defaultFormat.setBackground(Utils::creatorTheme()->palette().color(
+    m_defaultFormat.setBackground(Utils::hldpluginTheme()->palette().color(
                                       m_textOutput->backgroundRole()));
-    m_defaultFormat.setForeground(Utils::creatorTheme()->palette().color(
+    m_defaultFormat.setForeground(Utils::hldpluginTheme()->palette().color(
                                       m_textOutput->foregroundRole()));
 
     // in case they had been forgotten to reset

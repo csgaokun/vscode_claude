@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@ namespace PerfProfiler {
 
 PerfSettings::PerfSettings(ProjectExplorer::Target *target)
 {
-    setConfigWidgetCreator([this, target] {
+    setConfigWidgetHldplugin([this, target] {
         auto widget = new Internal::PerfConfigWidget(this);
         widget->setTracePointsButtonVisible(target != nullptr);
         widget->setTarget(target);

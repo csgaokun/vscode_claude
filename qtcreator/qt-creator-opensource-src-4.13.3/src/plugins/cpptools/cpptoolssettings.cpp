@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -159,16 +159,16 @@ CppToolsSettings::CppToolsSettings()
     // load global settings (after built-in settings are added to the pool)
     d->m_globalCodeStyle->fromSettings(QLatin1String(CppTools::Constants::CPP_SETTINGS_ID), s);
 
-    // legacy handling start (Qt Creator Version < 2.4)
+    // legacy handling start (Qt Hldplugin Version < 2.4)
     const bool legacyTransformed =
                 s->value(QLatin1String("CppCodeStyleSettings/LegacyTransformed"), false).toBool();
 
     if (!legacyTransformed) {
-        // creator 2.4 didn't mark yet the transformation (first run of creator 2.4)
+        // hldplugin 2.4 didn't mark yet the transformation (first run of hldplugin 2.4)
 
         // we need to transform the settings only if at least one from
         // below settings was already written - otherwise we use
-        // defaults like it would be the first run of creator 2.4 without stored settings
+        // defaults like it would be the first run of hldplugin 2.4 without stored settings
         const QStringList groups = s->childGroups();
         const bool needTransform = groups.contains(QLatin1String("textTabPreferences")) ||
                                    groups.contains(QLatin1String("CppTabPreferences")) ||
@@ -194,11 +194,11 @@ CppToolsSettings::CppToolsSettings()
             // create custom code style out of old settings
             QVariant v;
             v.setValue(legacyCodeStyleSettings);
-            ICodeStylePreferences *oldCreator = pool->createCodeStyle(
-                     "legacy", legacyTabSettings, v, tr("Old Creator"));
+            ICodeStylePreferences *oldHldplugin = pool->createCodeStyle(
+                     "legacy", legacyTabSettings, v, tr("Old Hldplugin"));
 
             // change the current delegate and save
-            d->m_globalCodeStyle->setCurrentDelegate(oldCreator);
+            d->m_globalCodeStyle->setCurrentDelegate(oldHldplugin);
             d->m_globalCodeStyle->toSettings(QLatin1String(CppTools::Constants::CPP_SETTINGS_ID), s);
         }
         // mark old settings as transformed

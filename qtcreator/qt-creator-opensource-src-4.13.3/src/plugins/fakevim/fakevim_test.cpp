@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Lukas Holecek <hluk@email.cz>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1029,7 +1029,7 @@ void FakeVimPlugin::test_vim_delete()
     KEYS("\"xp", "ab" X "c" N "def");
     KEYS("2\"xp", "abcabcab" X "c" N "def");
 
-    /* QTCREATORBUG-9289 */
+    /* QTHLDPLUGINBUG-9289 */
     data.setText("abc" N "def");
     KEYS("$" "dw", "a" X "b" N "def");
     KEYS("dw", X "a" N "def");
@@ -1444,7 +1444,7 @@ void FakeVimPlugin::test_vim_block_selection()
     data.setText("\"abc" X "\"\"def\"");
     KEYS("vi\"d", "\"" X "\"\"def\"");
 
-    /* QTCREATORBUG-9190 */
+    /* QTHLDPLUGINBUG-9190 */
     data.setText(" abcd" N " efgh" N " ijkl" N " mnop" N "");
     data.doKeys("2lj" "<C-V>" "jl");
     data.doKeys("x");
@@ -1491,7 +1491,7 @@ void FakeVimPlugin::test_vim_block_selection()
     KEYS("u", "\"" X "abc\"\"def\"");
     KEYS("<c-r>", "\"" X "\"\"def\"");
 
-    /* QTCREATORBUG-12128 */
+    /* QTHLDPLUGINBUG-12128 */
     data.setText("abc \"def\" ghi \"jkl\" mno");
     KEYS("di\"", "abc \"" X "\" ghi \"jkl\" mno");
     KEYS("u", "abc \"" X "def\" ghi \"jkl\" mno");
@@ -1525,7 +1525,7 @@ void FakeVimPlugin::test_vim_block_selection_insert()
     KEYS("<c-v>2jh" "2I" "XYZ<esc>", "abc" N "d" X "XYZXYZef" N "" N "jXYZXYZkl" N "mno");
     INTEGRITY(false);
 
-    /* QTCREATORBUG-11378 */
+    /* QTHLDPLUGINBUG-11378 */
     data.setText(
          " abcd" N
          " efgh" N
@@ -2025,7 +2025,7 @@ void FakeVimPlugin::test_vim_repeat()
     KEYS("ciwWORD<esc>", "WOR" X "D text");
     KEYS("w.", "WORD WOR" X "D");
 
-    /* QTCREATORBUG-7248 */
+    /* QTHLDPLUGINBUG-7248 */
     data.setText("test tex" X "t");
     KEYS("vbcWORD<esc>", "test " "WOR" X "D");
     KEYS("bb.", "WOR" X "D WORD");
@@ -2120,7 +2120,7 @@ void FakeVimPlugin::test_vim_search()
     KEYS("3n", "bc" N "abc" N "a" X "bcd" N "bc" N "b");
     KEYS("2n", X "bc" N "abc" N "abcd" N "bc" N "b");
 
-    /* QTCREATORBUG-7251 */
+    /* QTHLDPLUGINBUG-7251 */
     data.setText("abc abc abc abc");
     KEYS("$?abc<CR>", "abc abc abc " X "abc");
     KEYS("2?abc<CR>", "abc " X "abc abc abc");
@@ -2495,7 +2495,7 @@ void FakeVimPlugin::test_vim_copy_paste()
     data.setText("123" N "456" N "789");
     KEYS("wyiw" "wviwp", "123" N "456" N "45" X "6");
 
-    // QTCREATORBUG-8148
+    // QTHLDPLUGINBUG-8148
     data.setText("abc");
     KEYS("yyp", "abc" N X "abc");
     KEYS("4p", "abc" N "abc" N X "abc" N "abc" N "abc" N "abc");
@@ -3381,7 +3381,7 @@ void FakeVimPlugin::test_map()
     KEYS("<c-r>", "abc" N "def" X "xxx" N "yyy" N "ghi");
     data.doCommand("unmap  X");
 
-    /* QTCREATORBUG-7913 */
+    /* QTHLDPLUGINBUG-7913 */
     data.setText("");
     data.doCommand("noremap l k|noremap k j|noremap j h");
     KEYS("ikkk<esc>", "kk" X "k");
@@ -3421,7 +3421,7 @@ void FakeVimPlugin::test_map()
     KEYS("oxyz<esc>", "abc" N "xy" X "z" N "def");
     KEYS(QString::fromUtf8("\xc5\xaf<esc>"), "abc" N "x" X "Xy" N "def");
 
-    /* QTCREATORBUG-8774 */
+    /* QTHLDPLUGINBUG-8774 */
     data.setText("abc" N "def");
     data.doCommand(QString::fromUtf8("no \xc3\xb8 l|no l k|no k j|no j h"));
     KEYS(QString::fromUtf8("\xc3\xb8"), "a" X "bc" N "def");
@@ -4229,7 +4229,7 @@ void FakeVimPlugin::test_macros()
     KEYS("j@q", "!!!" N X "!!!");
 }
 
-void FakeVimPlugin::test_vim_qtcreator()
+void FakeVimPlugin::test_vim_qthldplugin()
 {
     TestData data;
     setup(&data);

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -139,7 +139,7 @@ void TextMark::paintAnnotation(QPainter &painter, QRectF *annotationRect,
     const AnnotationRects &rects = annotationRects(*annotationRect, painter.fontMetrics(),
                                                    fadeInOffset, fadeOutOffset);
     const QColor &markColor = m_color.has_value()
-                                  ? Utils::creatorTheme()->color(m_color.value()).toHsl()
+                                  ? Utils::hldpluginTheme()->color(m_color.value()).toHsl()
                                   : painter.pen().color();
 
     const FontSettings &fontSettings = m_baseTextDocument->fontSettings();

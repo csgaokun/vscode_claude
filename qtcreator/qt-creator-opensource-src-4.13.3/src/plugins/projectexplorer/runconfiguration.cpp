@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,13 +76,13 @@ ISettingsAspect::ISettingsAspect() = default;
 
 QWidget *ISettingsAspect::createConfigWidget() const
 {
-    QTC_ASSERT(m_configWidgetCreator, return nullptr);
-    return m_configWidgetCreator();
+    QTC_ASSERT(m_configWidgetHldplugin, return nullptr);
+    return m_configWidgetHldplugin();
 }
 
-void ISettingsAspect::setConfigWidgetCreator(const ConfigWidgetCreator &configWidgetCreator)
+void ISettingsAspect::setConfigWidgetHldplugin(const ConfigWidgetHldplugin &configWidgetHldplugin)
 {
-    m_configWidgetCreator = configWidgetCreator;
+    m_configWidgetHldplugin = configWidgetHldplugin;
 }
 
 
@@ -145,7 +145,7 @@ void GlobalOrProjectAspect::resetProjectToGlobalSettings()
 
 /*!
     \class ProjectExplorer::RunConfiguration
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \inheaderfile projectexplorer/runconfiguration.h
 
     \brief The RunConfiguration class is the base class for a run configuration.
@@ -364,7 +364,7 @@ bool RunConfiguration::fromMap(const QVariantMap &map)
     can use that information either unmodified or tweak it or ignore
     it when setting up a RunControl.
 
-    From Qt Creator's core perspective a Runnable object is opaque.
+    From Qt Hldplugin's core perspective a Runnable object is opaque.
 */
 
 /*!
@@ -386,7 +386,7 @@ Runnable RunConfiguration::runnable() const
 
 /*!
     \class ProjectExplorer::RunConfigurationFactory
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \inheaderfile projectexplorer/runconfiguration.h
 
     \brief The RunConfigurationFactory class is used to create and persist
@@ -451,7 +451,7 @@ QString RunConfigurationFactory::decoratedTargetName(const QString &targetName, 
 }
 
 QList<RunConfigurationCreationInfo>
-RunConfigurationFactory::availableCreators(Target *target) const
+RunConfigurationFactory::availableHldplugins(Target *target) const
 {
     const QList<BuildTargetInfo> buildTargets = target->buildSystem()->applicationTargets();
     const bool hasAnyQtcRunnable = Utils::anyOf(buildTargets,
@@ -538,8 +538,8 @@ bool RunConfigurationFactory::canHandle(Target *target) const
 
 RunConfiguration *RunConfigurationFactory::create(Target *target) const
 {
-    QTC_ASSERT(m_creator, return nullptr);
-    RunConfiguration *rc = m_creator(target);
+    QTC_ASSERT(m_hldplugin, return nullptr);
+    RunConfiguration *rc = m_hldplugin(target);
     QTC_ASSERT(rc, return nullptr);
 
     // Add the universal aspects.
@@ -589,12 +589,12 @@ RunConfiguration *RunConfigurationFactory::clone(Target *parent, RunConfiguratio
     return restore(parent, source->toMap());
 }
 
-const QList<RunConfigurationCreationInfo> RunConfigurationFactory::creatorsForTarget(Target *parent)
+const QList<RunConfigurationCreationInfo> RunConfigurationFactory::hldpluginsForTarget(Target *parent)
 {
     QList<RunConfigurationCreationInfo> items;
     for (RunConfigurationFactory *factory : g_runConfigurationFactories) {
         if (factory->canHandle(parent))
-            items.append(factory->availableCreators(parent));
+            items.append(factory->availableHldplugins(parent));
     }
     QHash<QString, QList<RunConfigurationCreationInfo *>> itemsPerDisplayName;
     for (RunConfigurationCreationInfo &item : items)
@@ -615,7 +615,7 @@ FixedRunConfigurationFactory::FixedRunConfigurationFactory(const QString &displa
 { }
 
 QList<RunConfigurationCreationInfo>
-FixedRunConfigurationFactory::availableCreators(Target *parent) const
+FixedRunConfigurationFactory::availableHldplugins(Target *parent) const
 {
     QString displayName = m_decorateTargetName ? decoratedTargetName(m_fixedBuildTarget, parent)
                                                : m_fixedBuildTarget;

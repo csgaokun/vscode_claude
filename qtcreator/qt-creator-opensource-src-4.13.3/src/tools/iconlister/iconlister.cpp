@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -48,7 +48,7 @@
 
 using namespace Utils;
 
-const char ICONS_PATH[] = "qtcreator-icons/";
+const char ICONS_PATH[] = "qthldplugin-icons/";
 
 static QString iconFileName(const QString &id, const QString &idContext, IconLister::ThemeKind theme, int dpr)
 {
@@ -63,19 +63,19 @@ static QString iconFileName(const QString &id, const QString &idContext, IconLis
     return QLatin1String(ICONS_PATH) + context.toLower() + "-" + id.toLower() + "-" + themeName + scaleFactor + ".png";
 }
 
-void IconLister::setCreatorTheme(ThemeKind themeKind)
+void IconLister::setHldpluginTheme(ThemeKind themeKind)
 {
     const QString themeKindStrig = QLatin1String(themeKind == ThemeKindDark ? "dark" : "light");
     static Theme theme("");
-    QSettings settings(":/flat-" + themeKindStrig + ".creatortheme", QSettings::IniFormat);
+    QSettings settings(":/flat-" + themeKindStrig + ".hldplugintheme", QSettings::IniFormat);
     theme.readSettings(settings);
-    Utils::setCreatorTheme(&theme);
+    Utils::setHldpluginTheme(&theme);
     StyleHelper::setBaseColor(QColor(StyleHelper::DEFAULT_BASE_COLOR));
 }
 
 void IconLister::generateJson()
 {
-    setCreatorTheme(ThemeKindDark);
+    setHldpluginTheme(ThemeKindDark);
     IconLister lister;
     lister.addAllIcons();
     lister.saveJson();
@@ -83,7 +83,7 @@ void IconLister::generateJson()
 
 void IconLister::generateIcons(IconLister::ThemeKind theme, int dpr)
 {
-    setCreatorTheme(theme);
+    setHldpluginTheme(theme);
     IconLister lister;
     lister.addAllIcons();
     lister.saveIcons(theme, dpr);
@@ -113,7 +113,7 @@ void IconLister::addAllIcons()
 
 void IconLister::saveJson() const
 {
-    QFile file("qtcreator-icons.json");
+    QFile file("qthldplugin-icons.json");
     if (file.open(QIODevice::WriteOnly)) {
         QJsonArray iconArray;
         for (const IconInfo &iconInfo : m_icons) {
@@ -185,8 +185,8 @@ void IconLister::addCoreIcons()
     using namespace Core::Icons;
     const QString prefix = "Core";
     const QList<IconInfo> icons = {
-        {QTCREATORLOGO_BIG.icon(), "QTCREATORLOGO_BIG", prefix,
-         "'About Qt Creator' dialog."},
+        {QTHLDPLUGINLOGO_BIG.icon(), "QTHLDPLUGINLOGO_BIG", prefix,
+         "'About Qt Hldplugin' dialog."},
         {FIND_CASE_INSENSITIVELY.icon(), "FIND_CASE_INSENSITIVELY", prefix,
          ""},
         {FIND_WHOLE_WORD.icon(), "FIND_WHOLE_WORD", prefix,
@@ -547,7 +547,7 @@ void IconLister::addUtilsIcons()
     const QString resPath = ":/utils/images/";
     const QList<IconInfo> icons = {
         {HOME.icon(), "HOME", prefix,
-         "'About Qt Creator' dialog."},
+         "'About Qt Hldplugin' dialog."},
         {HOME_TOOLBAR.icon(), "HOME_TOOLBAR", prefix,
          ""},
         {EDIT_CLEAR.icon(), "EDIT_CLEAR", prefix,
@@ -892,7 +892,7 @@ void IconLister::addQmlDesignerIcons()
     const QString ewImgPath =
             QLatin1String(IDE_SOURCE_TREE) + "/src/libs/qmleditorwidgets/images/";
     const QString peImgPath =
-            QLatin1String(IDE_SOURCE_TREE) + "/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/";
+            QLatin1String(IDE_SOURCE_TREE) + "/share/qthldplugin/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/";
     const QList<IconInfo> icons = {
         {ARROW_UP.icon(), "ARROW_UP", prefix,
          ""},
@@ -1050,7 +1050,7 @@ void IconLister::addProfilerTimelineIcons()
 
 void IconLister::addWizardIcons()
 {
-    const QString wizardsPath = QLatin1String(IDE_SOURCE_TREE) + "/share/qtcreator/templates/wizards/";
+    const QString wizardsPath = QLatin1String(IDE_SOURCE_TREE) + "/share/qthldplugin/templates/wizards/";
     const QString prefix = "Wizards";
     const QList<IconInfo> icons = {
         {QIcon(wizardsPath + "autotest/autotest.png"), "autotest_project", prefix,
@@ -1061,7 +1061,7 @@ void IconLister::addWizardIcons()
          ""},
         {QIcon(wizardsPath + "global/guiapplication.png"), "guiapplication_project", prefix,
          ""},
-        {QIcon(wizardsPath + "qtcreatorplugin/qtcreatorplugin.png"), "qtcreatorplugin_project", prefix,
+        {QIcon(wizardsPath + "qthldpluginplugin/qthldpluginplugin.png"), "qthldpluginplugin_project", prefix,
          ""},
         {QIcon(wizardsPath + "qtquick2-extension/lib.png"), "qtquick2-extension_project", prefix,
          ""},

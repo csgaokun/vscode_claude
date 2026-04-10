@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@ VersionDialog::VersionDialog(QWidget *parent)
     // We need to set the window icon explicitly here since for some reason the
     // application icon isn't used when the size of the dialog is fixed (at least not on X11/GNOME)
     if (Utils::HostOsInfo::isLinuxHost())
-        setWindowIcon(Icons::QTCREATORLOGO_BIG.icon());
+        setWindowIcon(Icons::QTHLDPLUGINLOGO_BIG.icon());
 
     setWindowTitle(tr("About %1").arg(Core::Constants::IDE_DISPLAY_NAME));
     auto layout = new QGridLayout(this);
@@ -105,7 +105,7 @@ VersionDialog::VersionDialog(QWidget *parent)
     connect(buttonBox , &QDialogButtonBox::rejected, this, &QDialog::reject);
 
     QLabel *logoLabel = new QLabel;
-    logoLabel->setPixmap(Icons::QTCREATORLOGO_BIG.pixmap());
+    logoLabel->setPixmap(Icons::QTHLDPLUGINLOGO_BIG.pixmap());
     layout->addWidget(logoLabel , 0, 0, 1, 1);
     layout->addWidget(copyRightLabel, 0, 1, 4, 4);
     layout->addWidget(buttonBox, 4, 0, 1, 5);

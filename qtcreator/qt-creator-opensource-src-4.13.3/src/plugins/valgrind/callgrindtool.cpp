@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -510,7 +510,7 @@ CallgrindToolPrivate::CallgrindToolPrivate()
     connect(action, &QAction::toggled, this, &CallgrindToolPrivate::handleFilterProjectCosts);
 
     // Filter
-    ///FIXME: find workaround for https://bugreports.qt.io/browse/QTCREATORBUG-3247
+    ///FIXME: find workaround for https://bugreports.qt.io/browse/QTHLDPLUGINBUG-3247
     m_searchFilter = new QLineEdit;
     m_searchFilter->setPlaceholderText(CallgrindTool::tr("Filter..."));
     connect(m_searchFilter, &QLineEdit::textChanged,

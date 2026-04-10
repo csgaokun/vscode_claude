@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -316,9 +316,9 @@ QGraphicsItem *FormEditorAnnotationIcon::createCommentBubble(QRectF rect, const 
                                                              const QString &author, const QString &text,
                                                              const QString &date, QGraphicsItem *parent)
 {
-    static QColor textColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_FormEditorForegroundColor);
-    static QColor backgroundColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_BackgroundColorDarker);
-    static QColor frameColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_BackgroundColor);
+    static QColor textColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_FormEditorForegroundColor);
+    static QColor backgroundColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_BackgroundColorDarker);
+    static QColor frameColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_BackgroundColor);
     QFont font;
     font.setBold(true);
 
@@ -384,9 +384,9 @@ QGraphicsItem *FormEditorAnnotationIcon::createCommentBubble(QRectF rect, const 
 
 QGraphicsItem *FormEditorAnnotationIcon::createTitleBubble(const QRectF &rect, const QString &text, QGraphicsItem *parent)
 {
-    static QColor textColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_FormEditorForegroundColor);
-    static QColor backgroundColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_BackgroundColorDarker);
-    static QColor frameColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_BackgroundColor);
+    static QColor textColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_FormEditorForegroundColor);
+    static QColor backgroundColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_BackgroundColorDarker);
+    static QColor frameColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_BackgroundColor);
     QFont font;
     font.setBold(true);
 

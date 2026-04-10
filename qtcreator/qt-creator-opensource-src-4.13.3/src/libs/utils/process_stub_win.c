@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -62,7 +62,7 @@ static void sendMsg(const char *msg, int num)
 
     pidStrLen = sprintf(pidStr, msg, num);
     if (fwrite(pidStr, pidStrLen, 1, qtcFd) != 1 || fflush(qtcFd)) {
-        fprintf(stderr, "Cannot write to creator comm socket: %s\n",
+        fprintf(stderr, "Cannot write to hldplugin comm socket: %s\n",
                 strerror(errno));
         doExit(3);
     }
@@ -117,14 +117,14 @@ int main()
     argv = CommandLineToArgvW(GetCommandLine(), &argc);
 
     if (argc != ArgCount) {
-        fprintf(stderr, "This is an internal helper of Qt Creator. Do not run it manually.\n");
+        fprintf(stderr, "This is an internal helper of Qt Hldplugin. Do not run it manually.\n");
         return 1;
     }
     sleepMsg = argv[ArgMsg];
 
-    /* Connect to the master, i.e. Creator. */
+    /* Connect to the master, i.e. Hldplugin. */
     if (!(qtcFd = _wfopen(argv[ArgSocket], L"w"))) {
-        fprintf(stderr, "Cannot connect creator comm pipe %S: %s\n",
+        fprintf(stderr, "Cannot connect hldplugin comm pipe %S: %s\n",
                 argv[ArgSocket], strerror(errno));
         doExit(1);
     }
@@ -139,7 +139,7 @@ int main()
         FILE *envFd;
         long size;
         if (!(envFd = _wfopen(argv[ArgEnv], L"rb"))) {
-            fprintf(stderr, "Cannot read creator env file %S: %s\n",
+            fprintf(stderr, "Cannot read hldplugin env file %S: %s\n",
                     argv[ArgEnv], strerror(errno));
             doExit(1);
         }

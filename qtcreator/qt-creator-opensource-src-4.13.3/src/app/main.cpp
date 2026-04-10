@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 **
 ****************************************************************************/
 
-#include "../tools/qtcreatorcrashhandler/crashhandlersetup.h"
+#include "../tools/qthldplugincrashhandler/crashhandlersetup.h"
 
 #include <app/app_version.h>
 #include <extensionsystem/iplugin.h>
@@ -105,7 +105,7 @@ const char TEMPORARY_CLEAN_SETTINGS2[] = "-tcs";
 const char PID_OPTION[] = "-pid";
 const char BLOCK_OPTION[] = "-block";
 const char PLUGINPATH_OPTION[] = "-pluginpath";
-const char USER_LIBRARY_PATH_OPTION[] = "-user-library-path"; // hidden option for qtcreator.sh
+const char USER_LIBRARY_PATH_OPTION[] = "-user-library-path"; // hidden option for qthldplugin.sh
 
 using PluginSpecSet = QVector<PluginSpec *>;
 
@@ -224,9 +224,9 @@ static inline QStringList getPluginPaths()
                                    + '/' + RELATIVE_PLUGIN_PATH));
     // Local plugin path: <localappdata>/plugins/<ideversion>
     //    where <localappdata> is e.g.
-    //    "%LOCALAPPDATA%\QtProject\qtcreator" on Windows Vista and later
-    //    "$XDG_DATA_HOME/data/QtProject/qtcreator" or "~/.local/share/data/QtProject/qtcreator" on Linux
-    //    "~/Library/Application Support/QtProject/Qt Creator" on Mac
+    //    "%LOCALAPPDATA%\QtProject\qthldplugin" on Windows Vista and later
+    //    "$XDG_DATA_HOME/data/QtProject/qthldplugin" or "~/.local/share/data/QtProject/qthldplugin" on Linux
+    //    "~/Library/Application Support/QtProject/Qt Hldplugin" on Mac
     QString pluginPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
     if (Utils::HostOsInfo::isAnyUnixHost() && !Utils::HostOsInfo::isMacHost())
         pluginPath += QLatin1String("/data");
@@ -237,7 +237,7 @@ static inline QStringList getPluginPaths()
                                     Core::Constants::IDE_DISPLAY_NAME :
                                     Core::Constants::IDE_ID);
     pluginPath += QLatin1String("/plugins/");
-    // Qt Creator X.Y.Z can load plugins from X.Y.(Z-1) etc, so add current and previous
+    // Qt Hldplugin X.Y.Z can load plugins from X.Y.(Z-1) etc, so add current and previous
     // patch versions
     const QString minorVersion = QString::number(IDE_VERSION_MAJOR) + '.'
                                  + QString::number(IDE_VERSION_MINOR) + '.';
@@ -483,7 +483,7 @@ int main(int argc, char **argv)
         QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
 #endif
 
-    if (qEnvironmentVariableIsSet("QTCREATOR_DISABLE_NATIVE_MENUBAR")
+    if (qEnvironmentVariableIsSet("QTHLDPLUGIN_DISABLE_NATIVE_MENUBAR")
             || qgetenv("XDG_CURRENT_DESKTOP").startsWith("Unity")) {
         QApplication::setAttribute(Qt::AA_DontUseNativeMenuBar);
     }
@@ -491,7 +491,7 @@ int main(int argc, char **argv)
     Utils::TemporaryDirectory::setMasterTemporaryDirectory(QDir::tempPath() + "/" + Core::Constants::IDE_CASED_ID + "-XXXXXX");
 
 #ifdef Q_OS_MAC
-    // increase the number of file that can be opened in Qt Creator.
+    // increase the number of file that can be opened in Qt Hldplugin.
     struct rlimit rl;
     getrlimit(RLIMIT_NOFILE, &rl);
 
@@ -563,7 +563,7 @@ int main(int argc, char **argv)
 #endif
 
     PluginManager pluginManager;
-    PluginManager::setPluginIID(QLatin1String("org.qt-project.Qt.QtCreatorPlugin"));
+    PluginManager::setPluginIID(QLatin1String("org.qt-project.Qt.QtHldpluginPlugin"));
     PluginManager::setGlobalSettings(globalSettings);
     PluginManager::setSettings(settings);
 
@@ -573,14 +573,14 @@ int main(int argc, char **argv)
     QString overrideLanguage = settings->value(QLatin1String("General/OverrideLanguage")).toString();
     if (!overrideLanguage.isEmpty())
         uiLanguages.prepend(overrideLanguage);
-    const QString &creatorTrPath = resourcePath() + "/translations";
+    const QString &hldpluginTrPath = resourcePath() + "/translations";
     for (QString locale : qAsConst(uiLanguages)) {
         locale = QLocale(locale).name();
-        if (translator.load("qtcreator_" + locale, creatorTrPath)) {
+        if (translator.load("qthldplugin_" + locale, hldpluginTrPath)) {
             const QString &qtTrPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
             const QString &qtTrFile = QLatin1String("qt_") + locale;
-            // Binary installer puts Qt tr files into creatorTrPath
-            if (qtTranslator.load(qtTrFile, qtTrPath) || qtTranslator.load(qtTrFile, creatorTrPath)) {
+            // Binary installer puts Qt tr files into hldpluginTrPath
+            if (qtTranslator.load(qtTrFile, qtTrPath) || qtTranslator.load(qtTrFile, hldpluginTrPath)) {
                 app.installTranslator(&translator);
                 app.installTranslator(&qtTranslator);
                 app.setProperty("qtc_locale", locale);
@@ -596,7 +596,7 @@ int main(int argc, char **argv)
         }
     }
 
-    app.setDesktopFileName("org.qt-project.qtcreator.desktop");
+    app.setDesktopFileName("org.qt-project.qthldplugin.desktop");
 
     // Make sure we honor the system's proxy settings
     QNetworkProxyFactory::setUseSystemConfiguration(true);
@@ -683,7 +683,7 @@ int main(int argc, char **argv)
             while (button == QMessageBox::Retry) {
                 if (app.sendMessage(PluginManager::serializedArguments(), 5000 /*timeout*/, pid))
                     return 0;
-                if (!app.isRunning(pid)) // App quit while we were trying so start a new creator
+                if (!app.isRunning(pid)) // App quit while we were trying so start a new hldplugin
                     button = QMessageBox::Yes;
                 else
                     button = askMsgSendFailed();

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,7 +42,7 @@
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT QString settingsKey(const QString &category)
+QTHLDPLUGIN_UTILS_EXPORT QString settingsKey(const QString &category)
 {
     QString rc(category);
     const QChar underscore = '_';
@@ -69,7 +69,7 @@ static inline int commonPartSize(const QString &s1, const QString &s2)
     return size;
 }
 
-QTCREATOR_UTILS_EXPORT QString commonPrefix(const QStringList &strings)
+QTHLDPLUGIN_UTILS_EXPORT QString commonPrefix(const QStringList &strings)
 {
     switch (strings.size()) {
     case 0:
@@ -89,7 +89,7 @@ QTCREATOR_UTILS_EXPORT QString commonPrefix(const QStringList &strings)
     return strings.at(0).left(commonLength);
 }
 
-QTCREATOR_UTILS_EXPORT QString commonPath(const QStringList &files)
+QTHLDPLUGIN_UTILS_EXPORT QString commonPath(const QStringList &files)
 {
     QStringList appendedSlashes = Utils::transform(files, [](const QString &file) -> QString {
         if (!file.endsWith('/'))
@@ -109,7 +109,7 @@ QTCREATOR_UTILS_EXPORT QString commonPath(const QStringList &files)
     return common;
 }
 
-QTCREATOR_UTILS_EXPORT QString withTildeHomePath(const QString &path)
+QTHLDPLUGIN_UTILS_EXPORT QString withTildeHomePath(const QString &path)
 {
     if (HostOsInfo::isWindowsHost())
         return path;
@@ -228,7 +228,7 @@ int AbstractMacroExpander::findMacro(const QString &str, int *pos, QString *ret)
     }
 }
 
-QTCREATOR_UTILS_EXPORT void expandMacros(QString *str, AbstractMacroExpander *mx)
+QTHLDPLUGIN_UTILS_EXPORT void expandMacros(QString *str, AbstractMacroExpander *mx)
 {
     QString rsts;
 
@@ -238,14 +238,14 @@ QTCREATOR_UTILS_EXPORT void expandMacros(QString *str, AbstractMacroExpander *mx
     }
 }
 
-QTCREATOR_UTILS_EXPORT QString expandMacros(const QString &str, AbstractMacroExpander *mx)
+QTHLDPLUGIN_UTILS_EXPORT QString expandMacros(const QString &str, AbstractMacroExpander *mx)
 {
     QString ret = str;
     expandMacros(&ret, mx);
     return ret;
 }
 
-QTCREATOR_UTILS_EXPORT QString stripAccelerator(const QString &text)
+QTHLDPLUGIN_UTILS_EXPORT QString stripAccelerator(const QString &text)
 {
     QString res = text;
     for (int index = res.indexOf('&'); index != -1; index = res.indexOf('&', index + 1))
@@ -253,7 +253,7 @@ QTCREATOR_UTILS_EXPORT QString stripAccelerator(const QString &text)
     return res;
 }
 
-QTCREATOR_UTILS_EXPORT bool readMultiLineString(const QJsonValue &value, QString *out)
+QTHLDPLUGIN_UTILS_EXPORT bool readMultiLineString(const QJsonValue &value, QString *out)
 {
     QTC_ASSERT(out, return false);
     if (value.isString()) {
@@ -273,7 +273,7 @@ QTCREATOR_UTILS_EXPORT bool readMultiLineString(const QJsonValue &value, QString
     return true;
 }
 
-QTCREATOR_UTILS_EXPORT int parseUsedPortFromNetstatOutput(const QByteArray &line)
+QTHLDPLUGIN_UTILS_EXPORT int parseUsedPortFromNetstatOutput(const QByteArray &line)
 {
     const QByteArray trimmed = line.trimmed();
     int base = 0;

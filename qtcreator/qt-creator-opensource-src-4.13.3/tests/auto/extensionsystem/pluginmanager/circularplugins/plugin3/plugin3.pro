@@ -7,7 +7,7 @@ DEFINES += PLUGIN3_LIBRARY
 ODISTFILES = $$PWD/plugin.json
 
 QTC_LIB_DEPENDS += extensionsystem
-include(../../../../../../qtcreator.pri)
+include(../../../../../../qthldplugin.pri)
 include(../../../../qttestrpath.pri)
 
 TARGET = $$qtLibraryTargetName(plugin3)

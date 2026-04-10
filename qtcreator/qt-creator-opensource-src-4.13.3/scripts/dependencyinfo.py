@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -118,7 +118,7 @@ class Plugin(Library):
         if self.name is None or self.name == '':
             log.critical('Plugin name not set for spec "%s".', spec)
 
-        return os.path.normpath(os.path.join(dirname, "..", "..", "..", "lib", "qtcreator",
+        return os.path.normpath(os.path.join(dirname, "..", "..", "..", "lib", "qthldplugin",
                                              "plugins", "lib%s.so" % self.name))
 
     def _parseNMline(self, line):
@@ -221,7 +221,7 @@ class BinaryDirExaminer:
         self._findPlugins(path)
 
     def _findLibraries(self, path):
-        libdir = glob.glob(os.path.join(path, "lib", "qtcreator", "lib*"))
+        libdir = glob.glob(os.path.join(path, "lib", "qthldplugin", "lib*"))
         for l in libdir:
             if os.path.islink(l):
                 continue
@@ -254,8 +254,8 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Sanity check:
-    if not(os.path.exists(os.path.join(os.getcwd(), "bin", "qtcreator"))):
-        log.critical('Not a top level Qt Creator build directory.')
+    if not(os.path.exists(os.path.join(os.getcwd(), "bin", "qthldplugin"))):
+        log.critical('Not a top level Qt Hldplugin build directory.')
         sys.exit(1)
 
     binExaminer = BinaryDirExaminer(os.path.abspath(os.getcwd()))

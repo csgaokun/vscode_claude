@@ -1,6 +1,6 @@
 QTC_LIB_DEPENDS += cplusplus utils
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 
 RPATH_BASE = $$IDE_BIN_PATH
 include(../../rpath.pri)

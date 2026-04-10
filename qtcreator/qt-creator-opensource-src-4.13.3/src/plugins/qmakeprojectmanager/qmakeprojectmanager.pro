@@ -1,5 +1,5 @@
 QT += network
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 DEFINES += \
     QMAKEPROJECTMANAGER_LIBRARY

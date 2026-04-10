@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 SOURCES += mercurialplugin.cpp \
     optionspage.cpp \
     mercurialclient.cpp \

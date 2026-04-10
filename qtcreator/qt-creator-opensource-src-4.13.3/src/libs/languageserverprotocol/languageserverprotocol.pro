@@ -1,4 +1,4 @@
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 
 DEFINES += LANGUAGESERVERPROTOCOL_LIBRARY
 

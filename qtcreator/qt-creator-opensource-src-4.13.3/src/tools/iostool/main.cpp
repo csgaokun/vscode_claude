@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -353,7 +353,7 @@ void Relayer::handleClientHasData()
 
 void Relayer::handleClientHasError(QAbstractSocket::SocketError error)
 {
-    iosTool()->errorMsg(tr("iOS Debugging connection to creator failed with error %1").arg(error));
+    iosTool()->errorMsg(tr("iOS Debugging connection to hldplugin failed with error %1").arg(error));
     server()->removeRelayConnection(this);
 }
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,7 +30,7 @@
 #include "settingspage.h"
 #include "editorwidget.h"
 #include "editordata.h"
-#include "qtcreatorintegration.h"
+#include "qthldpluginintegration.h"
 #include "designercontext.h"
 #include <widgethost.h>
 
@@ -130,8 +130,8 @@ public:
     FormWindowEditorFactory()
     {
         setId(K_DESIGNER_XML_EDITOR_ID);
-        setEditorCreator([]() { return new FormWindowEditor; });
-        setEditorWidgetCreator([]() { return new Internal::DesignerXmlEditorWidget; });
+        setEditorHldplugin([]() { return new FormWindowEditor; });
+        setEditorWidgetHldplugin([]() { return new Internal::DesignerXmlEditorWidget; });
         setUseGenericHighlighter(true);
         setDuplicatedSupported(false);
         setMarksVisible(false);
@@ -139,7 +139,7 @@ public:
 
     FormWindowEditor *create(QDesignerFormWindowInterface *form)
     {
-        setDocumentCreator([form]() { return new FormWindowFile(form); });
+        setDocumentHldplugin([form]() { return new FormWindowFile(form); });
         return qobject_cast<FormWindowEditor *>(createEditor());
     }
 };
@@ -195,7 +195,7 @@ public:
 
 public:
     QDesignerFormEditorInterface *m_formeditor = nullptr;
-    QtCreatorIntegration *m_integration = nullptr;
+    QtHldpluginIntegration *m_integration = nullptr;
     QDesignerFormWindowManagerInterface *m_fwm = nullptr;
     FormEditorW::InitializationStage m_initStage = FormEditorW::RegisterPlugins;
 
@@ -359,10 +359,10 @@ void FormEditorData::fullInit()
     QDesignerComponents::initializePlugins(m_formeditor);
     QDesignerComponents::initializeResources();
     initDesignerSubWindows();
-    m_integration = new QtCreatorIntegration(m_formeditor, m_instance);
+    m_integration = new QtHldpluginIntegration(m_formeditor, m_instance);
     m_formeditor->setIntegration(m_integration);
     // Connect Qt Designer help request to HelpManager.
-    QObject::connect(m_integration, &QtCreatorIntegration::creatorHelpRequested,
+    QObject::connect(m_integration, &QtHldpluginIntegration::hldpluginHelpRequested,
                      HelpManager::Signals::instance(),
                      [](const QUrl &url) { HelpManager::showHelpUrl(url, HelpManager::HelpModeAlways); });
 

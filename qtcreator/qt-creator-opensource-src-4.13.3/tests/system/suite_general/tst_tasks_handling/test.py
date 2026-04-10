@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -25,10 +25,10 @@
 
 import random
 import string
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 toolButton = ("{toolTip='%s' type='QToolButton' unnamed='1' visible='1' "
-              "window=':Qt Creator_Core::Internal::MainWindow'}")
+              "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
 
 def generateRandomFilePath(isWin, isHeader):
     # generate random (fake) file path
@@ -76,7 +76,7 @@ def checkOrUncheckMyTasks():
     filterButton = waitForObject(toolButton % 'Filter by categories')
     clickButton(filterButton)
     activateItem(waitForObjectItem("{type='QMenu' unnamed='1' visible='1' "
-                                   "window=':Qt Creator_Core::Internal::MainWindow'}",
+                                   "window=':Qt Hldplugin_Core::Internal::MainWindow'}",
                                    "My Tasks"))
 
 def getBuildIssuesTypeCounts(model):
@@ -92,8 +92,8 @@ def main():
     startQC()
     if not startedWithoutPluginError():
         return
-    ensureChecked(":Qt Creator_Issues_Core::Internal::OutputPaneToggleButton")
-    model = waitForObject(":Qt Creator.Issues_QListView").model()
+    ensureChecked(":Qt Hldplugin_Issues_Core::Internal::OutputPaneToggleButton")
+    model = waitForObject(":Qt Hldplugin.Issues_QListView").model()
     test.verify(model.rowCount() == 0, 'Got an empty issue list to start from.')
     invokeMenuItem("File", "Open File or Project...")
     selectFromFileDialog(tasksFile, False, True)

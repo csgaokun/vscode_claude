@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Brian McGillion and Hugues Delorme
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -382,8 +382,8 @@ void VcsBaseClient::diff(const QString &workingDir, const QStringList &files,
 
     VcsBaseEditorConfig *paramWidget = editor->editorConfig();
     if (!paramWidget) {
-        if (m_diffConfigCreator)
-            paramWidget = m_diffConfigCreator(editor->toolBar());
+        if (m_diffConfigHldplugin)
+            paramWidget = m_diffConfigHldplugin(editor->toolBar());
         if (paramWidget) {
             paramWidget->setBaseArguments(extraOptions);
             // editor has been just created, createVcsEditor() didn't set a configuration widget yet
@@ -424,8 +424,8 @@ void VcsBaseClient::log(const QString &workingDir, const QStringList &files,
 
     VcsBaseEditorConfig *paramWidget = editor->editorConfig();
     if (!paramWidget) {
-        if (m_logConfigCreator)
-            paramWidget = m_logConfigCreator(editor->toolBar());
+        if (m_logConfigHldplugin)
+            paramWidget = m_logConfigHldplugin(editor->toolBar());
         if (paramWidget) {
             paramWidget->setBaseArguments(extraOptions);
             // editor has been just created, createVcsEditor() didn't set a configuration widget yet
@@ -520,14 +520,14 @@ ExitCodeInterpreter VcsBaseClient::exitCodeInterpreter(VcsCommandTag cmd) const
     return Utils::defaultExitCodeInterpreter;
 }
 
-void VcsBaseClient::setDiffConfigCreator(ConfigCreator creator)
+void VcsBaseClient::setDiffConfigHldplugin(ConfigHldplugin hldplugin)
 {
-    m_diffConfigCreator = std::move(creator);
+    m_diffConfigHldplugin = std::move(hldplugin);
 }
 
-void VcsBaseClient::setLogConfigCreator(ConfigCreator creator)
+void VcsBaseClient::setLogConfigHldplugin(ConfigHldplugin hldplugin)
 {
-    m_logConfigCreator = std::move(creator);
+    m_logConfigHldplugin = std::move(hldplugin);
 }
 
 void VcsBaseClient::import(const QString &repositoryRoot, const QStringList &files,

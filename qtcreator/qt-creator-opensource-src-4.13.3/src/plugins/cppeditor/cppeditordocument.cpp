@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -412,10 +412,10 @@ CppTools::BaseEditorDocumentProcessor *CppEditorDocument::processor()
         connect(m_processor.data(), &CppTools::BaseEditorDocumentProcessor::codeWarningsUpdated,
                 [this] (unsigned revision,
                         const QList<QTextEdit::ExtraSelection> selections,
-                        const std::function<QWidget*()> &creator,
+                        const std::function<QWidget*()> &hldplugin,
                         const TextEditor::RefactorMarkers &refactorMarkers) {
             emit codeWarningsUpdated(revision, selections, refactorMarkers);
-            m_minimizableInfoBars.processHeaderDiagnostics(creator);
+            m_minimizableInfoBars.processHeaderDiagnostics(hldplugin);
         });
         connect(m_processor.data(), &CppTools::BaseEditorDocumentProcessor::ifdefedOutBlocksUpdated,
                 this, &CppEditorDocument::ifdefedOutBlocksUpdated);

@@ -5,7 +5,7 @@
 # Copyright (C) 2017 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -28,7 +28,7 @@
 =head1 NAME
 
 clazyweb2tasks.pl - Convert Clazy logs as displayed by the Web frontend into
-Qt Creator task files.
+Qt Hldplugin task files.
 
 Expected format:
 

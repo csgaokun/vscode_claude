@@ -22,7 +22,7 @@ conditions by using environment variables as follows:
 
   (QTC_MSVC_ENV_BAT - to set up MSVC)
   (QTC_CDBEXT_PATH (optional) - path to the cdbextension
-      defaults to IDE_BUILD_TREE/IDE_LIBRARY_BASENAME/qtcreatorcdbext64)
+      defaults to IDE_BUILD_TREE/IDE_LIBRARY_BASENAME/qthldplugincdbext64)
 
    QTC_USE_CMAKE_FOR_TEST - Use cmake to build test cases (incomplete)
 
@@ -43,7 +43,7 @@ By default, only successful tests are cleaned up (use
 QTC_KEEP_TEMP_FOR_TEST to override).
 
 Failing tests leave a qt_tst_dumpers_XXXXXX directory behind,
-with a 'doit.pro' which can be directly opened in Creator.
+with a 'doit.pro' which can be directly opened in Hldplugin.
 There's always a 'main.cpp' file, containing at least one
 call to a function 'breakHere()'. Put a break point there,
 and hit F5.

@@ -1,7 +1,7 @@
 DEFINES += BOOT2QT_LIBRARY
 QT += network
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(boot2qt_dependencies.pri)
 
 include(device-detection/device-detection.pri)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -183,19 +183,19 @@ protected:
     void addSupportedTargetDeviceType(Utils::Id id);
     void setDefaultDisplayName(const QString &defaultDisplayName);
 
-    using BuildConfigurationCreator = std::function<BuildConfiguration *(Target *)>;
+    using BuildConfigurationHldplugin = std::function<BuildConfiguration *(Target *)>;
 
     template <class BuildConfig>
     void registerBuildConfiguration(Utils::Id buildConfigId)
     {
-        m_creator = [buildConfigId](Target *t) { return new BuildConfig(t, buildConfigId); };
+        m_hldplugin = [buildConfigId](Target *t) { return new BuildConfig(t, buildConfigId); };
         m_buildConfigId = buildConfigId;
     }
 
 private:
     bool canHandle(const ProjectExplorer::Target *t) const;
 
-    BuildConfigurationCreator m_creator;
+    BuildConfigurationHldplugin m_hldplugin;
     Utils::Id m_buildConfigId;
     Utils::Id m_supportedProjectType;
     QList<Utils::Id> m_supportedTargetDeviceTypes;

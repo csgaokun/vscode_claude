@@ -5,7 +5,7 @@
 ** Copyright (C) 2016 Giuliano Schneider
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@ namespace Core {
     \brief The IOutputPane class is an interface for providing \uicontrol Output panes.
 
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 */
 
 /*!

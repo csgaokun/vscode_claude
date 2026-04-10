@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -136,10 +136,10 @@ BindingEditorFactory::BindingEditorFactory()
     setDisplayName(QCoreApplication::translate("OpenWith::Editors", QmlDesigner::BINDINGEDITOR_CONTEXT_ID));
     setEditorActionHandlers(0);
 
-    setDocumentCreator([]() { return new BindingDocument; });
-    setEditorWidgetCreator([]() { return new BindingEditorWidget; });
-    setEditorCreator([]() { return new QmlJSEditor::QmlJSEditor; });
-    setAutoCompleterCreator([]() { return new QmlJSEditor::AutoCompleter; });
+    setDocumentHldplugin([]() { return new BindingDocument; });
+    setEditorWidgetHldplugin([]() { return new BindingEditorWidget; });
+    setEditorHldplugin([]() { return new QmlJSEditor::QmlJSEditor; });
+    setAutoCompleterHldplugin([]() { return new QmlJSEditor::AutoCompleter; });
     setCommentDefinition(Utils::CommentDefinition::CppStyle);
     setParenthesesMatchingEnabled(true);
     setCodeFoldingSupported(true);

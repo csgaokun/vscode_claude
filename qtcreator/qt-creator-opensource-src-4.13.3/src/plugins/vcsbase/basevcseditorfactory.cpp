@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -50,8 +50,8 @@ using namespace TextEditor;
 namespace VcsBase {
 
 VcsEditorFactory::VcsEditorFactory(const VcsBaseEditorParameters *parameters,
-                                   // Force copy, see QTCREATORBUG-13218
-                                   const EditorWidgetCreator editorWidgetCreator,
+                                   // Force copy, see QTHLDPLUGINBUG-13218
+                                   const EditorWidgetHldplugin editorWidgetHldplugin,
                                    std::function<void(const QString &, const QString &)> describeFunc)
 {
     setId(parameters->id);
@@ -62,7 +62,7 @@ VcsEditorFactory::VcsEditorFactory(const VcsBaseEditorParameters *parameters,
     setEditorActionHandlers(TextEditorActionHandler::None);
     setDuplicatedSupported(false);
 
-    setDocumentCreator([parameters]() -> TextDocument* {
+    setDocumentHldplugin([parameters]() -> TextDocument* {
         auto document = new TextDocument(parameters->id);
  //  if (QLatin1String(parameters->mimeType) != QLatin1String(DiffEditor::Constants::DIFF_EDITOR_MIMETYPE))
         document->setMimeType(QLatin1String(parameters->mimeType));
@@ -70,15 +70,15 @@ VcsEditorFactory::VcsEditorFactory(const VcsBaseEditorParameters *parameters,
         return document;
     });
 
-    setEditorWidgetCreator([parameters, editorWidgetCreator, describeFunc]() {
-        auto widget = editorWidgetCreator();
+    setEditorWidgetHldplugin([parameters, editorWidgetHldplugin, describeFunc]() {
+        auto widget = editorWidgetHldplugin();
         auto editorWidget = Aggregation::query<VcsBaseEditorWidget>(widget);
         editorWidget->setDescribeFunc(describeFunc);
         editorWidget->setParameters(parameters);
         return widget;
     });
 
-    setEditorCreator([]() { return new VcsBaseEditor(); });
+    setEditorHldplugin([]() { return new VcsBaseEditor(); });
     setMarksVisible(false);
 }
 

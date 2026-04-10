@@ -1,8 +1,8 @@
 INCLUDEPATH += $$PWD
 INCLUDEPATH += $$PWD/designercore/include
 INCLUDEPATH += $$PWD/designercore
-INCLUDEPATH += $$PWD/../../../share/qtcreator/qml/qmlpuppet/interfaces
-INCLUDEPATH += $$PWD/../../../share/qtcreator/qml/qmlpuppet/types
+INCLUDEPATH += $$PWD/../../../share/qthldplugin/qml/qmlpuppet/interfaces
+INCLUDEPATH += $$PWD/../../../share/qthldplugin/qml/qmlpuppet/types
 
 DEFINES += QMLDESIGNER_TEST DESIGNER_STATIC_CORE_LIBRARY
 
@@ -35,7 +35,7 @@ SOURCES += \
 HEADERS += \
     $$PWD/designercore/include/modelnode.h \
     $$PWD/designercore/include/model.h \
-    $$PWD/../../../share/qtcreator/qml/qmlpuppet/interfaces/commondefines.h \
+    $$PWD/../../../share/qthldplugin/qml/qmlpuppet/interfaces/commondefines.h \
     $$PWD/designercore/include/import.h \
     $$PWD/designercore/include/abstractproperty.h \
     $$PWD/designercore/include/abstractview.h \

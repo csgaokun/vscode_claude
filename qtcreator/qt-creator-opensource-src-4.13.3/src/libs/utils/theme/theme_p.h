@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Thorben Kroeger <thorbenkroeger@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -33,7 +33,7 @@
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT ThemePrivate
+class QTHLDPLUGIN_UTILS_EXPORT ThemePrivate
 {
 public:
     ThemePrivate();
@@ -50,7 +50,7 @@ public:
     QMap<QString, QColor> palette;
 };
 
-QTCREATOR_UTILS_EXPORT void setCreatorTheme(Theme *theme);
-QTCREATOR_UTILS_EXPORT void setThemeApplicationPalette();
+QTHLDPLUGIN_UTILS_EXPORT void setHldpluginTheme(Theme *theme);
+QTHLDPLUGIN_UTILS_EXPORT void setThemeApplicationPalette();
 
 } // namespace Utils

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # entry of test
 def main():
@@ -39,7 +39,7 @@ def main():
     examplePath = os.path.join(templateDir, proFile)
     for useClang in [False, True]:
         with TestSection(getCodeModelString(useClang)):
-            if not startCreatorVerifyingClang(useClang):
+            if not startHldpluginVerifyingClang(useClang):
                 continue
             # open example project
             openQmakeProject(examplePath)
@@ -51,9 +51,9 @@ def main():
                 test.fatal("Could not open main.cpp")
                 invokeMenuItem("File", "Exit")
                 return
-            test.verify(checkIfObjectExists(":Qt Creator_CppEditor::Internal::CPPEditorWidget"),
+            test.verify(checkIfObjectExists(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"),
                         "Verifying if: .cpp file is opened in Edit mode.")
-            editorWidget = findObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            editorWidget = findObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
             # place cursor on line "class TriangleWindow : public OpenGLWindow"
             # invoke find usages from context menu on word "OpenGLWindow"
             if not invokeFindUsage(editorWidget, "class TriangleWindow : public OpenGLWindow",

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Jochen Becher
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@ ModelEditorFactory::ModelEditorFactory(UiController *uiController, ActionHandler
     setId(Constants::MODEL_EDITOR_ID);
     setDisplayName(QCoreApplication::translate("OpenWith::Editors", Constants::MODEL_EDITOR_DISPLAY_NAME));
     addMimeType(Constants::MIME_TYPE_MODEL);
-    setEditorCreator([uiController, actionHandler] { return new ModelEditor(uiController, actionHandler); });
+    setEditorHldplugin([uiController, actionHandler] { return new ModelEditor(uiController, actionHandler); });
 }
 
 } // namespace Internal

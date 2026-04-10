@@ -60,7 +60,7 @@ class MimeBinaryProvider;
 class MimeTypePrivate;
 }
 
-class QTCREATOR_UTILS_EXPORT MimeType
+class QTHLDPLUGIN_UTILS_EXPORT MimeType
 {
 public:
     MimeType();
@@ -106,7 +106,7 @@ public:
 
     QString filterString() const;
 
-    // Qt Creator additions
+    // Qt Hldplugin additions
     bool matchesName(const QString &nameOrAlias) const;
     void setPreferredSuffix(const QString &suffix);
 
@@ -130,7 +130,7 @@ inline uint qHash(const MimeType &mime) { return qHash(mime.name()); }
 #ifndef QT_NO_DEBUG_STREAM
 QT_BEGIN_NAMESPACE
 class QDebug;
-QTCREATOR_UTILS_EXPORT QDebug operator<<(QDebug debug, const Utils::MimeType &mime);
+QTHLDPLUGIN_UTILS_EXPORT QDebug operator<<(QDebug debug, const Utils::MimeType &mime);
 QT_END_NAMESPACE
 #endif
 

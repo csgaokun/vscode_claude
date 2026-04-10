@@ -1,4 +1,4 @@
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 
 TARGET = qtc-askpass
 

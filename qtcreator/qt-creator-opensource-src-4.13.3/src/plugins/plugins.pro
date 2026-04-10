@@ -1,4 +1,4 @@
-include(../../qtcreator.pri)
+include(../../qthldplugin.pri)
 
 TEMPLATE  = subdirs
 

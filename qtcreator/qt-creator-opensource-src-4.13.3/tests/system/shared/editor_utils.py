@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -275,28 +275,28 @@ def getEditorForFileSuffix(curFile, treeViewSyntax=False):
     expected = os.path.basename(curFile)
     if treeViewSyntax:
         expected = simpleFileName(curFile)
-    mainWindow = waitForObject(":Qt Creator_Core::Internal::MainWindow")
+    mainWindow = waitForObject(":Qt Hldplugin_Core::Internal::MainWindow")
     if not waitFor("str(mainWindow.windowTitle).startswith(expected + ' ')", 5000):
         test.fatal("Window title (%s) did not switch to expected file (%s)."
                    % (str(mainWindow.windowTitle), expected))
     try:
         if suffix in cppEditorSuffixes:
-            editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
         elif suffix in qmlEditorSuffixes:
-            editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
         elif suffix in proEditorSuffixes or suffix in glslEditorSuffixes or suffix in pytEditorSuffixes:
-            editor = waitForObject(":Qt Creator_TextEditor::TextEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_TextEditor::TextEditorWidget")
         elif suffix in binEditorSuffixes:
-            editor = waitForObject(":Qt Creator_BinEditor::BinEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_BinEditor::BinEditorWidget")
         else:
             test.log("Trying TextEditorWidget (file suffix: %s)" % suffix)
             try:
-                editor = waitForObject(":Qt Creator_TextEditor::TextEditorWidget", 3000)
+                editor = waitForObject(":Qt Hldplugin_TextEditor::TextEditorWidget", 3000)
             except:
                 test.fatal("Unsupported file suffix for file '%s'" % curFile)
                 editor = None
     except:
-        f = str(waitForObject(":Qt Creator_Core::Internal::MainWindow").windowTitle).split(" ", 1)[0]
+        f = str(waitForObject(":Qt Hldplugin_Core::Internal::MainWindow").windowTitle).split(" ", 1)[0]
         if os.path.basename(curFile) == f:
             test.fatal("Could not find editor although expected file matches.")
         else:
@@ -320,17 +320,17 @@ def maskSpecialCharsForSearchResult(filename):
 
 def waitForSearchResults():
     cancelButton = ("{text='Cancel' type='QToolButton' unnamed='1' visible='1' "
-                    "window=':Qt Creator_Core::Internal::MainWindow'}")
+                    "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
 
     waitFor("object.exists(cancelButton)", 3000)
     waitFor("not object.exists(cancelButton)", 20000)
 
 def validateSearchResult(expectedCount):
-    searchResult = waitForObject(":Qt Creator_SearchResult_Core::Internal::OutputPaneToggleButton")
+    searchResult = waitForObject(":Qt Hldplugin_SearchResult_Core::Internal::OutputPaneToggleButton")
     ensureChecked(searchResult)
-    resultTreeView = waitForObject(":Qt Creator_Find::Internal::SearchResultTreeView")
+    resultTreeView = waitForObject(":Qt Hldplugin_Find::Internal::SearchResultTreeView")
     counterLabel = waitForObject("{type='QLabel' unnamed='1' visible='1' text?='*matches found.' "
-                                 "window=':Qt Creator_Core::Internal::MainWindow'}")
+                                 "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     matches = cast((str(counterLabel.text)).split(" ", 1)[0], "int")
     test.compare(matches, expectedCount, "Verified match count.")
     model = resultTreeView.model()
@@ -383,8 +383,8 @@ def addBranchWildcardToRoot(rootNode):
 
 def openDocument(treeElement):
     try:
-        selectFromCombo(":Qt Creator_Core::Internal::NavComboBox", "Projects")
-        navigator = waitForObject(":Qt Creator_Utils::NavigationTreeView")
+        selectFromCombo(":Qt Hldplugin_Core::Internal::NavComboBox", "Projects")
+        navigator = waitForObject(":Qt Hldplugin_Utils::NavigationTreeView")
         try:
             item = waitForObjectItem(navigator, treeElement, 3000)
         except:
@@ -396,7 +396,7 @@ def openDocument(treeElement):
             # These might cover the item to click.
             # In this case, do it again to hit the item then.
             doubleClickItem(navigator, treeElement, 5, 5, 0, Qt.LeftButton)
-            mainWindow = waitForObject(":Qt Creator_Core::Internal::MainWindow")
+            mainWindow = waitForObject(":Qt Hldplugin_Core::Internal::MainWindow")
             if waitFor("str(mainWindow.windowTitle).startswith(expected + ' ')", 5000):
                 return True
         test.log("Expected file (%s) was not being opened in openDocument()" % expected)
@@ -412,7 +412,7 @@ def earlyExit(details="No additional information"):
     invokeMenuItem("File", "Exit")
 
 def openDocumentPlaceCursor(doc, line, additionalFunction=None):
-    cppEditorStr = ":Qt Creator_CppEditor::Internal::CPPEditorWidget"
+    cppEditorStr = ":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"
     if openDocument(doc) and placeCursorToLine(cppEditorStr, line):
         if additionalFunction:
             additionalFunction()
@@ -428,7 +428,7 @@ def openDocumentPlaceCursor(doc, line, additionalFunction=None):
 def replaceLine(fileSpec, oldLine, newLine):
     if openDocumentPlaceCursor(fileSpec, oldLine) == None:
         return False
-    editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     for _ in oldLine:
         type(editor, "<Backspace>")
     type(editor, newLine)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -318,7 +318,7 @@ Wizard::Wizard(QWidget *parent, Qt::WindowFlags flags) :
     setOption(QWizard::NoCancelButton, false);
     setOption(QWizard::NoDefaultButton, false);
     setOption(QWizard::NoBackButtonOnStartPage, true);
-    if (!Utils::creatorTheme()->preferredStyles().isEmpty())
+    if (!Utils::hldpluginTheme()->preferredStyles().isEmpty())
         setWizardStyle(QWizard::ModernStyle);
 
     if (HostOsInfo::isMacHost()) {

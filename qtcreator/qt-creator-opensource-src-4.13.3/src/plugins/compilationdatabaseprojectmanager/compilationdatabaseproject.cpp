@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -430,7 +430,7 @@ CompilationDatabaseProject::CompilationDatabaseProject(const Utils::FilePath &pr
     setId(Constants::COMPILATIONDATABASEPROJECT_ID);
     setProjectLanguages(Core::Context(ProjectExplorer::Constants::CXX_LANGUAGE_ID));
     setDisplayName(projectDirectory().fileName());
-    setBuildSystemCreator([](Target *t) { return new CompilationDatabaseBuildSystem(t); });
+    setBuildSystemHldplugin([](Target *t) { return new CompilationDatabaseBuildSystem(t); });
     setExtraProjectFiles(
         {projectFile.stringAppended(Constants::COMPILATIONDATABASEPROJECT_FILES_SUFFIX)});
 }
@@ -479,7 +479,7 @@ void CompilationDatabaseBuildSystem::reparseProject()
 void CompilationDatabaseBuildSystem::updateDeploymentData()
 {
     const Utils::FilePath deploymentFilePath = projectDirectory()
-            .pathAppended("QtCreatorDeployment.txt");
+            .pathAppended("QtHldpluginDeployment.txt");
     DeploymentData deploymentData;
     deploymentData.addFilesFromDeploymentFile(deploymentFilePath.toString(),
                                               projectDirectory().toString());
@@ -507,9 +507,9 @@ CompilationDatabaseEditorFactory::CompilationDatabaseEditorFactory()
     setDisplayName(QCoreApplication::translate("OpenWith::Editors", "Compilation Database"));
     addMimeType(Constants::COMPILATIONDATABASEMIMETYPE);
 
-    setEditorCreator([]() { return new TextEditor::BaseTextEditor; });
-    setEditorWidgetCreator([]() { return new TextEditor::TextEditorWidget; });
-    setDocumentCreator(createCompilationDatabaseDocument);
+    setEditorHldplugin([]() { return new TextEditor::BaseTextEditor; });
+    setEditorWidgetHldplugin([]() { return new TextEditor::TextEditorWidget; });
+    setDocumentHldplugin(createCompilationDatabaseDocument);
     setUseGenericHighlighter(true);
     setCommentDefinition(Utils::CommentDefinition::HashStyle);
     setCodeFoldingSupported(true);

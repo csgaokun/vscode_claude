@@ -3,7 +3,7 @@ QTC_PLUGIN_DEPENDS += qmljstools
 
 include(../../../qttest.pri)
 
-DEFINES+=QTCREATORDIR=\\\"$$IDE_SOURCE_TREE\\\"
+DEFINES+=QTHLDPLUGINDIR=\\\"$$IDE_SOURCE_TREE\\\"
 DEFINES+=TESTSRCDIR=\\\"$$PWD\\\"
 
 QT += core

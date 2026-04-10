@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -112,10 +112,10 @@ PythonEditorFactory::PythonEditorFactory()
                             | TextEditor::TextEditorActionHandler::UnCollapseAll
                             | TextEditor::TextEditorActionHandler::FollowSymbolUnderCursor);
 
-    setDocumentCreator([] { return new TextEditor::TextDocument(Constants::C_PYTHONEDITOR_ID); });
-    setEditorWidgetCreator(createEditorWidget);
-    setIndenterCreator([](QTextDocument *doc) { return new PythonIndenter(doc); });
-    setSyntaxHighlighterCreator([] { return new PythonHighlighter; });
+    setDocumentHldplugin([] { return new TextEditor::TextDocument(Constants::C_PYTHONEDITOR_ID); });
+    setEditorWidgetHldplugin(createEditorWidget);
+    setIndenterHldplugin([](QTextDocument *doc) { return new PythonIndenter(doc); });
+    setSyntaxHighlighterHldplugin([] { return new PythonHighlighter; });
     setCommentDefinition(Utils::CommentDefinition::HashStyle);
     setParenthesesMatchingEnabled(true);
     setCodeFoldingSupported(true);

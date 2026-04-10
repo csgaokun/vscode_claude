@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -26,9 +26,9 @@
 //
 // ATTENTION:
 //
-// 1 Please do not add any direct dependencies to other Qt Creator code here.
+// 1 Please do not add any direct dependencies to other Qt Hldplugin code here.
 //   Instead emit signals and let the FakeVimPlugin channel the information to
-//   Qt Creator. The idea is to keep this file here in a "clean" state that
+//   Qt Hldplugin. The idea is to keep this file here in a "clean" state that
 //   allows easy reuse with any QTextEdit or QPlainTextEdit derived class.
 //
 // 2 There are a few auto tests located in ../../../tests/auto/fakevim.

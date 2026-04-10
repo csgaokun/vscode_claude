@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -106,7 +106,7 @@ CatchTestSettingsPage::CatchTestSettingsPage(CatchTestSettings *settings, Utils:
     setId(settingsId);
     setCategory(Constants::AUTOTEST_SETTINGS_CATEGORY);
     setDisplayName(QCoreApplication::translate("CatchTestFramework", "Catch Test"));
-    setWidgetCreator([settings] { return new CatchTestSettingsWidget(settings); });
+    setWidgetHldplugin([settings] { return new CatchTestSettingsWidget(settings); });
 }
 
 } // namespace Internal

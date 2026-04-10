@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -662,7 +662,7 @@ void IosDeviceManagerPrivate::addError(QString errorMsg)
 QString IosDeviceManagerPrivate::deviceId(AMDeviceRef device)
 {
     CFStringRef s = m_lib.deviceCopyDeviceIdentifier(device);
-    // remove dashes as a hotfix for QTCREATORBUG-21291
+    // remove dashes as a hotfix for QTHLDPLUGINBUG-21291
     const auto id = QString::fromCFString(s).remove('-');
     if (s) CFRelease(s);
     return id;

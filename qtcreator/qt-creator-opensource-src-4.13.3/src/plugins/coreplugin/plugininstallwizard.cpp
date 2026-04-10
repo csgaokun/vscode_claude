@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -277,7 +277,7 @@ public:
             it.next();
             PluginSpec *spec = PluginSpec::read(it.filePath());
             if (spec) {
-                // Is a Qt Creator plugin. Let's see if we find a Core dependency and check the
+                // Is a Qt Hldplugin plugin. Let's see if we find a Core dependency and check the
                 // version
                 const QVector<PluginDependency> dependencies = spec->dependencies();
                 const auto found = std::find_if(dependencies.constBegin(),

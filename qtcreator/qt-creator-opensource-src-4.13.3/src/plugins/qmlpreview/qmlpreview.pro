@@ -1,6 +1,6 @@
 DEFINES += QMLPREVIEW_LIBRARY
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(qmlpreview_dependencies.pri)
 
 equals(TEST, 1) {

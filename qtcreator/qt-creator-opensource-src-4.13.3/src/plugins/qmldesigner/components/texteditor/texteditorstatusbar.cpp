@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@ TextEditorStatusBar::TextEditorStatusBar(QWidget *parent) : QToolBar(parent), m_
     addWidget(m_label);
 
     /* We have to set another .css, since the central widget has already a style sheet */
-    m_label->setStyleSheet(QString("QLabel { color :%1 }").arg(Utils::creatorTheme()->color(Utils::Theme::TextColorError).name()));
+    m_label->setStyleSheet(QString("QLabel { color :%1 }").arg(Utils::hldpluginTheme()->color(Utils::Theme::TextColorError).name()));
 }
 
 void TextEditorStatusBar::clearText()

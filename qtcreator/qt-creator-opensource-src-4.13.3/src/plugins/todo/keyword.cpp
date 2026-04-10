@@ -4,7 +4,7 @@
 ** Copyright (C) 2016 Vasiliy Sorokin
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,7 +30,7 @@
 namespace Todo {
 namespace Internal {
 
-Keyword::Keyword() : color(Utils::creatorTheme()->color(Utils::Theme::TextColorNormal))
+Keyword::Keyword() : color(Utils::hldpluginTheme()->color(Utils::Theme::TextColorNormal))
 {
 }
 

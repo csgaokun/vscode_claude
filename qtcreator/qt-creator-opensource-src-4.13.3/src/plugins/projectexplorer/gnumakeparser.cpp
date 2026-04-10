@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -307,9 +307,9 @@ void ProjectExplorerPlugin::testGnuMakeParserParsing_data()
 
     QTest::newRow("pass-trough note")
             << QStringList()
-            << QString::fromLatin1("/home/dev/creator/share/qtcreator/debugger/dumper.cpp:1079: note: initialized from here")
+            << QString::fromLatin1("/home/dev/hldplugin/share/qthldplugin/debugger/dumper.cpp:1079: note: initialized from here")
             << OutputParserTester::STDERR
-            << QString() << QString::fromLatin1("/home/dev/creator/share/qtcreator/debugger/dumper.cpp:1079: note: initialized from here\n")
+            << QString() << QString::fromLatin1("/home/dev/hldplugin/share/qthldplugin/debugger/dumper.cpp:1079: note: initialized from here\n")
             << Tasks()
             << QString()
             << QStringList();

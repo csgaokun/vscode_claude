@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -84,7 +84,7 @@ FutureProgressPrivate::FutureProgressPrivate(FutureProgress *q) :
     \ingroup mainclasses
     \inheaderfile coreplugin/progressmanager/futureprogress.h
     \class Core::FutureProgress
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The FutureProgress class is used to adapt the appearance of
     progress indicators that were created through the ProgressManager class.
@@ -323,7 +323,7 @@ void FutureProgress::mousePressEvent(QMouseEvent *event)
 void FutureProgress::paintEvent(QPaintEvent *)
 {
     QPainter p(this);
-    if (creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
         p.fillRect(rect(), StyleHelper::baseColor());
     } else {
       QLinearGradient grad = StyleHelper::statusBarGradient(rect());

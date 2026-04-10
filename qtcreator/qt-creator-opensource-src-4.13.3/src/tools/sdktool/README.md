@@ -1,7 +1,7 @@
 The SDK tool can be used to set up Qt versions, tool chains, devices and kits
-in Qt Creator.
+in Qt Hldplugin.
 
-There still is a lot of knowledge about Qt Creator internals required
+There still is a lot of knowledge about Qt Hldplugin internals required
 to use this tool!
 
 Note that some tool chains/Qt versions/kits may require settings not
@@ -21,7 +21,7 @@ Usage:
 
 ```
 ./sdktool --help
-Qt Creator SDK setup tool.
+Qt Hldplugin SDK setup tool.
     Usage: sdktool <ARGS> <OPERATION> <OPERATION_ARGS>
 
 ARGS:
@@ -30,23 +30,23 @@ ARGS:
 
 OPERATION:
     One of:
-        addKeys         add settings to Qt Creator configuration
-        addCMake        add a CMake tool to Qt Creator
-        addDebugger     add a debugger to Qt Creator
-        addDev          add a device to Qt Creator
-        addQt           add a Qt version to Qt Creator
-        addTC           add a tool chain to Qt Creator
-        addKit          add a kit to Qt Creator
-        get             get settings from Qt Creator configuration
-        rmCMake         remove a CMake tool from Qt Creator
-        rmKit           remove a kit from Qt Creator
-        rmDebugger      remove a debugger from Qt Creator
-        rmDev           remove a device from Qt Creator
-        rmKeys          remove settings from Qt Creator configuration
-        rmQt            remove a Qt version from Qt Creator
-        rmTC            remove a tool chain from Qt Creator
-        findKey         find a key in the settings of Qt Creator
-        find            find a value in the settings of Qt Creator
+        addKeys         add settings to Qt Hldplugin configuration
+        addCMake        add a CMake tool to Qt Hldplugin
+        addDebugger     add a debugger to Qt Hldplugin
+        addDev          add a device to Qt Hldplugin
+        addQt           add a Qt version to Qt Hldplugin
+        addTC           add a tool chain to Qt Hldplugin
+        addKit          add a kit to Qt Hldplugin
+        get             get settings from Qt Hldplugin configuration
+        rmCMake         remove a CMake tool from Qt Hldplugin
+        rmKit           remove a kit from Qt Hldplugin
+        rmDebugger      remove a debugger from Qt Hldplugin
+        rmDev           remove a device from Qt Hldplugin
+        rmKeys          remove settings from Qt Hldplugin configuration
+        rmQt            remove a Qt version from Qt Hldplugin
+        rmTC            remove a tool chain from Qt Hldplugin
+        findKey         find a key in the settings of Qt Hldplugin
+        find            find a value in the settings of Qt Hldplugin
 
 OPERATION_ARGS:
    use "--help <OPERATION>" to get help on the arguments required for an operation.
@@ -89,7 +89,7 @@ Tricky parts:
     Check the classes derived from `ProjectExplorer::ToolChain` for their
     Ids.
 
-    The `some_unique_part` can be anything. Qt Creator uses GUIDs by default,
+    The `some_unique_part` can be anything. Qt Hldplugin uses GUIDs by default,
     but any string is fine for the SDK to use.
 
   - `abi` needs to be in a format that `ProjectExplorer::Abi::fromString(...)`
@@ -109,13 +109,13 @@ Add a debugger:
 ```
 
 Tricky parts:
-  - `id` can be any unique string. In Qt Creator this is set as the autodetection
+  - `id` can be any unique string. In Qt Hldplugin this is set as the autodetection
     source of the Qt version.
     TODO: is it use in any special way?
 
   - `engine` is the integer used in the enum `Debugger::DebuggerEngineType`
 
-    Currently these are (Qt Creator 4.6):
+    Currently these are (Qt Hldplugin 4.6):
       * 1 for gdb
       * 4 for cdb
       * 8 for pdb
@@ -123,7 +123,7 @@ Tricky parts:
 
   - `binary` can be a absolute path, the value `auto` or an ABI.
     This is used to find the appropriate debugger for MSVC toolchains
-    where Creator does not know the binary path itself.
+    where Hldplugin does not know the binary path itself.
 
 Add a Qt version:
 =================
@@ -137,12 +137,12 @@ Add a Qt version:
 ```
 
 Tricky parts:
-  - `id` can be any unique string. In Qt Creator this is set as the autodetection
+  - `id` can be any unique string. In Qt Hldplugin this is set as the autodetection
     source of the Qt version.
 
   - `type` must be the string returned by `BaseQtVersion::type()`.
 
-    Currently these are (Qt Creator 4.11):
+    Currently these are (Qt Hldplugin 4.11):
       * `Qt4ProjectManager.QtVersion.Android` for Android
       * `Qt4ProjectManager.QtVersion.Desktop` for a desktop Qt
       * `Qt4ProjectManager.QtVersion.Ios` for iOS
@@ -173,7 +173,7 @@ Using the newly set up tool chain and Qt version:
 Tricky parts:
   - `devicetype` is the string returned IDevice::type()
 
-    Currently these are (Qt Creator 4.11):
+    Currently these are (Qt Hldplugin 4.11):
       * `Android.Device.Type` for Android devices
       * `Desktop` for code running on the local desktop
       * `Ios.Device.Type` for an iOS device

@@ -4,7 +4,7 @@
 ** Author: Orgad Shaneh <orgad.shaneh@audiocodes.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -125,7 +125,7 @@ ClearCaseSettingsPage::ClearCaseSettingsPage()
     setId(ClearCase::Constants::VCS_ID_CLEARCASE);
     setDisplayName(SettingsPageWidget::tr("ClearCase"));
     setCategory(VcsBase::Constants::VCS_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new SettingsPageWidget; });
+    setWidgetHldplugin([] { return new SettingsPageWidget; });
 }
 
 } // Internal

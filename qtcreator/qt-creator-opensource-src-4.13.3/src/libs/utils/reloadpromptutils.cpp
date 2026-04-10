@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -33,7 +33,7 @@
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const FilePath &fileName,
+QTHLDPLUGIN_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const FilePath &fileName,
                                                        bool modified,
                                                        bool enableDiffOption,
                                                        QWidget *parent)
@@ -57,7 +57,7 @@ QTCREATOR_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const FilePath &fileName,
     return reloadPrompt(title, msg, fileName.toUserOutput(), enableDiffOption, parent);
 }
 
-QTCREATOR_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const QString &title,
+QTHLDPLUGIN_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const QString &title,
                                                        const QString &prompt,
                                                        const QString &details,
                                                        bool enableDiffOption,
@@ -101,7 +101,7 @@ QTCREATOR_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const QString &title,
     return ReloadNone;
 }
 
-QTCREATOR_UTILS_EXPORT FileDeletedPromptAnswer
+QTHLDPLUGIN_UTILS_EXPORT FileDeletedPromptAnswer
         fileDeletedPrompt(const QString &fileName, QWidget *parent)
 {
     const QString title = QCoreApplication::translate("Utils::fileDeletedPrompt",

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -55,25 +55,25 @@ namespace Core {
 
 /*!
     \namespace Core::Search
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \class Core::Search::TextPosition
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \class Core::Search::TextRange
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \class Core::SearchResultItem
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
@@ -261,7 +261,7 @@ using namespace Core::Internal;
 /*!
     \class Core::SearchResult
     \inheaderfile coreplugin/find/searchresultwindow.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The SearchResult class reports user interaction, such as the
     activation of a search result item.
@@ -343,12 +343,12 @@ using namespace Core::Internal;
 /*!
     \class Core::SearchResultWindow
     \inheaderfile coreplugin/find/searchresultwindow.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The SearchResultWindow class is the implementation of a commonly
     shared \uicontrol{Search Results} output pane.
 
-    \image qtcreator-searchresults.png
+    \image qthldplugin-searchresults.png
 
     Whenever you want to show the user a list of search results, or want
     to present UI for a global search and replace, use the single instance

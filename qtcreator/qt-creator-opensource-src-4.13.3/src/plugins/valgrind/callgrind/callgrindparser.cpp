@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -303,9 +303,9 @@ void Parser::Private::parseHeader(QIODevice *device)
         } else if (line.startsWith("version: ")) {
             QString value = getValue(line, 9);
             data->setVersion(value.toInt());
-        } else if (line.startsWith("creator: ")) {
+        } else if (line.startsWith("hldplugin: ")) {
             QString value = getValue(line, 9);
-            data->setCreator(value);
+            data->setHldplugin(value);
         } else if (line.startsWith("pid: ")) {
             QString value = getValue(line, 5);
             data->setPid(value.toULongLong());

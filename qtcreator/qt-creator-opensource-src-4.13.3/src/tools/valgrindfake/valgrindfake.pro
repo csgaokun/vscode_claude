@@ -10,4 +10,4 @@ HEADERS += outputgenerator.h
 SOURCES += main.cpp \
     outputgenerator.cpp
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)

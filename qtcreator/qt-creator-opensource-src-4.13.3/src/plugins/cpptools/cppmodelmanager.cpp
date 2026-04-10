@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -75,7 +75,7 @@
 #include <QThreadPool>
 #include <QTimer>
 
-#if defined(QTCREATOR_WITH_DUMP_AST) && defined(Q_CC_GNU)
+#if defined(QTHLDPLUGIN_WITH_DUMP_AST) && defined(Q_CC_GNU)
 #define WITH_AST_DUMP
 #include <iostream>
 #include <sstream>
@@ -87,7 +87,7 @@ using namespace CppTools;
 using namespace CppTools::Internal;
 using namespace CPlusPlus;
 
-#ifdef QTCREATOR_WITH_DUMP_AST
+#ifdef QTHLDPLUGIN_WITH_DUMP_AST
 
 #include <cxxabi.h>
 
@@ -127,7 +127,7 @@ protected:
     { --depth; }
 };
 
-#endif // QTCREATOR_WITH_DUMP_AST
+#endif // QTHLDPLUGIN_WITH_DUMP_AST
 
 namespace CppTools {
 
@@ -195,7 +195,7 @@ public:
 
 const char pp_configuration[] =
     "# 1 \"<configuration>\"\n"
-    "#define Q_CREATOR_RUN 1\n"
+    "#define Q_HLDPLUGIN_RUN 1\n"
     "#define __cplusplus 1\n"
     "#define __extension__\n"
     "#define __context__\n"
@@ -1253,7 +1253,7 @@ void CppModelManager::onSourceFilesRefreshed() const
 {
     if (BuiltinIndexingSupport::isFindErrorsIndexingActive()) {
         QTimer::singleShot(1, QCoreApplication::instance(), &QCoreApplication::quit);
-        qDebug("FindErrorsIndexing: Done, requesting Qt Creator to quit.");
+        qDebug("FindErrorsIndexing: Done, requesting Qt Hldplugin to quit.");
     }
 }
 

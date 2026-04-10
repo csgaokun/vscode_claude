@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS = autotoolsbuildsystem.h \
           autotoolsprojectplugin.h\

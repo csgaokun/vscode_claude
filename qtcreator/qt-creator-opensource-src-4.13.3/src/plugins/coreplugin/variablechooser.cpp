@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -340,7 +340,7 @@ using namespace Internal;
 /*!
     \class Core::VariableChooser
     \inheaderfile coreplugin/variablechooser.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The VariableChooser class is used to add a tool window for selecting \QC variables
     to line edits, text edits or plain text edits.
@@ -379,8 +379,8 @@ using namespace Internal;
  * Can be manually set with
  * \c{textcontrol->setProperty(VariableChooser::kVariableSupportProperty, true)}
  */
-const char kVariableSupportProperty[] = "QtCreator.VariableSupport";
-const char kVariableNameProperty[] = "QtCreator.VariableName";
+const char kVariableSupportProperty[] = "QtHldplugin.VariableSupport";
+const char kVariableNameProperty[] = "QtHldplugin.VariableName";
 
 /*!
  * Creates a variable chooser that tracks all children of \a parent for variable support.

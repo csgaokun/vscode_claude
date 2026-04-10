@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ namespace Utils {
 
 enum ApplyMode { ImmediateApply, DeferedApply };
 
-class QTCREATOR_UTILS_EXPORT SavedAction : public QAction
+class QTHLDPLUGIN_UTILS_EXPORT SavedAction : public QAction
 {
     Q_OBJECT
 
@@ -86,7 +86,7 @@ private:
     QWidget *m_widget = nullptr;
 };
 
-class QTCREATOR_UTILS_EXPORT SavedActionSet
+class QTHLDPLUGIN_UTILS_EXPORT SavedActionSet
 {
 public:
     SavedActionSet() = default;

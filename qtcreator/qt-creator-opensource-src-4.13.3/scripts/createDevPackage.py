@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -37,10 +37,10 @@ import common
 # ========= COMMAND LINE ARGUMENTS ========
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description="Create Qt Creator development package.")
-    parser.add_argument('--source', '-s', help='path to the Qt Creator sources', required=True,
+    parser = argparse.ArgumentParser(description="Create Qt Hldplugin development package.")
+    parser.add_argument('--source', '-s', help='path to the Qt Hldplugin sources', required=True,
         metavar='<path>')
-    parser.add_argument('--build', '-b', help='path to the Qt Creator build', required=True,
+    parser.add_argument('--build', '-b', help='path to the Qt Hldplugin build', required=True,
         metavar='<path>')
     parser.add_argument('--verbose', '-v', help='verbose output', action='store_true', default=False)
     parser.add_argument('--7z', help='path to 7z binary',
@@ -58,9 +58,9 @@ def parse_arguments():
 source_include_patterns = [
     # directories
     r"^(?!(share|tests)/.*$)(.*/)?$",                     # look into all directories except under share/ and tests/
-    r"^share/(qtcreator/(qml/(qmlpuppet/(.*/)?)?)?)?$", # for shared headers for qt quick designer plugins
-    r"^share/qtcreator/qml/qmlpuppet/commands/.*\.(h|pri|cpp|c|txt|md)$", #used by extra plugins
-    r"^share/qtcreator/qml/qmlpuppet/container/.*\.(h|pri|cpp|c|txt|md)$", #used by extra plugins
+    r"^share/(qthldplugin/(qml/(qmlpuppet/(.*/)?)?)?)?$", # for shared headers for qt quick designer plugins
+    r"^share/qthldplugin/qml/qmlpuppet/commands/.*\.(h|pri|cpp|c|txt|md)$", #used by extra plugins
+    r"^share/qthldplugin/qml/qmlpuppet/container/.*\.(h|pri|cpp|c|txt|md)$", #used by extra plugins
     r"^src/plugins/help/qlitehtml/.*\.(h|pri|cpp|c|txt|md)$", # litehtml is used by extra plugins
     # files
     r"^HACKING$",

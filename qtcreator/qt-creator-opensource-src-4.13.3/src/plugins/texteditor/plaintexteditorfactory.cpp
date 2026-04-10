@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -63,8 +63,8 @@ PlainTextEditorFactory::PlainTextEditorFactory()
     addMimeType(QLatin1String("text/css")); // for some reason freedesktop thinks css is text/x-csrc
     addHoverHandler(new BaseHoverHandler);
 
-    setDocumentCreator([]() { return new TextDocument(Core::Constants::K_DEFAULT_TEXT_EDITOR_ID); });
-    setEditorWidgetCreator([]() { return new PlainTextEditorWidget; });
+    setDocumentHldplugin([]() { return new TextDocument(Core::Constants::K_DEFAULT_TEXT_EDITOR_ID); });
+    setEditorWidgetHldplugin([]() { return new PlainTextEditorWidget; });
     setUseGenericHighlighter(true);
 
     setEditorActionHandlers(TextEditorActionHandler::Format |

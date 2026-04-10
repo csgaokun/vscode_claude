@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -155,7 +155,7 @@ ClangToolsOptionsPage::ClangToolsOptionsPage()
     setCategory("T.Analyzer");
     setDisplayCategory(QCoreApplication::translate("Analyzer", "Analyzer"));
     setCategoryIconPath(Analyzer::Icons::SETTINGSCATEGORY_ANALYZER);
-    setWidgetCreator([] { return new SettingsWidget; });
+    setWidgetHldplugin([] { return new SettingsWidget; });
 }
 
 } // namespace Internal

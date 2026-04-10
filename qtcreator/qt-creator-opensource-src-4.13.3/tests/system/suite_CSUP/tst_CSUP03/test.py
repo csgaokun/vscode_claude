@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 inputDialog = "{type='QDialog' unnamed='1' visible='1' windowTitle='Extract Function Refactoring'}"
 
@@ -51,7 +51,7 @@ def constructExpectedCode(original, codeLines, funcSuffix):
             generatedFunc += "\n    %s" % line
     if withBraces:
         generatedFunc += "\n        \n    }"
-    generatedFunc += "    " # QTCREATORBUG-12118: last line has 4 additional blanks
+    generatedFunc += "    " # QTHLDPLUGINBUG-12118: last line has 4 additional blanks
     generatedFunc += "\n}"
     tmp.insert(insertHere + 1, generatedFunc)
     return "\n".join(tmp) + "\n"
@@ -75,9 +75,9 @@ def main():
         with TestSection(getCodeModelString(useClang)):
             if (useClang and platform.system() in ('Windows', 'Microsoft')
                 and JIRA.isBugStillOpen(18607)):
-                test.warning("Skipping unstable tests on Windows", "See QTCREATORBUG-18607")
+                test.warning("Skipping unstable tests on Windows", "See QTHLDPLUGINBUG-18607")
                 continue
-            if not startCreatorVerifyingClang(useClang):
+            if not startHldpluginVerifyingClang(useClang):
                 continue
             projectName = createNewNonQtProject(tempDir(), "project-csup03",
                                                 [Targets.DESKTOP_4_8_7_DEFAULT])

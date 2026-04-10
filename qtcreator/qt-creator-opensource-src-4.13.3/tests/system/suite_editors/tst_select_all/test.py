@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,9 +23,9 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
-# This tests for QTCREATORBUG-5757
+# This tests for QTHLDPLUGINBUG-5757
 
 def main():
     files = map(lambda record: os.path.join(srcPath, testData.field(record, "filename")),

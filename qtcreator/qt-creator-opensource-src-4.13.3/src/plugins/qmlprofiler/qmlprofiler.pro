@@ -2,7 +2,7 @@ DEFINES += QMLPROFILER_LIBRARY
 
 QT += network qml quick quickwidgets
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 SOURCES += \
     debugmessagesmodel.cpp \

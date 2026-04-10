@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -27,8 +27,8 @@
 
 #include "refactoringengine.h"
 #include "refactoringclient.h"
-#include "qtcreatorclangqueryfindfilter.h"
-#include "qtcreatorsearch.h"
+#include "qthldpluginclangqueryfindfilter.h"
+#include "qthldpluginsearch.h"
 #include "refactoringconnectionclient.h"
 
 #include <refactoringserverproxy.h>
@@ -44,7 +44,7 @@ class ClangRefactoringPluginData;
 class ClangRefactoringPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "ClangRefactoring.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "ClangRefactoring.json")
 
 public:
     ClangRefactoringPlugin();

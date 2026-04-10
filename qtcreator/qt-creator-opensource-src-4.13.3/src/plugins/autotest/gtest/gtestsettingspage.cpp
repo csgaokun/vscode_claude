@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -115,7 +115,7 @@ GTestSettingsPage::GTestSettingsPage(GTestSettings *settings, Utils::Id settings
     setCategory(Constants::AUTOTEST_SETTINGS_CATEGORY);
     setDisplayName(QCoreApplication::translate("GTestFramework",
                                                GTest::Constants::FRAMEWORK_SETTINGS_CATEGORY));
-    setWidgetCreator([settings] { return new GTestSettingsWidget(settings); });
+    setWidgetHldplugin([settings] { return new GTestSettingsWidget(settings); });
 }
 
 } // namespace Internal

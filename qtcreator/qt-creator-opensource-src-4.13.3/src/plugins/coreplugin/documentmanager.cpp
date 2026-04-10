@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,7 +76,7 @@ static Q_LOGGING_CATEGORY(log, "qtc.core.documentmanager", QtWarningMsg)
   \class Core::DocumentManager
   \inheaderfile coreplugin/documentmanager.h
   \ingroup mainclasses
-  \inmodule QtCreator
+  \inmodule QtHldplugin
 
   \brief The DocumentManager class manages a set of documents.
 
@@ -87,11 +87,11 @@ static Q_LOGGING_CATEGORY(log, "qtc.core.documentmanager", QtWarningMsg)
   \list
     \li A \e file means a collection of data stored on a disk under a name
         (that is, the usual meaning of the term \e file in computing).
-    \li A \e document holds content open in Qt Creator. If it corresponds to a
+    \li A \e document holds content open in Qt Hldplugin. If it corresponds to a
         file, it might differ from it, because it was modified. But a document
         might not correspond to a file at all. For example, diff viewer
         documents or Git blame or log records are created and displayed by
-        Qt Creator upon request.
+        Qt Hldplugin upon request.
     \li An \a editor provides a view into a document that is actually visible
         to the user and potentially allows editing the document. Multiple
         editors can open views into the same document.
@@ -1542,7 +1542,7 @@ void DocumentManager::registerSaveAllAction()
 /*!
     \class Core::FileChangeBlocker
     \inheaderfile coreplugin/documentmanager.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The FileChangeBlocker class blocks all change notifications to all
     IDocument objects that match the given filename.

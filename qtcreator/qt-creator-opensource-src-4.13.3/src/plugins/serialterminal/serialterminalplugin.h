@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 Benjamin Balga
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -38,7 +38,7 @@ namespace Internal {
 class SerialTerminalPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "SerialTerminal.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "SerialTerminal.json")
 
 public:
     explicit SerialTerminalPlugin() = default;

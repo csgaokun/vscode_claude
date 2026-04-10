@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     startQC()
@@ -36,7 +36,7 @@ def main():
                 ":FormEditorStack_qdesigner_internal::FormWindow", 20, 50, Qt.CopyAction)
     for buttonName in [None, "aDifferentName", "anotherDifferentName", "pushButton"]:
         if buttonName:
-            openContextMenu(waitForObject("{container=':*Qt Creator.FormEditorStack_Designer::Internal::FormEditorStack'"
+            openContextMenu(waitForObject("{container=':*Qt Hldplugin.FormEditorStack_Designer::Internal::FormEditorStack'"
                                           "text='PushButton' type='QPushButton' visible='1'}"), 5, 5, 1)
             activateItem(waitForObjectItem("{type='QMenu' unnamed='1' visible='1'}", "Change objectName..."))
             typeLines(waitForObject(":FormEditorStack_qdesigner_internal::PropertyLineEdit"), buttonName)
@@ -44,7 +44,7 @@ def main():
             # Verify that everything works without ever changing the name
             buttonName = "pushButton"
         selectFromLocator("mainwindow.cpp")
-        editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+        editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
         for tryDotOperator in [False, True]:
             if not placeCursorToLine(editor, "ui->setupUi(this);"):
                 earlyExit("Maybe the project template changed.")

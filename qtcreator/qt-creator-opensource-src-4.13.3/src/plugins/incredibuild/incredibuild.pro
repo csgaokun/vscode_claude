@@ -1,7 +1,7 @@
 TARGET = IncrediBuild
 TEMPLATE = lib
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 DEFINES += INCREDIBUILD_LIBRARY
 

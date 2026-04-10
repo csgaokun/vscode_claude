@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -61,7 +61,7 @@ static int indexOfFile(const GeneratedFiles &f, const QString &path)
 /*!
     \class Core::BaseFileWizard
     \inheaderfile coreplugin/basefilewizardfactory.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The BaseFileWizard class implements a is a convenience class for
     creating files.
@@ -95,7 +95,7 @@ Utils::Wizard *BaseFileWizardFactory::runWizardImpl(const QString &path, QWidget
 /*!
     \class Core::BaseFileWizardFactory
     \inheaderfile coreplugin/basefilewizardfactory.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The BaseFileWizardFactory class implements a generic wizard for
     creating files.
@@ -110,7 +110,7 @@ Utils::Wizard *BaseFileWizardFactory::runWizardImpl(const QString &path, QWidget
     postGenerateFiles(), which is called after generating the files.
 
     \note Instead of using this class, we recommend that you create JSON-based
-    wizards, as instructed in \l{https://doc.qt.io/qtcreator/creator-project-wizards.html}
+    wizards, as instructed in \l{https://doc.qt.io/qthldplugin/hldplugin-project-wizards.html}
     {Adding New Custom Wizards}.
 
     \sa Core::GeneratedFile, Core::WizardDialogParameters, Core::BaseFileWizard
@@ -324,7 +324,7 @@ QString BaseFileWizardFactory::preferredSuffix(const QString &mimeType)
 /*!
     \class Core::WizardDialogParameters
     \inheaderfile coreplugin/basefilewizardfactory.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The WizardDialogParameters class holds parameters for the new file
     wizard dialog.

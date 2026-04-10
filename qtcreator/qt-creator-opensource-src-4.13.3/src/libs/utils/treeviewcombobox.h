@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT TreeViewComboBoxView : public QTreeView
+class QTHLDPLUGIN_UTILS_EXPORT TreeViewComboBoxView : public QTreeView
 {
     Q_OBJECT
 public:
@@ -40,7 +40,7 @@ public:
     void adjustWidth(int width);
 };
 
-class QTCREATOR_UTILS_EXPORT TreeViewComboBox : public QComboBox
+class QTHLDPLUGIN_UTILS_EXPORT TreeViewComboBox : public QComboBox
 {
     Q_OBJECT
 public:

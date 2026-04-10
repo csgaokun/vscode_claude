@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -217,7 +217,7 @@ void CppToolsPlugin::test_completion_basic_1()
     QVERIFY(!memberCompletions.contains(QLatin1String("f")));
 }
 
-void CppToolsPlugin::test_completion_prefix_first_QTCREATORBUG_8737()
+void CppToolsPlugin::test_completion_prefix_first_QTHLDPLUGINBUG_8737()
 {
     const QByteArray source =
             "void f()\n"
@@ -237,7 +237,7 @@ void CppToolsPlugin::test_completion_prefix_first_QTCREATORBUG_8737()
     QVERIFY(completions.contains(QLatin1String("a_b_c")));
 }
 
-void CppToolsPlugin::test_completion_prefix_first_QTCREATORBUG_9236()
+void CppToolsPlugin::test_completion_prefix_first_QTHLDPLUGINBUG_9236()
 {
     const QByteArray source =
             "class r_etclass\n"
@@ -335,16 +335,16 @@ void CppToolsPlugin::test_completion()
     actualCompletions.sort();
     expectedCompletions.sort();
 
-    QEXPECT_FAIL("template_as_base: explicit typedef from base", "QTCREATORBUG-14218", Abort);
-    QEXPECT_FAIL("enum_in_function_in_struct_in_function", "QTCREATORBUG-13757", Abort);
-    QEXPECT_FAIL("enum_in_function_in_struct_in_function_cxx11", "QTCREATORBUG-13757", Abort);
-    QEXPECT_FAIL("enum_in_function_in_struct_in_function_anon", "QTCREATORBUG-13757", Abort);
-    QEXPECT_FAIL("enum_in_class_accessed_in_member_func_cxx11", "QTCREATORBUG-13757", Abort);
-    QEXPECT_FAIL("enum_in_class_accessed_in_member_func_inline_cxx11", "QTCREATORBUG-13757", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization_typedef", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection", "QTCREATORBUG-14141", Abort);
-    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection_with_base", "QTCREATORBUG-14141", Abort);
+    QEXPECT_FAIL("template_as_base: explicit typedef from base", "QTHLDPLUGINBUG-14218", Abort);
+    QEXPECT_FAIL("enum_in_function_in_struct_in_function", "QTHLDPLUGINBUG-13757", Abort);
+    QEXPECT_FAIL("enum_in_function_in_struct_in_function_cxx11", "QTHLDPLUGINBUG-13757", Abort);
+    QEXPECT_FAIL("enum_in_function_in_struct_in_function_anon", "QTHLDPLUGINBUG-13757", Abort);
+    QEXPECT_FAIL("enum_in_class_accessed_in_member_func_cxx11", "QTHLDPLUGINBUG-13757", Abort);
+    QEXPECT_FAIL("enum_in_class_accessed_in_member_func_inline_cxx11", "QTHLDPLUGINBUG-13757", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization_typedef", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection", "QTHLDPLUGINBUG-14141", Abort);
+    QEXPECT_FAIL("pointer_indirect_specialization_double_indirection_with_base", "QTHLDPLUGINBUG-14141", Abort);
     QCOMPARE(actualCompletions, expectedCompletions);
 }
 
@@ -1291,7 +1291,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("NS::") << QStringList({"Foo1", "Foo2"});
 
-    QTest::newRow("QTCREATORBUG9098") << _(
+    QTest::newRow("QTHLDPLUGINBUG9098") << _(
             "template <typename T>\n"
             "class B\n"
             "{\n"
@@ -1461,7 +1461,7 @@ void CppToolsPlugin::test_completion_data()
           "}\n"
     ) << _("myfoo->") << QStringList({"Foo", "Ptr", "bar"});
 
-    QTest::newRow("nested_anonymous_class_QTCREATORBUG10876_1") << _(
+    QTest::newRow("nested_anonymous_class_QTHLDPLUGINBUG10876_1") << _(
             "struct EnclosingStruct\n"
             "{\n"
             "   int memberOfEnclosingStruct;\n"
@@ -1477,7 +1477,7 @@ void CppToolsPlugin::test_completion_data()
         ) << _("member") << QStringList({"memberNestedAnonymousClass",
                                          "memberOfEnclosingStruct"});
 
-    QTest::newRow("nested_anonymous_class_QTCREATORBUG10876_2") << _(
+    QTest::newRow("nested_anonymous_class_QTHLDPLUGINBUG10876_2") << _(
             "struct EnclosingStruct\n"
             "{\n"
             "   int memberOfEnclosingStruct;\n"
@@ -1498,7 +1498,7 @@ void CppToolsPlugin::test_completion_data()
                                          "memberOfNestedOfNestedAnonymousClass",
                                          "memberOfEnclosingStruct"});
 
-    QTest::newRow("nested_anonymous_class_QTCREATORBUG10876_3") << _(
+    QTest::newRow("nested_anonymous_class_QTHLDPLUGINBUG10876_3") << _(
             "struct EnclosingStruct\n"
             "{\n"
             "   int memberOfEnclosingStruct;\n"
@@ -1529,7 +1529,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("foo") << QStringList({"foo1", "foo2"});
 
-    QTest::newRow("crash_cloning_template_class_QTCREATORBUG9329") << _(
+    QTest::newRow("crash_cloning_template_class_QTHLDPLUGINBUG9329") << _(
             "struct A {};\n"
             "template <typename T>\n"
             "struct Templ {};\n"
@@ -1542,7 +1542,7 @@ void CppToolsPlugin::test_completion_data()
             "};\n"
         ) << _("this->") << QStringList({"A", "B", "Templ", "f"});
 
-    QTest::newRow("recursive_auto_declarations1_QTCREATORBUG9503") << _(
+    QTest::newRow("recursive_auto_declarations1_QTHLDPLUGINBUG9503") << _(
             "void f()\n"
             "{\n"
             "    auto object2 = object1;\n"
@@ -1551,7 +1551,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("object1.") << QStringList();
 
-    QTest::newRow("recursive_auto_declarations2_QTCREATORBUG9503") << _(
+    QTest::newRow("recursive_auto_declarations2_QTHLDPLUGINBUG9503") << _(
             "void f()\n"
             "{\n"
             "    auto object3 = object1;\n"
@@ -1648,7 +1648,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("recursive<T1>::ret_type.foo") << QStringList();
 
-    QTest::newRow("class_declaration_inside_function_or_block_QTCREATORBUG3620: "
+    QTest::newRow("class_declaration_inside_function_or_block_QTHLDPLUGINBUG3620: "
                   "class definition inside function") << _(
             "void foo()\n"
             "{\n"
@@ -1658,7 +1658,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("c.") << QStringList({"C", "m"});
 
-    QTest::newRow("class_declaration_inside_function_or_block_QTCREATORBUG3620: "
+    QTest::newRow("class_declaration_inside_function_or_block_QTHLDPLUGINBUG3620: "
                   "class definition inside block inside function") << _(
             "void foo()\n"
             "{\n"
@@ -1670,7 +1670,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("c.") << QStringList({"C", "m"});
 
-    QTest::newRow("class_declaration_inside_function_or_block_QTCREATORBUG3620: "
+    QTest::newRow("class_declaration_inside_function_or_block_QTHLDPLUGINBUG3620: "
                   "class definition with the same name inside different block inside function") << _(
             "void foo()\n"
             "{\n"
@@ -1685,7 +1685,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("c.") << QStringList({"C", "m2"});
 
-    QTest::newRow("namespace_alias_inside_function_or_block_QTCREATORBUG166: "
+    QTest::newRow("namespace_alias_inside_function_or_block_QTHLDPLUGINBUG166: "
                   "namespace alias inside function") << _(
             "namespace NS1\n"
             "{\n"
@@ -1705,7 +1705,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("c.") << QStringList({"C", "m"});
 
-    QTest::newRow("namespace_alias_inside_function_or_block_QTCREATORBUG166: "
+    QTest::newRow("namespace_alias_inside_function_or_block_QTHLDPLUGINBUG166: "
                   "namespace alias inside block inside function") << _(
             "namespace NS1\n"
             "{\n"
@@ -1727,7 +1727,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("c.") << QStringList({"C", "m"});
 
-    QTest::newRow("class_declaration_inside_function_or_block_QTCREATORBUG3620_static_member") << _(
+    QTest::newRow("class_declaration_inside_function_or_block_QTHLDPLUGINBUG3620_static_member") << _(
             "void foo()\n"
             "{\n"
             "   {\n"
@@ -1969,7 +1969,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("lt.ot.") << QStringList({"OtherType", "otherTypeMember"});
 
-    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTCREATORBUG9169_1") << _(
+    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTHLDPLUGINBUG9169_1") << _(
             "struct A\n"
             "{\n"
             "    void foo();\n"
@@ -1998,7 +1998,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("templ.get()->") << QStringList({"B", "b"});
 
-    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTCREATORBUG9169_2") << _(
+    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTHLDPLUGINBUG9169_2") << _(
             "struct A\n"
             "{\n"
             "    void foo();\n"
@@ -2027,7 +2027,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("templ.t.") << QStringList({"B", "b"});
 
-    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTCREATORBUG8852_1") << _(
+    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTHLDPLUGINBUG8852_1") << _(
             "template <typename T>\n"
             "struct QList\n"
             "{\n"
@@ -2044,7 +2044,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("list.at(0).") << QStringList({"Foo", "bar"});
 
-    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTCREATORBUG8852_2") << _(
+    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTHLDPLUGINBUG8852_2") << _(
             "template <typename T>\n"
             "struct QList\n"
             "{\n"
@@ -2064,7 +2064,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("list.at(0).") << QStringList({"Foo", "bar"});
 
-    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTCREATORBUG8852_3") << _(
+    QTest::newRow("template_parameter_defined_inside_scope_of_declaration_QTHLDPLUGINBUG8852_3") << _(
             "template <typename T>\n"
             "struct QList\n"
             "{\n"
@@ -2195,7 +2195,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("connect(timer, SIGNAL(") << QStringList("timeout()");
 
-    QTest::newRow("member_of_class_accessed_by_using_QTCREATORBUG9037_1") << _(
+    QTest::newRow("member_of_class_accessed_by_using_QTHLDPLUGINBUG9037_1") << _(
             "namespace NS { struct S { int member; void fun(); }; }\n"
             "using NS::S;\n"
             "void S::fun()\n"
@@ -2204,7 +2204,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("mem") << QStringList("member");
 
-    QTest::newRow("member_of_class_accessed_by_using_QTCREATORBUG9037_2") << _(
+    QTest::newRow("member_of_class_accessed_by_using_QTHLDPLUGINBUG9037_2") << _(
             "namespace NS \n"
             "{\n"
             "   namespace Internal\n"
@@ -2220,7 +2220,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("mem") << QStringList("member");
 
-    QTest::newRow("no_binding_block_as_instantiationOrigin_QTCREATORBUG-11424") << _(
+    QTest::newRow("no_binding_block_as_instantiationOrigin_QTHLDPLUGINBUG-11424") << _(
             "template <typename T>\n"
             "class QVector\n"
             "{\n"
@@ -2236,7 +2236,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("double val = d.constBegin()->") << QStringList();
 
-    QTest::newRow("nested_class_in_template_class_QTCREATORBUG-11752") << _(
+    QTest::newRow("nested_class_in_template_class_QTHLDPLUGINBUG-11752") << _(
             "template <typename T>\n"
             "struct Temp\n"
             "{\n"
@@ -2250,7 +2250,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("n2.n1.t.") << QStringList({"foo", "Foo"});
 
-    QTest::newRow("infiniteLoopLocalTypedef_QTCREATORBUG-11999") << _(
+    QTest::newRow("infiniteLoopLocalTypedef_QTHLDPLUGINBUG-11999") << _(
             "template <typename T>\n"
             "struct Temp\n"
             "{\n"
@@ -2272,7 +2272,7 @@ void CppToolsPlugin::test_completion_data()
             "auto func = [](int arg1) { return @; };\n"
         ) << _("ar") << QStringList("arg1");
 
-    QTest::newRow("default_arguments_for_class_templates_and_base_class_QTCREATORBUG-12605") << _(
+    QTest::newRow("default_arguments_for_class_templates_and_base_class_QTHLDPLUGINBUG-12605") << _(
             "struct Foo { int foo; };\n"
             "template <typename T = Foo>\n"
             "struct Derived : T {};\n"
@@ -2282,7 +2282,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("derived.") << QStringList({"Derived", "foo", "Foo"});
 
-    QTest::newRow("default_arguments_for_class_templates_and_template_base_class_QTCREATORBUG-12606") << _(
+    QTest::newRow("default_arguments_for_class_templates_and_template_base_class_QTHLDPLUGINBUG-12606") << _(
             "struct Foo { int foo; };\n"
             "template <typename T>\n"
             "struct Base { T t; };\n"
@@ -2319,7 +2319,7 @@ void CppToolsPlugin::test_completion_data()
             "}\n"
         ) << _("s.t->") << QStringList({"foo", "Foo"});
 
-    QTest::newRow("typedef_of_pointer_of_array_QTCREATORBUG-12703") << _(
+    QTest::newRow("typedef_of_pointer_of_array_QTHLDPLUGINBUG-12703") << _(
             "struct Foo { int foo; };\n"
             "typedef Foo *FooArr[10];\n"
             "void fun() {\n"

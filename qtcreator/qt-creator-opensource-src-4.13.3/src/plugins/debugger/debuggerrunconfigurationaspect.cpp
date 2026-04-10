@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -166,7 +166,7 @@ DebuggerRunConfigurationAspect::DebuggerRunConfigurationAspect(Target *target)
     setId("DebuggerAspect");
     setDisplayName(tr("Debugger settings"));
 
-    setConfigWidgetCreator([this] {
+    setConfigWidgetHldplugin([this] {
         QWidget *w = new QWidget;
         LayoutBuilder builder(w);
         m_cppAspect->addToLayout(builder);
@@ -190,7 +190,7 @@ DebuggerRunConfigurationAspect::DebuggerRunConfigurationAspect(Target *target)
     m_qmlAspect->setSettingsKey("RunConfiguration.UseQmlDebugger");
     m_qmlAspect->setAutoSettingsKey("RunConfiguration.UseQmlDebuggerAuto");
     m_qmlAspect->setInfoLabelText(tr("<a href=\""
-        "qthelp://org.qt-project.qtcreator/doc/creator-debugging-qml.html"
+        "qthelp://org.qt-project.qthldplugin/doc/hldplugin-debugging-qml.html"
         "\">What are the prerequisites?</a>"));
 
     // Make sure at least one of the debuggers is set to be active.

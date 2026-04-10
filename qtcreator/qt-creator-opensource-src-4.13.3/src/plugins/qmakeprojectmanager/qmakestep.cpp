@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -492,7 +492,7 @@ bool QMakeStep::fromMap(const QVariantMap &map)
     m_forced = map.value(QMAKE_FORCED_KEY, false).toBool();
     m_selectedAbis = map.value(QMAKE_SELECTED_ABIS_KEY).toStringList();
 
-    // Backwards compatibility with < Creator 4.12.
+    // Backwards compatibility with < Hldplugin 4.12.
     const QVariant separateDebugInfo
             = map.value("QtProjectManager.QMakeBuildStep.SeparateDebugInfo");
     if (separateDebugInfo.isValid())

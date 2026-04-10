@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -146,7 +146,7 @@ void checkIndent(QList<Line> data, int style = 0)
 
     QString text = concatLines(data);
     QTextDocument document(text);
-    CreatorCodeFormatter formatter;
+    HldpluginCodeFormatter formatter;
 
     int i = 0;
     foreach (const Line &l, data) {

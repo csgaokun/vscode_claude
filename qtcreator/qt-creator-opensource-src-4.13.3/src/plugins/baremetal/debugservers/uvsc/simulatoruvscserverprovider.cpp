@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -83,7 +83,7 @@ SimulatorUvscServerProvider::SimulatorUvscServerProvider()
     : UvscServerProvider(Constants::UVSC_SIMULATOR_PROVIDER_ID)
 {
     setTypeDisplayName(UvscServerProvider::tr("uVision Simulator"));
-    setConfigurationWidgetCreator([this] { return new SimulatorUvscServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new SimulatorUvscServerProviderConfigWidget(this); });
     setDriverSelection(defaultSimulatorDriverSelection());
 }
 
@@ -131,7 +131,7 @@ SimulatorUvscServerProviderFactory::SimulatorUvscServerProviderFactory()
 {
     setId(Constants::UVSC_SIMULATOR_PROVIDER_ID);
     setDisplayName(UvscServerProvider::tr("uVision Simulator"));
-    setCreator([] { return new SimulatorUvscServerProvider; });
+    setHldplugin([] { return new SimulatorUvscServerProvider; });
 }
 
 // SimulatorUvscServerProviderConfigWidget

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -105,7 +105,7 @@ bool ClangToolRunner::run(const QString &fileToAnalyze, const QStringList &compi
 
     m_outputFilePath = createOutputFilePath(m_outputDirPath, fileToAnalyze);
     QTC_ASSERT(!m_outputFilePath.isEmpty(), return false);
-    const QStringList arguments = m_argsCreator(compilerOptions);
+    const QStringList arguments = m_argsHldplugin(compilerOptions);
     m_commandLine = Utils::QtcProcess::joinArgs(QStringList(m_executable) + arguments);
 
     qCDebug(LOG).noquote() << "Starting" << m_commandLine;

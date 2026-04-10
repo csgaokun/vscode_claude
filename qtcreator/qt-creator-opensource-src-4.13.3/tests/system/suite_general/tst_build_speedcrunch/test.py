@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 SpeedCrunchPath = ""
 
@@ -44,7 +44,7 @@ def main():
     openQmakeProject(SpeedCrunchPath, [Targets.DESKTOP_4_8_7_DEFAULT])
     waitForProjectParsing()
 
-    fancyToolButton = waitForObject(":*Qt Creator_Core::Internal::FancyToolButton")
+    fancyToolButton = waitForObject(":*Qt Hldplugin_Core::Internal::FancyToolButton")
 
     availableConfigs = iterateBuildConfigs("Release")
     if not availableConfigs:
@@ -69,11 +69,11 @@ def main():
 
 def init():
     global SpeedCrunchPath
-    SpeedCrunchPath = os.path.join(srcPath, "creator-test-data", "speedcrunch", "src", "speedcrunch.pro")
+    SpeedCrunchPath = os.path.join(srcPath, "hldplugin-test-data", "speedcrunch", "src", "speedcrunch.pro")
     cleanup()
 
 def cleanup():
     # Make sure the .user files are gone
     cleanUpUserFiles(SpeedCrunchPath)
-    for dir in glob.glob(os.path.join(srcPath, "creator-test-data", "speedcrunch", "speedcrunch-build-*")):
+    for dir in glob.glob(os.path.join(srcPath, "hldplugin-test-data", "speedcrunch", "speedcrunch-build-*")):
         deleteDirIfExists(dir)

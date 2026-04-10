@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 import random
 from datetime import date
 
@@ -62,7 +62,7 @@ def closeHTTPStatusAndPasterDialog(protocol, pasterDialog):
 
 def pasteFile(sourceFile, protocol):
     def resetFiles():
-        clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+        clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
         invokeMenuItem('File', 'Revert "main.cpp" to Saved')
         clickButton(waitForObject(":Revert to Saved.Proceed_QPushButton"))
         snooze(1) # "Close All" might be disabled
@@ -70,7 +70,7 @@ def pasteFile(sourceFile, protocol):
     aut = currentApplicationContext()
     invokeMenuItem("File", "Open File or Project...")
     selectFromFileDialog(sourceFile)
-    editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     jumpToFirstLine(editor)
     typeLines(editor, "// tst_codepasting %s" % datetime.utcnow())
     sourceText = editor.plainText
@@ -90,7 +90,7 @@ def pasteFile(sourceFile, protocol):
     aut.readStderr()
     clickButton(waitForObject(":Send to Codepaster.Paste_QPushButton"))
     try:
-        outputWindow = waitForObject(":Qt Creator_Core::OutputWindow")
+        outputWindow = waitForObject(":Qt Hldplugin_Core::OutputWindow")
         waitFor("re.search('^https://', str(outputWindow.plainText)) is not None", 20000)
         output = filter(lambda x: len(x), str(outputWindow.plainText).splitlines())[-1]
     except:
@@ -177,7 +177,7 @@ def fetchSnippet(protocol, description, pasteId, skippedPasting):
 def checkForMovedUrl():  # protocol may be redirected (HTTP status 30x) - check for permanent moves
     try:
         pattern = re.compile(r'HTTP redirect \((\d{3})\) to "(.+)"')
-        outputWindow = waitForObject(":Qt Creator_Core::OutputWindow", 2000)
+        outputWindow = waitForObject(":Qt Hldplugin_Core::OutputWindow", 2000)
         match = [None]
         def __patternMatches__(matchHack):
             matchHack[0] = pattern.search(str(outputWindow.plainText))
@@ -197,7 +197,7 @@ def main():
     sourceFile = os.path.join(os.getcwd(), "testdata", "main.cpp")
     # make sure General Messages is open
     openGeneralMessages()
-    clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
     for protocol in protocolsToTest:
         with TestSection(protocol):
             skippedPasting = True
@@ -229,14 +229,14 @@ def main():
             pasteId = fetchSnippet(protocol, description, pasteId, skippedPasting)
             if pasteId == -1:
                 continue
-            filenameCombo = waitForObject(":Qt Creator_FilenameQComboBox")
+            filenameCombo = waitForObject(":Qt Hldplugin_FilenameQComboBox")
             waitFor("not filenameCombo.currentText.isEmpty()", 20000)
             try:
-                editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+                editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
             except:
-                outputWindow = waitForObject(":Qt Creator_Core::OutputWindow")
+                outputWindow = waitForObject(":Qt Hldplugin_Core::OutputWindow")
                 test.fail("Could not find editor with snippet", str(outputWindow.plainText))
-                clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+                clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
                 continue
             test.compare(filenameCombo.currentText, "%s: %s" % (protocol, pasteId), "Verify title of editor")
             if protocol in (NAME_DPCOM) and pastedText.endswith("\n"):
@@ -249,7 +249,7 @@ def main():
             invokeMenuItem("File", "Close All")
     invokeMenuItem("File", "Open File or Project...")
     selectFromFileDialog(sourceFile)
-    editor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     jumpToFirstLine(editor)
     markText(editor, "Down", 7)
     # QString QTextCursor::selectedText () const:

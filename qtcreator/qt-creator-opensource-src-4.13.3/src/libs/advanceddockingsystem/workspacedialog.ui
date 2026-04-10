@@ -123,7 +123,7 @@
    <item row="3" column="0">
     <widget class="QLabel" name="whatsAWorkspaceLabel">
      <property name="text">
-      <string>&lt;a href=&quot;qthelp://org.qt-project.qtcreator/doc/creator-project-managing-workspaces.html&quot;&gt;What is a Workspace?&lt;/a&gt;</string>
+      <string>&lt;a href=&quot;qthelp://org.qt-project.qthldplugin/doc/hldplugin-project-managing-workspaces.html&quot;&gt;What is a Workspace?&lt;/a&gt;</string>
      </property>
     </widget>
    </item>

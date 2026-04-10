@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -125,7 +125,7 @@ int ExpressionUnderCursor::startOfExpression_helper(BackwardsScanner &tk, int in
             // which we handle immediately:
             return index - 3;
         } else {
-#if 0 // see QTCREATORBUG-1501
+#if 0 // see QTHLDPLUGINBUG-1501
             // See if we are handling an Objective-C messaging expression in the form of:
             //     [receiver messageParam1:expression messageParam2
             // or:

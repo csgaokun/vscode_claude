@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -129,12 +129,12 @@ void ImageViewer::clicked(const QString &message)
     m_infoLabel->setText(text);
 }
 
-// Open Qt Creator's image viewer
+// Open Qt Hldplugin's image viewer
 static void openImageViewer(const QImage &image)
 {
     QString fileName;
     {
-        Utils::TemporaryFile temporaryFile("qtcreatorXXXXXX.png");
+        Utils::TemporaryFile temporaryFile("qthldpluginXXXXXX.png");
         temporaryFile.setAutoRemove(false);
         image.save(&temporaryFile);
         fileName = temporaryFile.fileName();
@@ -146,7 +146,7 @@ static void openImageViewer(const QImage &image)
 
 void ImageViewer::contextMenuEvent(QContextMenuEvent *ev)
 {
-    // Offer copy and open in Creator's image viewer.
+    // Offer copy and open in Hldplugin's image viewer.
     const QImage &image = m_imageWidget->image();
     const bool hasImage = !image.isNull();
     QMenu menu;

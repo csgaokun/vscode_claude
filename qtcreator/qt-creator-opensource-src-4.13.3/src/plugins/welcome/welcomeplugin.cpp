@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -73,7 +73,7 @@ const char currentPageSettingsKeyC[] = "Welcome2Tab";
 
 static QColor themeColor(Theme::Color role)
 {
-    return Utils::creatorTheme()->color(role);
+    return Utils::hldpluginTheme()->color(role);
 }
 
 static QFont sizedFont(int size, const QWidget *widget, bool underline = false)
@@ -125,7 +125,7 @@ private:
 class WelcomePlugin final : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "Welcome.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "Welcome.json")
 
 public:
     ~WelcomePlugin() final { delete m_welcomeMode; }
@@ -273,7 +273,7 @@ public:
             auto getStartedButton = new WelcomePageButton(this);
             getStartedButton->setText(tr("Get Started Now"));
             getStartedButton->setOnClicked([] {
-                QDesktopServices::openUrl(QString("qthelp://org.qt-project.qtcreator/doc/index.html"));
+                QDesktopServices::openUrl(QString("qthelp://org.qt-project.qthldplugin/doc/index.html"));
             });
             l->addWidget(getStartedButton);
 
@@ -290,7 +290,7 @@ public:
             l->addWidget(new IconAndLink("community", tr("Online Community"), "https://forum.qt.io", this));
             l->addWidget(new IconAndLink("blogs", tr("Blogs"), "https://planet.qt.io", this));
             l->addWidget(new IconAndLink("userguide", tr("User Guide"),
-                                         "qthelp://org.qt-project.qtcreator/doc/index.html", this));
+                                         "qthelp://org.qt-project.qthldplugin/doc/index.html", this));
             vbox->addItem(l);
         }
 
@@ -313,10 +313,10 @@ WelcomeMode::WelcomeMode()
 
     setPriority(Constants::P_MODE_WELCOME);
     setId(Constants::MODE_WELCOME);
-    setContextHelp("Qt Creator Manual");
+    setContextHelp("Qt Hldplugin Manual");
     setContext(Context(Constants::C_WELCOME_MODE));
 
-    QPalette palette = creatorTheme()->palette();
+    QPalette palette = hldpluginTheme()->palette();
     palette.setColor(QPalette::Window, themeColor(Theme::Welcome_BackgroundColor));
 
     m_modeWidget = new QWidget;

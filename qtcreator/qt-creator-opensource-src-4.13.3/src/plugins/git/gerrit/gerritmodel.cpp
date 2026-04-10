@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -628,8 +628,8 @@ static GerritChangePtr parseSshOutput(const QJsonObject &object)
 /*
   {
     "kind": "gerritcodereview#change",
-    "id": "qt-creator%2Fqt-creator~master~Icc164b9d84abe4efc34deaa5d19dca167fdb14e1",
-    "project": "qt-creator/qt-creator",
+    "id": "qt-hldplugin%2Fqt-hldplugin~master~Icc164b9d84abe4efc34deaa5d19dca167fdb14e1",
+    "project": "qt-hldplugin/qt-hldplugin",
     "branch": "master",
     "change_id": "Icc164b9d84abe4efc34deaa5d19dca167fdb14e1",
     "subject": "WIP: Gerrit: Support REST query for HTTP servers",
@@ -726,11 +726,11 @@ static GerritChangePtr parseSshOutput(const QJsonObject &object)
         "_number": 2,
         "fetch": {
           "http": {
-            "url": "https://codereview.qt-project.org/qt-creator/qt-creator",
+            "url": "https://codereview.qt-project.org/qt-hldplugin/qt-hldplugin",
             "ref": "refs/changes/47/186447/2"
           },
           "ssh": {
-            "url": "ssh:// *:29418/qt-creator/qt-creator",
+            "url": "ssh:// *:29418/qt-hldplugin/qt-hldplugin",
             "ref": "refs/changes/47/186447/2"
           }
         }
@@ -761,7 +761,7 @@ static GerritChangePtr parseRestOutput(const QJsonObject &object, const GerritSe
     change->currentPatchSet.patchSetNumber = qMax(1, restNumberValue(patchSet));
     const QJsonObject fetchInfo = patchSet.value("fetch").toObject().value("http").toObject();
     change->currentPatchSet.ref = fetchInfo.value("ref").toString();
-    // Replace * in ssh://*:29418/qt-creator/qt-creator with the hostname
+    // Replace * in ssh://*:29418/qt-hldplugin/qt-hldplugin with the hostname
     change->currentPatchSet.url = fetchInfo.value("url").toString().replace('*', server.host);
     const QJsonObject labels = object.value("labels").toObject();
     for (auto it = labels.constBegin(), end = labels.constEnd(); it != end; ++it) {

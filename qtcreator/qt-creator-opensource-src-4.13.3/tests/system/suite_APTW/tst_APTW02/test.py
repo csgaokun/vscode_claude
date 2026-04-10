@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # test New Qt Quick Application build and run for release and debug option
 def main():
@@ -33,5 +33,5 @@ def main():
     createNewQtQuickApplication(tempDir(), "SampleApp")
     # run project for debug and release and verify results
     runVerify()
-    #close Qt Creator
+    #close Qt Hldplugin
     invokeMenuItem("File", "Exit")

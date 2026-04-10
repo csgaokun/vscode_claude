@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -114,9 +114,9 @@ BindingDelegate::BindingDelegate(QWidget *parent) : ConnectionEditorDelegate(par
     static QItemEditorFactory *factory = nullptr;
     if (factory == nullptr) {
         factory = new QItemEditorFactory;
-        QItemEditorCreatorBase *creator
-                = new QItemEditorCreator<PropertiesComboBox>("text");
-        factory->registerEditor(QVariant::String, creator);
+        QItemEditorHldpluginBase *hldplugin
+                = new QItemEditorHldplugin<PropertiesComboBox>("text");
+        factory->registerEditor(QVariant::String, hldplugin);
     }
 
     setItemEditorFactory(factory);
@@ -191,9 +191,9 @@ DynamicPropertiesDelegate::DynamicPropertiesDelegate(QWidget *parent) : Connecti
 //    static QItemEditorFactory *factory = 0;
 //        if (factory == 0) {
 //            factory = new QItemEditorFactory;
-//            QItemEditorCreatorBase *creator
-//                = new QItemEditorCreator<DynamicPropertiesComboBox>("text");
-//            factory->registerEditor(QVariant::String, creator);
+//            QItemEditorHldpluginBase *hldplugin
+//                = new QItemEditorHldplugin<DynamicPropertiesComboBox>("text");
+//            factory->registerEditor(QVariant::String, hldplugin);
 //        }
 
 //        setItemEditorFactory(factory);
@@ -255,9 +255,9 @@ ConnectionDelegate::ConnectionDelegate(QWidget *parent) : ConnectionEditorDelega
     static QItemEditorFactory *factory = nullptr;
     if (factory == nullptr) {
         factory = new QItemEditorFactory;
-        QItemEditorCreatorBase *creator
-                = new QItemEditorCreator<ConnectionComboBox>("text");
-        factory->registerEditor(QVariant::String, creator);
+        QItemEditorHldpluginBase *hldplugin
+                = new QItemEditorHldplugin<ConnectionComboBox>("text");
+        factory->registerEditor(QVariant::String, hldplugin);
     }
 
     setItemEditorFactory(factory);

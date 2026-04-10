@@ -62,7 +62,7 @@ void GenerateResource::generateMenuEntry()
 
 
     const Core::Context projectContext(QmlProjectManager::Constants::QML_PROJECT_ID);
-    // ToDo: move this to QtCreator and add tr to the string then
+    // ToDo: move this to QtHldplugin and add tr to the string then
     auto action = new QAction(QCoreApplication::translate("QmlDesigner::GenerateResource", "Generate Resource File"));
     action->setEnabled(ProjectExplorer::SessionManager::startupProject() != nullptr);
     // todo make it more intelligent when it gets enabled

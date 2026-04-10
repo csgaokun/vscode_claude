@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -109,7 +109,7 @@ BuildPropertiesSettingsPage::BuildPropertiesSettingsPage()
     setId("AB.ProjectExplorer.BuildPropertiesSettingsPage");
     setDisplayName(BuildPropertiesSettingsWidget::tr("Default Build Properties"));
     setCategory(Constants::BUILD_AND_RUN_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new BuildPropertiesSettingsWidget; });
+    setWidgetHldplugin([] { return new BuildPropertiesSettingsWidget; });
 }
 
 } // namespace Internal

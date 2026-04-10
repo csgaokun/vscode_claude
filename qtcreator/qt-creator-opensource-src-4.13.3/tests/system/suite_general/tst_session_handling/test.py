@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     projects = prepareTestExamples()
@@ -34,7 +34,7 @@ def main():
     if not startedWithoutPluginError():
         return
     createAndSwitchToSession(sessionName)
-    mainWindow = waitForObject(":Qt Creator_Core::Internal::MainWindow")
+    mainWindow = waitForObject(":Qt Hldplugin_Core::Internal::MainWindow")
     test.verify(waitFor("sessionName in str(mainWindow.windowTitle)", 2000),
                 "Verifying window title contains created session name.")
     checkWelcomePage(sessionName, True)
@@ -45,9 +45,9 @@ def main():
     openDocument("animation.Resources.animation\\.qrc./animation.basics.animators\\.qml")
     openDocument("keyinteraction.Sources.main\\.cpp")
     checkOpenDocuments(2, "Verifying whether 2 files are open.")
-    originalText = str(waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget").plainText)
+    originalText = str(waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget").plainText)
     switchSession("default")
-    test.verify(waitFor("'Qt Creator' == str(mainWindow.windowTitle)", 2000),
+    test.verify(waitFor("'Qt Hldplugin' == str(mainWindow.windowTitle)", 2000),
                 "Verifying window title is set to default.")
     checkWelcomePage(sessionName, False)
     switchViewTo(ViewConstants.EDIT)
@@ -61,7 +61,7 @@ def main():
     checkOpenDocuments(2, "Verifying whether 2 files have been re-opened.")
     if test.verify(str(mainWindow.windowTitle).startswith("main.cpp "),
                    "Verifying whether utility.h has been opened."):
-        current = str(waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget").plainText)
+        current = str(waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget").plainText)
         test.verify(originalText == current, "Verifying that same file has been opened.")
     checkForSessionFile(sessionName, projects)
     invokeMenuItem("File", "Exit")
@@ -126,21 +126,21 @@ def checkWelcomePage(sessionName, isCurrent=False):
                 if current == isCurrent:
                     found = True
                     break
-        test.verify(found, "Verifying: Qt Creator displays Welcome Page with %s." % session)
+        test.verify(found, "Verifying: Qt Hldplugin displays Welcome Page with %s." % session)
 
 def checkNavigator(expectedRows, message):
-    navigatorModel = waitForObject(":Qt Creator_Utils::NavigationTreeView").model()
+    navigatorModel = waitForObject(":Qt Hldplugin_Utils::NavigationTreeView").model()
     waitFor("expectedRows == len(__iterateChildren__(navigatorModel, QModelIndex()))", 1000)
     test.compare(expectedRows, len(__iterateChildren__(navigatorModel, QModelIndex())), message)
 
 def checkOpenDocuments(expectedRows, message):
-    selectFromCombo(":Qt Creator_Core::Internal::NavComboBox", "Open Documents")
+    selectFromCombo(":Qt Hldplugin_Core::Internal::NavComboBox", "Open Documents")
     openDocsWidget = waitForObject(":OpenDocuments_Widget")
     test.compare(openDocsWidget.model().rowCount(), expectedRows, message)
 
 def checkForSessionFile(sessionName, proFiles):
     global tmpSettingsDir
-    sessionFile = os.path.join(tmpSettingsDir, "QtProject", "qtcreator", "%s.qws" % sessionName)
+    sessionFile = os.path.join(tmpSettingsDir, "QtProject", "qthldplugin", "%s.qws" % sessionName)
     if test.verify(os.path.exists(sessionFile),
                    "Verifying whether session file '%s' has been created." % sessionFile):
         content = readFile(sessionFile)

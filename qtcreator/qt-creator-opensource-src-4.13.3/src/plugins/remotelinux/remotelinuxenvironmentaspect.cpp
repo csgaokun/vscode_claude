@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -46,7 +46,7 @@ RemoteLinuxEnvironmentAspect::RemoteLinuxEnvironmentAspect(ProjectExplorer::Targ
     addSupportedBaseEnvironment(tr("Clean Environment"), {});
     addPreferredBaseEnvironment(tr("System Environment"), [this] { return m_remoteEnvironment; });
 
-    setConfigWidgetCreator([this, target] {
+    setConfigWidgetHldplugin([this, target] {
         return new RemoteLinuxEnvironmentAspectWidget(this, target);
     });
 }
@@ -74,7 +74,7 @@ void RemoteLinuxEnvironmentAspect::fromMap(const QVariantMap &map)
 
     const auto version = map.value(QLatin1String(VERSION_KEY), 0).toInt();
     if (version == 0) {
-        // In Qt Creator versions prior to 4.3 RemoteLinux included DISPLAY=:0.0 in the base
+        // In Qt Hldplugin versions prior to 4.3 RemoteLinux included DISPLAY=:0.0 in the base
         // environment, if DISPLAY was not set. In order to keep existing projects expecting
         // that working, add the DISPLAY setting to user changes in them. New projects will
         // have version 1 and will not get DISPLAY set.

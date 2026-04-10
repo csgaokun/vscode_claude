@@ -7,7 +7,7 @@ SUBDIRS += \
     app \
     plugins \
     tools \
-    share/qtcreator/data.pro \
+    share/qthldplugin/data.pro \
     share/3rdparty/data.pro
 
 # delegate deployqt target

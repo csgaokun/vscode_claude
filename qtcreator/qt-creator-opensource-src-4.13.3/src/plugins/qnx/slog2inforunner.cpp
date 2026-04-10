@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BlackBerry Limited. All rights reserved.
 ** Contact: BlackBerry (qt@blackberry.com), KDAB (info@kdab.com)
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -47,7 +47,7 @@ Slog2InfoRunner::Slog2InfoRunner(RunControl *runControl)
     setId("Slog2InfoRunner");
     m_applicationId = runControl->aspect<ExecutableAspect>()->executable().fileName();
 
-    // See QTCREATORBUG-10712 for details.
+    // See QTHLDPLUGINBUG-10712 for details.
     // We need to limit length of ApplicationId to 63 otherwise it would not match one in slog2info.
     m_applicationId.truncate(63);
 

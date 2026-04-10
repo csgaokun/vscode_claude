@@ -42,7 +42,7 @@ debug_build = False
 encoding = locale.getdefaultlocale()[1]
 
 def get_args():
-    parser = argparse.ArgumentParser(description='Deploy Qt Creator dependencies for packaging')
+    parser = argparse.ArgumentParser(description='Deploy Qt Hldplugin dependencies for packaging')
     parser.add_argument('-i', '--ignore-errors', help='For backward compatibility',
                         action='store_true', default=False)
     parser.add_argument('--elfutils-path',
@@ -51,16 +51,16 @@ def get_args():
     parser.add_argument('--llvm-path',
                         help='Path to LLVM installation',
                         default=os.environ.get('LLVM_INSTALL_DIR'))
-    parser.add_argument('qtcreator_binary', help='Path to Qt Creator binary')
+    parser.add_argument('qthldplugin_binary', help='Path to Qt Hldplugin binary')
     parser.add_argument('qmake_binary', help='Path to qmake binary')
 
     args = parser.parse_args()
 
-    args.qtcreator_binary = os.path.abspath(args.qtcreator_binary)
-    if common.is_windows_platform() and not args.qtcreator_binary.lower().endswith(".exe"):
-        args.qtcreator_binary = args.qtcreator_binary + ".exe"
-    if not os.path.isfile(args.qtcreator_binary):
-        print('Cannot find Qt Creator binary.')
+    args.qthldplugin_binary = os.path.abspath(args.qthldplugin_binary)
+    if common.is_windows_platform() and not args.qthldplugin_binary.lower().endswith(".exe"):
+        args.qthldplugin_binary = args.qthldplugin_binary + ".exe"
+    if not os.path.isfile(args.qthldplugin_binary):
+        print('Cannot find Qt Hldplugin binary.')
         sys.exit(1)
 
     args.qmake_binary = which(args.qmake_binary)
@@ -71,7 +71,7 @@ def get_args():
     return args
 
 def usage():
-    print("Usage: %s <existing_qtcreator_binary> [qmake_path]" % os.path.basename(sys.argv[0]))
+    print("Usage: %s <existing_qthldplugin_binary> [qmake_path]" % os.path.basename(sys.argv[0]))
 
 def which(program):
     def is_exe(fpath):
@@ -211,7 +211,7 @@ def add_qt_conf(target_path, qt_prefix_path):
 
 def copy_translations(install_dir, qt_tr_dir):
     translations = glob(os.path.join(qt_tr_dir, '*.qm'))
-    tr_dir = os.path.join(install_dir, 'share', 'qtcreator', 'translations')
+    tr_dir = os.path.join(install_dir, 'share', 'qthldplugin', 'translations')
 
     print("copying translations...")
     for translation in translations:
@@ -253,12 +253,12 @@ def deploy_libclang(install_dir, llvm_install_dir, chrpath_bin):
                            clangbindirtarget))
         resourcetarget = os.path.join(clanglibdirtarget, 'clang')
     else:
-        # libclang -> Qt Creator libraries
+        # libclang -> Qt Hldplugin libraries
         libsources = glob(os.path.join(llvm_install_dir, 'lib', 'libclang.so*'))
         for libsource in libsources:
-            deployinfo.append((libsource, os.path.join(install_dir, 'lib', 'qtcreator')))
+            deployinfo.append((libsource, os.path.join(install_dir, 'lib', 'qthldplugin')))
         # clang binaries -> clang libexec
-        clangbinary_targetdir = os.path.join(install_dir, 'libexec', 'qtcreator', 'clang', 'bin')
+        clangbinary_targetdir = os.path.join(install_dir, 'libexec', 'qthldplugin', 'clang', 'bin')
         if not os.path.exists(clangbinary_targetdir):
             os.makedirs(clangbinary_targetdir)
         for binary in ['clang', 'clangd', 'clang-tidy', 'clazy-standalone']:
@@ -269,7 +269,7 @@ def deploy_libclang(install_dir, llvm_install_dir, chrpath_bin):
                 linktarget = os.readlink(binary_filepath)
                 deployinfo.append((os.path.join(os.path.dirname(binary_filepath), linktarget),
                                    os.path.join(clangbinary_targetdir, linktarget)))
-        clanglibs_targetdir = os.path.join(install_dir, 'libexec', 'qtcreator', 'clang', 'lib')
+        clanglibs_targetdir = os.path.join(install_dir, 'libexec', 'qthldplugin', 'clang', 'lib')
         # support libraries (for clazy) -> clang libexec
         if not os.path.exists(clanglibs_targetdir):
             os.makedirs(clanglibs_targetdir)
@@ -277,7 +277,7 @@ def deploy_libclang(install_dir, llvm_install_dir, chrpath_bin):
         for lib_pattern in ['lib64/ClazyPlugin.so', 'lib/ClazyPlugin.so', 'lib/libclang-cpp.so*']:
             for lib in glob(os.path.join(llvm_install_dir, lib_pattern)):
                 deployinfo.append((lib, clanglibs_targetdir))
-        resourcetarget = os.path.join(install_dir, 'libexec', 'qtcreator', 'clang', 'lib', 'clang')
+        resourcetarget = os.path.join(install_dir, 'libexec', 'qthldplugin', 'clang', 'lib', 'clang')
 
     print("copying libclang...")
     for source, target in deployinfo:
@@ -347,8 +347,8 @@ def deploy_elfutils(qtc_install_dir, chrpath_bin, args):
 def main():
     args = get_args()
 
-    qtcreator_binary_path = os.path.dirname(args.qtcreator_binary)
-    install_dir = os.path.abspath(os.path.join(qtcreator_binary_path, '..'))
+    qthldplugin_binary_path = os.path.dirname(args.qthldplugin_binary)
+    install_dir = os.path.abspath(os.path.join(qthldplugin_binary_path, '..'))
     if common.is_linux_platform():
         qt_deploy_prefix = os.path.join(install_dir, 'lib', 'Qt')
     else:
@@ -380,7 +380,7 @@ def main():
 
     if common.is_windows_platform():
         global debug_build
-        debug_build = is_debug(args.qtcreator_binary)
+        debug_build = is_debug(args.qthldplugin_binary)
 
     if common.is_windows_platform():
         copy_qt_libs(qt_deploy_prefix, QT_INSTALL_BINS, QT_INSTALL_BINS, QT_INSTALL_PLUGINS, QT_INSTALL_IMPORTS, QT_INSTALL_QML, plugins, imports)
@@ -395,7 +395,7 @@ def main():
     if not common.is_windows_platform():
         print("fixing rpaths...")
         common.fix_rpaths(install_dir, os.path.join(qt_deploy_prefix, 'lib'), qt_install_info, chrpath_bin)
-        add_qt_conf(os.path.join(install_dir, 'libexec', 'qtcreator'), qt_deploy_prefix) # e.g. for qml2puppet
+        add_qt_conf(os.path.join(install_dir, 'libexec', 'qthldplugin'), qt_deploy_prefix) # e.g. for qml2puppet
         add_qt_conf(os.path.join(qt_deploy_prefix, 'bin'), qt_deploy_prefix) # e.g. qtdiag
     add_qt_conf(os.path.join(install_dir, 'bin'), qt_deploy_prefix)
 

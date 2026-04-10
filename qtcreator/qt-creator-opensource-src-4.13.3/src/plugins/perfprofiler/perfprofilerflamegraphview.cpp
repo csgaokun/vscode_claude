@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -54,7 +54,7 @@ PerfProfilerFlameGraphView::PerfProfilerFlameGraphView(QWidget *parent, PerfProf
 
     rootContext()->setContextProperty(QStringLiteral("flameGraphModel"), m_model);
     setSource(QUrl(QStringLiteral("qrc:/perfprofiler/PerfProfilerFlameGraphView.qml")));
-    setClearColor(Utils::creatorTheme()->color(Utils::Theme::Timeline_BackgroundColor1));
+    setClearColor(Utils::hldpluginTheme()->color(Utils::Theme::Timeline_BackgroundColor1));
 
     setResizeMode(QQuickWidget::SizeRootObjectToView);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,27 +39,27 @@ QT_FORWARD_DECLARE_CLASS(QTextCodec)
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 std::function<bool(const QString &)>
 filterFileFunction(const QStringList &filterRegs, const QStringList &exclusionRegs);
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 std::function<QStringList(const QStringList &)>
 filterFilesFunction(const QStringList &filters, const QStringList &exclusionFilters);
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 QStringList splitFilterUiText(const QString &text);
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 QString msgFilePatternLabel();
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 QString msgExclusionPatternLabel();
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 QString msgFilePatternToolTip();
 
-class QTCREATOR_UTILS_EXPORT FileIterator
+class QTHLDPLUGIN_UTILS_EXPORT FileIterator
 {
 public:
     class Item
@@ -119,7 +119,7 @@ protected:
     virtual int currentFileCount() const = 0;
 };
 
-class QTCREATOR_UTILS_EXPORT FileListIterator : public FileIterator
+class QTHLDPLUGIN_UTILS_EXPORT FileListIterator : public FileIterator
 {
 public:
     explicit FileListIterator(const QStringList &fileList,
@@ -138,7 +138,7 @@ private:
     int m_maxIndex;
 };
 
-class QTCREATOR_UTILS_EXPORT SubDirFileIterator : public FileIterator
+class QTHLDPLUGIN_UTILS_EXPORT SubDirFileIterator : public FileIterator
 {
 public:
     SubDirFileIterator(const QStringList &directories,
@@ -167,7 +167,7 @@ private:
     QList<Item *> m_items;
 };
 
-class QTCREATOR_UTILS_EXPORT FileSearchResult
+class QTHLDPLUGIN_UTILS_EXPORT FileSearchResult
 {
 public:
     FileSearchResult() = default;
@@ -192,13 +192,13 @@ public:
 
 using FileSearchResultList = QList<FileSearchResult>;
 
-QTCREATOR_UTILS_EXPORT QFuture<FileSearchResultList> findInFiles(const QString &searchTerm, FileIterator *files,
+QTHLDPLUGIN_UTILS_EXPORT QFuture<FileSearchResultList> findInFiles(const QString &searchTerm, FileIterator *files,
     QTextDocument::FindFlags flags, const QMap<QString, QString> &fileToContentsMap = QMap<QString, QString>());
 
-QTCREATOR_UTILS_EXPORT QFuture<FileSearchResultList> findInFilesRegExp(const QString &searchTerm, FileIterator *files,
+QTHLDPLUGIN_UTILS_EXPORT QFuture<FileSearchResultList> findInFilesRegExp(const QString &searchTerm, FileIterator *files,
     QTextDocument::FindFlags flags, const QMap<QString, QString> &fileToContentsMap = QMap<QString, QString>());
 
-QTCREATOR_UTILS_EXPORT QString expandRegExpReplacement(const QString &replaceText, const QStringList &capturedTexts);
-QTCREATOR_UTILS_EXPORT QString matchCaseReplacement(const QString &originalText, const QString &replaceText);
+QTHLDPLUGIN_UTILS_EXPORT QString expandRegExpReplacement(const QString &replaceText, const QStringList &capturedTexts);
+QTHLDPLUGIN_UTILS_EXPORT QString matchCaseReplacement(const QString &originalText, const QString &replaceText);
 
 } // namespace Utils

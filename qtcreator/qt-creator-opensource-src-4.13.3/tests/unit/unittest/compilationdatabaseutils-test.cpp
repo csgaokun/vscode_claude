@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -77,7 +77,7 @@ TEST_F(CompilationDatabaseUtils, FilterArguments)
     const char winPath2[] = "C:\\Qt\\5.9.2\\mingw53_32\\include\\QtWidgets";
     const char otherPath2[] = "/Qt/5.9.2/mingw53_32/include/QtWidgets";
     fileName = "compileroptionsbuilder.cpp";
-    workingDir = "C:/build-qtcreator-MinGW_32bit-Debug";
+    workingDir = "C:/build-qthldplugin-MinGW_32bit-Debug";
     flags = filterFromFileName(
         QStringList{"clang++",
                     "-c",
@@ -88,8 +88,8 @@ TEST_F(CompilationDatabaseUtils, FilterArguments)
                     "-fcxx-exceptions",
                     "-fexceptions",
                     "-DUNICODE",
-                    "-DRELATIVE_PLUGIN_PATH=\"../lib/qtcreator/plugins\"",
-                    "-DQT_CREATOR",
+                    "-DRELATIVE_PLUGIN_PATH=\"../lib/qthldplugin/plugins\"",
+                    "-DQT_HLDPLUGIN",
                     "-I",
                     QString::fromUtf8(HostOsInfo::isWindowsHost() ? winPath1 : otherPath1),
                     "-I",
@@ -98,7 +98,7 @@ TEST_F(CompilationDatabaseUtils, FilterArguments)
                     "c++",
                     QString("--sysroot=") + (HostOsInfo::isWindowsHost()
                         ? "C:\\sysroot\\embedded" : "/opt/sysroot/embedded"),
-                    "C:\\qt-creator\\src\\plugins\\cpptools\\compileroptionsbuilder.cpp"},
+                    "C:\\qt-hldplugin\\src\\plugins\\cpptools\\compileroptionsbuilder.cpp"},
         "compileroptionsbuilder");
 
     filteredFlags(fileName, workingDir, flags, headerPaths, macros, fileKind, sysRoot);
@@ -117,8 +117,8 @@ TEST_F(CompilationDatabaseUtils, FilterArguments)
                                 HeaderPathType::User}}));
     ASSERT_THAT(macros,
                 Eq(Macros{{"UNICODE", "1"},
-                          {"RELATIVE_PLUGIN_PATH", "\"../lib/qtcreator/plugins\""},
-                          {"QT_CREATOR", "1"}}));
+                          {"RELATIVE_PLUGIN_PATH", "\"../lib/qthldplugin/plugins\""},
+                          {"QT_HLDPLUGIN", "1"}}));
     ASSERT_THAT(fileKind, CppTools::ProjectFile::Kind::CXXSource);
     ASSERT_THAT(sysRoot, HostOsInfo::isWindowsHost() ? QString("C:\\sysroot\\embedded")
                                                      : QString("/opt/sysroot/embedded"));
@@ -164,7 +164,7 @@ TEST_F(CompilationDatabaseUtils, SplitFlags)
 TEST_F(CompilationDatabaseUtils, SplitFlagsWithEscapedQuotes)
 {
     flags = splitCommandLine("-DRC_FILE_VERSION=\\\"7.0.0\\\" "
-                             "-DRELATIVE_PLUGIN_PATH=\"../lib/qtcreator/plugins\"");
+                             "-DRELATIVE_PLUGIN_PATH=\"../lib/qthldplugin/plugins\"");
 
     ASSERT_THAT(flags.size(), 2);
 }

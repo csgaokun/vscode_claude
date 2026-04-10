@@ -108,7 +108,7 @@ for my $file (@files) {
                 }
                 $title2type{$1} = $curtype;
                 $title2page{$1} = $curpage;
-                if ($1 eq "Qt Creator TOC") {
+                if ($1 eq "Qt Hldplugin TOC") {
                     $havetoc = 1;
                 } elsif (!$doctitle) {
                     $doctitle = $1;

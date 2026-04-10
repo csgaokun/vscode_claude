@@ -4,7 +4,7 @@
 # Copyright (C) 2018 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -34,12 +34,12 @@ import time
 import common
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='Create Qt Creator disk image, filtering out debug information files.',
+    parser = argparse.ArgumentParser(description='Create Qt Hldplugin disk image, filtering out debug information files.',
         epilog="To sign the contents before packaging on macOS, set the SIGNING_IDENTITY and optionally the SIGNING_FLAGS environment variables.")
     parser.add_argument('target_diskimage', help='output .dmg file to create')
     parser.add_argument('dmg_volumename', help='volume name to use for the disk image')
-    parser.add_argument('source_directory', help='directory with the Qt Creator sources')
-    parser.add_argument('binary_directory', help='directory that contains the Qt Creator.app')
+    parser.add_argument('source_directory', help='directory with the Qt Hldplugin sources')
+    parser.add_argument('binary_directory', help='directory that contains the Qt Hldplugin.app')
     return parser.parse_args()
 
 def main():

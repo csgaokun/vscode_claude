@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 COMPILATIONDATABASEPROJECTMANAGER_SOURCE_ROOT = $$PWD
 win32-msvc*:COMPILATIONDATABASEPROJECTMANAGER_SOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/compilationdatabaseprojectmanager)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -320,7 +320,7 @@ static QStringList environmentTemplatesPaths()
 {
     QStringList paths;
 
-    QString envTempPath = QString::fromLocal8Bit(qgetenv("QTCREATOR_TEMPLATES_PATH"));
+    QString envTempPath = QString::fromLocal8Bit(qgetenv("QTHLDPLUGIN_TEMPLATES_PATH"));
 
     if (!envTempPath.isEmpty()) {
         for (const QString &path : envTempPath
@@ -548,7 +548,7 @@ bool JsonWizardFactory::initialize(const QVariantMap &data, const QDir &baseDir,
     m_enabledExpression = data.value(QLatin1String(ENABLED_EXPRESSION_KEY), true);
 
     QSet<Utils::Id> projectTypes = Utils::Id::fromStringList(data.value(QLatin1String(SUPPORTED_PROJECTS)).toStringList());
-    // FIXME: "kind" was relevant up to and including Qt Creator 3.6:
+    // FIXME: "kind" was relevant up to and including Qt Hldplugin 3.6:
     const QString unsetKind = QUuid::createUuid().toString();
     QString strVal = data.value(QLatin1String(KIND_KEY), unsetKind).toString();
     if (strVal != unsetKind

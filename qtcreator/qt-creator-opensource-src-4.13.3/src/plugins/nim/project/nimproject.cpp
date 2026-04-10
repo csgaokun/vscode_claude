@@ -3,7 +3,7 @@
 ** Copyright (C) Filippo Cucchetto <filippocucchetto@gmail.com>
 ** Contact: http://www.qt.io/licensing
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,7 +45,7 @@ NimProject::NimProject(const FilePath &fileName) : Project(Constants::C_NIM_MIME
     // ensure debugging is enabled (Nim plugin translates nim code to C code)
     setProjectLanguages(Core::Context(ProjectExplorer::Constants::CXX_LANGUAGE_ID));
 
-    setBuildSystemCreator([](Target *t) { return new NimBuildSystem(t); });
+    setBuildSystemHldplugin([](Target *t) { return new NimBuildSystem(t); });
 }
 
 Tasks NimProject::projectIssues(const Kit *k) const

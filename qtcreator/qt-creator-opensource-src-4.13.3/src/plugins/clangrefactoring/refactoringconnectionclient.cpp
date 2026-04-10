@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -47,8 +47,8 @@ RefactoringConnectionClient::RefactoringConnectionClient(RefactoringClientInterf
                        + QStringLiteral("/ClangRefactoringBackEnd-") + currentProcessId())
     , m_serverProxy(client)
 {
-    m_processCreator.setTemporaryDirectoryPattern("clangrefactoringbackend-XXXXXX");
-    m_processCreator.setArguments({connectionName(),
+    m_processHldplugin.setTemporaryDirectoryPattern("clangrefactoringbackend-XXXXXX");
+    m_processHldplugin.setArguments({connectionName(),
                                    Core::ICore::cacheResourcePath() + "/symbol-experimental-v1.db",
                                    Core::ICore::resourcePath()});
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -882,7 +882,7 @@ bool DebuggerRunTool::fixupParameters()
                                         &rp.inferior.workingDirectory).toWindowsArgs();
         if (perr != QtcProcess::SplitOk) {
             // perr == BadQuoting is never returned on Windows
-            // FIXME? QTCREATORBUG-2809
+            // FIXME? QTHLDPLUGINBUG-2809
             reportFailure(DebuggerPlugin::tr("Debugging complex command lines "
                                              "is currently not supported on Windows."));
             return false;

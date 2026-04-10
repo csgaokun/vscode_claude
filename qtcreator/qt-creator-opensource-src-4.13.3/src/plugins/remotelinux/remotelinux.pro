@@ -1,6 +1,6 @@
 QT += network
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 HEADERS += \
     makeinstallstep.h \

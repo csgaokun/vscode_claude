@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -545,7 +545,7 @@ static void setKitToolchains(ProjectExplorer::Kit *k, const McuToolChainPackage 
 
 static void setKitDebugger(ProjectExplorer::Kit *k, const McuToolChainPackage *tcPackage)
 {
-    // Qt Creator seems to be smart enough to deduce the right Kit debugger from the ToolChain
+    // Qt Hldplugin seems to be smart enough to deduce the right Kit debugger from the ToolChain
     // We rely on that at least in the Desktop case.
     if (tcPackage->isDesktopToolchain()
             // No Green Hills debugger, because support for it is missing.

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,9 +43,9 @@ public:
 
 AreasOfInterest::AreasOfInterest()
 {
-#ifdef QT_CREATOR
+#ifdef QT_HLDPLUGIN
     areas = ScreenshotCropper::loadAreasOfInterest(":/qtsupport/images_areaofinterest.xml");
-#endif // QT_CREATOR
+#endif // QT_HLDPLUGIN
 }
 
 Q_GLOBAL_STATIC(AreasOfInterest, welcomeScreenAreas)

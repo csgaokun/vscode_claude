@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # necessary to not use symbolic links for the parent path of the git project
 srcPath = os.path.realpath(srcPath)
@@ -32,7 +32,7 @@ projectName = "gitProject"
 # TODO: Make selecting changes possible
 def commit(commitMessage, expectedLogMessage, uncheckUntracked=False):
     openVcsLog()
-    clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
     invokeMenuItem("Tools", "Git", "Local Repository", "Commit...")
     replaceEditorContent(waitForObject(":Description.description_Utils::CompletingTextEdit"), commitMessage)
     ensureChecked(waitForObject(":Files.Check all_QCheckBox"))
@@ -46,13 +46,13 @@ def commit(commitMessage, expectedLogMessage, uncheckUntracked=False):
     checkOrFixCommitterInformation('invalidEmailLabel', 'emailLineEdit', 'nobody@nowhere.com')
     clickButton(waitForObject(":splitter.Commit File(s)_VcsBase::QActionPushButton"))
     vcsLog = waitForObject("{type='QPlainTextEdit' unnamed='1' visible='1' "
-                           "window=':Qt Creator_Core::Internal::MainWindow'}")
+                           "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     test.verify(waitFor('expectedLogMessage in str(vcsLog.plainText)', 2000),
                 "Searching for '%s' in log:\n%s " % (expectedLogMessage, vcsLog.plainText))
     return commitMessage
 
 def verifyItemsInGit(commitMessages):
-    gitEditor = waitForObject(":Qt Creator_Git::Internal::GitEditor")
+    gitEditor = waitForObject(":Qt Hldplugin_Git::Internal::GitEditor")
     waitFor("len(str(gitEditor.plainText)) > 0 and str(gitEditor.plainText) != 'Working...'", 20000)
     plainText = str(gitEditor.plainText)
     verifyItemOrder(commitMessages, plainText)
@@ -77,10 +77,10 @@ def checkOrFixCommitterInformation(labelName, lineEditName, expected):
 # Opens a commit's diff from a diff log
 # param count is the number of the commit (1-based) in chronologic order
 def __clickCommit__(count):
-    gitEditor = waitForObject(":Qt Creator_Git::Internal::GitEditor")
-    fileName = waitForObject(":Qt Creator_FilenameQComboBox")
+    gitEditor = waitForObject(":Qt Hldplugin_Git::Internal::GitEditor")
+    fileName = waitForObject(":Qt Hldplugin_FilenameQComboBox")
     test.verify(waitFor('str(fileName.currentText).startswith("Git Log")', 1000),
-                "Verifying Qt Creator still displays git log inside editor.")
+                "Verifying Qt Hldplugin still displays git log inside editor.")
     waitFor("'Initial Commit' in str(gitEditor.plainText)", 3000)
     content = str(gitEditor.plainText)
     commit = None
@@ -102,7 +102,7 @@ def __clickCommit__(count):
     expected = 'Git Show "%s"' % commit
     test.verify(waitFor('str(fileName.currentText) == expected', 5000),
                 "Verifying editor switches to Git Show.")
-    description = waitForObject(":Qt Creator_DiffEditor::Internal::DescriptionEditorWidget")
+    description = waitForObject(":Qt Hldplugin_DiffEditor::Internal::DescriptionEditorWidget")
     waitFor('len(str(description.plainText)) != 0', 5000)
     show = str(description.plainText)
     id = "Nobody <nobody@nowhere\.com>"
@@ -125,8 +125,8 @@ def verifyClickCommit():
     for i in range(1, 3):
         if not __clickCommit__(i):
             continue
-        changed = waitForObject(":Qt Creator_DiffEditor::SideDiffEditorWidget")
-        original = waitForObject(":Qt Creator_DiffEditor::SideDiffEditorWidget2")
+        changed = waitForObject(":Qt Hldplugin_DiffEditor::SideDiffEditorWidget")
+        original = waitForObject(":Qt Hldplugin_DiffEditor::SideDiffEditorWidget2")
         waitFor('str(changed.plainText) != "Waiting for data..." '
                 'and str(original.plainText) != "Waiting for data..."', 5000)
         # content of diff editors is merge of modified files
@@ -168,20 +168,20 @@ def main():
     createProject_Qt_GUI(srcPath, projectName, addToVersionControl = "Git")
     openVcsLog()
     vcsLog = waitForObject("{type='Core::OutputWindow' unnamed='1' visible='1' "
-                           "window=':Qt Creator_Core::Internal::MainWindow'}").plainText
+                           "window=':Qt Hldplugin_Core::Internal::MainWindow'}").plainText
     test.verify("Initialized empty Git repository in %s"
                 % os.path.join(srcPath, projectName, ".git").replace("\\", "/") in str(vcsLog),
                 "Has initialization of repo been logged:\n%s " % vcsLog)
     createLocalGitConfig(os.path.join(srcPath, projectName, ".git"))
     commitMessages = [commit("Initial Commit", "Committed 6 files.")]
-    clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
     headerName = "pointless_header.h"
     addCPlusPlusFile(headerName, "C/C++ Header File", projectName + ".pro",
                      addToVCS="Git", expectedHeaderName=headerName)
     commitMessages.insert(0, commit("Added pointless header file", "Committed 2 files."))
     readmeName = "README.txt"
     addEmptyFileOutsideProject(readmeName)
-    replaceEditorContent(waitForObject(":Qt Creator_TextEditor::TextEditorWidget"),
+    replaceEditorContent(waitForObject(":Qt Hldplugin_TextEditor::TextEditorWidget"),
                          "Some important advice in the README")
     invokeMenuItem("File", "Save All")
     commitsInProject = list(commitMessages) # deep copy
@@ -197,7 +197,7 @@ def main():
 
     invokeMenuItem('Tools', 'Git', 'Current Project', 'Log Project "%s"' % projectName)
     projectLog = verifyItemsInGit(commitsInProject)
-    test.xverify(not commitOutsideProject in projectLog,    # QTCREATORBUG-10170
+    test.xverify(not commitOutsideProject in projectLog,    # QTHLDPLUGINBUG-10170
                  "Verify that no unrelated commits are displayed in project log")
     invokeMenuItem("File", "Close All")
 
@@ -206,12 +206,12 @@ def main():
     # verifyClickCommit() must be called after the local git has been created and the files
     # have been pushed to the repository
     verifyClickCommit()
-    # test for QTCREATORBUG-15051
+    # test for QTHLDPLUGINBUG-15051
     addEmptyFileOutsideProject("anotherFile.txt")
     fakeIdCommitMessage = "deadbeefdeadbeefdeadbeef is not a commit id"
     commit(fakeIdCommitMessage, "Committed 1 files.")
     invokeMenuItem("Tools", "Git", "Local Repository", "Log")
-    gitEditor = waitForObject(":Qt Creator_Git::Internal::GitEditor")
+    gitEditor = waitForObject(":Qt Hldplugin_Git::Internal::GitEditor")
     waitFor("len(str(gitEditor.plainText)) > 0 and str(gitEditor.plainText) != 'Working...'", 20000)
     placeCursorToLine(gitEditor, fakeIdCommitMessage)
     if platform.system() == 'Darwin':
@@ -222,10 +222,10 @@ def main():
         type(gitEditor, "<Right>")
     rect = gitEditor.cursorRect(gitEditor.textCursor())
     mouseClick(gitEditor, rect.x+rect.width/2, rect.y+rect.height/2, 0, Qt.LeftButton)
-    changed = waitForObject(":Qt Creator_DiffEditor::SideDiffEditorWidget")
+    changed = waitForObject(":Qt Hldplugin_DiffEditor::SideDiffEditorWidget")
     waitFor('str(changed.plainText) != "Waiting for data..."', 5000)
     test.compare(str(changed.plainText), "Retrieving data failed.",
-                 "Showing an invalid commit can't succeed but Creator survived.")
+                 "Showing an invalid commit can't succeed but Hldplugin survived.")
     invokeMenuItem("File", "Exit")
 
 def deleteProject():

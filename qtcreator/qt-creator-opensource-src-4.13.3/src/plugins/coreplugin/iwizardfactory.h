@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -92,8 +92,8 @@ public:
     virtual bool isAvailable(Utils::Id platformId) const;
     QSet<Utils::Id> supportedPlatforms() const;
 
-    using FactoryCreator = std::function<QList<IWizardFactory *>()>;
-    static void registerFactoryCreator(const FactoryCreator &creator);
+    using FactoryHldplugin = std::function<QList<IWizardFactory *>()>;
+    static void registerFactoryHldplugin(const FactoryHldplugin &hldplugin);
 
     // Utility to find all registered wizards
     static QList<IWizardFactory*> allWizardFactories();

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -84,7 +84,7 @@ WinRtDebugSupport::WinRtDebugSupport(RunControl *runControl)
     }
 
     QLocalServer server;
-    server.listen(QLatin1String("QtCreatorWinRtDebugPIDPipe"));
+    server.listen(QLatin1String("QtHldpluginWinRtDebugPIDPipe"));
 
     m_runner->debug(debuggerHelper.absoluteFilePath());
     if (!m_runner->waitForStarted()) {

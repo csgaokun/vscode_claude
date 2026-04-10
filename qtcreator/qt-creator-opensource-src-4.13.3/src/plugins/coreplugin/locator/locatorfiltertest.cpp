@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,19 +39,19 @@ using namespace Core::Tests;
 
 /*!
     \class Core::Tests::BasicLocatorFilterTest
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \class Core::Tests::TestDataDir
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 
 /*!
     \namespace Core::Tests
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 BasicLocatorFilterTest::BasicLocatorFilterTest(ILocatorFilter *filter) : m_filter(filter)
@@ -73,7 +73,7 @@ QList<LocatorFilterEntry> BasicLocatorFilterTest::matchesFor(const QString &sear
 
 /*!
     \class Core::Tests::ResultData
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \internal
 */
 ResultData::ResultData() = default;

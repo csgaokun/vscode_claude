@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -208,7 +208,7 @@ CompletionSettingsPage::CompletionSettingsPage()
     setCategory(TextEditor::Constants::TEXT_EDITOR_SETTINGS_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("TextEditor", "Text Editor"));
     setCategoryIconPath(TextEditor::Constants::TEXT_EDITOR_SETTINGS_CATEGORY_ICON_PATH);
-    setWidgetCreator([this] { return new CompletionSettingsPageWidget(this); });
+    setWidgetHldplugin([this] { return new CompletionSettingsPageWidget(this); });
 
     QSettings *s = Core::ICore::settings();
     m_completionSettings.fromSettings(s);

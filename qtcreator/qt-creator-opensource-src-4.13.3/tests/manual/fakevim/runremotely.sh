@@ -1,6 +1,6 @@
 #!/bin/sh
 account=berlin@hd
-sourcedir=/data5/dev/creator/tests/manual/fakevim/
+sourcedir=/data5/dev/hldplugin/tests/manual/fakevim/
 exename=fakevim
 targetdir=/tmp/run-${exename}
 

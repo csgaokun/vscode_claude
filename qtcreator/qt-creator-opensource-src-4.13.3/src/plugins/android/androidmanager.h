@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BogDan Vatra <bog_dan_ro@yahoo.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -127,7 +127,7 @@ public:
     static SdkToolResult runAaptCommand(const QStringList &args, int timeoutS = 30);
 
     static QJsonObject deploymentSettings(const ProjectExplorer::Target *target);
-    static bool isQtCreatorGenerated(const Utils::FilePath &deploymentFile);
+    static bool isQtHldpluginGenerated(const Utils::FilePath &deploymentFile);
 
 private:
     static SdkToolResult runCommand(const Utils::CommandLine &command,

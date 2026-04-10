@@ -1,4 +1,4 @@
-include (../../../../qtcreator.pri)
+include (../../../../qthldplugin.pri)
 include (../plugindestdir.pri)
 include (../designercore/iwidgetplugin.pri)
 include (../qmldesigner_dependencies.pri)

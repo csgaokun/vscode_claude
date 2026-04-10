@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,6 +35,6 @@ QT_END_NAMESPACE
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT QAction *execMenuAtWidget(QMenu *menu, QWidget *widget);
+QTHLDPLUGIN_UTILS_EXPORT QAction *execMenuAtWidget(QMenu *menu, QWidget *widget);
 
 } // namespace Utils

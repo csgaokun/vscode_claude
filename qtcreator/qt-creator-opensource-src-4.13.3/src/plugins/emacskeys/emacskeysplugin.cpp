@@ -2,7 +2,7 @@
 **
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -75,7 +75,7 @@ bool EmacsKeysPlugin::initialize(const QStringList &arguments, QString *errorStr
     Q_UNUSED(errorString)
 
     // We have to use this hack here at the moment, because it's the only way to
-    // disable Qt Creator menu accelerators aka mnemonics. Many of them get into
+    // disable Qt Hldplugin menu accelerators aka mnemonics. Many of them get into
     // the way of typical emacs keys, such as: Alt+F (File), Alt+B (Build),
     // Alt+W (Window).
     qt_set_sequence_auto_mnemonic(false);

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -93,7 +93,7 @@ QSet<Utils::Id> DesktopQtVersion::targetDeviceTypes() const
 
 DesktopQtVersionFactory::DesktopQtVersionFactory()
 {
-    setQtVersionCreator([] { return new DesktopQtVersion; });
+    setQtVersionHldplugin([] { return new DesktopQtVersion; });
     setSupportedType(QtSupport::Constants::DESKTOPQT);
     setPriority(0); // Lowest of all, we want to be the fallback
     // No further restrictions. We are the fallback :) so we don't care what kind of qt it is.
@@ -123,7 +123,7 @@ public:
 
 EmbeddedLinuxQtVersionFactory::EmbeddedLinuxQtVersionFactory()
 {
-    setQtVersionCreator([] { return new EmbeddedLinuxQtVersion; });
+    setQtVersionHldplugin([] { return new EmbeddedLinuxQtVersion; });
     setSupportedType(EMBEDDED_LINUX_QT);
     setPriority(10);
 

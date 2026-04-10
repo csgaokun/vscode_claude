@@ -1,25 +1,25 @@
-Qt Creator 4.13.1
+Qt Hldplugin 4.13.1
 =================
 
-Qt Creator version 4.13.1 contains bug fixes.
+Qt Hldplugin version 4.13.1 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/v4.13.0..v4.13.1
 
 Editing
 -------
 
-* Fixed whitespace cleaning (QTCREATORBUG-24565)
-* Fixed selection color (QTCREATORBUG-24479)
+* Fixed whitespace cleaning (QTHLDPLUGINBUG-24565)
+* Fixed selection color (QTHLDPLUGINBUG-24479)
 
 ### C++
 
-* Fixed crash with adjacent raw string literals (QTCREATORBUG-24577)
-* Fixed highlighting of template aliases (QTCREATORBUG-24552)
+* Fixed crash with adjacent raw string literals (QTHLDPLUGINBUG-24577)
+* Fixed highlighting of template aliases (QTHLDPLUGINBUG-24552)
 
 ### QML
 
@@ -32,14 +32,14 @@ Editing
 Projects
 --------
 
-* Fixed parsing of QTest application output (QTCREATORBUG-24560)
-* Fixed visibility of output in output panes (QTCREATORBUG-24411)
+* Fixed parsing of QTest application output (QTHLDPLUGINBUG-24560)
+* Fixed visibility of output in output panes (QTHLDPLUGINBUG-24411)
 
 ### qmake
 
-* Fixed handling of unset environment variables (QTCREATORBUG-21729)
+* Fixed handling of unset environment variables (QTHLDPLUGINBUG-21729)
 * Fixed that changes to sub-projects triggered full re-parse
-  (QTCREATORBUG-24572)
+  (QTHLDPLUGINBUG-24572)
 
 ### CMake
 
@@ -78,12 +78,12 @@ Platforms
 
 ### Android
 
-* Fixed service handling in manifest editor (QTCREATORBUG-24557)
+* Fixed service handling in manifest editor (QTHLDPLUGINBUG-24557)
 
 ### macOS
 
-* Fixed Clazy (QTCREATORBUG-24567)
-* Fixed debugger locals view for newest LLDB (QTCREATORBUG-24596)
+* Fixed Clazy (QTHLDPLUGINBUG-24567)
+* Fixed debugger locals view for newest LLDB (QTHLDPLUGINBUG-24596)
 
 Credits for these changes go to:
 --------------------------------

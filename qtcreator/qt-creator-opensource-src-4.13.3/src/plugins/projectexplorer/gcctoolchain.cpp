@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1531,7 +1531,7 @@ void ClangToolChain::addToEnvironment(Environment &env) const
         env.prependOrSetPath(sysroot + "/bin");
 
     // Clang takes PWD as basis for debug info, if set.
-    // When running Qt Creator from a shell, PWD is initially set to an "arbitrary" value.
+    // When running Qt Hldplugin from a shell, PWD is initially set to an "arbitrary" value.
     // Since the tools are not called through a shell, PWD is never changed to the actual cwd,
     // so we better make sure PWD is empty to begin with
     env.unset("PWD");
@@ -2024,11 +2024,11 @@ void ProjectExplorerPlugin::testGccAbiGuessing_data()
             << QString::fromLatin1("mipsel-linux-uclibc")
             << QByteArray("#define __SIZEOF_SIZE_T__ 4")
             << QStringList({"mips-linux-generic-elf-32bit"});
-    QTest::newRow("Linux 5 (QTCREATORBUG-4690)") // from QTCREATORBUG-4690
+    QTest::newRow("Linux 5 (QTHLDPLUGINBUG-4690)") // from QTHLDPLUGINBUG-4690
             << QString::fromLatin1("x86_64-redhat-linux6E")
             << QByteArray("#define __SIZEOF_SIZE_T__ 8\n")
             << QStringList("x86-linux-generic-elf-64bit");
-    QTest::newRow("Linux 6 (QTCREATORBUG-4690)") // from QTCREATORBUG-4690
+    QTest::newRow("Linux 6 (QTHLDPLUGINBUG-4690)") // from QTHLDPLUGINBUG-4690
             << QString::fromLatin1("x86_64-redhat-linux")
             << QByteArray("#define __SIZEOF_SIZE_T__ 8\n")
             << QStringList("x86-linux-generic-elf-64bit");

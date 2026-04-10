@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,16 +23,16 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # test New Qt Gui Application build and run for release and debug option
 def main():
-    # Start Creator with built-in code model, to avoid having
+    # Start Hldplugin with built-in code model, to avoid having
     # warnings from the clang code model in "issues" view
-    if not startCreatorVerifyingClang(False):
+    if not startHldpluginVerifyingClang(False):
         return
     createProject_Qt_GUI(tempDir(), "SampleApp")
     # run project for debug and release and verify results
     runVerify()
-    #close Qt Creator
+    #close Qt Hldplugin
     invokeMenuItem("File", "Exit")

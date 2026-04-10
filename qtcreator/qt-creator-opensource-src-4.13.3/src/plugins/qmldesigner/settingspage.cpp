@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -27,7 +27,7 @@
 #include "qmldesignerconstants.h"
 #include "qmldesignerplugin.h"
 #include "designersettings.h"
-#include "puppetcreator.h"
+#include "puppethldplugin.h"
 #include "ui_settingspage.h"
 
 #include <app/app_version.h>
@@ -79,14 +79,14 @@ SettingsPageWidget::SettingsPageWidget()
     );
     connect(m_ui.resetFallbackPuppetPathButton, &QPushButton::clicked, [=]() {
         m_ui.fallbackPuppetPathLineEdit->setPath(
-            PuppetCreator::defaultPuppetFallbackDirectory());
+            PuppetHldplugin::defaultPuppetFallbackDirectory());
         }
     );
-    m_ui.fallbackPuppetPathLineEdit->lineEdit()->setPlaceholderText(PuppetCreator::defaultPuppetFallbackDirectory());
+    m_ui.fallbackPuppetPathLineEdit->lineEdit()->setPlaceholderText(PuppetHldplugin::defaultPuppetFallbackDirectory());
 
     connect(m_ui.resetQmlPuppetBuildPathButton, &QPushButton::clicked, [=]() {
         m_ui.puppetBuildPathLineEdit->setPath(
-            PuppetCreator::defaultPuppetToplevelBuildDirectory());
+            PuppetHldplugin::defaultPuppetToplevelBuildDirectory());
         }
     );
     connect(m_ui.useDefaultPuppetRadioButton, &QRadioButton::toggled,
@@ -148,14 +148,14 @@ DesignerSettings SettingsPageWidget::settings() const
         m_ui.debugPuppetComboBox->currentText());
 
     QString newFallbackPuppetPath = m_ui.fallbackPuppetPathLineEdit->path();
-    QTC_CHECK(PuppetCreator::defaultPuppetFallbackDirectory() ==
+    QTC_CHECK(PuppetHldplugin::defaultPuppetFallbackDirectory() ==
               m_ui.fallbackPuppetPathLineEdit->lineEdit()->placeholderText());
     if (newFallbackPuppetPath.isEmpty())
         newFallbackPuppetPath = m_ui.fallbackPuppetPathLineEdit->lineEdit()->placeholderText();
-    QString oldFallbackPuppetPath = PuppetCreator::qmlPuppetFallbackDirectory(settings);
+    QString oldFallbackPuppetPath = PuppetHldplugin::qmlPuppetFallbackDirectory(settings);
 
     if (oldFallbackPuppetPath != newFallbackPuppetPath && QFileInfo::exists(newFallbackPuppetPath)) {
-        if (newFallbackPuppetPath == PuppetCreator::defaultPuppetFallbackDirectory())
+        if (newFallbackPuppetPath == PuppetHldplugin::defaultPuppetFallbackDirectory())
             settings.insert(DesignerSettingsKey::PUPPET_DEFAULT_DIRECTORY, QString());
         else
             settings.insert(DesignerSettingsKey::PUPPET_DEFAULT_DIRECTORY, newFallbackPuppetPath);
@@ -164,7 +164,7 @@ DesignerSettings SettingsPageWidget::settings() const
     }
 
     if (!m_ui.puppetBuildPathLineEdit->path().isEmpty() &&
-        m_ui.puppetBuildPathLineEdit->path() != PuppetCreator::defaultPuppetToplevelBuildDirectory()) {
+        m_ui.puppetBuildPathLineEdit->path() != PuppetHldplugin::defaultPuppetToplevelBuildDirectory()) {
         settings.insert(DesignerSettingsKey::PUPPET_TOPLEVEL_BUILD_DIRECTORY,
             m_ui.puppetBuildPathLineEdit->path());
     }
@@ -221,12 +221,12 @@ void SettingsPageWidget::setSettings(const DesignerSettings &settings)
 
     QString puppetFallbackDirectory = settings.value(
         DesignerSettingsKey::PUPPET_DEFAULT_DIRECTORY,
-        PuppetCreator::defaultPuppetFallbackDirectory()).toString();
+        PuppetHldplugin::defaultPuppetFallbackDirectory()).toString();
     m_ui.fallbackPuppetPathLineEdit->setPath(puppetFallbackDirectory);
 
     QString puppetToplevelBuildDirectory = settings.value(
         DesignerSettingsKey::PUPPET_TOPLEVEL_BUILD_DIRECTORY,
-        PuppetCreator::defaultPuppetToplevelBuildDirectory()).toString();
+        PuppetHldplugin::defaultPuppetToplevelBuildDirectory()).toString();
     m_ui.puppetBuildPathLineEdit->setPath(puppetToplevelBuildDirectory);
 
     m_ui.forwardPuppetOutputComboBox->setCurrentText(settings.value(
@@ -289,7 +289,7 @@ SettingsPage::SettingsPage()
     setId("B.QmlDesigner");
     setDisplayName(SettingsPageWidget::tr("Qt Quick Designer"));
     setCategory(QmlJSEditor::Constants::SETTINGS_CATEGORY_QML);
-    setWidgetCreator([] { return new SettingsPageWidget; });
+    setWidgetHldplugin([] { return new SettingsPageWidget; });
 }
 
 } // Internal

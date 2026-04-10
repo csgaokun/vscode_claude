@@ -1,6 +1,6 @@
 QT        -= gui
 
-include(../../qtcreatortool.pri)
+include(../../qthldplugintool.pri)
 
 TARGET    = qtpromaker
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -70,7 +70,7 @@ QColor ConsoleItemDelegate::drawBackground(QPainter *painter, const QRect &rect,
                                               const QModelIndex &index,
                                               bool selected) const
 {
-    const Utils::Theme *theme = Utils::creatorTheme();
+    const Utils::Theme *theme = Utils::hldpluginTheme();
     painter->save();
     QColor backgroundColor = theme->color(selected
                                           ? Utils::Theme::BackgroundColorSelected
@@ -86,7 +86,7 @@ QColor ConsoleItemDelegate::drawBackground(QPainter *painter, const QRect &rect,
 void ConsoleItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
                                    const QModelIndex &index) const
 {
-    const Utils::Theme *theme = Utils::creatorTheme();
+    const Utils::Theme *theme = Utils::hldpluginTheme();
     QStyleOptionViewItem opt = option;
     initStyleOption(&opt, index);
     painter->save();

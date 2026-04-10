@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1567,7 +1567,7 @@ void QtStyleCodeFormatter::adjustIndent(const Tokens &tokens, int lexerState, in
         }
         break;
     }
-    // Disabled for now, see QTCREATORBUG-1825. It makes extending if conditions
+    // Disabled for now, see QTHLDPLUGINBUG-1825. It makes extending if conditions
     // awkward: inserting a newline just before the ) shouldn't align to 'if'.
     //case T_RPAREN:
     //    if (topState.type == condition_open) {

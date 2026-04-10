@@ -4,7 +4,7 @@
 ** Author: Orgad Shaneh <orgad.shaneh@audiocodes.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -141,14 +141,14 @@ const VcsBaseEditorParameters logEditorParameters {
     LogOutput,
     "ClearCase File Log Editor",   // id
     QT_TRANSLATE_NOOP("VCS", "ClearCase File Log Editor"),   // display_name
-    "text/vnd.qtcreator.clearcase.log"
+    "text/vnd.qthldplugin.clearcase.log"
 };
 
 const VcsBaseEditorParameters annotateEditorParameters {
     AnnotateOutput,
     "ClearCase Annotation Editor",  // id
     QT_TRANSLATE_NOOP("VCS", "ClearCase Annotation Editor"),   // display_name
-    "text/vnd.qtcreator.clearcase.annotation"
+    "text/vnd.qthldplugin.clearcase.annotation"
 };
 
 const VcsBaseEditorParameters diffEditorParameters {

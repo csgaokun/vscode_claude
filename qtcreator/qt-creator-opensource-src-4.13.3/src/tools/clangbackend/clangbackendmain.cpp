@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 **
 ****************************************************************************/
 
-#include "../qtcreatorcrashhandler/crashhandlersetup.h"
+#include "../qthldplugincrashhandler/crashhandlersetup.h"
 
 #include <QCommandLineParser>
 #include <QCoreApplication>
@@ -43,7 +43,7 @@ using ClangBackEnd::ConnectionServer;
 QString processArguments(QCoreApplication &application)
 {
     QCommandLineParser parser;
-    parser.setApplicationDescription(QStringLiteral("Qt Creator Clang backend process."));
+    parser.setApplicationDescription(QStringLiteral("Qt Hldplugin Clang backend process."));
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addPositionalArgument(QStringLiteral("connection"), QStringLiteral("Connection"));

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -123,7 +123,7 @@ public:
         const auto layout = new QVBoxLayout(this);
         m_detectX64AsX32CheckBox.setText(ToolChainOptionsPage::tr("Detect x86_64 GCC compilers "
                                                                   "as x86_64 and x86"));
-        m_detectX64AsX32CheckBox.setToolTip(ToolChainOptionsPage::tr("If checked, Qt Creator will "
+        m_detectX64AsX32CheckBox.setToolTip(ToolChainOptionsPage::tr("If checked, Qt Hldplugin will "
             "set up two instances of each x86_64 compiler:\nOne for the native x86_64 target, "
             "and one for a plain x86 target.\nEnable this if you plan to create 32-bit x86 "
             "binaries without using a dedicated cross compiler."));
@@ -573,7 +573,7 @@ ToolChainOptionsPage::ToolChainOptionsPage()
     setId(Constants::TOOLCHAIN_SETTINGS_PAGE_ID);
     setDisplayName(ToolChainOptionsPage::tr("Compilers"));
     setCategory(Constants::KITS_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new ToolChainOptionsWidget; });
+    setWidgetHldplugin([] { return new ToolChainOptionsWidget; });
 }
 
 } // namespace Internal

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -121,7 +121,7 @@ public:
         m_ui.setupUi(this);
         m_ui.colorSchemeGroupBox->setTitle(
                     tr("Color Scheme for Theme \"%1\"")
-                    .arg(Utils::creatorTheme()->displayName()));
+                    .arg(Utils::hldpluginTheme()->displayName()));
         m_ui.schemeComboBox->setModel(&m_schemeListModel);
 
         m_ui.fontComboBox->setCurrentFont(m_value.family());
@@ -643,7 +643,7 @@ FontSettingsPage::FontSettingsPage(FontSettings *fontSettings, const FormatDescr
     setCategory(TextEditor::Constants::TEXT_EDITOR_SETTINGS_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("TextEditor", "Text Editor"));
     setCategoryIconPath(TextEditor::Constants::TEXT_EDITOR_SETTINGS_CATEGORY_ICON_PATH);
-    setWidgetCreator([this, fontSettings, fd] { return new FontSettingsPageWidget(this, fd, fontSettings); });
+    setWidgetHldplugin([this, fontSettings, fd] { return new FontSettingsPageWidget(this, fd, fontSettings); });
 }
 
 void FontSettingsPage::setFontZoom(int zoom)

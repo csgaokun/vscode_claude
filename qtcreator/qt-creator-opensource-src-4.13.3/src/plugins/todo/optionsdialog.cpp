@@ -4,7 +4,7 @@
 ** Copyright (C) 2016 Vasiliy Sorokin
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -217,7 +217,7 @@ TodoOptionsPage::TodoOptionsPage(Settings *settings, const std::function<void ()
     setCategory("To-Do");
     setDisplayCategory(OptionsDialog::tr("To-Do"));
     setCategoryIconPath(":/todoplugin/images/settingscategory_todo.png");
-    setWidgetCreator([settings, onApply] { return new OptionsDialog(settings, onApply); });
+    setWidgetHldplugin([settings, onApply] { return new OptionsDialog(settings, onApply); });
 }
 
 } // namespace Internal

@@ -1,5 +1,5 @@
 QT += network
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 # GDB debug servers
 include(debugservers/gdb/gdbservers.pri)

@@ -22,7 +22,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Qt Creator has crashed</string>
+      <string>Qt Hldplugin has crashed</string>
      </property>
      <property name="scaledContents">
       <bool>false</bool>

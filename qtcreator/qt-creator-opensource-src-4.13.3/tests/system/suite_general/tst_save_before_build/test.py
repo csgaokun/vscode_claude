@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def ensureSaveBeforeBuildChecked(shouldBeChecked):
     invokeMenuItem("Tools", "Options...")
@@ -54,7 +54,7 @@ def main():
             test.log("Changing file '%s'" % simpleFileName(file))
             typeLines(getEditorForFileSuffix(file, True), "")
             # try to compile
-            clickButton(waitForObject(":*Qt Creator.Build Project_Core::Internal::FancyToolButton"))
+            clickButton(waitForObject(":*Qt Hldplugin.Build Project_Core::Internal::FancyToolButton"))
             try:
                 ensureChecked(":Save Changes.Always save files before build_QCheckBox",
                               i == len(files) - 1, 5000) # At the last iteration, check the box

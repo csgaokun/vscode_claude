@@ -1,9 +1,9 @@
 {
     \"Name\" : \"Debugger\",
-    \"Version\" : \"$$QTCREATOR_VERSION\",
-    \"CompatVersion\" : \"$$QTCREATOR_COMPAT_VERSION\",
+    \"Version\" : \"$$QTHLDPLUGIN_VERSION\",
+    \"CompatVersion\" : \"$$QTHLDPLUGIN_COMPAT_VERSION\",
     \"Vendor\" : \"The Qt Company Ltd\",
-    \"Copyright\" : \"(C) $$QTCREATOR_COPYRIGHT_YEAR The Qt Company Ltd\",
+    \"Copyright\" : \"(C) $$QTHLDPLUGIN_COPYRIGHT_YEAR The Qt Company Ltd\",
     \"License\" : [ \"Commercial Usage\",
                   \"\",
                   \"Licensees holding valid Qt Commercial licenses may use this plugin in accordance with the Qt Commercial License Agreement provided with the Software or, alternatively, in accordance with the terms contained in a written agreement between you and The Qt Company.\",
@@ -12,7 +12,7 @@
                   \"\",
                   \"Alternatively, this plugin may be used under the terms of the GNU General Public License version 3 as published by the Free Software Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT included in the packaging of this plugin. Please review the following information to ensure the GNU General Public License requirements will be met: https://www.gnu.org/licenses/gpl-3.0.html.\"
     ],
-    \"Category\" : \"Qt Creator\",
+    \"Category\" : \"Qt Hldplugin\",
     \"Description\" : \"Debugger integration.\",
     \"Url\" : \"http://www.qt.io\",
     \"Arguments\" : [
@@ -50,9 +50,9 @@
         \"        <glob pattern=\'*.asm\'/>\",
         \"    </mime-type>\",
         \"    <!-- Catch-all for assemblers -->\",
-        \"    <mime-type type=\'text/x-qtcreator-generic-asm\'>\",
+        \"    <mime-type type=\'text/x-qthldplugin-generic-asm\'>\",
         \"        <sub-class-of type=\'text/x-asm\'/>\",
-        \"        <comment>Qt Creator Generic Assembler</comment>\",
+        \"        <comment>Qt Hldplugin Generic Assembler</comment>\",
         \"        <glob pattern=\'*.asm\'/>\",
         \"    </mime-type>\",
         \"</mime-info>\"

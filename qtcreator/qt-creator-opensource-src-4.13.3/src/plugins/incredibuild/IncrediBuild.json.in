@@ -1,7 +1,7 @@
 {
     \"Name\" : \"IncrediBuild\",
-    \"Version\" : \"$$QTCREATOR_VERSION\",
-    \"CompatVersion\" : \"$$QTCREATOR_COMPAT_VERSION\",
+    \"Version\" : \"$$QTHLDPLUGIN_VERSION\",
+    \"CompatVersion\" : \"$$QTHLDPLUGIN_COMPAT_VERSION\",
     \"Platform\" : \"^(Linux|Windows)\",
     \"Vendor\" : \"IncrediBuild\",
     \"Copyright\" : \"(C) IncrediBuild\",

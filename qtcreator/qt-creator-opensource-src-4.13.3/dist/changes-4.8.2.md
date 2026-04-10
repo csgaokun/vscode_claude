@@ -1,33 +1,33 @@
-Qt Creator version 4.8.2 contains bug fixes.
+Qt Hldplugin version 4.8.2 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/v4.8.1..v4.8.2
 
 General
 
-* Fixed UI for choosing executable for external tools (QTCREATORBUG-21937)
+* Fixed UI for choosing executable for external tools (QTHLDPLUGINBUG-21937)
 
 Editing
 
 * Fixed highlighting of search results of regular expression search
-  (QTCREATORBUG-21887)
+  (QTHLDPLUGINBUG-21887)
 
 Autotools Projects
 
 * Fixed that includes, defines and flags of `SUBDIRS` were ignored
-  (QTCREATORBUG-21618)
+  (QTHLDPLUGINBUG-21618)
 
 C++ Support
 
-* Fixed crash when expanding macros (QTCREATORBUG-21642)
-* Fixed crash in preprocessor (QTCREATORBUG-21981)
-* Fixed infinite loop when resolving pointer types (QTCREATORBUG-22010)
+* Fixed crash when expanding macros (QTHLDPLUGINBUG-21642)
+* Fixed crash in preprocessor (QTHLDPLUGINBUG-21981)
+* Fixed infinite loop when resolving pointer types (QTHLDPLUGINBUG-22010)
 * Fixed cursor position after completion of functions without arguments
-  (QTCREATORBUG-21841)
+  (QTHLDPLUGINBUG-21841)
 
 QML Support
 
@@ -36,12 +36,12 @@ QML Support
 Debugging
 
 * GDB
-    * Fixed detaching from process (QTCREATORBUG-21908)
+    * Fixed detaching from process (QTHLDPLUGINBUG-21908)
 * LLDB
-    * Fixed stopping at some breakpoints with newer LLDB (QTCREATORBUG-21615)
+    * Fixed stopping at some breakpoints with newer LLDB (QTHLDPLUGINBUG-21615)
     * Fixed `Attach to Process` and `Run in Terminal` with newer LLDB
 * CDB
-    * Fixed display of `QDateTime` (QTCREATORBUG-21864)
+    * Fixed display of `QDateTime` (QTHLDPLUGINBUG-21864)
 
 Qt Quick Designer
 
@@ -59,12 +59,12 @@ macOS
 * Fixed crash when file change dialog is triggered while another modal dialog
   is open
 * Fixed running of user applications that need access to camera, microphone or
-  other restricted services on macOS 10.14 (QTCREATORBUG-21887)
+  other restricted services on macOS 10.14 (QTHLDPLUGINBUG-21887)
 
 Android
 
-* Fixed upload of GDB server on some devices (QTCREATORBUG-21317)
-* Fixed crash on exiting debugger (QTCREATORBUG-21684)
+* Fixed upload of GDB server on some devices (QTHLDPLUGINBUG-21317)
+* Fixed crash on exiting debugger (QTHLDPLUGINBUG-21684)
 
 Credits for these changes go to:  
 Andre Hartmann  

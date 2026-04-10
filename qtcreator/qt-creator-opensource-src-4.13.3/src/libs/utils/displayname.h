@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@ namespace Utils {
 
 // Can be used for anything with a translatable, user-settable name with a fixed default value
 // that gets set by a constructor or factory.
-class QTCREATOR_UTILS_EXPORT DisplayName
+class QTHLDPLUGIN_UTILS_EXPORT DisplayName
 {
 public:
     // These return true if and only if the value of displayName() has changed.
@@ -53,7 +53,7 @@ private:
     QString m_defaultValue;
 };
 
-bool QTCREATOR_UTILS_EXPORT operator==(const DisplayName &dn1, const DisplayName &dn2);
+bool QTHLDPLUGIN_UTILS_EXPORT operator==(const DisplayName &dn1, const DisplayName &dn2);
 inline bool operator!=(const DisplayName &dn1, const DisplayName &dn2)
 {
     return !(dn1 == dn2);

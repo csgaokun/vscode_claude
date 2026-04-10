@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -685,7 +685,7 @@ IosDeviceToolHandlerPrivate::~IosDeviceToolHandlerPrivate()
 {
     if (isRunning()) {
         // Disconnect the signals to avoid notifications while destructing.
-        // QTCREATORBUG-18147
+        // QTHLDPLUGINBUG-18147
         process->disconnect();
         // Quit ios-tool gracefully before kill is executed.
         process->write("k\n\r");
@@ -964,7 +964,7 @@ void IosSimulatorToolHandlerPrivate::launchAppOnSimulator(const QStringList &ext
 #else
     Q_UNUSED(pid)
 #endif
-        // Future is cancelled if the app is stopped from the qt creator.
+        // Future is cancelled if the app is stopped from the qt hldplugin.
         if (!fi.isCanceled())
             stop(0);
     };

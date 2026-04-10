@@ -5,7 +5,7 @@
 ** Author: Patricia Santana Cruz (patriciasantanacruz@gmail.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@ namespace Internal {
 /**
  * @brief Implementation of the ProjectExplorer::AbstractProcessStep interface.
  *
- * A autogen step can be configured by selecting the "Projects" button of Qt Creator
+ * A autogen step can be configured by selecting the "Projects" button of Qt Hldplugin
  * (in the left hand side menu) and under "Build Settings".
  *
  * It is possible for the user to specify custom arguments.

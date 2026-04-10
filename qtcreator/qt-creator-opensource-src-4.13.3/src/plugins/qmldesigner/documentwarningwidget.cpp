@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -175,7 +175,7 @@ bool DocumentWarningWidget::eventFilter(QObject *object, QEvent *event)
 
 void DocumentWarningWidget::showEvent(QShowEvent *event)
 {
-    const QColor backgroundColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_BackgroundColor);
+    const QColor backgroundColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_BackgroundColor);
     QPalette pal = palette();
     QColor color = pal.color(QPalette::ToolTipBase);
     const QColor backgroundNoAlpha = Utils::StyleHelper::alphaBlendedColors(color, backgroundColor);

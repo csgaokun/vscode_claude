@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -200,7 +200,7 @@ void AbstractProcessStep::doRun()
     d->m_process->setWorkingDirectory(wd.absolutePath());
     // Enforce PWD in the environment because some build tools use that.
     // PWD can be different from getcwd in case of symbolic links (getcwd resolves symlinks).
-    // For example Clang uses PWD for paths in debug info, see QTCREATORBUG-23788
+    // For example Clang uses PWD for paths in debug info, see QTHLDPLUGINBUG-23788
     Environment envWithPwd = d->m_param.environment();
     envWithPwd.set("PWD", d->m_process->workingDirectory());
     d->m_process->setEnvironment(envWithPwd);

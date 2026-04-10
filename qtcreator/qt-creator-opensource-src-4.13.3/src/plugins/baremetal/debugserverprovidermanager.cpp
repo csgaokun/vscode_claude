@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -71,7 +71,7 @@ DebugServerProviderManager::DebugServerProviderManager()
 {
     m_instance = this;
     m_writer = new Utils::PersistentSettingsWriter(
-                m_configFile, "QtCreatorDebugServerProviders");
+                m_configFile, "QtHldpluginDebugServerProviders");
 
     connect(Core::ICore::instance(), &Core::ICore::saveSettingsRequested,
             this, &DebugServerProviderManager::saveProviders);

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -152,7 +152,7 @@ LocalHelpManager *LocalHelpManager::instance()
 
 QString LocalHelpManager::defaultHomePage()
 {
-    static const QString url = QString::fromLatin1("qthelp://org.qt-project.qtcreator."
+    static const QString url = QString::fromLatin1("qthelp://org.qt-project.qthldplugin."
         "%1%2%3/doc/index.html").arg(IDE_VERSION_MAJOR).arg(IDE_VERSION_MINOR)
         .arg(IDE_VERSION_RELEASE);
     return url;

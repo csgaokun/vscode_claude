@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 project = "untitled"
 
@@ -36,7 +36,7 @@ def main():
         return
     createProject_Qt_Console(tempDir(), project)
 
-    mainEditor = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+    mainEditor = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
     replaceEditorContent(mainEditor, "")
     typeLines(mainEditor, ["#include <QDebug>",
                            "#include <QThread>",
@@ -51,7 +51,7 @@ def main():
     # Rely on code completion for closing bracket
     invokeMenuItem("File", "Save All")
     openDocument(project + "." + project + "\\.pro")
-    proEditor = waitForObject(":Qt Creator_TextEditor::TextEditorWidget")
+    proEditor = waitForObject(":Qt Hldplugin_TextEditor::TextEditorWidget")
     test.verify("CONFIG += c++11 console" in str(proEditor.plainText),
                 "Verifying that program is configured with console")
 
@@ -64,24 +64,24 @@ def main():
 
         test.log("Running application")
         setRunInTerminal(kit, False)
-        clickButton(waitForObject(":*Qt Creator.Run_Core::Internal::FancyToolButton"))
-        outputButton = waitForObject(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+        clickButton(waitForObject(":*Qt Hldplugin.Run_Core::Internal::FancyToolButton"))
+        outputButton = waitForObject(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
         waitFor("outputButton.checked", 20000) # Not ensureChecked(), avoid race condition
-        outputWindow = waitForObject(":Qt Creator_Core::OutputWindow")
+        outputWindow = waitForObject(":Qt Hldplugin_Core::OutputWindow")
         waitFor("'exited with code' in str(outputWindow.plainText) or \
                 'The program has unexpectedly finished' in str(outputWindow.plainText)", 20000)
         try:
-            appOutput = str(waitForObject(":Qt Creator_Core::OutputWindow").plainText)
+            appOutput = str(waitForObject(":Qt Hldplugin_Core::OutputWindow").plainText)
             verifyOutput(appOutput, outputStdOut, "std::cout", "Application Output")
             verifyOutput(appOutput, outputStdErr, "std::cerr", "Application Output")
             if (kit == Targets.DESKTOP_5_4_1_GCC
                 and platform.system() in ('Windows', 'Microsoft')):
-                test.log("Skipping qDebug() from %s (unstable, QTCREATORBUG-15067)"
+                test.log("Skipping qDebug() from %s (unstable, QTHLDPLUGINBUG-15067)"
                          % Targets.getStringForTarget(Targets.DESKTOP_5_4_1_GCC))
             else:
                 verifyOutput(appOutput, outputQDebug,
                              "qDebug()", "Application Output")
-            clickButton(waitForObject(":Qt Creator_CloseButton"))
+            clickButton(waitForObject(":Qt Hldplugin_CloseButton"))
         except:
             test.fatal("Could not find Application Output Window",
                        "Did the application run at all?")
@@ -90,8 +90,8 @@ def main():
         isMsvc = isMsvcConfig(kit)
         invokeMenuItem("Debug", "Start Debugging", "Start debugging of startup project")
         handleDebuggerWarnings(config, isMsvc)
-        ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
-        outputWindow = waitForObject(":Qt Creator_Core::OutputWindow")
+        ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
+        outputWindow = waitForObject(":Qt Hldplugin_Core::OutputWindow")
         waitFor("'Debugging has finished' in str(outputWindow.plainText)", 20000)
         try:
             debuggerLog = takeDebuggerLog()
@@ -104,19 +104,19 @@ def main():
             # takeDebuggerLog() expects the debugger log to not be visible.
             # If debugger log showed up automatically, previous call to takeDebuggerLog() has closed it.
             debuggerLog = takeDebuggerLog()
-            if "lib\qtcreatorcdbext64\qtcreatorcdbext.dll cannot be found." in debuggerLog:
-                test.fatal("qtcreatorcdbext.dll is missing in lib\qtcreatorcdbext64")
+            if "lib\qthldplugincdbext64\qthldplugincdbext.dll cannot be found." in debuggerLog:
+                test.fatal("qthldplugincdbext.dll is missing in lib\qthldplugincdbext64")
             else:
                 test.fatal("Debugger log did not behave as expected. Please check manually.")
         switchViewTo(ViewConstants.EDIT)
-        ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+        ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
         try:
-            appOutput = str(waitForObject(":Qt Creator_Core::OutputWindow").plainText)
+            appOutput = str(waitForObject(":Qt Hldplugin_Core::OutputWindow").plainText)
             if not isMsvc:
                 verifyOutput(appOutput, outputStdOut, "std::cout", "Application Output")
                 verifyOutput(appOutput, outputStdErr, "std::cerr", "Application Output")
                 verifyOutput(appOutput, outputQDebug, "qDebug()", "Application Output")
-            clickButton(waitForObject(":Qt Creator_CloseButton"))
+            clickButton(waitForObject(":Qt Hldplugin_CloseButton"))
         except:
             test.fatal("Could not find Application Output Window",
                        "Did the application run at all?")

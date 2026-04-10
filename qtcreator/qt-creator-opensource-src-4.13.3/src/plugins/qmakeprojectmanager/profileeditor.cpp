@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -260,7 +260,7 @@ static TextDocument *createProFileDocument()
     doc->setId(Constants::PROFILE_EDITOR_ID);
     doc->setMimeType(QLatin1String(Constants::PROFILE_MIMETYPE));
     // qmake project files do not support UTF8-BOM
-    // If the BOM would be added qmake would fail and Qt Creator couldn't parse the project file
+    // If the BOM would be added qmake would fail and Qt Hldplugin couldn't parse the project file
     doc->setSupportsUtf8Bom(false);
     return doc;
 }
@@ -280,8 +280,8 @@ ProFileEditorFactory::ProFileEditorFactory()
     addMimeType(Constants::PROCACHEFILE_MIMETYPE);
     addMimeType(Constants::PROSTASHFILE_MIMETYPE);
 
-    setDocumentCreator(createProFileDocument);
-    setEditorWidgetCreator([]() { return new ProFileEditorWidget; });
+    setDocumentHldplugin(createProFileDocument);
+    setEditorWidgetHldplugin([]() { return new ProFileEditorWidget; });
 
     const auto completionAssistProvider = new KeywordsCompletionAssistProvider(qmakeKeywords());
     completionAssistProvider->setDynamicCompletionFunction(&TextEditor::pathComplete);
@@ -292,15 +292,15 @@ ProFileEditorFactory::ProFileEditorFactory()
                 | TextEditorActionHandler::JumpToFileUnderCursor);
 
     addHoverHandler(new ProFileHoverHandler);
-    setSyntaxHighlighterCreator([]() { return new ProFileHighlighter; });
+    setSyntaxHighlighterHldplugin([]() { return new ProFileHighlighter; });
 
     const QString defaultOverlay = QLatin1String(ProjectExplorer::Constants::FILEOVERLAY_QT);
     Core::FileIconProvider::registerIconOverlayForSuffix(
-                creatorTheme()->imageFile(Theme::IconOverlayPro, defaultOverlay), "pro");
+                hldpluginTheme()->imageFile(Theme::IconOverlayPro, defaultOverlay), "pro");
     Core::FileIconProvider::registerIconOverlayForSuffix(
-                creatorTheme()->imageFile(Theme::IconOverlayPri, defaultOverlay), "pri");
+                hldpluginTheme()->imageFile(Theme::IconOverlayPri, defaultOverlay), "pri");
     Core::FileIconProvider::registerIconOverlayForSuffix(
-                creatorTheme()->imageFile(Theme::IconOverlayPrf, defaultOverlay), "prf");
+                hldpluginTheme()->imageFile(Theme::IconOverlayPrf, defaultOverlay), "prf");
 }
 
 } // namespace Internal

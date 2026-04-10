@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -471,7 +471,7 @@ bool ConsoleProcess::start()
              << msgPromptToClose();
 
     const QString cmdLine = createWinCommandline(
-            QCoreApplication::applicationDirPath() + QLatin1String("/qtcreator_process_stub.exe"), stubArgs);
+            QCoreApplication::applicationDirPath() + QLatin1String("/qthldplugin_process_stub.exe"), stubArgs);
 
     bool success = CreateProcessW(0, (WCHAR*)cmdLine.utf16(),
                                   0, 0, FALSE, CREATE_NEW_CONSOLE,
@@ -511,7 +511,7 @@ bool ConsoleProcess::start()
             return false;
         }
         if (d->m_mode == Debug) {
-            // FIXME: QTCREATORBUG-2809
+            // FIXME: QTHLDPLUGINBUG-2809
             emitError(QProcess::FailedToStart, tr("Debugging complex shell commands in a terminal"
                                  " is currently not supported."));
             return false;
@@ -568,7 +568,7 @@ bool ConsoleProcess::start()
     }
 
     const QString stubPath = QCoreApplication::applicationDirPath()
-            + QLatin1String("/" QTC_REL_TOOLS_PATH "/qtcreator_process_stub");
+            + QLatin1String("/" QTC_REL_TOOLS_PATH "/qthldplugin_process_stub");
     QStringList allArgs = terminalArgs.toUnixArgs()
                           << stubPath
                           << modeOption(d->m_mode)
@@ -662,7 +662,7 @@ bool ConsoleProcess::isRunning() const
 QString ConsoleProcess::stubServerListen()
 {
 #ifdef Q_OS_WIN
-    if (d->m_stubServer.listen(QString::fromLatin1("creator-%1-%2")
+    if (d->m_stubServer.listen(QString::fromLatin1("hldplugin-%1-%2")
                             .arg(QCoreApplication::applicationPid())
                             .arg(rand())))
         return QString();

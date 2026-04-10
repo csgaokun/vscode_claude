@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -146,7 +146,7 @@ Core::GeneratedFiles GenericProjectWizard::generateFiles(const QWizard *w,
     const QString projectPath = wizard->path();
     const QDir dir(projectPath);
     const QString projectName = wizard->projectName();
-    const QString creatorFileName = QFileInfo(dir, projectName + QLatin1String(".creator")).absoluteFilePath();
+    const QString hldpluginFileName = QFileInfo(dir, projectName + QLatin1String(".hldplugin")).absoluteFilePath();
     const QString filesFileName = QFileInfo(dir, projectName + QLatin1String(".files")).absoluteFilePath();
     const QString includesFileName = QFileInfo(dir, projectName + QLatin1String(".includes")).absoluteFilePath();
     const QString configFileName = QFileInfo(dir, projectName + QLatin1String(".config")).absoluteFilePath();
@@ -172,9 +172,9 @@ Core::GeneratedFiles GenericProjectWizard::generateFiles(const QWizard *w,
     }
     includePaths.append(QString()); // ensure newline at EOF
 
-    Core::GeneratedFile generatedCreatorFile(creatorFileName);
-    generatedCreatorFile.setContents(QLatin1String("[General]\n"));
-    generatedCreatorFile.setAttributes(Core::GeneratedFile::OpenProjectAttribute);
+    Core::GeneratedFile generatedHldpluginFile(hldpluginFileName);
+    generatedHldpluginFile.setContents(QLatin1String("[General]\n"));
+    generatedHldpluginFile.setAttributes(Core::GeneratedFile::OpenProjectAttribute);
 
     QStringList sources = Utils::transform(wizard->selectedFiles(), &Utils::FilePath::toString);
     for (int i = 0; i < sources.length(); ++i)
@@ -202,7 +202,7 @@ Core::GeneratedFiles GenericProjectWizard::generateFiles(const QWizard *w,
     files.append(generatedFilesFile);
     files.append(generatedIncludesFile);
     files.append(generatedConfigFile);
-    files.append(generatedCreatorFile);
+    files.append(generatedHldpluginFile);
     files.append(generatedCxxFlagsFile);
     files.append(generatedCFlagsFile);
 

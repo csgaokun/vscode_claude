@@ -1,2 +1,2 @@
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 include(utils-lib.pri)

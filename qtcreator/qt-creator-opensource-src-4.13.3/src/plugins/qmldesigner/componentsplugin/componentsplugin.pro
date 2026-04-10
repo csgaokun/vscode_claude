@@ -1,3 +1,3 @@
-include(../../../../qtcreator.pri)
+include(../../../../qthldplugin.pri)
 include(componentsplugin.pri)
 include(../plugindestdir.pri)

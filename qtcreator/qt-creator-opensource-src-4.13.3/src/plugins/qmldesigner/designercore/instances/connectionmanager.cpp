@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -27,7 +27,7 @@
 #include "endpuppetcommand.h"
 #include "nodeinstanceserverproxy.h"
 #include "nodeinstanceview.h"
-#include "puppetcreator.h"
+#include "puppethldplugin.h"
 
 #ifndef QMLDESIGNER_TEST
 #include <qmldesignerplugin.h>
@@ -58,13 +58,13 @@ void ConnectionManager::setUp(NodeInstanceServerProxy *nodeInstanceServerProxy,
     m_localServer->setMaxPendingConnections(3);
 
     NodeInstanceView *nodeInstanceView = nodeInstanceServerProxy->nodeInstanceView();
-    PuppetCreator puppetCreator(target, nodeInstanceView->model());
-    puppetCreator.setQrcMappingString(qrcMappingString);
+    PuppetHldplugin puppetHldplugin(target, nodeInstanceView->model());
+    puppetHldplugin.setQrcMappingString(qrcMappingString);
 
-    puppetCreator.createQml2PuppetExecutableIfMissing();
+    puppetHldplugin.createQml2PuppetExecutableIfMissing();
 
     for (Connection &connection : m_connections) {
-        connection.qmlPuppetProcess = puppetCreator.createPuppetProcess(
+        connection.qmlPuppetProcess = puppetHldplugin.createPuppetProcess(
             connection.mode,
             socketToken,
             nodeInstanceView,

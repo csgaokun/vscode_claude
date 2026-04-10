@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 source("Tree.py")
 
 def main():
@@ -39,14 +39,14 @@ def main():
         test.fatal("Could not prepare test files - leaving test")
         return
     qmlProjFile = os.path.join(qmlProjDir, projName)
-    # start Creator by passing a .qmlproject file
+    # start Hldplugin by passing a .qmlproject file
     startQC(['"%s"' % qmlProjFile])
     if not startedWithoutPluginError():
         return
-    waitFor('object.exists(":Qt Creator_Utils::NavigationTreeView")', 10000)
-    fancyConfButton = findObject(":*Qt Creator_Core::Internal::FancyToolButton")
-    fancyRunButton = findObject(":*Qt Creator.Run_Core::Internal::FancyToolButton")
-    fancyDebugButton = findObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton")
+    waitFor('object.exists(":Qt Hldplugin_Utils::NavigationTreeView")', 10000)
+    fancyConfButton = findObject(":*Qt Hldplugin_Core::Internal::FancyToolButton")
+    fancyRunButton = findObject(":*Qt Hldplugin.Run_Core::Internal::FancyToolButton")
+    fancyDebugButton = findObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton")
     exe, target = getExecutableAndTargetFromToolTip(str(waitForObject(fancyConfButton).toolTip))
     if not (test.verify(fancyRunButton.enabled and fancyDebugButton.enabled,
                         "Verifying Run and Debug are enabled (Qt5 is available).")
@@ -57,7 +57,7 @@ def main():
         return
     switchViewTo(ViewConstants.PROJECTS)
     switchToBuildOrRunSettingsFor(Targets.getDefaultKit(), ProjectSettings.RUN)
-    ensureChecked("{container=':Qt Creator.scrollArea_QScrollArea' text='Enable QML' "
+    ensureChecked("{container=':Qt Hldplugin.scrollArea_QScrollArea' text='Enable QML' "
                   "type='QCheckBox' unnamed='1' visible='1'}")
     switchViewTo(ViewConstants.EDIT)
     clickButton(fancyDebugButton)
@@ -136,7 +136,7 @@ def fetchItems(index, valIndex, treeView):
     return tree
 
 def checkForEmptyRows(items, isRootCheck=True):
-    # check for QTCREATORBUG-9069
+    # check for QTHLDPLUGINBUG-9069
     noEmptyRowsFound = True
     if items.getName().strip() == "":
         noEmptyRowsFound = False

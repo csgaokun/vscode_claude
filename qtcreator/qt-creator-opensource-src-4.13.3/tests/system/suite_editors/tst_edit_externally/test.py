@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 
 def modifyExternally(filePath):
@@ -32,7 +32,7 @@ def modifyExternally(filePath):
     fileToModify.close()
 
 def switchOpenDocsTo(filename):
-    selectFromCombo(":Qt Creator_Core::Internal::NavComboBox", "Open Documents")
+    selectFromCombo(":Qt Hldplugin_Core::Internal::NavComboBox", "Open Documents")
     docs = waitForObject(":OpenDocuments_Widget")
     mouseClick(waitForObjectItem(docs, filename.replace(".", "\\.").replace("_", "\\_")))
     return getEditorForFileSuffix(filename)

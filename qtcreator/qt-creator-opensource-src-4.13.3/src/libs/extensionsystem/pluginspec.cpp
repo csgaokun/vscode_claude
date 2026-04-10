@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,7 +49,7 @@
 /*!
     \class ExtensionSystem::PluginDependency
     \inheaderfile extensionsystem/pluginspec.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The PluginDependency class contains the name and required compatible
     version number of a plugin's dependency.
@@ -95,7 +95,7 @@
 /*!
     \class ExtensionSystem::PluginSpec
     \inheaderfile extensionsystem/pluginspec.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The PluginSpec class contains the information of the plugin's embedded meta data
     and information about the plugin's current state.
@@ -140,7 +140,7 @@
 /*!
     \class ExtensionSystem::PluginArgumentDescription
     \inheaderfile extensionsystem/pluginspec.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The PluginArgumentDescriptions class holds a list of descriptions of
     command line arguments that a plugin processes.
@@ -550,7 +550,7 @@ void PluginSpec::setEnabledBySettings(bool value)
 PluginSpec *PluginSpec::read(const QString &filePath)
 {
     auto spec = new PluginSpec;
-    if (!spec->d->read(filePath)) { // not a Qt Creator plugin
+    if (!spec->d->read(filePath)) { // not a Qt Hldplugin plugin
         delete spec;
         return nullptr;
     }
@@ -598,7 +598,7 @@ PluginSpecPrivate::PluginSpecPrivate(PluginSpec *spec)
 
 /*!
     \internal
-    Returns false if the file does not represent a Qt Creator plugin.
+    Returns false if the file does not represent a Qt Hldplugin plugin.
 */
 bool PluginSpecPrivate::read(const QString &fileName)
 {

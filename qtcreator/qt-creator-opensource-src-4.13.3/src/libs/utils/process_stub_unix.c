@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -83,7 +83,7 @@ static void sendMsg(const char *msg, int num)
 
     pidStrLen = sprintf(pidStr, msg, num);
     if (!isDetached && (ioRet = write(qtcFd, pidStr, pidStrLen)) != pidStrLen) {
-        fprintf(stderr, "Cannot write to creator comm socket: %s\n",
+        fprintf(stderr, "Cannot write to hldplugin comm socket: %s\n",
                         (ioRet < 0) ? strerror(errno) : "short write");
         isDetached = 2;
     }
@@ -137,7 +137,7 @@ static void sigchldHandler(int sig)
 #endif
             sendMsg("pid %d\n", chldPid);
             if (isDetached == 2 && isDebug) {
-                /* qtcreator was not informed and died while debugging, killing the child */
+                /* qthldplugin was not informed and died while debugging, killing the child */
                 kill(chldPid, SIGKILL);
             }
         } else if (WIFEXITED(chldStatus)) {
@@ -184,21 +184,21 @@ int main(int argc, char *argv[])
     memset(&act, 0, sizeof(act));
 
     if (argc < ArgEnv) {
-        fprintf(stderr, "This is an internal helper of Qt Creator. Do not run it manually.\n");
+        fprintf(stderr, "This is an internal helper of Qt Hldplugin. Do not run it manually.\n");
         return 1;
     }
     sleepMsg = argv[ArgMsg];
 
-    /* Connect to the master, i.e. Creator. */
+    /* Connect to the master, i.e. Hldplugin. */
     if ((qtcFd = socket(PF_UNIX, SOCK_STREAM, 0)) < 0) {
-        perror("Cannot create creator comm socket");
+        perror("Cannot create hldplugin comm socket");
         doExit(3);
     }
     memset(&sau, 0, sizeof(sau));
     sau.sun_family = AF_UNIX;
     strncpy(sau.sun_path, argv[ArgSocket], sizeof(sau.sun_path) - 1);
     if (connect(qtcFd, (struct sockaddr *)&sau, sizeof(sau))) {
-        fprintf(stderr, "Cannot connect creator comm socket %s: %s\n", sau.sun_path, strerror(errno));
+        fprintf(stderr, "Cannot connect hldplugin comm socket %s: %s\n", sau.sun_path, strerror(errno));
         doExit(1);
     }
 
@@ -217,7 +217,7 @@ int main(int argc, char *argv[])
         long size;
         int count;
         if (!(envFd = fopen(argv[ArgEnv], "r"))) {
-            fprintf(stderr, "Cannot read creator env file %s: %s\n",
+            fprintf(stderr, "Cannot read hldplugin env file %s: %s\n",
                     argv[ArgEnv], strerror(errno));
             doExit(1);
         }
@@ -248,7 +248,7 @@ int main(int argc, char *argv[])
         env[count] = 0;
     }
 
-    /* send our pid after we read the environment file (creator will get rid of it) */
+    /* send our pid after we read the environment file (hldplugin will get rid of it) */
     sendMsg("spid %ld\n", (long)getpid());
 
     /*
@@ -330,9 +330,9 @@ int main(int argc, char *argv[])
                     if (!isDetached) {
                         isDetached = 2;
                         if (nbytes == 0)
-                            fprintf(stderr, "Lost connection to QtCreator, detaching from it.\n");
+                            fprintf(stderr, "Lost connection to QtHldplugin, detaching from it.\n");
                         else
-                            perror("Lost connection to QtCreator, detaching from it");
+                            perror("Lost connection to QtHldplugin, detaching from it");
                     }
                     break;
                 } else {
@@ -353,7 +353,7 @@ int main(int argc, char *argv[])
                             exit(0);
                         default:
                             if (!hadInvalidCommand) {
-                                fprintf(stderr, "Ignoring invalid commands from QtCreator.\n");
+                                fprintf(stderr, "Ignoring invalid commands from QtHldplugin.\n");
                                 hadInvalidCommand = 1;
                             }
                         }

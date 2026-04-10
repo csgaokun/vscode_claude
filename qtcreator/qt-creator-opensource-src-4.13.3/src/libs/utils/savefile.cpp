@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -168,7 +168,7 @@ bool SaveFile::commit()
     // Back up current file.
     // If it's opened by another application, the lock follows the move.
     if (QFile::exists(finalFileName)) {
-        // Kill old backup. Might be useful if creator crashed before removing backup.
+        // Kill old backup. Might be useful if hldplugin crashed before removing backup.
         QFile::remove(backupName);
         QFile finalFile(finalFileName);
         if (!finalFile.rename(backupName)) {

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -54,11 +54,11 @@ struct AnalyzeUnit {
 };
 using AnalyzeUnits = QList<AnalyzeUnit>;
 
-using RunnerCreator = std::function<ClangToolRunner*()>;
+using RunnerHldplugin = std::function<ClangToolRunner*()>;
 
 struct QueueItem {
     AnalyzeUnit unit;
-    RunnerCreator runnerCreator;
+    RunnerHldplugin runnerHldplugin;
 };
 using QueueItems = QList<QueueItem>;
 
@@ -90,7 +90,7 @@ private:
     void start() final;
     void stop() final;
 
-    QList<RunnerCreator> runnerCreators();
+    QList<RunnerHldplugin> runnerHldplugins();
     template <class T> ClangToolRunner *createRunner();
 
     AnalyzeUnits unitsToAnalyze(const Utils::FilePath &clangResourceDir,

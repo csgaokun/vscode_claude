@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -133,9 +133,9 @@ void CrumblePathButton::paintEvent(QPaintEvent*)
         p.drawPixmap(width() - overlapSize, segmentRect.top(), middleSegmentPixmap);
 
     if (option.state & QStyle::State_Enabled)
-        option.palette.setColor(QPalette::ButtonText, creatorTheme()->color(Theme::PanelTextColorLight));
+        option.palette.setColor(QPalette::ButtonText, hldpluginTheme()->color(Theme::PanelTextColorLight));
     else
-        option.palette.setColor(QPalette::Disabled, QPalette::ButtonText, creatorTheme()->color(Theme::IconsDisabledColor));
+        option.palette.setColor(QPalette::Disabled, QPalette::ButtonText, hldpluginTheme()->color(Theme::IconsDisabledColor));
 
     QStylePainter sp(this);
     if (option.state & QStyle::State_Sunken)

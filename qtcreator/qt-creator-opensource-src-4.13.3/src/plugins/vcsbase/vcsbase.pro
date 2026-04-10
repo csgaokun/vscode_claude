@@ -1,5 +1,5 @@
 DEFINES += VCSBASE_LIBRARY
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 HEADERS += vcsbase_global.h \
     vcsbaseconstants.h \
     vcsoutputformatter.h \

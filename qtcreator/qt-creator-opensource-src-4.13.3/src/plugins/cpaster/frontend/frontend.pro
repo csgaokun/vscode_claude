@@ -6,7 +6,7 @@ QTC_LIB_DEPENDS += \
 QTC_PLUGIN_DEPENDS += \
     coreplugin
 
-include(../../../qtcreatortool.pri)
+include(../../../qthldplugintool.pri)
 
 QT += network
 

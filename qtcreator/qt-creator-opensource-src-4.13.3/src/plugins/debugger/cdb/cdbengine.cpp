@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -95,7 +95,7 @@ constexpr bool debugBreakpoints = false;
     \class Debugger::Internal::CdbEngine
 
     Cdb engine version 2: Run the CDB process on pipes and parse its output.
-    The engine relies on a CDB extension Qt Creator provides as an extension
+    The engine relies on a CDB extension Qt Hldplugin provides as an extension
     library (32/64bit), which is loaded into cdb.exe. It serves to:
 
     \list
@@ -178,11 +178,11 @@ void addCdbOptionPages(QList<Core::IOptionsPage *> *opts)
     }
 }
 
-#define QT_CREATOR_CDB_EXT "qtcreatorcdbext"
+#define QT_HLDPLUGIN_CDB_EXT "qthldplugincdbext"
 
 CdbEngine::CdbEngine() :
     m_tokenPrefix("<token>"),
-    m_extensionCommandPrefix("!" QT_CREATOR_CDB_EXT ".")
+    m_extensionCommandPrefix("!" QT_HLDPLUGIN_CDB_EXT ".")
 {
     setObjectName("CdbEngine");
     setDebuggerName("CDB");
@@ -292,8 +292,8 @@ QString CdbEngine::extensionLibraryName(bool is64Bit)
     // Determine extension lib name and path to use
     QString rc;
     QTextStream(&rc) << QFileInfo(QCoreApplication::applicationDirPath()).path()
-                     << "/lib/" << (is64Bit ? QT_CREATOR_CDB_EXT "64" : QT_CREATOR_CDB_EXT "32")
-                     << '/' << QT_CREATOR_CDB_EXT << ".dll";
+                     << "/lib/" << (is64Bit ? QT_HLDPLUGIN_CDB_EXT "64" : QT_HLDPLUGIN_CDB_EXT "32")
+                     << '/' << QT_HLDPLUGIN_CDB_EXT << ".dll";
     return rc;
 }
 
@@ -328,7 +328,7 @@ void CdbEngine::setupEngine()
     // Console: Launch the stub with the suspended application and attach to it
     // CDB in theory has a command line option '-2' that launches a
     // console, too, but that immediately closes when the debuggee quits.
-    // Use the Creator stub instead.
+    // Use the Hldplugin stub instead.
     DebuggerRunParameters sp = runParameters();
     if (terminal()) {
         m_effectiveStartMode = AttachExternal;
@@ -360,7 +360,7 @@ void CdbEngine::setupEngine()
                            "If you have updated %2 via Maintenance Tool, you may "
                            "need to rerun the Tool and select \"Add or remove components\" "
                            "and then select the "
-                           "Qt > Tools > Qt Creator CDB Debugger Support component.\n"
+                           "Qt > Tools > Qt Hldplugin CDB Debugger Support component.\n"
                            "If you build %2 from sources and want to use a CDB executable "
                            "with another bitness than your %2 build, "
                            "you will need to build a separate CDB extension with the "
@@ -2251,12 +2251,12 @@ void CdbEngine::parseOutputLine(QString line)
     while (isCdbPrompt(line))
         line.remove(0, CdbPromptLength);
     // An extension notification (potentially consisting of several chunks)
-    static const QString creatorExtPrefix = "<qtcreatorcdbext>|";
-    if (line.startsWith(creatorExtPrefix)) {
-        // "<qtcreatorcdbext>|type_char|token|remainingChunks|serviceName|message"
-        const char type = char(line.at(creatorExtPrefix.size()).unicode());
+    static const QString hldpluginExtPrefix = "<qthldplugincdbext>|";
+    if (line.startsWith(hldpluginExtPrefix)) {
+        // "<qthldplugincdbext>|type_char|token|remainingChunks|serviceName|message"
+        const char type = char(line.at(hldpluginExtPrefix.size()).unicode());
         // integer token
-        const int tokenPos = creatorExtPrefix.size() + 2;
+        const int tokenPos = hldpluginExtPrefix.size() + 2;
         const int tokenEndPos = line.indexOf('|', tokenPos);
         QTC_ASSERT(tokenEndPos != -1, return);
         const int token = line.midRef(tokenPos, tokenEndPos - tokenPos).toInt();

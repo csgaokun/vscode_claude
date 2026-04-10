@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -299,7 +299,7 @@ ProjectInfo ProjectOpenerAndCloser::open(const QString &projectFile, bool config
 }
 
 TemporaryDir::TemporaryDir()
-    : m_temporaryDir("qtcreator-tests-XXXXXX")
+    : m_temporaryDir("qthldplugin-tests-XXXXXX")
     , m_isValid(m_temporaryDir.isValid())
 {
 }

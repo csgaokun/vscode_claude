@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,10 +23,10 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
-    pathReadme = srcPath + "/creator/README.md"
+    pathReadme = srcPath + "/hldplugin/README.md"
     if not neededFilePresent(pathReadme):
         return
 
@@ -39,7 +39,7 @@ def main():
     invokeMenuItem("Tools", "Git", "Actions on Commits...")
     pathEdit = waitForObject(":Select a Git Commit.workingDirectoryEdit_QLineEdit")
     revEdit = waitForObject(":Select a Git Commit.changeNumberEdit_Utils::CompletingLineEdit")
-    test.compare(str(pathEdit.displayText), os.path.join(srcPath, "creator"))
+    test.compare(str(pathEdit.displayText), os.path.join(srcPath, "hldplugin"))
     test.compare(str(revEdit.displayText), "HEAD")
     replaceEditorContent(revEdit, "05c35356abc31549c5db6eba31fb608c0365c2a0") # Initial import
     detailsEdit = waitForObject(":Select a Git Commit.detailsText_QPlainTextEdit")
@@ -57,7 +57,7 @@ def main():
     test.verify(" files changed, 229938 insertions(+)" in commitDetails,
                 "Summary in details view?")
     clickButton(waitForObject(":Select a Git Commit.Show_QPushButton"))
-    changedEdit = waitForObject(":Qt Creator_DiffEditor::SideDiffEditorWidget")
+    changedEdit = waitForObject(":Qt Hldplugin_DiffEditor::SideDiffEditorWidget")
     waitFor("len(str(changedEdit.plainText)) > 0 and "
             "str(changedEdit.plainText) != 'Waiting for data...'", 40000)
     diffPlainText = str(changedEdit.plainText)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ QT_END_NAMESPACE
 namespace ClangPchManager {
 
 template<typename T>
-class QtCreatorProjectUpdater;
+class QtHldpluginProjectUpdater;
 class PchManagerProjectUpdater;
 
 class ClangIndexingProjectSettings;
@@ -49,7 +49,7 @@ public:
     explicit ClangIndexingProjectSettingsWidget(
         ClangIndexingProjectSettings *settings,
         ProjectExplorer::Project *project,
-        QtCreatorProjectUpdater<PchManagerProjectUpdater> &projectUpdater);
+        QtHldpluginProjectUpdater<PchManagerProjectUpdater> &projectUpdater);
     ~ClangIndexingProjectSettingsWidget();
 
     void onProjectPartsUpdated(ProjectExplorer::Project *project);
@@ -58,7 +58,7 @@ public:
 private:
     Ui::ClangIndexingProjectSettingsWidget *ui;
     ProjectExplorer::Project *m_project;
-    QtCreatorProjectUpdater<PchManagerProjectUpdater> &m_projectUpdater;
+    QtHldpluginProjectUpdater<PchManagerProjectUpdater> &m_projectUpdater;
 };
 
 } // namespace ClangPchManager

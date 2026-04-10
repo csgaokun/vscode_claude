@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -91,7 +91,7 @@ FormEditorScene *FormEditorItem::scene() const {
 
 FormEditorItem::FormEditorItem(const QmlItemNode &qmlItemNode, FormEditorScene* scene)
     : QGraphicsItem(scene->formLayerItem()),
-    m_snappingLineCreator(this),
+    m_snappingLineHldplugin(this),
     m_qmlItemNode(qmlItemNode),
     m_borderWidth(1.0),
     m_highlightBoundingRect(false),
@@ -319,7 +319,7 @@ void FormEditorItem::paintBoundingRect(QPainter *painter) const
     pen.setJoinStyle(Qt::MiterJoin);
 
     const QColor frameColor(0xaa, 0xaa, 0xaa);
-    static const QColor selectionColor = Utils::creatorTheme()->color(
+    static const QColor selectionColor = Utils::hldpluginTheme()->color(
         Utils::Theme::QmlDesigner_FormEditorSelectionColor);
 
     if (scene()->showBoundingRects()) {
@@ -483,59 +483,59 @@ AbstractFormEditorTool* FormEditorItem::tool() const
 
 SnapLineMap FormEditorItem::topSnappingLines() const
 {
-    return m_snappingLineCreator.topLines();
+    return m_snappingLineHldplugin.topLines();
 }
 
 SnapLineMap FormEditorItem::bottomSnappingLines() const
 {
-    return m_snappingLineCreator.bottomLines();
+    return m_snappingLineHldplugin.bottomLines();
 }
 
 SnapLineMap FormEditorItem::leftSnappingLines() const
 {
-    return m_snappingLineCreator.leftLines();
+    return m_snappingLineHldplugin.leftLines();
 }
 
 SnapLineMap FormEditorItem::rightSnappingLines() const
 {
-    return m_snappingLineCreator.rightLines();
+    return m_snappingLineHldplugin.rightLines();
 }
 
 SnapLineMap FormEditorItem::horizontalCenterSnappingLines() const
 {
-    return m_snappingLineCreator.horizontalCenterLines();
+    return m_snappingLineHldplugin.horizontalCenterLines();
 }
 
 SnapLineMap FormEditorItem::verticalCenterSnappingLines() const
 {
-    return m_snappingLineCreator.verticalCenterLines();
+    return m_snappingLineHldplugin.verticalCenterLines();
 }
 
 SnapLineMap FormEditorItem::topSnappingOffsets() const
 {
-    return m_snappingLineCreator.topOffsets();
+    return m_snappingLineHldplugin.topOffsets();
 }
 
 SnapLineMap FormEditorItem::bottomSnappingOffsets() const
 {
-    return m_snappingLineCreator.bottomOffsets();
+    return m_snappingLineHldplugin.bottomOffsets();
 }
 
 SnapLineMap FormEditorItem::leftSnappingOffsets() const
 {
-    return m_snappingLineCreator.leftOffsets();
+    return m_snappingLineHldplugin.leftOffsets();
 }
 
 SnapLineMap FormEditorItem::rightSnappingOffsets() const
 {
-    return m_snappingLineCreator.rightOffsets();
+    return m_snappingLineHldplugin.rightOffsets();
 }
 
 
 void FormEditorItem::updateSnappingLines(const QList<FormEditorItem*> &exceptionList,
                                          FormEditorItem *transformationSpaceItem)
 {
-    m_snappingLineCreator.update(exceptionList, transformationSpaceItem, this);
+    m_snappingLineHldplugin.update(exceptionList, transformationSpaceItem, this);
 }
 
 QList<FormEditorItem*> FormEditorItem::childFormEditorItems() const

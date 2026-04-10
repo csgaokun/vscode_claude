@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 source("../../shared/suites_qtta.py")
 
 def handlePackagingMessageBoxes():
@@ -43,7 +43,7 @@ def handlePackagingMessageBoxes():
 def openExample(examplesLineEdit, input, exampleRegex, exampleName):
     replaceEditorContent(examplesLineEdit, input)
     tableView = waitForObject("{type='QTableView' unnamed='1' visible='1' "
-                              "window=':Qt Creator_Core::Internal::MainWindow'}")
+                              "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     waitFor('findExampleOrTutorial(tableView, exampleRegex) is not None', 3000)
     example = findExampleOrTutorial(tableView, exampleRegex, True)
     if test.verify(example is not None, "Verifying: Example (%s) is shown." % exampleName):
@@ -54,11 +54,11 @@ def openExample(examplesLineEdit, input, exampleRegex, exampleName):
                     "Verifying: The example application is opened inside Help.")
         sendEvent("QCloseEvent", helpWidget)
         # assume the correct kit is selected, hit Configure Project
-        clickButton(waitForObject(":Qt Creator.Configure Project_QPushButton"))
+        clickButton(waitForObject(":Qt Hldplugin.Configure Project_QPushButton"))
     return example
 
 def main():
-    # open Qt Creator
+    # open Qt Hldplugin
     startQC()
     if not startedWithoutPluginError():
         return
@@ -69,13 +69,13 @@ def main():
     setFixedHelpViewer(HelpViewer.HELPMODE)
     wsButtonFrame, wsButtonLabel = getWelcomeScreenSideBarButton('Get Started Now')
     if not test.verify(all((wsButtonFrame, wsButtonLabel)),
-                       "Verifying: Qt Creator displays Welcome Page with Getting Started."):
+                       "Verifying: Qt Hldplugin displays Welcome Page with Getting Started."):
         test.fatal("Something's wrong - leaving test.")
         invokeMenuItem("File", "Exit")
         return
     # select "Examples" topic
     switchToSubMode('Examples')
-    expect = (("QTableView", "unnamed='1' visible='1' window=':Qt Creator_Core::Internal::MainWindow'",
+    expect = (("QTableView", "unnamed='1' visible='1' window=':Qt Hldplugin_Core::Internal::MainWindow'",
                "examples list"),
               ("QLineEdit", "placeholderText='Search in Examples...'", "examples search line edit"),
               ("QComboBox", "currentText~='.*Qt.*' visible='1'", "Qt version combo box"))
@@ -101,13 +101,13 @@ def main():
 
     example = openExample(examplesLineEdit, "2d painting", "2D Painting.*", "2D Painting Example")
     if example is not None:
-        test.verify(checkIfObjectExists("{column='0' container=':Qt Creator_Utils::NavigationTreeView'"
+        test.verify(checkIfObjectExists("{column='0' container=':Qt Hldplugin_Utils::NavigationTreeView'"
                                         " text='2dpainting' type='QModelIndex'}"),
                     "Verifying: The project is shown in 'Edit' mode.")
         invokeContextMenuOnProject('2dpainting', 'Close Project "2dpainting"')
-        navTree = waitForObject(":Qt Creator_Utils::NavigationTreeView")
+        navTree = waitForObject(":Qt Hldplugin_Utils::NavigationTreeView")
         waitFor("navTree.model().rowCount(navTree.rootIndex()) == 0", 2000)
-        test.verify(not checkIfObjectItemExists(":Qt Creator_Utils::NavigationTreeView", "2dpainting"),
+        test.verify(not checkIfObjectItemExists(":Qt Hldplugin_Utils::NavigationTreeView", "2dpainting"),
                     "Verifying: The first example is closed.")
     # clean up created packaging directories
     for p in proFiles:
@@ -125,18 +125,18 @@ def main():
                           "Address Book Example")
     if example is not None:
         # close second example application
-        test.verify(checkIfObjectExists("{column='0' container=':Qt Creator_Utils::NavigationTreeView'"
+        test.verify(checkIfObjectExists("{column='0' container=':Qt Hldplugin_Utils::NavigationTreeView'"
                                         " text='propertyanimation' type='QModelIndex'}", False) and
-                    checkIfObjectExists("{column='0' container=':Qt Creator_Utils::NavigationTreeView'"
+                    checkIfObjectExists("{column='0' container=':Qt Hldplugin_Utils::NavigationTreeView'"
                                         " text='addressbook' type='QModelIndex'}"),
                     "Verifying: The project is shown in 'Edit' mode while old project isn't.")
         invokeContextMenuOnProject('addressbook', 'Close Project "addressbook"')
-        navTree = waitForObject(":Qt Creator_Utils::NavigationTreeView")
+        navTree = waitForObject(":Qt Hldplugin_Utils::NavigationTreeView")
         waitFor("navTree.model().rowCount(navTree.rootIndex()) == 0", 2000)
-        test.verify(not checkIfObjectItemExists(":Qt Creator_Utils::NavigationTreeView", "addressbook"),
+        test.verify(not checkIfObjectItemExists(":Qt Hldplugin_Utils::NavigationTreeView", "addressbook"),
                     "Verifying: The second example is closed.")
     # clean up created packaging directories
     for p in proFiles:
         removePackagingDirectory(os.path.dirname(p))
-    # exit Qt Creator
+    # exit Qt Hldplugin
     invokeMenuItem("File", "Exit")

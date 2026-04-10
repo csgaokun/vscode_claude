@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -110,7 +110,7 @@ class tst_FlameGraphView : public QObject
 {
     Q_OBJECT
 public:
-    tst_FlameGraphView() { Utils::setCreatorTheme(&theme); }
+    tst_FlameGraphView() { Utils::setHldpluginTheme(&theme); }
 
 private slots:
     void initTestCase();

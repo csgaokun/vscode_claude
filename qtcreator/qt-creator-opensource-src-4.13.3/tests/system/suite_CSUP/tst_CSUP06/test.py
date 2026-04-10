@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def moveDownToNextNonEmptyLine(editor):
     currentLine = "" # there's no do-while in python - so use empty line which fails
@@ -104,7 +104,7 @@ def checkSymbolCompletion(editor, isClangCodeModel):
                        "using namespace st":"using namespace std", "afun":"afunc()"}
     if isClangCodeModel:
         missing.remove("internal.o")
-        expectedSuggestion["in"] = ["internal", "int"]  #     QTCREATORBUG-22728
+        expectedSuggestion["in"] = ["internal", "int"]  #     QTHLDPLUGINBUG-22728
         expectedSuggestion["internal.o"] = ["one", "operator="]
         if platform.system() in ('Microsoft', 'Windows'):
             expectedSuggestion["using namespace st"] = ["std", "stdext"]
@@ -139,7 +139,7 @@ def checkSymbolCompletion(editor, isClangCodeModel):
             exp = (symbol[:max(symbol.rfind(":"), symbol.rfind(".")) + 1]
                    + expectedSug.get(symbol, found)[0])
         if isClangCodeModel and changedLine != exp and JIRA.isBugStillOpen(15483):
-            test.xcompare(changedLine, exp, "Verify completion matches (QTCREATORBUG-15483).")
+            test.xcompare(changedLine, exp, "Verify completion matches (QTHLDPLUGINBUG-15483).")
             test.verify(changedLine.startswith(exp.replace("(", "").replace(")", "")),
                         "Verify completion starts with expected string.")
         else:
@@ -149,14 +149,14 @@ def checkSymbolCompletion(editor, isClangCodeModel):
                               testSymb, missing, expectedSuggestion, expectedResults)
 
 def main():
-    examplePath = os.path.join(srcPath, "creator", "tests", "manual", "cplusplus-tools")
+    examplePath = os.path.join(srcPath, "hldplugin", "tests", "manual", "cplusplus-tools")
     if not neededFilePresent(os.path.join(examplePath, "cplusplus-tools.pro")):
         return
     templateDir = prepareTemplate(examplePath)
     examplePath = os.path.join(templateDir, "cplusplus-tools.pro")
     for useClang in [False, True]:
         with TestSection(getCodeModelString(useClang)):
-            if not startCreatorVerifyingClang(useClang):
+            if not startHldpluginVerifyingClang(useClang):
                 continue
             openQmakeProject(examplePath, [Targets.DESKTOP_5_14_1_DEFAULT])
             checkCodeModelSettings(useClang)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -288,12 +288,12 @@ void EditorView::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     QRect rect = m_container->geometry();
-    if (creatorTheme()->flag(Theme::FlatToolBars)) {
-        painter.fillRect(rect, creatorTheme()->color(Theme::EditorPlaceholderColor));
+    if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
+        painter.fillRect(rect, hldpluginTheme()->color(Theme::EditorPlaceholderColor));
     } else {
         painter.setRenderHint(QPainter::Antialiasing, true);
         painter.setPen(Qt::NoPen);
-        painter.setBrush(creatorTheme()->color(Theme::EditorPlaceholderColor));
+        painter.setBrush(hldpluginTheme()->color(Theme::EditorPlaceholderColor));
         const int r = 3;
         painter.drawRoundedRect(rect.adjusted(r , r, -r, -r), r * 2, r * 2);
     }

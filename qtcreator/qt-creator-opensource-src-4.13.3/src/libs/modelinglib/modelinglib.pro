@@ -1,5 +1,5 @@
 
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 
 !isEmpty(QT.svg.name): QT += svg
 else: DEFINES += QT_NO_SVG

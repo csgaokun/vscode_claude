@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -61,7 +61,7 @@ StLinkUtilGdbServerProvider::StLinkUtilGdbServerProvider()
     setChannel("localhost", 4242);
     setSettingsKeyBase("BareMetal.StLinkUtilGdbServerProvider");
     setTypeDisplayName(GdbServerProvider::tr("ST-LINK Utility"));
-    setConfigurationWidgetCreator([this] { return new StLinkUtilGdbServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new StLinkUtilGdbServerProviderConfigWidget(this); });
 }
 
 QString StLinkUtilGdbServerProvider::defaultInitCommands()
@@ -175,7 +175,7 @@ StLinkUtilGdbServerProviderFactory::StLinkUtilGdbServerProviderFactory()
 {
     setId(Constants::GDBSERVER_STLINK_UTIL_PROVIDER_ID);
     setDisplayName(GdbServerProvider::tr("ST-LINK Utility"));
-    setCreator([] { return new StLinkUtilGdbServerProvider; });
+    setHldplugin([] { return new StLinkUtilGdbServerProvider; });
 }
 
 // StLinkUtilGdbServerProviderConfigWidget

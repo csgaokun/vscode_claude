@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -110,7 +110,7 @@ const char CMD_ID_REPOSITORYDIFF[]     = "CVS.RepositoryDiff";
 const char CMD_ID_REPOSITORYSTATUS[]   = "CVS.RepositoryStatus";
 const char CMD_ID_REPOSITORYUPDATE[]   = "CVS.RepositoryUpdate";
 
-const char CVS_SUBMIT_MIMETYPE[] = "text/vnd.qtcreator.cvs.submit";
+const char CVS_SUBMIT_MIMETYPE[] = "text/vnd.qthldplugin.cvs.submit";
 const char CVSCOMMITEDITOR_ID[]  = "CVS Commit Editor";
 const char CVSCOMMITEDITOR_DISPLAY_NAME[]  = QT_TRANSLATE_NOOP("VCS", "CVS Commit Editor");
 
@@ -136,21 +136,21 @@ const VcsBaseEditorParameters commandLogEditorParameters {
     OtherContent,
     "CVS Command Log Editor", // id
     QT_TRANSLATE_NOOP("VCS", "CVS Command Log Editor"), // display name
-    "text/vnd.qtcreator.cvs.commandlog"
+    "text/vnd.qthldplugin.cvs.commandlog"
 };
 
 const VcsBaseEditorParameters logEditorParameters {
     LogOutput,
     "CVS File Log Editor",   // id
     QT_TRANSLATE_NOOP("VCS", "CVS File Log Editor"),   // display name
-    "text/vnd.qtcreator.cvs.log"
+    "text/vnd.qthldplugin.cvs.log"
 };
 
 const VcsBaseEditorParameters annotateEditorParameters {
     AnnotateOutput,
     "CVS Annotation Editor",  // id
     QT_TRANSLATE_NOOP("VCS", "CVS Annotation Editor"),  // display name
-    "text/vnd.qtcreator.cvs.annotation"
+    "text/vnd.qthldplugin.cvs.annotation"
 };
 
 const VcsBaseEditorParameters diffEditorParameters {
@@ -197,7 +197,7 @@ class CvsClient : public VcsBaseClient
 public:
     explicit CvsClient(CvsSettings *settings) : VcsBaseClient(settings)
     {
-        setDiffConfigCreator([settings](QToolBar *toolBar) {
+        setDiffConfigHldplugin([settings](QToolBar *toolBar) {
             return new CvsDiffConfig(*settings, toolBar);
         });
     }

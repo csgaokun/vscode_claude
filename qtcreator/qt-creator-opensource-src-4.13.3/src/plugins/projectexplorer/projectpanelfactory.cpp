@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -102,12 +102,12 @@ void ProjectPanelFactory::setIcon(const QString &icon)
 
 QWidget *ProjectPanelFactory::createWidget(Project *project) const
 {
-    return m_widgetCreator(project);
+    return m_widgetHldplugin(project);
 }
 
-void ProjectPanelFactory::setCreateWidgetFunction(const WidgetCreator &createWidgetFunction)
+void ProjectPanelFactory::setCreateWidgetFunction(const WidgetHldplugin &createWidgetFunction)
 {
-    m_widgetCreator = createWidgetFunction;
+    m_widgetHldplugin = createWidgetFunction;
 }
 
 bool ProjectPanelFactory::supports(Project *project)

@@ -1,5 +1,5 @@
 QT += network
 
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 include(qmldebug-lib.pri)
 

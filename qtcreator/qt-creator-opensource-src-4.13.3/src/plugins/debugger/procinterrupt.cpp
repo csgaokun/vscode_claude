@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -111,7 +111,7 @@ bool Debugger::Internal::interruptProcess(qint64 pID, int engineType, QString *e
     N/A = This configuration is not possible
 
           | Windows 32bit   | Windows 64bit
-          | QtCreator 32bit | QtCreator 32bit                   | QtCreator 64bit
+          | QtHldplugin 32bit | QtHldplugin 32bit                   | QtHldplugin 64bit
           | Inferior 32bit  | Inferior 32bit  | Inferior 64bit  | Inferior 32bit  | Inferior 64bit |
 ----------|-----------------|-----------------|-----------------|-----------------|----------------|
 CDB 32bit | Api             | Api             | NA              | Win32           | NA             |
@@ -147,7 +147,7 @@ GDB 32bit | Api             | Api             | NA              | Win32         
             if (!QFile::exists(executable)) {
                 *errorMessage = QString::fromLatin1("%1 does not exist. If you have built %2 "
                                                     "on your own, checkout "
-                                                    "https://code.qt.io/cgit/qt-creator/binary-artifacts.git/.").
+                                                    "https://code.qt.io/cgit/qt-hldplugin/binary-artifacts.git/.").
                         arg(QDir::toNativeSeparators(executable), Core::Constants::IDE_DISPLAY_NAME);
                 break;
             }

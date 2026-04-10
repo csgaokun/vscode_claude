@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -48,7 +48,7 @@ QDebug operator<<(QDebug debug, const Core::Context &context)
 /*!
     \class Core::Context
     \inheaderfile coreplugin/icontext.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The Context class implements a list of context IDs.
@@ -172,7 +172,7 @@ QDebug operator<<(QDebug debug, const Core::Context &context)
 /*!
     \class Core::IContext
     \inheaderfile coreplugin/icontext.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The IContext class associates a widget with a context list and

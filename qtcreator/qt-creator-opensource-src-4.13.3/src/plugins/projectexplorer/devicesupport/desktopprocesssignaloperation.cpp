@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -144,7 +144,7 @@ void DesktopProcessSignalOperation::interruptProcessSilently(qint64 pid)
     N/A = This configuration is not possible
 
           | Windows 32bit   | Windows 64bit
-          | QtCreator 32bit | QtCreator 32bit                   | QtCreator 64bit
+          | QtHldplugin 32bit | QtHldplugin 32bit                   | QtHldplugin 64bit
           | Inferior 32bit  | Inferior 32bit  | Inferior 64bit  | Inferior 32bit  | Inferior 64bit
 ----------|-----------------|-----------------|-----------------|-----------------|----------------
 CDB 32bit | Api             | Api             | N/A             | Win32           | N/A
@@ -166,11 +166,11 @@ GDB 32bit | Api             | Api             | N/A             | Win32         
                                      + Utils::winErrorMessage(GetLastError()));
             break;
         }
-        bool creatorIs64Bit = Utils::is64BitWindowsBinary(QCoreApplication::applicationFilePath());
+        bool hldpluginIs64Bit = Utils::is64BitWindowsBinary(QCoreApplication::applicationFilePath());
         if (!is64BitSystem
                 || si == NoSpecialInterrupt
-                || (si == Win64Interrupt && creatorIs64Bit)
-                || (si == Win32Interrupt && !creatorIs64Bit)) {
+                || (si == Win64Interrupt && hldpluginIs64Bit)
+                || (si == Win32Interrupt && !hldpluginIs64Bit)) {
             if (!DebugBreakProcess(inferior)) {
                 appendMsgCannotInterrupt(pid, tr("DebugBreakProcess failed:")
                                           + QLatin1Char(' ') + Utils::winErrorMessage(GetLastError()));
@@ -183,7 +183,7 @@ GDB 32bit | Api             | Api             | N/A             | Win32         
             if (!QFile::exists(executable)) {
                 appendMsgCannotInterrupt(pid, tr( "%1 does not exist. If you built %2 "
                                                   "yourself, check out https://code.qt.io/cgit/"
-                                                  "qt-creator/binary-artifacts.git/.").
+                                                  "qt-hldplugin/binary-artifacts.git/.").
                                          arg(QDir::toNativeSeparators(executable),
                                              Core::Constants::IDE_DISPLAY_NAME));
             }

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -425,26 +425,26 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
             << QString();
 
     QTest::newRow("gnumakeparser.cpp errors")
-            << QString::fromLatin1("/home/code/src/creator/src/plugins/projectexplorer/gnumakeparser.cpp: In member function 'void ProjectExplorer::ProjectExplorerPlugin::testGnuMakeParserTaskMangling_data()':\n"
-                                   "/home/code/src/creator/src/plugins/projectexplorer/gnumakeparser.cpp:264: error: expected primary-expression before ':' token\n"
-                                   "/home/code/src/creator/src/plugins/projectexplorer/gnumakeparser.cpp:264: error: expected ';' before ':' token")
+            << QString::fromLatin1("/home/code/src/hldplugin/src/plugins/projectexplorer/gnumakeparser.cpp: In member function 'void ProjectExplorer::ProjectExplorerPlugin::testGnuMakeParserTaskMangling_data()':\n"
+                                   "/home/code/src/hldplugin/src/plugins/projectexplorer/gnumakeparser.cpp:264: error: expected primary-expression before ':' token\n"
+                                   "/home/code/src/hldplugin/src/plugins/projectexplorer/gnumakeparser.cpp:264: error: expected ';' before ':' token")
             << OutputParserTester::STDERR
             << QString() << QString()
             << (Tasks()
                 << CompileTask(Task::Unknown,
                                "In member function 'void ProjectExplorer::ProjectExplorerPlugin::testGnuMakeParserTaskMangling_data()':",
-                               FilePath::fromUserInput("/home/code/src/creator/src/plugins/projectexplorer/gnumakeparser.cpp"))
+                               FilePath::fromUserInput("/home/code/src/hldplugin/src/plugins/projectexplorer/gnumakeparser.cpp"))
                 << CompileTask(Task::Error,
                                "expected primary-expression before ':' token",
-                               FilePath::fromUserInput("/home/code/src/creator/src/plugins/projectexplorer/gnumakeparser.cpp"),
+                               FilePath::fromUserInput("/home/code/src/hldplugin/src/plugins/projectexplorer/gnumakeparser.cpp"),
                                264)
                 << CompileTask(Task::Error,
                                "expected ';' before ':' token",
-                               FilePath::fromUserInput("/home/code/src/creator/src/plugins/projectexplorer/gnumakeparser.cpp"),
+                               FilePath::fromUserInput("/home/code/src/hldplugin/src/plugins/projectexplorer/gnumakeparser.cpp"),
                                264))
             << QString();
 
-    QTest::newRow("distcc error(QTCREATORBUG-904)")
+    QTest::newRow("distcc error(QTHLDPLUGINBUG-904)")
             << QString::fromLatin1("distcc[73168] (dcc_get_hostlist) Warning: no hostlist is set; can't distribute work\n"
                                    "distcc[73168] (dcc_build_somewhere) Warning: failed to distribute, running locally instead")
             << OutputParserTester::STDERR
@@ -453,7 +453,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
             << Tasks()
             << QString();
 
-    QTest::newRow("ld warning (QTCREATORBUG-905)")
+    QTest::newRow("ld warning (QTHLDPLUGINBUG-905)")
             << QString::fromLatin1("ld: warning: Core::IEditor* QVariant::value<Core::IEditor*>() const has different visibility (hidden) in .obj/debug-shared/openeditorsview.o and (default) in .obj/debug-shared/editormanager.o")
             << OutputParserTester::STDERR
             << QString() << QString()
@@ -479,13 +479,13 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
             << QString();
 
     QTest::newRow("note")
-            << QString::fromLatin1("/home/dev/creator/share/qtcreator/debugger/dumper.cpp:1079: note: initialized from here")
+            << QString::fromLatin1("/home/dev/hldplugin/share/qthldplugin/debugger/dumper.cpp:1079: note: initialized from here")
             << OutputParserTester::STDERR
             << QString() << QString()
             << (Tasks()
                  << CompileTask(Task::Unknown,
                                 "initialized from here",
-                                FilePath::fromUserInput("/home/dev/creator/share/qtcreator/debugger/dumper.cpp"),
+                                FilePath::fromUserInput("/home/dev/hldplugin/share/qthldplugin/debugger/dumper.cpp"),
                                 1079))
             << QString();
 
@@ -552,13 +552,13 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
             << QString();
 
     QTest::newRow("In constructor")
-            << QString::fromLatin1("/dev/creator/src/plugins/find/basetextfind.h: In constructor 'Find::BaseTextFind::BaseTextFind(QTextEdit*)':")
+            << QString::fromLatin1("/dev/hldplugin/src/plugins/find/basetextfind.h: In constructor 'Find::BaseTextFind::BaseTextFind(QTextEdit*)':")
             << OutputParserTester::STDERR
             << QString() << QString()
             << (Tasks()
                  << CompileTask(Task::Unknown,
                                 "In constructor 'Find::BaseTextFind::BaseTextFind(QTextEdit*)':",
-                                FilePath::fromUserInput("/dev/creator/src/plugins/find/basetextfind.h")))
+                                FilePath::fromUserInput("/dev/hldplugin/src/plugins/find/basetextfind.h")))
             << QString();
 
     QTest::newRow("At global scope")
@@ -601,7 +601,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
                                 54))
             << QString();
 
-    QTest::newRow("QTCREATORBUG-597")
+    QTest::newRow("QTHLDPLUGINBUG-597")
             << QString::fromLatin1("debug/qplotaxis.o: In function `QPlotAxis':\n"
                                    "M:\\Development\\x64\\QtPlot/qplotaxis.cpp:26: undefined reference to `vtable for QPlotAxis'\n"
                                    "M:\\Development\\x64\\QtPlot/qplotaxis.cpp:26: undefined reference to `vtable for QPlotAxis'\n"
@@ -667,7 +667,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
                                  7094)}
             << QString();
 
-    QTest::newRow("QTCREATORBUG-2206")
+    QTest::newRow("QTHLDPLUGINBUG-2206")
             << QString::fromLatin1("../../../src/XmlUg/targetdelete.c: At top level:")
             << OutputParserTester::STDERR
             << QString() << QString()
@@ -751,7 +751,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
                                 21))
             << QString();
 
-    QTest::newRow("linker error") // QTCREATORBUG-3107
+    QTest::newRow("linker error") // QTHLDPLUGINBUG-3107
             << QString::fromLatin1("cns5k_ins_parser_tests.cpp:(.text._ZN20CNS5kINSParserEngine21DropBytesUntilStartedEP14CircularBufferIhE[CNS5kINSParserEngine::DropBytesUntilStarted(CircularBuffer<unsigned char>*)]+0x6d): undefined reference to `CNS5kINSPacket::SOH_BYTE'")
             << OutputParserTester::STDERR
             << QString() << QString()
@@ -782,7 +782,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
             << QString();
 
     QTest::newRow("gcc 4.8")
-            << QString::fromLatin1("In file included from /home/code/src/creator/src/libs/extensionsystem/pluginerrorview.cpp:31:0:\n"
+            << QString::fromLatin1("In file included from /home/code/src/hldplugin/src/libs/extensionsystem/pluginerrorview.cpp:31:0:\n"
                                    ".uic/ui_pluginerrorview.h:14:25: fatal error: QtGui/QAction: No such file or directory\n"
                                    " #include <QtGui/QAction>\n"
                                    "                         ^")
@@ -791,14 +791,14 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
             << Tasks{CompileTask(
                    Task::Error,
                    "QtGui/QAction: No such file or directory\n"
-                   "In file included from /home/code/src/creator/src/libs/extensionsystem/pluginerrorview.cpp:31:0:\n"
+                   "In file included from /home/code/src/hldplugin/src/libs/extensionsystem/pluginerrorview.cpp:31:0:\n"
                    ".uic/ui_pluginerrorview.h:14:25: fatal error: QtGui/QAction: No such file or directory\n"
                    " #include <QtGui/QAction>\n"
                    "                         ^",
                    FilePath::fromUserInput(".uic/ui_pluginerrorview.h"), 14)}
             << QString();
 
-    QTest::newRow("qtcreatorbug-9195")
+    QTest::newRow("qthldpluginbug-9195")
             << QString::fromLatin1("In file included from /usr/include/qt4/QtCore/QString:1:0,\n"
                                    "                 from main.cpp:3:\n"
                                    "/usr/include/qt4/QtCore/qstring.h: In function 'void foo()':\n"
@@ -1133,7 +1133,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
     QTest::newRow(R"("inlined from")")
             << QString("In file included from smallstringvector.h:30,\n"
                        "                 from smallstringio.h:28,\n"
-                       "                 from gtest-creator-printing.h:29,\n"
+                       "                 from gtest-hldplugin-printing.h:29,\n"
                        "                 from googletest.h:41,\n"
                        "                 from smallstring-test.cpp:26:\n"
                        "In member function ‘void Utils::BasicSmallString<Size>::append(Utils::SmallStringView) [with unsigned int Size = 31]’,\n"
@@ -1148,7 +1148,7 @@ void ProjectExplorerPlugin::testGccOutputParsers_data()
                                  "writing 1 byte into a region of size 0 [-Wstringop-overflow=]\n"
                                  "In file included from smallstringvector.h:30,\n"
                                                         "                 from smallstringio.h:28,\n"
-                                                        "                 from gtest-creator-printing.h:29,\n"
+                                                        "                 from gtest-hldplugin-printing.h:29,\n"
                                                         "                 from googletest.h:41,\n"
                                                         "                 from smallstring-test.cpp:26:\n"
                                                         "In member function ‘void Utils::BasicSmallString<Size>::append(Utils::SmallStringView) [with unsigned int Size = 31]’,\n"

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -183,6 +183,6 @@ QmlJsEditingSettingsPage::QmlJsEditingSettingsPage()
     setId("C.QmlJsEditing");
     setDisplayName(QmlJsEditingSettingsPageWidget::tr("QML/JS Editing"));
     setCategory(Constants::SETTINGS_CATEGORY_QML);
-    setWidgetCreator([] { return new QmlJsEditingSettingsPageWidget; });
+    setWidgetHldplugin([] { return new QmlJsEditingSettingsPageWidget; });
 }
 

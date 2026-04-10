@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,10 +23,10 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 import __builtin__
 
-cppEditorStr = ":Qt Creator_CppEditor::Internal::CPPEditorWidget"
+cppEditorStr = ":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"
 originalSources = os.path.abspath(os.path.join(os.getcwd(), "..", "shared", "simplePlainCPP"))
 
 def init():
@@ -72,7 +72,7 @@ def __modifyFile__(fileName, modificationFunc):
 
 # add some stuff to pro file
 def __modifyProFile__():
-    proEditorStr = ":Qt Creator_TextEditor::TextEditorWidget"
+    proEditorStr = ":Qt Hldplugin_TextEditor::TextEditorWidget"
     addConfig = ["", "CONFIG += thread", "",
                  "lessThan(QT_VER_MAJ, 4) | lessThan(QT_VER_MIN, 7) {",
                  "    error(Qt 4.7 or newer is required but version $$[QT_VERSION] was detected.)",
@@ -111,7 +111,7 @@ def revertChanges(files):
         simpleName = simpleFileName(f)
         test.log("Trying to revert changes for '%s'" % simpleName)
         if openDocument(f):
-            fileMenu = findObject("{name='QtCreator.Menu.File' title='File' type='QMenu'}")
+            fileMenu = findObject("{name='QtHldplugin.Menu.File' title='File' type='QMenu'}")
             for menuItem in object.children(fileMenu):
                 if str(menuItem.text) == 'Revert "%s" to Saved' % simpleName:
                     if (test.compare(canRevert, menuItem.enabled, "Verifying whether MenuItem "

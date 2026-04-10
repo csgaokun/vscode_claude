@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(clangformat-source.pri)
 include(../../shared/clang/clang_installation.pri)
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -28,9 +28,9 @@
 #include <qglobal.h>
 
 #if defined(UTILS_LIBRARY)
-#  define QTCREATOR_UTILS_EXPORT Q_DECL_EXPORT
-#elif  defined(QTCREATOR_UTILS_STATIC_LIB) // Abuse single files for manual tests
-#  define QTCREATOR_UTILS_EXPORT
+#  define QTHLDPLUGIN_UTILS_EXPORT Q_DECL_EXPORT
+#elif  defined(QTHLDPLUGIN_UTILS_STATIC_LIB) // Abuse single files for manual tests
+#  define QTHLDPLUGIN_UTILS_EXPORT
 #else
-#  define QTCREATOR_UTILS_EXPORT Q_DECL_IMPORT
+#  define QTHLDPLUGIN_UTILS_EXPORT Q_DECL_IMPORT
 #endif

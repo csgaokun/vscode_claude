@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1450,7 +1450,7 @@ TEST_F(TokenProcessor, EnumerationTypeDef)
     ASSERT_THAT(infos[3], HasThreeTypes(HighlightingType::Type, HighlightingType::Declaration, HighlightingType::Enum));
 }
 
-// QTCREATORBUG-15473
+// QTHLDPLUGINBUG-15473
 TEST_F(TokenProcessor, DISABLED_ArgumentToUserDefinedIndexOperator)
 {
     const auto infos = translationUnit.tokenInfosInRange(sourceRange(434, 19));

@@ -6,7 +6,7 @@
 ** Copyright (C) 2016 Giuliano Schneider
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@
     \class Core::INavigationWidgetFactory
     \inheaderfile coreplugin/inavigationwidgetfactory.h
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The INavigationWidgetFactory class provides new instances of navigation widgets.
 
@@ -46,7 +46,7 @@
 /*!
     \class Core::NavigationView
     \inheaderfile coreplugin/inavigationwidgetfactory.h
-    \inmodule Qt Creator
+    \inmodule Qt Hldplugin
     \brief The NavigationView class is a C struct for wrapping a widget and a list of tool buttons.
     Wrapping the widget that is shown in the content area of the navigation widget and a list of
     tool buttons that is shown in the header above it.

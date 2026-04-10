@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -44,7 +44,7 @@ class JsonArrayValue;
 class JsonBooleanValue;
 class JsonNullValue;
 
-class QTCREATOR_UTILS_EXPORT JsonMemoryPool
+class QTHLDPLUGIN_UTILS_EXPORT JsonMemoryPool
 {
 public:
     ~JsonMemoryPool();
@@ -63,7 +63,7 @@ private:
 /*!
  * \brief The JsonValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonValue
 {
 public:
     enum Kind {
@@ -108,7 +108,7 @@ private:
 /*!
  * \brief The JsonStringValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonStringValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonStringValue : public JsonValue
 {
 public:
     JsonStringValue(const QString &value)
@@ -128,7 +128,7 @@ private:
 /*!
  * \brief The JsonDoubleValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonDoubleValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonDoubleValue : public JsonValue
 {
 public:
     JsonDoubleValue(double value)
@@ -147,7 +147,7 @@ private:
 /*!
  * \brief The JsonIntValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonIntValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonIntValue : public JsonValue
 {
 public:
     JsonIntValue(int value)
@@ -167,7 +167,7 @@ private:
 /*!
  * \brief The JsonObjectValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonObjectValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonObjectValue : public JsonValue
 {
 public:
     JsonObjectValue()
@@ -195,7 +195,7 @@ private:
 /*!
  * \brief The JsonArrayValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonArrayValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonArrayValue : public JsonValue
 {
 public:
     JsonArrayValue()
@@ -216,7 +216,7 @@ private:
 /*!
  * \brief The JsonBooleanValue class
  */
-class QTCREATOR_UTILS_EXPORT JsonBooleanValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonBooleanValue : public JsonValue
 {
 public:
     JsonBooleanValue(bool value)
@@ -232,7 +232,7 @@ private:
     bool m_value;
 };
 
-class QTCREATOR_UTILS_EXPORT JsonNullValue : public JsonValue
+class QTHLDPLUGIN_UTILS_EXPORT JsonNullValue : public JsonValue
 {
 public:
     JsonNullValue()
@@ -262,7 +262,7 @@ class JsonSchemaManager;
  * class is created the root schema is put on top of the stack.
  *
  */
-class QTCREATOR_UTILS_EXPORT JsonSchema
+class QTHLDPLUGIN_UTILS_EXPORT JsonSchema
 {
 public:
     bool isTypeConstrained() const;
@@ -387,7 +387,7 @@ private:
 /*!
  * \brief The JsonSchemaManager class
  */
-class QTCREATOR_UTILS_EXPORT JsonSchemaManager
+class QTHLDPLUGIN_UTILS_EXPORT JsonSchemaManager
 {
 public:
     JsonSchemaManager(const QStringList &searchPaths);

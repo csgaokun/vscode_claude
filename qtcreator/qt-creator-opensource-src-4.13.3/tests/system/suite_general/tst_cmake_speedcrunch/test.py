@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 SpeedCrunchPath = ""
 BuildPath = tempDir()
@@ -60,7 +60,7 @@ def main():
         invokeMenuItem("File", "Exit")
         return
     waitForProjectParsing()
-    naviTreeView = "{column='0' container=':Qt Creator_Utils::NavigationTreeView' text~='%s' type='QModelIndex'}"
+    naviTreeView = "{column='0' container=':Qt Hldplugin_Utils::NavigationTreeView' text~='%s' type='QModelIndex'}"
     treeFile = "projecttree_speedcrunch.tsv"
     compareProjectTree(naviTreeView % "speedcrunch( \[\S+\])?", treeFile)
 
@@ -76,7 +76,7 @@ def main():
 
 def init():
     global SpeedCrunchPath
-    SpeedCrunchPath = srcPath + "/creator-test-data/speedcrunch/src/CMakeLists.txt"
+    SpeedCrunchPath = srcPath + "/hldplugin-test-data/speedcrunch/src/CMakeLists.txt"
     cleanup()
 
 def cleanup():

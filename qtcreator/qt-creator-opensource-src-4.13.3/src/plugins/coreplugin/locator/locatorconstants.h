@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -30,7 +30,7 @@
 namespace Core {
 namespace Constants {
 
-const char LOCATE[] = "QtCreator.Locate";
+const char LOCATE[] = "QtHldplugin.Locate";
 const char FILTER_OPTIONS_PAGE[] = QT_TRANSLATE_NOOP("Locator", "Locator");
 const char CUSTOM_DIRECTORY_FILTER_BASEID[] = "Locator.CustomFilter";
 const char CUSTOM_URL_FILTER_BASEID[] = "Locator.CustomUrlFilter";

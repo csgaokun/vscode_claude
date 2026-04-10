@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -176,7 +176,7 @@ QString LanguageClientCompletionItem::detail() const
 
 bool LanguageClientCompletionItem::isSnippet() const
 {
-    // FIXME add lsp > creator snippet converter
+    // FIXME add lsp > hldplugin snippet converter
     // return m_item.insertTextFormat().value_or(CompletionItem::PlainText);
     return false;
 }

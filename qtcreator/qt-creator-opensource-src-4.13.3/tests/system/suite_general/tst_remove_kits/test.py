@@ -3,7 +3,7 @@
 # Copyright (C) 2017 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def verifyProjectsMode(expectedKits):
     treeView = waitForObject(":Projects.ProjectNavigationTreeView")
@@ -37,7 +37,7 @@ def verifyProjectsMode(expectedKits):
     test.verify(checkIfObjectExists(":scrollArea.Edit build configuration:_QLabel", hasKits),
                 "Verify if build settings are being displayed.")
     test.verify(checkIfObjectExists(":No valid kits found._QLabel", not hasKits),
-                "Verify if Creator reports missing kits.")
+                "Verify if Hldplugin reports missing kits.")
 
 kitNameTemplate = "Manual.%s"
 

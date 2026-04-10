@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -68,9 +68,9 @@ TestNavigationWidget::TestNavigationWidget(QWidget *parent) :
 
     QPalette pal;
     pal.setColor(QPalette::Window,
-                 Utils::creatorTheme()->color(Utils::Theme::InfoBarBackground));
+                 Utils::hldpluginTheme()->color(Utils::Theme::InfoBarBackground));
     pal.setColor(QPalette::WindowText,
-                 Utils::creatorTheme()->color(Utils::Theme::InfoBarText));
+                 Utils::hldpluginTheme()->color(Utils::Theme::InfoBarText));
     m_missingFrameworksWidget = new QFrame;
     m_missingFrameworksWidget->setPalette(pal);
     m_missingFrameworksWidget->setAutoFillBackground(true);

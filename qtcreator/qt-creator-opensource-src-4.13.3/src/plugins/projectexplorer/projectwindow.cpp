@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -352,7 +352,7 @@ private:
     bool userWantsContextMenu(const QMouseEvent *e) const
     {
         // On Windows, we get additional mouse events for the item view when right-clicking,
-        // causing unwanted kit activation (QTCREATORBUG-24156). Let's suppress these.
+        // causing unwanted kit activation (QTHLDPLUGINBUG-24156). Let's suppress these.
         return HostOsInfo::isWindowsHost() && e->button() == Qt::RightButton;
     }
 
@@ -688,7 +688,7 @@ void SelectorDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     if (TreeItem *item = model->itemForIndex(index)) {
         switch (item->level()) {
         case 2: {
-            QColor col = creatorTheme()->color(Theme::TextColorNormal);
+            QColor col = hldpluginTheme()->color(Theme::TextColorNormal);
             opt.palette.setColor(QPalette::Text, col);
             opt.font.setBold(true);
             opt.font.setPointSizeF(opt.font.pointSizeF() * 1.2);

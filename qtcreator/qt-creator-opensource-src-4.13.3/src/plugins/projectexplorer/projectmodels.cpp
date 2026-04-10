@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -107,8 +107,8 @@ FlatModel::FlatModel(QObject *parent)
     for (Project *project : SessionManager::projects())
         handleProjectAdded(project);
 
-    m_disabledTextColor = Utils::creatorTheme()->color(Utils::Theme::TextColorDisabled);
-    m_enabledTextColor = Utils::creatorTheme()->color(Utils::Theme::TextColorNormal);
+    m_disabledTextColor = Utils::hldpluginTheme()->color(Utils::Theme::TextColorDisabled);
+    m_enabledTextColor = Utils::hldpluginTheme()->color(Utils::Theme::TextColorNormal);
 }
 
 QVariant FlatModel::data(const QModelIndex &index, int role) const
@@ -458,7 +458,7 @@ QMimeData *FlatModel::mimeData(const QModelIndexList &indexes) const
 bool FlatModel::canDropMimeData(const QMimeData *data, Qt::DropAction, int, int,
                                 const QModelIndex &) const
 {
-    // For now, we support only drops of Qt Creator file nodes.
+    // For now, we support only drops of Qt Hldplugin file nodes.
     const auto * const dropData = dynamic_cast<const DropMimeData *>(data);
     if (!dropData)
         return false;
@@ -480,7 +480,7 @@ public:
         const bool offerFileIo = !defaultTargetDir.isEmpty();
         auto * const layout = new QVBoxLayout(this);
         layout->addWidget(new QLabel(tr("You just dragged some files from one project node to "
-                                        "another.\nWhat should Qt Creator do now?"), this));
+                                        "another.\nWhat should Qt Hldplugin do now?"), this));
         auto * const copyButton = new QRadioButton(this);
         m_buttonGroup->addButton(copyButton, int(DropAction::Copy));
         layout->addWidget(copyButton);

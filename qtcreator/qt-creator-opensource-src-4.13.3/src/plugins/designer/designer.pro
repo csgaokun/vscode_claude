@@ -1,6 +1,6 @@
 DEFINES += DESIGNER_LIBRARY
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(../../shared/designerintegrationv2/designerintegration.pri)
 include(cpp/cpp.pri)
 
@@ -10,7 +10,7 @@ HEADERS += formeditorplugin.h \
         formeditorfactory.h \
         formwindoweditor.h \
         formwindowfile.h \
-        qtcreatorintegration.h \
+        qthldpluginintegration.h \
         designerconstants.h \
         settingspage.h \
         editorwidget.h \
@@ -29,7 +29,7 @@ SOURCES += formeditorplugin.cpp \
         formeditorfactory.cpp \
         formwindoweditor.cpp \
         formwindowfile.cpp \
-        qtcreatorintegration.cpp \
+        qthldpluginintegration.cpp \
         settingspage.cpp \
         editorwidget.cpp \
         formeditorw.cpp \

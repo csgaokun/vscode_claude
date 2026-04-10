@@ -1,37 +1,37 @@
-Qt Creator version 3.1 contains bug fixes and new features.
+Qt Hldplugin version 3.1 contains bug fixes and new features.
 
 There is a total of about X changes by N individual contributors.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline origin/3.0..origin/3.1
 
 General
    * Added support for "~" as an alias for the user's home directory in the directory in file
-     system search (QTCREATORBUG-7753)
+     system search (QTHLDPLUGINBUG-7753)
    * Added Beautifier plugin that allows to fix coding style of files with external coding
-     style tools (Artistic Style, Clang-format, Uncrustify) (QTCREATORBUG-7489)
+     style tools (Artistic Style, Clang-format, Uncrustify) (QTHLDPLUGINBUG-7489)
 
 Editing
-   * Added File > Reload for files that are open and unmodified in Qt Creator but might be
+   * Added File > Reload for files that are open and unmodified in Qt Hldplugin but might be
      different on disk
-   * Added option to not hide the mouse cursor while typing (QTCREATORBUG-3584)
+   * Added option to not hide the mouse cursor while typing (QTHLDPLUGINBUG-3584)
    * Made visible margin configurable per project
-   * Fixed reloading contents in binary editor (QTCREATORBUG-6275)
-   * Fixed names and saving of custom locator filters (QTCREATORBUG-11051)
+   * Fixed reloading contents in binary editor (QTHLDPLUGINBUG-6275)
+   * Fixed names and saving of custom locator filters (QTHLDPLUGINBUG-11051)
 
 Managing and Building Projects
-   * Re-added option to import existing builds even after project configuration (QTCREATORBUG-7836)
-   * Fixed that compiler output in issues list was not using monospace font (QTCREATORBUG-11345)
-   * Fixed crash when removing run configuration that was about to be run (QTCREATORBUG-11594)
+   * Re-added option to import existing builds even after project configuration (QTHLDPLUGINBUG-7836)
+   * Fixed that compiler output in issues list was not using monospace font (QTHLDPLUGINBUG-11345)
+   * Fixed crash when removing run configuration that was about to be run (QTHLDPLUGINBUG-11594)
 
 QMake Projects
    * Added context menu item "Add Existing Directory" that adds all
-     files from a directory (QTCREATORBUG-9081)
-   * Added support for QMAKE_EXTRA_COMPILERS (QTCREATORBUG-11212)
+     files from a directory (QTHLDPLUGINBUG-9081)
+   * Added support for QMAKE_EXTRA_COMPILERS (QTHLDPLUGINBUG-11212)
    * Fixed issues with absolute paths in TARGET
 
 Qbs Projects
@@ -40,8 +40,8 @@ Qbs Projects
 
 Generic Projects
    * Added context menu item "Add Existing Directory" that adds all
-     files from a directory (QTCREATORBUG-9081)
-   * Made importing files follow directory symlinks (QTCREATORBUG-8897)
+     files from a directory (QTHLDPLUGINBUG-9081)
+   * Made importing files follow directory symlinks (QTHLDPLUGINBUG-8897)
 
 Debugging
    * Removed support for GDB without Python
@@ -52,50 +52,50 @@ Debugging
    * CDB
       * Added pretty printer for std::complex and C++11 std::array
    * LLDB
-      * Added support for debugging applications that run in terminal (QTCREATORBUG-9650)
-      * Added support for "Create Full Backtrace" (QTCREATORBUG-11642)
+      * Added support for debugging applications that run in terminal (QTHLDPLUGINBUG-9650)
+      * Added support for "Create Full Backtrace" (QTHLDPLUGINBUG-11642)
       * Fixed that debugging was not possible with MallocScribble environment variable set
-        (QTCREATORBUG-11371)
+        (QTHLDPLUGINBUG-11371)
       * Fixed "Jump to Line", "Run to Line" and "Jump to Address"
-      * Fixed updating breakpoint locations while debugging (QTCREATORBUG-11564)
+      * Fixed updating breakpoint locations while debugging (QTHLDPLUGINBUG-11564)
 
 QML Profiler
-   * Improved performance (QTCREATORBUG-10950)
+   * Improved performance (QTHLDPLUGINBUG-10950)
    * Improved layout of details views
    * Added JavaScript calls in Events view and Timeline view
-   * Fixed opening files from JavaScript profiling output (QTCREATORBUG-11094)
-   * Fixed hovering over narrow items in Timeline view (QTCREATORBUG-11692)
+   * Fixed opening files from JavaScript profiling output (QTHLDPLUGINBUG-11094)
+   * Fixed hovering over narrow items in Timeline view (QTHLDPLUGINBUG-11692)
 
 C++ Support
    * Added code model inspector
    * Added experimental support for Clang-based code model
-   * Added support for multiline strings and comments (QTCREATORBUG-662)
-   * Fixed parsing of ??< ??> ??( ??) trigraphs (QTCREATORBUG-2474)
+   * Added support for multiline strings and comments (QTHLDPLUGINBUG-662)
+   * Fixed parsing of ??< ??> ??( ??) trigraphs (QTHLDPLUGINBUG-2474)
    * Fixed adding definition for function with rvalue-reference
-     (QTCREATORBUG-10555)
+     (QTHLDPLUGINBUG-10555)
    * Fixed semantic highlighting after "Save as"
-   * Fixed syntax highlighting of multiline strings and comments (QTCREATORBUG-662)
-   * Fixed that symbol dropdown was jumping to the wrong editor (QTCREATORBUG-11157)
-   * Fixed highlighting when #undef is used (QTCREATORBUG-10454)
-   * Fixed issue with follow symbol and overloaded functions (QTCREATORBUG-10295)
+   * Fixed syntax highlighting of multiline strings and comments (QTHLDPLUGINBUG-662)
+   * Fixed that symbol dropdown was jumping to the wrong editor (QTHLDPLUGINBUG-11157)
+   * Fixed highlighting when #undef is used (QTHLDPLUGINBUG-10454)
+   * Fixed issue with follow symbol and overloaded functions (QTHLDPLUGINBUG-10295)
    * Improved the Insert Virtual Functions refactoring action:
        * Check only pure virtual functions by default
        * Display all overrides of a function
        * Do not include final functions
 
 QML Support
-   * Simplified Qt Quick Application templates (QTCREATORBUG-11264)
+   * Simplified Qt Quick Application templates (QTHLDPLUGINBUG-11264)
    * Improved performance when using split views
 
 Qt Quick Designer
-   * Fixed selecting overlapping items with same z-value (QTCREATORBUG-11066)
-   * Fixed setting text alignment (QTCREATORBUG-11054)
-   * Fixed crash with anchors (QTCREATORBUG-11138)
-   * Fixed issue with warning text not being readable (QTCREATORBUG-9603)
+   * Fixed selecting overlapping items with same z-value (QTHLDPLUGINBUG-11066)
+   * Fixed setting text alignment (QTHLDPLUGINBUG-11054)
+   * Fixed crash with anchors (QTHLDPLUGINBUG-11138)
+   * Fixed issue with warning text not being readable (QTHLDPLUGINBUG-9603)
 
 Diff Viewer
-   * Fixed display of inserted lines at end of file (QTCREATORBUG-11281)
-   * Fixed handling of whitespace changes (QTCREATORBUG-11002)
+   * Fixed display of inserted lines at end of file (QTHLDPLUGINBUG-11281)
+   * Fixed handling of whitespace changes (QTHLDPLUGINBUG-11002)
 
 Version Control Systems
    * Git
@@ -105,7 +105,7 @@ Version Control Systems
       * Added completion in change selection dialog
       * Fixed freeze after resolving conflict with cherry-pick or revert
       * Added support for local branch selection in the Push to Gerrit dialog
-      * Removed branch list from "Git Show" header (QTCREATORBUG-11293)
+      * Removed branch list from "Git Show" header (QTHLDPLUGINBUG-11293)
    * ClearCase
       * Improved performance of indexing dynamic views
       * Added warning when editing Derived Objects
@@ -119,7 +119,7 @@ FakeVim
    * Added toggle ("!") and print ("?") options to "set" command
    * Added support for relative line numbering
    * Made dot command work for letter case commands in visual mode
-   * Fixed backward incremental search (QTCREATORBUG-7251)
+   * Fixed backward incremental search (QTHLDPLUGINBUG-7251)
 
 Platform Specific
 
@@ -129,28 +129,28 @@ Qt Support
 QNX
    * Added support for Python based pretty printers when debugging on devices
    * Added better error messages for common deployment errors
-     (QTCREATORBUG-9673, QTCREATORBUG-9001)
+     (QTHLDPLUGINBUG-9673, QTHLDPLUGINBUG-9001)
    * Added line and column information to text based BAR descriptor editor
-     (QTCREATORBUG-10395)
+     (QTHLDPLUGINBUG-10395)
    * Added simple management of user debug tokens
    * Added simple management of runtime configurations
    * Added support for attaching debugger to running applications
    * Fixed several issues with certificate password dialog in BlackBerry
-     options (QTCREATORBUG-10948)
-   * Fixed mkspec setting in the qmake build step (QTCREATORBUG-11674)
+     options (QTHLDPLUGINBUG-10948)
+   * Fixed mkspec setting in the qmake build step (QTHLDPLUGINBUG-11674)
 
 Android
    * Made it possible to cancel waiting for an AVD to boot up
    * Added download buttons for Android toolkit parts to Options page
-   * Added warning for invalid JDK setting (QTCREATORBUG-11218)
+   * Added warning for invalid JDK setting (QTHLDPLUGINBUG-11218)
    * Added minimal support for editing Java, with indentation of blocks and keyword completion
-     (QTCREATORBUG-11220)
-   * Added Java file wizard (QTCREATORBUG-11220)
-   * Fixed opening Java files from error messages (QTCREATORBUG-10904)
-   * Fixed colors in AndroidManifest editor (QTCREATORBUG-10597)
-   * Fixed modified state of AndroidManifest editor (QTCREATORBUG-11163)
-   * Fixed apply-behavior of Android Options page (QTCREATORBUG-7724)
-   * Fixed that Qt Creator restart was required after configuring Android SDK (QTCREATORBUG-10936)
+     (QTHLDPLUGINBUG-11220)
+   * Added Java file wizard (QTHLDPLUGINBUG-11220)
+   * Fixed opening Java files from error messages (QTHLDPLUGINBUG-10904)
+   * Fixed colors in AndroidManifest editor (QTHLDPLUGINBUG-10597)
+   * Fixed modified state of AndroidManifest editor (QTHLDPLUGINBUG-11163)
+   * Fixed apply-behavior of Android Options page (QTHLDPLUGINBUG-7724)
+   * Fixed that Qt Hldplugin restart was required after configuring Android SDK (QTHLDPLUGINBUG-10936)
 
 iOS
    * Enabled iOS support by default

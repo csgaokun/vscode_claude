@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -112,7 +112,7 @@ FindToolBar::FindToolBar(CurrentDocumentFind *currentDocumentFind)
             this, &FindToolBar::findEditButtonClicked);
 
     // invoke{Find,Replace}Helper change the completion model. QueuedConnection is used to perform these
-    // changes only after the completer's activated() signal is handled (QTCREATORBUG-8408)
+    // changes only after the completer's activated() signal is handled (QTHLDPLUGINBUG-8408)
     connect(m_ui.findEdit, &Utils::FancyLineEdit::returnPressed,
             this, &FindToolBar::invokeFindEnter, Qt::QueuedConnection);
     connect(m_ui.replaceEdit, &Utils::FancyLineEdit::returnPressed,

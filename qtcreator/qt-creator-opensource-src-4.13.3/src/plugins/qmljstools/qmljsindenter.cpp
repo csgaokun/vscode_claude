@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -60,7 +60,7 @@ void Indenter::indentBlock(const QTextBlock &block,
     if (depth == -1)
         return;
 
-    QmlJSTools::CreatorCodeFormatter codeFormatter(tabSettings);
+    QmlJSTools::HldpluginCodeFormatter codeFormatter(tabSettings);
     codeFormatter.updateStateUntil(block);
 
     if (isElectricCharacter(typedChar)) {
@@ -76,7 +76,7 @@ void Indenter::indentBlock(const QTextBlock &block,
 
 void Indenter::invalidateCache()
 {
-    QmlJSTools::CreatorCodeFormatter codeFormatter;
+    QmlJSTools::HldpluginCodeFormatter codeFormatter;
     codeFormatter.invalidateCache(m_doc);
 }
 
@@ -84,7 +84,7 @@ int Indenter::indentFor(const QTextBlock &block,
                         const TextEditor::TabSettings &tabSettings,
                         int /*cursorPositionInEditor*/)
 {
-    QmlJSTools::CreatorCodeFormatter codeFormatter(tabSettings);
+    QmlJSTools::HldpluginCodeFormatter codeFormatter(tabSettings);
     codeFormatter.updateStateUntil(block);
     return codeFormatter.indentFor(block);
 }
@@ -94,7 +94,7 @@ TextEditor::IndentationForBlock Indenter::indentationForBlocks(
     const TextEditor::TabSettings &tabSettings,
     int /*cursorPositionInEditor*/)
 {
-    QmlJSTools::CreatorCodeFormatter codeFormatter(tabSettings);
+    QmlJSTools::HldpluginCodeFormatter codeFormatter(tabSettings);
 
     codeFormatter.updateStateUntil(blocks.last());
 

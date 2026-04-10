@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -49,13 +49,13 @@ public:
     template <typename T>
     static void registerProjectType(const QString &mimeType)
     {
-        ProjectManager::registerProjectCreator(mimeType, [](const Utils::FilePath &fileName) {
+        ProjectManager::registerProjectHldplugin(mimeType, [](const Utils::FilePath &fileName) {
             return new T(fileName);
         });
     }
 
 private:
-    static void registerProjectCreator(const QString &mimeType,
+    static void registerProjectHldplugin(const QString &mimeType,
                                        const std::function<Project *(const Utils::FilePath &)> &);
 };
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2017 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -159,7 +159,7 @@ public:
 
 // Version 21 adds a "make install" step to an existing RemoteLinux deploy configuration
 // if and only if such a step would be added when creating a new one.
-// See QTCREATORBUG-22689.
+// See QTHLDPLUGINBUG-22689.
 class UserFileVersion21Upgrader : public VersionUpgrader
 {
 public:
@@ -304,7 +304,7 @@ FilePaths UserFileBackUpStrategy::readFileCandidates(const FilePath &baseFileNam
 
 UserFileAccessor::UserFileAccessor(Project *project) :
     MergingSettingsAccessor(std::make_unique<VersionedBackUpStrategy>(this),
-                            "QtCreatorProject", project->displayName(),
+                            "QtHldpluginProject", project->displayName(),
                             Core::Constants::IDE_DISPLAY_NAME),
     m_project(project)
 {

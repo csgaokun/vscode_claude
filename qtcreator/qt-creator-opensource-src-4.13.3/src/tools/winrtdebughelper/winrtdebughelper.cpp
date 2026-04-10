@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         return 0;
 
     if (*pipeName == 0)
-        swprintf(pipeName, maxPipeNameSize, L"\\\\.\\pipe\\QtCreatorWinRtDebugPIDPipe");
+        swprintf(pipeName, maxPipeNameSize, L"\\\\.\\pipe\\QtHldpluginWinRtDebugPIDPipe");
     HANDLE pipe;
     while (true) {
         pipe = CreateFile(pipeName, GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);

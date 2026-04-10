@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -242,7 +242,7 @@ void QtOutputLineParser::updateProjectFileList()
 
 QtOutputFormatterFactory::QtOutputFormatterFactory()
 {
-    setFormatterCreator([](Target *t) -> QList<OutputLineParser *> {
+    setFormatterHldplugin([](Target *t) -> QList<OutputLineParser *> {
         if (QtKitAspect::qtVersion(t ? t->kit() : nullptr))
             return {new QtTestParser, new QtOutputLineParser(t)};
         return {};

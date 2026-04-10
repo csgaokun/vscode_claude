@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -24,10 +24,10 @@
 ****************************************************************************/
 
 /* A debug dispatcher for Windows that can be registered for calls with crashed
- * processes. It offers debugging using either Qt Creator or
+ * processes. It offers debugging using either Qt Hldplugin or
  * the previously registered default debugger.
  * See usage() on how to install/use.
- * Installs itself in the bin directory of Qt Creator. */
+ * Installs itself in the bin directory of Qt Hldplugin. */
 
 #include <QApplication>
 #include <QMessageBox>
@@ -54,7 +54,7 @@ using namespace RegistryAccess;
 
 enum { debug = 0 };
 
-static const char titleC[] = "Qt Creator Debugger";
+static const char titleC[] = "Qt Hldplugin Debugger";
 
 // Optional
 static const WCHAR debuggerWow32RegistryKeyC[] = L"Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug";
@@ -62,19 +62,19 @@ static const WCHAR debuggerWow32RegistryKeyC[] = L"Software\\Wow6432Node\\Micros
 static const WCHAR debuggerRegistryDefaultValueNameC[] = L"Debugger.Default";
 
 static const char linkC[] = "http://msdn.microsoft.com/en-us/library/cc266343.aspx";
-static const char creatorBinaryC[] = "qtcreator.exe";
+static const char hldpluginBinaryC[] = "qthldplugin.exe";
 
 #ifdef __GNUC__
 #define RRF_RT_ANY             0x0000ffff  // no type restriction
 #endif
 
 
-enum Mode { HelpMode, RegisterMode, UnregisterMode, PromptMode, ForceCreatorMode, ForceDefaultMode };
+enum Mode { HelpMode, RegisterMode, UnregisterMode, PromptMode, ForceHldpluginMode, ForceDefaultMode };
 
 Mode optMode = PromptMode;
 // WOW: Indicates registry key access mode:
-// - Accessing 32bit using a 64bit built Qt Creator or,
-// - Accessing 64bit using a 32bit built Qt Creator on 64bit Windows
+// - Accessing 32bit using a 64bit built Qt Hldplugin or,
+// - Accessing 64bit using a 32bit built Qt Hldplugin on 64bit Windows
 bool optIsWow = false;
 bool noguiMode = false;
 unsigned long argProcessId = 0;
@@ -92,8 +92,8 @@ static bool parseArguments(const QStringList &args, QString *errorMessage)
             arg.remove(0, 1);
             if (arg == QLatin1String("help") || arg == QLatin1String("?")) {
                 optMode = HelpMode;
-            } else if (arg == QLatin1String("qtcreator")) {
-                optMode = ForceCreatorMode;
+            } else if (arg == QLatin1String("qthldplugin")) {
+                optMode = ForceHldpluginMode;
             } else if (arg == QLatin1String("default")) {
                 optMode = ForceDefaultMode;
             } else if (arg == QLatin1String("register")) {
@@ -105,7 +105,7 @@ static bool parseArguments(const QStringList &args, QString *errorMessage)
             } else if (arg == QLatin1String("nogui")) {
                 noguiMode = true;
             } else if (arg == QLatin1String("p")) {
-                // Ignore, see QTCREATORBUG-18194.
+                // Ignore, see QTHLDPLUGINBUG-18194.
             } else {
                 *errorMessage = QString::fromLatin1("Unexpected option: %1").arg(arg);
                 return false;
@@ -173,9 +173,9 @@ static void usage(const QString &binary, const QString &message = QString())
         str << "<b>" << message << "</b>";
     }
     str << "<pre>"
-        << "Usage: " << QFileInfo(binary).baseName() << "[-wow] [-help|-?|qtcreator|default|register|unregister] &lt;process-id> &lt;event-id>\n"
+        << "Usage: " << QFileInfo(binary).baseName() << "[-wow] [-help|-?|qthldplugin|default|register|unregister] &lt;process-id> &lt;event-id>\n"
         << "Options: -help, -?   Display this help\n"
-        << "         -qtcreator  Launch Qt Creator without prompting\n"
+        << "         -qthldplugin  Launch Qt Hldplugin without prompting\n"
         << "         -default    Launch Default handler without prompting\n"
         << "         -register   Register as post mortem debugger (requires administrative privileges)\n"
         << "         -unregister Unregister as post mortem debugger (requires administrative privileges)\n"
@@ -304,12 +304,12 @@ static bool waitForProcess(DWORD pid)
     return waitResult == WAIT_OBJECT_0;
 }
 
-bool startCreatorAsDebugger(bool asClient, QString *errorMessage)
+bool startHldpluginAsDebugger(bool asClient, QString *errorMessage)
 {
     const QString dir = QApplication::applicationDirPath();
-    const QString binary = dir + QLatin1Char('/') + QLatin1String(creatorBinaryC);
+    const QString binary = dir + QLatin1Char('/') + QLatin1String(hldpluginBinaryC);
     QStringList args;
-    // Send to running Creator: Unstable with directly linked CDB engine.
+    // Send to running Hldplugin: Unstable with directly linked CDB engine.
     if (asClient)
         args << QLatin1String("-client");
     if (argWinCrashEvent != 0) {
@@ -331,7 +331,7 @@ bool startCreatorAsDebugger(bool asClient, QString *errorMessage)
         return false;
     }
     // Short execution time: indicates that -client was passed on attach to
-    // another running instance of Qt Creator. Keep alive as long as user
+    // another running instance of Qt Hldplugin. Keep alive as long as user
     // does not close the process. If that fails, try to launch 2nd instance.
     const bool waitResult = p.waitForFinished(-1) || p.state() == QProcess::NotRunning;
     const bool ranAsClient = asClient && (executionTime.elapsed() < 10000);
@@ -340,7 +340,7 @@ bool startCreatorAsDebugger(bool asClient, QString *errorMessage)
             waitForProcess(argProcessId);
         } else {
             errorMessage->clear();
-            return startCreatorAsDebugger(false, errorMessage);
+            return startHldpluginAsDebugger(false, errorMessage);
         }
     }
     return true;
@@ -386,18 +386,18 @@ bool chooseDebugger(QString *errorMessage)
     const QString processName = getProcessBaseName(argProcessId);
     const QString msg = QString::fromLatin1("The application \"%1\" (process id %2)  crashed. Would you like to debug it?").arg(processName).arg(argProcessId);
     QMessageBox msgBox(QMessageBox::Information, QLatin1String(titleC), msg, QMessageBox::Cancel);
-    QPushButton *creatorButton = msgBox.addButton(QLatin1String("Debug with Qt Creator"), QMessageBox::AcceptRole);
+    QPushButton *hldpluginButton = msgBox.addButton(QLatin1String("Debug with Qt Hldplugin"), QMessageBox::AcceptRole);
     QPushButton *defaultButton = msgBox.addButton(QLatin1String("Debug with default debugger"), QMessageBox::AcceptRole);
     defaultButton->setEnabled(readDefaultDebugger(&defaultDebugger, errorMessage)
                               && !defaultDebugger.isEmpty());
     msgBox.exec();
-    if (msgBox.clickedButton() == creatorButton) {
+    if (msgBox.clickedButton() == hldpluginButton) {
         // Just in case, default to standard. Do not run as client in the unlikely case
-        // Creator crashed
+        // Hldplugin crashed
         // TODO: pass asClient=true for new CDB engine.
-        const bool canRunAsClient = !processName.contains(QLatin1String(creatorBinaryC), Qt::CaseInsensitive);
+        const bool canRunAsClient = !processName.contains(QLatin1String(hldpluginBinaryC), Qt::CaseInsensitive);
         Q_UNUSED(canRunAsClient)
-        if (startCreatorAsDebugger(false, errorMessage))
+        if (startHldpluginAsDebugger(false, errorMessage))
             return true;
         return startDefaultDebugger(errorMessage);
     }
@@ -538,9 +538,9 @@ int main(int argc, char *argv[])
     case HelpMode:
         usage(QCoreApplication::applicationFilePath(), errorMessage);
         break;
-    case ForceCreatorMode:
+    case ForceHldpluginMode:
         // TODO: pass asClient=true for new CDB engine.
-        ex = startCreatorAsDebugger(false, &errorMessage) ? 0 : -1;
+        ex = startHldpluginAsDebugger(false, &errorMessage) ? 0 : -1;
         break;
     case ForceDefaultMode:
         ex = startDefaultDebugger(&errorMessage) ? 0 : -1;

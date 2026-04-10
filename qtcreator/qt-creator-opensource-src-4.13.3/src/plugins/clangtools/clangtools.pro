@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 include(../../shared/clang/clang_installation.pri)
 include(../../shared/clang/clang_defines.pri)
 
@@ -82,4 +82,4 @@ equals(TEST, 1) {
 
 DISTFILES += \
     tests/tests.pri \
-    $${IDE_SOURCE_TREE}/doc/src/analyze/creator-clang-static-analyzer.qdoc
+    $${IDE_SOURCE_TREE}/doc/src/analyze/hldplugin-clang-static-analyzer.qdoc

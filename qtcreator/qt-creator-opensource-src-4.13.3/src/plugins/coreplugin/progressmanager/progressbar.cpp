@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -255,7 +255,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
         p.setPen(StyleHelper::sidebarShadow());
         p.drawLine(innerRect.topLeft(), innerRect.topRight());
 
-        if (creatorTheme()->flag(Theme::DrawToolBarHighlights)) {
+        if (hldpluginTheme()->flag(Theme::DrawToolBarHighlights)) {
             p.setPen(StyleHelper::sidebarHighlight());
             p.drawLine(innerRect.topLeft() + QPointF(1, 1), innerRect.topRight() + QPointF(0, 1));
         }
@@ -275,7 +275,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
         textRect.setHeight(fm.height() + 4);
 
         p.setFont(fnt);
-        p.setPen(creatorTheme()->color(Theme::ProgressBarTitleColor));
+        p.setPen(hldpluginTheme()->color(Theme::ProgressBarTitleColor));
         p.drawText(textRect, alignment | Qt::AlignBottom, elidedtitle);
 
         if (!m_subtitle.isEmpty()) {
@@ -285,7 +285,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
             subtextRect.moveTop(progressY + progressHeight);
 
             p.setFont(fnt);
-            p.setPen(creatorTheme()->color(Theme::ProgressBarTitleColor));
+            p.setPen(hldpluginTheme()->color(Theme::ProgressBarTitleColor));
             p.drawText(subtextRect, alignment | Qt::AlignBottom, elidedsubtitle);
         }
     }
@@ -304,12 +304,12 @@ void ProgressBar::paintEvent(QPaintEvent *)
         themeColor = Theme::ProgressBarColorError;
     else if (m_finished)
         themeColor = Theme::ProgressBarColorFinished;
-    const QColor c = creatorTheme()->color(themeColor);
+    const QColor c = hldpluginTheme()->color(themeColor);
 
     //draw the progress bar
-    if (creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
         p.fillRect(rect.adjusted(2, 2, -2, -2),
-                   creatorTheme()->color(Theme::ProgressBarBackgroundColor));
+                   hldpluginTheme()->color(Theme::ProgressBarBackgroundColor));
         p.fillRect(inner, c);
     } else {
         const static QImage bar(StyleHelper::dpiSpecificImageFile(
@@ -348,7 +348,7 @@ void ProgressBar::paintEvent(QPaintEvent *)
             const bool hover = m_cancelRect.contains(mapFromGlobal(QCursor::pos()));
             const QRectF cancelVisualRect(m_cancelRect.adjusted(0, 1, -2, -2));
             int intensity = hover ? 90 : 70;
-            if (!creatorTheme()->flag(Theme::FlatToolBars)) {
+            if (!hldpluginTheme()->flag(Theme::FlatToolBars)) {
                 QLinearGradient grad(cancelVisualRect.topLeft(), cancelVisualRect.bottomLeft());
                 QColor buttonColor(intensity, intensity, intensity, 255);
                 grad.setColorAt(0, buttonColor.lighter(130));

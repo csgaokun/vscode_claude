@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1360,7 +1360,7 @@ void DesignerActionManager::addDesignerAction(ActionInterface *newAction)
     m_designerActions.append(QSharedPointer<ActionInterface>(newAction));
 }
 
-void DesignerActionManager::addCreatorCommand(Core::Command *command, const QByteArray &category, int priority,
+void DesignerActionManager::addHldpluginCommand(Core::Command *command, const QByteArray &category, int priority,
                                               const QIcon &overrideIcon)
 {
     addDesignerAction(new CommandAction(command, category, priority, overrideIcon));

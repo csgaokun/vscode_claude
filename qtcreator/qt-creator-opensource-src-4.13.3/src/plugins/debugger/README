@@ -2,7 +2,7 @@
 Architectural overview
 ----------------------
 
-DebuggerPlugin is the main interface between the Qt Creator "Core" and the
+DebuggerPlugin is the main interface between the Qt Hldplugin "Core" and the
 DebuggerManager who is responsible for "doing the work".
 
 The DebuggerManager creates all DebuggerEngines, and has zero or one
@@ -22,7 +22,7 @@ for JavaScript on all platforms).
     TermGdbAdapter is used to debug locally started processes that need a
     console.
 
-    AttachGdbAdapter is used to debug local processes started outside Creator.
+    AttachGdbAdapter is used to debug local processes started outside Hldplugin.
 
     CoreGdbAdapter is used to debug core files generated from crashes.
 

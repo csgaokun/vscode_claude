@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,7 +45,7 @@ using namespace Utils;
 
 /*!
   \namespace Core::FileIconProvider
-  \inmodule QtCreator
+  \inmodule QtHldplugin
   \brief Provides functions for registering custom overlay icons for system
   icons.
 

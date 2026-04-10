@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -24,7 +24,7 @@
 ############################################################################
 
 source("../../shared/suites_qtta.py")
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def resetLine(editorWidget):
     if platform.system() == "Darwin":
@@ -45,7 +45,7 @@ def triggerCompletion(editorWidget):
 def main():
     for useClang in [False, True]:
         with TestSection(getCodeModelString(useClang)):
-            if not startCreatorVerifyingClang(useClang):
+            if not startHldpluginVerifyingClang(useClang):
                 continue
             # create qt quick application
 # Step 1: Open test .pro project.
@@ -57,10 +57,10 @@ def main():
                 test.fatal("Could not open main.cpp")
                 invokeMenuItem("File", "Exit")
                 return
-            test.verify(checkIfObjectExists(":Qt Creator_CppEditor::Internal::CPPEditorWidget"),
+            test.verify(checkIfObjectExists(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"),
                         "Step 2: Verifying if: .cpp file is opened in Edit mode.")
 # Step 3: Insert text "re" to new line in Editor mode and press Ctrl+Space.
-            editorWidget = findObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            editorWidget = findObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
             if not placeCursorToLine(editorWidget, "QGuiApplication app(argc, argv);"):
                 earlyExit("Did not find first line in function block.")
                 return
@@ -91,7 +91,7 @@ def main():
                              "Step 4: Verifying if: Word 'unsigned' is completed because only one option is available.")
             except:
                 test.fail("The expected completion popup was not shown.")
-# Step 4.5: Insert text "2." to new line and verify that code completion is not triggered (QTCREATORBUG-16188)
+# Step 4.5: Insert text "2." to new line and verify that code completion is not triggered (QTHLDPLUGINBUG-16188)
             resetLine(editorWidget)
             lineWithFloat = "float fl = 2."
             type(editorWidget, lineWithFloat)
@@ -105,7 +105,7 @@ def main():
             test.log("Step 5: Change Code Completion settings")
             changeAutocompleteToManual()
 # Step 6: Insert text "ret" and press Ctrl+Space.
-            editorWidget = waitForObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            editorWidget = waitForObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
             resetLine(editorWidget)
             type(editorWidget, "retu")
             triggerCompletion(editorWidget)
@@ -124,6 +124,6 @@ def main():
                          "completed automatically even there is only one suggestion.")
             invokeMenuItem('File', 'Revert "main.cpp" to Saved')
             clickButton(waitForObject(":Revert to Saved.Proceed_QPushButton"))
-            # exit qt creator
+            # exit qt hldplugin
             invokeMenuItem("File", "Exit")
             waitForCleanShutdown()

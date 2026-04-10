@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -2093,7 +2093,7 @@ void tst_AST::line_and_column_1()
     QVERIFY(unit->ast());
     QVERIFY(unit->tokenAt(1).is(T_INT));
     unit->getTokenPosition(1, &line, &column);
-    QEXPECT_FAIL("", "See QTCREATORBUG-9799.", Continue);
+    QEXPECT_FAIL("", "See QTHLDPLUGINBUG-9799.", Continue);
     QCOMPARE(line, 2);
     QCOMPARE(column, 1);
 }

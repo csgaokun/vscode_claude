@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 focusDocumentPath = "keyinteraction.Resources.keyinteraction\.qrc./keyinteraction.focus.%s"
 
@@ -52,13 +52,13 @@ def testRenameId():
     files = ["Core.ContextMenu\\.qml", "Core.GridMenu\\.qml",
              "Core.ListMenu\\.qml", "focus\\.qml"]
     originalTexts = {}
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     formerTxt = editor.plainText
     for file in files:
         openDocument(focusDocumentPath % file)
         # wait until editor content switched to the double-clicked file
         while formerTxt==editor.plainText:
-            editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
         # store content for next round
         formerTxt = editor.plainText
         originalTexts.setdefault(file, "%s" % formerTxt)
@@ -73,16 +73,16 @@ def testRenameId():
     waitForSearchResults()
     type(waitForObject("{leftWidget={text='Replace with:' type='QLabel' unnamed='1' visible='1'} "
                        "type='Core::Internal::WideEnoughLineEdit' unnamed='1' visible='1' "
-                       "window=':Qt Creator_Core::Internal::MainWindow'}"), "renamedView")
+                       "window=':Qt Hldplugin_Core::Internal::MainWindow'}"), "renamedView")
     clickButton(waitForObject("{text='Replace' type='QToolButton' unnamed='1' visible='1' "
-                              "window=':Qt Creator_Core::Internal::MainWindow'}"))
+                              "window=':Qt Hldplugin_Core::Internal::MainWindow'}"))
     # store editor content for synchronizing purpose
     formerTxt = editor.plainText
     for file in files:
         openDocument(focusDocumentPath % file)
         # wait until editor content switched to double-clicked file
         while formerTxt==editor.plainText:
-            editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+            editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
         # store content for next round
         formerTxt = editor.plainText
         originalText = originalTexts.get(file).replace("mainView", "renamedView")
@@ -91,7 +91,7 @@ def testRenameId():
 
 def __invokeFindUsage__(filename, line, additionalKeyPresses, expectedCount):
     openDocument(focusDocumentPath % filename)
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     if not placeCursorToLine(editor, line, True):
         test.fatal("File seems to have changed... Canceling current test")
         return
@@ -105,7 +105,7 @@ def testFindUsages():
     test.log("Testing find usage of an ID")
     __invokeFindUsage__("focus\\.qml", "FocusScope\s*\{", ["<Down>"], 7)
     test.log("Testing find usage of a property")
-    clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
     home = "<Home>"
     if platform.system() == "Darwin":
         home = "<Ctrl+Left>"
@@ -115,7 +115,7 @@ def testFindUsages():
 def testHovering():
     test.log("Testing hovering elements")
     openDocument(focusDocumentPath % "focus\\.qml")
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     lines=["FocusScope\s*\{", "Rectangle\s*\{"]
     if platform.system() == "Darwin":
         home = "<Ctrl+Left>"
@@ -130,7 +130,7 @@ def testHovering():
     verifyHoveringOnEditor(editor, lines, additionalKeyPresses, expectedTypes, expectedValues)
     test.log("Testing hovering properties")
     openDocument(focusDocumentPath % "focus\\.qml")
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     lines = ['focus:\s*true', 'color:\s*"black"', 'states:\s*State\s*\{', 'transitions:\s*Transition\s*\{']
     expectedTypes = ["TextTip", "WidgetTip", "WidgetTip", "WidgetTip"]
     expectedValues = [
@@ -152,7 +152,7 @@ def testHovering():
     verifyHoveringOnEditor(editor, lines, additionalKeyPresses, expectedTypes, expectedValues, alternativeValues)
     test.log("Testing hovering expressions")
     openDocument(focusDocumentPath % "focus\\.qml")
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     lines=['color:\s*"black"', 'color:\s*"#3E606F"']
     additionalKeyPresses = ["<Left>"]
     expectedValues = ["black", "#3E606F"]
@@ -160,7 +160,7 @@ def testHovering():
     expectedTypes = ["ColorTip", "ColorTip"]
     verifyHoveringOnEditor(editor, lines, additionalKeyPresses, expectedTypes, expectedValues, alternativeValues)
     openDocument(focusDocumentPath % "Core.ListMenu\\.qml")
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     lines=['Rectangle\s*\{.*color:\s*"#D1DBBD"', 'NumberAnimation\s*\{\s*.*Easing.OutQuint\s*\}']
     additionalKeyPresses = ["<Left>", "<Left>", "<Left>", "<Left>"]
     expectedTypes = ["ColorTip", "TextTip"]

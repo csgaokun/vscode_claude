@@ -1,26 +1,26 @@
-Qt Creator version 2.6 contains bug fixes and new features.
+Qt Hldplugin version 2.6 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline v2.5.2..origin/2.6
 
 General
    * Added a wizard for creating a temporary text file
    * Added a menu for showing and hiding the output pane buttons
-   * Added a visual hint for canceled searches (QTCREATORBUG-6820)
-   * Fixed the New dialog for dark themes (QTCREATORBUG-7435)
+   * Added a visual hint for canceled searches (QTHLDPLUGINBUG-6820)
+   * Fixed the New dialog for dark themes (QTHLDPLUGINBUG-7435)
    * Added support for jumping to a line in a specific file to Locator
      (with "+" or ":" appended to the file name, for example "myfile.cpp:41")
    * Fixed that several settings where saved every few seconds
-     even without changes (QTCREATORBUG-7718)
+     even without changes (QTHLDPLUGINBUG-7718)
 
 Editing
    * Added a context menu for adding and removing UTF-8 bom
    * Added shortcuts for searching for next and previous occurrence
-     of selected text without opening the find tool bar (QTCREATORBUG-464)
+     of selected text without opening the find tool bar (QTHLDPLUGINBUG-464)
    * Made resource files searchable (Ctrl+F)
    * Integrated VCS support into the resource editor
    * Added file type icons to the resource editor
@@ -28,7 +28,7 @@ Editing
    * Added renaming of files from the resource editor
    * Added highlighting of missing files in the resource editor
    * Added support for animated images in the image viewer
-   * Fixed problems when closing documents in a split view (QTCREATORBUG-7361)
+   * Fixed problems when closing documents in a split view (QTHLDPLUGINBUG-7361)
 
 Managing Projects
    * Introduced "Kits" that supersede the previous "Targets". They bundle
@@ -41,10 +41,10 @@ Managing Projects
    * Made it possible to disable deploy configurations
    * Added double-clicking of file names in compile errors to open the file
    * Added a Cancel Build button to the Compile Output pane
-   * Added CurrentProject::BuildPath variable for external tools (QTCREATORBUG-4885)
+   * Added CurrentProject::BuildPath variable for external tools (QTHLDPLUGINBUG-4885)
 
 QMake Projects
-   * Added an action for compiling a single file (QTCREATORBUG-106)
+   * Added an action for compiling a single file (QTHLDPLUGINBUG-106)
    * Added actions for (re)building and cleaning the current subproject
 
 CMake Projects
@@ -69,7 +69,7 @@ Debugging
    * Added support for IPv6-enabled builds of GDB
    * Improved logging and output pane performance
    * Improved performance of retrieving large arrays of plain data
-   * Fixed use of non-xterm terminals (QTCREATORBUG-1633)
+   * Fixed use of non-xterm terminals (QTHLDPLUGINBUG-1633)
    * Fixed use of multi-line breakpoint commands
    * Fixed off-by-one error in the Address field in the Symbols view
 
@@ -86,24 +86,24 @@ Analyzing Code
 C++ Support
    * Fixed lambda formatting issues
    * Added support for variadic arguments (__VA_ARGS__)
-   * Added support for raw string literals (QTCREATORBUG-6722)
-   * Fixed the display of results when searching for macro usages (QTCREATORBUG-7217)
+   * Added support for raw string literals (QTHLDPLUGINBUG-6722)
+   * Fixed the display of results when searching for macro usages (QTHLDPLUGINBUG-7217)
    * Added highlighting of macro usages
-   * Implemented renaming of macro usages (QTCREATORBUG-413)
+   * Implemented renaming of macro usages (QTHLDPLUGINBUG-413)
    * Fixed detection of C++11 features for MSVC
 
 QML/JS Support
    * Added support for adding the file to VCS when moving a component into
-     a separate file (QTCREATORBUG-7246)
+     a separate file (QTHLDPLUGINBUG-7246)
 
 GLSL Support
-   * Fixed a crash on declaration without type (QTCREATORBUG-7548)
-   * Fixed a freeze when using the conditional operator (QTCREATORBUG-7517)
+   * Fixed a crash on declaration without type (QTHLDPLUGINBUG-7548)
+   * Fixed a freeze when using the conditional operator (QTHLDPLUGINBUG-7517)
 
 Qt Quick Designer
 
 Help
-   * Made hiding the navigation side bar in the Help mode possible (QTCREATORBUG-1533)
+   * Made hiding the navigation side bar in the Help mode possible (QTHLDPLUGINBUG-1533)
 
 Qt Designer
 
@@ -145,7 +145,7 @@ Mac
 
 Linux (GNOME and KDE)
    * Worked around a problem in the KDE file dialog that prevented selecting
-     qmake (QTCREATORBUG-7771)
+     qmake (QTHLDPLUGINBUG-7771)
 
 Windows
 

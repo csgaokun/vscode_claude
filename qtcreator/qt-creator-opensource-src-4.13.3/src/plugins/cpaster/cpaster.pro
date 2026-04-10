@@ -1,5 +1,5 @@
 QT += network
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 HEADERS += cpasterplugin.h \
     dpastedotcomprotocol.h \
     settingspage.h \

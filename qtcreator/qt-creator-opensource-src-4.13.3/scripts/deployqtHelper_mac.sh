@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -92,7 +92,7 @@ if [ -d "$quick2_src" ]; then
     fi
 fi
 
-# copy qt creator qt.conf
+# copy qt hldplugin qt.conf
 if [ ! -f "$resource_path/qt.conf" ]; then
     echo "- Copying qt.conf"
     cp -f "$(dirname "${BASH_SOURCE[0]}")/../dist/installer/mac/qt.conf" "$resource_path/qt.conf" || exit 1

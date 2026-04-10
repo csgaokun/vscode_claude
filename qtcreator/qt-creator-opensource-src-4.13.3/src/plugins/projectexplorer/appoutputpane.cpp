@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -884,7 +884,7 @@ AppOutputSettingsPage::AppOutputSettingsPage()
     setId(OPTIONS_PAGE_ID);
     setDisplayName(AppOutputSettingsWidget::tr("Application Output"));
     setCategory(Constants::BUILD_AND_RUN_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new AppOutputSettingsWidget; });
+    setWidgetHldplugin([] { return new AppOutputSettingsWidget; });
 }
 
 } // namespace Internal

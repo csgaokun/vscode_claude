@@ -1,5 +1,5 @@
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 SOURCES += welcomeplugin.cpp \
     introductionwidget.cpp

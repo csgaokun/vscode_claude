@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -260,7 +260,7 @@ GdbOptionsPage::GdbOptionsPage()
     setId("M.Gdb");
     setDisplayName(tr("GDB"));
     setCategory(Constants::DEBUGGER_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new GdbOptionsPageWidget; });
+    setWidgetHldplugin([] { return new GdbOptionsPageWidget; });
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -368,7 +368,7 @@ public:
         setId("M.Gdb2");
         setDisplayName(GdbOptionsPage::tr("GDB Extended"));
         setCategory(Constants::DEBUGGER_SETTINGS_CATEGORY);
-        setWidgetCreator([] { return new GdbOptionsPageWidget2; });
+        setWidgetHldplugin([] { return new GdbOptionsPageWidget2; });
     }
 };
 

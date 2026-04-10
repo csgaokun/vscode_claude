@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -25,9 +25,9 @@
 
 #include "clangrefactoringplugin.h"
 #include "locatorfilter.h"
-#include "qtcreatorsymbolsfindfilter.h"
-#include "qtcreatoreditormanager.h"
-#include "qtcreatorrefactoringprojectupdater.h"
+#include "qthldpluginsymbolsfindfilter.h"
+#include "qthldplugineditormanager.h"
+#include "qthldpluginrefactoringprojectupdater.h"
 #include "querysqlitestatementfactory.h"
 #include "sqlitedatabase.h"
 #include "sqlitereadstatement.h"
@@ -90,13 +90,13 @@ public:
             auto title = QCoreApplication::translate("ClangRefactoringProgressManager", "C++ Indexing");
             Core::ProgressManager::addTask(promise.future(), title, "clang indexing", {});}};
     RefactoringClient refactoringClient{progressManager};
-    QtCreatorEditorManager editorManager{filePathCache};
+    QtHldpluginEditorManager editorManager{filePathCache};
     ClangBackEnd::RefactoringConnectionClient connectionClient{&refactoringClient};
     QuerySqliteReadStatementFactory statementFactory{database};
     SymbolQuery<QuerySqliteReadStatementFactory> symbolQuery{statementFactory};
     ClangBackEnd::ProjectPartsStorage<Sqlite::Database> projectPartsStorage{database};
     RefactoringEngine engine{connectionClient.serverProxy(), refactoringClient, filePathCache, symbolQuery};
-    QtCreatorRefactoringProjectUpdater projectUpdate{connectionClient.serverProxy(),
+    QtHldpluginRefactoringProjectUpdater projectUpdate{connectionClient.serverProxy(),
                                                      ClangPchManagerPlugin::pchManagerClient(),
                                                      filePathCache,
                                                      projectPartsStorage,

@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -134,7 +134,7 @@ HeaderPaths::iterator resourceIterator(HeaderPaths &headerPaths)
 bool isClangSystemHeaderPath(const HeaderPath &headerPath)
 {
     // Always exclude clang system includes (including intrinsics) which do not come with libclang
-    // that Qt Creator uses for code model.
+    // that Qt Hldplugin uses for code model.
     // For example GCC on macOS uses system clang include path which makes clang code model
     // include incorrect system headers.
     static const QRegularExpression clangIncludeDir(

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@ QT_FORWARD_DECLARE_CLASS(QTextCursor)
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT ChangeSet
+class QTHLDPLUGIN_UTILS_EXPORT ChangeSet
 {
 public:
     struct EditOp {

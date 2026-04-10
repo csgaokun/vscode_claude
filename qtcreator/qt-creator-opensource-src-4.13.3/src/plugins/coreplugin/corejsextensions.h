@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,7 +43,7 @@ public:
 
     // General information
     Q_INVOKABLE QString qtVersion() const;
-    Q_INVOKABLE QString qtCreatorVersion() const;
+    Q_INVOKABLE QString qtHldpluginVersion() const;
 
     // File name conversions:
     Q_INVOKABLE QString toNativeSeparators(const QString &in) const;

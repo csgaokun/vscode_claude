@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -43,15 +43,15 @@ ProjectConfigurationAspect::ProjectConfigurationAspect() = default;
 
 ProjectConfigurationAspect::~ProjectConfigurationAspect() = default;
 
-void ProjectConfigurationAspect::setConfigWidgetCreator
-    (const ConfigWidgetCreator &configWidgetCreator)
+void ProjectConfigurationAspect::setConfigWidgetHldplugin
+    (const ConfigWidgetHldplugin &configWidgetHldplugin)
 {
-    m_configWidgetCreator = configWidgetCreator;
+    m_configWidgetHldplugin = configWidgetHldplugin;
 }
 
 QWidget *ProjectConfigurationAspect::createConfigWidget() const
 {
-    return m_configWidgetCreator ? m_configWidgetCreator() : nullptr;
+    return m_configWidgetHldplugin ? m_configWidgetHldplugin() : nullptr;
 }
 
 void ProjectConfigurationAspect::addToLayout(LayoutBuilder &)

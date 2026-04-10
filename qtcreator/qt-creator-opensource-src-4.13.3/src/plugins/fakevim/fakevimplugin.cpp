@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -1162,7 +1162,7 @@ FakeVimPluginPrivate::FakeVimPluginPrivate()
         QRegularExpression("^tag?$");
     m_defaultExCommandMap[Core::Constants::GO_BACK] =
         QRegularExpression("^pop?$");
-    m_defaultExCommandMap["QtCreator.Locate"] =
+    m_defaultExCommandMap["QtHldplugin.Locate"] =
         QRegularExpression("^e$");
 
     for (int i = 1; i < 10; ++i) {
@@ -2021,7 +2021,7 @@ void FakeVimPluginPrivate::handleExCommand(FakeVimHandler *handler, bool *handle
 void FakeVimPluginPrivate::handleDelayedQuit(bool forced, IEditor *editor)
 {
     // This tries to simulate vim behaviour. But the models of vim and
-    // Qt Creator core do not match well...
+    // Qt Hldplugin core do not match well...
     if (EditorManager::hasSplitter())
         triggerAction(Core::Constants::REMOVE_CURRENT_SPLIT);
     else

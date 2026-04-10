@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,18 +45,18 @@ class MinimizableInfoBars : public QObject
     Q_OBJECT
 
 public:
-    using DiagnosticWidgetCreator = std::function<QWidget *()>;
-    using ActionCreator = std::function<QAction *(QWidget *widget)>;
+    using DiagnosticWidgetHldplugin = std::function<QWidget *()>;
+    using ActionHldplugin = std::function<QAction *(QWidget *widget)>;
     using Actions = QHash<Utils::Id, QAction *>;
 
-    static Actions createShowInfoBarActions(const ActionCreator &actionCreator);
+    static Actions createShowInfoBarActions(const ActionHldplugin &actionHldplugin);
 
 public:
     explicit MinimizableInfoBars(Utils::InfoBar &infoBar, QObject *parent = nullptr);
 
     // Expected call order: processHasProjectPart(), processHeaderDiagnostics()
     void processHasProjectPart(bool hasProjectPart);
-    void processHeaderDiagnostics(const DiagnosticWidgetCreator &diagnosticWidgetCreator);
+    void processHeaderDiagnostics(const DiagnosticWidgetHldplugin &diagnosticWidgetHldplugin);
 
 signals:
     void showAction(const Utils::Id &id, bool show);
@@ -67,13 +67,13 @@ private:
 
     void addNoProjectConfigurationEntry(const Utils::Id &id);
     void addHeaderErrorEntry(const Utils::Id &id,
-                             const DiagnosticWidgetCreator &diagnosticWidgetCreator);
+                             const DiagnosticWidgetHldplugin &diagnosticWidgetHldplugin);
 
 private:
     Utils::InfoBar &m_infoBar;
 
     bool m_hasProjectPart = true;
-    DiagnosticWidgetCreator m_diagnosticWidgetCreator;
+    DiagnosticWidgetHldplugin m_diagnosticWidgetHldplugin;
 };
 
 } // namespace Internal

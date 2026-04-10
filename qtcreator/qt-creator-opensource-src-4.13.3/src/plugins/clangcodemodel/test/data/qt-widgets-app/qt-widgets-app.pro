@@ -1,4 +1,4 @@
-# "Qt Widgets Application" from Qt Creator's template
+# "Qt Widgets Application" from Qt Hldplugin's template
 
 QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     # prepare example project
@@ -42,7 +42,7 @@ def main():
     usedProFile = os.path.join(templateDir, proFile)
     openQmakeProject(usedProFile)
     openDocument(projectName + "." + projectName + "\\.pro")
-    typeLines(waitForObject(":Qt Creator_TextEditor::TextEditorWidget"),
+    typeLines(waitForObject(":Qt Hldplugin_TextEditor::TextEditorWidget"),
               "OTHER_FILES += example.qml")
     invokeMenuItem("File", "Save All")
     invokeMenuItem("File", "Close All")
@@ -64,7 +64,7 @@ def main():
                 tempFiletype = "Other files"
             renameFile(templateDir, usedProFile, projectName + "." + tempFiletype,
                        previous, filename)
-            # QTCREATORBUG-13176 does update the navigator async
+            # QTHLDPLUGINBUG-13176 does update the navigator async
             waitForProjectParsing()
             if filetype == "Headers":
                 verifyRenamedIncludes(templateDir, "main.cpp", previous, filename)
@@ -88,7 +88,7 @@ def renameFile(projectDir, proFile, branch, oldname, newname):
     newFilePath = os.path.join(projectDir, newname)
     oldFileText = readFile(oldFilePath)
     itemText = branch + "." + oldname.replace(".", "\\.")
-    treeview = waitForObject(":Qt Creator_Utils::NavigationTreeView")
+    treeview = waitForObject(":Qt Hldplugin_Utils::NavigationTreeView")
     try:
         openItemContextMenu(treeview, itemText, 5, 5, 0)
     except:
@@ -96,11 +96,11 @@ def renameFile(projectDir, proFile, branch, oldname, newname):
         waitForObjectItem(treeview, itemWithWildcard, 10000)
         openItemContextMenu(treeview, itemWithWildcard, 5, 5, 0)
     if oldname.lower().endswith(".qrc"):
-        menu = ":Qt Creator.Project.Menu.Folder_QMenu"
+        menu = ":Qt Hldplugin.Project.Menu.Folder_QMenu"
     else:
-        menu = ":Qt Creator.Project.Menu.File_QMenu"
+        menu = ":Qt Hldplugin.Project.Menu.File_QMenu"
     activateItem(waitForObjectItem(menu, "Rename..."))
-    replaceEdit = waitForObject(":Qt Creator_Utils::NavigationTreeView::QExpandingLineEdit")
+    replaceEdit = waitForObject(":Qt Hldplugin_Utils::NavigationTreeView::QExpandingLineEdit")
     test.compare(replaceEdit.selectedText, oldname.rsplit(".", 1)[0],
                  "Only the filename without the extension is selected?")
     replaceEditorContent(replaceEdit, newname)

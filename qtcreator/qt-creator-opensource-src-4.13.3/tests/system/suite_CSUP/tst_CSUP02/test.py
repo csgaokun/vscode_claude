@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 import time
 
@@ -36,7 +36,7 @@ def delayedType(editor, text):
 def main():
     for useClang in [False, True]:
         with TestSection(getCodeModelString(useClang)):
-            if not startCreatorVerifyingClang(useClang):
+            if not startHldpluginVerifyingClang(useClang):
                 continue
             # create qt quick application
 # Step 1: Open test .pro project.
@@ -47,11 +47,11 @@ def main():
                 test.fatal("Could not open main.cpp")
                 invokeMenuItem("File", "Exit")
                 return
-            test.verify(checkIfObjectExists(":Qt Creator_CppEditor::Internal::CPPEditorWidget"),
+            test.verify(checkIfObjectExists(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget"),
                         "Step 2: Verifying if: .cpp file is opened in Edit mode.")
 # Steps 3&4: Insert text "class" to new line in Editor mode and press Ctrl+Space.
 # Focus "class derived from QObject" in the list and press Tab or Enter to complete the code.
-            editorWidget = findObject(":Qt Creator_CppEditor::Internal::CPPEditorWidget")
+            editorWidget = findObject(":Qt Hldplugin_CppEditor::Internal::CPPEditorWidget")
             mouseClick(editorWidget)
             jumpToFirstLine(editorWidget)
             type(editorWidget, "<Return>")
@@ -65,7 +65,7 @@ def main():
             usedProposal = "class derived from QObject"
             expectedProposals = ["class", "class ", "class template",
                                  usedProposal, "class derived from QWidget"]
-            test.xcompare(len(shownProposals), len(expectedProposals),  # QTCREATORBUG-23159
+            test.xcompare(len(shownProposals), len(expectedProposals),  # QTHLDPLUGINBUG-23159
                           "Number of proposed templates")
             test.verify(set(expectedProposals).issubset(set(shownProposals)),
                         "Expected proposals shown, ignoring order?")

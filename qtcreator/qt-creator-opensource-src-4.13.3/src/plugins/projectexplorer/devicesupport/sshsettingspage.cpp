@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -82,7 +82,7 @@ SshSettingsPage::SshSettingsPage()
     setCategory(Constants::DEVICE_SETTINGS_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("ProjectExplorer", "SSH"));
     setCategoryIconPath(":/projectexplorer/images/settingscategory_devices.png");
-    setWidgetCreator([] { return new SshSettingsWidget; });
+    setWidgetHldplugin([] { return new SshSettingsWidget; });
 }
 
 SshSettingsWidget::SshSettingsWidget()

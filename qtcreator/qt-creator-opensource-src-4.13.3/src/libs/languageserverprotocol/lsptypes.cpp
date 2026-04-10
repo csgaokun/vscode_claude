@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -189,8 +189,8 @@ static QHash<Utils::MimeType, QString> mimeTypeLanguageIdMap()
         {"text/x-c++src", "cpp"},
         {"text/x-moc", "cpp"},
         {"text/x-csharp", "csharp"},
-        {"text/vnd.qtcreator.git.commit", "git-commit"},
-        {"text/vnd.qtcreator.git.rebase", "git-rebase"},
+        {"text/vnd.qthldplugin.git.commit", "git-commit"},
+        {"text/vnd.qthldplugin.git.rebase", "git-rebase"},
         {"text/x-go", "go"},
         {"text/html", "html"},
         {"text/x-java", "java"},

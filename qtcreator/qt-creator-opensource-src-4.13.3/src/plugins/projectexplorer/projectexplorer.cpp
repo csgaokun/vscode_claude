@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -545,7 +545,7 @@ public:
     int m_activeRunControlCount = 0;
     int m_shutdownWatchDogId = -1;
 
-    QHash<QString, std::function<Project *(const Utils::FilePath &)>> m_projectCreators;
+    QHash<QString, std::function<Project *(const Utils::FilePath &)>> m_projectHldplugins;
     QList<QPair<QString, QString> > m_recentProjects; // pair of filename, displayname
     static const int m_maxRecentProjects = 25;
 
@@ -711,7 +711,7 @@ bool ProjectExplorerPlugin::initialize(const QStringList &arguments, QString *er
 
     IWizardFactory::registerFeatureProvider(new KitFeatureProvider);
 
-    IWizardFactory::registerFactoryCreator([]() -> QList<IWizardFactory *> {
+    IWizardFactory::registerFactoryHldplugin([]() -> QList<IWizardFactory *> {
         QList<IWizardFactory *> result;
         result << CustomWizard::createWizards();
         result << JsonWizardFactory::createWizardFactories();
@@ -1984,7 +1984,7 @@ void ProjectExplorerPlugin::extensionsInitialized()
     });
 
     dd->m_documentFactory.addMimeType(QStringLiteral("inode/directory"));
-    for (const QString &mimeType : dd->m_projectCreators.keys()) {
+    for (const QString &mimeType : dd->m_projectHldplugins.keys()) {
         dd->m_documentFactory.addMimeType(mimeType);
         Utils::MimeType mime = Utils::mimeTypeForName(mimeType);
         allGlobPatterns.append(mime.globPatterns());
@@ -2227,7 +2227,7 @@ void ProjectExplorerPlugin::showOpenProjectError(const OpenProjectResult &result
 
     // Potentially both errorMessage and alreadyOpen could contain information
     // that should be shown to the user.
-    // BUT, if Creator opens only a single project, this can lead
+    // BUT, if Hldplugin opens only a single project, this can lead
     // to either
     // - No error
     // - A errorMessage
@@ -2366,7 +2366,7 @@ void ProjectExplorerPluginPrivate::determineSessionToRestoreAtStartup()
 QStringList ProjectExplorerPlugin::projectFileGlobs()
 {
     QStringList result;
-    for (const QString &mt : dd->m_projectCreators.keys()) {
+    for (const QString &mt : dd->m_projectHldplugins.keys()) {
         Utils::MimeType mimeType = Utils::mimeTypeForName(mt);
         if (mimeType.isValid()) {
             const QStringList patterns = mimeType.globPatterns();
@@ -2403,7 +2403,7 @@ void ProjectExplorerPluginPrivate::restoreSession()
     // Massage the argument list.
     // Be smart about directories: If there is a session of that name, load it.
     //   Other than that, look for project files in it. The idea is to achieve
-    //   'Do what I mean' functionality when starting Creator in a directory with
+    //   'Do what I mean' functionality when starting Hldplugin in a directory with
     //   the single command line argument '.' and avoid editor warnings about not
     //   being able to open directories.
     // In addition, convert "filename" "+45" or "filename" ":23" into
@@ -3904,7 +3904,7 @@ const QList<CustomParserSettings> ProjectExplorerPlugin::customParsers()
 QStringList ProjectExplorerPlugin::projectFilePatterns()
 {
     QStringList patterns;
-    for (const QString &mime : dd->m_projectCreators.keys()) {
+    for (const QString &mime : dd->m_projectHldplugins.keys()) {
         Utils::MimeType mt = Utils::mimeTypeForName(mime);
         if (mt.isValid())
             patterns.append(mt.globPatterns());
@@ -3915,7 +3915,7 @@ QStringList ProjectExplorerPlugin::projectFilePatterns()
 bool ProjectExplorerPlugin::isProjectFile(const Utils::FilePath &filePath)
 {
     Utils::MimeType mt = Utils::mimeTypeForFile(filePath.toString());
-    for (const QString &mime : dd->m_projectCreators.keys()) {
+    for (const QString &mime : dd->m_projectHldplugins.keys()) {
         if (mt.inherits(mime))
             return true;
     }
@@ -3979,18 +3979,18 @@ QList<QPair<QString, QString> > ProjectExplorerPlugin::recentProjects()
     return dd->recentProjects();
 }
 
-void ProjectManager::registerProjectCreator(const QString &mimeType,
-    const std::function<Project *(const Utils::FilePath &)> &creator)
+void ProjectManager::registerProjectHldplugin(const QString &mimeType,
+    const std::function<Project *(const Utils::FilePath &)> &hldplugin)
 {
-    dd->m_projectCreators[mimeType] = creator;
+    dd->m_projectHldplugins[mimeType] = hldplugin;
 }
 
 Project *ProjectManager::openProject(const Utils::MimeType &mt, const Utils::FilePath &fileName)
 {
     if (mt.isValid()) {
-        for (const QString &mimeType : dd->m_projectCreators.keys()) {
+        for (const QString &mimeType : dd->m_projectHldplugins.keys()) {
             if (mt.matchesName(mimeType))
-                return dd->m_projectCreators[mimeType](fileName);
+                return dd->m_projectHldplugins[mimeType](fileName);
         }
     }
     return nullptr;
@@ -3999,7 +3999,7 @@ Project *ProjectManager::openProject(const Utils::MimeType &mt, const Utils::Fil
 bool ProjectManager::canOpenProjectForMimeType(const Utils::MimeType &mt)
 {
     if (mt.isValid()) {
-        for (const QString &mimeType : dd->m_projectCreators.keys()) {
+        for (const QString &mimeType : dd->m_projectHldplugins.keys()) {
             if (mt.matchesName(mimeType))
                 return true;
         }

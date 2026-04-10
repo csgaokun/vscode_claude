@@ -5,7 +5,7 @@
 ** Copyright (C) 2017 Andre Hartmann <aha_1980@gmx.de>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ class QRegularExpressionMatch;
 class QString;
 QT_END_NAMESPACE
 
-class QTCREATOR_UTILS_EXPORT FuzzyMatcher
+class QTHLDPLUGIN_UTILS_EXPORT FuzzyMatcher
 {
 public:
     enum class CaseSensitivity {

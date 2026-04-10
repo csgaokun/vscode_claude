@@ -5,7 +5,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -44,7 +44,7 @@ fi
 
 cd `dirname $0`
 
-applicationNames="qtcreator designer linguist assistant qdbusviewer qmlviewer"
+applicationNames="qthldplugin designer linguist assistant qdbusviewer qmlviewer"
 applicationIconDimensions="16:0 24:0 32:1 48:1 64:1 128:2 256:3 512:7 1024:15"
 
 # Creating the list of svg IDs to export
@@ -57,18 +57,18 @@ do
     done
 done
 
-# Copying the logos for Qt Creator's sources. Without shadows!
-creatorLogoDir="logo"
-rm -rf $creatorLogoDir
-mkdir $creatorLogoDir
+# Copying the logos for Qt Hldplugin's sources. Without shadows!
+hldpluginLogoDir="logo"
+rm -rf $hldpluginLogoDir
+mkdir $hldpluginLogoDir
 for uiFileIconSize in 16 24 32 48 64 128 256 512;\
 do
-    creatorLogoSource="qtcreator_icon_${uiFileIconSize}x${uiFileIconSize}.png"
-    creatorLogoTargetDir="${creatorLogoDir}/${uiFileIconSize}"
-    creatorLogoTarget="${creatorLogoTargetDir}/QtProject-qtcreator.png"
-    optipng $creatorLogoSource -o 7 -strip all
-    mkdir $creatorLogoTargetDir
-    cp $creatorLogoSource $creatorLogoTarget
+    hldpluginLogoSource="qthldplugin_icon_${uiFileIconSize}x${uiFileIconSize}.png"
+    hldpluginLogoTargetDir="${hldpluginLogoDir}/${uiFileIconSize}"
+    hldpluginLogoTarget="${hldpluginLogoTargetDir}/QtProject-qthldplugin.png"
+    optipng $hldpluginLogoSource -o 7 -strip all
+    mkdir $hldpluginLogoTargetDir
+    cp $hldpluginLogoSource $hldpluginLogoTarget
 done
 
 # Adding the shadows to the .png files

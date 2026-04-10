@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2010-03-01T11:08:57
+# Project created by QtHldplugin 2010-03-01T11:08:57
 #
 #-------------------------------------------------
 
@@ -9,9 +9,9 @@ QT       += core
 QT       += gui
 
 QTC_LIB_DEPENDS += utils
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 
-# -- Add creator 'utils' lib
+# -- Add hldplugin 'utils' lib
 macx:QMAKE_LFLAGS += -Wl,-rpath,\"$$IDE_BIN_PATH/..\"
 
 TARGET = process

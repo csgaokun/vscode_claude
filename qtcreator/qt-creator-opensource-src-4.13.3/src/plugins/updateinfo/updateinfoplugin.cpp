@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -205,7 +205,7 @@ void UpdateInfoPlugin::checkForUpdatesFinished()
             startUpdater();
         });
         const QList<Update> updates = availableUpdates(document);
-        info.setDetailsWidgetCreator([updates]() -> QWidget * {
+        info.setDetailsWidgetHldplugin([updates]() -> QWidget * {
             const QString updateText = Utils::transform(updates, [](const Update &u) {
                                            return u.version.isEmpty()
                                                       ? u.name
@@ -296,9 +296,9 @@ void UpdateInfoPlugin::saveSettings()
     settings->setValue(QLatin1String(LastCheckDateKey), d->m_lastCheckDate);
     settings->setValue(QLatin1String(AutomaticCheckKey), d->m_automaticCheck);
     // Note: don't save MaintenanceToolKey on purpose! This setting may be set only by installer.
-    // If creator is run not from installed SDK, the setting can be manually created here:
-    // [CREATOR_INSTALLATION_LOCATION]/share/qtcreator/QtProject/QtCreator.ini or
-    // [CREATOR_INSTALLATION_LOCATION]/Qt Creator.app/Contents/Resources/QtProject/QtCreator.ini on OS X
+    // If hldplugin is run not from installed SDK, the setting can be manually created here:
+    // [HLDPLUGIN_INSTALLATION_LOCATION]/share/qthldplugin/QtProject/QtHldplugin.ini or
+    // [HLDPLUGIN_INSTALLATION_LOCATION]/Qt Hldplugin.app/Contents/Resources/QtProject/QtHldplugin.ini on OS X
     const QMetaObject *mo = metaObject();
     const QMetaEnum me = mo->enumerator(mo->indexOfEnumerator(CheckIntervalKey));
     settings->setValue(QLatin1String(CheckIntervalKey), QLatin1String(me.valueToKey(d->m_checkInterval)));

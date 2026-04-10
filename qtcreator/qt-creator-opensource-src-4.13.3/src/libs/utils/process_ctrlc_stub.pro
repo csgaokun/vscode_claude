@@ -3,10 +3,10 @@
 CONFIG    -= qt
 CONFIG    += console warn_on
 
-include(../../../qtcreator.pri)
+include(../../../qthldplugin.pri)
 
 TEMPLATE  = app
-TARGET    = qtcreator_ctrlc_stub
+TARGET    = qthldplugin_ctrlc_stub
 DESTDIR   = $$IDE_LIBEXEC_PATH
 
 SOURCES   += process_ctrlc_stub.cpp

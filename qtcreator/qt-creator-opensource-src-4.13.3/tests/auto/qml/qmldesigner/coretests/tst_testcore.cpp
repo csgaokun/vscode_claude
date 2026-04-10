@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -79,7 +79,7 @@ using namespace QmlDesigner;
 #ifdef Q_OS_MAC
 #  define SHARE_PATH "/Resources"
 #else
-#  define SHARE_PATH "/share/qtcreator"
+#  define SHARE_PATH "/share/qthldplugin"
 #endif
 
 QT_BEGIN_NAMESPACE
@@ -105,7 +105,7 @@ QT_END_NAMESPACE
 
 QString resourcePath()
 {
-    return QDir::cleanPath(QTCREATORDIR + QLatin1String(SHARE_PATH));
+    return QDir::cleanPath(QTHLDPLUGINDIR + QLatin1String(SHARE_PATH));
 }
 
 class TestModelManager : public QmlJSTools::Internal::ModelManager
@@ -180,7 +180,7 @@ void tst_TestCore::initTestCase()
     if (!QmlJS::ModelManagerInterface::instance())
         new TestModelManager;
 
-    initializeMetaTypeSystem(QLatin1String(QTCREATORDIR "/share/qtcreator"));
+    initializeMetaTypeSystem(QLatin1String(QTHLDPLUGINDIR "/share/qthldplugin"));
 
     QStringList basePaths;
     basePaths.append(QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath));
@@ -195,9 +195,9 @@ void tst_TestCore::initTestCase()
    // Load plugins
 
 #ifdef Q_OS_MAC
-    const QString pluginPath = QTCREATORDIR "/bin/Qt Creator.app/Contents/PlugIns/QmlDesigner";
+    const QString pluginPath = QTHLDPLUGINDIR "/bin/Qt Hldplugin.app/Contents/PlugIns/QmlDesigner";
 #else
-    const QString pluginPath = QTCREATORDIR "/lib/qtcreator/plugins/qmldesigner";
+    const QString pluginPath = QTHLDPLUGINDIR "/lib/qthldplugin/plugins/qmldesigner";
 #endif
 
     qDebug() << pluginPath;
@@ -8227,7 +8227,7 @@ void tst_TestCore::loadTestFiles()
         QCOMPARE(imageNode.type(), QmlDesigner::TypeName("QtQuick.Image"));
         QCOMPARE(imageNode.variantProperty("x").value().toInt(), 41);
         QCOMPARE(imageNode.variantProperty("y").value().toInt(), 46);
-        QCOMPARE(imageNode.variantProperty("source").value().toUrl(), QUrl("images/qtcreator.png"));
+        QCOMPARE(imageNode.variantProperty("source").value().toUrl(), QUrl("images/qthldplugin.png"));
 
         QVERIFY(rootModelNode.hasProperty("states"));
         QVERIFY(!rootModelNode.property("states").isDefaultProperty());

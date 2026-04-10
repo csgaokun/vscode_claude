@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@ namespace Android {
 namespace Internal {
 /**
  * @class SdkDownloader
- * @brief Download Android SDK tools package from within Qt Creator.
+ * @brief Download Android SDK tools package from within Qt Hldplugin.
  */
 AndroidSdkDownloader::AndroidSdkDownloader()
 {

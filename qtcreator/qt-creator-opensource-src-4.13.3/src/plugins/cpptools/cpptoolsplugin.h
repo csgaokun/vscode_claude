@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,7 +42,7 @@ struct CppFileSettings;
 class CppToolsPlugin final : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "CppTools.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "CppTools.json")
 
 public:
     CppToolsPlugin();
@@ -104,8 +104,8 @@ private slots:
     void test_completion_member_access_operator_data();
     void test_completion_member_access_operator();
 
-    void test_completion_prefix_first_QTCREATORBUG_8737();
-    void test_completion_prefix_first_QTCREATORBUG_9236();
+    void test_completion_prefix_first_QTHLDPLUGINBUG_8737();
+    void test_completion_prefix_first_QTHLDPLUGINBUG_9236();
 
     void test_format_pointerdeclaration_in_simpledeclarations();
     void test_format_pointerdeclaration_in_simpledeclarations_data();

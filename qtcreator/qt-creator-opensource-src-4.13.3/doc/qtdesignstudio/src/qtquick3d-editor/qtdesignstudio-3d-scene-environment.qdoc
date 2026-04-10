@@ -29,7 +29,7 @@
     \page studio-3d-scene-environment.html
     \previouspage studio-3d-camera.html
     \if defined (qtdesignstudio)
-    \nextpage creator-live-preview.html
+    \nextpage hldplugin-live-preview.html
     \else
     \nextpage qtquick-iso-icon-browser.html
     \endif

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -525,7 +525,7 @@ bool SessionManager::save()
 
     if (!d->m_writer || d->m_writer->fileName() != filePath) {
         delete d->m_writer;
-        d->m_writer = new PersistentSettingsWriter(filePath, "QtCreatorSession");
+        d->m_writer = new PersistentSettingsWriter(filePath, "QtHldpluginSession");
     }
     const bool result = d->m_writer->save(data, ICore::dialogParent());
     if (result) {
@@ -1124,7 +1124,7 @@ QString SessionManager::lastSession()
 }
 
 /*!
-    Returns the session that was active when Qt Creator was last closed, if any.
+    Returns the session that was active when Qt Hldplugin was last closed, if any.
 */
 QString SessionManager::startupSession()
 {

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # entry of test
 def main():
@@ -40,16 +40,16 @@ def main():
         selectBuildConfig(kit, config)
         # try to compile
         test.log("Testing build configuration: " + config)
-        clickButton(waitForObject(":*Qt Creator.Build Project_Core::Internal::FancyToolButton"))
+        clickButton(waitForObject(":*Qt Hldplugin.Build Project_Core::Internal::FancyToolButton"))
         waitForCompile()
         # check output if build successful
-        ensureChecked(waitForObject(":Qt Creator_CompileOutput_Core::Internal::OutputPaneToggleButton"))
-        waitFor("object.exists(':*Qt Creator.Cancel Build_QToolButton')", 20000)
-        cancelBuildButton = findObject(':*Qt Creator.Cancel Build_QToolButton')
+        ensureChecked(waitForObject(":Qt Hldplugin_CompileOutput_Core::Internal::OutputPaneToggleButton"))
+        waitFor("object.exists(':*Qt Hldplugin.Cancel Build_QToolButton')", 20000)
+        cancelBuildButton = findObject(':*Qt Hldplugin.Cancel Build_QToolButton')
         waitFor("not cancelBuildButton.enabled", 30000)
-        compileOutput = waitForObject(":Qt Creator.Compile Output_Core::OutputWindow")
+        compileOutput = waitForObject(":Qt Hldplugin.Compile Output_Core::OutputWindow")
         if not test.verify(compileSucceeded(compileOutput.plainText),
                            "Verifying building of simple qt quick application."):
             test.log(str(compileOutput.plainText))
-    # exit qt creator
+    # exit qt hldplugin
     invokeMenuItem("File", "Exit")

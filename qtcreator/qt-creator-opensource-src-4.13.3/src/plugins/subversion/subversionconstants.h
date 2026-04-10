@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,15 +39,15 @@ const char SUBVERSION_CONTEXT[]        = "Subversion Context";
 
 const char SUBVERSION_COMMIT_EDITOR_ID[]  = "Subversion Commit Editor";
 const char SUBVERSION_COMMIT_EDITOR_DISPLAY_NAME[]  = QT_TRANSLATE_NOOP("VCS", "Subversion Commit Editor");
-const char SUBVERSION_SUBMIT_MIMETYPE[] = "text/vnd.qtcreator.svn.submit";
+const char SUBVERSION_SUBMIT_MIMETYPE[] = "text/vnd.qthldplugin.svn.submit";
 
 const char SUBVERSION_LOG_EDITOR_ID[] = "Subversion File Log Editor";
 const char SUBVERSION_LOG_EDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Subversion File Log Editor");
-const char SUBVERSION_LOG_MIMETYPE[] = "text/vnd.qtcreator.svn.log";
+const char SUBVERSION_LOG_MIMETYPE[] = "text/vnd.qthldplugin.svn.log";
 
 const char SUBVERSION_BLAME_EDITOR_ID[] = "Subversion Annotation Editor";
 const char SUBVERSION_BLAME_EDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "Subversion Annotation Editor");
-const char SUBVERSION_BLAME_MIMETYPE[] = "text/vnd.qtcreator.svn.annotation";
+const char SUBVERSION_BLAME_MIMETYPE[] = "text/vnd.qthldplugin.svn.annotation";
 
 } // namespace Constants
 } // namespace Subversion

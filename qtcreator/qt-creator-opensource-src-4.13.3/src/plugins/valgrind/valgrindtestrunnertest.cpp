@@ -4,7 +4,7 @@
 ** Author: Milian Wolff, KDAB (milian.wolff@kdab.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -155,7 +155,7 @@ void ValgrindTestRunnerTest::testLeak1()
 {
     const QString binary = runTestBinary("leak1/leak1");
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
 
     QVERIFY(m_logMessages.isEmpty());
@@ -191,7 +191,7 @@ void ValgrindTestRunnerTest::testLeak2()
 {
     const QString binary = runTestBinary("leak2/leak2");
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
 
     QVERIFY(m_logMessages.isEmpty());
@@ -231,7 +231,7 @@ void ValgrindTestRunnerTest::testLeak3()
 {
     const QString binary = runTestBinary("leak3/leak3", QStringList{"--show-reachable=yes"});
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     QVERIFY(m_logMessages.isEmpty());
 
@@ -273,7 +273,7 @@ void ValgrindTestRunnerTest::testLeak4()
     const QString binary = runTestBinary(app + '/' + app,
                                          QStringList() << "--show-reachable=yes");
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp("leak4");
 
@@ -358,7 +358,7 @@ void ValgrindTestRunnerTest::testUninit1()
     const QString app("uninit1");
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 
@@ -404,7 +404,7 @@ void ValgrindTestRunnerTest::testUninit2()
     m_expectCrash = true;
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 
@@ -471,7 +471,7 @@ void ValgrindTestRunnerTest::testUninit3()
     m_expectCrash = true;
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 
@@ -537,7 +537,7 @@ void ValgrindTestRunnerTest::testSyscall()
     const QString app("syscall");
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 
@@ -599,7 +599,7 @@ void ValgrindTestRunnerTest::testFree1()
     const QString app("free1");
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 
@@ -656,7 +656,7 @@ void ValgrindTestRunnerTest::testFree2()
     const QString app("free2");
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 
@@ -718,7 +718,7 @@ void ValgrindTestRunnerTest::testInvalidjump()
     m_expectCrash = true;
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
 
     QVERIFY(m_logMessages.isEmpty());
@@ -747,7 +747,7 @@ void ValgrindTestRunnerTest::testOverlap()
     m_expectCrash = true;
     const QString binary = runTestBinary(app + '/' + app);
     if (binary.isEmpty())
-        QSKIP("You need to pass BUILD_TESTS when building Qt Creator or build valgrind testapps "
+        QSKIP("You need to pass BUILD_TESTS when building Qt Hldplugin or build valgrind testapps "
               "manually before executing this test.");
     const QString srcDir = srcDirForApp(app);
 

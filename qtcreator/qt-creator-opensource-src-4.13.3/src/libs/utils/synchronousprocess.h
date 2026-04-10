@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ class SynchronousProcessPrivate;
 class CommandLine;
 
 /* Result of SynchronousProcess execution */
-class QTCREATOR_UTILS_EXPORT SynchronousProcessResponse
+class QTHLDPLUGIN_UTILS_EXPORT SynchronousProcessResponse
 {
 public:
     enum Result {
@@ -75,12 +75,12 @@ public:
     QTextCodec *codec = QTextCodec::codecForLocale();
 };
 
-QTCREATOR_UTILS_EXPORT QDebug operator<<(QDebug str, const SynchronousProcessResponse &);
+QTHLDPLUGIN_UTILS_EXPORT QDebug operator<<(QDebug str, const SynchronousProcessResponse &);
 
 using ExitCodeInterpreter = std::function<SynchronousProcessResponse::Result(int /*exitCode*/)>;
-QTCREATOR_UTILS_EXPORT SynchronousProcessResponse::Result defaultExitCodeInterpreter(int code);
+QTHLDPLUGIN_UTILS_EXPORT SynchronousProcessResponse::Result defaultExitCodeInterpreter(int code);
 
-class QTCREATOR_UTILS_EXPORT SynchronousProcess : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT SynchronousProcess : public QObject
 {
     Q_OBJECT
 public:

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -188,7 +188,7 @@ void CompletingTextEdit::focusInEvent(QFocusEvent *e)
 
 bool CompletingTextEdit::event(QEvent *e)
 {
-    // workaround for QTCREATORBUG-9453
+    // workaround for QTHLDPLUGINBUG-9453
     if (e->type() == QEvent::ShortcutOverride && completer()
             && completer()->popup() && completer()->popup()->isVisible()) {
         auto ke = static_cast<QKeyEvent *>(e);

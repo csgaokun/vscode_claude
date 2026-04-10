@@ -1,14 +1,14 @@
-Qt Creator version 3.3 contains bug fixes and new features.
+Qt Hldplugin version 3.3 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline origin/3.2..origin/3.3
 
 General
-   * Dropped Qt 4 compatibility in Qt Creator's own code base.
+   * Dropped Qt 4 compatibility in Qt Hldplugin's own code base.
      Require Qt 5.3 as minimum, to take advantage of Qt 5 features.
      Handling of Qt 4 based projects is of course still supported.
    * Created new wizard engine to add new script based wizards
@@ -39,50 +39,50 @@ Help
 
 Managing and Building Projects
    * Added option to specify environment variables per kit
-     (QTCREATORBUG-9898)
+     (QTHLDPLUGINBUG-9898)
    * Added 256-color ANSI support to application output view
-     (QTCREATORBUG-12623)
+     (QTHLDPLUGINBUG-12623)
    * Added Select all kits check box to project setup page
    * Added support for using variables, such as %{Qt:Version},
-     in Qt version and kit display names (QTCREATORBUG-11118)
+     in Qt version and kit display names (QTHLDPLUGINBUG-11118)
    * Changed File > Close Project to a menu that allows selecting
      a specific project to close, if more than one project is open
-     (QTCREATORBUG-12857)
+     (QTHLDPLUGINBUG-12857)
    * Fixed that Run menu in project context menu was never shown
 
 QMake Projects
    * Implemented asynchronous loading of projects
    * Added option to use Qt Quick Compiler
    * Fixed that adding multiple build configurations stopped asking
-     for the configuration name (QTCREATORBUG-12955)
+     for the configuration name (QTHLDPLUGINBUG-12955)
    * Fixed crash when renaming files in case automatic rewriting
-     of the .pro file is not possible (QTCREATORBUG-12930)
+     of the .pro file is not possible (QTHLDPLUGINBUG-12930)
 
 CMake Projects
    * Added support for bare metal devices
-   * Added option to override make command (QTCREATORBUG-11788)
+   * Added option to override make command (QTHLDPLUGINBUG-11788)
 
 Qbs Projects
    * Removed experimental status of the plugin
    * Added support for renaming files (QBS-652)
-   * Fixed crash with simplified project view (QTCREATORBUG-12897)
+   * Fixed crash with simplified project view (QTHLDPLUGINBUG-12897)
 
 Generic Projects
    * Fixed that project files were shown twice after adding files to empty
-     generic project (QTCREATORBUG-13106)
+     generic project (QTHLDPLUGINBUG-13106)
 
 Debugging
    * GDB
       * Fixed detection of target architecture
    * CDB
       * Made it possible to abort the debugging process
-      * Fixed shadowed local variable handling (QTCREATORBUG-13132)
+      * Fixed shadowed local variable handling (QTHLDPLUGINBUG-13132)
 
 QML Profiler
-   * Added drag & drop for reordering categories in timeline (QTCREATORBUG-12337)
+   * Added drag & drop for reordering categories in timeline (QTHLDPLUGINBUG-12337)
    * Added optional showing and hiding of categories
    * Added option to add notes to events in timeline for export
-   * Fixed display of binding loops (QTCREATORBUG-12950)
+   * Fixed display of binding loops (QTHLDPLUGINBUG-12950)
    * Fixed selection of previous and next item in timeline
 
 Analyzer
@@ -91,11 +91,11 @@ C++ Support
    * Added Convert connect() to Qt 5 Style refactoring action
    * Added smart splitting of string literals when pressing enter within strings
    * Fixed code completion for pointer in template specialization
-     and initialization (QTCREATORBUG-12638)
+     and initialization (QTHLDPLUGINBUG-12638)
    * Fixed code completion for typedefs of pointer arrays
-     (QTCREATORBUG-12703)
+     (QTHLDPLUGINBUG-12703)
    * Fixed that hovering over a symbol sometimes jumped to its definition
-     (QTCREATORBUG-12986)
+     (QTHLDPLUGINBUG-12986)
    * Fixed that include paths were not adjusted when files are renamed
 
 
@@ -109,25 +109,25 @@ Qt Quick Designer
    * Extended anchoring options
 
 Diff Viewer
-   * Fixed reloading patch files (QTCREATORBUG-13241)
+   * Fixed reloading patch files (QTHLDPLUGINBUG-13241)
 
 Version Control Systems
    * Fixed commit editor line wrapping for lines that end with a dash
-     (QTCREATORBUG-8528)
+     (QTHLDPLUGINBUG-8528)
    * Git
       * Removed support for Gitorious
    * Subversion
       * Dropped support for Subversion versions earlier than 1.7.0
       * Fixed deleting of files that were added but not committed
-        (QTCREATORBUG-13271)
+        (QTHLDPLUGINBUG-13271)
       * Fixed detection of .svn directory when opening a file in the
-        root directory of the repository (QTCREATORBUG-7763)
+        root directory of the repository (QTHLDPLUGINBUG-7763)
       * Added support for describing the first commit
       * Added support for topic display (shows current revision number
         in the window title and next to the project node)
-      * Fixed that commit output was not displayed (QTCREATORBUG-12929)
-      * Fixed false positive matches for revision number (QTCREATORBUG-11845)
-      * Added support for trusting server certificate on checkout (QTCREATORBUG-3753)
+      * Fixed that commit output was not displayed (QTHLDPLUGINBUG-12929)
+      * Fixed false positive matches for revision number (QTHLDPLUGINBUG-11845)
+      * Added support for trusting server certificate on checkout (QTHLDPLUGINBUG-3753)
    * Mercurial
       * Fixed that describe commit showed its summary but not the full message
       * Fixed highlighting of commit message
@@ -136,7 +136,7 @@ Version Control Systems
 
 FakeVim
    * Fixed issues with Save As
-     (QTCREATORBUG-12810)
+     (QTHLDPLUGINBUG-12810)
 
 Beautifier
 
@@ -155,7 +155,7 @@ Android
    * Split permissions and features check box into separate check boxes
      in manifest editor
    * Fixed that passwords used for signing were shown in build log
-     (QTCREATORBUG-12919)
+     (QTHLDPLUGINBUG-12919)
 
 Remote Linux
    * Made checks on tool chain and target architecture/OS for deployment

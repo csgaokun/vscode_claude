@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@
 /*!
     \class Core::IFindFilter
     \inheaderfile coreplugin/find/ifindfilter.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The IFindFilter class is the base class for find implementations
     that are invoked by selecting \uicontrol Edit > \uicontrol {Find/Replace} >
@@ -49,7 +49,7 @@
     and \uicontrol {Files in File System} where the user provides a directory and file
     patterns to search.
 
-    \image qtcreator-search-filesystem.png
+    \image qthldplugin-search-filesystem.png
 
     To make your find scope available to the user, you need to implement this
     class, and register an instance of your subclass in the plugin manager.
@@ -57,7 +57,7 @@
     A common way to present the search results to the user, is to use the
     shared \uicontrol{Search Results} pane.
 
-    \image qtcreator-searchresults.png
+    \image qthldplugin-searchresults.png
 
     If you want to implement a find filter that is doing a file based text
     search, you should use \l Core::BaseTextFind, which already implements all

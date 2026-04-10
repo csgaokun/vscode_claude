@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -56,7 +56,7 @@ using ClangBackEnd::SymbolIndexing;
 QStringList processArguments(QCoreApplication &application)
 {
     QCommandLineParser parser;
-    parser.setApplicationDescription(QStringLiteral("Qt Creator Clang Refactoring Backend"));
+    parser.setApplicationDescription(QStringLiteral("Qt Hldplugin Clang Refactoring Backend"));
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addPositionalArgument(QStringLiteral("connection"), QStringLiteral("Connection"));

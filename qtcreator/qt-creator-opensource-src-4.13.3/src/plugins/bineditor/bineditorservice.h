@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -78,7 +78,7 @@ public:
 
 } // namespace BinEditor
 
-#define BinEditor_FactoryService_iid "org.qt-project.Qt.Creator.BinEditor.EditorService"
+#define BinEditor_FactoryService_iid "org.qt-project.Qt.Hldplugin.BinEditor.EditorService"
 
 QT_BEGIN_NAMESPACE
 Q_DECLARE_INTERFACE(BinEditor::FactoryService, BinEditor_FactoryService_iid)

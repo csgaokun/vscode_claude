@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@ QT_END_NAMESPACE
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT CommentDefinition
+class QTHLDPLUGIN_UTILS_EXPORT CommentDefinition
 {
 public:
     static CommentDefinition CppStyle;
@@ -56,7 +56,7 @@ public:
     QString multiLineEnd;
 };
 
-QTCREATOR_UTILS_EXPORT
+QTHLDPLUGIN_UTILS_EXPORT
 void unCommentSelection(QPlainTextEdit *edit,
                         const CommentDefinition &definiton = CommentDefinition());
 

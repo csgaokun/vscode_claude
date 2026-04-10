@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -58,7 +58,7 @@ enum { defaultLineWidth = 72 };
     by doubleclicking. A list model which contains state and file columns should be
     set using setFileModel().
 
-    Additionally, standard creator actions  can be registered:
+    Additionally, standard hldplugin actions  can be registered:
     Undo/redo will be set up to work with the description editor.
     Submit will be set up to be enabled according to checkstate.
     Diff will be set up to trigger diffSelected().

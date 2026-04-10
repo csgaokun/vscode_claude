@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -162,7 +162,7 @@ SettingsPage::SettingsPage(UpdateInfoPlugin *plugin)
     setId(FILTER_OPTIONS_PAGE_ID);
     setCategory(Core::Constants::SETTINGS_CATEGORY_CORE);
     setDisplayName(UpdateInfoSettingsPageWidget::tr("Update", "Update"));
-    setWidgetCreator([plugin] { return new UpdateInfoSettingsPageWidget(plugin); });
+    setWidgetHldplugin([plugin] { return new UpdateInfoSettingsPageWidget(plugin); });
 }
 
 } // Internal

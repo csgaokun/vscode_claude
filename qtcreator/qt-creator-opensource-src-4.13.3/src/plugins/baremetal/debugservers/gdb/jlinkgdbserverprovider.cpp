@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 Kovalev Dmitry <kovalevda1991@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -65,7 +65,7 @@ JLinkGdbServerProvider::JLinkGdbServerProvider()
     setChannel("localhost", 2331);
     setSettingsKeyBase("BareMetal.JLinkGdbServerProvider");
     setTypeDisplayName(GdbServerProvider::tr("JLink"));
-    setConfigurationWidgetCreator([this] { return new JLinkGdbServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new JLinkGdbServerProviderConfigWidget(this); });
 }
 
 QString JLinkGdbServerProvider::defaultInitCommands()
@@ -186,7 +186,7 @@ JLinkGdbServerProviderFactory::JLinkGdbServerProviderFactory()
 {
     setId(Constants::GDBSERVER_JLINK_PROVIDER_ID);
     setDisplayName(GdbServerProvider::tr("JLink"));
-    setCreator([] { return new JLinkGdbServerProvider; });
+    setHldplugin([] { return new JLinkGdbServerProvider; });
 }
 
 // JLinkGdbServerProviderConfigWidget

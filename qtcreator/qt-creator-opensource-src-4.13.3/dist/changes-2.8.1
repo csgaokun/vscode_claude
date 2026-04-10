@@ -1,11 +1,11 @@
 
-Qt Creator version 2.8.1 is a bugfix release.
+Qt Hldplugin version 2.8.1 is a bugfix release.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline v2.8.0..v2.8.1
 
 There is a total of 132 changes by 28 individual contributors.
@@ -46,12 +46,12 @@ Victor Ostashevsky
 General
 
 Editing
-   * Removed trailing whitespace in generated files (QTCREATORBUG-9833)
-   * Fixed placing cursor after replacing "." with "->" (QTCREATORBUG-9891)
+   * Removed trailing whitespace in generated files (QTHLDPLUGINBUG-9833)
+   * Fixed placing cursor after replacing "." with "->" (QTHLDPLUGINBUG-9891)
    * Fixed crash that occurred when opening non-splittable editors in split
-     windows (QTCREATORBUG-9843)
+     windows (QTHLDPLUGINBUG-9843)
    * Fixed issues with having same document open in multiple splits
-     (QTCREATORBUG-9801, QTCREATORBUG-9798)
+     (QTHLDPLUGINBUG-9801, QTHLDPLUGINBUG-9798)
 
 Managing Projects
 
@@ -81,20 +81,20 @@ Debugging
    * Fixed dumpers in the presence of -D_GLIBCXX_DEBUG
    * Fixed endless loop when stopping without winXXinterrupt.exe
    * Added support for GDB builds with Python 3.x
-   * Added dumper for std::unordered_{set,map} (QTCREATORBUG-9855)
-   * Improved display performance of unnamed structures (QTCREATORBUG-9947)
-   * Made C++ debugging continue even if QML debugger fails (QTCREATORBUG-9836)
+   * Added dumper for std::unordered_{set,map} (QTHLDPLUGINBUG-9855)
+   * Improved display performance of unnamed structures (QTHLDPLUGINBUG-9947)
+   * Made C++ debugging continue even if QML debugger fails (QTHLDPLUGINBUG-9836)
    * Fixed remote QML debugging with port forwarding involved
 
 Analyzer
    * Improved Android and QNX support
 
 C++ Support
-   * Fixed crash in typedef resolving (QTCREATORBUG-9990)
-   * Fixed crash in type lookup (QTCREATORBUG-10019)
-   * Improved performance for generated symbols (QTCREATORBUG-9877)
+   * Fixed crash in typedef resolving (QTHLDPLUGINBUG-9990)
+   * Fixed crash in type lookup (QTHLDPLUGINBUG-10019)
+   * Improved performance for generated symbols (QTHLDPLUGINBUG-9877)
    * Added checking whether project has changed before reparsing
-     (QTCREATORBUG-9581)
+     (QTHLDPLUGINBUG-9581)
 
 QML Support
    * Add vector*d, quaternion, and matrix4x4 types to code model
@@ -104,7 +104,7 @@ Python Support
 Diff Viewer
 
 Version Control Systems
-   * Disabled undo/redo for VCS output window (QTCREATORBUG-7645)
+   * Disabled undo/redo for VCS output window (QTHLDPLUGINBUG-7645)
    * Git
       * Fixed crash on quit while rebase-todo editor is open
       * Fixed double stash pop on branch checkout
@@ -119,10 +119,10 @@ Qt Support
 
 QNX
    * Fixed the SSH Key Setup dialog to display native separators in paths
-    (QTCREATORBUG-9830)
+    (QTHLDPLUGINBUG-9830)
 
 Android
-   * Ensured that keytool returns English output (QTCREATORBUG-9941)
+   * Ensured that keytool returns English output (QTHLDPLUGINBUG-9941)
 
 Translations
    * Updated Czech, Polish, Russian and Ukrainian translations

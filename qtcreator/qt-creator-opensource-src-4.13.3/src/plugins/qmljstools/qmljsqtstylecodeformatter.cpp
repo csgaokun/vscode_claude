@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,15 +31,15 @@ using namespace QmlJS;
 using namespace QmlJSTools;
 using namespace TextEditor;
 
-CreatorCodeFormatter::CreatorCodeFormatter() = default;
+HldpluginCodeFormatter::HldpluginCodeFormatter() = default;
 
-CreatorCodeFormatter::CreatorCodeFormatter(const TabSettings &tabSettings)
+HldpluginCodeFormatter::HldpluginCodeFormatter(const TabSettings &tabSettings)
 {
     setTabSize(tabSettings.m_tabSize);
     setIndentSize(tabSettings.m_indentSize);
 }
 
-void CreatorCodeFormatter::saveBlockData(QTextBlock *block, const BlockData &data) const
+void HldpluginCodeFormatter::saveBlockData(QTextBlock *block, const BlockData &data) const
 {
     TextBlockUserData *userData = TextDocumentLayout::userData(*block);
     auto cppData = static_cast<QmlJSCodeFormatterData *>(userData->codeFormatterData());
@@ -50,7 +50,7 @@ void CreatorCodeFormatter::saveBlockData(QTextBlock *block, const BlockData &dat
     cppData->m_data = data;
 }
 
-bool CreatorCodeFormatter::loadBlockData(const QTextBlock &block, BlockData *data) const
+bool HldpluginCodeFormatter::loadBlockData(const QTextBlock &block, BlockData *data) const
 {
     TextBlockUserData *userData = TextDocumentLayout::textUserData(block);
     if (!userData)
@@ -63,12 +63,12 @@ bool CreatorCodeFormatter::loadBlockData(const QTextBlock &block, BlockData *dat
     return true;
 }
 
-void CreatorCodeFormatter::saveLexerState(QTextBlock *block, int state) const
+void HldpluginCodeFormatter::saveLexerState(QTextBlock *block, int state) const
 {
     TextDocumentLayout::setLexerState(*block, state);
 }
 
-int CreatorCodeFormatter::loadLexerState(const QTextBlock &block) const
+int HldpluginCodeFormatter::loadLexerState(const QTextBlock &block) const
 {
     return TextDocumentLayout::lexerState(block);
 }

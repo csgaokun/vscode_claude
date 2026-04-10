@@ -3,7 +3,7 @@
 # Copyright (C) 2020 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -24,7 +24,7 @@
 ############################################################################
 
 '''
-shiboken2tasks.py - Convert shiboken warnings into Qt Creator task files.
+shiboken2tasks.py - Convert shiboken warnings into Qt Hldplugin task files.
 
 SYNOPSIS
 

@@ -1,17 +1,17 @@
-Qt Creator version 2.2 contains bug fixes and new features.
+Qt Hldplugin version 2.2 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline origin/2.1...origin/2.2
 
 General
    * Add support for running user defined external tools (Tools > External)
    * Move tool chain definitions out of Qt versions:
       * You can now define tool chains in Tools > Options > Tool Chains
-      * Qt Creator now supports more than one instance of a tool chain
+      * Qt Hldplugin now supports more than one instance of a tool chain
    * Add support for customizing MIME types by editing patterns and
      magic headers
    * Integrate the memcheck tool from Valgrind for Linux and Mac OS X
@@ -19,8 +19,8 @@ General
    * Add the qtpromaker tool that has the same functionality as
      "qmake -project", but is much faster. It provides a way to easily set up
      dummy .pro files that you need to quickly inspect and navigate "alien"
-     codebases with Qt Creator
-   * Document Qt Creator coding style
+     codebases with Qt Hldplugin
+   * Document Qt Hldplugin coding style
 
 Editing
    * Add an Inkpot color scheme
@@ -62,7 +62,7 @@ Managing Projects
      - Support new keywords %MONTH% and %DAY% for C++ template file
      - Add wizards for creating OpenGL fragment and vertex shaders
      - Add a wizard for creating HTML5 based applications
-     - Add a wizard for creating JavaScript files, QTCREATORBUG-3070
+     - Add a wizard for creating JavaScript files, QTHLDPLUGINBUG-3070
 
 Debugging
    * Rewrite debugging engine using the Microsoft Console Debugger (CDB)
@@ -81,20 +81,20 @@ Debugging
    * Add dumpers for QTextCursor, QTextDocument, __m128, QScriptValue
      QBasicAtomicPointer, bit fields, boost::shared_ptr (GDB only)
    * Improve dumpers for QRegion, QVariant (custom types), QSharedPointer,
-     QMultiMap (QTCREATORBUG-3122), QObject, QWeakPointer
+     QMultiMap (QTHLDPLUGINBUG-3122), QObject, QWeakPointer
    * Make alphabetic structure member sorting optional
    * Make dumpers robust in case of missing debug information
    * Improve Python dumper profiling support
    * Improve stepping performance
-   * Enable breakpoint setting from a disassembler view, QTCREATORBUG-3667
+   * Enable breakpoint setting from a disassembler view, QTHLDPLUGINBUG-3667
    * Fix display of shadowed variables
-   * Fix display of data containing quote characters, QTCREATORBUG-3084
+   * Fix display of data containing quote characters, QTHLDPLUGINBUG-3084
    * Fix display of C-style typedef struct X { ... } X;
-   * Fix stack/break view updates after manual module loading, QTCREATORBUG-3427
+   * Fix stack/break view updates after manual module loading, QTHLDPLUGINBUG-3427
    * Fix Jump To/Run To when in instruction-wise mode
    * Fix the watcher handling
-   * Allow re-running debugger engines, QTCREATORBUG-3073
-   * Robust process control after -exec-interrupt errors, QTCREATORBUG-2850
+   * Allow re-running debugger engines, QTHLDPLUGINBUG-3073
+   * Robust process control after -exec-interrupt errors, QTHLDPLUGINBUG-2850
    * Robust detection of Qt-in-namespace builds
    * Handle "live updates" in the memory view
    * Make memory view writable (GDB only)
@@ -122,32 +122,32 @@ C++ Support
      a Q_PROPERTY
    * Add documentation for refactoring actions
    * Fix switch statement indentation for GNU and Whitesmiths
-     style, QTCREATORBUG-2994
+     style, QTHLDPLUGINBUG-2994
    * Fix indentation of labels
    * Support highlighting for virtual functions
    * Navigate to correct overloaded function or method
 
 QML/JS Support
-   * Add local-file completion for URL properties, QTCREATORBUG-2619
+   * Add local-file completion for URL properties, QTHLDPLUGINBUG-2619
    * Add warning about invalid files in URL properties
-   * Add file name completion in imports, QTCREATORBUG-3067
-   * Add a locator filter for JS functions, QTCREATORBUG-2607
-   * Add JSlint-style warnings about common JS pitfalls, QTCREATORBUG-3071
+   * Add file name completion in imports, QTHLDPLUGINBUG-3067
+   * Add a locator filter for JS functions, QTHLDPLUGINBUG-2607
+   * Add JSlint-style warnings about common JS pitfalls, QTHLDPLUGINBUG-3071
    * Add completion for attached properties like Component.onCompleted
    * Allow QML modules to ship predumped type description files
-   * Reenable instantiating component scope detection, QTCREATORBUG-2835
+   * Reenable instantiating component scope detection, QTHLDPLUGINBUG-2835
    * Improve error reporting of failed plugin dumps
-   * Complete a trailing '{' for 'A on b' object bindings, QTCREATORBUG-2642
-   * Highlight capitalized types, QTCREATORBUG-2658
-   * Re-dump a plugin if the shared library/DLL changes, QTCREATORBUG-3047
-   * Build qmldump in debug and release version on Windows, QTCREATORBUG-3549
+   * Complete a trailing '{' for 'A on b' object bindings, QTHLDPLUGINBUG-2642
+   * Highlight capitalized types, QTHLDPLUGINBUG-2658
+   * Re-dump a plugin if the shared library/DLL changes, QTHLDPLUGINBUG-3047
+   * Build qmldump in debug and release version on Windows, QTHLDPLUGINBUG-3549
    * Change qmldump to output QML instead of XML
-   * Fix automatic '.' import to also pick up QML modules, QTCREATORBUG-3768
-   * Fix code model update when files are renamed, QTCREATORBUG-2986
-   * Fix incorrect completion when brace is on a separate line, QTCREATORBUG-2658
-   * Fix quote autoinsertion in string literals, QTCREATORBUG-2155, QTCREATORBUG-3244
-   * Fix '{' not being an electric character, QTCREATORBUG-3405
-   * Fix indentation of 'foo: Namesp.Type {', QTCREATORBUG-3371
+   * Fix automatic '.' import to also pick up QML modules, QTHLDPLUGINBUG-3768
+   * Fix code model update when files are renamed, QTHLDPLUGINBUG-2986
+   * Fix incorrect completion when brace is on a separate line, QTHLDPLUGINBUG-2658
+   * Fix quote autoinsertion in string literals, QTHLDPLUGINBUG-2155, QTHLDPLUGINBUG-3244
+   * Fix '{' not being an electric character, QTHLDPLUGINBUG-3405
+   * Fix indentation of 'foo: Namesp.Type {', QTHLDPLUGINBUG-3371
    * .qmlproject format: Allow specifying the 'mainFile' qml file, bump version to 1.1
    * Qt Quick UI project: allow user to change run environment
 
@@ -178,7 +178,7 @@ Version control plugins
 
 Additional credits go to:
    * The Inkpot color scheme was based on the Vim color scheme by
-     Ciaran McCreesh, adapted for Qt Creator by Jan Kundrát and
+     Ciaran McCreesh, adapted for Qt Hldplugin by Jan Kundrát and
      subsequently updated by Campbell Barton
    * Hugues Delorme for the Bazaar plugin which he continues to improve
    * Nicolas Arnaud-Cormos for the Macro plugin

@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 # test search in help mode and advanced search
 searchKeywordDictionary = { "abundance":True, "deplmint":False, "QODBC":True, "bldx":False }
@@ -83,26 +83,26 @@ def main():
     # switch to help mode
     switchViewTo(ViewConstants.HELP)
     # verify that search widget is accessible
-    mouseClick(waitForObjectItem(":Qt Creator_Core::Internal::CommandComboBox", "Search"))
+    mouseClick(waitForObjectItem(":Qt Hldplugin_Core::Internal::CommandComboBox", "Search"))
     snooze(1) # Looks like searching is still available for an instant
     test.verify(checkIfObjectExists("{type='QHelpSearchQueryWidget' unnamed='1' visible='1' "
-                                    "window=':Qt Creator_Core::Internal::MainWindow'}",
+                                    "window=':Qt Hldplugin_Core::Internal::MainWindow'}",
                                     timeout=600000),
                 "Verifying search widget visibility.")
     # try to search empty string
     clickButton(waitForObject("{text='Search' type='QPushButton' unnamed='1' visible='1' "
-                              "window=':Qt Creator_Core::Internal::MainWindow'}"))
+                              "window=':Qt Hldplugin_Core::Internal::MainWindow'}"))
     resultWidget = waitForObject(':Hits_QResultWidget', 5000)
     if os.getenv("SYSTEST_BUILT_WITH_QT_5_13_1_OR_NEWER", "0") == "1":
         test.verify(waitFor("noMatch in "
                             "str(resultWidget.plainText)", 2000),
                             "Verifying if search did not match anything.")
     # workaround for "endless waiting cursor"
-    mouseClick(waitForObject("{column='0' container=':Qt Creator_QHelpContentWidget' "
+    mouseClick(waitForObject("{column='0' container=':Qt Hldplugin_QHelpContentWidget' "
                              "text='Qt Reference Documentation' type='QModelIndex'}"))
     # try to search keyword from list
     searchLineEdit = getChildByClass(waitForObject("{type='QHelpSearchQueryWidget' unnamed='1' visible='1' "
-                                                   "window=':Qt Creator_Core::Internal::MainWindow'}"),
+                                                   "window=':Qt Hldplugin_Core::Internal::MainWindow'}"),
                                      "QLineEdit")
     for searchKeyword,shouldFind in searchKeywordDictionary.items():
         mouseClick(searchLineEdit)

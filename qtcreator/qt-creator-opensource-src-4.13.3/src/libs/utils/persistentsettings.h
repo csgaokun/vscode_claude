@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ QT_END_NAMESPACE
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT PersistentSettingsReader
+class QTHLDPLUGIN_UTILS_EXPORT PersistentSettingsReader
 {
 public:
     PersistentSettingsReader();
@@ -48,7 +48,7 @@ private:
     QMap<QString, QVariant> m_valueMap;
 };
 
-class QTCREATOR_UTILS_EXPORT PersistentSettingsWriter
+class QTHLDPLUGIN_UTILS_EXPORT PersistentSettingsWriter
 {
 public:
     PersistentSettingsWriter(const FilePath &fileName, const QString &docType);

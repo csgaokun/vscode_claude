@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -115,7 +115,7 @@ bool Operation::save(const QVariantMap &map, const QString &file) const
         return false;
     }
 
-    Utils::PersistentSettingsWriter writer(path, QLatin1String("QtCreator")
+    Utils::PersistentSettingsWriter writer(path, QLatin1String("QtHldplugin")
                                            + file[0].toUpper() + file.mid(1));
     QString errorMessage;
     if (!writer.save(map, &errorMessage)) {

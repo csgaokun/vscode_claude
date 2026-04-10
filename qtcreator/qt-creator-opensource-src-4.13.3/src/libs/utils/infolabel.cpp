@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -137,7 +137,7 @@ void InfoLabel::paintEvent(QPaintEvent *event)
     if (m_filled && isEnabled()) {
         p.save();
         p.setOpacity(0.175);
-        p.fillRect(rect(), creatorTheme()->color(fillColorForType(m_type)));
+        p.fillRect(rect(), hldpluginTheme()->color(fillColorForType(m_type)));
         p.restore();
     }
     const QIcon &icon = iconForType(m_type);

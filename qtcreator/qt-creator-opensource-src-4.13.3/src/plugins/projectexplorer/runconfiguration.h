@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -71,8 +71,8 @@ public:
     QWidget *createConfigWidget() const;
 
 protected:
-    using ConfigWidgetCreator = std::function<QWidget *()>;
-    void setConfigWidgetCreator(const ConfigWidgetCreator &configWidgetCreator);
+    using ConfigWidgetHldplugin = std::function<QWidget *()>;
+    void setConfigWidgetHldplugin(const ConfigWidgetHldplugin &configWidgetHldplugin);
 
     friend class GlobalOrProjectAspect;
     /// Converts current object into map for storage.
@@ -80,7 +80,7 @@ protected:
     /// Read object state from @p map.
     virtual void fromMap(const QVariantMap &map) = 0;
 
-    ConfigWidgetCreator m_configWidgetCreator;
+    ConfigWidgetHldplugin m_configWidgetHldplugin;
 };
 
 
@@ -225,21 +225,21 @@ public:
 
     static RunConfiguration *restore(Target *parent, const QVariantMap &map);
     static RunConfiguration *clone(Target *parent, RunConfiguration *source);
-    static const QList<RunConfigurationCreationInfo> creatorsForTarget(Target *parent);
+    static const QList<RunConfigurationCreationInfo> hldpluginsForTarget(Target *parent);
 
     Utils::Id runConfigurationId() const { return m_runConfigurationId; }
 
     static QString decoratedTargetName(const QString &targetName, Target *kit);
 
 protected:
-    virtual QList<RunConfigurationCreationInfo> availableCreators(Target *target) const;
+    virtual QList<RunConfigurationCreationInfo> availableHldplugins(Target *target) const;
 
-    using RunConfigurationCreator = std::function<RunConfiguration *(Target *)>;
+    using RunConfigurationHldplugin = std::function<RunConfiguration *(Target *)>;
 
     template <class RunConfig>
     void registerRunConfiguration(Utils::Id runConfigurationId)
     {
-        m_creator = [runConfigurationId](Target *t) -> RunConfiguration * {
+        m_hldplugin = [runConfigurationId](Target *t) -> RunConfiguration * {
             return new RunConfig(t, runConfigurationId);
         };
         m_runConfigurationId = runConfigurationId;
@@ -254,7 +254,7 @@ private:
     RunConfiguration *create(Target *target) const;
 
     friend class RunConfigurationCreationInfo;
-    RunConfigurationCreator m_creator;
+    RunConfigurationHldplugin m_hldplugin;
     Utils::Id m_runConfigurationId;
     QList<Utils::Id> m_supportedProjectTypes;
     QList<Utils::Id> m_supportedTargetDeviceTypes;
@@ -267,7 +267,7 @@ public:
     explicit FixedRunConfigurationFactory(const QString &displayName,
                                           bool addDeviceName = false);
 
-    QList<RunConfigurationCreationInfo> availableCreators(Target *parent) const override;
+    QList<RunConfigurationCreationInfo> availableHldplugins(Target *parent) const override;
 
 private:
     const QString m_fixedBuildTarget;

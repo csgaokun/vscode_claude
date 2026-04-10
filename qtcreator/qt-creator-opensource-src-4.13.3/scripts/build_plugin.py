@@ -37,13 +37,13 @@ import os
 import common
 
 def get_arguments():
-    parser = argparse.ArgumentParser(description='Build Qt Creator for packaging')
+    parser = argparse.ArgumentParser(description='Build Qt Hldplugin for packaging')
     parser.add_argument('--name', help='Name to use for build results', required=True)
     parser.add_argument('--src', help='Path to sources', required=True)
     parser.add_argument('--build', help='Path that should be used for building', required=True)
     parser.add_argument('--qt-path', help='Path to Qt', required=True)
     parser.add_argument('--qtc-path',
-                        help='Path to Qt Creator installation including development package',
+                        help='Path to Qt Hldplugin installation including development package',
                         required=True)
     parser.add_argument('--output-path', help='Output path for resulting 7zip files')
     parser.add_argument('--add-path', help='Adds a CMAKE_PREFIX_PATH to the build',
@@ -63,7 +63,7 @@ def build(args, paths):
         os.makedirs(paths.build)
     if not os.path.exists(paths.result):
         os.makedirs(paths.result)
-    prefix_paths = [paths.qt, paths.qt_creator] + [os.path.abspath(fp) for fp in args.prefix_paths]
+    prefix_paths = [paths.qt, paths.qt_hldplugin] + [os.path.abspath(fp) for fp in args.prefix_paths]
     build_type = 'Debug' if args.debug else 'Release'
     cmake_args = ['cmake',
                   '-DCMAKE_PREFIX_PATH=' + ';'.join(prefix_paths),
@@ -124,7 +124,7 @@ def package(args, paths):
 
 def get_paths(args):
     Paths = collections.namedtuple('Paths',
-                                   ['qt', 'src', 'build', 'qt_creator',
+                                   ['qt', 'src', 'build', 'qt_hldplugin',
                                     'install', 'dev_install', 'result'])
     build_path = os.path.abspath(args.build)
     install_path = os.path.join(build_path, 'install')
@@ -132,7 +132,7 @@ def get_paths(args):
     return Paths(qt=os.path.abspath(args.qt_path),
                  src=os.path.abspath(args.src),
                  build=os.path.join(build_path, 'build'),
-                 qt_creator=os.path.abspath(args.qtc_path),
+                 qt_hldplugin=os.path.abspath(args.qtc_path),
                  install=os.path.join(install_path, args.name),
                  dev_install=os.path.join(install_path, args.name + '-dev'),
                  result=result_path)

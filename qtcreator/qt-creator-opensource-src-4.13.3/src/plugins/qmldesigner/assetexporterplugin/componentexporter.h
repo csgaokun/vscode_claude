@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -44,21 +44,21 @@ class Component;
 class ModelNodeParser;
 
 namespace  Internal {
-class NodeParserCreatorBase
+class NodeParserHldpluginBase
 {
 public:
-    virtual ~NodeParserCreatorBase() {}
+    virtual ~NodeParserHldpluginBase() {}
 protected:
     virtual ModelNodeParser *instance(const QByteArrayList &, const ModelNode &) const = 0;
     friend class QmlDesigner::Component;
 };
 
 template<class T>
-class NodeParserCreator : public NodeParserCreatorBase
+class NodeParserHldplugin : public NodeParserHldpluginBase
 {
 public:
-    NodeParserCreator() = default;
-    ~NodeParserCreator() = default;
+    NodeParserHldplugin() = default;
+    ~NodeParserHldplugin() = default;
 
 protected:
     ModelNodeParser *instance(const QByteArrayList &lineage, const ModelNode &node) const {
@@ -82,7 +82,7 @@ public:
     template<typename T> static void addNodeParser()
     {
         QTC_ASSERT((std::is_base_of<ModelNodeParser, T>::value), return);
-        m_readers.push_back(std::make_unique<Internal::NodeParserCreator<T>>());
+        m_readers.push_back(std::make_unique<Internal::NodeParserHldplugin<T>>());
     }
 private:
     ModelNodeParser* createNodeParser(const ModelNode &node) const;
@@ -93,6 +93,6 @@ private:
     AssetExporter& m_exporter;
     const ModelNode &m_rootNode;
     QJsonObject m_json;
-    static std::vector<std::unique_ptr<Internal::NodeParserCreatorBase>> m_readers;
+    static std::vector<std::unique_ptr<Internal::NodeParserHldpluginBase>> m_readers;
 };
 }

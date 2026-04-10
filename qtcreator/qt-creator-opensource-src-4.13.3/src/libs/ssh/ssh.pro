@@ -1,7 +1,7 @@
 QT += gui network
 DEFINES += QTCSSH_LIBRARY
 
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 
 SOURCES = \
     sftpdefs.cpp \

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -107,7 +107,7 @@ SubversionSettingsPage::SubversionSettingsPage(const std::function<void()> &onAp
     setId(VcsBase::Constants::VCS_ID_SUBVERSION);
     setDisplayName(SubversionSettingsPageWidget::tr("Subversion"));
     setCategory(VcsBase::Constants::VCS_SETTINGS_CATEGORY);
-    setWidgetCreator([onApply, settings] { return new SubversionSettingsPageWidget(onApply, settings); });
+    setWidgetHldplugin([onApply, settings] { return new SubversionSettingsPageWidget(onApply, settings); });
 }
 
 } // Internal

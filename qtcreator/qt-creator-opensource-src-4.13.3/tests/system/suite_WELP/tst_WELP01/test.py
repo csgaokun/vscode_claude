@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,14 +23,14 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 getStarted = 'Get Started Now'
 
 def clickItemVerifyHelpCombo(button, expectedHelpComboRegex, testDetails):
     global getStarted
     mouseClick(button)
-    helpCombo = waitForObject(":Qt Creator_HelpSelector_QComboBox")
+    helpCombo = waitForObject(":Qt Hldplugin_HelpSelector_QComboBox")
     if not test.verify(waitFor('re.match(expectedHelpComboRegex, str(helpCombo.currentText))',
                                5000), testDetails):
         test.log("Found %s" % str(helpCombo.currentText))
@@ -74,13 +74,13 @@ def checkTableViewForContent(tableViewStr, expectedRegExTitle, section, atLeastO
 
 def main():
     global getStarted
-    # open Qt Creator
+    # open Qt Hldplugin
     startQC()
     if not startedWithoutPluginError():
         return
 
     setFixedHelpViewer(HelpViewer.HELPMODE)
-    addCurrentCreatorDocumentation()
+    addCurrentHldpluginDocumentation()
 
     buttonsAndState = {'Projects':False, 'Examples':True, 'Tutorials':False}
     for button, state in buttonsAndState.items():
@@ -101,14 +101,14 @@ def main():
 
     wsButtonFrame, wsButtonLabel = getWelcomeScreenSideBarButton(getStarted)
     if test.verify(all((wsButtonFrame, wsButtonLabel)),
-                   "Verifying: Qt Creator displays Welcome Page with '%s' button." % getStarted):
-        if clickItemVerifyHelpCombo(wsButtonLabel, "Qt Creator Manual",
-                                    "Verifying: Help with Creator Documentation is being opened."):
+                   "Verifying: Qt Hldplugin displays Welcome Page with '%s' button." % getStarted):
+        if clickItemVerifyHelpCombo(wsButtonLabel, "Qt Hldplugin Manual",
+                                    "Verifying: Help with Hldplugin Documentation is being opened."):
 
             textUrls = {'Online Community':'https://forum.qt.io',
                         'Blogs':'https://planet.qt.io',
                         'Qt Account':'https://account.qt.io',
-                        'User Guide':'qthelp://org.qt-project.qtcreator/doc/index.html'
+                        'User Guide':'qthelp://org.qt-project.qthldplugin/doc/index.html'
                         }
             for text, url in textUrls.items():
                 button, label = getWelcomeScreenSideBarButton(text, True)
@@ -118,9 +118,9 @@ def main():
     wsButtonFrame, wsButtonLabel = getWelcomeScreenSideBarButton(getStarted)
     if wsButtonLabel is not None:
         mouseClick(wsButtonLabel)
-        qcManualQModelIndexStr = getQModelIndexStr("text~='Qt Creator Manual [0-9.]+'",
-                                                   ":Qt Creator_QHelpContentWidget")
-        if str(waitForObject(":Qt Creator_HelpSelector_QComboBox").currentText) == "(Untitled)":
+        qcManualQModelIndexStr = getQModelIndexStr("text~='Qt Hldplugin Manual [0-9.]+'",
+                                                   ":Qt Hldplugin_QHelpContentWidget")
+        if str(waitForObject(":Qt Hldplugin_HelpSelector_QComboBox").currentText) == "(Untitled)":
             mouseClick(qcManualQModelIndexStr)
             test.warning("Clicking '%s' the second time showed blank page (Untitled)" % getStarted)
     else:
@@ -135,7 +135,7 @@ def main():
     switchToSubMode('Examples')
     test.verify(waitForButtonsState(False, True, False), "Buttons' states have changed.")
 
-    expect = (("QTableView", "unnamed='1' visible='1' window=':Qt Creator_Core::Internal::MainWindow'",
+    expect = (("QTableView", "unnamed='1' visible='1' window=':Qt Hldplugin_Core::Internal::MainWindow'",
                "examples list"),
               ("QLineEdit", "placeholderText='Search in Examples...'", "examples search line edit"),
               ("QComboBox", "currentText~='.*Qt.*'", "Qt version combo box"))
@@ -149,7 +149,7 @@ def main():
     # select Tutorials and roughly check them
     switchToSubMode('Tutorials')
     test.verify(waitForButtonsState(False, False, True), "Buttons' states have changed.")
-    expect = (("QTableView", "unnamed='1' visible='1' window=':Qt Creator_Core::Internal::MainWindow'",
+    expect = (("QTableView", "unnamed='1' visible='1' window=':Qt Hldplugin_Core::Internal::MainWindow'",
                "tutorials list"),
               ("QLineEdit", "placeholderText='Search in Tutorials...'",
                "tutorials search line edit"))
@@ -158,5 +158,5 @@ def main():
                     "Verifying whether %s is shown" % info)
     checkTableViewForContent(search % (expect[0][0], expect[0][1]), "Help: Creating .*", "Tutorials",
                              "Verifying that at least one tutorial is displayed.")
-    # exit Qt Creator
+    # exit Qt Hldplugin
     invokeMenuItem("File", "Exit")

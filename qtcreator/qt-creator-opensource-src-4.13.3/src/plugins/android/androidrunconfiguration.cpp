@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BogDan Vatra <bog_dan_ro@yahoo.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -123,7 +123,7 @@ AndroidRunConfiguration::AndroidRunConfiguration(Target *target, Utils::Id id)
     warning->setDisplayStyle(BaseStringAspect::LabelDisplay);
     warning->setLabelPixmap(Icons::WARNING.pixmap());
     warning->setValue(tr("If the \"am start\" options conflict, the application might not start.\n"
-                         "Qt Creator uses: am start -n <package_name>/<Activity_name> [-D]."));
+                         "Qt Hldplugin uses: am start -n <package_name>/<Activity_name> [-D]."));
 
     auto preStartShellCmdAspect = addAspect<BaseStringListAspect>();
     preStartShellCmdAspect->setId(Constants::ANDROID_PRESTARTSHELLCMDLIST);

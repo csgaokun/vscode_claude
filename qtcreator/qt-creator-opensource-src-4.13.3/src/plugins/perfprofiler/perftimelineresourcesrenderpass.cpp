@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -232,7 +232,7 @@ ResourcesRenderPassState::ResourcesRenderPassState() :
     node = new QSGNode;
     node->setFlag(QSGNode::OwnedByParent, false);
     m_expandedRows.append(node);
-    m_material.setColor(Utils::creatorTheme()->color(Utils::Theme::Timeline_HighlightColor));
+    m_material.setColor(Utils::hldpluginTheme()->color(Utils::Theme::Timeline_HighlightColor));
 
     // Disable blending
     m_material.setFlag(QSGMaterial::Blending, false);

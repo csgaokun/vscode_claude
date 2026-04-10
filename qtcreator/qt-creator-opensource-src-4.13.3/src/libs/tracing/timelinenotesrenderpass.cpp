@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -244,8 +244,8 @@ void NotesMaterialShader::updateState(const RenderState &state, QSGMaterial *, Q
     if (state.isMatrixDirty()) {
         program()->setUniformValue(m_matrix_id, state.combinedMatrix());
         program()->setUniformValue(m_z_range_id, GLfloat(1.0));
-        const QColor notesColor = Utils::creatorTheme()
-                ? Utils::creatorTheme()->color(Utils::Theme::Timeline_HighlightColor)
+        const QColor notesColor = Utils::hldpluginTheme()
+                ? Utils::hldpluginTheme()->color(Utils::Theme::Timeline_HighlightColor)
                 : QColor(255, 165, 0);
         program()->setUniformValue(m_color_id, notesColor);
     }

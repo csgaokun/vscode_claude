@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -646,21 +646,21 @@ public:
     TextEditorFactory();
     ~TextEditorFactory() override;
 
-    using EditorCreator = std::function<BaseTextEditor *()>;
-    using DocumentCreator = std::function<TextDocument *()>;
+    using EditorHldplugin = std::function<BaseTextEditor *()>;
+    using DocumentHldplugin = std::function<TextDocument *()>;
     // editor widget must be castable (qobject_cast or Aggregate::query) to TextEditorWidget
-    using EditorWidgetCreator = std::function<QWidget *()>;
-    using SyntaxHighLighterCreator = std::function<SyntaxHighlighter *()>;
-    using IndenterCreator = std::function<Indenter *(QTextDocument *)>;
-    using AutoCompleterCreator = std::function<AutoCompleter *()>;
+    using EditorWidgetHldplugin = std::function<QWidget *()>;
+    using SyntaxHighLighterHldplugin = std::function<SyntaxHighlighter *()>;
+    using IndenterHldplugin = std::function<Indenter *(QTextDocument *)>;
+    using AutoCompleterHldplugin = std::function<AutoCompleter *()>;
 
-    void setDocumentCreator(const DocumentCreator &creator);
-    void setEditorWidgetCreator(const EditorWidgetCreator &creator);
-    void setEditorCreator(const EditorCreator &creator);
-    void setIndenterCreator(const IndenterCreator &creator);
-    void setSyntaxHighlighterCreator(const SyntaxHighLighterCreator &creator);
+    void setDocumentHldplugin(const DocumentHldplugin &hldplugin);
+    void setEditorWidgetHldplugin(const EditorWidgetHldplugin &hldplugin);
+    void setEditorHldplugin(const EditorHldplugin &hldplugin);
+    void setIndenterHldplugin(const IndenterHldplugin &hldplugin);
+    void setSyntaxHighlighterHldplugin(const SyntaxHighLighterHldplugin &hldplugin);
     void setUseGenericHighlighter(bool enabled);
-    void setAutoCompleterCreator(const AutoCompleterCreator &creator);
+    void setAutoCompleterHldplugin(const AutoCompleterHldplugin &hldplugin);
     void setEditorActionHandlers(uint optionalActions);
 
     void addHoverHandler(BaseHoverHandler *handler);

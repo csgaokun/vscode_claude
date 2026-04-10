@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -46,7 +46,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 
 // Work around issue with not being able to retrieve USB serial number.
-// See QTCREATORBUG-23460.
+// See QTHLDPLUGINBUG-23460.
 // For an unclear reason USBSpec.h in macOS SDK 10.15 uses a different value if
 // MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_14, which just does not work.
 #if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_14
@@ -342,7 +342,7 @@ void IosDeviceManager::deviceInfo(IosToolHandler *, const QString &uid,
                     switch (ret) {
                     case QMessageBox::Yes:
                         Core::HelpManager::showHelpUrl(
-                                    QLatin1String("qthelp://org.qt-project.qtcreator/doc/creator-developing-ios.html"));
+                                    QLatin1String("qthelp://org.qt-project.qthldplugin/doc/hldplugin-developing-ios.html"));
                         break;
                     case QMessageBox::No:
                         break;

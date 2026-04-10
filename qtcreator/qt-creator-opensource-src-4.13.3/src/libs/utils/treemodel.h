@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -35,7 +35,7 @@ namespace Utils {
 
 class BaseTreeModel;
 
-class QTCREATOR_UTILS_EXPORT TreeItem
+class QTHLDPLUGIN_UTILS_EXPORT TreeItem
 {
 public:
     TreeItem();
@@ -155,7 +155,7 @@ public:
     }
 };
 
-class QTCREATOR_UTILS_EXPORT StaticTreeItem : public TreeItem
+class QTHLDPLUGIN_UTILS_EXPORT StaticTreeItem : public TreeItem
 {
 public:
     StaticTreeItem(const QStringList &displays);
@@ -170,7 +170,7 @@ private:
 
 // A general purpose multi-level model where each item can have its
 // own (TreeItem-derived) type.
-class QTCREATOR_UTILS_EXPORT BaseTreeModel : public QAbstractItemModel
+class QTHLDPLUGIN_UTILS_EXPORT BaseTreeModel : public QAbstractItemModel
 {
     Q_OBJECT
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -611,7 +611,7 @@ bool ShortcutSettingsWidget::markCollisions(ShortcutItem *item, int index)
             }
             if (currentIsConflicting) {
                 currentItem->m_item->setForeground(2,
-                                                   Utils::creatorTheme()->color(
+                                                   Utils::hldpluginTheme()->color(
                                                        Utils::Theme::TextColorError));
                 hasCollision = true;
             }
@@ -619,7 +619,7 @@ bool ShortcutSettingsWidget::markCollisions(ShortcutItem *item, int index)
     }
     item->m_item->setForeground(2,
                                 hasCollision
-                                    ? Utils::creatorTheme()->color(Utils::Theme::TextColorError)
+                                    ? Utils::hldpluginTheme()->color(Utils::Theme::TextColorError)
                                     : commandList()->palette().windowText());
     return hasCollision;
 }
@@ -673,7 +673,7 @@ ShortcutInput::ShortcutInput()
     QPalette palette = m_warningLabel->palette();
     palette.setColor(QPalette::Active,
                      QPalette::WindowText,
-                     Utils::creatorTheme()->color(Utils::Theme::TextColorError));
+                     Utils::hldpluginTheme()->color(Utils::Theme::TextColorError));
     m_warningLabel->setPalette(palette);
     connect(m_warningLabel, &QLabel::linkActivated, this, &ShortcutInput::showConflictsRequested);
 

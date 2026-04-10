@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Konstantin Tokarev.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ using namespace Utils;
 /*!
     \class Core::CommandButton
     \inheaderfile coreplugin/actionmanager/commandbutton.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The CommandButton class is a tool button associated with one of
     the registered Command objects.

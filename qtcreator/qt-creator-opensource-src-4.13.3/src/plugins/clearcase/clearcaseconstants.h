@@ -4,7 +4,7 @@
 ** Author: Orgad Shaneh <orgad.shaneh@audiocodes.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@ namespace ClearCase {
 namespace Constants {
 
 const char VCS_ID_CLEARCASE[] = "E.ClearCase";
-const char CLEARCASE_SUBMIT_MIMETYPE[] = "text/vnd.qtcreator.clearcase.submit";
+const char CLEARCASE_SUBMIT_MIMETYPE[] = "text/vnd.qthldplugin.clearcase.submit";
 const char CLEARCASECHECKINEDITOR_ID[] = "ClearCase Check In Editor";
 const char CLEARCASECHECKINEDITOR_DISPLAY_NAME[] = QT_TRANSLATE_NOOP("VCS", "ClearCase Check In Editor");
 const char TASK_INDEX[] = "ClearCase.Task.Index";

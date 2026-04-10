@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -232,17 +232,17 @@ ClangToolRunWorker::ClangToolRunWorker(RunControl *runControl,
     m_toolChainType = toolChain->typeId();
 }
 
-QList<RunnerCreator> ClangToolRunWorker::runnerCreators()
+QList<RunnerHldplugin> ClangToolRunWorker::runnerHldplugins()
 {
-    QList<RunnerCreator> creators;
+    QList<RunnerHldplugin> hldplugins;
 
     if (m_diagnosticConfig.isClangTidyEnabled())
-        creators << [this]() { return createRunner<ClangTidyRunner>(); };
+        hldplugins << [this]() { return createRunner<ClangTidyRunner>(); };
 
     if (m_diagnosticConfig.isClazyEnabled())
-        creators << [this]() { return createRunner<ClazyStandaloneRunner>(); };
+        hldplugins << [this]() { return createRunner<ClazyStandaloneRunner>(); };
 
-    return creators;
+    return hldplugins;
 }
 
 void ClangToolRunWorker::start()
@@ -296,8 +296,8 @@ void ClangToolRunWorker::start()
 
     m_queue.clear();
     for (const AnalyzeUnit &unit : unitsToProcess) {
-        for (const RunnerCreator &creator : runnerCreators())
-            m_queue << QueueItem{unit, creator};
+        for (const RunnerHldplugin &hldplugin : runnerHldplugins())
+            m_queue << QueueItem{unit, hldplugin};
     }
     m_initialQueueSize = m_queue.count();
     m_filesAnalyzed.clear();
@@ -366,7 +366,7 @@ void ClangToolRunWorker::analyzeNextFile()
     const AnalyzeUnit unit = queueItem.unit;
     qCDebug(LOG) << "analyzeNextFile:" << unit.file;
 
-    ClangToolRunner *runner = queueItem.runnerCreator();
+    ClangToolRunner *runner = queueItem.runnerHldplugin();
     m_runners.insert(runner);
 
     if (runner->run(unit.file, unit.arguments)) {

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -123,7 +123,7 @@ public:
 
     double containerPadding() const;
     double spacing() const;
-    void deActivateItemCreator();
+    void deActivateItemHldplugin();
     void gotoError(int, int);
     void setGotoErrorCallback(std::function<void(int, int)> gotoErrorCallback);
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -33,7 +33,7 @@ using namespace Core;
 /*!
     \class Core::IFindSupport
     \inheaderfile coreplugin/find/ifindsupport.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The IFindSupport class provides functions for searching in a document
      or widget.

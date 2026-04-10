@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@ class CppQuickFixAssistProvider;
 class CppEditorPlugin : public ExtensionSystem::IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtCreatorPlugin" FILE "CppEditor.json")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QtHldpluginPlugin" FILE "CppEditor.json")
 
 public:
     CppEditorPlugin();
@@ -77,8 +77,8 @@ private slots:
     void test_FollowSymbolUnderCursor_data();
     void test_FollowSymbolUnderCursor();
 
-    void test_FollowSymbolUnderCursor_QTCREATORBUG7903_data();
-    void test_FollowSymbolUnderCursor_QTCREATORBUG7903();
+    void test_FollowSymbolUnderCursor_QTHLDPLUGINBUG7903_data();
+    void test_FollowSymbolUnderCursor_QTHLDPLUGINBUG7903();
 
     void test_FollowSymbolUnderCursor_followCall_data();
     void test_FollowSymbolUnderCursor_followCall();
@@ -217,14 +217,14 @@ private slots:
     // The following tests operate on a project and require special invocation:
     //
     // Ensure that the project is properly configured for a given settings path:
-    //   $ ./qtcreator -settingspath /your/settings/path /path/to/project
+    //   $ ./qthldplugin -settingspath /your/settings/path /path/to/project
     //
     // ...and that it builds, which might prevent blocking dialogs for not
     // existing files (e.g. ui_*.h).
     //
     // Run a test:
     //   $ export QTC_TEST_WAIT_FOR_LOADED_PROJECT=1
-    //   $ ./qtcreator -settingspath /your/settings/path -test CppEditor,test_openEachFile /path/to/project
+    //   $ ./qthldplugin -settingspath /your/settings/path -test CppEditor,test_openEachFile /path/to/project
     void test_openEachFile();
     void test_switchHeaderSourceOnEachFile();
     void test_moveTokenWiseThroughEveryFile();

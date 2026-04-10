@@ -4,7 +4,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -38,7 +38,7 @@ ImageViewerFactory::ImageViewerFactory()
 {
     setId(Constants::IMAGEVIEWER_ID);
     setDisplayName(QCoreApplication::translate("OpenWith::Editors", Constants::IMAGEVIEWER_DISPLAY_NAME));
-    setEditorCreator([] { return new ImageViewer; });
+    setEditorHldplugin([] { return new ImageViewer; });
 
     const QList<QByteArray> supportedMimeTypes = QImageReader::supportedMimeTypes();
     for (const QByteArray &format : supportedMimeTypes)

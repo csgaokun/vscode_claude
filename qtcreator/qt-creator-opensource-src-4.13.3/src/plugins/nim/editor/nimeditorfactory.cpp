@@ -3,7 +3,7 @@
 ** Copyright (C) Filippo Cucchetto <filippocucchetto@gmail.com>
 ** Contact: http://www.qt.io/licensing
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -53,16 +53,16 @@ NimEditorFactory::NimEditorFactory()
                             | TextEditorActionHandler::UnCommentSelection
                             | TextEditorActionHandler::UnCollapseAll
                             | TextEditorActionHandler::FollowSymbolUnderCursor);
-    setEditorWidgetCreator([]{
+    setEditorWidgetHldplugin([]{
         return new NimTextEditorWidget();
     });
-    setDocumentCreator([]() {
+    setDocumentHldplugin([]() {
         return new TextDocument(Constants::C_NIMEDITOR_ID);
     });
-    setIndenterCreator([](QTextDocument *doc) {
+    setIndenterHldplugin([](QTextDocument *doc) {
         return new NimIndenter(doc);
     });
-    setSyntaxHighlighterCreator([]() {
+    setSyntaxHighlighterHldplugin([]() {
         return new NimHighlighter;
     });
     setCompletionAssistProvider(new NimCompletionAssistProvider());

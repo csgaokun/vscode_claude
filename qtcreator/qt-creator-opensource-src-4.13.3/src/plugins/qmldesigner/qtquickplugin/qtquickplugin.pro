@@ -1,5 +1,5 @@
 QT += qml
 
-include(../../../../qtcreator.pri)\
+include(../../../../qthldplugin.pri)\
 include(qtquickplugin.pri)
 include(../plugindestdir.pri)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Alexander Drozdov.
 ** Contact: Alexander Drozdov (adrozdoff@gmail.com)
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in

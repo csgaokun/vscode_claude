@@ -1,25 +1,25 @@
-# Qt Creator 4.9.2
+# Qt Hldplugin 4.9.2
 
-Qt Creator version 4.9.2 contains bug fixes.
+Qt Hldplugin version 4.9.2 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/v4.9.1..v4.9.2
 
 ## General
 
-* Fixed display of shortcuts in `Keyboard` preferences (QTCREATORBUG-22333)
+* Fixed display of shortcuts in `Keyboard` preferences (QTHLDPLUGINBUG-22333)
 
 ## Editing
 
-* Fixed disabled editor close button in Design mode (QTCREATORBUG-22553)
+* Fixed disabled editor close button in Design mode (QTHLDPLUGINBUG-22553)
 
 ### Syntax Highlighting
 
-* Fixed highlighting issue while editing (QTCREATORBUG-22290)
+* Fixed highlighting issue while editing (QTHLDPLUGINBUG-22290)
 
 ## All Projects
 
@@ -28,7 +28,7 @@ you can check out from the public Git repository. For example:
 
 ## C++ Support
 
-* Fixed expansion of `%DATE%` in license templates (QTCREATORBUG-22440)
+* Fixed expansion of `%DATE%` in license templates (QTHLDPLUGINBUG-22440)
 
 ## Qt Quick Designer
 
@@ -39,7 +39,7 @@ you can check out from the public Git repository. For example:
 ### macOS
 
 * Re-enabled graphics card switching that was disabled as a workaround
-  for OpenGL issues on macOS 10.14.4 (QTCREATORBUG-22215)
+  for OpenGL issues on macOS 10.14.4 (QTHLDPLUGINBUG-22215)
 
 ## Credits for these changes go to:
 

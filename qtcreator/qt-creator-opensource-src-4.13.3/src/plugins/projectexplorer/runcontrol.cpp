@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -78,7 +78,7 @@ static QList<RunWorkerFactory *> g_runWorkerFactories;
 static QSet<Utils::Id> g_runModes;
 static QSet<Utils::Id> g_runConfigs;
 
-RunWorkerFactory::RunWorkerFactory(const WorkerCreator &producer,
+RunWorkerFactory::RunWorkerFactory(const WorkerHldplugin &producer,
                                    const QList<Utils::Id> &runModes,
                                    const QList<Utils::Id> &runConfigs,
                                    const QList<Utils::Id> &deviceTypes)
@@ -1621,13 +1621,13 @@ QList<OutputLineParser *> OutputFormatterFactory::createFormatters(Target *targe
 {
     QList<OutputLineParser *> formatters;
     for (auto factory : qAsConst(g_outputFormatterFactories))
-        formatters << factory->m_creator(target);
+        formatters << factory->m_hldplugin(target);
     return formatters;
 }
 
-void OutputFormatterFactory::setFormatterCreator(const FormatterCreator &creator)
+void OutputFormatterFactory::setFormatterHldplugin(const FormatterHldplugin &hldplugin)
 {
-    m_creator = creator;
+    m_hldplugin = hldplugin;
 }
 
 } // namespace ProjectExplorer

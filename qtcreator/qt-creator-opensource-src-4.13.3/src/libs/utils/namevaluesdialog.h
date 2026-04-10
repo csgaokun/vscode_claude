@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -57,7 +57,7 @@ private:
 };
 } // namespace Internal
 
-class QTCREATOR_UTILS_EXPORT NameValuesDialog : public QDialog
+class QTHLDPLUGIN_UTILS_EXPORT NameValuesDialog : public QDialog
 {
     Q_OBJECT
 public:

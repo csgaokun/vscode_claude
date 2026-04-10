@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 BogDan Vatra <bog_dan_ro@yahoo.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -453,7 +453,7 @@ AndroidSettingsWidget::AndroidSettingsWidget()
            "These libraries can be shipped with your application if any SSL operations\n"
            "are performed. Find the checkbox under \"Projects > Build > Build Steps >\n"
            "Build Android APK > Additional Libraries\".\n"
-           "If the automatic download fails, Qt Creator proposes to open the download URL\n"
+           "If the automatic download fails, Qt Hldplugin proposes to open the download URL\n"
            "in the system's browser for manual download."));
 
     connect(m_ui.SDKLocationPathChooser, &PathChooser::rawPathChanged,
@@ -863,7 +863,7 @@ AndroidSettingsPage::AndroidSettingsPage()
     setId(Constants::ANDROID_SETTINGS_ID);
     setDisplayName(AndroidSettingsWidget::tr("Android"));
     setCategory(ProjectExplorer::Constants::DEVICE_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new AndroidSettingsWidget; });
+    setWidgetHldplugin([] { return new AndroidSettingsWidget; });
 }
 
 } // namespace Internal

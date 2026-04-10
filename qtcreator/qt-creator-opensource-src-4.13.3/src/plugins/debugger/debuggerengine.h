@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -158,7 +158,7 @@ public:
     bool continueAfterAttach = false;
     Utils::FilePath sysRoot;
 
-    // Used by general core file debugging. Public access requested in QTCREATORBUG-17158.
+    // Used by general core file debugging. Public access requested in QTHLDPLUGINBUG-17158.
     QString coreFile;
 
     // Macro-expanded and passed to debugger startup.

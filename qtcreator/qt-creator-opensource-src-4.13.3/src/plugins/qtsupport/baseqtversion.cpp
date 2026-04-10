@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -703,7 +703,7 @@ void BaseQtVersion::fromMap(const QVariantMap &map)
     d->m_data.qtSources = FilePath::fromUserInput(map.value(QTVERSIONSOURCEPATH).toString());
 
     // Handle ABIs provided by the SDKTool:
-    // Note: Creator does not write these settings itself, so it has to come from the SDKTool!
+    // Note: Hldplugin does not write these settings itself, so it has to come from the SDKTool!
     d->m_data.qtAbis = Utils::transform<Abis>(map.value(QTVERSION_ABIS).toStringList(),
                                               &Abi::fromString);
     d->m_data.qtAbis = Utils::filtered(d->m_data.qtAbis, &Abi::isValid);
@@ -712,7 +712,7 @@ void BaseQtVersion::fromMap(const QVariantMap &map)
     QFileInfo fi(string);
     if (BuildableHelperLibrary::isQtChooser(fi)) {
         // we don't want to treat qtchooser as a normal qmake
-        // see e.g. QTCREATORBUG-9841, also this lead to users changing what
+        // see e.g. QTHLDPLUGINBUG-9841, also this lead to users changing what
         // qtchooser forwards too behind our backs, which will inadvertly lead to bugs
         string = BuildableHelperLibrary::qtChooserToQmakePath(fi.symLinkTarget());
     }
@@ -2035,7 +2035,7 @@ FilePaths BaseQtVersionPrivate::qtCorePaths()
                          || file.endsWith(QString::fromLatin1(".so.") + versionString)
                          || file.endsWith(".so")
 #if defined(Q_OS_OPENBSD)
-                         || file.contains(QRegularExpression("\\.so\\.[0-9]+\\.[0-9]+$")) // QTCREATORBUG-23818
+                         || file.contains(QRegularExpression("\\.so\\.[0-9]+\\.[0-9]+$")) // QTHLDPLUGINBUG-23818
 #endif
                          || file.endsWith(QLatin1Char('.') + versionString + ".dylib"))
                     dynamicLibs.append(FilePath::fromFileInfo(info));
@@ -2314,7 +2314,7 @@ bool QtVersionFactory::canRestore(const QString &type)
 BaseQtVersion *QtVersionFactory::restore(const QString &type, const QVariantMap &data)
 {
     QTC_ASSERT(canRestore(type), return nullptr);
-    QTC_ASSERT(m_creator, return nullptr);
+    QTC_ASSERT(m_hldplugin, return nullptr);
     BaseQtVersion *version = create();
     version->fromMap(data);
     return version;
@@ -2322,8 +2322,8 @@ BaseQtVersion *QtVersionFactory::restore(const QString &type, const QVariantMap 
 
 BaseQtVersion *QtVersionFactory::create() const
 {
-    QTC_ASSERT(m_creator, return nullptr);
-    BaseQtVersion *version = m_creator();
+    QTC_ASSERT(m_hldplugin, return nullptr);
+    BaseQtVersion *version = m_hldplugin();
     version->d->m_type = m_supportedType;
     return version;
 }
@@ -2342,9 +2342,9 @@ BaseQtVersion *BaseQtVersion::clone() const
     return nullptr;
 }
 
-void QtVersionFactory::setQtVersionCreator(const std::function<BaseQtVersion *()> &creator)
+void QtVersionFactory::setQtVersionHldplugin(const std::function<BaseQtVersion *()> &hldplugin)
 {
-    m_creator = creator;
+    m_hldplugin = hldplugin;
 }
 
 void QtVersionFactory::setRestrictionChecker(const std::function<bool(const SetupData &)> &checker)

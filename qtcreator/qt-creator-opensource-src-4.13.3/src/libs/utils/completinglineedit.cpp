@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Orgad Shaneh <orgads@gmail.com>.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@ CompletingLineEdit::CompletingLineEdit(QWidget *parent) :
 
 bool CompletingLineEdit::event(QEvent *e)
 {
-    // workaround for QTCREATORBUG-9453
+    // workaround for QTHLDPLUGINBUG-9453
     if (e->type() == QEvent::ShortcutOverride) {
         if (QCompleter *comp = completer()) {
             if (comp->popup() && comp->popup()->isVisible()) {

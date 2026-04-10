@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -456,7 +456,7 @@ DebugServerProvidersSettingsPage::DebugServerProvidersSettingsPage()
     setId(Constants::DEBUG_SERVER_PROVIDERS_SETTINGS_ID);
     setDisplayName(DebugServerProvidersSettingsWidget::tr("Bare Metal"));
     setCategory(ProjectExplorer::Constants::DEVICE_SETTINGS_CATEGORY);
-    setWidgetCreator([] { return new DebugServerProvidersSettingsWidget; });
+    setWidgetHldplugin([] { return new DebugServerProvidersSettingsWidget; });
 }
 
 } // namespace Internal

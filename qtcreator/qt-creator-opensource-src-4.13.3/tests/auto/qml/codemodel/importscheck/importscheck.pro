@@ -8,7 +8,7 @@ INCLUDEPATH+=$$IDE_SOURCE_TREE/src/libs
 INCLUDEPATH+=$$IDE_SOURCE_TREE/src/libs/qmljs
 include($$IDE_SOURCE_TREE/src/libs/qmljs/qmljs-lib.pri)
 include($$IDE_SOURCE_TREE/src/libs/languageutils/languageutils-lib.pri)
-DEFINES+=QTCREATORDIR=\\\"$$IDE_SOURCE_TREE\\\"
+DEFINES+=QTHLDPLUGINDIR=\\\"$$IDE_SOURCE_TREE\\\"
 DEFINES+=TESTSRCDIR=\\\"$$PWD\\\"
 LIBS += "-L$$IDE_LIBRARY_PATH"
 

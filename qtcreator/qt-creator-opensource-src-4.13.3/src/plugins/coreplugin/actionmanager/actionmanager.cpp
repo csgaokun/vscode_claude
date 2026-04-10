@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -57,7 +57,7 @@ using namespace Utils;
     \class Core::ActionManager
     \inheaderfile coreplugin/actionmanager/actionmanager.h
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The ActionManager class is responsible for registration of menus and
     menu items and keyboard shortcuts.
@@ -487,7 +487,7 @@ Action *ActionManagerPrivate::overridableAction(Id id)
 
 void ActionManagerPrivate::readUserSettings(Id id, Action *cmd)
 {
-    // TODO Settings V2 were introduced in Qt Creator 4.13, remove old settings at some point
+    // TODO Settings V2 were introduced in Qt Hldplugin 4.13, remove old settings at some point
     QSettings *settings = ICore::settings();
     // transfer from old settings if not done before
     const QString group = settings->childGroups().contains(kKeyboardSettingsKeyV2)

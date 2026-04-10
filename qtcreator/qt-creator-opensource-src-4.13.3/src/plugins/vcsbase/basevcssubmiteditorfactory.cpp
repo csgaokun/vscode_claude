@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,15 +40,15 @@ const char DIFF_SELECTED[] = "Vcs.DiffSelectedFiles";
 
 VcsSubmitEditorFactory::VcsSubmitEditorFactory
         (const VcsBaseSubmitEditorParameters &parameters,
-         const EditorCreator &editorCreator,
+         const EditorHldplugin &editorHldplugin,
          VcsBasePluginPrivate *plugin)
 {
     setId(parameters.id);
     setDisplayName(QLatin1String(parameters.displayName));
     addMimeType(QLatin1String(parameters.mimeType));
 
-    setEditorCreator([this, editorCreator, parameters] {
-        VcsBaseSubmitEditor *editor = editorCreator();
+    setEditorHldplugin([this, editorHldplugin, parameters] {
+        VcsBaseSubmitEditor *editor = editorHldplugin();
         editor->setParameters(parameters);
         editor->registerActions(&m_undoAction, &m_redoAction, &m_submitAction, &m_diffAction);
         return editor;

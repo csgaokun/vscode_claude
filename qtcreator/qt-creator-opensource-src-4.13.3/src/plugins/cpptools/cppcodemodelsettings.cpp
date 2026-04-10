@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -68,7 +68,7 @@ static Utils::Id clangDiagnosticConfigIdFromSettings(QSettings *s)
         s->value(clangDiagnosticConfigKey(), initialClangDiagnosticConfigId().toSetting()));
 }
 
-// Removed since Qt Creator 4.11
+// Removed since Qt Hldplugin 4.11
 static ClangDiagnosticConfigs removedBuiltinConfigs()
 {
     ClangDiagnosticConfigs configs;
@@ -129,7 +129,7 @@ void CppCodeModelSettings::fromSettings(QSettings *s)
     setClangCustomDiagnosticConfigs(diagnosticConfigsFromSettings(s));
     setClangDiagnosticConfigId(clangDiagnosticConfigIdFromSettings(s));
 
-    // Qt Creator 4.11 removes some built-in configs.
+    // Qt Hldplugin 4.11 removes some built-in configs.
     bool write = false;
     const Utils::Id id = m_clangDiagnosticConfigId;
     if (id == "Builtin.Pedantic" || id == "Builtin.EverythingWithExceptions") {
@@ -140,7 +140,7 @@ void CppCodeModelSettings::fromSettings(QSettings *s)
         write = true;
     }
 
-    // Before Qt Creator 4.8, inconsistent settings might have been written.
+    // Before Qt Hldplugin 4.8, inconsistent settings might have been written.
     const ClangDiagnosticConfigsModel model = diagnosticConfigsModel(m_clangCustomDiagnosticConfigs);
     if (!model.hasConfigWithId(m_clangDiagnosticConfigId))
         setClangDiagnosticConfigId(initialClangDiagnosticConfigId());

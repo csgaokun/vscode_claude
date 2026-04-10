@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -171,7 +171,7 @@ public:
     // away from the current engine item. Since the plugin itself adds
     // C_DEBUGGER_NOTRUNNING on initialization this is set here as well,
     // so it can be removed when switching away from the initial (null)
-    // engine. See QTCREATORBUG-22330.
+    // engine. See QTHLDPLUGINBUG-22330.
     Context m_currentAdditionalContext{Constants::C_DEBUGGER_NOTRUNNING};
 };
 
@@ -465,7 +465,7 @@ void EngineManager::activateDebugMode()
 void EngineManager::deactivateDebugMode()
 {
     if (ModeManager::currentModeId() == Constants::MODE_DEBUG && d->m_previousMode.isValid()) {
-        // If stopping the application also makes Qt Creator active (as the
+        // If stopping the application also makes Qt Hldplugin active (as the
         // "previously active application"), doing the switch synchronously
         // leads to funny effects with floating dock widgets
         const Utils::Id mode = d->m_previousMode;

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -78,7 +78,7 @@ QmlProject::QmlProject(const Utils::FilePath &fileName)
     setDisplayName(fileName.toFileInfo().completeBaseName());
 
     setNeedsBuildConfigurations(false);
-    setBuildSystemCreator([](Target *t) { return new QmlBuildSystem(t); });
+    setBuildSystemHldplugin([](Target *t) { return new QmlBuildSystem(t); });
 }
 
 QmlBuildSystem::QmlBuildSystem(Target *target)

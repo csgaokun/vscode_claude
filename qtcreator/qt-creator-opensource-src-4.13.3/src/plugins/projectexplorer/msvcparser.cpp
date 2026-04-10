@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -441,12 +441,12 @@ void ProjectExplorerPlugin::testMsvcOutputParsers_data()
             << "";
 
     QTest::newRow("nmake error")
-            << "Error: dependent '..\\..\\..\\..\\creator-2.5\\src\\plugins\\coreplugin\\ifile.h' does not exist."
+            << "Error: dependent '..\\..\\..\\..\\hldplugin-2.5\\src\\plugins\\coreplugin\\ifile.h' does not exist."
             << OutputParserTester::STDOUT
             << "" << ""
             << (Tasks()
                 << CompileTask(Task::Error,
-                               "dependent '..\\..\\..\\..\\creator-2.5\\src\\plugins\\coreplugin\\ifile.h' does not exist."))
+                               "dependent '..\\..\\..\\..\\hldplugin-2.5\\src\\plugins\\coreplugin\\ifile.h' does not exist."))
             << "";
 
     QTest::newRow("jom error")
@@ -525,7 +525,7 @@ void ProjectExplorerPlugin::testMsvcOutputParsers_data()
                                FilePath::fromUserInput("main.cpp"), 6))
             << "";
 
-    QTest::newRow("cyrillic warning") // QTCREATORBUG-20297
+    QTest::newRow("cyrillic warning") // QTHLDPLUGINBUG-20297
             << QString::fromUtf8("cl: командная строка warning D9025: переопределение \"/MDd\" на \"/MTd\"")
             << OutputParserTester::STDERR
             << "" << ""

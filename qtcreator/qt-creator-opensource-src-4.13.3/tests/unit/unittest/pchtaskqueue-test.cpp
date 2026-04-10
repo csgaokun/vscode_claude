@@ -3,7 +3,7 @@
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -26,7 +26,7 @@
 #include "googletest.h"
 
 #include "mockfilesystem.h"
-#include "mockpchcreator.h"
+#include "mockpchhldplugin.h"
 #include "mockprecompiledheaderstorage.h"
 #include "mocksqlitetransactionbackend.h"
 #include "mocktaskscheduler.h"
@@ -336,7 +336,7 @@ TEST_F(PchTaskQueue, CreateProjectTasksSizeEqualsInputSize)
 TEST_F(PchTaskQueue, CreateProjectTaskFromPchTask)
 {
     InSequence s;
-    MockPchCreator mockPchCreator;
+    MockPchHldplugin mockPchHldplugin;
     ClangBackEnd::ProjectPartPch projectPartPch{{}, "/path/to/pch", 99};
     auto tasks = queue.createProjectTasks({projectTask1});
     auto projectTask = projectTask1;
@@ -345,18 +345,18 @@ TEST_F(PchTaskQueue, CreateProjectTaskFromPchTask)
 
     EXPECT_CALL(mockPrecompiledHeaderStorage, fetchSystemPrecompiledHeaderPath(Eq(1)))
         .WillOnce(Return(ClangBackEnd::FilePath{"/path/to/pch"}));
-    EXPECT_CALL(mockPchCreator, generatePch(Eq(projectTask)));
-    EXPECT_CALL(mockPchCreator, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
+    EXPECT_CALL(mockPchHldplugin, generatePch(Eq(projectTask)));
+    EXPECT_CALL(mockPchHldplugin, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
     EXPECT_CALL(mockPrecompiledHeaderStorage,
                 insertProjectPrecompiledHeader(Eq(1), Eq("/path/to/pch"), Eq(99)));
 
-    tasks.front()(mockPchCreator);
+    tasks.front()(mockPchHldplugin);
 }
 
 TEST_F(PchTaskQueue, DeleteProjectPchEntryInDatabaseIfNoPchIsGenerated)
 {
     InSequence s;
-    MockPchCreator mockPchCreator;
+    MockPchHldplugin mockPchHldplugin;
     ClangBackEnd::ProjectPartPch projectPartPch{{}, "", 34};
     auto tasks = queue.createProjectTasks({projectTask1});
     auto projectTask = projectTask1;
@@ -365,11 +365,11 @@ TEST_F(PchTaskQueue, DeleteProjectPchEntryInDatabaseIfNoPchIsGenerated)
 
     EXPECT_CALL(mockPrecompiledHeaderStorage, fetchSystemPrecompiledHeaderPath(Eq(1)))
         .WillOnce(Return(ClangBackEnd::FilePath{"/path/to/pch"}));
-    EXPECT_CALL(mockPchCreator, generatePch(Eq(projectTask)));
-    EXPECT_CALL(mockPchCreator, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
+    EXPECT_CALL(mockPchHldplugin, generatePch(Eq(projectTask)));
+    EXPECT_CALL(mockPchHldplugin, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
     EXPECT_CALL(mockPrecompiledHeaderStorage, deleteProjectPrecompiledHeader(Eq(1), Eq(34)));
 
-    tasks.front()(mockPchCreator);
+    tasks.front()(mockPchHldplugin);
 }
 
 TEST_F(PchTaskQueue, CreateSystemTasksSizeEqualsInputSize)
@@ -382,35 +382,35 @@ TEST_F(PchTaskQueue, CreateSystemTasksSizeEqualsInputSize)
 TEST_F(PchTaskQueue, CreateSystemTaskFromPchTask)
 {
     InSequence s;
-    MockPchCreator mockPchCreator;
+    MockPchHldplugin mockPchHldplugin;
     ClangBackEnd::ProjectPartPch projectPartPch{{}, "/path/to/pch", 99};
     auto tasks = queue.createSystemTasks({systemTask4});
     auto systemTask = systemTask4;
     systemTask.preIncludeSearchPath = testEnvironment.preIncludeSearchPath();
 
-    EXPECT_CALL(mockPchCreator, generatePch(Eq(systemTask)));
-    EXPECT_CALL(mockPchCreator, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
+    EXPECT_CALL(mockPchHldplugin, generatePch(Eq(systemTask)));
+    EXPECT_CALL(mockPchHldplugin, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
     EXPECT_CALL(mockPrecompiledHeaderStorage,
                 insertSystemPrecompiledHeaders(UnorderedElementsAre(1, 3), Eq("/path/to/pch"), Eq(99)));
 
-    tasks.front()(mockPchCreator);
+    tasks.front()(mockPchHldplugin);
 }
 
 TEST_F(PchTaskQueue, DeleteSystemPchEntryInDatabaseIfNoPchIsGenerated)
 {
     InSequence s;
-    MockPchCreator mockPchCreator;
+    MockPchHldplugin mockPchHldplugin;
     ClangBackEnd::ProjectPartPch projectPartPch{{}, "", 0};
     auto tasks = queue.createSystemTasks({systemTask4});
     auto systemTask = systemTask4;
     systemTask.preIncludeSearchPath = testEnvironment.preIncludeSearchPath();
 
-    EXPECT_CALL(mockPchCreator, generatePch(Eq(systemTask)));
-    EXPECT_CALL(mockPchCreator, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
+    EXPECT_CALL(mockPchHldplugin, generatePch(Eq(systemTask)));
+    EXPECT_CALL(mockPchHldplugin, projectPartPch()).WillOnce(ReturnRef(projectPartPch));
     EXPECT_CALL(mockPrecompiledHeaderStorage,
                 deleteSystemPrecompiledHeaders(UnorderedElementsAre(1, 3)));
 
-    tasks.front()(mockPchCreator);
+    tasks.front()(mockPchHldplugin);
 }
 
 TEST_F(PchTaskQueue, DontDeleteUnusedPchsIfSystemTaskAreProcessed)

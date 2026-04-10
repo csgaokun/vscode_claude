@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -27,7 +27,7 @@ source("../shared/qmls.py")
 
 def main():
     projectDir = tempDir()
-    editorArea = startQtCreatorWithNewAppAtQMLEditor(projectDir, "SampleApp")
+    editorArea = startQtHldpluginWithNewAppAtQMLEditor(projectDir, "SampleApp")
     if not editorArea:
         return
     # add basic TextEdit item to check it afterwards
@@ -62,10 +62,10 @@ def main():
     myCompTE = "SampleApp.Resources.qml\\.qrc./.MyComponent\\.qml"
     # there should be new QML file generated with name "MyComponent.qml"
     try:
-        waitForObjectItem(":Qt Creator_Utils::NavigationTreeView", myCompTE, 5000)
+        waitForObjectItem(":Qt Hldplugin_Utils::NavigationTreeView", myCompTE, 5000)
     except:
         try:
-            waitForObjectItem(":Qt Creator_Utils::NavigationTreeView", addBranchWildcardToRoot(myCompTE), 1000)
+            waitForObjectItem(":Qt Hldplugin_Utils::NavigationTreeView", addBranchWildcardToRoot(myCompTE), 1000)
         except:
             test.fail("Refactoring failed - file MyComponent.qml was not generated properly in project explorer")
             #save and exit
@@ -79,7 +79,7 @@ def main():
         invokeMenuItem("File", "Save All")
         invokeMenuItem("File", "Exit")
         return
-    editorArea = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editorArea = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     codeText = str(editorArea.plainText)
     # there should be Text item in new file
     if re.search(patternCodeToMove, codeText, re.DOTALL):

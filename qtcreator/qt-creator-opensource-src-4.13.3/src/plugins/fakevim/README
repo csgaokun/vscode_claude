@@ -6,7 +6,7 @@ make the resulting text in the editor look like it was using vim.
 
 There are only a few files in here:
 
-  fakevimplugin.{h,cpp}  - interaction with the rest of Creator
+  fakevimplugin.{h,cpp}  - interaction with the rest of Hldplugin
   fakevimactions.{h,cpp} - settings
   fakevimhandler.{h,cpp} - the "real" event
 

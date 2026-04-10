@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -74,15 +74,15 @@ public:
     ScxmlTextEditorFactory()
     {
         setId(ScxmlEditor::Constants::K_SCXML_EDITOR_ID);
-        setEditorCreator([]() { return new ScxmlTextEditor; });
-        setEditorWidgetCreator([]() { return new ScxmlTextEditorWidget; });
+        setEditorHldplugin([]() { return new ScxmlTextEditor; });
+        setEditorWidgetHldplugin([]() { return new ScxmlTextEditorWidget; });
         setUseGenericHighlighter(true);
         setDuplicatedSupported(false);
     }
 
     ScxmlTextEditor *create(ScxmlEditor::Common::MainWidget *designWidget)
     {
-        setDocumentCreator([designWidget]() { return new ScxmlEditorDocument(designWidget); });
+        setDocumentHldplugin([designWidget]() { return new ScxmlEditorDocument(designWidget); });
         return qobject_cast<ScxmlTextEditor*>(createEditor());
     }
 };

@@ -1,4 +1,4 @@
 DEFINES += QMLJS_LIBRARY
 
-include(../../qtcreatorlibrary.pri)
+include(../../qthldpluginlibrary.pri)
 include(qmljs-lib.pri)

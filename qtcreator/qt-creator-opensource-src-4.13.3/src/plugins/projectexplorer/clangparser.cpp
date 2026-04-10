@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -223,7 +223,7 @@ void ProjectExplorerPlugin::testClangOutputParser_data()
                 << QString();
 
         QTest::newRow("line confusion")
-                << QString::fromLatin1("/home/code/src/creator/src/plugins/coreplugin/manhattanstyle.cpp:567:51: warning: ?: has lower precedence than +; + will be evaluated first [-Wparentheses]\n"
+                << QString::fromLatin1("/home/code/src/hldplugin/src/plugins/coreplugin/manhattanstyle.cpp:567:51: warning: ?: has lower precedence than +; + will be evaluated first [-Wparentheses]\n"
                                        "            int x = option->rect.x() + horizontal ? 2 : 6;\n"
                                        "                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^")
                 << OutputParserTester::STDERR
@@ -231,10 +231,10 @@ void ProjectExplorerPlugin::testClangOutputParser_data()
                 << (Tasks()
                     << CompileTask(Task::Warning,
                                    "?: has lower precedence than +; + will be evaluated first [-Wparentheses]\n"
-                                   "/home/code/src/creator/src/plugins/coreplugin/manhattanstyle.cpp:567:51: warning: ?: has lower precedence than +; + will be evaluated first [-Wparentheses]\n"
+                                   "/home/code/src/hldplugin/src/plugins/coreplugin/manhattanstyle.cpp:567:51: warning: ?: has lower precedence than +; + will be evaluated first [-Wparentheses]\n"
                                    "            int x = option->rect.x() + horizontal ? 2 : 6;\n"
                                    "                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^",
-                                   FilePath::fromUserInput("/home/code/src/creator/src/plugins/coreplugin/manhattanstyle.cpp"),
+                                   FilePath::fromUserInput("/home/code/src/hldplugin/src/plugins/coreplugin/manhattanstyle.cpp"),
                                    567))
                 << QString();
 

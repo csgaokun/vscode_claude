@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -48,7 +48,7 @@ def openQmakeProject(projectPath, targets=Targets.desktopTargetClasses(), fromWe
     except:
         pass
     __chooseTargets__(targets)
-    configureButton = waitForObject(":Qt Creator.Configure Project_QPushButton")
+    configureButton = waitForObject(":Qt Hldplugin.Configure Project_QPushButton")
     clickButton(configureButton)
 
 def openCmakeProject(projectPath, buildDir):
@@ -61,16 +61,16 @@ def openCmakeProject(projectPath, buildDir):
         configs = ['Release', 'Release with Debug Information', 'Minimum Size Release']
         for checkbox in configs:
             ensureChecked(waitForObject("{text='%s' type='QCheckBox' unnamed='1' visible='1' "
-                                        "window=':Qt Creator_Core::Internal::MainWindow'}"
+                                        "window=':Qt Hldplugin_Core::Internal::MainWindow'}"
                                         % checkbox), False)
         ensureChecked(waitForObject("{text='Debug' type='QCheckBox' unnamed='1' visible='1' "
-                      "window=':Qt Creator_Core::Internal::MainWindow'}"), True)
+                      "window=':Qt Hldplugin_Core::Internal::MainWindow'}"), True)
 
     invokeMenuItem("File", "Open File or Project...")
     selectFromFileDialog(projectPath)
     __chooseTargets__([]) # uncheck all
     __chooseTargets__([Targets.DESKTOP_4_8_7_DEFAULT], additionalFunc=additionalFunction)
-    clickButton(waitForObject(":Qt Creator.Configure Project_QPushButton"))
+    clickButton(waitForObject(":Qt Hldplugin.Configure Project_QPushButton"))
     return True
 
 # this function returns a list of available targets - this is not 100% error proof
@@ -418,7 +418,7 @@ def __chooseTargets__(targets, availableTargets=None, additionalFunc=None):
                 # perform additional function on detailed kits view
                 if additionalFunc:
                     detailsWidget = waitForObject("{type='Utils::DetailsWidget' unnamed='1' "
-                                                  "window=':Qt Creator_Core::Internal::MainWindow' "
+                                                  "window=':Qt Hldplugin_Core::Internal::MainWindow' "
                                                   "summaryText='%s' visible='1'}"
                                                   % Targets.getStringForTarget(current))
                     detailsButton = getChildByClass(detailsWidget, "Utils::DetailsButton")
@@ -446,23 +446,23 @@ def __createProjectHandleClassInformation__(className, baseClass=None):
     return className
 
 def waitForProcessRunning(running=True):
-    outputButton = waitForObject(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+    outputButton = waitForObject(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
     if not waitFor("outputButton.checked", 5000):
         ensureChecked(outputButton)
-    waitFor("object.exists(':Qt Creator.ReRun_QToolButton')", 20000)
-    reRunButton = findObject(":Qt Creator.ReRun_QToolButton")
-    waitFor("object.exists(':Qt Creator.Stop_QToolButton')", 20000)
-    stopButton = findObject(":Qt Creator.Stop_QToolButton")
+    waitFor("object.exists(':Qt Hldplugin.ReRun_QToolButton')", 20000)
+    reRunButton = findObject(":Qt Hldplugin.ReRun_QToolButton")
+    waitFor("object.exists(':Qt Hldplugin.Stop_QToolButton')", 20000)
+    stopButton = findObject(":Qt Hldplugin.Stop_QToolButton")
     return waitFor("(reRunButton.enabled != running) and (stopButton.enabled == running)", 5000)
 
 # run and close an application
 # returns None if the build failed, False if the subprocess did not start, and True otherwise
 def runAndCloseApp():
-    runButton = waitForObject(":*Qt Creator.Run_Core::Internal::FancyToolButton")
+    runButton = waitForObject(":*Qt Hldplugin.Run_Core::Internal::FancyToolButton")
     clickButton(runButton)
     waitForCompile(300000)
     buildSucceeded = checkLastBuild()
-    ensureChecked(waitForObject(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton"))
+    ensureChecked(waitForObject(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton"))
     if not buildSucceeded:
         test.fatal("Build inside run wasn't successful - leaving test")
         return None
@@ -473,13 +473,13 @@ def runAndCloseApp():
     return True
 
 def __closeSubprocessByPushingStop__(isQtQuickUI):
-    ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+    ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
     try:
-        waitForObject(":Qt Creator.Stop_QToolButton", 5000)
+        waitForObject(":Qt Hldplugin.Stop_QToolButton", 5000)
     except:
         pass
-    playButton = verifyEnabled(":Qt Creator.ReRun_QToolButton", False)
-    stopButton = verifyEnabled(":Qt Creator.Stop_QToolButton")
+    playButton = verifyEnabled(":Qt Hldplugin.ReRun_QToolButton", False)
+    stopButton = verifyEnabled(":Qt Hldplugin.Stop_QToolButton")
     if stopButton.enabled:
         clickButton(stopButton)
         test.verify(waitFor("playButton.enabled", 5000), "Play button should be enabled")
@@ -674,7 +674,7 @@ def addCPlusPlusFile(name, template, projectName, forceOverwrite=False, addToVCS
 # codemodelParsingTimeout  milliseconds to wait for C++ parsing
 def waitForProjectParsing(beginParsingTimeout=0, projectParsingTimeout=10000,
                           codemodelParsingTimeout=10000):
-    runButton = findObject(':*Qt Creator.Run_Core::Internal::FancyToolButton')
+    runButton = findObject(':*Qt Hldplugin.Run_Core::Internal::FancyToolButton')
     waitFor("not runButton.enabled", beginParsingTimeout)
     # Wait for parsing to complete
     waitFor("runButton.enabled", projectParsingTimeout)

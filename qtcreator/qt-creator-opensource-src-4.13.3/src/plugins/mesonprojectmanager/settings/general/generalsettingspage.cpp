@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 Alexis Jeandet.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@ GeneralSettingsPage::GeneralSettingsPage()
     setDisplayCategory("Meson");
     setCategory(Constants::SettingsPage::CATEGORY);
     setCategoryIconPath(Constants::Icons::MESON_BW);
-    setWidgetCreator([]() { return new GeneralSettingsWidget; });
+    setWidgetHldplugin([]() { return new GeneralSettingsWidget; });
     Settings::loadAll();
 }
 

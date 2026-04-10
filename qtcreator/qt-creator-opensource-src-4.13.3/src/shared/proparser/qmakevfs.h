@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -98,7 +98,7 @@ private:
 #endif
     static int s_refCount;
     static QAtomicInt s_fileIdCounter;
-    // Qt Creator's ProFile cache is a singleton to maximize its cross-project
+    // Qt Hldplugin's ProFile cache is a singleton to maximize its cross-project
     // effectiveness (shared prf files from QtVersions).
     // For this to actually work, real files need a global mapping.
     // This is fine, because the namespace of real files is indeed global.

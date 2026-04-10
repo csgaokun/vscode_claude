@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -36,9 +36,9 @@ def handleDebuggerWarnings(config, isMsvcBuild=False):
                                     "and a delay might occur when connecting for the first time and caching the symbols.</p>"
                                     "<p>What would you like to set up?</p></body></html>")
             if popup.text == symServerNotConfiged:
-                test.log("Creator warned about the debugger not being configured to use the public Microsoft Symbol Server.")
+                test.log("Hldplugin warned about the debugger not being configured to use the public Microsoft Symbol Server.")
             else:
-                test.warning("Creator showed an unexpected warning: " + str(popup.text))
+                test.warning("Hldplugin showed an unexpected warning: " + str(popup.text))
             clickButton(waitForObject("{text='Cancel' type='QPushButton' unnamed='1' visible='1' window=':Dialog_Debugger::Internal::SymbolPathsDialog'}", 10000))
         except LookupError:
             pass # No warning. Fine.
@@ -71,7 +71,7 @@ def setBreakpointsForCurrentProject(filesAndLines):
         test.fatal("This function only takes a non-empty list/tuple holding dicts.")
         return False
     waitForObject("{type='Utils::NavigationTreeView' unnamed='1' visible='1' "
-                  "window=':Qt Creator_Core::Internal::MainWindow'}")
+                  "window=':Qt Hldplugin_Core::Internal::MainWindow'}")
     for current in filesAndLines:
         for curFile,curLine in current.iteritems():
             if not openDocument(curFile):
@@ -128,7 +128,7 @@ def doSimpleDebugging(currentKit, currentConfigName, pressContinueCount=1,
         expectedLabelTexts.append("Running\.")
     switchViewTo(ViewConstants.PROJECTS)
     switchToBuildOrRunSettingsFor(currentKit, ProjectSettings.RUN)
-    ensureChecked(waitForObject("{container=':Qt Creator.scrollArea_QScrollArea' text='Enable QML' "
+    ensureChecked(waitForObject("{container=':Qt Hldplugin.scrollArea_QScrollArea' text='Enable QML' "
                                 "type='QCheckBox' unnamed='1' visible='1'}"), enableQml)
     switchViewTo(ViewConstants.EDIT)
     if not __startDebugger__(currentKit, currentConfigName):
@@ -141,7 +141,7 @@ def doSimpleDebugging(currentKit, currentConfigName, pressContinueCount=1,
         else:
             test.fail('%s' % str(statusLabel.text))
         try:
-            contDbg = waitForObject(":*Qt Creator.Continue_Core::Internal::FancyToolButton", 3000)
+            contDbg = waitForObject(":*Qt Hldplugin.Continue_Core::Internal::FancyToolButton", 3000)
             test.log("Continuing...")
             clickButton(contDbg)
         except LookupError:
@@ -177,7 +177,7 @@ def isMsvcConfig(currentKit):
 # param config is the name of the configuration that should be used
 def __startDebugger__(currentKit, config):
     isMsvcBuild = isMsvcConfig(currentKit)
-    clickButton(waitForObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton"))
     handleDebuggerWarnings(config, isMsvcBuild)
     try:
         mBox = waitForObject(":Failed to start application_QMessageBox", 5000)
@@ -194,18 +194,18 @@ def __startDebugger__(currentKit, config):
                        "Verify start of debugger"):
         if "MSVC" in config:
             debuggerLog = takeDebuggerLog()
-            if "lib\qtcreatorcdbext64\qtcreatorcdbext.dll cannot be found." in debuggerLog:
-                test.fatal("qtcreatorcdbext.dll is missing in lib\qtcreatorcdbext64")
+            if "lib\qthldplugincdbext64\qthldplugincdbext.dll cannot be found." in debuggerLog:
+                test.fatal("qthldplugincdbext.dll is missing in lib\qthldplugincdbext64")
             else:
                 test.fatal("Debugger log did not behave as expected. Please check manually.")
         logApplicationOutput()
         return False
     try:
-        waitForObject(":*Qt Creator.Interrupt_Core::Internal::FancyToolButton", 3000)
+        waitForObject(":*Qt Hldplugin.Interrupt_Core::Internal::FancyToolButton", 3000)
         test.passes("'Interrupt' (debugger) button visible.")
     except:
         try:
-            waitForObject(":*Qt Creator.Continue_Core::Internal::FancyToolButton", 3000)
+            waitForObject(":*Qt Hldplugin.Continue_Core::Internal::FancyToolButton", 3000)
             test.passes("'Continue' (debugger) button visible.")
         except:
             test.fatal("Neither 'Interrupt' nor 'Continue' button visible (Debugger).")
@@ -213,20 +213,20 @@ def __startDebugger__(currentKit, config):
 
 def __stopDebugger__():
     clickButton(waitForObject(":Debugger Toolbar.Exit Debugger_QToolButton"))
-    ensureChecked(":Qt Creator_AppOutput_Core::Internal::OutputPaneToggleButton")
+    ensureChecked(":Qt Hldplugin_AppOutput_Core::Internal::OutputPaneToggleButton")
     output = waitForObject("{type='Core::OutputWindow' visible='1' windowTitle='Application Output Window'}")
     waitFor("'Debugging has finished' in str(output.plainText)", 20000)
     return __logDebugResult__()
 
 def __logDebugResult__():
     try:
-        result = waitForObject(":*Qt Creator.Start Debugging_Core::Internal::FancyToolButton")
+        result = waitForObject(":*Qt Hldplugin.Start Debugging_Core::Internal::FancyToolButton")
         test.passes("'Start Debugging' button visible.")
     except:
         test.fail("'Start Debugging' button is not visible.")
         result = None
     if result:
-        test.passes("Debugger stopped.. Qt Creator is back at normal state.")
+        test.passes("Debugger stopped.. Qt Hldplugin is back at normal state.")
     else:
         test.fail("Debugger seems to have not stopped...")
         logApplicationOutput()
@@ -241,9 +241,9 @@ def verifyBreakPoint(bpToVerify):
                          "Verify that the right file is opened")
             textPos = editor.textCursor().position()
             line = str(editor.plainText)[:textPos].count("\n") + 1
-            windowTitle = str(waitForObject(":Qt Creator_Core::Internal::MainWindow").windowTitle)
+            windowTitle = str(waitForObject(":Qt Hldplugin_Core::Internal::MainWindow").windowTitle)
             test.verify(windowTitle.startswith(os.path.basename(fileName) + " "),
-                        "Verify that Creator's window title changed according to current file")
+                        "Verify that Hldplugin's window title changed according to current file")
             return test.compare(line, bpToVerify.values()[0],
                                 "Compare hit breakpoint to expected line number in %s" % fileName)
     else:

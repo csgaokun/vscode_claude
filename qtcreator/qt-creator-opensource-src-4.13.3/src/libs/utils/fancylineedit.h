@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -41,7 +41,7 @@ namespace Utils {
 
 class FancyLineEditPrivate;
 
-class QTCREATOR_UTILS_EXPORT IconButton: public QAbstractButton
+class QTHLDPLUGIN_UTILS_EXPORT IconButton: public QAbstractButton
 {
     Q_OBJECT
     Q_PROPERTY(float iconOpacity READ iconOpacity WRITE setIconOpacity)
@@ -68,7 +68,7 @@ private:
     QIcon m_icon;
 };
 
-class QTCREATOR_UTILS_EXPORT FancyLineEdit : public CompletingLineEdit
+class QTHLDPLUGIN_UTILS_EXPORT FancyLineEdit : public CompletingLineEdit
 {
     Q_OBJECT
     Q_ENUMS(Side)

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Petar Perisin <petar.perisin@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,7 +31,7 @@
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT FormattedText {
+class QTHLDPLUGIN_UTILS_EXPORT FormattedText {
 public:
     FormattedText() = default;
     FormattedText(const FormattedText &other) = default;
@@ -43,7 +43,7 @@ public:
     QTextCharFormat format;
 };
 
-class QTCREATOR_UTILS_EXPORT AnsiEscapeCodeHandler
+class QTHLDPLUGIN_UTILS_EXPORT AnsiEscapeCodeHandler
 {
 public:
     QList<FormattedText> parseText(const FormattedText &input);

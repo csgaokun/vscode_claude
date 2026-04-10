@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -64,7 +64,7 @@ public:
     int m_version = 0;
     bool m_cycleCacheValid = false;
     QStringList m_descriptions;
-    QString m_creator;
+    QString m_hldplugin;
 
     QHash<qint64, QHash<qint64, QVector<Function *> > > functionLookup;
 
@@ -326,14 +326,14 @@ void ParseData::setVersion(int version)
     d->m_version = version;
 }
 
-QString ParseData::creator() const
+QString ParseData::hldplugin() const
 {
-    return d->m_creator;
+    return d->m_hldplugin;
 }
 
-void ParseData::setCreator(const QString &creator)
+void ParseData::setHldplugin(const QString &hldplugin)
 {
-    d->m_creator = creator;
+    d->m_hldplugin = hldplugin;
 }
 
 QString ParseData::stringForObjectCompression(qint64 id) const

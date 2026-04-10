@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -255,7 +255,7 @@ void CppEditorPlugin::test_selectionFiltering_data()
     QTest::addColumn<SelectionList>("original");
     QTest::addColumn<SelectionList>("filtered");
 
-    QTest::addRow("QTCREATORBUG-18659")
+    QTest::addRow("QTHLDPLUGINBUG-18659")
             << QString("int main()\n"
                        "{\n"
                        "    [](const Foo &foo) -> Foo {\n"

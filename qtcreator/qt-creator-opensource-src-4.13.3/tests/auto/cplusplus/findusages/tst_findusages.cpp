@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -85,7 +85,7 @@ private Q_SLOTS:
     void staticVariables();
 
     void functionNameFoundInArguments();
-    void memberFunctionFalsePositives_QTCREATORBUG2176();
+    void memberFunctionFalsePositives_QTHLDPLUGINBUG2176();
     void resolveTemplateConstructor();
     void templateConstructorVsCallOperator();
 
@@ -100,20 +100,20 @@ private Q_SLOTS:
 
     // templates
     void instantiateTemplateWithNestedClass();
-    void operatorAsteriskOfNestedClassOfTemplateClass_QTCREATORBUG9006();
-    void operatorArrowOfNestedClassOfTemplateClass_QTCREATORBUG9005();
+    void operatorAsteriskOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9006();
+    void operatorArrowOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9005();
     void templateClassParameters();
     void templateClass_className();
     void templateFunctionParameters();
 
-    void anonymousClass_QTCREATORBUG8963();
-    void anonymousClass_QTCREATORBUG11859();
+    void anonymousClass_QTHLDPLUGINBUG8963();
+    void anonymousClass_QTHLDPLUGINBUG11859();
     void using_insideGlobalNamespace();
     void using_insideNamespace();
     void using_insideFunction();
-    void templatedFunction_QTCREATORBUG9749();
+    void templatedFunction_QTHLDPLUGINBUG9749();
 
-    void usingInDifferentNamespace_QTCREATORBUG7978();
+    void usingInDifferentNamespace_QTHLDPLUGINBUG7978();
 
     void unicodeIdentifier();
 
@@ -397,7 +397,7 @@ void foo2(int b=bar()){}    // 3rd result
     QCOMPARE(find.usages()[2].col, 16);
 }
 
-void tst_FindUsages::memberFunctionFalsePositives_QTCREATORBUG2176()
+void tst_FindUsages::memberFunctionFalsePositives_QTHLDPLUGINBUG2176()
 {
     const QByteArray src =
         R"(
@@ -713,7 +713,7 @@ void tst_FindUsages::instantiateTemplateWithNestedClass()
     QCOMPARE(findUsages.usages().size(), 2);
 }
 
-void tst_FindUsages::operatorAsteriskOfNestedClassOfTemplateClass_QTCREATORBUG9006()
+void tst_FindUsages::operatorAsteriskOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9006()
 {
     const QByteArray src = "\n"
             "struct Foo { int foo; };\n"
@@ -735,7 +735,7 @@ void tst_FindUsages::operatorAsteriskOfNestedClassOfTemplateClass_QTCREATORBUG90
             "}\n"
             ;
 
-    Document::Ptr doc = Document::create("operatorAsteriskOfNestedClassOfTemplateClass_QTCREATORBUG9006");
+    Document::Ptr doc = Document::create("operatorAsteriskOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9006");
     doc->setUtf8Source(src);
     doc->parse();
     doc->check();
@@ -758,7 +758,7 @@ void tst_FindUsages::operatorAsteriskOfNestedClassOfTemplateClass_QTCREATORBUG90
     QCOMPARE(findUsages.usages().size(), 2);
 }
 
-void tst_FindUsages::anonymousClass_QTCREATORBUG8963()
+void tst_FindUsages::anonymousClass_QTHLDPLUGINBUG8963()
 {
     const QByteArray src =
             "typedef enum {\n"
@@ -777,7 +777,7 @@ void tst_FindUsages::anonymousClass_QTCREATORBUG8963()
             "}\n"
             ;
 
-    Document::Ptr doc = Document::create("anonymousClass_QTCREATORBUG8963");
+    Document::Ptr doc = Document::create("anonymousClass_QTHLDPLUGINBUG8963");
     doc->setUtf8Source(src);
     doc->parse();
     doc->check();
@@ -801,7 +801,7 @@ void tst_FindUsages::anonymousClass_QTCREATORBUG8963()
     QCOMPARE(findUsages.usages().size(), 2);
 }
 
-void tst_FindUsages::anonymousClass_QTCREATORBUG11859()
+void tst_FindUsages::anonymousClass_QTHLDPLUGINBUG11859()
 {
     const QByteArray src =
             "struct Foo {\n"
@@ -816,7 +816,7 @@ void tst_FindUsages::anonymousClass_QTCREATORBUG11859()
             "}\n"
             ;
 
-    Document::Ptr doc = Document::create("anonymousClass_QTCREATORBUG11859");
+    Document::Ptr doc = Document::create("anonymousClass_QTHLDPLUGINBUG11859");
     doc->setUtf8Source(src);
     doc->parse();
     doc->check();
@@ -967,7 +967,7 @@ void tst_FindUsages::using_insideFunction()
     QCOMPARE(findUsages.usages().size(), 3);
 }
 
-void tst_FindUsages::operatorArrowOfNestedClassOfTemplateClass_QTCREATORBUG9005()
+void tst_FindUsages::operatorArrowOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9005()
 {
     const QByteArray src = "\n"
             "struct Foo { int foo; };\n"
@@ -988,7 +988,7 @@ void tst_FindUsages::operatorArrowOfNestedClassOfTemplateClass_QTCREATORBUG9005(
             "}\n"
             ;
 
-    Document::Ptr doc = Document::create("operatorArrowOfNestedClassOfTemplateClass_QTCREATORBUG9005");
+    Document::Ptr doc = Document::create("operatorArrowOfNestedClassOfTemplateClass_QTHLDPLUGINBUG9005");
     doc->setUtf8Source(src);
     doc->parse();
     doc->check();
@@ -1120,7 +1120,7 @@ void tst_FindUsages::templateFunctionParameters()
     QCOMPARE(findUsages.usages().size(), 4);
 }
 
-void tst_FindUsages::templatedFunction_QTCREATORBUG9749()
+void tst_FindUsages::templatedFunction_QTHLDPLUGINBUG9749()
 {
     const QByteArray src = "\n"
             "template <class IntType> char *reformatInteger(IntType value, int format) {}\n"
@@ -1129,7 +1129,7 @@ void tst_FindUsages::templatedFunction_QTCREATORBUG9749()
             "}\n"
             ;
 
-    Document::Ptr doc = Document::create("templatedFunction_QTCREATORBUG9749");
+    Document::Ptr doc = Document::create("templatedFunction_QTHLDPLUGINBUG9749");
     doc->setUtf8Source(src);
     doc->parse();
     doc->check();
@@ -1150,7 +1150,7 @@ void tst_FindUsages::templatedFunction_QTCREATORBUG9749()
     QCOMPARE(findUsages.usages().size(), 2);
 }
 
-void tst_FindUsages::usingInDifferentNamespace_QTCREATORBUG7978()
+void tst_FindUsages::usingInDifferentNamespace_QTHLDPLUGINBUG7978()
 {
     const QByteArray src = "\n"
             "struct S {};\n"
@@ -1168,7 +1168,7 @@ void tst_FindUsages::usingInDifferentNamespace_QTCREATORBUG7978()
             "}\n"
             ;
 
-    Document::Ptr doc = Document::create("usingInDifferentNamespace_QTCREATORBUG7978");
+    Document::Ptr doc = Document::create("usingInDifferentNamespace_QTHLDPLUGINBUG7978");
     doc->setUtf8Source(src);
     doc->parse();
     doc->check();

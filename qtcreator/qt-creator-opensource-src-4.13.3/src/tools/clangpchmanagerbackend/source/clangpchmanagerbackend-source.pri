@@ -12,7 +12,7 @@ HEADERS += \
     $$PWD/pchmanagerserver.h \
     $$PWD/clangpchmanagerbackend_global.h \
     $$PWD/pchnotcreatederror.h \
-    $$PWD/pchcreatorinterface.h \
+    $$PWD/pchhldplugininterface.h \
     $$PWD/projectpartsmanager.h \
     $$PWD/projectpartsmanagerinterface.h \
     $$PWD/queueinterface.h \
@@ -42,14 +42,14 @@ HEADERS += \
 !isEmpty(LIBTOOLING_LIBS) {
 SOURCES += \
     $$PWD/usedmacrosandsourcescollector.cpp \
-    $$PWD/pchcreator.cpp \
+    $$PWD/pchhldplugin.cpp \
     $$PWD/builddependencycollector.cpp
 
 HEADERS += \
     $$PWD/collectusedmacroactionfactory.h \
     $$PWD/collectusedmacrosaction.h \
     $$PWD/collectusedmacrosandsourcespreprocessorcallbacks.h \
-    $$PWD/pchcreator.h \
+    $$PWD/pchhldplugin.h \
     $$PWD/processormanager.h \
     $$PWD/usedmacrosandsourcescollector.h \
     $$PWD/builddependencycollector.h \

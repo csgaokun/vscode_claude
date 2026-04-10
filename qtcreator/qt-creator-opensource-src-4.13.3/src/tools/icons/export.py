@@ -5,7 +5,7 @@
 # Copyright (C) 2020 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -47,7 +47,7 @@ def qtcRoot():
 
 def svgIDs(svgFile, svgElementFilter):
     # The svg element IDs of images to export. They correspond to the
-    # path and base name of each image in the Qt Creator sources.
+    # path and base name of each image in the Qt Hldplugin sources.
     svgIDs = []
     svgTree = ET.ElementTree()
     svgTree.parse(os.path.join(qtcRoot(), svgFile))
@@ -173,7 +173,7 @@ def main():
     if optipng is None:
         sys.exit("Optipng was not found in Path.")
 
-    export("src/tools/icons/qtcreatoricons.svg", args.filter, [1, 2],
+    export("src/tools/icons/qthldpluginicons.svg", args.filter, [1, 2],
            inkscape, optipng)
 
     return 0

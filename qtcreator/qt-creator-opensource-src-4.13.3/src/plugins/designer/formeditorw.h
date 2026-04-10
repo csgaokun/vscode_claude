@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -51,7 +51,7 @@ namespace Internal {
   * instance. However, it must be manually deleted when unloading the
   * plugin. Since fully initializing Designer at startup is expensive, the
   * class has an internal partial initialisation stage "RegisterPlugins"
-  * which is there to register the Creator plugin objects
+  * which is there to register the Hldplugin plugin objects
   * that must be present at startup (settings pages, actions).
   * The plugin uses this stage at first by calling ensureInitStage().
   * Requesting an editor via instance() will fully initialize the class.
@@ -64,7 +64,7 @@ class FormEditorW : public QObject
 {
 public:
     enum InitializationStage {
-        // Register Creator plugins (settings pages, actions)
+        // Register Hldplugin plugins (settings pages, actions)
         RegisterPlugins,
         // Subwindows of the designer are initialized
         SubwindowsInitialized,

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -233,7 +233,7 @@ QSet<QString> HelpManager::userDocumentationPaths()
     return d->m_userRegisteredFiles;
 }
 
-// This should go into Qt 4.8 once we start using it for Qt Creator
+// This should go into Qt 4.8 once we start using it for Qt Hldplugin
 QMultiMap<QString, QUrl> HelpManager::linksForKeyword(const QString &key)
 {
     QTC_ASSERT(!d->m_needsSetup, return {});

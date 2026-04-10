@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -39,7 +39,7 @@
 
 namespace Utils {
 
-QTCREATOR_UTILS_EXPORT QString winErrorMessage(unsigned long error)
+QTHLDPLUGIN_UTILS_EXPORT QString winErrorMessage(unsigned long error)
 {
     QString rc = QString::fromLatin1("#%1: ").arg(error);
 #ifdef Q_OS_WIN
@@ -71,7 +71,7 @@ static inline QString msgCannotResolve(const char *lib)
 }
 #endif
 
-QTCREATOR_UTILS_EXPORT QString winGetDLLVersion(WinDLLVersionType t,
+QTHLDPLUGIN_UTILS_EXPORT QString winGetDLLVersion(WinDLLVersionType t,
                                                 const QString &name,
                                                 QString *errorMessage)
 {
@@ -140,7 +140,7 @@ QTCREATOR_UTILS_EXPORT QString winGetDLLVersion(WinDLLVersionType t,
     return QString();
 }
 
-QTCREATOR_UTILS_EXPORT bool is64BitWindowsSystem()
+QTHLDPLUGIN_UTILS_EXPORT bool is64BitWindowsSystem()
 {
 #ifdef Q_OS_WIN
     SYSTEM_INFO systemInfo;
@@ -152,7 +152,7 @@ QTCREATOR_UTILS_EXPORT bool is64BitWindowsSystem()
 #endif
 }
 
-QTCREATOR_UTILS_EXPORT bool is64BitWindowsBinary(const QString &binaryIn)
+QTHLDPLUGIN_UTILS_EXPORT bool is64BitWindowsBinary(const QString &binaryIn)
 {
        QTC_ASSERT(!binaryIn.isEmpty(), return false);
 #ifdef Q_OS_WIN32
@@ -171,7 +171,7 @@ QTCREATOR_UTILS_EXPORT bool is64BitWindowsBinary(const QString &binaryIn)
 #endif
 }
 
-QTCREATOR_UTILS_EXPORT QString imageName(quint32 processId)
+QTHLDPLUGIN_UTILS_EXPORT QString imageName(quint32 processId)
 {
     QString result;
 #ifdef Q_OS_WIN

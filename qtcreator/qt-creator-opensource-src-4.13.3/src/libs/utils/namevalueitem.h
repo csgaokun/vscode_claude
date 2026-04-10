@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -34,7 +34,7 @@
 
 namespace Utils {
 
-class QTCREATOR_UTILS_EXPORT NameValueItem
+class QTHLDPLUGIN_UTILS_EXPORT NameValueItem
 {
 public:
     enum Operation : char { SetEnabled, Unset, Prepend, Append, SetDisabled };
@@ -75,6 +75,6 @@ private:
     void apply(NameValueDictionary *dictionary, Operation op) const;
 };
 
-QTCREATOR_UTILS_EXPORT QDebug operator<<(QDebug debug, const NameValueItem &i);
+QTHLDPLUGIN_UTILS_EXPORT QDebug operator<<(QDebug debug, const NameValueItem &i);
 
 } // namespace Utils

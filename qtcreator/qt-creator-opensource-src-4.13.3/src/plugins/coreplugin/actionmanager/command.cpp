@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -38,7 +38,7 @@
 /*!
     \class Core::Command
     \inheaderfile coreplugin/actionmanager/command.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The Command class represents an action, such as a menu item, tool button, or shortcut.
@@ -380,7 +380,7 @@ static QString msgActionWarning(QAction *newAction, Id id, QAction *oldAction)
 void Action::addOverrideAction(QAction *action, const Context &context, bool scriptable)
 {
     // disallow TextHeuristic menu role, because it doesn't work with translations,
-    // e.g. QTCREATORBUG-13101
+    // e.g. QTHLDPLUGINBUG-13101
     if (action->menuRole() == QAction::TextHeuristicRole)
         action->setMenuRole(QAction::NoRole);
     if (isEmpty())

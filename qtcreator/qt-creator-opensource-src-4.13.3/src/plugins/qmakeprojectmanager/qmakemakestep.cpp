@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,7 +76,7 @@ bool QmakeMakeStep::init()
         return false;
     }
 
-    // Ignore all but the first make step for a non-top-level build. See QTCREATORBUG-15794.
+    // Ignore all but the first make step for a non-top-level build. See QTHLDPLUGINBUG-15794.
     m_ignoredNonTopLevelBuild = (bc->fileNodeBuild() || bc->subNodeBuild()) && !enabledForSubDirs();
 
     ProcessParameters *pp = processParameters();

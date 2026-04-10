@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     startQC()
@@ -40,7 +40,7 @@ def prepareQmlFile():
     if not openDocument("untitled.Resources.qml\.qrc./.main\\.qml"):
         test.fatal("Could not open main.qml")
         return None
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     isDarwin = platform.system() == 'Darwin'
     for i in range(3):
         if not placeCursorToLine(editor, 'title: qsTr("Hello World")'):
@@ -87,9 +87,9 @@ def prepareQmlFile():
     return originalText
 
 def testReIndent(originalText):
-    editor = waitForObject(":Qt Creator_QmlJSEditor::QmlJSTextEditorWidget")
+    editor = waitForObject(":Qt Hldplugin_QmlJSEditor::QmlJSTextEditorWidget")
     type(editor, "<Ctrl+a>")
-    filenameCombo = waitForObject(":Qt Creator_FilenameQComboBox")
+    filenameCombo = waitForObject(":Qt Hldplugin_FilenameQComboBox")
     test.log("calling re-indent")
     starttime = datetime.utcnow()
     type(editor, "<Ctrl+i>")

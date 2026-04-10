@@ -1,7 +1,7 @@
 TEMPLATE = lib
 TARGET = Ios
 
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 QT += xml network
 

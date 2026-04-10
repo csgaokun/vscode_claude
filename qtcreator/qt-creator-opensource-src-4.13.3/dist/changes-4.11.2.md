@@ -1,24 +1,24 @@
-Qt Creator 4.11.2
+Qt Hldplugin 4.11.2
 =================
 
-Qt Creator version 4.11.2 contains bug fixes.
+Qt Hldplugin version 4.11.2 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline origin/v4.11.1..v4.11.2
 
 Editing
 -------
 
-* Improved performance of highlighting (QTCREATORBUG-23281)
-* Fixed that `Rewrap Paragraph` split on non-breaking space (QTCREATORBUG-23643)
-* Fixed freeze with block selection (QTCREATORBUG-23622)
-* Fixed high CPU usage after scrolling horizontally (QTCREATORBUG-23647)
+* Improved performance of highlighting (QTHLDPLUGINBUG-23281)
+* Fixed that `Rewrap Paragraph` split on non-breaking space (QTHLDPLUGINBUG-23643)
+* Fixed freeze with block selection (QTHLDPLUGINBUG-23622)
+* Fixed high CPU usage after scrolling horizontally (QTHLDPLUGINBUG-23647)
 * Fixed scroll position after splitting if text cursor is not visible
-* Fixed position of markers in scrollbar for long documents (QTCREATORBUG-23660)
+* Fixed position of markers in scrollbar for long documents (QTHLDPLUGINBUG-23660)
 
 ### Python
 
@@ -26,12 +26,12 @@ Editing
 
 ### Language Client
 
-* Fixed issue with server restart after server crash (QTCREATORBUG-23648)
+* Fixed issue with server restart after server crash (QTHLDPLUGINBUG-23648)
 
 Projects
 --------
 
-* Fixed wrong default project for adding files via wizards (QTCREATORBUG-23603)
+* Fixed wrong default project for adding files via wizards (QTHLDPLUGINBUG-23603)
 
 Debugging
 ---------
@@ -43,7 +43,7 @@ Debugging
 Test Integration
 ----------------
 
-* Fixed debugging of Qt Quick tests (QTCREATORBUG-23709)
+* Fixed debugging of Qt Quick tests (QTHLDPLUGINBUG-23709)
 
 Platforms
 ---------

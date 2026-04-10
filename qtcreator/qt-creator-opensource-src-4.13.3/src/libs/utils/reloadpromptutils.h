@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -44,11 +44,11 @@ enum ReloadPromptAnswer {
     CloseCurrent
 };
 
-QTCREATOR_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const FilePath &fileName,
+QTHLDPLUGIN_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const FilePath &fileName,
                                                        bool modified,
                                                        bool enableDiffOption,
                                                        QWidget *parent);
-QTCREATOR_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const QString &title,
+QTHLDPLUGIN_UTILS_EXPORT ReloadPromptAnswer reloadPrompt(const QString &title,
                                                        const QString &prompt,
                                                        const QString &details,
                                                        bool enableDiffOption,
@@ -61,7 +61,7 @@ enum FileDeletedPromptAnswer {
     FileDeletedSave
 };
 
-QTCREATOR_UTILS_EXPORT FileDeletedPromptAnswer fileDeletedPrompt(const QString &fileName,
+QTHLDPLUGIN_UTILS_EXPORT FileDeletedPromptAnswer fileDeletedPrompt(const QString &fileName,
                                                                  QWidget *parent);
 
 } // namespace Utils

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -31,7 +31,7 @@
 /*!
     \class ExtensionSystem::IPlugin
     \inheaderfile extensionsystem/iplugin.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The IPlugin class is an abstract base class that must be implemented
@@ -45,7 +45,7 @@
     in a library that matches the \c name attribute given in their
     meta data. The IPlugin implementation must be exported and
     made known to Qt's plugin system, using the \c Q_PLUGIN_METADATA macro with
-    an IID set to \c "org.qt-project.Qt.QtCreatorPlugin".
+    an IID set to \c "org.qt-project.Qt.QtHldpluginPlugin".
 
     For more information, see \l{Plugin Life Cycle}.
 */
@@ -151,7 +151,7 @@
 
     The \a workingDirectory argument specifies the working directory of the
     calling process. For example, if you're in a directory, and you execute
-    \c { qtcreator -client file.cpp}, the working directory of the calling
+    \c { qthldplugin -client file.cpp}, the working directory of the calling
     process is passed to the running instance and \c {file.cpp} is transformed
     into an absolute path starting from this directory.
 

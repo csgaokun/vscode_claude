@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -89,16 +89,16 @@ QmlJSToolsSettings::QmlJSToolsSettings()
     QSettings *s = Core::ICore::settings();
     m_globalCodeStyle->fromSettings(QLatin1String(QmlJSTools::Constants::QML_JS_SETTINGS_ID), s);
 
-    // legacy handling start (Qt Creator Version < 2.4)
+    // legacy handling start (Qt Hldplugin Version < 2.4)
     const bool legacyTransformed =
                 s->value(QLatin1String("QmlJSTabPreferences/LegacyTransformed"), false).toBool();
 
     if (!legacyTransformed) {
-        // creator 2.4 didn't mark yet the transformation (first run of creator 2.4)
+        // hldplugin 2.4 didn't mark yet the transformation (first run of hldplugin 2.4)
 
         // we need to transform the settings only if at least one from
         // below settings was already written - otherwise we use
-        // defaults like it would be the first run of creator 2.4 without stored settings
+        // defaults like it would be the first run of hldplugin 2.4 without stored settings
         const QStringList groups = s->childGroups();
         const bool needTransform = groups.contains(QLatin1String("textTabPreferences")) ||
                                    groups.contains(QLatin1String("QmlJSTabPreferences"));
@@ -116,11 +116,11 @@ QmlJSToolsSettings::QmlJSToolsSettings()
             }
 
             // create custom code style out of old settings
-            ICodeStylePreferences *oldCreator = pool->createCodeStyle(
-                     "legacy", legacyTabSettings, QVariant(), tr("Old Creator"));
+            ICodeStylePreferences *oldHldplugin = pool->createCodeStyle(
+                     "legacy", legacyTabSettings, QVariant(), tr("Old Hldplugin"));
 
             // change the current delegate and save
-            m_globalCodeStyle->setCurrentDelegate(oldCreator);
+            m_globalCodeStyle->setCurrentDelegate(oldHldplugin);
             m_globalCodeStyle->toSettings(QLatin1String(QmlJSTools::Constants::QML_JS_SETTINGS_ID), s);
         }
         // mark old settings as transformed

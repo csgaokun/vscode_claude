@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -164,7 +164,7 @@ private:
     void updateTerminalUi(const Utils::TerminalCommand &term);
     void updatePath();
 
-    void variableHelpDialogCreator(const QString &helpText);
+    void variableHelpDialogHldplugin(const QString &helpText);
     Ui::SystemSettings m_ui;
     QPointer<QMessageBox> m_dialog;
 };
@@ -231,7 +231,7 @@ void SystemSettingsWidget::updatePath()
     m_ui.patchChooser->setEnvironment(env);
 }
 
-void SystemSettingsWidget::variableHelpDialogCreator(const QString &helpText)
+void SystemSettingsWidget::variableHelpDialogHldplugin(const QString &helpText)
 {
     if (m_dialog) {
         if (m_dialog->text() != helpText)
@@ -254,7 +254,7 @@ void SystemSettingsWidget::variableHelpDialogCreator(const QString &helpText)
 void SystemSettingsWidget::showHelpForFileBrowser()
 {
     if (HostOsInfo::isAnyUnixHost() && !HostOsInfo::isMacHost())
-        variableHelpDialogCreator(UnixUtils::fileBrowserHelpText());
+        variableHelpDialogHldplugin(UnixUtils::fileBrowserHelpText());
 }
 
 SystemSettings::SystemSettings()
@@ -262,7 +262,7 @@ SystemSettings::SystemSettings()
     setId(Constants::SETTINGS_ID_SYSTEM);
     setDisplayName(SystemSettingsWidget::tr("System"));
     setCategory(Constants::SETTINGS_CATEGORY_CORE);
-    setWidgetCreator([] { return new SystemSettingsWidget; });
+    setWidgetHldplugin([] { return new SystemSettingsWidget; });
 }
 
 } // namespace Internal

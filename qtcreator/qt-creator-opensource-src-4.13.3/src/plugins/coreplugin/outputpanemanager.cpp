@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -259,7 +259,7 @@ const int buttonBorderWidth = 3;
 
 static int numberAreaWidth()
 {
-    return creatorTheme()->flag(Theme::FlatToolBars) ? 15 : 19;
+    return hldpluginTheme()->flag(Theme::FlatToolBars) ? 15 : 19;
 }
 
 ////
@@ -384,7 +384,7 @@ OutputPaneManager::OutputPaneManager(QWidget *parent) :
     m_buttonsWidget->setLayout(new QHBoxLayout);
     m_buttonsWidget->layout()->setContentsMargins(5,0,0,0);
     m_buttonsWidget->layout()->setSpacing(
-            creatorTheme()->flag(Theme::FlatToolBars) ? 9 : 4);
+            hldpluginTheme()->flag(Theme::FlatToolBars) ? 9 : 4);
 
     StatusBarManager::addStatusBarWidget(m_buttonsWidget, StatusBarManager::Second);
 
@@ -435,7 +435,7 @@ OutputPaneManager::OutputPaneManager(QWidget *parent) :
     const int n = g_outputPanes.size();
 
     int shortcutNumber = 1;
-    const Id baseId = "QtCreator.Pane.";
+    const Id baseId = "QtHldplugin.Pane.";
     for (int i = 0; i != n; ++i) {
         OutputPaneData &data = g_outputPanes[i];
         IOutputPane *outPane = data.pane;
@@ -826,7 +826,7 @@ void OutputPaneToggleButton::paintEvent(QPaintEvent*)
     styleOption.initFrom(this);
     const bool hovered = !HostOsInfo::isMacHost() && (styleOption.state & QStyle::State_MouseOver);
 
-    if (creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (hldpluginTheme()->flag(Theme::FlatToolBars)) {
         Theme::Color c = Theme::BackgroundColorDark;
 
         if (hovered)
@@ -835,7 +835,7 @@ void OutputPaneToggleButton::paintEvent(QPaintEvent*)
             c = Theme::BackgroundColorSelected;
 
         if (c != Theme::BackgroundColorDark)
-            p.fillRect(rect(), creatorTheme()->color(c));
+            p.fillRect(rect(), hldpluginTheme()->color(c));
     } else {
         const QImage *image = nullptr;
         if (isDown()) {
@@ -869,18 +869,18 @@ void OutputPaneToggleButton::paintEvent(QPaintEvent*)
 
     if (m_flashTimer->state() == QTimeLine::Running)
     {
-        QColor c = creatorTheme()->color(Theme::OutputPaneButtonFlashColor);
+        QColor c = hldpluginTheme()->color(Theme::OutputPaneButtonFlashColor);
         c.setAlpha (m_flashTimer->currentFrame());
-        QRect r = creatorTheme()->flag(Theme::FlatToolBars)
+        QRect r = hldpluginTheme()->flag(Theme::FlatToolBars)
                   ? rect() : rect().adjusted(numberAreaWidth(), 1, -1, -1);
         p.fillRect(r, c);
     }
 
     p.setFont(font());
-    p.setPen(creatorTheme()->color(Theme::OutputPaneToggleButtonTextColorChecked));
+    p.setPen(hldpluginTheme()->color(Theme::OutputPaneToggleButtonTextColorChecked));
     p.drawText((numberAreaWidth() - numberWidth) / 2, baseLine, m_number);
     if (!isChecked())
-        p.setPen(creatorTheme()->color(Theme::OutputPaneToggleButtonTextColorUnchecked));
+        p.setPen(hldpluginTheme()->color(Theme::OutputPaneToggleButtonTextColorUnchecked));
     int leftPart = numberAreaWidth() + buttonBorderWidth;
     int labelWidth = 0;
     if (!m_badgeNumberLabel.text().isEmpty()) {
@@ -940,7 +940,7 @@ QSize OutputPaneManageButton::sizeHint() const
 void OutputPaneManageButton::paintEvent(QPaintEvent*)
 {
     QPainter p(this);
-    if (!creatorTheme()->flag(Theme::FlatToolBars)) {
+    if (!hldpluginTheme()->flag(Theme::FlatToolBars)) {
         static const QImage button(StyleHelper::dpiSpecificImageFile(QStringLiteral(":/utils/images/panel_manage_button.png")));
         StyleHelper::drawCornerImage(button, &p, rect(), buttonBorderWidth, buttonBorderWidth, buttonBorderWidth, buttonBorderWidth);
     }
@@ -966,14 +966,14 @@ void BadgeLabel::paint(QPainter *p, int x, int y, bool isChecked)
     const QRectF rect(QRect(QPoint(x, y), m_size));
     p->save();
 
-    p->setBrush(creatorTheme()->color(isChecked? Theme::BadgeLabelBackgroundColorChecked
+    p->setBrush(hldpluginTheme()->color(isChecked? Theme::BadgeLabelBackgroundColorChecked
                                                : Theme::BadgeLabelBackgroundColorUnchecked));
     p->setPen(Qt::NoPen);
     p->setRenderHint(QPainter::Antialiasing, true);
     p->drawRoundedRect(rect, m_padding, m_padding, Qt::AbsoluteSize);
 
     p->setFont(m_font);
-    p->setPen(creatorTheme()->color(isChecked ? Theme::BadgeLabelTextColorChecked
+    p->setPen(hldpluginTheme()->color(isChecked ? Theme::BadgeLabelTextColorChecked
                                               : Theme::BadgeLabelTextColorUnchecked));
     p->drawText(rect, Qt::AlignCenter, m_text);
 

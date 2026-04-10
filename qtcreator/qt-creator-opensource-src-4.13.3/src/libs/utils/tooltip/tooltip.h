@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,7 +36,7 @@
 
 /*
  * In its current form QToolTip is not extensible. So this is an attempt to provide a more
- * flexible and customizable tooltip mechanism for Creator. Part of the code here is duplicated
+ * flexible and customizable tooltip mechanism for Hldplugin. Part of the code here is duplicated
  * from QToolTip. This includes a private Qt header and the non-exported class QTipLabel, which
  * here serves as a base tip class. Please notice that Qt relies on this particular class name in
  * order to correctly apply the native styles for tooltips. Therefore the QTipLabel name should
@@ -53,7 +53,7 @@ QT_END_NAMESPACE
 namespace Utils {
 namespace Internal { class TipLabel; }
 
-class QTCREATOR_UTILS_EXPORT ToolTip : public QObject
+class QTHLDPLUGIN_UTILS_EXPORT ToolTip : public QObject
 {
     Q_OBJECT
 protected:

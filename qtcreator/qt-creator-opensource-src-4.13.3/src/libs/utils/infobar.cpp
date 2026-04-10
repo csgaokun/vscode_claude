@@ -3,7 +3,7 @@
 ** Copyright (C) 2020 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -84,9 +84,9 @@ void InfoBarEntry::removeCancelButton()
     m_cancelButtonCallBack = nullptr;
 }
 
-void InfoBarEntry::setDetailsWidgetCreator(const InfoBarEntry::DetailsWidgetCreator &creator)
+void InfoBarEntry::setDetailsWidgetHldplugin(const InfoBarEntry::DetailsWidgetHldplugin &hldplugin)
 {
-    m_detailsWidgetCreator = creator;
+    m_detailsWidgetHldplugin = hldplugin;
 }
 
 void InfoBar::addInfo(const InfoBarEntry &info)
@@ -259,9 +259,9 @@ void InfoBarDisplay::update()
         infoWidgetLabel->setWordWrap(true);
         hbox->addWidget(infoWidgetLabel, 1);
 
-        if (info.m_detailsWidgetCreator) {
+        if (info.m_detailsWidgetHldplugin) {
             if (m_isShowingDetailsWidget) {
-                QWidget *detailsWidget = info.m_detailsWidgetCreator();
+                QWidget *detailsWidget = info.m_detailsWidgetHldplugin();
                 vbox->addWidget(detailsWidget);
             }
 
@@ -272,7 +272,7 @@ void InfoBarDisplay::update()
             connect(showDetailsButton, &QToolButton::clicked, [this, vbox, info] (bool) {
                 QWidget *detailsWidget = vbox->count() == 2 ? vbox->itemAt(1)->widget() : nullptr;
                 if (!detailsWidget) {
-                    detailsWidget = info.m_detailsWidgetCreator();
+                    detailsWidget = info.m_detailsWidgetHldplugin();
                     vbox->addWidget(detailsWidget);
                 }
 

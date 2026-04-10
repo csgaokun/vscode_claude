@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -430,7 +430,7 @@ void CppElementEvaluator::handleLookupItemMatch(const Snapshot &snapshot,
     Symbol *declaration = lookupItem.declaration();
     if (!declaration) {
         const QString &type = Overview().prettyType(lookupItem.type(), QString());
-        //  special case for bug QTCREATORBUG-4780
+        //  special case for bug QTHLDPLUGINBUG-4780
         if (scope && scope->isFunction()
                 && lookupItem.type().match(scope->asFunction()->returnType())) {
             return;

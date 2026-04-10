@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -45,11 +45,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     Theme theme("");
-    QSettings settings(":/themes/flat.creatortheme", QSettings::IniFormat);
+    QSettings settings(":/themes/flat.hldplugintheme", QSettings::IniFormat);
     theme.readSettings(settings);
-    setCreatorTheme(&theme);
+    setHldpluginTheme(&theme);
     StyleHelper::setBaseColor(QColor(StyleHelper::DEFAULT_BASE_COLOR));
-    QApplication::setStyle(new ManhattanStyle(creatorTheme()->preferredStyles().value(0)));
+    QApplication::setStyle(new ManhattanStyle(hldpluginTheme()->preferredStyles().value(0)));
 
     auto widget = new QWidget;
     auto mainLayout = new QVBoxLayout(widget);

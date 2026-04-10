@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -66,8 +66,8 @@ public:
 
 private:
     BuildStepList m_stepList;
-    using WidgetCreator = std::function<QWidget *(DeployConfiguration *)>;
-    WidgetCreator m_configWidgetCreator;
+    using WidgetHldplugin = std::function<QWidget *(DeployConfiguration *)>;
+    WidgetHldplugin m_configWidgetHldplugin;
     DeploymentData m_customDeploymentData;
     bool m_usesCustomDeploymentData = false;
 };
@@ -100,7 +100,7 @@ public:
 
     bool canHandle(ProjectExplorer::Target *target) const;
 
-    void setConfigWidgetCreator(const DeployConfiguration::WidgetCreator &configWidgetCreator);
+    void setConfigWidgetHldplugin(const DeployConfiguration::WidgetHldplugin &configWidgetHldplugin);
     void setUseDeploymentDataView();
 
     using PostRestore = std::function<void(DeployConfiguration *dc, const QVariantMap &)>;
@@ -108,7 +108,7 @@ public:
     PostRestore postRestore() const { return m_postRestore; }
 
 protected:
-    using DeployConfigurationCreator = std::function<DeployConfiguration *(Target *)>;
+    using DeployConfigurationHldplugin = std::function<DeployConfiguration *(Target *)>;
     void setConfigBaseId(Utils::Id deployConfigBaseId);
 
 private:
@@ -118,7 +118,7 @@ private:
     QList<Utils::Id> m_supportedTargetDeviceTypes;
     QList<BuildStepList::StepCreationInfo> m_initialSteps;
     QString m_defaultDisplayName;
-    DeployConfiguration::WidgetCreator m_configWidgetCreator;
+    DeployConfiguration::WidgetHldplugin m_configWidgetHldplugin;
     PostRestore m_postRestore;
 };
 

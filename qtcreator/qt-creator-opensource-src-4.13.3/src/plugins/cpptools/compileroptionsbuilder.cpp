@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -306,7 +306,7 @@ void CompilerOptionsBuilder::insertWrappedMingwHeaders()
     insertWrappedHeaders(wrappedMingwHeadersIncludePath());
 }
 
-static QString creatorResourcePath()
+static QString hldpluginResourcePath()
 {
 #ifndef UNIT_TESTS
     return Core::ICore::resourcePath();
@@ -324,7 +324,7 @@ void CompilerOptionsBuilder::insertWrappedHeaders(const QStringList &relPaths)
 
     QStringList args;
     for (const QString &relPath : relPaths) {
-        static const QString baseDir = creatorResourcePath() + "/cplusplus";
+        static const QString baseDir = hldpluginResourcePath() + "/cplusplus";
         const QString fullPath = baseDir + '/' + relPath;
         QTC_ASSERT(QDir(fullPath).exists(), continue);
         args << includeUserPathOption << QDir::toNativeSeparators(fullPath);

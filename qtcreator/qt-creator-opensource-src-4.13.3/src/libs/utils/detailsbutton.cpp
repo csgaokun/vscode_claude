@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -126,11 +126,11 @@ void DetailsButton::paintEvent(QPaintEvent *e)
 
     // draw hover animation
     if (!HostOsInfo::isMacHost() && !isDown() && m_fader > 0) {
-        QColor c = creatorTheme()->color(Theme::DetailsButtonBackgroundColorHover);
+        QColor c = hldpluginTheme()->color(Theme::DetailsButtonBackgroundColorHover);
         c.setAlpha (int(m_fader * c.alpha()));
 
         QRect r = rect();
-        if (!creatorTheme()->flag(Theme::FlatProjectsMode))
+        if (!hldpluginTheme()->flag(Theme::FlatProjectsMode))
             r.adjust(1, 1, -2, -2);
         p.fillRect(r, c);
     }
@@ -166,7 +166,7 @@ QPixmap DetailsButton::cacheRendering(const QSize &size, bool checked)
     p.setRenderHint(QPainter::Antialiasing, true);
     p.translate(0.5, 0.5);
 
-    if (!creatorTheme()->flag(Theme::FlatProjectsMode)) {
+    if (!hldpluginTheme()->flag(Theme::FlatProjectsMode)) {
         QLinearGradient lg;
         lg.setCoordinateMode(QGradient::ObjectBoundingMode);
         lg.setFinalStop(0, 1);

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -65,15 +65,15 @@ using namespace Utils;
 /*!
     \class Core::ProgressManager
     \inheaderfile coreplugin/progressmanager/progressmanager.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
     \ingroup mainclasses
 
     \brief The ProgressManager class is used to show a user interface
-    for running tasks in Qt Creator.
+    for running tasks in Qt Hldplugin.
 
     The progress manager tracks the progress of a task that it is told
     about, and shows a progress indicator in the lower right corner
-    of Qt Creator's main window to the user.
+    of Qt Hldplugin's main window to the user.
     The progress indicator also allows the user to cancel the task.
 
     You get the single instance of this class via the
@@ -128,7 +128,7 @@ using namespace Utils;
     The first option is to directly use QtConcurrent to actually
     start a task concurrently in a different thread.
     QtConcurrent has several different functions to run e.g.
-    a class function in a different thread. Qt Creator itself
+    a class function in a different thread. Qt Hldplugin itself
     adds a few more in \c{src/libs/qtconcurrent/runextensions.h}.
     The QtConcurrent functions to run a concurrent task return a
     \c QFuture object. This is what you want to give the
@@ -289,7 +289,7 @@ void ProgressManagerPrivate::init()
     toggleProgressView->setChecked(m_progressViewPinned);
     toggleProgressView->setIcon(Utils::Icons::TOGGLE_PROGRESSDETAILS_TOOLBAR.icon());
     Command *cmd = ActionManager::registerAction(toggleProgressView,
-                                                 "QtCreator.ToggleProgressDetails");
+                                                 "QtHldplugin.ToggleProgressDetails");
 
     connect(toggleProgressView, &QAction::toggled,
             this, &ProgressManagerPrivate::progressDetailsToggled);

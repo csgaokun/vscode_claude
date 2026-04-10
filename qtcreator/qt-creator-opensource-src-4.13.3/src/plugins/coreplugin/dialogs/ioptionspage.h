@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -62,8 +62,8 @@ public:
     QString displayCategory() const { return m_displayCategory; }
     QIcon categoryIcon() const;
 
-    using WidgetCreator = std::function<IOptionsPageWidget *()>;
-    void setWidgetCreator(const WidgetCreator &widgetCreator);
+    using WidgetHldplugin = std::function<IOptionsPageWidget *()>;
+    void setWidgetHldplugin(const WidgetHldplugin &widgetHldplugin);
 
     virtual bool matches(const QRegularExpression &regexp) const;
     virtual QWidget *widget();
@@ -83,8 +83,8 @@ protected:
     QString m_displayName;
     QString m_displayCategory;
     Utils::Icon m_categoryIcon;
-    WidgetCreator m_widgetCreator;
-    QPointer<IOptionsPageWidget> m_widget; // Used in conjunction with m_widgetCreator
+    WidgetHldplugin m_widgetHldplugin;
+    QPointer<IOptionsPageWidget> m_widget; // Used in conjunction with m_widgetHldplugin
 
     mutable bool m_keywordsInitialized = false;
     mutable QStringList m_keywords;
@@ -93,7 +93,7 @@ protected:
 /*
     Alternative way for providing option pages instead of adding IOptionsPage
     objects into the plugin manager pool. Should only be used if creation of the
-    actual option pages is not possible or too expensive at Qt Creator startup.
+    actual option pages is not possible or too expensive at Qt Hldplugin startup.
     (Like the designer integration, which needs to initialize designer plugins
     before the options pages get available.)
 */

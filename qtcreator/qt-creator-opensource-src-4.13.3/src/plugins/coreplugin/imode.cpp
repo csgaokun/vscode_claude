@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -33,7 +33,7 @@ namespace Core {
     \class Core::IMode
     \inheaderfile coreplugin/imode.h
     \ingroup mainclasses
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The IMode class represents a mode in \QC.
 
@@ -41,7 +41,7 @@ namespace Core {
     mode selector on the left side of \QC's main window.
 
     Modes are used to show a different UI for different development tasks.
-    Therefore modes control the layout of most of Qt Creator's main window,
+    Therefore modes control the layout of most of Qt Hldplugin's main window,
     except for the tool bar on the left side and the status bar. For example
     Edit mode, the most commonly used mode for coding, shows the code editor
     and various navigation and output panes. Debug mode enhances that view with

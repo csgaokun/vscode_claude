@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 def main():
     global tmpSettingsDir, availableBuildSystems
@@ -61,7 +61,7 @@ def main():
         for template in dumpItems(templatesView.model(), templatesView.rootIndex()):
             template = template.replace(".", "\\.")
             # skip non-configurable
-            if (template not in ["Qt Quick UI Prototype", "Auto Test Project", "Qt Creator Plugin"]
+            if (template not in ["Qt Quick UI Prototype", "Auto Test Project", "Qt Hldplugin Plugin"]
                 and "Qt for Python - " not in template): # FIXME
                 availableProjectTypes.append({category:template})
     safeClickButton("Cancel")

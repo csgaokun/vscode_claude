@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -36,10 +36,10 @@ const QString settingsKeyImagesFolder = QLatin1String("imagesFolder");
 
 static void promptPaths(QString &areasXmlFile, QString &imagesFolder)
 {
-    QSettings settings(QLatin1String("QtProject"), QLatin1String("Qt Creator Screenshot Cropper"));
+    QSettings settings(QLatin1String("QtProject"), QLatin1String("Qt Hldplugin Screenshot Cropper"));
 
     areasXmlFile = settings.value(settingsKeyAreasXmlFile).toString();
-    areasXmlFile = QFileDialog::getOpenFileName(0, QLatin1String("Select the 'images_areaofinterest.xml' file in Qt Creator's sources"), areasXmlFile);
+    areasXmlFile = QFileDialog::getOpenFileName(0, QLatin1String("Select the 'images_areaofinterest.xml' file in Qt Hldplugin's sources"), areasXmlFile);
     settings.setValue(settingsKeyAreasXmlFile, areasXmlFile);
 
     imagesFolder = settings.value(settingsKeyImagesFolder).toString();

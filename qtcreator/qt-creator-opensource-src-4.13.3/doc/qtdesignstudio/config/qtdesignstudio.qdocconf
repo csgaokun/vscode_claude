@@ -16,13 +16,13 @@ ignorewords += \
 headerdirs =
 sourcedirs = ../src \
              ../examples/doc \
-             ../../qtcreator/src
+             ../../qthldplugin/src
 imagedirs = ../images \
             ../examples/doc/images \
-            ../../qtcreator/images \
+            ../../qthldplugin/images \
             ../../../plugins/qmldesigner/qmlpreviewplugin/images \
-            ../../../share/qtcreator/qml/qmlpuppet/mockfiles/images \
-            ../../../share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images \
+            ../../../share/qthldplugin/qml/qmlpuppet/mockfiles/images \
+            ../../../share/qthldplugin/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images \
             ../../../src/libs/qmleditorwidgets/images \
             ../../../src/libs/utils/images \
             ../../../src/plugins/debugger/images \
@@ -38,38 +38,38 @@ imagedirs = ../images \
             ../../../src/plugins/qmldesigner/qtquickplugin/images \
             ../../../src/plugins/texteditor/images
 
-excludefiles += ../../qtcreator/src/qtcreator.qdoc \
-                ../../qtcreator/src/qtcreator-toc.qdoc
+excludefiles += ../../qthldplugin/src/qthldplugin.qdoc \
+                ../../qthldplugin/src/qthldplugin-toc.qdoc
 
-excludedirs  += ../../qtcreator/examples/accelbubble \
-                ../../qtcreator/examples/textfinder \
-                ../../qtcreator/examples/transitions \
-                ../../qtcreator/src/analyze \
-                ../../qtcreator/src/android \
-                ../../qtcreator/src/baremetal \
-                ../../qtcreator/src/cmake \
-                ../../qtcreator/src/debugger/creator-only \
-                ../../qtcreator/src/editors/creator-only \
-                ../../qtcreator/src/howto/creator-only \
-                ../../qtcreator/src/incredibuild \
-                ../../qtcreator/src/ios \
-                ../../qtcreator/src/linux-mobile \
-                ../../qtcreator/src/mcu \
-                ../../qtcreator/src/meson \
-                ../../qtcreator/src/overview/creator-only \
-                ../../qtcreator/src/projects \
-                ../../qtcreator/src/qnx \
-                ../../qtcreator/src/qtquick/creator-only \
-                ../../qtcreator/src/vcs/creator-only \
-                ../../qtcreator/src/widgets \
-                ../../qtcreator/src/webassembly
+excludedirs  += ../../qthldplugin/examples/accelbubble \
+                ../../qthldplugin/examples/textfinder \
+                ../../qthldplugin/examples/transitions \
+                ../../qthldplugin/src/analyze \
+                ../../qthldplugin/src/android \
+                ../../qthldplugin/src/baremetal \
+                ../../qthldplugin/src/cmake \
+                ../../qthldplugin/src/debugger/hldplugin-only \
+                ../../qthldplugin/src/editors/hldplugin-only \
+                ../../qthldplugin/src/howto/hldplugin-only \
+                ../../qthldplugin/src/incredibuild \
+                ../../qthldplugin/src/ios \
+                ../../qthldplugin/src/linux-mobile \
+                ../../qthldplugin/src/mcu \
+                ../../qthldplugin/src/meson \
+                ../../qthldplugin/src/overview/hldplugin-only \
+                ../../qthldplugin/src/projects \
+                ../../qthldplugin/src/qnx \
+                ../../qthldplugin/src/qtquick/hldplugin-only \
+                ../../qthldplugin/src/vcs/hldplugin-only \
+                ../../qthldplugin/src/widgets \
+                ../../qthldplugin/src/webassembly
 
 exampledirs = ../examples/ \
-              ../../qtcreator/examples
+              ../../qthldplugin/examples
 examples.fileextensions += *.qml *.svg *.ts *.qm
 
 HTML.extraimages         = ../../config/images/commercial.png
-qhp.QtCreator.extraFiles = ../../config/images/commercial.png
+qhp.QtHldplugin.extraFiles = ../../config/images/commercial.png
 
 depends +=    qtwidgets \
               qtcore \
@@ -100,7 +100,7 @@ defines += qtdesignstudio
 
 sources.fileextensions = "*.qdoc" "*.qdocinc"
 
-#depends += qtcreator \
+#depends += qthldplugin \
 #           qmake
 
 qhp.projects = qtdesignstudio

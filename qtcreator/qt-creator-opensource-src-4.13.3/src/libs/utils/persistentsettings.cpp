@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -76,7 +76,7 @@ static QRect stringToRectangle(const QString &v)
 
     Handles all string-serializable simple types and QVariantList and QVariantMap. Example:
     \code
-<qtcreator>
+<qthldplugin>
     <data>
         <variable>ProjectExplorer.Project.ActiveTarget</variable>
         <value type="int">0</value>
@@ -117,7 +117,7 @@ namespace Utils {
 struct Context // Basic context containing element name string constants.
 {
     Context() {}
-    const QString qtCreatorElement = QString("qtcreator");
+    const QString qtHldpluginElement = QString("qthldplugin");
     const QString dataElement = QString("data");
     const QString variableElement = QString("variable");
     const QString typeAttribute = QString("type");
@@ -185,7 +185,7 @@ public:
     QVariantMap parse(QFile &file);
 
 private:
-    enum Element { QtCreatorElement, DataElement, VariableElement,
+    enum Element { QtHldpluginElement, DataElement, VariableElement,
                    SimpleValueElement, ListValueElement, MapValueElement, UnknownElement };
 
     Element element(const QStringRef &r) const;
@@ -282,7 +282,7 @@ bool ParseContext::handleEndElement(const QStringRef &name)
         }
         m_valueStack.top().addChild(top.key, top.value());
     }
-    return e == QtCreatorElement;
+    return e == QtHldpluginElement;
 }
 
 QString ParseContext::formatWarning(const QXmlStreamReader &r, const QString &message)
@@ -305,8 +305,8 @@ ParseContext::Element ParseContext::element(const QStringRef &r) const
         return ListValueElement;
     if (r == valueMapElement)
         return MapValueElement;
-    if (r == qtCreatorElement)
-        return QtCreatorElement;
+    if (r == qtHldpluginElement)
+        return QtHldpluginElement;
     if (r == dataElement)
         return DataElement;
     if (r == variableElement)
@@ -473,7 +473,7 @@ bool PersistentSettingsWriter::write(const QVariantMap &data, QString *errorStri
                        arg(QCoreApplication::applicationName(),
                            QCoreApplication::applicationVersion(),
                            QDateTime::currentDateTime().toString(Qt::ISODate)));
-        w.writeStartElement(ctx.qtCreatorElement);
+        w.writeStartElement(ctx.qtHldpluginElement);
         const QVariantMap::const_iterator cend = data.constEnd();
         for (QVariantMap::const_iterator it =  data.constBegin(); it != cend; ++it) {
             w.writeStartElement(ctx.dataElement);

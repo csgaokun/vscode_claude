@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -84,7 +84,7 @@ SettingsPage::SettingsPage(Settings *settings, const QStringList &protocolNames)
     setCategory(Constants::CPASTER_SETTINGS_CATEGORY);
     setDisplayCategory(QCoreApplication::translate("CodePaster", "Code Pasting"));
     setCategoryIconPath(":/cpaster/images/settingscategory_cpaster.png");
-    setWidgetCreator([settings, protocolNames] {
+    setWidgetHldplugin([settings, protocolNames] {
         return new SettingsWidget(protocolNames, settings);
     });
 }

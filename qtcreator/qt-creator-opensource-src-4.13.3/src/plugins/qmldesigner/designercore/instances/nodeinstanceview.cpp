@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -53,7 +53,7 @@
 #include "nodelistproperty.h"
 #include "nodeproperty.h"
 #include "pixmapchangedcommand.h"
-#include "puppettocreatorcommand.h"
+#include "puppettohldplugincommand.h"
 #include "qmlchangeset.h"
 #include "qmldesignerconstants.h"
 #include "qmlstate.h"
@@ -1470,9 +1470,9 @@ void NodeInstanceView::selectionChanged(const ChangeSelectionCommand &command)
     }
 }
 
-void NodeInstanceView::handlePuppetToCreatorCommand(const PuppetToCreatorCommand &command)
+void NodeInstanceView::handlePuppetToHldpluginCommand(const PuppetToHldpluginCommand &command)
 {
-    if (command.type() == PuppetToCreatorCommand::Edit3DToolState) {
+    if (command.type() == PuppetToHldpluginCommand::Edit3DToolState) {
         if (m_nodeInstanceServer) {
             auto data = qvariant_cast<QVariantList>(command.data());
             if (data.size() == 3) {
@@ -1480,11 +1480,11 @@ void NodeInstanceView::handlePuppetToCreatorCommand(const PuppetToCreatorCommand
                 m_edit3DToolStates[model()->fileUrl()][qmlId].insert(data[1].toString(), data[2]);
             }
         }
-    } else if (command.type() == PuppetToCreatorCommand::Render3DView) {
+    } else if (command.type() == PuppetToHldpluginCommand::Render3DView) {
         ImageContainer container = qvariant_cast<ImageContainer>(command.data());
         if (!container.image().isNull())
             emitRenderImage3DChanged(container.image());
-    } else if (command.type() == PuppetToCreatorCommand::ActiveSceneChanged) {
+    } else if (command.type() == PuppetToHldpluginCommand::ActiveSceneChanged) {
         const auto sceneState = qvariant_cast<QVariantMap>(command.data());
         emitUpdateActiveScene3D(sceneState);
     }

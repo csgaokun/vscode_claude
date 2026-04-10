@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -32,7 +32,7 @@
 QT_FORWARD_DECLARE_CLASS(QGraphicsOpacityEffect)
 
 namespace Utils {
-class QTCREATOR_UTILS_EXPORT FadingPanel : public QWidget
+class QTHLDPLUGIN_UTILS_EXPORT FadingPanel : public QWidget
 {
     Q_OBJECT
 
@@ -44,7 +44,7 @@ public:
     virtual void setOpacity(qreal value) = 0;
 };
 
-class QTCREATOR_UTILS_EXPORT FadingWidget : public FadingPanel
+class QTHLDPLUGIN_UTILS_EXPORT FadingWidget : public FadingPanel
 {
     Q_OBJECT
 public:
@@ -56,7 +56,7 @@ protected:
     QGraphicsOpacityEffect *m_opacityEffect;
 };
 
-class QTCREATOR_UTILS_EXPORT DetailsButton : public QAbstractButton
+class QTHLDPLUGIN_UTILS_EXPORT DetailsButton : public QAbstractButton
 {
     Q_OBJECT
     Q_PROPERTY(float fader READ fader WRITE setFader)
@@ -80,7 +80,7 @@ private:
     float m_fader;
 };
 
-class QTCREATOR_UTILS_EXPORT ExpandButton : public QAbstractButton
+class QTHLDPLUGIN_UTILS_EXPORT ExpandButton : public QAbstractButton
 {
     Q_OBJECT
 

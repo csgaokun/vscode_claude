@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -60,7 +60,7 @@ public:
     // Clang-Tidy
     enum class TidyMode
     {
-        // Disabled, // Used by Qt Creator 4.10 and below.
+        // Disabled, // Used by Qt Hldplugin 4.10 and below.
         UseCustomChecks = 1,
         UseConfigFile,
         UseDefaultChecks,

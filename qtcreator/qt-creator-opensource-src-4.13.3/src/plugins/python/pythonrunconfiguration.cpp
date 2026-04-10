@@ -3,7 +3,7 @@
 ** Copyright (C) 2019 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -329,7 +329,7 @@ PythonRunConfigurationFactory::PythonRunConfigurationFactory()
 
 PythonOutputFormatterFactory::PythonOutputFormatterFactory()
 {
-    setFormatterCreator([](Target *t) -> QList<OutputLineParser *> {
+    setFormatterHldplugin([](Target *t) -> QList<OutputLineParser *> {
         if (t && t->project()->mimeType() == Constants::C_PY_MIMETYPE)
             return {new PythonOutputLineParser};
         return {};

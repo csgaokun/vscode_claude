@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Lorenz Haas
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -96,7 +96,7 @@ ArtisticStyleOptionsPage::ArtisticStyleOptionsPage(ArtisticStyleSettings *settin
     setId("ArtisticStyle");
     setDisplayName(ArtisticStyleOptionsPageWidget::tr("Artistic Style"));
     setCategory(Constants::OPTION_CATEGORY);
-    setWidgetCreator([settings] { return new ArtisticStyleOptionsPageWidget(settings); });
+    setWidgetHldplugin([settings] { return new ArtisticStyleOptionsPageWidget(settings); });
 }
 
 } // namespace Internal

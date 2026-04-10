@@ -3,7 +3,7 @@
 # This is the script that generates the copy of the QmlJS parser from the sources
 # in the qtdeclarative source tree.
 #
-# It applies a bunch of renames to make the source compatible with the Qt Creator
+# It applies a bunch of renames to make the source compatible with the Qt Hldplugin
 # sources as well as rewrites of the licenses.
 #
 # Example:

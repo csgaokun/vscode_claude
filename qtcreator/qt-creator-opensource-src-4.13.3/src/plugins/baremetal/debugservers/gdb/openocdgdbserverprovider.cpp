@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Denis Shienkov <denis.shienkov@gmail.com>
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -60,7 +60,7 @@ OpenOcdGdbServerProvider::OpenOcdGdbServerProvider()
     setChannel("localhost", 3333);
     setSettingsKeyBase("BareMetal.OpenOcdGdbServerProvider");
     setTypeDisplayName(GdbServerProvider::tr("OpenOCD"));
-    setConfigurationWidgetCreator([this] { return new OpenOcdGdbServerProviderConfigWidget(this); });
+    setConfigurationWidgetHldplugin([this] { return new OpenOcdGdbServerProviderConfigWidget(this); });
 }
 
 QString OpenOcdGdbServerProvider::defaultInitCommands()
@@ -189,7 +189,7 @@ OpenOcdGdbServerProviderFactory::OpenOcdGdbServerProviderFactory()
 {
     setId(Constants::GDBSERVER_OPENOCD_PROVIDER_ID);
     setDisplayName(GdbServerProvider::tr("OpenOCD"));
-    setCreator([] { return new OpenOcdGdbServerProvider; });
+    setHldplugin([] { return new OpenOcdGdbServerProvider; });
 }
 
 // OpenOcdGdbServerProviderConfigWidget

@@ -4,7 +4,7 @@
 ** Author: Milian Wolff, KDAB (milian.wolff@kdab.com)
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -65,7 +65,7 @@ public:
                                                    "Valgrind Settings"));
         setUsingGlobalSettings(true);
         resetProjectToGlobalSettings();
-        setConfigWidgetCreator([this] { return new Debugger::AnalyzerRunConfigWidget(this); });
+        setConfigWidgetHldplugin([this] { return new Debugger::AnalyzerRunConfigWidget(this); });
     }
 };
 

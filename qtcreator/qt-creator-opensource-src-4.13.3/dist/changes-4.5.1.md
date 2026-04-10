@@ -1,29 +1,29 @@
-Qt Creator version 4.5.1 contains bug fixes.
+Qt Hldplugin version 4.5.1 contains bug fixes.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-    git clone git://code.qt.io/qt-creator/qt-creator.git
+    git clone git://code.qt.io/qt-hldplugin/qt-hldplugin.git
     git log --cherry-pick --pretty=oneline v4.5.0..v4.5.1
 
 Help
 
 * Fixed that mouse cursor got stuck in waiting state when jumping to
-  anchor within open help page (QTCREATORBUG-19649)
+  anchor within open help page (QTHLDPLUGINBUG-19649)
 
 All Projects
 
-* Fixed predefined macro setting for custom toolchains (QTCREATORBUG-19714)
+* Fixed predefined macro setting for custom toolchains (QTHLDPLUGINBUG-19714)
 
 QMake Projects
 
-* Fixed crash when importing build (QTCREATORBUG-19391)
-* Fixed crash when switching file while project is parsing (QTCREATORBUG-19428)
+* Fixed crash when importing build (QTHLDPLUGINBUG-19391)
+* Fixed crash when switching file while project is parsing (QTHLDPLUGINBUG-19428)
 
 Qbs Projects
 
-* Fixed issue with toolchain setup (QTCREATORBUG-19467)
+* Fixed issue with toolchain setup (QTHLDPLUGINBUG-19467)
 * Fixed reparsing after switching build configuration
 
 Qt Quick Designer
@@ -32,22 +32,22 @@ Qt Quick Designer
 
 Nim Support
 
-* Fixed debugging (QTCREATORBUG-19414)
+* Fixed debugging (QTHLDPLUGINBUG-19414)
 
 Debugging
 
 * CDB
-    * Improved performance when stepping (QTCREATORBUG-18613)
+    * Improved performance when stepping (QTHLDPLUGINBUG-18613)
 
 QML Profiler
 
-* Fixed `Analyze Current Range` (QTCREATORBUG-19456)
-* Fixed attaching to running application (QTCREATORBUG-19496)
+* Fixed `Analyze Current Range` (QTHLDPLUGINBUG-19456)
+* Fixed attaching to running application (QTHLDPLUGINBUG-19496)
 
 Version Control Systems
 
 * Gerrit
-    * Fixed that dialog could use wrong repository (QTCREATORBUG-19562)
+    * Fixed that dialog could use wrong repository (QTHLDPLUGINBUG-19562)
 
 Platform Specific
 

@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -380,7 +380,7 @@ private:
     QThread::Priority priority = QThread::InheritPriority;
 };
 
-class QTCREATOR_UTILS_EXPORT RunnableThread : public QThread
+class QTHLDPLUGIN_UTILS_EXPORT RunnableThread : public QThread
 {
 public:
     explicit RunnableThread(QRunnable *runnable, QObject *parent = nullptr);

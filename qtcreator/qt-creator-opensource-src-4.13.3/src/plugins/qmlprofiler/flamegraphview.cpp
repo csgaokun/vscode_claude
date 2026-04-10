@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -57,7 +57,7 @@ FlameGraphView::FlameGraphView(QmlProfilerModelManager *manager, QWidget *parent
 
     m_content->rootContext()->setContextProperty(QStringLiteral("flameGraphModel"), m_model);
     m_content->setSource(QUrl(QStringLiteral("qrc:/qmlprofiler/QmlProfilerFlameGraphView.qml")));
-    m_content->setClearColor(Utils::creatorTheme()->color(Utils::Theme::Timeline_BackgroundColor1));
+    m_content->setClearColor(Utils::hldpluginTheme()->color(Utils::Theme::Timeline_BackgroundColor1));
 
     m_content->setResizeMode(QQuickWidget::SizeRootObjectToView);
     m_content->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

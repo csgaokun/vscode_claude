@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Petar Perisin.
 ** Contact: petar.perisin@gmail.com
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -214,7 +214,7 @@ void GerritPushDialog::setChangeRange()
     const int currentRange = range.toInt();
     QPalette palette = QApplication::palette();
     if (currentRange > ReasonableDistance) {
-        const QColor errorColor = Utils::creatorTheme()->color(Utils::Theme::TextColorError);
+        const QColor errorColor = Utils::hldpluginTheme()->color(Utils::Theme::TextColorError);
         palette.setColor(QPalette::WindowText, errorColor);
         palette.setColor(QPalette::ButtonText, errorColor);
         labelText.append("\n" + tr("Are you sure you selected the right target branch?"));

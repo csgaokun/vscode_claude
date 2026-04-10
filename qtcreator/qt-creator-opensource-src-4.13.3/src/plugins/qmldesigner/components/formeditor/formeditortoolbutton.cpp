@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -63,7 +63,7 @@ void FormEditorToolButton::paint(QPainter *painter, const QStyleOptionGraphicsIt
     QRectF adjustedRect(size().width() - toolButtonSize, size().height() - toolButtonSize, toolButtonSize, toolButtonSize);
     painter->setPen(Qt::NoPen);
 
-    static QColor selectionColor = Utils::creatorTheme()->color(Utils::Theme::QmlDesigner_FormEditorSelectionColor);
+    static QColor selectionColor = Utils::hldpluginTheme()->color(Utils::Theme::QmlDesigner_FormEditorSelectionColor);
 
     if (m_state == Hovered)
         painter->setBrush(selectionColor.lighter(110));

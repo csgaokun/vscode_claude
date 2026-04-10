@@ -4,7 +4,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -86,9 +86,9 @@ def package_repos(repos, combined_prefix, target_file_base):
 
 def parse_arguments():
     script_path = os.path.dirname(os.path.realpath(__file__))
-    qtcreator_repo = os.path.join(script_path, '..')
-    parser = argparse.ArgumentParser(description="Create Qt Creator source packages")
-    parser.add_argument('-p', default=qtcreator_repo, dest='repo', help='path to repository')
+    qthldplugin_repo = os.path.join(script_path, '..')
+    parser = argparse.ArgumentParser(description="Create Qt Hldplugin source packages")
+    parser.add_argument('-p', default=qthldplugin_repo, dest='repo', help='path to repository')
     parser.add_argument('-n', default='', dest='name', help='name of plugin')
     parser.add_argument('-s', action='append', default=[], dest='modules', help='submodule to add')
     parser.add_argument('version', help='full version including tag, e.g. 4.2.0-beta1')
@@ -97,15 +97,15 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
-    base_repo_name = args.name if args.name else "qtcreator"
-    if not args.name and not args.modules: # default Qt Creator repository
+    base_repo_name = args.name if args.name else "qthldplugin"
+    if not args.name and not args.modules: # default Qt Hldplugin repository
         submodules = [os.path.join('src', 'tools', 'perfparser')]
         args.modules = [path for path in submodules if os.path.exists(os.path.join(args.repo, path, '.git'))]
     repos = [(base_repo_name, args.repo, '')]
     for module in args.modules:
         repos += [(module, os.path.join(args.repo, module), module + os.sep)]
     name_part = '-' + args.name if args.name else ''
-    prefix = 'qt-creator-' + args.edition + name_part + '-src-' + args.version
+    prefix = 'qt-hldplugin-' + args.edition + name_part + '-src-' + args.version
     package_repos(repos, prefix, os.path.join(os.getcwd(), prefix))
 
 if __name__ == "__main__":

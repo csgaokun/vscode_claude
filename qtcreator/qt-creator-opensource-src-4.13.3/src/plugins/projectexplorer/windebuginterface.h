@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -62,7 +62,7 @@ private:
 
     static WinDebugInterface *m_instance;
 
-    qint64 m_creatorPid = -1;
+    qint64 m_hldpluginPid = -1;
     Qt::HANDLE m_waitHandles[HandleCount] = {};
     Qt::HANDLE m_bufferReadyEvent = nullptr;
     Qt::HANDLE m_sharedFile = nullptr;

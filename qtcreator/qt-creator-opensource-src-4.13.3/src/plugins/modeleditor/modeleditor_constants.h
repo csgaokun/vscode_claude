@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 Jochen Becher
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -57,7 +57,7 @@ const char WIZARD_CATEGORY[] = "O.Model";
 const char WIZARD_TR_CATEGORY[] = QT_TRANSLATE_NOOP("Modeling", "Modeling");
 const char WIZARD_MODEL_ID[] = "SA.Model";
 
-const char MIME_TYPE_MODEL[] = "text/vnd.qtcreator.model";
+const char MIME_TYPE_MODEL[] = "text/vnd.qthldplugin.model";
 
 // Settings entries
 const char SETTINGS_GROUP[] = "ModelEditorPlugin";

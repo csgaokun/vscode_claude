@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -183,42 +183,42 @@ const VcsBaseEditorParameters svnLogEditorParameters {
     OtherContent,
     Git::Constants::GIT_SVN_LOG_EDITOR_ID,
     Git::Constants::GIT_SVN_LOG_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.git.svnlog"
+    "text/vnd.qthldplugin.git.svnlog"
 };
 
 const VcsBaseEditorParameters logEditorParameters {
     LogOutput,
     Git::Constants::GIT_LOG_EDITOR_ID,
     Git::Constants::GIT_LOG_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.git.log"
+    "text/vnd.qthldplugin.git.log"
 };
 
 const VcsBaseEditorParameters reflogEditorParameters {
     LogOutput,
     Git::Constants::GIT_REFLOG_EDITOR_ID,
     Git::Constants::GIT_REFLOG_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.git.reflog"
+    "text/vnd.qthldplugin.git.reflog"
 };
 
 const VcsBaseEditorParameters blameEditorParameters {
     AnnotateOutput,
     Git::Constants::GIT_BLAME_EDITOR_ID,
     Git::Constants::GIT_BLAME_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.git.annotation"
+    "text/vnd.qthldplugin.git.annotation"
 };
 
 const VcsBaseEditorParameters commitTextEditorParameters {
     OtherContent,
     Git::Constants::GIT_COMMIT_TEXT_EDITOR_ID,
     Git::Constants::GIT_COMMIT_TEXT_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.git.commit"
+    "text/vnd.qthldplugin.git.commit"
 };
 
 const VcsBaseEditorParameters rebaseEditorParameters {
     OtherContent,
     Git::Constants::GIT_REBASE_EDITOR_ID,
     Git::Constants::GIT_REBASE_EDITOR_DISPLAY_NAME,
-    "text/vnd.qtcreator.git.rebase"
+    "text/vnd.qthldplugin.git.rebase"
 };
 
 // GitPlugin
@@ -2145,34 +2145,34 @@ void GitPlugin::testGitRemote_data()
     QTest::addColumn<RemoteTest>("rt");
 
     QTest::newRow("http-no-user")
-            << RemoteTest("http://code.qt.io/qt-creator/qt-creator.git")
+            << RemoteTest("http://code.qt.io/qt-hldplugin/qt-hldplugin.git")
                .protocol("http")
                .host("code.qt.io")
-               .path("/qt-creator/qt-creator.git");
+               .path("/qt-hldplugin/qt-hldplugin.git");
     QTest::newRow("https-with-port")
-            << RemoteTest("https://code.qt.io:80/qt-creator/qt-creator.git")
+            << RemoteTest("https://code.qt.io:80/qt-hldplugin/qt-hldplugin.git")
                .protocol("https")
                .host("code.qt.io")
                .port(80)
-               .path("/qt-creator/qt-creator.git");
+               .path("/qt-hldplugin/qt-hldplugin.git");
     QTest::newRow("invalid-port")
-            << RemoteTest("https://code.qt.io:99999/qt-creator/qt-creator.git")
+            << RemoteTest("https://code.qt.io:99999/qt-hldplugin/qt-hldplugin.git")
                .protocol("https")
                .host("code.qt.io")
-               .path("/qt-creator/qt-creator.git")
+               .path("/qt-hldplugin/qt-hldplugin.git")
                .isValid(false);
     QTest::newRow("ssh-user-foo")
-            << RemoteTest("ssh://foo@codereview.qt-project.org:29418/qt-creator/qt-creator.git")
+            << RemoteTest("ssh://foo@codereview.qt-project.org:29418/qt-hldplugin/qt-hldplugin.git")
                .protocol("ssh")
                .userName("foo")
                .host("codereview.qt-project.org")
                .port(29418)
-               .path("/qt-creator/qt-creator.git");
+               .path("/qt-hldplugin/qt-hldplugin.git");
     QTest::newRow("ssh-github")
-            << RemoteTest("git@github.com:qt-creator/qt-creator.git")
+            << RemoteTest("git@github.com:qt-hldplugin/qt-hldplugin.git")
                .userName("git")
                .host("github.com")
-               .path("qt-creator/qt-creator.git");
+               .path("qt-hldplugin/qt-hldplugin.git");
     QTest::newRow("local-file-protocol")
             << RemoteTest("file:///tmp/myrepo.git")
                .protocol("file")

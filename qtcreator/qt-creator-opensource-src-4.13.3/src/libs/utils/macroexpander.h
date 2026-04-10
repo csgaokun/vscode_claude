@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -42,7 +42,7 @@ class MacroExpander;
 using MacroExpanderProvider = std::function<MacroExpander *()>;
 using MacroExpanderProviders = QVector<MacroExpanderProvider>;
 
-class QTCREATOR_UTILS_EXPORT MacroExpander
+class QTHLDPLUGIN_UTILS_EXPORT MacroExpander
 {
     Q_DECLARE_TR_FUNCTIONS(Utils::MacroExpander)
     Q_DISABLE_COPY(MacroExpander)
@@ -102,6 +102,6 @@ private:
     Internal::MacroExpanderPrivate *d;
 };
 
-QTCREATOR_UTILS_EXPORT MacroExpander *globalMacroExpander();
+QTHLDPLUGIN_UTILS_EXPORT MacroExpander *globalMacroExpander();
 
 } // namespace Utils

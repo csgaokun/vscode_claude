@@ -1,4 +1,4 @@
-include(../../qtcreatorplugin.pri)
+include(../../qthldpluginplugin.pri)
 
 MESONPROJECTMANAGER_SOURCE_ROOT = $$PWD
 win32-msvc*:MESONPROJECTMANAGER_SOURCE_ROOT = $$clean_path($$IDE_SOURCE_TREE/../qtcsrc/src/plugins/mesonprojectmanager)

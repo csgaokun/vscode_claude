@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -40,7 +40,7 @@ const char SIDE_BY_SIDE_VIEW_ID[] = "DiffEditor.SideBySide";
 const char UNIFIED_VIEW_ID[] = "DiffEditor.Unified";
 const char SELECT_ENCODING[] = "DiffEditor.SelectEncoding";
 
-const char G_TOOLS_DIFF[] = "QtCreator.Group.Tools.Options";
+const char G_TOOLS_DIFF[] = "QtHldplugin.Group.Tools.Options";
 
 } // namespace Constants
 } // namespace DiffEditor

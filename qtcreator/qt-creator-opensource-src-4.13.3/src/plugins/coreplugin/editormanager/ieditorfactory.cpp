@@ -3,7 +3,7 @@
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
 **
-** This file is part of Qt Creator.
+** This file is part of Qt Hldplugin.
 **
 ** Commercial License Usage
 ** Licensees holding valid commercial Qt licenses may use this file in
@@ -37,7 +37,7 @@ namespace Core {
 /*!
     \class Core::IEditorFactory
     \inheaderfile coreplugin/editormanager/ieditorfactory.h
-    \inmodule QtCreator
+    \inmodule QtHldplugin
 
     \brief The IEditorFactory class creates suitable editors for documents
     according to their MIME type.
@@ -168,21 +168,21 @@ const EditorFactoryList IEditorFactory::preferredEditorFactories(const QString &
     Creates an editor.
 
     Either override this in a subclass, or set the function to use for
-    creating an editor instance with setEditorCreator().
+    creating an editor instance with setEditorHldplugin().
 */
 IEditor *IEditorFactory::createEditor() const
 {
-    QTC_ASSERT(m_creator, return nullptr);
-    return m_creator();
+    QTC_ASSERT(m_hldplugin, return nullptr);
+    return m_hldplugin();
 }
 
 /*!
     Sets the function that is used to create an editor instance in
-    createEditor() by default to \a creator.
+    createEditor() by default to \a hldplugin.
 */
-void IEditorFactory::setEditorCreator(const std::function<IEditor *()> &creator)
+void IEditorFactory::setEditorHldplugin(const std::function<IEditor *()> &hldplugin)
 {
-    m_creator = creator;
+    m_hldplugin = hldplugin;
 }
 
 /*!

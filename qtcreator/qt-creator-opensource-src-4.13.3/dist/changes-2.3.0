@@ -1,10 +1,10 @@
-Qt Creator version 2.3 contains bug fixes and new features.
+Qt Hldplugin version 2.3 contains bug fixes and new features.
 
 The most important changes are listed in this document. For a complete
-list of changes, see the Git log for the Qt Creator sources that
+list of changes, see the Git log for the Qt Hldplugin sources that
 you can check out from the public Git repository. For example:
 
-git clone git://gitorious.org/qt-creator/qt-creator.git
+git clone git://gitorious.org/qt-hldplugin/qt-hldplugin.git
 git log --cherry-pick --pretty=oneline v2.2.1...origin/2.3
 
 General
@@ -22,7 +22,7 @@ Managing Projects
 Debugging
    * Color memory display highlighting the variables in stack layout
    * Correct source location for breakpoints in CDB using code model
-     (QTCREATORBUG-2317)
+     (QTHLDPLUGINBUG-2317)
    * Added support for multiple breakpoints from one location
      (covering constructors, destructors, template functions, and so on)
    * Added a custom dumper for QXmlAttributes, Eigen::Matrix
@@ -37,11 +37,11 @@ Debugging
    * Improved the speed of the QVariant dumper
    * Improved the handling of shadowed local variables
    * Fixed object expansion in tooltip
-   * Fixed std::deque dumper (QTCREATORBUG-4936)
+   * Fixed std::deque dumper (QTHLDPLUGINBUG-4936)
    * Fixed the handling of watched expressions with unusual characters
-   * Fixed "Run To Line" on Mac (QTCREATORBUG-4619)
-   * Fixed output parsing for data breakpoints on Mac (QTCREATORBUG-4797)
-   * Fixed auto-continue on SIGTRAP (QTCREATORBUG-4968)
+   * Fixed "Run To Line" on Mac (QTHLDPLUGINBUG-4619)
+   * Fixed output parsing for data breakpoints on Mac (QTHLDPLUGINBUG-4797)
+   * Fixed auto-continue on SIGTRAP (QTHLDPLUGINBUG-4968)
    * Fixed the dumper for gcc 4.4's std::map
 
 Debugging QML/JS
@@ -52,45 +52,45 @@ Analyzing Code
    * Added support for the Valgrind Callgrind tool on Linux and Mac
 
 C++ Support
-   * Made C++ coding style configurable (QTCREATORBUG-2670, QTCREATORBUG-4310,
-     QTCREATORBUG-2763, QTCREATORBUG-3623, QTCREATORBUG-567)
-   * Various indentation fixes (QTCREATORBUG-4993)
+   * Made C++ coding style configurable (QTHLDPLUGINBUG-2670, QTHLDPLUGINBUG-4310,
+     QTHLDPLUGINBUG-2763, QTHLDPLUGINBUG-3623, QTHLDPLUGINBUG-567)
+   * Various indentation fixes (QTHLDPLUGINBUG-4993)
 
 QML/JS Support
    * Updated QML type descriptions for the current state of Qt 5
    * Made tab settings configurable separately and per-project
    * Added 'Find usages' functionality for QML types
-   * Added type resolution for alias properties (QTCREATORBUG-2306)
+   * Added type resolution for alias properties (QTHLDPLUGINBUG-2306)
    * Added tooltips to imports
    * Added documentation on using QML modules with plugins
    * Added support for properties and methods with a revision, allowing
      the QtQuick 1.0 and 1.1 imports to behave as intended
-   * Added 'Reset code model' action to the Tools->QML/JS menu (QTCREATORBUG-4813)
+   * Added 'Reset code model' action to the Tools->QML/JS menu (QTHLDPLUGINBUG-4813)
    * Use qmlplugindump from Qt 4.8 or newer instead of building own qmldump
-   * Improved error message for missing prototypes (QTCREATORBUG-4952)
-   * Fixed completion of slots (QTCREATORBUG-3614, QTCREATORBUG-3459)
-   * Fixed completion inside grouped property bindings (QTCREATORBUG-3541)
-   * Fixed scanning and indentation of regular expression literals (QTCREATORBUG-4566)
+   * Improved error message for missing prototypes (QTHLDPLUGINBUG-4952)
+   * Fixed completion of slots (QTHLDPLUGINBUG-3614, QTHLDPLUGINBUG-3459)
+   * Fixed completion inside grouped property bindings (QTHLDPLUGINBUG-3541)
+   * Fixed scanning and indentation of regular expression literals (QTHLDPLUGINBUG-4566)
    * Fixed indentation of object literals
 
 Qt Quick Designer
   * Added tool buttons to the navigator for reordering and reparenting of items
-  * Added support for import as (QTCREATORBUG-4087)
+  * Added support for import as (QTHLDPLUGINBUG-4087)
   * Added editing and navigation for inline components
-  * Added support for models and delegates in the current file (QTCREATORBUG-4528)
-  * Added support for repeaters (QTCREATORBUG-4852)
+  * Added support for models and delegates in the current file (QTHLDPLUGINBUG-4528)
+  * Added support for repeaters (QTHLDPLUGINBUG-4852)
   * Added context menu for resetting postion and size
-  * Added context menu for improved selection (QTCREATORBUG-4611)
+  * Added context menu for improved selection (QTHLDPLUGINBUG-4611)
   * Added translation support for text items
-  * Added context menu for z-order (QTCREATORBUG-2522)
-  * Fixed z-order in the form editor (QTCREATORBUG-5226)
-  * Improved usability of the form editor (QTCREATORBUG-4820 QTCREATORBUG-4819)
+  * Added context menu for z-order (QTHLDPLUGINBUG-2522)
+  * Fixed z-order in the form editor (QTHLDPLUGINBUG-5226)
+  * Improved usability of the form editor (QTHLDPLUGINBUG-4820 QTHLDPLUGINBUG-4819)
   * Do not enforce clipping of items in the form editor anymore
-  * Improved property editor for mouse area (QTCREATORBUG-4927)
-  * Use the qmlpuppet from current Qt if availabe (QTCREATORBUG-4824)
-  * Added project for qmlpuppet in share of Qt Creator
-  * Fixed copy and paste bug (QTCREATORBUG-4581)
-  * Fixed scoping of root item properties (QTCREATORBUG-4574)
+  * Improved property editor for mouse area (QTHLDPLUGINBUG-4927)
+  * Use the qmlpuppet from current Qt if availabe (QTHLDPLUGINBUG-4824)
+  * Added project for qmlpuppet in share of Qt Hldplugin
+  * Fixed copy and paste bug (QTHLDPLUGINBUG-4581)
+  * Fixed scoping of root item properties (QTHLDPLUGINBUG-4574)
   * Improved property editor for ListView, GridView and PathView
 
 Help
@@ -122,7 +122,7 @@ FakeVim:
    * Made FakeVim functionality available for shortcuts in normal text editor
    * Added snippet support
    * Fixed behaviour of Ctrl keys on Mac
-   * Fixed searching for expressions containing '|' (QTCREATORBUG-4752)
+   * Fixed searching for expressions containing '|' (QTHLDPLUGINBUG-4752)
 
 Version control plugins
    * Git: Manage remote repositories

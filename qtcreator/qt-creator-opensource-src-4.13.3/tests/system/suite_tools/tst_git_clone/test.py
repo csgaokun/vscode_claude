@@ -3,7 +3,7 @@
 # Copyright (C) 2016 The Qt Company Ltd.
 # Contact: https://www.qt.io/licensing/
 #
-# This file is part of Qt Creator.
+# This file is part of Qt Hldplugin.
 #
 # Commercial License Usage
 # Licensees holding valid commercial Qt licenses may use this file in
@@ -23,7 +23,7 @@
 #
 ############################################################################
 
-source("../../shared/qtcreator.py")
+source("../../shared/qthldplugin.py")
 
 cloneUrl = "https://code.qt.io/installer-framework/installer-framework.git"
 cloneDir = "myCloneOfIfw"
@@ -36,9 +36,9 @@ def verifyCloneLog(targetDir, canceled):
         waitFor("finish.enabled", 90000)
         cloneLog = str(waitForObject(":Git Repository Clone.logPlainTextEdit_QPlainTextEdit").plainText)
         if "fatal: " in cloneLog:
-            test.warning("Cloning failed outside Creator.")
+            test.warning("Cloning failed outside Hldplugin.")
             return False
-        # test for QTCREATORBUG-10112
+        # test for QTHLDPLUGINBUG-10112
         test.compare(cloneLog.count("remote: Total"), 1)
         test.compare(cloneLog.count("Receiving objects:"), 1)
         test.compare(cloneLog.count("Resolving deltas:"), 1)
@@ -63,7 +63,7 @@ def verifyCloneLog(targetDir, canceled):
 def verifyVersionControlView(targetDir, canceled):
     openVcsLog()
     vcsLog = str(waitForObject("{type='Core::OutputWindow' unnamed='1' visible='1' "
-                               "window=':Qt Creator_Core::Internal::MainWindow'}").plainText)
+                               "window=':Qt Hldplugin_Core::Internal::MainWindow'}").plainText)
     test.log("Clone log is: %s" % vcsLog)
     test.verify("Running in " + targetDir + ":" in vcsLog,
                 "Searching for target directory in clone log")
@@ -71,7 +71,7 @@ def verifyVersionControlView(targetDir, canceled):
                 "Searching for git parameters in clone log")
     test.verify(canceled == (" terminated abnormally" in vcsLog),
                 "Searching for result in clone log")
-    clickButton(waitForObject(":*Qt Creator.Clear_QToolButton"))
+    clickButton(waitForObject(":*Qt Hldplugin.Clear_QToolButton"))
 
 def verifyFiles(targetDir):
     for file in [".gitignore", "LICENSE.GPL3-EXCEPT", "installerfw.pro",
@@ -132,7 +132,7 @@ def main():
             if button == ":Git Repository Clone.Finish_QPushButton":
                 try:
                     # Projects mode shown
-                    clickButton(waitForObject(":Qt Creator.Configure Project_QPushButton", 5000))
+                    clickButton(waitForObject(":Qt Hldplugin.Configure Project_QPushButton", 5000))
                     test.passes("The checked out project was being opened.")
                 except:
                     clickButton(waitForObject(":Cannot Open Project.Show Details..._QPushButton"))
